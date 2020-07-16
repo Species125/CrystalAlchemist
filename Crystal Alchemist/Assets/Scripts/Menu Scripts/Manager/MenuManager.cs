@@ -17,6 +17,8 @@ public class MenuManager : MonoBehaviour
         MenuEvents.current.OnDialogBox += OpenDialogBox;
         MenuEvents.current.OnMenuDialogBox += OpenMenuDialogBox;
         MenuEvents.current.OnTutorial += OpenTutorial;
+        MenuEvents.current.OnJukeBox += OpenJukebox;
+        MenuEvents.current.OnSave += OpenSavePoint;
     }
 
     private void OnDestroy()
@@ -32,6 +34,7 @@ public class MenuManager : MonoBehaviour
         MenuEvents.current.OnSave -= OpenSavePoint;
         MenuEvents.current.OnDialogBox -= OpenDialogBox;
         MenuEvents.current.OnMenuDialogBox -= OpenMenuDialogBox;
+        MenuEvents.current.OnJukeBox -= OpenJukebox;
         MenuEvents.current.OnTutorial -= OpenTutorial;
     }
 
@@ -56,6 +59,8 @@ public class MenuManager : MonoBehaviour
     public void OpenDialogBox() => OpenScene("DialogBox");
 
     public void OpenMenuDialogBox() => OpenSceneAdditive("MenuDialogBox");
+
+    public void OpenJukebox() => OpenScene("Jukebox");
 
     public void OpenTutorial() => OpenScene("Tutorial");
 

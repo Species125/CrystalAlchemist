@@ -1,5 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEditor;
 
 public class BackgroundMusic : MonoBehaviour
 {
@@ -7,10 +8,7 @@ public class BackgroundMusic : MonoBehaviour
     private bool playOnAwake = true;
 
     [SerializeField]
-    private AudioClip startMusic;
-
-    [SerializeField]
-    private AudioClip loopMusic;
+    private MusicTheme music;
 
     [SerializeField]
     private float fadeIn = 2f;
@@ -27,7 +25,7 @@ public class BackgroundMusic : MonoBehaviour
     public void PlayMusic()
     {
         StopMusic();
-        MusicEvents.current.PlayMusic(this.startMusic, this.loopMusic, this.fadeIn);
+        MusicEvents.current.PlayMusic(this.music, this.fadeIn);
     }
 
     public void StopMusic() => MusicEvents.current.StopMusic(this.fadeOut);
@@ -35,6 +33,6 @@ public class BackgroundMusic : MonoBehaviour
     public void PlayMusic(AudioClip music)
     {
         StopMusic();
-        MusicEvents.current.PlayMusic(null, music, this.fadeIn);
+        //MusicEvents.current.PlayMusic(null, music, this.fadeIn);
     }
 }

@@ -27960,3 +27960,9 @@ BackgroundMusic.StopMusic () (at Assets/Scripts/Game Scripts/Sound Handlers/Back
 BackgroundMusic.PlayMusic () (at Assets/Scripts/Game Scripts/Sound Handlers/BackgroundMusic.cs:29)
 BackgroundMusic.Start () (at Assets/Scripts/Game Scripts/Sound Handlers/BackgroundMusic.cs:23)
 
+Exception 16.07.2020 11:51:27: NullReferenceException: Object reference not set to an instance of an object
+MusicHandler.PlayMusic (MusicScroll music, System.Single fadeIn) (at Assets/Scripts/Game Scripts/Sound Handlers/MusicHandler.cs:37)
+MusicEvents.PlayMusic (MusicScroll music, System.Single fadeIn) (at Assets/Scripts/Game Scripts/Event Systems/MusicEvents.cs:19)
+BackgroundMusic.PlayMusic () (at Assets/Scripts/Game Scripts/Sound Handlers/BackgroundMusic.cs:27)
+BackgroundMusic.Start () (at Assets/Scripts/Game Scripts/Sound Handlers/BackgroundMusic.cs:20)
+

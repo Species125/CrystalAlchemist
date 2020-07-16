@@ -223,13 +223,7 @@ public class AIAction
     [HideIf("mode", MusicMode.stop)]
     [BoxGroup("Properties")]
     [SerializeField]
-    private AudioClip start;
-
-    [ShowIf("type", AIActionType.music)]
-    [HideIf("mode", MusicMode.stop)]
-    [BoxGroup("Properties")]
-    [SerializeField]
-    private AudioClip loop;
+    private MusicTheme music;
 
     #endregion
 
@@ -534,7 +528,7 @@ public class AIAction
     private void StartMusic()
     {
         MusicEvents.current.StopMusic(this.fadeOut);
-        if (this.mode == MusicMode.play) MusicEvents.current.PlayMusic(this.start, this.loop, this.fadeIn);
+        if (this.mode == MusicMode.play) MusicEvents.current.PlayMusic(this.music, this.fadeIn);
         Deactivate();
     }
 

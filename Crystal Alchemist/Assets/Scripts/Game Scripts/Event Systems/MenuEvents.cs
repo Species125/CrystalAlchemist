@@ -22,6 +22,7 @@ public class MenuEvents : MonoBehaviour
     public Action OnDialogBox;
     public Action OnMenuDialogBox;
     public Action OnTutorial;
+    public Action OnJukeBox;
     public Action OnAttributeUpdate;
     public Action<Action> OnPostProcessingFade;
     public Action OnFadeOut;
@@ -38,6 +39,7 @@ public class MenuEvents : MonoBehaviour
     public void OpenSavepoint() => this.OnSave?.Invoke();
     public void OpenMiniGame() => this.OnMiniGame?.Invoke();
     public void OpenTutorial() => this.OnTutorial?.Invoke();
+    public void OpenJukeBox() => this.OnJukeBox?.Invoke();
     public void SelectAbility(Ability ability) => this.OnAbilitySelected?.Invoke(ability);
     public Ability SetAbility() => this.OnAbilitySet?.Invoke();
     public void AssignAbility() => this.OnAbilityAssigned?.Invoke();

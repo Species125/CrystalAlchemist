@@ -63,7 +63,7 @@ public class Bed : Interactable
             GameEvents.current.DoSleep(position, () => this.blanket.SetActive(true), () => StartSleeping()); 
             this.translationID = this.wakeUpActionID;
 
-            MusicEvents.current.StopMusic(this.fadeOut);
+            MusicEvents.current.PauseMusic(this.fadeOut);
             MusicEvents.current.PlayMusicOnce(this.music,0,0);
         }
         else
