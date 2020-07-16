@@ -20,7 +20,7 @@ public class PlayerItems : PlayerComponent
     public override void Initialize()
     {
         base.Initialize();
-        this.inventory.Initialize(); //remove null objects          
+        this.inventory.Initialize(); //remove null objects    
     }
 
     public int GetAmount(ItemGroup group)

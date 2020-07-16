@@ -281,6 +281,9 @@ GameObject:
   - component: {fileID: 4588277751585783558}
   - component: {fileID: 6866986401814778853}
   - component: {fileID: 7657995963615701156}
+  - component: {fileID: 6307095384276859846}
+  - component: {fileID: 8572986129014467988}
+  - component: {fileID: 5716942664519188282}
   m_Layer: 13
   m_Name: Arkaner Impuls
   m_TagString: Skill
@@ -371,6 +374,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5257727404935883419}
   myRigidbody: {fileID: 8945697548278569866}
   animator: {fileID: 1969718782558145669}
+  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -409,7 +413,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill: {fileID: 3816868808247662347}
   canBeReflected: 0
-  skillOnImpact: {fileID: 0}
 --- !u!114 &6564433060163094277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +447,7 @@ MonoBehaviour:
     keyItem: {fileID: 0}
     amount: -1
   statusEffects: []
+  modifiers: []
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}
@@ -472,7 +476,6 @@ MonoBehaviour:
   forward: 0
   selfThrust: 0
   selfThrustTime: 0
-  stateType: 0
 --- !u!114 &4588277751585783558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +518,56 @@ MonoBehaviour:
   type: 3
   positionHeight: 0
   colliderHeightOffset: -0.5
+--- !u!114 &6307095384276859846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6814274785137477229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
+--- !u!114 &8572986129014467988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6814274785137477229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+--- !u!114 &5716942664519188282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6814274785137477229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  animator: {fileID: 6526762562809975763}
 --- !u!1001 &4484190714160488513
 PrefabInstance:
   m_ObjectHideFlags: 0

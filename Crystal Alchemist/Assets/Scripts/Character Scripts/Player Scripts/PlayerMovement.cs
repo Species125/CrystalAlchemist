@@ -55,6 +55,7 @@ public class PlayerMovement : PlayerComponent
         else this.change = Vector2.zero;*/
     }
 
+
     private void FixedUpdate()
     {
         UpdateAnimationAndMove(this.change);  //check if is menu

@@ -5,8 +5,13 @@ using System;
 
 public class PlayerAbilities : CharacterCombat
 {
-    public PlayerSkillset skillSet;
-    public PlayerButtons buttons;
+    [SerializeField]
+    [Required]
+    private PlayerSkillset skillSet;
+
+    [SerializeField]
+    [Required]
+    private PlayerButtons buttons;
 
     [SerializeField]
     [Required]
@@ -25,6 +30,8 @@ public class PlayerAbilities : CharacterCombat
         base.Initialize();
         this.player = this.character.GetComponent<Player>();
         this.SetTimeValue(this.timeLeftValue);
+
+        this.skillSet.Initialize();
         this.skillSet.SetSender(this.character);
     }
 

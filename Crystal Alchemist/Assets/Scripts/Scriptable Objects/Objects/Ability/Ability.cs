@@ -405,6 +405,7 @@ public class Ability : ScriptableObject
 
         Character sender = this.GetSender();
         Skill activeSkill = Instantiate(this.skill, position, rotation);
+
         activeSkill.name = this.skill.name;
         activeSkill.Initialize(this.positionOffset, this.lockDirection, this.isRapidFire, this.timeDistortion, this.attachToSender);
         activeSkill.SetMaxDuration(this.hasMaxDuration, this.maxDuration);

@@ -15,7 +15,7 @@ public class LoadSystem
             saveGame.timePlayed.SetValue(data.timePlayed);
             saveGame.SetCharacterName(data.characterName);
 
-            loadInventory(data, saveGame.inventory);
+            loadInventory(data.keyItems, data.inventoryItems, saveGame.inventory);
             loadPlayerSkills(data, saveGame.buttons, saveGame.skillSet);
             LoadProgress(data, saveGame.progress);
 
@@ -122,25 +122,25 @@ public class LoadSystem
     }
 
 
-    private static void loadInventory(PlayerData data, PlayerInventory inventory)
+    private static void loadInventory(List<string> keyItems, List<string[]> inventoryItems, PlayerInventory inventory)
     {
-        if (data.keyItems != null)
+        if (keyItems != null)
         {
-            foreach (string keyItem in data.keyItems)
+            foreach (string keyItem in keyItems)
             {
                 ItemDrop master = MasterManager.getItemDrop(keyItem);
                 if (master != null)
                 {
                     ItemDrop drop = master.Instantiate(1);
                     inventory.collectItem(drop.stats);
-                    MonoBehaviour.Destroy(drop);
+                    UnityEngine.Object.Destroy(drop);
                 }
             }
         }
 
-        if (data.inventoryItems != null)
+        if (inventoryItems != null)
         {
-            foreach (string[] item in data.inventoryItems)
+            foreach (string[] item in inventoryItems)
             {
                 ItemGroup master = MasterManager.getItemGroup(item[0]);
                 if (master != null) inventory.collectItem(master, Convert.ToInt32(item[1]));                

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Mirror;
+using UnityEngine;
 
 [RequireComponent(typeof(Player))]
 public class PlayerComponent : MonoBehaviour
@@ -13,6 +14,5 @@ public class PlayerComponent : MonoBehaviour
 
     public virtual void Updating()
     {
-
     }
 }
