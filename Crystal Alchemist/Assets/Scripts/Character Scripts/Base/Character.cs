@@ -5,10 +5,9 @@ using Sirenix.OdinInspector;
 using DG.Tweening;
 using Mirror;
 
-public class Character : MonoBehaviour
+public class Character : NetworkBehaviour
 {
-    [Required]
-    [BoxGroup("Pflichtfelder")]
+    [HideInInspector]
     public CharacterStats stats;
 
     #region Basic Attributes
@@ -63,7 +62,7 @@ public class Character : MonoBehaviour
     private Vector3 spawnPosition;
     private List<StatusEffectGameObject> statusEffectVisuals = new List<StatusEffectGameObject>();
 
-    [BoxGroup("Player")]
+    [HideInInspector]
     public CharacterValues values;
 
     [HideInInspector]
@@ -254,12 +253,6 @@ public class Character : MonoBehaviour
             this.GetComponent<CharacterRenderingHandler>().Invert(value);
     }
 
-    public void setFlip()
-    {
-        if (this.GetComponent<CharacterRenderingHandler>() != null)
-            this.GetComponent<CharacterRenderingHandler>().flipSprite(this.values.direction);
-    }
-
     #endregion
 
     #region Update Resources
@@ -387,8 +380,6 @@ public class Character : MonoBehaviour
     {
         SkillTargetModule targetModule = skill.GetComponent<SkillTargetModule>();
 
-
-
         if (this.values.currentState != CharacterState.dead
             && targetModule != null
             && ((!this.values.cantBeHit) || targetModule.affections.CanIgnoreInvinvibility()))
@@ -445,13 +436,23 @@ public class Character : MonoBehaviour
         gotHit(skill, percentage, true);
     }
 
-    [Button]
-    public virtual void KillIt()
-    {
-        KillIt(true);
-    }    
 
-    public virtual void KillIt(bool showAnimation)
+    [Button]
+    public void KillIt() => KillIt(true);
+
+    public void KillIt(bool showAnimation)
+    {
+        if (this.isServer) RpcKill(showAnimation);
+        else CmdKill(showAnimation);
+    }
+
+    [Command(ignoreAuthority = true)]
+    private void CmdKill(bool animate) => RpcKill(animate);
+
+    [ClientRpc]
+    private void RpcKill(bool animate) => KillCharacter(true);
+
+    public virtual void KillCharacter(bool animate)
     {
         for (int i = 0; i < this.values.activeSkills.Count; i++)
         {
@@ -466,13 +467,18 @@ public class Character : MonoBehaviour
         if (this.groundPosition != null) this.groundPosition.SetActive(false);
 
         //Play Death Effect
-        if (showAnimation)
+        if (animate)
         {
             if (this.stats.deathAnimation != null) PlayDeathAnimation();
             else AnimatorUtil.SetAnimatorParameter(this.animator, "Dead", true);
         }
         else DestroyItWithoutDrop();
     }
+
+
+
+
+
 
     public void DestroyIt()
     {

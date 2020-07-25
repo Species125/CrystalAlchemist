@@ -1,21 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game/Player/Teleport List")]
 public class PlayerTeleportList : ScriptableObject
 {
+    [BoxGroup("Values")]
     [SerializeField]
     private List<TeleportStats> list = new List<TeleportStats>();
 
+    [BoxGroup("Values")]
     [SerializeField]
     private TeleportStats nextTeleport;
 
+    [BoxGroup("Values")]
     [SerializeField]
     private TeleportStats lastTeleport;
 
+    [BoxGroup("Debug")]
+    [SerializeField]
     private bool ShowSpawnIn;
+
+    [BoxGroup("Debug")]
+    [SerializeField]
     private bool ShowSpawnOut;
+
 
     public bool GetShowSpawnIn()
     {

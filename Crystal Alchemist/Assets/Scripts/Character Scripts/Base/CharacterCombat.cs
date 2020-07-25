@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Character))]
-public class CharacterCombat : MonoBehaviour
+public class CharacterCombat : NetworkBehaviour
 {
     private CastBar activeCastBar;
     private TargetingSystem targetingSystem;
@@ -144,16 +144,16 @@ public class CharacterCombat : MonoBehaviour
 
     #region useAbility
 
-    public virtual void UseAbilityOnTarget(Ability ability, Character target)
+    public void UseAbilityOnTarget(Ability ability, Character target)
     {
         if (ability.HasEnoughResourceAndAmount())
         {
-            ability.InstantiateSkill(target);
+            Skill skill = ability.InstantiateSkill(target);            
             if (!ability.deactivateButtonUp && !ability.remoteActivation) ability.ResetCoolDown();
         }
     }
 
-    public virtual void UseAbilityOnTargets(Ability ability)
+    public void UseAbilityOnTargets(Ability ability)
     {
         List<Character> targets = new List<Character>();
         targets.AddRange(this.GetTargetsFromTargeting());
@@ -175,7 +175,8 @@ public class CharacterCombat : MonoBehaviour
             if (target.values.currentState != CharacterState.dead
                 && target.values.currentState != CharacterState.respawning)
             {
-                ability.InstantiateSkill(target, damageReduce);
+                GameObject skill = ability.InstantiateSkill(target, damageReduce).gameObject;
+
                 yield return new WaitForSeconds(this.GetTargetingDelay());
             }
         }

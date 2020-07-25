@@ -183,6 +183,7 @@ MonoBehaviour:
   selectColor: {r: 0.5921569, g: 0.8000001, b: 1, a: 1}
   precision: 0.24
   glowColor: {r: 0.66269124, g: 1.5541797, b: 2.7547169, a: 1}
+  invert: 0
 --- !u!114 &6356409455879225919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +305,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   stats: {fileID: 11400000, guid: 071c75d9e981e5748aaddf91a57b8143, type: 2}
   myRigidbody: {fileID: 3945848509854940437}
   animator: {fileID: 3020177092142690266}
@@ -316,10 +319,10 @@ MonoBehaviour:
   activeStatusEffectParent: {fileID: 8464107762506563443}
   values: {fileID: 0}
   IsSummoned: 0
-  flip: 1
+  NPCStats: {fileID: 11400000, guid: 071c75d9e981e5748aaddf91a57b8143, type: 2}
   target: {fileID: 0}
   partner: {fileID: 0}
-  rangeTriggered: {fileID: 0}
+  rangeTriggered: 0
 --- !u!114 &3945848509854940424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,6 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f5ecf49a5ed0c4784502d8b6f90d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   character: {fileID: 0}
   startPhase: {fileID: 11400000, guid: cb13a087f2d8b3a4dbf86c75af062824, type: 2}
   startImmediately: 1
@@ -493,7 +498,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroStats: {fileID: 11400000, guid: 74151ff649b937b418adb75846e519d1, type: 2}
   npc: {fileID: 1719322071491950841}
-  cluePosition: {fileID: 0}
 --- !u!58 &5650306304912438039
 CircleCollider2D:
   m_ObjectHideFlags: 0

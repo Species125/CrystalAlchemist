@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Player))]
-public class PlayerComponent : MonoBehaviour
+public class PlayerComponent : NetworkBehaviour
 {
     [HideInInspector]
     public Player player;

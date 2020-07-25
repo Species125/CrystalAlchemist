@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using TMPro;
 using Sirenix.OdinInspector;
 
 public enum TreasureType

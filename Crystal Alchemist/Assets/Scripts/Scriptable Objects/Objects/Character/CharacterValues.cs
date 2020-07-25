@@ -5,14 +5,11 @@ using Sirenix.OdinInspector;
 public enum CharacterState
 {
     walk,
-    attack,
-    defend,
     interact, //in Reichweite eines interagierbaren Objektes
     inDialog, //Dialog-Box ist offen
     inMenu, //Pause oder Inventar ist offen
     knockedback, //im Knockback
     idle,
-    silent, //kann nicht angreifen
     dead,
     manually,
     respawning
@@ -21,9 +18,6 @@ public enum CharacterState
 [CreateAssetMenu(menuName = "Game/Characters/Character Values")]
 public class CharacterValues : ScriptableObject
 {
-    [BoxGroup]
-    public bool isPlayer = false;
-
     [BoxGroup]
     public CharacterType characterType;
 

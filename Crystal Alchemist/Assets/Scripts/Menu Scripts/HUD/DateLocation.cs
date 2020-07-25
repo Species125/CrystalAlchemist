@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
-using System.Collections;
+using Mirror;
 
 public class DateLocation : MonoBehaviour
 {

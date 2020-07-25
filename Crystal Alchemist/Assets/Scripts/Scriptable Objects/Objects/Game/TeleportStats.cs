@@ -2,7 +2,7 @@
 using AssetIcons;
 
 [CreateAssetMenu(menuName = "Game/Player/Teleport Stats")]
-public class TeleportStats : ScriptableObject, ISerializationCallbackReceiver
+public class TeleportStats : ScriptableObject
 {
     public string teleportName = "";
     public string scene;
@@ -48,8 +48,4 @@ public class TeleportStats : ScriptableObject, ISerializationCallbackReceiver
     {
         return FormatUtil.GetLocalisedText(this.teleportName, LocalisationFileType.maps);
     }
-
-    public void OnAfterDeserialize() { }
-
-    public void OnBeforeSerialize() { }
 }

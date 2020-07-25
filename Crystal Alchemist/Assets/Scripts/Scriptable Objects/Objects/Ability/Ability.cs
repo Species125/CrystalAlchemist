@@ -2,7 +2,7 @@
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+
 
 public enum AbilityState
 {
@@ -174,7 +174,12 @@ public class Ability : ScriptableObject
     [BoxGroup("Debug")]
     public bool active = true;
 
+    [BoxGroup("Debug")]
+    [SerializeField]
     private Character sender;
+
+    [BoxGroup("Debug")]
+    [SerializeField]
     private CastingAnimation activeAnimation;
 
     [AssetIcon]

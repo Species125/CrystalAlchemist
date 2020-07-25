@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.Events;
+using Mirror;
 
 public enum SkillType
 {
@@ -16,7 +17,7 @@ public enum StateType
     defend
 }
 
-public class Skill : MonoBehaviour
+public class Skill : NetworkBehaviour
 {
     #region Attribute
 

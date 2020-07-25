@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Values/StringValue")]
-public class StringValue : ScriptableObject, ISerializationCallbackReceiver
+public class StringValue : ScriptableObject
 {
     [SerializeField]
     private string value;
@@ -15,9 +15,4 @@ public class StringValue : ScriptableObject, ISerializationCallbackReceiver
     {
         this.value = value;
     }
-
-    public void OnAfterDeserialize() { }
-
-    public void OnBeforeSerialize() { }
-
 }

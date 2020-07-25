@@ -185,6 +185,7 @@ MonoBehaviour:
   selectColor: {r: 1, g: 1, b: 1, a: 1}
   precision: 0
   glowColor: {r: 1, g: 1, b: 1, a: 1}
+  invert: 0
 --- !u!114 &4792970118293493998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50edb187effa6214081b297a24971a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   stats: {fileID: 11400000, guid: 2e707ea95b2c5c342be8d3895175e9f5, type: 2}
   myRigidbody: {fileID: 546327852}
   animator: {fileID: 2094131440841753910}
@@ -288,6 +291,7 @@ MonoBehaviour:
   activeStatusEffectParent: {fileID: 6899571501455701071}
   values: {fileID: 0}
   IsSummoned: 0
+  NPCStats: {fileID: 11400000, guid: 2e707ea95b2c5c342be8d3895175e9f5, type: 2}
 --- !u!50 &546327852
 Rigidbody2D:
   serializedVersion: 4

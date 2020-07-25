@@ -49,7 +49,7 @@ public class CharacterPartData
 }
 
 [CreateAssetMenu(menuName = "Game/CharacterCreation/Character Preset")]
-public class CharacterPreset : ScriptableObject, ISerializationCallbackReceiver
+public class CharacterPreset : ScriptableObject
 {
     [SerializeField]
     private bool readOnly = false;
@@ -240,11 +240,6 @@ public class CharacterPreset : ScriptableObject, ISerializationCallbackReceiver
     }
 
     #endregion
-
-
-    public void OnAfterDeserialize() { }
-
-    public void OnBeforeSerialize() { }
 }
 
 

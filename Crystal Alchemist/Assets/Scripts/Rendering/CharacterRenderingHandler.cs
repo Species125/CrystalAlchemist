@@ -60,9 +60,4 @@ public class CharacterRenderingHandler : MonoBehaviour
     {
         foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.ChangeTint(color);        
     }
-
-    public void flipSprite(Vector2 direction)
-    {
-        foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.flipSprite(direction);        
-    }
 }

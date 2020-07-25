@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 5863874315535871781}
   - component: {fileID: 4021360541268615187}
   - component: {fileID: 821985218481349553}
+  - component: {fileID: 7109825266569478775}
+  - component: {fileID: 3462243394044544602}
+  - component: {fileID: 1301233945571895880}
   m_Layer: 11
   m_Name: Busch
   m_TagString: Object
@@ -63,6 +66,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50edb187effa6214081b297a24971a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   stats: {fileID: 11400000, guid: b0a76af33d38bc4429c115714bd4c66b, type: 2}
   myRigidbody: {fileID: 7794983885249979872}
   animator: {fileID: 7100320595481495861}
@@ -75,6 +80,7 @@ MonoBehaviour:
   activeStatusEffectParent: {fileID: 7916120204381260195}
   values: {fileID: 0}
   IsSummoned: 0
+  NPCStats: {fileID: 11400000, guid: b0a76af33d38bc4429c115714bd4c66b, type: 2}
 --- !u!50 &7794983885249979872
 Rigidbody2D:
   serializedVersion: 4
@@ -149,6 +155,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   graphType: 0
   updateInterval: 0.2
+--- !u!114 &7109825266569478775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301488769302884362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
+--- !u!114 &3462243394044544602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301488769302884362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+--- !u!114 &1301233945571895880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301488769302884362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  animator: {fileID: 7100320595481495861}
 --- !u!1 &1703856959295257727
 GameObject:
   m_ObjectHideFlags: 0

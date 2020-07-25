@@ -2,6 +2,8 @@
 using Sirenix.OdinInspector;
 using System.Collections;
 using System;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class Player : Character
 {
@@ -9,11 +11,6 @@ public class Player : Character
     [BoxGroup("Player Objects")]
     [SerializeField]
     private SimpleSignal presetSignal;
-
-    [Required]
-    [BoxGroup("Player Objects")]
-    [SerializeField]
-    private StringValue characterName;
 
     [BoxGroup("Player Objects")]
     [SerializeField]
@@ -25,15 +22,18 @@ public class Player : Character
 
     [BoxGroup("Player Objects")]
     [SerializeField]
-    private PlayerAttributes attributes;
+    private PlayerSaveGame saveGame;
 
-///////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
 
     public override void Awake()
-    {        
+    {
+        this.stats = this.saveGame.stats;
+        this.values = this.saveGame.playerValue;
+
         this.values.Initialize();    
         SetComponents();
-        this.attributes.SetValues();
+        this.saveGame.attributes.SetValues();
     }
 
     public override void OnEnable()
@@ -44,7 +44,7 @@ public class Player : Character
     public override void ResetValues()
     {
         base.ResetValues();
-        this.attributes.SetValues();
+        this.saveGame.attributes.SetValues();
         this.values.life = this.values.maxLife;
         this.values.mana = this.values.maxMana;
     }
@@ -53,6 +53,17 @@ public class Player : Character
     {
         base.Start();
         this.presetSignal.Raise();
+
+        if (this.hasAuthority) this.gameObject.name = "Player (Local)";
+        else this.gameObject.name = "Player (Other)";
+
+        if (!this.hasAuthority)
+        {
+            this.GetComponent<PlayerInput>().enabled = false;
+            return;
+        }
+
+        SceneManager.LoadScene("UI", LoadSceneMode.Additive);
 
         GameEvents.current.OnCollect += this.CollectIt;
         GameEvents.current.OnReduce += this.reduceResource;
@@ -72,10 +83,14 @@ public class Player : Character
         this.animator.speed = 1;
         this.updateTimeDistortion(0);
         this.AddStatusEffectVisuals();
+
+        GameEvents.current.DoStart(this.gameObject);
     }       
 
     public override void Update()
     {
+        if (!this.hasAuthority) return;
+
         base.Update();        
         if(this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Updating();
         PlayerComponent[] components = this.GetComponents<PlayerComponent>();
@@ -84,6 +99,8 @@ public class Player : Character
 
     public override void OnDestroy()
     {
+        if (!this.hasAuthority) return;
+
         base.OnDestroy();
         GameEvents.current.OnCollect -= this.CollectIt;
         GameEvents.current.OnReduce -= this.reduceResource;
@@ -117,7 +134,7 @@ public class Player : Character
         }
     }
 
-    public override void KillIt()
+    public override void KillCharacter(bool animate)
     {
         if (this.values.currentState != CharacterState.dead)
         {
@@ -215,7 +232,7 @@ public class Player : Character
 
     public override string GetCharacterName()
     {
-        return this.characterName.GetValue();
+        return this.saveGame.characterName.GetValue();
     }
 
     /////////////////////////////////////////////////////////////////////////////////

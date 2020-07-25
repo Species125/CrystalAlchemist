@@ -5,7 +5,7 @@ using DG.Tweening;
 using System.Collections;
 using Mirror;
 
-public class Collectable : MonoBehaviour
+public class Collectable : NetworkBehaviour
 {
     [Required]
     [BoxGroup("Pflichtfeld")]

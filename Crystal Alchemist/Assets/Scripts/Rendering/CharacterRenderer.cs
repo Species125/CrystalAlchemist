@@ -36,10 +36,4 @@ public class CharacterRenderer : CustomRenderer
             ChangeTint(this.colors[this.colors.Count - 1], true);
         }
     }
-
-    public void flipSprite(Vector2 direction)
-    {
-        if (direction.x < 0) this.spriteRenderer.flipX = true;
-        else this.spriteRenderer.flipX = false;
-    }
 }

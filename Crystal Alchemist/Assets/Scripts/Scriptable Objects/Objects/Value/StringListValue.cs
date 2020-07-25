@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Values/StringListValue")]
-public class StringListValue : ScriptableObject, ISerializationCallbackReceiver
+public class StringListValue : ScriptableObject
 {
     [SerializeField]
     private List<string> value = new List<string>();
@@ -16,9 +16,4 @@ public class StringListValue : ScriptableObject, ISerializationCallbackReceiver
     {
         this.value = value;
     }
-
-    public void OnAfterDeserialize() { }
-
-    public void OnBeforeSerialize() { }
-
 }

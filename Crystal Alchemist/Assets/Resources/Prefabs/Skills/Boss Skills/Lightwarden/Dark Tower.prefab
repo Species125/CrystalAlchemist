@@ -202,6 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   spriteRenderer: {fileID: 0}
   myRigidbody: {fileID: 8700549994367525347}
   animator: {fileID: 6488062298655226886}
@@ -283,6 +285,7 @@ MonoBehaviour:
     keyItem: {fileID: 0}
     amount: -1
   statusEffects: []
+  modifiers: []
   thrust: 2
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}

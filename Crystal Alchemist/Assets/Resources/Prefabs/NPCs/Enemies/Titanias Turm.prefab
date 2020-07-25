@@ -104,6 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   stats: {fileID: 11400000, guid: 2ecf4e93db9bd0a43a3dda9972716fe8, type: 2}
   myRigidbody: {fileID: 2438936824352443031}
   animator: {fileID: 4536096100035205208}
@@ -116,7 +118,7 @@ MonoBehaviour:
   activeStatusEffectParent: {fileID: 7092093423516748017}
   values: {fileID: 0}
   IsSummoned: 0
-  flip: 0
+  NPCStats: {fileID: 11400000, guid: 2ecf4e93db9bd0a43a3dda9972716fe8, type: 2}
   target: {fileID: 0}
   partner: {fileID: 0}
   rangeTriggered: 0
@@ -132,6 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f5ecf49a5ed0c4784502d8b6f90d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   character: {fileID: 0}
   startPhase: {fileID: 11400000, guid: 78faa3a529e2a7d48ae42755421cd4da, type: 2}
   startImmediately: 1
@@ -233,7 +237,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroStats: {fileID: 11400000, guid: bb622e4c94811f244af5ad122c30d82e, type: 2}
   npc: {fileID: 55980665602690939}
-  cluePosition: {fileID: 0}
 --- !u!58 &3866322097961817499
 CircleCollider2D:
   m_ObjectHideFlags: 0

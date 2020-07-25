@@ -8,7 +8,7 @@ public class Goddess : AI
     [SerializeField]
     private UnityEvent onDefeated;
 
-    public override void KillIt(bool showAnimation)
+    public override void KillCharacter(bool animate)
     {
         for (int i = 0; i < this.values.activeSkills.Count; i++)
         {
@@ -22,6 +22,8 @@ public class Goddess : AI
                 
         this.onDefeated?.Invoke();
     }
+
+
 
     public void SetAnimationTrigger(string value)
     {

@@ -342,6 +342,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   stats: {fileID: 11400000, guid: acdb7e089d2b9dc449dc40f1dfdf12c5, type: 2}
   myRigidbody: {fileID: 4322055140194454582}
   animator: {fileID: 2652810396879462137}
@@ -354,7 +356,7 @@ MonoBehaviour:
   activeStatusEffectParent: {fileID: 8669415238972280400}
   values: {fileID: 0}
   IsSummoned: 0
-  flip: 1
+  NPCStats: {fileID: 11400000, guid: acdb7e089d2b9dc449dc40f1dfdf12c5, type: 2}
   target: {fileID: 0}
   partner: {fileID: 0}
   rangeTriggered: 0
@@ -403,11 +405,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a37b145246250f4b98d09b1b3d7d2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghost: {fileID: 634257569416937404, guid: f11b09210e7962848bddb256727f4657, type: 3}
   mainObject: {fileID: 2652810396879462133}
+  ghost: {fileID: 634257569416937404, guid: f11b09210e7962848bddb256727f4657, type: 3}
   delay: 0.3
   destroyAfter: 0.6
-  useCharacterSprite: 0
 --- !u!61 &3574329011111965237
 BoxCollider2D:
   m_ObjectHideFlags: 0

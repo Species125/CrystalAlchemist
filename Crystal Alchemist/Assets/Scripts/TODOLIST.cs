@@ -2,10 +2,16 @@
 
 public class TODOLIST : MonoBehaviour
 {
+    //PROBLEMS:
+    // - Skill Instantiate (Network.Spawn)
+    // - Scene Transition
+    // - Sync (time, AI, items, etc)
+    // - Own Network Manager and UI
+
     //TODO (0.2.5.8)
     //REWORK: Soundeffects and Graphics
     //REWORK: Replace Trees
-    
+
     //GRAPHICS: Cave and Sky
     //GRAPHICS: New Outfits (Sci Fi, Visor, Mundschutz, Devine Robe, Halo)
     //GRAPHICS: Player Animations (Casting, Arrow, Spear, Victory)
@@ -24,6 +30,9 @@ public class TODOLIST : MonoBehaviour
     //SKILLS: Dark Puddle
     //SKILLS: Tower
     //SKILLS: Stack Mark
+
+    //REWORK: Camera Target Group Network (not perfect)
+    //REWORK: Check Authority and stuff
 
     //-----------------------------------------------------------------------------
 

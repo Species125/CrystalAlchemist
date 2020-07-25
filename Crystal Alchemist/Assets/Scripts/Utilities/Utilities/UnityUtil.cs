@@ -69,7 +69,6 @@ public static class UnityUtil
     {
         Bounds bounds = collider.bounds;
         Vector2 center = bounds.center;
-        bool found = false;
         int attempts = 0;
 
         do
@@ -81,7 +80,7 @@ public static class UnityUtil
 
             if (collider.OverlapPoint(result)) return result;
         }
-        while (!found && attempts < 50);
+        while (attempts < 50);
 
         return Vector2.zero;
     }

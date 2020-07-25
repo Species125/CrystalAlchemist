@@ -1,7 +1,18 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 public class NonPlayer : Character
 {
+    [Required]
+    [BoxGroup("Pflichtfelder")]
+    public CharacterStats NPCStats;
+
+    public override void Awake()
+    {
+        this.stats = NPCStats;
+        base.Awake();
+    }
+
     public override void Start()
     {
         //GameEvents.current.OnKill += DestroyItWithoutDrop;

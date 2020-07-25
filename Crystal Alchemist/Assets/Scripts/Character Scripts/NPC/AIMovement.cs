@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
-using Unity.Mathematics;
-using Unity.Jobs;
 
 public enum MovementPriority
 {
@@ -322,7 +320,6 @@ public class AIMovement : AIComponent
     private void updateAnimation(Vector2 direction)
     {
         if (!this.npc.values.isCharacterStunned()) this.npc.ChangeDirection(direction.normalized);
-        if (this.npc.flip) this.npc.setFlip();
 
         this.npc.values.currentState = CharacterState.walk;
         AnimatorUtil.SetAnimatorParameter(this.npc.animator, "isWalking", true);

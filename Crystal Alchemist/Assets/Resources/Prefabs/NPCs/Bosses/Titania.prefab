@@ -452,6 +452,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594481b97dd9abf458b279f819cd0b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   stats: {fileID: 11400000, guid: 55d358f1ae5b28f45b4f5f4f5a55089c, type: 2}
   myRigidbody: {fileID: 3945848509854940437}
   animator: {fileID: 910524742380246583}
@@ -464,7 +466,7 @@ MonoBehaviour:
   activeStatusEffectParent: {fileID: 8464107762506563443}
   values: {fileID: 0}
   IsSummoned: 0
-  flip: 0
+  NPCStats: {fileID: 11400000, guid: 55d358f1ae5b28f45b4f5f4f5a55089c, type: 2}
   target: {fileID: 0}
   partner: {fileID: 0}
   rangeTriggered: 0
@@ -528,6 +530,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f5ecf49a5ed0c4784502d8b6f90d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   character: {fileID: 0}
   startPhase: {fileID: 0}
   startImmediately: 0

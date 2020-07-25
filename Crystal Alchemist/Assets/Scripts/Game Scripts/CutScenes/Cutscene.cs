@@ -11,11 +11,13 @@ public class Cutscene : MonoBehaviour
     [SerializeField]
     private BoolValue CutSceneValue;
 
+    [InfoBox("OnCompleted wont get called automatically, if false")]
     [SerializeField]
     private bool hasDuration = true;
 
     [ShowIf("hasDuration")]
     [SerializeField]
+    [MinValue(0.1f)]
     private float maxDuration = 10f;
 
     [SerializeField]
@@ -36,11 +38,12 @@ public class Cutscene : MonoBehaviour
     private void PlayIt()
     {
         float duration = this.maxDuration;
-        if (!this.hasDuration) duration = 0;
+
         this.CutSceneValue.setValue(true);
         GameEvents.current.DoCutScene();
         this.OnStart?.Invoke();
-        Invoke("Completed", duration);
+
+        if (this.hasDuration) Invoke("Completed", duration); //AutoCompleted only when duration > 0
     }
 
     [ButtonGroup]

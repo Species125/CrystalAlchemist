@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Values/BoolValue")]
-public class BoolValue : ScriptableObject, ISerializationCallbackReceiver
+public class BoolValue : ScriptableObject
 {
     [SerializeField]
     private bool value;
@@ -15,9 +15,4 @@ public class BoolValue : ScriptableObject, ISerializationCallbackReceiver
     {
         this.value = value;
     }
-
-    public void OnAfterDeserialize() { }
-
-    public void OnBeforeSerialize() { }
-
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
+using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Game/Player/Save Game")]
 public class PlayerSaveGame : ScriptableObject
@@ -31,13 +32,12 @@ public class PlayerSaveGame : ScriptableObject
     public PlayerTeleportList teleportList;
 
     [BoxGroup("Stats")]
-    [SerializeField]
-    private CharacterStats stats;
+    public CharacterStats stats;
 
     [BoxGroup("Stats")]
     [SerializeField]
     private CharacterPreset defaultPreset;
-    
+
     public void Clear(Action callback)
     {
         Clear();

@@ -1,9 +1,9 @@
-﻿using Sirenix.OdinInspector;
-using System;
+﻿using Mirror;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game/Player/Time")]
-public class TimeValue : ScriptableObject, ISerializationCallbackReceiver
+public class TimeValue : ScriptableObject
 {
     private float seconds = 0;
 
@@ -17,9 +17,10 @@ public class TimeValue : ScriptableObject, ISerializationCallbackReceiver
     private float normalFactor = 1;
 
     public int update = 30;
+
     public bool night;
 
-    public float factor = 1;    
+    public float factor = 1;
 
     [SerializeField]
     private Gradient colorGradient;
@@ -103,8 +104,4 @@ public class TimeValue : ScriptableObject, ISerializationCallbackReceiver
             }
         }
     }
-
-    public void OnAfterDeserialize() { }
-
-    public void OnBeforeSerialize() { }
 }

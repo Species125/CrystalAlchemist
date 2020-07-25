@@ -306,6 +306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   stats: {fileID: 11400000, guid: b7b833ce9b649fa4c8138635634c8ad4, type: 2}
   myRigidbody: {fileID: 1185713049241957139}
   animator: {fileID: 1107838214050882012}
@@ -318,10 +320,10 @@ MonoBehaviour:
   activeStatusEffectParent: {fileID: 6034976085599367541}
   values: {fileID: 0}
   IsSummoned: 0
-  flip: 0
+  NPCStats: {fileID: 11400000, guid: b7b833ce9b649fa4c8138635634c8ad4, type: 2}
   target: {fileID: 0}
   partner: {fileID: 0}
-  rangeTriggered: {fileID: 0}
+  rangeTriggered: 0
 --- !u!114 &1185713049241957134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,6 +369,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f5ecf49a5ed0c4784502d8b6f90d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   character: {fileID: 0}
   startPhase: {fileID: 11400000, guid: 6f9f42d316a1a6640aa9a14b7cc4fd78, type: 2}
   startImmediately: 1
@@ -526,7 +530,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroStats: {fileID: 11400000, guid: 74151ff649b937b418adb75846e519d1, type: 2}
   npc: {fileID: 3560735132152297215}
-  cluePosition: {fileID: 0}
 --- !u!60 &1188484439706488138
 PolygonCollider2D:
   m_ObjectHideFlags: 0

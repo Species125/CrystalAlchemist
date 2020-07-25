@@ -5,9 +5,6 @@ using DG.Tweening;
 
 public class AI : NonPlayer
 {
-    [BoxGroup("AI")]
-    public bool flip = true;
-
     [BoxGroup("Debug")]
     public Character target;
 

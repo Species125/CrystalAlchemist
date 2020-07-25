@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Values/FloatValue")]
-public class FloatValue : ScriptableObject, ISerializationCallbackReceiver
+public class FloatValue : ScriptableObject
 {    
     [SerializeField]
     private float value;
@@ -15,9 +15,4 @@ public class FloatValue : ScriptableObject, ISerializationCallbackReceiver
     {
         this.value = value;
     }
-
-    public void OnAfterDeserialize() { }    
-
-    public void OnBeforeSerialize() { }
-
 }
