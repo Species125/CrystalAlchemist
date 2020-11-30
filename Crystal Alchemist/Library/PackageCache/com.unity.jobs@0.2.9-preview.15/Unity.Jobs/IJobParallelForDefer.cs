@@ -35,8 +35,7 @@ namespace Unity.Jobs
             {
                 if (s_JobReflectionData == IntPtr.Zero)
                 {
-                    s_JobReflectionData = JobsUtility.CreateJobReflectionData(typeof(T), typeof(T),
-                        JobType.ParallelFor, (ExecuteJobFunction)Execute);
+                    s_JobReflectionData = JobsUtility.CreateJobReflectionData(typeof(T), typeof(T), (ExecuteJobFunction)Execute);
                 }
 
                 return s_JobReflectionData;
@@ -78,7 +77,7 @@ namespace Unity.Jobs
             void* atomicSafetyHandlePtr = null;
             var scheduleParams = new JobsUtility.JobScheduleParameters(
                 UnsafeUtility.AddressOf(ref jobData),
-                JobParallelForDeferProducer<T>.Initialize(), dependsOn, ScheduleMode.Batched);
+                JobParallelForDeferProducer<T>.Initialize(), dependsOn, ScheduleMode.Parallel);
 
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
             var safety = NativeListUnsafeUtility.GetAtomicSafetyHandle(ref list);
@@ -105,7 +104,7 @@ namespace Unity.Jobs
         {
             var scheduleParams = new JobsUtility.JobScheduleParameters(
                 UnsafeUtility.AddressOf(ref jobData),
-                JobParallelForDeferProducer<T>.Initialize(), dependsOn, ScheduleMode.Batched);
+                JobParallelForDeferProducer<T>.Initialize(), dependsOn, ScheduleMode.Parallel);
 
             var forEachListPtr = (byte*)forEachCount - sizeof(void*);
             return JobsUtility.ScheduleParallelForDeferArraySize(ref scheduleParams, innerloopBatchCount,

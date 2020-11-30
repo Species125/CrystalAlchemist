@@ -61,7 +61,7 @@ public static class FormatUtil
                     result = result.Replace("<price item name>", temp.keyItem.stats.getName());
                 }
             }
-        }        
+        }
 
         return result;
     }
@@ -110,27 +110,14 @@ public static class FormatUtil
         else return value.ToString(formatString);
     }
 
-    public static void set3DText(TextMeshPro tmp, string text, bool bold, Color fontColor, Color outlineColor, float outlineWidth)
+    public static void set3DText(TMP_Text tmp, string text, bool bold, Color fontColor, Color outlineColor, float outlineWidth)
     {
-        if (tmp != null)
-        {
-            if (text != null) tmp.text = text + "";
-            if (bold) tmp.fontStyle = FontStyles.Bold;
-            if (outlineColor != null) tmp.outlineColor = outlineColor;
-            if (fontColor != null) tmp.color = fontColor;
-            if (outlineWidth > 0) tmp.outlineWidth = outlineWidth;
-        }
-    }
+        if (tmp == null) return;
 
-    public static void set3DText(TextMeshProUGUI tmp, string text, bool bold, Color fontColor, Color outlineColor, float outlineWidth)
-    {
-        if (tmp != null)
-        {
-            if (text != null) tmp.text = text + "";
-            if (bold) tmp.fontStyle = FontStyles.Bold;
-            if (outlineColor != null) tmp.outlineColor = outlineColor;
-            if (fontColor != null) tmp.color = fontColor;
-            if (outlineWidth > 0) tmp.outlineWidth = outlineWidth;
-        }
+        if (text != null) tmp.text = text + "";
+        if (bold) tmp.fontStyle = FontStyles.Bold;
+        if (outlineColor != null) tmp.outlineColor = outlineColor;
+        if (fontColor != null) tmp.color = fontColor;
+        if (outlineWidth > 0) tmp.outlineWidth = outlineWidth;
     }
 }

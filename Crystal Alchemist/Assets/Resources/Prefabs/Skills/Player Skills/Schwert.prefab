@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6024384182685389377}
-  - component: {fileID: 2626038527925349230}
   - component: {fileID: 5387825760302318934}
   - component: {fileID: 6939719257136123582}
   - component: {fileID: 2211265516280113145}
+  - component: {fileID: 2626038527925349230}
   - component: {fileID: 932218811717101138}
   - component: {fileID: 1866098264831722018}
   - component: {fileID: 2452030230981208128}
@@ -43,34 +43,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2626038527925349230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 661548303189921719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  spriteRenderer: {fileID: 5387825760302318934}
-  myRigidbody: {fileID: 2211265516280113145}
-  animator: {fileID: 6939719257136123582}
-  skillCollider: {fileID: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-  AfterDelay:
-    m_PersistentCalls:
-      m_Calls: []
-  sender: {fileID: 0}
-  target: {fileID: 0}
-  direction: {x: 0, y: 0}
-  standAlone: 1
 --- !u!212 &5387825760302318934
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -162,6 +134,34 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &2626038527925349230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661548303189921719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  spriteRenderer: {fileID: 5387825760302318934}
+  myRigidbody: {fileID: 2211265516280113145}
+  animator: {fileID: 6939719257136123582}
+  skillCollider: {fileID: 0}
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+  AfterDelay:
+    m_PersistentCalls:
+      m_Calls: []
+  sender: {fileID: 0}
+  target: {fileID: 0}
+  direction: {x: 0, y: 0}
+  standAlone: 1
 --- !u!114 &932218811717101138
 MonoBehaviour:
   m_ObjectHideFlags: 0

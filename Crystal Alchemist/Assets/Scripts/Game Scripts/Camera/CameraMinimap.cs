@@ -7,10 +7,9 @@ public class CameraMinimap : MonoBehaviour
     private Camera cam;
     public Shader shader;
 
-    [Button]
-    private void Awake()
+    private void Start()
     {
         this.cam = this.GetComponent<Camera>();
-        this.cam.SetReplacementShader(shader, null);
+        this.cam.SetReplacementShader(shader, "");        
     }
 }

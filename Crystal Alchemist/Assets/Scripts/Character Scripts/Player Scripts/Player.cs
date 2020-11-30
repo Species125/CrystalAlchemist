@@ -186,7 +186,6 @@ public class Player : Character
             case CostType.mana: callSignal(value); break;
             case CostType.item: this.GetComponent<PlayerItems>().UpdateInventory(item, Mathf.RoundToInt(value)); break;
         }
-
         CheckDeath();
     }
 

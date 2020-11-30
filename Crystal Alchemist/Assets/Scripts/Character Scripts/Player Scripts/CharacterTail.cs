@@ -14,8 +14,20 @@ public class CharacterTail : MonoBehaviour
         tweenRigidbody
     }
 
+    public enum UpdateMethod
+    {
+        Update,
+        FixedUpdate,
+        LateUpdate
+    }
+
+
+
     [SerializeField]
     private Mode mode;
+
+    [SerializeField]
+    private UpdateMethod updateMethod;
 
     [SerializeField]
     private List<GameObject> parts = new List<GameObject>();
@@ -28,11 +40,18 @@ public class CharacterTail : MonoBehaviour
         //for (int i = 0; i < parts.Count - 1; i++) SetPosition(parts[i + 1], parts[i], distances[i], -values.direction);
     }
 
-    private void Update()
+    private void Update() => Updating(UpdateMethod.Update);
+
+    private void FixedUpdate() => Updating(UpdateMethod.FixedUpdate);
+
+    private void LateUpdate() => Updating(UpdateMethod.LateUpdate);    
+
+    private void Updating(UpdateMethod method)
     {
+        if (updateMethod != method) return;
         for (int i = 0; i < parts.Count - 1; i++)
         {
-            Vector2 direction = ((Vector2)parts[i].transform.position - (Vector2)parts[i+1].transform.position).normalized;
+            Vector2 direction = ((Vector2)parts[i].transform.position - (Vector2)parts[i + 1].transform.position).normalized;
             SetPosition(parts[i + 1], parts[i], distances[i], direction);
         }
     }

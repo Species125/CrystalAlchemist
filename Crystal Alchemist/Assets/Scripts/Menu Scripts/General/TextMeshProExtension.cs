@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using TMPro;
-using Sirenix.OdinInspector;
 
 public class TextMeshProExtension : MonoBehaviour
 {
@@ -18,10 +17,7 @@ public class TextMeshProExtension : MonoBehaviour
 
     private void UpdateTextMesh()
     {
-        TextMeshPro text = this.GetComponent<TextMeshPro>();
-        TextMeshProUGUI textGUI = this.GetComponent<TextMeshProUGUI>();
-
+        TMP_Text text = this.GetComponent<TMP_Text>();
         if (text != null) FormatUtil.set3DText(text, null, this.bold, this.fontColor, this.outlineColor, this.outlineWidth);
-        if (textGUI != null) FormatUtil.set3DText(textGUI, null, this.bold, this.fontColor, this.outlineColor, this.outlineWidth);
     }
 }

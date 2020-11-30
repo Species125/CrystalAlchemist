@@ -6,11 +6,7 @@ namespace Mirror
 {
     [CustomEditor(typeof(NetworkManager), true)]
     [CanEditMultipleObjects]
-#if ODIN_INSPECTOR
-    public class NetworkManagerEditor : Sirenix.OdinInspector.Editor.OdinEditor
-#else
     public class NetworkManagerEditor : Editor
-#endif
     {
         SerializedProperty spawnListProperty;
 
@@ -35,7 +31,8 @@ namespace Mirror
                     onRemoveCallback = RemoveButton,
                     onChangedCallback = Changed,
                     onAddCallback = AddButton,
-                    elementHeight = 16 // this uses a 16x16 icon. other sizes make it stretch.
+                    // this uses a 16x16 icon. other sizes make it stretch.
+                    elementHeight = 16
                 };
             }
         }
