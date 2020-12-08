@@ -48,6 +48,8 @@ public class GameEvents : MonoBehaviour
 
     public Action OnEffectUpdate;
     public Action OnLifeManaUpdate;
+    public Action<string> OnSceneChanged;
+    //public Action<string> OnOnlineSceneChanged;
 
     public Action<GameObject> OnStart;
 
@@ -79,10 +81,14 @@ public class GameEvents : MonoBehaviour
     public void DoCameraShake(float strength, float duration, float speed) => this.OnCameraShake?.Invoke(strength, duration, speed);
     public void DoCameraStill(float speed) => this.OnCameraStill?.Invoke(speed);
     public void DoTeleport() => this.OnTeleport?.Invoke();
+    public void DoChangeScene(string newScene) => this.OnSceneChanged?.Invoke(newScene);
+    //public void DoOnlineChangeScene(string newScene) => this.OnOnlineSceneChanged?.Invoke(newScene);
 
     public void DoStatusEffectUpdate() => this.OnEffectUpdate?.Invoke();
     public void DoManaLifeUpdate() => this.OnLifeManaUpdate?.Invoke();
     public void DoStart(GameObject gameObject) => this.OnStart?.Invoke(gameObject);
+
+
 
     public bool HasReturn()
     {

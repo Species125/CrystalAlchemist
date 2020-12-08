@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
-using Mirror;
 
-public class TimeHandler : NetworkBehaviour
+public class TimeHandler : MonoBehaviour
 {
     [SerializeField]
     private TimeValue timeValue;
 
     private void Start()
     {
-        if (this.isServer) this.timeValue.Reset();
+        this.timeValue.Reset();
     }
 
     private void FixedUpdate()
     {
-        if (this.isServer) this.timeValue.setTime(Time.fixedDeltaTime);
+        this.timeValue.setTime(Time.fixedDeltaTime);
     }
 }

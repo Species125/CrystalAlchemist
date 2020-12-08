@@ -3,9 +3,8 @@ using Sirenix.OdinInspector;
 using AssetIcons;
 using DG.Tweening;
 using System.Collections;
-using Mirror;
 
-public class Collectable : NetworkBehaviour
+public class Collectable : MonoBehaviour
 {
     [Required]
     [BoxGroup("Pflichtfeld")]

@@ -1,10 +1,9 @@
-﻿using Mirror;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Character))]
-public class CharacterCombat : NetworkBehaviour
+public class CharacterCombat : MonoBehaviour
 {
     private CastBar activeCastBar;
     private TargetingSystem targetingSystem;

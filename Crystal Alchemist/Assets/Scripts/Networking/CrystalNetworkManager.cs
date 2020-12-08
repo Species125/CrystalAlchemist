@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 using Sirenix.OdinInspector;
 
-public class CrystalNetworkManager : NetworkManager
+public class CrystalNetworkManager : MonoBehaviour
 {
     [ButtonGroup("Test")]
     public void Insert()
@@ -12,8 +11,8 @@ public class CrystalNetworkManager : NetworkManager
         GameObject[] prefabs = Resources.LoadAll<GameObject>("Skills");
         foreach(GameObject prefab in prefabs)
         {
-            ClientScene.UnregisterPrefab(prefab);
-            ClientScene.RegisterPrefab(prefab);
+            //ClientScene.UnregisterPrefab(prefab);
+            //ClientScene.RegisterPrefab(prefab);
         }
     }
 }

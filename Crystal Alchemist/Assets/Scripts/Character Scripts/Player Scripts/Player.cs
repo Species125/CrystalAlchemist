@@ -54,14 +54,14 @@ public class Player : Character
         base.Start();
         this.presetSignal.Raise();
 
-        if (this.hasAuthority) this.gameObject.name = "Player (Local)";
+        /*if (this.hasAuthority) this.gameObject.name = "Player (Local)";
         else this.gameObject.name = "Player (Other)";
 
         if (!this.hasAuthority)
         {
             this.GetComponent<PlayerInput>().enabled = false;
             return;
-        }
+        }*/
 
         SceneManager.LoadScene("UI", LoadSceneMode.Additive);
 
@@ -89,7 +89,7 @@ public class Player : Character
 
     public override void Update()
     {
-        if (!this.hasAuthority) return;
+        //if (!this.hasAuthority) return;
 
         base.Update();        
         if(this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Updating();
@@ -99,7 +99,7 @@ public class Player : Character
 
     public override void OnDestroy()
     {
-        if (!this.hasAuthority) return;
+        //if (!this.hasAuthority) return;
 
         base.OnDestroy();
         GameEvents.current.OnCollect -= this.CollectIt;

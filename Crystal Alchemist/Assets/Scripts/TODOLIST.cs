@@ -2,15 +2,12 @@
 
 public class TODOLIST : MonoBehaviour
 {
-    //PROBLEMS:
-    // - Skill Instantiate (Network.Spawn)
-    // - Scene Transition
-    // - Sync (time, AI, items, etc)
-    // - Own Network Manager and UI
-
     //TODO (0.2.5.8)
     //REWORK: Soundeffects and Graphics
     //REWORK: Replace Trees
+    //REWORK: Treasure Chests
+    //REWORK: Item with DialogBox
+    //REWORK: Charakter Creation (Wings, Halo, etc)
 
     //GRAPHICS: Cave and Sky
     //GRAPHICS: New Outfits (Sci Fi, Visor, Mundschutz, Devine Robe, Halo)
@@ -38,8 +35,6 @@ public class TODOLIST : MonoBehaviour
 
     //TODO (0.2.6.0)
 
-    //REWORK: Treasure Chest
-    //REWORK: Item with DialogBox
     //REWORK: Skills with Impact (Hitzeblitz, Eissplitter, Giftpfeil, etc)
     //REWORK: Map (no lighting, dynamic size, maybe plain texture instead)
 

@@ -34,7 +34,9 @@ public class PlayerMovement : PlayerComponent
 
     private void SetChange(InputAction.CallbackContext ctx)
     {
-        if(this.player.values.CanMove() && this.hasAuthority) this.change = ctx.ReadValue<Vector2>();
+        if(this.player.values.CanMove() 
+            //&& this.hasAuthority
+            ) this.change = ctx.ReadValue<Vector2>();
     }
 
     private void SetToZero() => this.change = Vector2.zero;
@@ -58,7 +60,7 @@ public class PlayerMovement : PlayerComponent
 
     private void FixedUpdate()
     {
-        if (!this.hasAuthority) return;
+        //if (!this.hasAuthority) return;
 
         UpdateAnimationAndMove(this.change);  //check if is menu
         if (this.lockDuration > 0) this.lockDuration -= Time.deltaTime;

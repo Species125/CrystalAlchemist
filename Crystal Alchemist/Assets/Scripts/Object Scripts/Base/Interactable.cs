@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
-using Mirror;
 
 public class Interactable : MonoBehaviour
 {

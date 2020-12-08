@@ -1,5 +1,4 @@
-﻿using Mirror;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game/Player/Time")]

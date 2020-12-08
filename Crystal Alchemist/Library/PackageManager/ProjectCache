@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637422910676093923
-    m_Hash: 3777297721
+      ticks: 637429507677337719
+    m_Hash: 2969594502
   m_LockFileStatus:
     m_FilePath: E:/Github/Crystal Alchemist/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637422911011587700
-    m_Hash: 1571482418
+      ticks: 637429507696077047
+    m_Hash: 1841872688
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -60,6 +60,7 @@ m_PackageAssets:
         - 3.0.2
         - 4.0.0
         - 4.0.1
+        - 5.0.0-pre.1
         compatible:
         - 4.0.1
         verified: 4.0.1
@@ -214,9 +215,12 @@ m_PackageAssets:
         all:
         - 1.5.0-preview
         - 1.6.1-preview
+        - 1.6.2-preview
+        - 2.0.0-pre.1
         compatible:
         - 1.5.0-preview
         - 1.6.1-preview
+        - 1.6.2-preview
         verified: 
       dependencies:
       - name: com.unity.modules.tilemap
@@ -368,7 +372,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637381916200000000
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -432,6 +436,7 @@ m_PackageAssets:
         - 2.6.2
         - 2.6.3-preview.2
         - 2.6.3
+        - 2.7.1
         compatible:
         - 2.5.0
         - 2.6.0-preview.2
@@ -445,6 +450,7 @@ m_PackageAssets:
         - 2.6.2
         - 2.6.3-preview.2
         - 2.6.3
+        - 2.7.1
         verified: 2.6.3
       dependencies: []
       resolvedDependencies: []
@@ -611,12 +617,14 @@ m_PackageAssets:
         - 0.1.6-preview
         - 0.1.9-preview
         - 1.0.0
+        - 1.0.5
         compatible:
         - 0.1.5-preview
         - 0.1.6-preview
         - 0.1.9-preview
         - 1.0.0
-        verified: 1.0.0
+        - 1.0.5
+        verified: 1.0.5
       dependencies: []
       resolvedDependencies: []
       keywords:
@@ -683,6 +691,9 @@ m_PackageAssets:
         - 2.0.3
         - 2.0.5
         - 2.0.7
+        - 3.0.1
+        - 3.0.2
+        - 3.0.3
         compatible:
         - 1.0.2
         - 1.0.6
@@ -702,6 +713,9 @@ m_PackageAssets:
         - 2.0.3
         - 2.0.5
         - 2.0.7
+        - 3.0.1
+        - 3.0.2
+        - 3.0.3
         verified: 2.0.7
       dependencies:
       - name: com.unity.test-framework
@@ -736,12 +750,12 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
         revision: abb44f053e9a41d2e00e149e32a19bcec76e98b4
         path: 
-    - packageId: com.unity.ide.visualstudio@2.0.3
+    - packageId: com.unity.ide.visualstudio@2.0.5
       testable: 0
       isDirectDependency: 1
-      version: 2.0.3
+      version: 2.0.5
       source: 1
-      resolvedPath: E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ide.visualstudio@2.0.3
+      resolvedPath: E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ide.visualstudio@2.0.5
       assetPath: Packages/com.unity.ide.visualstudio
       name: com.unity.ide.visualstudio
       displayName: Visual Studio Editor
@@ -768,6 +782,7 @@ m_PackageAssets:
         - 2.0.1
         - 2.0.2
         - 2.0.3
+        - 2.0.5
         compatible:
         - 1.0.2
         - 1.0.3
@@ -779,7 +794,8 @@ m_PackageAssets:
         - 2.0.1
         - 2.0.2
         - 2.0.3
-        verified: 2.0.3
+        - 2.0.5
+        verified: 2.0.5
       dependencies: []
       resolvedDependencies: []
       keywords: []
@@ -795,13 +811,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637359495930000000
+      datePublishedTicks: 637400980850000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.visualstudio.git
-        revision: 869804bff6e99d0d0e9c1867aebaa070fad875e5
+        revision: 83ca94e82bb6da515dc57e0d860b6b2224f56991
         path: 
     - packageId: com.unity.ide.vscode@1.2.3
       testable: 0
@@ -864,20 +880,20 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637394922300000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.vscode.git
-        revision: 547f63839bdc87e0aed2c9e0d84f8f6336a83ea3
+        revision: b5ec9b38109e52b1b26597d521e4df75e042ebb9
         path: 
-    - packageId: com.unity.inputsystem@1.0.0
+    - packageId: com.unity.inputsystem@1.0.1
       testable: 0
       isDirectDependency: 1
-      version: 1.0.0
+      version: 1.0.1
       source: 1
-      resolvedPath: E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.inputsystem@1.0.0
+      resolvedPath: E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.inputsystem@1.0.1
       assetPath: Packages/com.unity.inputsystem
       name: com.unity.inputsystem
       displayName: Input System
@@ -915,7 +931,9 @@ m_PackageAssets:
         - 1.0.0-preview.6
         - 1.0.0-preview.7
         - 1.0.0
+        - 1.0.1
         - 1.1.0-preview.1
+        - 1.1.0-preview.2
         compatible:
         - 0.1.2-preview
         - 0.2.0-preview
@@ -939,8 +957,10 @@ m_PackageAssets:
         - 1.0.0-preview.6
         - 1.0.0-preview.7
         - 1.0.0
+        - 1.0.1
         - 1.1.0-preview.1
-        verified: 1.0.0
+        - 1.1.0-preview.2
+        verified: 1.0.1
       dependencies: []
       resolvedDependencies: []
       keywords:
@@ -964,13 +984,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637237864900000000
+      datePublishedTicks: 637418303510000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: git+https://github.com/Unity-Technologies/InputSystem.git
-        revision: 0617549352dbfae87698b044d343b97727dd6581
+        revision: f757ff8ed7383896d71a608a755c1c39373cf4c8
         path: 
     - packageId: com.unity.jobs@0.2.9-preview.15
       testable: 0
@@ -1023,6 +1043,7 @@ m_PackageAssets:
         - 0.2.10-preview.13
         - 0.4.0-preview.18
         - 0.5.0-preview.14
+        - 0.7.0-preview.17
         compatible:
         - 0.0.7-preview.1
         - 0.0.7-preview.2
@@ -1054,6 +1075,7 @@ m_PackageAssets:
         - 0.2.10-preview.13
         - 0.4.0-preview.18
         - 0.5.0-preview.14
+        - 0.7.0-preview.17
         verified: 
       dependencies:
       - name: com.unity.collections
@@ -1266,7 +1288,11 @@ m_PackageAssets:
         - 1.3.2-preview.9
         - 1.3.2-preview.10
         - 1.4.0-preview.1
+        - 1.4.0-preview.2
+        - 1.4.0-preview.3
         - 1.4.0
+        - 2.0.0-preview.2
+        - 2.0.0
         compatible:
         - 0.3.0-preview.4
         - 0.3.1-preview.2
@@ -1322,7 +1348,11 @@ m_PackageAssets:
         - 1.3.2-preview.9
         - 1.3.2-preview.10
         - 1.4.0-preview.1
+        - 1.4.0-preview.2
+        - 1.4.0-preview.3
         - 1.4.0
+        - 2.0.0-preview.2
+        - 2.0.0
         verified: 1.4.0
       dependencies:
       - name: com.unity.nuget.newtonsoft-json
@@ -1374,7 +1404,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637393356210000000
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -1382,12 +1412,12 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ai.remote-settings.git
         revision: 198ff0e9450238010e53c48701f9c52cae9ee426
         path: 
-    - packageId: com.unity.render-pipelines.universal@10.2.0
+    - packageId: com.unity.render-pipelines.universal@10.2.1
       testable: 0
       isDirectDependency: 1
-      version: 10.2.0
+      version: 10.2.1
       source: 1
-      resolvedPath: E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.render-pipelines.universal@10.2.0
+      resolvedPath: E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.render-pipelines.universal@10.2.1
       assetPath: Packages/com.unity.render-pipelines.universal
       name: com.unity.render-pipelines.universal
       displayName: Universal RP
@@ -1420,29 +1450,35 @@ m_PackageAssets:
         - 7.4.2
         - 7.4.3
         - 7.5.1
+        - 7.5.2
         - 8.0.1
         - 8.1.0
         - 8.2.0
+        - 8.3.1
         - 9.0.0-preview.14
         - 9.0.0-preview.35
         - 9.0.0-preview.55
+        - 9.0.0-preview.72
         - 10.0.0-preview.26
+        - 10.1.0
         - 10.2.0
+        - 10.2.1
         compatible:
         - 10.2.0
-        verified: 10.2.0
+        - 10.2.1
+        verified: 10.2.1
       dependencies:
       - name: com.unity.mathematics
         version: 1.1.0
       - name: com.unity.render-pipelines.core
-        version: 10.2.0
+        version: 10.2.1
       - name: com.unity.shadergraph
-        version: 10.2.0
+        version: 10.2.1
       resolvedDependencies:
       - name: com.unity.mathematics
         version: 1.1.0
       - name: com.unity.render-pipelines.core
-        version: 10.2.0
+        version: 10.2.1
       - name: com.unity.ugui
         version: 1.0.0
       - name: com.unity.modules.ui
@@ -1450,7 +1486,7 @@ m_PackageAssets:
       - name: com.unity.modules.imgui
         version: 1.0.0
       - name: com.unity.shadergraph
-        version: 10.2.0
+        version: 10.2.1
       - name: com.unity.searcher
         version: 4.3.1
       keywords:
@@ -1472,152 +1508,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637424538650000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.com/Unity-Technologies/Graphics.git
-        revision: 2dbb8ac2491b6e5be0b2f740374609a83236eeb3
-        path: 
-    - packageId: com.unity.shadergraph@10.2.0
-      testable: 0
-      isDirectDependency: 1
-      version: 10.2.0
-      source: 1
-      resolvedPath: E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.shadergraph@10.2.0
-      assetPath: Packages/com.unity.shadergraph
-      name: com.unity.shadergraph
-      displayName: Shader Graph
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: 
-      description: The Shader Graph package adds a visual Shader editing tool to
-        Unity. You can use this tool to create Shaders in a visual way instead of
-        writing code. Specific render pipelines can implement specific graph features.
-        Currently, both the High Definition Rendering Pipeline and the Universal
-        Rendering Pipeline support Shader Graph.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 0.1.8
-        - 0.1.9
-        - 0.1.17
-        - 1.0.0-beta
-        - 1.1.1-preview
-        - 1.1.2-preview
-        - 1.1.3-preview
-        - 1.1.4-preview
-        - 1.1.5-preview
-        - 1.1.6-preview
-        - 1.1.8-preview
-        - 1.1.9-preview
-        - 2.0.1-preview
-        - 2.0.3-preview
-        - 2.0.4-preview
-        - 2.0.4-preview.1
-        - 2.0.5-preview
-        - 2.0.6-preview
-        - 2.0.7-preview
-        - 2.0.8-preview
-        - 3.0.0-preview
-        - 3.1.0-preview
-        - 3.3.0-preview
-        - 4.0.0-preview
-        - 4.0.1-preview
-        - 4.1.0-preview
-        - 4.2.0-preview
-        - 4.3.0-preview
-        - 4.6.0-preview
-        - 4.8.0-preview
-        - 4.9.0-preview
-        - 4.10.0-preview
-        - 5.0.0-preview
-        - 5.1.0
-        - 5.2.0
-        - 5.2.1
-        - 5.2.2
-        - 5.2.3
-        - 5.3.1
-        - 5.6.1
-        - 5.7.2
-        - 5.8.2
-        - 5.9.0
-        - 5.10.0
-        - 5.13.0
-        - 5.16.1
-        - 6.5.2
-        - 6.5.3
-        - 6.7.1
-        - 6.9.0
-        - 6.9.1
-        - 6.9.2
-        - 7.0.0
-        - 7.0.1
-        - 7.1.1
-        - 7.1.2
-        - 7.1.5
-        - 7.1.6
-        - 7.1.7
-        - 7.1.8
-        - 7.2.0
-        - 7.2.1
-        - 7.3.1
-        - 7.4.1
-        - 7.4.2
-        - 7.4.3
-        - 7.5.1
-        - 8.0.1
-        - 8.1.0
-        - 8.2.0
-        - 9.0.0-preview.14
-        - 9.0.0-preview.34
-        - 9.0.0-preview.55
-        - 10.0.0-preview.27
-        - 10.2.0
-        compatible:
-        - 10.2.0
-        verified: 10.2.0
-      dependencies:
-      - name: com.unity.render-pipelines.core
-        version: 10.2.0
-      - name: com.unity.searcher
-        version: 4.3.1
-      resolvedDependencies:
-      - name: com.unity.render-pipelines.core
-        version: 10.2.0
-      - name: com.unity.ugui
-        version: 1.0.0
-      - name: com.unity.modules.ui
-        version: 1.0.0
-      - name: com.unity.modules.imgui
-        version: 1.0.0
-      - name: com.unity.searcher
-        version: 4.3.1
-      keywords: []
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 0
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: https://github.com/Unity-Technologies/Graphics.git
-        revision: 2dbb8ac2491b6e5be0b2f740374609a83236eeb3
+        url: git+https://github.com/Unity-Technologies/Graphics.git
+        revision: bfab2b98da39feb0863638285da6c906b82a4830
         path: 
     - packageId: com.unity.test-framework@1.1.18
       testable: 0
@@ -1663,9 +1560,11 @@ m_PackageAssets:
         - 1.1.14
         - 1.1.16
         - 1.1.18
+        - 1.1.19
         compatible:
         - 1.1.18
-        verified: 1.1.18
+        - 1.1.19
+        verified: 1.1.19
       dependencies:
       - name: com.unity.ext.nunit
         version: 1.0.0
@@ -1695,12 +1594,12 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637378481950000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.com/Unity-Technologies/com.unity.test-framework.git
+        url: git+https://github.com/Unity-Technologies/com.unity.test-framework.git
         revision: 14025b364215f4465cbe1beb7a81e486b2687ced
         path: 
     - packageId: com.unity.textmeshpro@3.0.1
@@ -1777,6 +1676,7 @@ m_PackageAssets:
         - 1.5.0-preview.14
         - 1.5.0
         - 1.5.1
+        - 1.5.3
         - 2.0.0
         - 2.0.1-preview.1
         - 2.0.1
@@ -1794,6 +1694,7 @@ m_PackageAssets:
         - 2.1.0-preview.14
         - 2.1.0
         - 2.1.1
+        - 2.1.3
         - 3.0.0-preview.1
         - 3.0.0-preview.3
         - 3.0.0-preview.4
@@ -1807,9 +1708,11 @@ m_PackageAssets:
         - 3.0.0-preview.14
         - 3.0.0
         - 3.0.1
+        - 3.0.3
         compatible:
         - 3.0.1
-        verified: 3.0.1
+        - 3.0.3
+        verified: 3.0.3
       dependencies:
       - name: com.unity.ugui
         version: 1.0.0
@@ -1907,11 +1810,16 @@ m_PackageAssets:
         - 1.4.2
         - 1.4.3
         - 1.4.4
+        - 1.4.5
+        - 1.5.0-pre.2
         - 1.5.0-preview.1
         - 1.5.0-preview.2
         - 1.5.0-preview.3
         - 1.5.0-preview.4
         - 1.5.0-preview.5
+        - 1.5.1-pre.1
+        - 1.5.1-pre.2
+        - 1.5.1-pre.3
         compatible:
         - 1.2.6
         - 1.2.7
@@ -1947,12 +1855,17 @@ m_PackageAssets:
         - 1.4.2
         - 1.4.3
         - 1.4.4
+        - 1.4.5
+        - 1.5.0-pre.2
         - 1.5.0-preview.1
         - 1.5.0-preview.2
         - 1.5.0-preview.3
         - 1.5.0-preview.4
         - 1.5.0-preview.5
-        verified: 1.4.4
+        - 1.5.1-pre.1
+        - 1.5.1-pre.2
+        - 1.5.1-pre.3
+        verified: 1.4.5
       dependencies: []
       resolvedDependencies: []
       keywords:
@@ -2105,25 +2018,31 @@ m_PackageAssets:
         - 7.4.2
         - 7.4.3
         - 7.5.1
+        - 7.5.2
         - 8.0.1
         - 8.1.0
         - 8.2.0
+        - 8.3.1
         - 9.0.0-preview.13
         - 9.0.0-preview.33
         - 9.0.0-preview.54
+        - 9.0.0-preview.71
         - 10.0.0-preview.27
+        - 10.1.0
         - 10.2.0
+        - 10.2.1
         compatible:
         - 10.2.0
-        verified: 10.2.0
+        - 10.2.1
+        verified: 10.2.1
       dependencies:
       - name: com.unity.shadergraph
         version: 10.2.0
       resolvedDependencies:
       - name: com.unity.shadergraph
-        version: 10.2.0
+        version: 10.2.1
       - name: com.unity.render-pipelines.core
-        version: 10.2.0
+        version: 10.2.1
       - name: com.unity.ugui
         version: 1.0.0
       - name: com.unity.modules.ui
@@ -2150,12 +2069,12 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637409029080000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.com/Unity-Technologies/Graphics.git
+        url: git+https://github.com/Unity-Technologies/Graphics.git
         revision: 2dbb8ac2491b6e5be0b2f740374609a83236eeb3
         path: 
     - packageId: com.unity.modules.ai@1.0.0
@@ -3900,142 +3819,6 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
-    - packageId: com.unity.render-pipelines.core@10.2.0
-      testable: 0
-      isDirectDependency: 0
-      version: 10.2.0
-      source: 1
-      resolvedPath: E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.render-pipelines.core@10.2.0
-      assetPath: Packages/com.unity.render-pipelines.core
-      name: com.unity.render-pipelines.core
-      displayName: Core RP Library
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: 
-      description: SRP Core makes it easier to create or customize a Scriptable Render
-        Pipeline (SRP). SRP Core contains reusable code, including boilerplate code
-        for working with platform-specific graphics APIs, utility functions for common
-        rendering operations, and  shader libraries. The code in SRP Core is use
-        by the High Definition Render Pipeline (HDRP) and Universal Render Pipeline
-        (URP). If you are creating a custom SRP from scratch or customizing a prebuilt
-        SRP, using SRP Core will save you time.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 0.1.21
-        - 0.1.27
-        - 0.1.28
-        - 1.0.0-beta
-        - 1.0.1-beta
-        - 1.1.1-preview
-        - 1.1.2-preview
-        - 1.1.4-preview
-        - 1.1.5-preview
-        - 1.1.8-preview
-        - 1.1.10-preview
-        - 1.1.11-preview
-        - 2.0.1-preview
-        - 2.0.3-preview
-        - 2.0.4-preview
-        - 2.0.4-preview.1
-        - 2.0.5-preview
-        - 2.0.6-preview
-        - 2.0.7-preview
-        - 2.0.8-preview
-        - 3.0.0-preview
-        - 3.1.0-preview
-        - 3.3.0-preview
-        - 4.0.0-preview
-        - 4.0.1-preview
-        - 4.1.0-preview
-        - 4.2.0-preview
-        - 4.3.0-preview
-        - 4.6.0-preview
-        - 4.8.0-preview
-        - 4.9.0-preview
-        - 4.10.0-preview
-        - 5.0.0-preview
-        - 5.1.0
-        - 5.2.0
-        - 5.2.1
-        - 5.2.2
-        - 5.2.3
-        - 5.3.1
-        - 5.6.1
-        - 5.7.2
-        - 5.8.2
-        - 5.9.0
-        - 5.10.0
-        - 5.13.0
-        - 5.16.1
-        - 6.5.2
-        - 6.5.3
-        - 6.7.1
-        - 6.9.0
-        - 6.9.1
-        - 6.9.2
-        - 7.0.0
-        - 7.0.1
-        - 7.1.1
-        - 7.1.2
-        - 7.1.5
-        - 7.1.6
-        - 7.1.7
-        - 7.1.8
-        - 7.2.0
-        - 7.2.1
-        - 7.3.1
-        - 7.4.1
-        - 7.4.2
-        - 7.4.3
-        - 7.5.1
-        - 8.0.1
-        - 8.1.0
-        - 8.2.0
-        - 9.0.0-preview.13
-        - 9.0.0-preview.35
-        - 9.0.0-preview.38
-        - 9.0.0-preview.60
-        - 10.0.0-preview.30
-        - 10.2.0
-        compatible:
-        - 10.2.0
-        verified: 10.2.0
-      dependencies:
-      - name: com.unity.ugui
-        version: 1.0.0
-      resolvedDependencies:
-      - name: com.unity.ugui
-        version: 1.0.0
-      - name: com.unity.modules.ui
-        version: 1.0.0
-      - name: com.unity.modules.imgui
-        version: 1.0.0
-      keywords: []
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 0
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: https://github.com/Unity-Technologies/Graphics.git
-        revision: 2dbb8ac2491b6e5be0b2f740374609a83236eeb3
-        path: 
     - packageId: com.unity.searcher@4.3.1
       testable: 0
       isDirectDependency: 0
@@ -4185,6 +3968,293 @@ m_PackageAssets:
         url: git@github.com:Unity-Technologies/Unity.Mathematics.git
         revision: 0a3dfafaf606098ea681de4c4be60f3aac63b773
         path: 
+    - packageId: com.unity.render-pipelines.core@10.2.1
+      testable: 0
+      isDirectDependency: 0
+      version: 10.2.1
+      source: 1
+      resolvedPath: E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.render-pipelines.core@10.2.1
+      assetPath: Packages/com.unity.render-pipelines.core
+      name: com.unity.render-pipelines.core
+      displayName: Core RP Library
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: SRP Core makes it easier to create or customize a Scriptable Render
+        Pipeline (SRP). SRP Core contains reusable code, including boilerplate code
+        for working with platform-specific graphics APIs, utility functions for common
+        rendering operations, and  shader libraries. The code in SRP Core is use
+        by the High Definition Render Pipeline (HDRP) and Universal Render Pipeline
+        (URP). If you are creating a custom SRP from scratch or customizing a prebuilt
+        SRP, using SRP Core will save you time.
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 0.1.21
+        - 0.1.27
+        - 0.1.28
+        - 1.0.0-beta
+        - 1.0.1-beta
+        - 1.1.1-preview
+        - 1.1.2-preview
+        - 1.1.4-preview
+        - 1.1.5-preview
+        - 1.1.8-preview
+        - 1.1.10-preview
+        - 1.1.11-preview
+        - 2.0.1-preview
+        - 2.0.3-preview
+        - 2.0.4-preview
+        - 2.0.4-preview.1
+        - 2.0.5-preview
+        - 2.0.6-preview
+        - 2.0.7-preview
+        - 2.0.8-preview
+        - 3.0.0-preview
+        - 3.1.0-preview
+        - 3.3.0-preview
+        - 4.0.0-preview
+        - 4.0.1-preview
+        - 4.1.0-preview
+        - 4.2.0-preview
+        - 4.3.0-preview
+        - 4.6.0-preview
+        - 4.8.0-preview
+        - 4.9.0-preview
+        - 4.10.0-preview
+        - 5.0.0-preview
+        - 5.1.0
+        - 5.2.0
+        - 5.2.1
+        - 5.2.2
+        - 5.2.3
+        - 5.3.1
+        - 5.6.1
+        - 5.7.2
+        - 5.8.2
+        - 5.9.0
+        - 5.10.0
+        - 5.13.0
+        - 5.16.1
+        - 6.5.2
+        - 6.5.3
+        - 6.7.1
+        - 6.9.0
+        - 6.9.1
+        - 6.9.2
+        - 7.0.0
+        - 7.0.1
+        - 7.1.1
+        - 7.1.2
+        - 7.1.5
+        - 7.1.6
+        - 7.1.7
+        - 7.1.8
+        - 7.2.0
+        - 7.2.1
+        - 7.3.1
+        - 7.4.1
+        - 7.4.2
+        - 7.4.3
+        - 7.5.1
+        - 7.5.2
+        - 8.0.1
+        - 8.1.0
+        - 8.2.0
+        - 8.3.1
+        - 9.0.0-preview.13
+        - 9.0.0-preview.35
+        - 9.0.0-preview.38
+        - 9.0.0-preview.60
+        - 9.0.0-preview.77
+        - 10.0.0-preview.30
+        - 10.1.0
+        - 10.2.0
+        - 10.2.1
+        compatible:
+        - 10.2.0
+        - 10.2.1
+        verified: 10.2.1
+      dependencies:
+      - name: com.unity.ugui
+        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.ugui
+        version: 1.0.0
+      - name: com.unity.modules.ui
+        version: 1.0.0
+      - name: com.unity.modules.imgui
+        version: 1.0.0
+      keywords: []
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637424529620000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git+https://github.com/Unity-Technologies/Graphics.git
+        revision: bfab2b98da39feb0863638285da6c906b82a4830
+        path: 
+    - packageId: com.unity.shadergraph@10.2.1
+      testable: 0
+      isDirectDependency: 1
+      version: 10.2.1
+      source: 1
+      resolvedPath: E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.shadergraph@10.2.1
+      assetPath: Packages/com.unity.shadergraph
+      name: com.unity.shadergraph
+      displayName: Shader Graph
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: The Shader Graph package adds a visual Shader editing tool to
+        Unity. You can use this tool to create Shaders in a visual way instead of
+        writing code. Specific render pipelines can implement specific graph features.
+        Currently, both the High Definition Rendering Pipeline and the Universal
+        Rendering Pipeline support Shader Graph.
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 0.1.8
+        - 0.1.9
+        - 0.1.17
+        - 1.0.0-beta
+        - 1.1.1-preview
+        - 1.1.2-preview
+        - 1.1.3-preview
+        - 1.1.4-preview
+        - 1.1.5-preview
+        - 1.1.6-preview
+        - 1.1.8-preview
+        - 1.1.9-preview
+        - 2.0.1-preview
+        - 2.0.3-preview
+        - 2.0.4-preview
+        - 2.0.4-preview.1
+        - 2.0.5-preview
+        - 2.0.6-preview
+        - 2.0.7-preview
+        - 2.0.8-preview
+        - 3.0.0-preview
+        - 3.1.0-preview
+        - 3.3.0-preview
+        - 4.0.0-preview
+        - 4.0.1-preview
+        - 4.1.0-preview
+        - 4.2.0-preview
+        - 4.3.0-preview
+        - 4.6.0-preview
+        - 4.8.0-preview
+        - 4.9.0-preview
+        - 4.10.0-preview
+        - 5.0.0-preview
+        - 5.1.0
+        - 5.2.0
+        - 5.2.1
+        - 5.2.2
+        - 5.2.3
+        - 5.3.1
+        - 5.6.1
+        - 5.7.2
+        - 5.8.2
+        - 5.9.0
+        - 5.10.0
+        - 5.13.0
+        - 5.16.1
+        - 6.5.2
+        - 6.5.3
+        - 6.7.1
+        - 6.9.0
+        - 6.9.1
+        - 6.9.2
+        - 7.0.0
+        - 7.0.1
+        - 7.1.1
+        - 7.1.2
+        - 7.1.5
+        - 7.1.6
+        - 7.1.7
+        - 7.1.8
+        - 7.2.0
+        - 7.2.1
+        - 7.3.1
+        - 7.4.1
+        - 7.4.2
+        - 7.4.3
+        - 7.5.1
+        - 7.5.2
+        - 8.0.1
+        - 8.1.0
+        - 8.2.0
+        - 8.3.1
+        - 9.0.0-preview.14
+        - 9.0.0-preview.34
+        - 9.0.0-preview.55
+        - 9.0.0-preview.72
+        - 10.0.0-preview.27
+        - 10.1.0
+        - 10.2.0
+        - 10.2.1
+        compatible:
+        - 10.2.0
+        - 10.2.1
+        verified: 10.2.1
+      dependencies:
+      - name: com.unity.render-pipelines.core
+        version: 10.2.1
+      - name: com.unity.searcher
+        version: 4.3.1
+      resolvedDependencies:
+      - name: com.unity.render-pipelines.core
+        version: 10.2.1
+      - name: com.unity.ugui
+        version: 1.0.0
+      - name: com.unity.modules.ui
+        version: 1.0.0
+      - name: com.unity.modules.imgui
+        version: 1.0.0
+      - name: com.unity.searcher
+        version: 4.3.1
+      keywords: []
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637424530680000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git+https://github.com/Unity-Technologies/Graphics.git
+        revision: bfab2b98da39feb0863638285da6c906b82a4830
+        path: 
     - packageId: com.unity.nuget.newtonsoft-json@2.0.0
       testable: 0
       isDirectDependency: 0
@@ -4223,6 +4293,7 @@ m_PackageAssets:
         - 2.0.0-preview.1
         - 2.0.0-preview.2
         - 2.0.0
+        - 2.0.1-preview.1
         compatible:
         - 1.0.0-preview.2
         - 1.0.0-preview.3
@@ -4233,6 +4304,7 @@ m_PackageAssets:
         - 2.0.0-preview.1
         - 2.0.0-preview.2
         - 2.0.0
+        - 2.0.1-preview.1
         verified: 2.0.0
       dependencies: []
       resolvedDependencies: []
@@ -4372,6 +4444,7 @@ m_PackageAssets:
         - 0.9.0-preview.6
         - 0.11.0-preview.17
         - 0.12.0-preview.13
+        - 0.14.0-preview.16
         compatible:
         - 0.0.9-preview.1
         - 0.0.9-preview.2
@@ -4409,6 +4482,7 @@ m_PackageAssets:
         - 0.9.0-preview.6
         - 0.11.0-preview.17
         - 0.12.0-preview.13
+        - 0.14.0-preview.16
         verified: 
       dependencies:
       - name: com.unity.test-framework.performance
@@ -4517,6 +4591,7 @@ m_PackageAssets:
         - 2.1.0-preview
         - 2.2.0-preview
         - 2.3.1-preview
+        - 2.4.1-preview
         compatible:
         - 1.3.3-preview
         - 2.0.1-preview
@@ -4529,6 +4604,7 @@ m_PackageAssets:
         - 2.1.0-preview
         - 2.2.0-preview
         - 2.3.1-preview
+        - 2.4.1-preview
         verified: 1.3.3-preview
       dependencies:
       - name: com.unity.test-framework
@@ -4616,21 +4692,6 @@ m_PackageAssets:
         - 0.2.4-preview.45
         - 0.2.4-preview.48
         - 0.2.4-preview.50
-        - 1.0.0-preview.1
-        - 1.0.0-preview.2
-        - 1.0.0-preview.3
-        - 1.0.0-preview.4
-        - 1.0.0-preview.5
-        - 1.0.0-preview.6
-        - 1.0.0-preview.7
-        - 1.0.0-preview.8
-        - 1.0.0-preview.9
-        - 1.0.0-preview.10
-        - 1.0.0-preview.12
-        - 1.0.0-preview.13
-        - 1.0.0
-        - 1.0.2
-        - 1.0.4
         - 1.1.0-preview.2
         - 1.1.0-preview.3
         - 1.1.0-preview.4
@@ -4669,11 +4730,20 @@ m_PackageAssets:
         - 1.3.4
         - 1.3.5
         - 1.3.6
+        - 1.3.7
+        - 1.3.8
+        - 1.3.9
+        - 1.4.0-pre.1
         - 1.4.0-preview.1
         - 1.4.0-preview.2
         - 1.4.0-preview.3
         - 1.4.0-preview.4
+        - 1.4.0-preview.5
+        - 1.4.1-pre.1
+        - 1.4.1-pre.2
         - 1.4.1
+        - 1.4.2
+        - 1.5.0-pre.3
         compatible:
         - 1.1.1
         - 1.1.2
@@ -4710,12 +4780,21 @@ m_PackageAssets:
         - 1.3.4
         - 1.3.5
         - 1.3.6
+        - 1.3.7
+        - 1.3.8
+        - 1.3.9
+        - 1.4.0-pre.1
         - 1.4.0-preview.1
         - 1.4.0-preview.2
         - 1.4.0-preview.3
         - 1.4.0-preview.4
+        - 1.4.0-preview.5
+        - 1.4.1-pre.1
+        - 1.4.1-pre.2
         - 1.4.1
-        verified: 1.4.1
+        - 1.4.2
+        - 1.5.0-pre.3
+        verified: 1.4.2
       dependencies:
       - name: com.unity.mathematics
         version: 1.1.0

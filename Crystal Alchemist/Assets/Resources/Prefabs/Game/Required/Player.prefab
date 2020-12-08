@@ -570,10 +570,9 @@ MonoBehaviour:
   values: {fileID: 11400000, guid: 6762d3fcfc403704ab3f304728a23ccf, type: 2}
   IsSummoned: 0
   presetSignal: {fileID: 11400000, guid: 1794675380e483345a378de158326f5f, type: 2}
-  characterName: {fileID: 11400000, guid: b7d7d51acc1e7fd4c825134b5aae5ec7, type: 2}
   goToBedDuration: 1
   CutSceneValue: {fileID: 11400000, guid: 8c0f8cb7fca735c4a8f01a8329f52c64, type: 2}
-  attributes: {fileID: 11400000, guid: 65cb9f98810020b4c918451e15458fff, type: 2}
+  saveGame: {fileID: 11400000, guid: a62b63cfcbd3129468ad1e261a3f5279, type: 2}
 --- !u!114 &8348133576447681433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,7 +630,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   teleportList: {fileID: 11400000, guid: a5383e9eb1591254eadebe1d4ca868c7, type: 2}
-  fadeDuration: {fileID: 11400000, guid: a2cc0078d349f9245bd74b3f5813a450, type: 2}
 --- !u!114 &7698867005937363429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4400,6 +4398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
+  updateMethod: 0
   parts:
   - {fileID: 6604287414146265420}
   - {fileID: 1326730502702176852}
@@ -5321,6 +5320,7 @@ MonoBehaviour:
   m_StopNaN: 0
   m_Dithering: 0
   m_ClearDepth: 1
+  m_AllowXRRendering: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2

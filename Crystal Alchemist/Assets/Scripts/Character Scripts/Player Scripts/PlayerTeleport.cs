@@ -1,15 +1,11 @@
 ﻿using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerTeleport : PlayerComponent
 {
     [SerializeField]
     private PlayerTeleportList teleportList;
-
-    [SerializeField]
-    private FloatValue fadeDuration;
 
     public override void Initialize()
     {
@@ -31,7 +27,7 @@ public class PlayerTeleport : PlayerComponent
     
     private void LoadScene()
     {
-        StartCoroutine(loadSceneCo(this.teleportList.GetNextTeleport().scene));
+        GameEvents.current.DoChangeScene(this.teleportList.GetNextTeleport().scene);
     }
 
     private void SetPosition(Vector2 position)
@@ -91,20 +87,7 @@ public class PlayerTeleport : PlayerComponent
         }                
     }
 
-    private IEnumerator loadSceneCo(string targetScene)
-    {
-        MenuEvents.current.DoFadeOut();
-        yield return new WaitForSeconds(this.fadeDuration.GetValue());
 
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(targetScene);
-        asyncOperation.allowSceneActivation = false;
-
-        while (!asyncOperation.isDone)
-        {
-            if (asyncOperation.progress >= 0.9f) asyncOperation.allowSceneActivation = true;            
-            yield return null;
-        }
-    }
 
     public bool HasReturn()
     {

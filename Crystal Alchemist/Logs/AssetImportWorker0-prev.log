@@ -1,10 +1,10 @@
 Using pre-set license
-Built from 'trunk' branch; Version is '2020.2.0b2 (90b2443a8df1) revision 9482820'; Using compiler version '192528614'; Build Type 'Release'
+Built from '2020.2/staging' branch; Version is '2020.2.0b13 (655e1a328b90) revision 6643226'; Using compiler version '192528614'; Build Type 'Release'
 OS: 'Windows 10  (10.0.0) 64bit' Language: 'de' Physical Memory: 10102 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\2020.2.0b2\Editor\Unity.exe
+C:\Program Files\Unity\Hub\Editor\2020.2.0b13\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
@@ -15,14 +15,14 @@ E:/Github/Crystal Alchemist
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-53348
+53887
 Successfully changed project path to: E:/Github/Crystal Alchemist
 E:/Github/Crystal Alchemist
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 137.66 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 113.02 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Initialize engine version: 2020.2.0b2 (90b2443a8df1)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.0b2/Editor/Data/Resources/UnitySubsystems
+Initialize engine version: 2020.2.0b13 (655e1a328b90)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path E:/Github/Crystal Alchemist/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
@@ -33,111 +33,168 @@ Direct3D:
     Driver:   20.19.15.4549
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b2/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b2/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56224
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56096
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.0b2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002165 seconds.
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002333 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 121.60 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 100.84 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.737 seconds
-Registering precompiled user dll's ...
-Registered in 0.263768 seconds.
+- Completed reload, in  1.658 seconds
 Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.012805 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 122.80 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 102.30 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-AssemblyPaths cannot be null or empty
-at <empty>:line 0
-
-AssemblyPaths cannot be null or empty
-at <empty>:line 0
-
-Invalid AssetDatabase path: /Editor/EditorResources/cm_logo_sm.png. Use path relative to the project folder.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.Texture2D> (string)
-Cinemachine.Editor.CinemachineSettings:get_CinemachineLogoTexture () (at Library/PackageCache/com.unity.cinemachine@2.6.3/Editor/Windows/CinemachineSettings.cs:205)
-Cinemachine.Editor.CinemachineSettings:.cctor () (at Library/PackageCache/com.unity.cinemachine@2.6.3/Editor/Windows/CinemachineSettings.cs:237)
-Cinemachine.CinemachineColliderPrefs:.cctor () (at Library/PackageCache/com.unity.cinemachine@2.6.3/Editor/Windows/CinemachineColliderPrefs.cs:61)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-[Library/PackageCache/com.unity.cinemachine@2.6.3/Editor/Windows/CinemachineSettings.cs line 205]
-
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  5.330 seconds
+- Completed reload, in  5.185 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 1.38 ms, found 0 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 2.09 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4472 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 199.7 MB.
-System memory in use after: 199.9 MB.
+Unloading 4320 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 186.5 MB.
+System memory in use after: 186.8 MB.
 
-Unloading 31 unused Assets to reduce memory usage. Loaded Objects now: 4972.
-Total: 26.880181 ms (FindLiveObjects: 0.964311 ms CreateObjectMapping: 0.550910 ms MarkObjects: 25.310541 ms  DeleteObjects: 0.052077 ms)
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 4826.
+Total: 24.785100 ms (FindLiveObjects: 0.710946 ms CreateObjectMapping: 0.587189 ms MarkObjects: 23.380762 ms  DeleteObjects: 0.104448 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Scenes/Menues/Character Creation.unity
-  artifactKey: Guid(2f960139b68966b4c9f16ca154a97121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Menues/Character Creation.unity using Guid(2f960139b68966b4c9f16ca154a97121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e11881dec5cdd118aa7d788f78442b49') in 0.042804 seconds
-  Import took 0.073104 seconds .
+  path: Assets/Resources/Prefabs/Game/Required/Player Online.prefab
+  artifactKey: Guid(07f9e01eba535704bbce596da0ed4bfe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Game/Required/Player Online.prefab using Guid(07f9e01eba535704bbce596da0ed4bfe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9bbed30db69ad03c3aaf6a3516616c5') in 0.444080 seconds
+  Import took 0.633855 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 36.297438 seconds.
+  path: Assets/Resources/Prefabs/Game/Required/Player.prefab
+  artifactKey: Guid(e8e487b463cd0914eab3948d08f3a26c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Game/Required/Player.prefab using Guid(e8e487b463cd0914eab3948d08f3a26c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de7a03794c6b79c9d798c622358e7e4c') in 0.083970 seconds
+  Import took 0.103696 seconds .
 
 ========================================================================
 Received Prepare
-Reloading mono domain
-Begin MonoManager ReloadAssembly
-Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.0b2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002040 seconds.
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 113.36 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  5.031 seconds
 Registering precompiled user dll's ...
-Registered in 0.275593 seconds.
-Platform modules already initialized, skipping
+Registered in 0.013999 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.37 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 1.18 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  4.063 seconds
+- Completed reload, in  4.280 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.47 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 1.45 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 38 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 127.8 MB.
-System memory in use after: 128.0 MB.
+Unloading 4175 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 193.0 MB.
+System memory in use after: 193.5 MB.
 
-Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 4981.
-Total: 28.172756 ms (FindLiveObjects: 0.857231 ms CreateObjectMapping: 0.528382 ms MarkObjects: 26.739747 ms  DeleteObjects: 0.044471 ms)
+Unloading 31 unused Assets to reduce memory usage. Loaded Objects now: 7346.
+Total: 29.525618 ms (FindLiveObjects: 0.886196 ms CreateObjectMapping: 0.816857 ms MarkObjects: 27.751178 ms  DeleteObjects: 0.069047 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 150.342446 seconds.
+  path: Assets/Resources/Prefabs/Game/Required/Player.prefab
+  artifactKey: Guid(e8e487b463cd0914eab3948d08f3a26c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Game/Required/Player.prefab using Guid(e8e487b463cd0914eab3948d08f3a26c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34a495053b8903a27d3eb55edc0a69f9') in 0.272111 seconds
+  Import took 0.286433 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 72.578668 seconds.
+  path: Assets/Resources/Scriptable Objects/Player/PlayerButtons.asset
+  artifactKey: Guid(8e326ca90dbcc2844aed877b2e54779d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Scriptable Objects/Player/PlayerButtons.asset using Guid(8e326ca90dbcc2844aed877b2e54779d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d676deed065c1e5d25388bb15b07dd9') in 0.010409 seconds
+  Import took 0.021070 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.771603 seconds.
+  path: Assets/Resources/Scriptable Objects/Player/PlayerButtons.asset
+  artifactKey: Guid(8e326ca90dbcc2844aed877b2e54779d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Scriptable Objects/Player/PlayerButtons.asset using Guid(8e326ca90dbcc2844aed877b2e54779d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d676deed065c1e5d25388bb15b07dd9') in 0.014589 seconds
+  Import took 0.043178 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.161665 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 3.80 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in 18.033 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 2.97 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4175 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 193.6 MB.
+System memory in use after: 194.1 MB.
+
+Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 7386.
+Total: 45.986212 ms (FindLiveObjects: 0.942369 ms CreateObjectMapping: 0.860449 ms MarkObjects: 44.109958 ms  DeleteObjects: 0.069924 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 75.668875 seconds.
+  path: Assets/Resources/Scriptable Objects/Player/PlayerSkillset.asset
+  artifactKey: Guid(29dcfc276674c7e42a941d5aee79bc0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Scriptable Objects/Player/PlayerSkillset.asset using Guid(29dcfc276674c7e42a941d5aee79bc0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdda48ec3ab332b960ee4dc31a85a017') in 0.019435 seconds
+  Import took 0.037698 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008352 seconds.
+  path: Assets/Resources/Scriptable Objects/Player/PlayerSkillset.asset
+  artifactKey: Guid(29dcfc276674c7e42a941d5aee79bc0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Scriptable Objects/Player/PlayerSkillset.asset using Guid(29dcfc276674c7e42a941d5aee79bc0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdda48ec3ab332b960ee4dc31a85a017') in 0.005485 seconds
+  Import took 0.018567 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 114.741878 seconds.
+  path: Assets/Resources/Prefabs/Game/Required/GameEvents.prefab
+  artifactKey: Guid(099bd3ff2f5315045bb88f81368434ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Game/Required/GameEvents.prefab using Guid(099bd3ff2f5315045bb88f81368434ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0db51367869e38e7e519d4ec95e26821') in 0.022119 seconds
+  Import took 0.033025 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.027083 seconds.
+  path: Assets/Resources/Prefabs/Game/Required/GameEvents.prefab
+  artifactKey: Guid(099bd3ff2f5315045bb88f81368434ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Game/Required/GameEvents.prefab using Guid(099bd3ff2f5315045bb88f81368434ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0db51367869e38e7e519d4ec95e26821') in 0.008116 seconds
+  Import took 0.020882 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

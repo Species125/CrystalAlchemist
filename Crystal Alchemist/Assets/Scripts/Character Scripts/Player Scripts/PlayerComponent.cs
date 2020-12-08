@@ -1,8 +1,7 @@
-﻿using Mirror;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Player))]
-public class PlayerComponent : NetworkBehaviour
+public class PlayerComponent : MonoBehaviour
 {
     [HideInInspector]
     public Player player;
