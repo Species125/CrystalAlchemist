@@ -4,7 +4,7 @@ using UnityEditor;
 
 public class CustomUnityWindow : EditorWindow
 {
-    [MenuItem("Alchemist Menu/Player Animation Update")]
+    [MenuItem("Alchemist Menu/Testing/Player Animation Update")]
     public static void ShowWindow()
     {
         GetWindow(typeof(CustomUnityWindow));

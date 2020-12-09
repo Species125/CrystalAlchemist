@@ -10,7 +10,7 @@ public class LoadGameScript : MonoBehaviour
     {
         if (slot != null && slot.data != null)
         {
-            Cursor.visible = false;
+            //Cursor.visible = false;
             LoadSystem.loadPlayerData(this.saveGame, slot.data, AfterLoad); //load from data into savegame         
         }
     }

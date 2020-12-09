@@ -15,11 +15,11 @@ E:/Github/Crystal Alchemist
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-54530
+49498
 Successfully changed project path to: E:/Github/Crystal Alchemist
 E:/Github/Crystal Alchemist
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 162.84 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 118.48 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.0b13 (655e1a328b90)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Resources/UnitySubsystems
@@ -36,198 +36,19 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56676
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56672
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002111 seconds.
+Registered in 0.002360 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 102.33 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 104.72 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.591 seconds
+- Completed reload, in  3.170 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.013598 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 106.96 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.235 seconds
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 1.39 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4320 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 186.6 MB.
-System memory in use after: 186.8 MB.
-
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 4826.
-Total: 33.443428 ms (FindLiveObjects: 0.719431 ms CreateObjectMapping: 4.846428 ms MarkObjects: 27.822858 ms  DeleteObjects: 0.052370 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Resources/Prefabs/Music/Juwels.prefab
-  artifactKey: Guid(9eee67c6189a3c043a0c39521f95be2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Music/Juwels.prefab using Guid(9eee67c6189a3c043a0c39521f95be2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b93d9e6c96c7980f76f8fd3d9f5eb0c2') in 0.059809 seconds
-  Import took 0.075188 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000214 seconds.
-  path: Assets/Resources/Prefabs/Music/Victory.prefab
-  artifactKey: Guid(1701f5f651818bb46b6250d967a30311) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Music/Victory.prefab using Guid(1701f5f651818bb46b6250d967a30311) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb380d8c465f7139ca5c8b017d718279') in 0.008860 seconds
-  Import took 0.026631 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000231 seconds.
-  path: Assets/Resources/Prefabs/Music/Beyond the Clouds.prefab
-  artifactKey: Guid(dbbb82a56a34a75409f3f1b596be08b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Music/Beyond the Clouds.prefab using Guid(dbbb82a56a34a75409f3f1b596be08b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c972ca4bf65a4d7c8c3f0a464b08d89') in 0.008726 seconds
-  Import took 0.017114 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000192 seconds.
-  path: Assets/Resources/Prefabs/Music/House.prefab
-  artifactKey: Guid(8d250a0d4cca77f409860d35ed4e30c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Music/House.prefab using Guid(8d250a0d4cca77f409860d35ed4e30c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0187ffcb7cb78a9829a0bf34185cdf53') in 0.008456 seconds
-  Import took 0.016084 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000190 seconds.
-  path: Assets/Resources/Prefabs/Music/Insatible.prefab
-  artifactKey: Guid(e65653c80edad14498226fa57913a97e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Music/Insatible.prefab using Guid(e65653c80edad14498226fa57913a97e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc67ff8e7c7fde49f6c792c43f48197d') in 0.009100 seconds
-  Import took 0.016553 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000185 seconds.
-  path: Assets/Resources/Prefabs/Music/Last Encounter.prefab
-  artifactKey: Guid(7f9031719a7a470478b1adc34f3b2a6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Music/Last Encounter.prefab using Guid(7f9031719a7a470478b1adc34f3b2a6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad6bc3977f362b70e9145d94435964b0') in 0.008304 seconds
-  Import took 0.016253 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000194 seconds.
-  path: Assets/Resources/Prefabs/Music/Temple.prefab
-  artifactKey: Guid(8358974a98ecf65478dc7a829c4bb9c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Music/Temple.prefab using Guid(8358974a98ecf65478dc7a829c4bb9c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23d5ed33e1755f69761081ff531df24c') in 0.008721 seconds
-  Import took 0.016150 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.218445 seconds.
-  path: Assets/Resources/Prefabs/Music/Woodland Fantasy.prefab
-  artifactKey: Guid(44a8235e8eea02745b42952603313535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Music/Woodland Fantasy.prefab using Guid(44a8235e8eea02745b42952603313535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a819e06467ea09a454e96debf4b91536') in 0.010928 seconds
-  Import took 0.021723 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 296.268143 seconds.
-  path: Assets/Scenes/Menues/Jukebox.unity
-  artifactKey: Guid(2878727869282fe419ebf0dbf1b2920c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Menues/Jukebox.unity using Guid(2878727869282fe419ebf0dbf1b2920c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47f5698e6d0c8415b534a465925bb004') in 0.009078 seconds
-  Import took 0.019898 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.012889 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.37 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.104 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 2.06 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4175 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 179.4 MB.
-System memory in use after: 179.6 MB.
-
-Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 4830.
-Total: 26.622149 ms (FindLiveObjects: 0.414865 ms CreateObjectMapping: 0.200703 ms MarkObjects: 25.968839 ms  DeleteObjects: 0.035986 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.013669 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.45 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.349 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.31 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4175 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 179.5 MB.
-System memory in use after: 179.7 MB.
-
-Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 4834.
-Total: 26.206114 ms (FindLiveObjects: 0.410184 ms CreateObjectMapping: 0.205970 ms MarkObjects: 25.543150 ms  DeleteObjects: 0.044763 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 275.172261 seconds.
-  path: Assets/Scenes/Maps/Haus.unity
-  artifactKey: Guid(3a7c545778f2a454db24c83dd4ae4a4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Maps/Haus.unity using Guid(3a7c545778f2a454db24c83dd4ae4a4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b51005b84768dcd39e186bf4ae33c3b') in 0.025136 seconds
-  Import took 0.033725 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.013755 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.24 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.436 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.27 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4175 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 179.5 MB.
-System memory in use after: 179.8 MB.
-
-Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 4838.
-Total: 25.745901 ms (FindLiveObjects: 0.574023 ms CreateObjectMapping: 0.458165 ms MarkObjects: 24.664268 ms  DeleteObjects: 0.045056 ms)
-
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+Registered in 0.310984 seconds.

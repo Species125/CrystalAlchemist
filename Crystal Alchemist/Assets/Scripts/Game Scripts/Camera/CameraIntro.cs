@@ -32,6 +32,7 @@ public class CameraIntro : MonoBehaviour
     private bool CanPlay()
     {
         if (this.mode == Mode.oneTime) isPermanent = true;
+
         if (this.mode != Mode.always && this.playerProgress.Contains(this.gameProgressID, this.isPermanent)) return false;
         return true;
     }
@@ -42,11 +43,6 @@ public class CameraIntro : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (this.CanPlay()) DoCutScene();
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
     {
         if (this.CanPlay()) DoCutScene();
     }

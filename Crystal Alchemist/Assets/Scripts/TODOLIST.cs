@@ -8,6 +8,7 @@ public class TODOLIST : MonoBehaviour
     //REWORK: Treasure Chests
     //REWORK: Item with DialogBox
     //REWORK: Charakter Creation (Wings, Halo, etc)
+    //TODO: Ingame-Debug-Window
 
     //GRAPHICS: Cave and Sky
     //GRAPHICS: New Outfits (Sci Fi, Visor, Mundschutz, Devine Robe, Halo)

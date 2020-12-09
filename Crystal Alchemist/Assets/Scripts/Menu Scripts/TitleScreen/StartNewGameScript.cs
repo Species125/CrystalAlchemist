@@ -11,7 +11,7 @@ public class StartNewGameScript : MonoBehaviour
 
     public void StartNewGame()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
         this.saveGame.teleportList.SetNextTeleport(this.startTeleport);
         SceneManager.LoadSceneAsync(this.saveGame.teleportList.GetNextTeleport().scene);
     }

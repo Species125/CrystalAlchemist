@@ -29,7 +29,7 @@ public class MenuBehaviour : MonoBehaviour
 
         if (MasterManager.globalValues.openedMenues.Count == 0)
         {
-            Cursor.visible = true;
+            //Cursor.visible = true;
 
             MasterManager.globalValues.lastState = this.playerValues.currentState;
             GameEvents.current.DoChangeState(CharacterState.inMenu);
@@ -52,7 +52,7 @@ public class MenuBehaviour : MonoBehaviour
 
         if (MasterManager.globalValues.openedMenues.Count <= 0)
         {
-            Cursor.visible = false;
+            //Cursor.visible = false;
 
             GameEvents.current.DoChangeState(MasterManager.globalValues.lastState);
             GameEvents.current.DoMenuOverlay(false);

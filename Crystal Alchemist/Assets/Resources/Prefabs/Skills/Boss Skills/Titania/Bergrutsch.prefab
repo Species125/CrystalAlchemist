@@ -125,8 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
   spriteRenderer: {fileID: 0}
   myRigidbody: {fileID: 1642011449708259747}
   animator: {fileID: 3431251335946046937}
@@ -406,9 +404,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1054636593586427926, guid: 39e2662626ef9384b9508882562f8aa4,
         type: 3}
-      propertyPath: collider
+      propertyPath: size
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054636593586427926, guid: 39e2662626ef9384b9508882562f8aa4,
+        type: 3}
+      propertyPath: skill
       value: 
-      objectReference: {fileID: 8287999260095456675}
+      objectReference: {fileID: 6858768122281854811}
     - target: {fileID: 1054636593586427926, guid: 39e2662626ef9384b9508882562f8aa4,
         type: 3}
       propertyPath: border
@@ -421,14 +424,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1054636593586427926, guid: 39e2662626ef9384b9508882562f8aa4,
         type: 3}
-      propertyPath: skill
+      propertyPath: collider
       value: 
-      objectReference: {fileID: 6858768122281854811}
-    - target: {fileID: 1054636593586427926, guid: 39e2662626ef9384b9508882562f8aa4,
-        type: 3}
-      propertyPath: size
-      value: 0.25
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8287999260095456675}
     - target: {fileID: 2878274079780272527, guid: 39e2662626ef9384b9508882562f8aa4,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -443,6 +441,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Circle Indicator
+      objectReference: {fileID: 0}
+    - target: {fileID: 8265211192140009918, guid: 39e2662626ef9384b9508882562f8aa4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8265211192140009918, guid: 39e2662626ef9384b9508882562f8aa4,
         type: 3}
@@ -461,6 +464,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8265211192140009918, guid: 39e2662626ef9384b9508882562f8aa4,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8265211192140009918, guid: 39e2662626ef9384b9508882562f8aa4,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -473,16 +481,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8265211192140009918, guid: 39e2662626ef9384b9508882562f8aa4,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8265211192140009918, guid: 39e2662626ef9384b9508882562f8aa4,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8265211192140009918, guid: 39e2662626ef9384b9508882562f8aa4,
         type: 3}

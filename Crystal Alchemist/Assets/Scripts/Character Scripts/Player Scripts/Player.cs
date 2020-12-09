@@ -111,6 +111,19 @@ public class Player : Character
         GameEvents.current.OnEnoughCurrency -= this.HasEnoughCurrency;
     }
 
+    public void GodMode(bool active)
+    {
+        if (active)
+        {
+            this.values.life = this.values.maxLife;
+            this.values.mana = this.values.maxMana;
+            RemoveAllStatusEffects();
+        }
+
+        SetInvincible(active);
+        setCannotDie(active);
+    }
+
     public override void SpawnOut()
     {
         base.SpawnOut();        

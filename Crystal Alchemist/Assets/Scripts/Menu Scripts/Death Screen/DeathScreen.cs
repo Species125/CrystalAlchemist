@@ -62,10 +62,6 @@ public class DeathScreen : MonoBehaviour
     [SerializeField]
     private float cursorDelay = 2f;
 
-    [BoxGroup("Time")]
-    [SerializeField]
-    private float inputDelay = 3f;
-
     private string currentText;
     private string fullText;
     private bool skip = false;

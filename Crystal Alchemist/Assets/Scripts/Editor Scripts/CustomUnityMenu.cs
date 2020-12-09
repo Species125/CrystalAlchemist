@@ -10,7 +10,42 @@ using UnityEditor;
 public class CustomUnityMenu : MonoBehaviour
 {
 #if UNITY_EDITOR
-    [MenuItem("Alchemist Menu/Set Cursor To Empty Buttons")]
+
+    private static bool toggleGodMode = false;
+
+    [MenuItem("Alchemist Menu/Cheats/MenuDialogBox -> YES!")]
+    public static void OverwriteMenuDialogBox()
+    {
+        MenuDialogBox box = FindObjectOfType<MenuDialogBox>(true);
+        box.Yes();
+    }
+
+    [MenuItem("Alchemist Menu/Cheats/Kill all Enemies")]
+    public static void KillAllEnemies()
+    {
+        AI[] enemies = FindObjectsOfType<AI>(true);
+        foreach (AI enemy in enemies) enemy.KillIt();
+    }
+
+    [MenuItem("Alchemist Menu/Cheats/Toggle Slow Motion")]
+    public static void ToggleSlowMo()
+    {
+        if (Time.timeScale == 1) Time.timeScale = 0.5f;
+        else Time.timeScale = 1f;
+    }
+
+    [MenuItem("Alchemist Menu/Cheats/Toggle God Mode")]
+    public static void GodMode()
+    {
+        Player player = FindObjectOfType<Player>(true);
+
+        if (!toggleGodMode) toggleGodMode = true;
+        else toggleGodMode = false;
+
+        player.GodMode(toggleGodMode);
+    }
+
+    [MenuItem("Alchemist Menu/Misc/Set Cursor To Empty Buttons")]
     public static void SetCursor()
     {
         ButtonExtension[] buttons = FindObjectsOfType<ButtonExtension>(true);
@@ -19,6 +54,7 @@ public class CustomUnityMenu : MonoBehaviour
         EditorSceneManager.SaveScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
     }
 
+    /*
     private static void SetLocalisation()
     {
         List<StatusEffect> temp = new List<StatusEffect>();
@@ -35,7 +71,7 @@ public class CustomUnityMenu : MonoBehaviour
         Debug.Log("Done");
     }
 
-    /*
+    
     private static void UpdateLocalisation(LocalisationValue value, string key, string german, string english, LocalisationFileType type)
     {
         List<string> temp = LocalisationSystem.GetLines(type);
@@ -47,6 +83,6 @@ public class CustomUnityMenu : MonoBehaviour
 
         if (!temp.Contains(line)) LocalisationSystem.AddLine(type, line);
     }*/
-    
+
 #endif
 }
