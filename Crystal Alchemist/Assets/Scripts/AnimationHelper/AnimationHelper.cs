@@ -26,5 +26,20 @@ public class AnimationHelper : MonoBehaviour
         if (this.mainObject.GetComponent<Treasure>() != null) this.mainObject.GetComponent<Treasure>().SetEnabled(false);
     }
 
+    public void PlayTreasureSoundEffect()
+    {
+        if (this.mainObject.GetComponent<Treasure>() != null) this.mainObject.GetComponent<Treasure>().PlayTreasureSoundEffect();
+    }
+
+    public void PlayTreasureMusic()
+    {
+        if (this.mainObject.GetComponent<Treasure>() != null) this.mainObject.GetComponent<Treasure>().PlayTreasureMusic();
+    }
+
+    public void ShowTreasureItem()
+    {
+        if (this.mainObject.GetComponent<Treasure>() != null) this.mainObject.GetComponent<Treasure>().ShowTreasureItem();
+    }
+
     public void ResetRotation() => this.transform.rotation = Quaternion.identity;
 }

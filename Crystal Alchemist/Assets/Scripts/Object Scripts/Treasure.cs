@@ -16,11 +16,6 @@ public class Treasure : Rewardable
     [SerializeField]
     private Animator anim;
 
-    [BoxGroup("Mandatory")]
-    [Required]
-    [SerializeField]
-    private GameObject showItem;
-
     [BoxGroup("Treasure Options")]
     [SerializeField]
     private AudioClip treasureMusic;
@@ -63,7 +58,7 @@ public class Treasure : Rewardable
 
     #endregion
 
-    private bool treasureEnabled = true;
+    private bool canLoot = true;
 
     #region Start Funktionen
 
@@ -73,8 +68,7 @@ public class Treasure : Rewardable
         this.setLoot();
         this.shopPrice.Initialize(this.costs);
 
-        if (this.itemDrop == null 
-        && this.treasureType == TreasureType.normal) ChangeTreasureState(true);
+        ClearTreasure();
 
         AnalyseInfo analyse = Instantiate(MasterManager.analyseInfo, this.transform.position, Quaternion.identity, this.transform);
         analyse.SetTarget(this.gameObject);       
@@ -86,28 +80,31 @@ public class Treasure : Rewardable
         else this.itemDrop = this.reward.GetItemDrop();
     }
 
+    private void ClearTreasure()
+    {
+        if (this.itemDrop == null
+        && this.treasureType == TreasureType.normal)
+        {
+            SetEnabled(false);
+            AnimatorUtil.SetAnimatorParameter(this.anim, "Empty");
+        }
+    }
+
     #endregion
 
 
     #region Update Funktion
 
-    public override void DoOnUpdate()
-    {
-        if (!this.treasureEnabled
-            && ((this.player != null && this.player.values.currentState == CharacterState.interact)
-              || this.player == null))
-        {
-            closeChest(); //close Chest
-        }
-    }
-
     public override void DoOnSubmit()
     {
-        if (this.treasureEnabled)
+        if (!canLoot) return;
+
+        if (this.player.canUseIt(this.costs))
         {
-            if (this.player.canUseIt(this.costs)) openChest(); //open Chest
-            else ShowDialog(DialogTextTrigger.failed);
+            this.player.reduceResource(this.costs);
+            AnimatorUtil.SetAnimatorParameter(this.anim, "isOpened", true);
         }
+        else ShowDialog(DialogTextTrigger.failed);
     }
 
     #endregion
@@ -115,71 +112,41 @@ public class Treasure : Rewardable
 
     #region Treasure Chest Funktionen (open, show Item)
 
-    private void openChest()
-    {
-        this.player.reduceResource(this.costs);
-        ChangeTreasureState(true);
 
-        if (this.soundEffect != null && this.itemDrop != null)
-        {
-            //Zeige Item
-            this.showTreasureItem();
-            ShowDialog(DialogTextTrigger.success, this.itemDrop.stats);
-        }
-        else
-        {
-            //Kein Item drin
-            ShowDialog(DialogTextTrigger.empty);
-        }
+    public void SetEnabled(bool enable)
+    {
+        //Animator Events
+        this.canLoot = enable;
+
+        if (PlayerCanInteract() && enable) ShowContextClue(true);
+        else ShowContextClue(false);
     }
 
-    private void closeChest()
+    public void PlayTreasureSoundEffect()
     {
-        //Close when opened
-        Destroy(this.itemDrop);        
+        if(this.soundEffect) AudioUtil.playSoundEffect(this.gameObject, this.soundEffect);
+    }
+
+    public void PlayTreasureMusic()
+    {
+        if (this.treasureMusic && this.itemDrop)
+            MusicEvents.current.PlayMusicAndResume(this.treasureMusic, true, this.fadeOld, this.fadeNew);
+    }
+
+    public void ShowTreasureItem()
+    {
+        if (this.itemDrop)
+        {
+            Vector2 position = (Vector2)this.transform.position + new Vector2(0, 1);
+            this.itemDrop.Instantiate(position, true);
+        }
 
         if (this.treasureType == TreasureType.lootbox)
         {
             AnimatorUtil.SetAnimatorParameter(this.anim, "isOpened", false);
             this.setLoot();
         }
-
-        //Verstecke gezeigtes Item wieder
-        for (int i = 0; i < this.showItem.transform.childCount; i++)
-        {
-            Destroy(this.showItem.transform.GetChild(i).gameObject);
-        }
-
-        this.showItem.SetActive(false);
-    }
-
-    private void ChangeTreasureState(bool openChest)
-    {
-        AudioUtil.playSoundEffect(this.gameObject, this.soundEffect);
-        AnimatorUtil.SetAnimatorParameter(this.anim, "isOpened", openChest);       
-    }
-
-    public void SetEnabled(bool enable)
-    {
-        //Animator Events
-        this.treasureEnabled = enable;
-
-        if (PlayerCanInteract() && enable) ShowContextClue(true);
-        else ShowContextClue(false);
-    }
-
-    public void showTreasureItem()
-    {
-        if(this.treasureMusic != null) MusicEvents.current.PlayMusicAndResume(this.treasureMusic, true, this.fadeOld, this.fadeNew);
-
-        //Item instanziieren und der Liste zurück geben und das Item anzeigen            
-        this.showItem.SetActive(true);
-
-        Collectable collectable = this.itemDrop.Instantiate(this.showItem.transform.position);
-        collectable.SetAsTreasureItem(this.showItem.transform);
-
-        GameEvents.current.DoCollect(this.itemDrop.stats);
-    }
+    }    
 
     #endregion
 }

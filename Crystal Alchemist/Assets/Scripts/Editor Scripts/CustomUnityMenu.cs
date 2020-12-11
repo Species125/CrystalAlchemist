@@ -30,13 +30,15 @@ public class CustomUnityMenu : MonoBehaviour
     [MenuItem("Alchemist Menu/Cheats/Toggle Slow Motion")]
     public static void ToggleSlowMo()
     {
-        if (Time.timeScale == 1) Time.timeScale = 0.5f;
+        if (Time.timeScale == 1) Time.timeScale = 0.25f;
         else Time.timeScale = 1f;
     }
 
+    /*
     [MenuItem("Alchemist Menu/Cheats/Toggle God Mode")]
     public static void GodMode()
     {
+      //WHY?
         Player player = FindObjectOfType<Player>(true);
 
         if (!toggleGodMode) toggleGodMode = true;
@@ -44,6 +46,7 @@ public class CustomUnityMenu : MonoBehaviour
 
         player.GodMode(toggleGodMode);
     }
+    */
 
     [MenuItem("Alchemist Menu/Misc/Set Cursor To Empty Buttons")]
     public static void SetCursor()

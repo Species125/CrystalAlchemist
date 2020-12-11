@@ -18,13 +18,17 @@ public class DiscordHandler : MonoBehaviour
     [SerializeField]
     private string applicationId = "786040495158853673";
 
+    [SerializeField]
+    private bool debug = false;
+
     private Discord.Discord discord;
     private ActivityManager activityManager;
 
 
     private void Start()
     {
-        if(!Application.isEditor) Init();
+        if(!Application.isEditor) 
+        Init();
     }
 
     public void Init()
@@ -33,7 +37,7 @@ public class DiscordHandler : MonoBehaviour
         {
             discord = new Discord.Discord(long.Parse(applicationId), (long)CreateFlags.NoRequireDiscord);
             activityManager = discord.GetActivityManager();
-            UpdateActivity();
+            InvokeRepeating("UpdateActivity", 0.3f, 10f);
         }
         catch
         { }
@@ -50,7 +54,7 @@ public class DiscordHandler : MonoBehaviour
                 }
         };
 
-        /*
+        
         if (details)
         {
             activity = new Activity
@@ -63,15 +67,20 @@ public class DiscordHandler : MonoBehaviour
                     LargeText = "Crystal Alchemist"
                 }
             };
-        }*/
+        }
 
-        activityManager.UpdateActivity(activity, result =>
+        activityManager.UpdateActivity(activity, Callback);
+    }
+
+    private void Callback(Result result)
+    {
+        if (debug)
         {
             if (result != Result.Ok)
                 Debug.LogError("Error from discord (" + result.ToString() + ")");
             else
                 Debug.Log("Discord Result = " + result.ToString());
-        });
+        }
     }
 
     private void Update()
@@ -80,16 +89,4 @@ public class DiscordHandler : MonoBehaviour
 
         discord.RunCallbacks();
     }
-
-    /*
-    private void OnApplicationQuit()
-    {
-        if (discord == null) return;
-
-        activityManager.ClearActivity((result) =>
-            {
-                if (result == Discord.Result.Ok) Debug.Log("Success!");
-                else Debug.LogError("Failed");
-            });
-    }*/
 }

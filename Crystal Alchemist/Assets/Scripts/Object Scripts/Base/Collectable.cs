@@ -73,6 +73,7 @@ public class Collectable : MonoBehaviour
 
     private void Start()
     {
+        Bounce();
         setItemStats();
 
         string itemName = this.itemDrop.name;
@@ -119,7 +120,9 @@ public class Collectable : MonoBehaviour
         this.itemSprite.DOColor(Color.white, delay);
     }
 
-    private void OnEnable()
+    private void OnEnable() => Bounce();
+
+    private void Bounce()
     {
         if (this.showEffectOnEnable && this.bounceAnimation != null) this.bounceAnimation.Bounce();
     }
@@ -162,6 +165,7 @@ public class Collectable : MonoBehaviour
         }
     }
 
+    /*
     public void SetAsTreasureItem(Transform parent)
     {
         this.showEffectOnDisable = false;
@@ -171,7 +175,7 @@ public class Collectable : MonoBehaviour
         if (this.shadowRenderer != null) this.shadowRenderer.enabled = false;
         this.GetComponent<BoxCollider2D>().enabled = false;
         this.enabled = false;
-    }
+    }*/
 
     public void DestroyIt()
     {

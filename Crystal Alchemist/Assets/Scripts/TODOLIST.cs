@@ -4,8 +4,7 @@ public class TODOLIST : MonoBehaviour
 {
     //TODO (0.2.5.8)
     //REWORK: Soundeffects and Graphics
-    //REWORK: Replace Trees
-    //REWORK: Treasure Chests
+    //REWORK: Treasure Bounce
     //REWORK: Item with DialogBox
     //REWORK: Charakter Creation (Wings, Halo, etc)
     //TODO: Ingame-Debug-Window
@@ -80,4 +79,93 @@ public class TODOLIST : MonoBehaviour
     //Multiplayer (Mirror?)
     //Struct vs Class (int? ref)
     //Documentation Update (How did I... , usefull links)
+
+    /*
+[BoxGroup("Mandatory")]
+[Required]
+[SerializeField]
+private GameObject showItem;
+*/
+
+    /*
+public override void DoOnUpdate()
+{
+
+    if (!this.treasureEnabled
+        && ((this.player != null && this.player.values.currentState == CharacterState.interact)
+          || this.player == null))
+    {
+        closeChest(); //close Chest
+    }
+}
+*/
+
+    /*
+if (this.treasureEnabled)
+{
+    if (this.player.canUseIt(this.costs)) openChest(); //open Chest
+    else ShowDialog(DialogTextTrigger.failed);
+}*/
+
+    /*
+    private void openChest()
+    {
+
+    if (this.itemDrop != null)
+    {
+        //Zeige Item
+        this.showTreasureItem();
+        ShowDialog(DialogTextTrigger.success, this.itemDrop.stats);
+    }
+    else
+    {
+        //Kein Item drin
+        ShowDialog(DialogTextTrigger.empty);
+    }
+    }
+
+    private void closeChest()
+    {
+        //Close when opened
+        Destroy(this.itemDrop);        
+
+        if (this.treasureType == TreasureType.lootbox)
+        {
+            AnimatorUtil.SetAnimatorParameter(this.anim, "isOpened", false);
+            this.setLoot();
+        }
+
+        //Verstecke gezeigtes Item wieder
+        for (int i = 0; i < this.showItem.transform.childCount; i++)
+        {
+            Destroy(this.showItem.transform.GetChild(i).gameObject);
+        }
+
+        this.showItem.SetActive(false);
+    }*/
+
+
+
+    /*
+    public void SetEnabled(bool enable)
+    {
+        //Animator Events
+        this.treasureEnabled = enable;
+
+        if (PlayerCanInteract() && enable) ShowContextClue(true);
+        else ShowContextClue(false);
+    }
+
+    public void showTreasureItem()
+    {
+        if(this.treasureMusic != null) MusicEvents.current.PlayMusicAndResume(this.treasureMusic, true, this.fadeOld, this.fadeNew);
+
+        //Item instanziieren und der Liste zurück geben und das Item anzeigen            
+        this.showItem.SetActive(true);
+
+        Collectable collectable = this.itemDrop.Instantiate(this.showItem.transform.position);
+        collectable.SetAsTreasureItem(this.showItem.transform);
+
+        GameEvents.current.DoCollect(this.itemDrop.stats);
+    }*/
 }

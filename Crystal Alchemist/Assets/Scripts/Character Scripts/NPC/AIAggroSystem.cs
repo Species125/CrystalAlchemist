@@ -84,7 +84,7 @@ public class AIAggroSystem : MonoBehaviour
     {
         if (target == null
             || !target.gameObject.activeInHierarchy
-            || target.values.isInvincible
+            || target.values.isInvincible  //WHY?
             || target.values.currentState == CharacterState.dead
             || target.values.currentState == CharacterState.respawning) return false;
 

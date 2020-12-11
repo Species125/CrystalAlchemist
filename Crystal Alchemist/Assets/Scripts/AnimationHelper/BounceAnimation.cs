@@ -8,6 +8,7 @@ public class BounceAnimation : MonoBehaviour
     private float ySpeed;
     private float gravity;
     private int bounces;
+    private bool alreadyBouncing = false;
     //private Animator anim;
 
     //private void Start() => this.anim = this.GetComponent<Animator>();
@@ -15,12 +16,14 @@ public class BounceAnimation : MonoBehaviour
     [Button]
     public void Bounce()
     {
+        if (alreadyBouncing) return;
         //this.anim.enabled = false;
         this.yValue = 0;
         this.ySpeed = 0.1f;
         this.bounces = 0;
         this.gravity = 0.005f;
         StartCoroutine(bounceCo());
+        alreadyBouncing = true;
     }
 
     private IEnumerator bounceCo()

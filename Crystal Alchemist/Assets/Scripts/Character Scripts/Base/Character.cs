@@ -465,11 +465,6 @@ public class Character : MonoBehaviour
         else DestroyItWithoutDrop();
     }
 
-
-
-
-
-
     public void DestroyIt()
     {
         DropItem();
