@@ -4,10 +4,11 @@ public class TODOLIST : MonoBehaviour
 {
     //TODO (0.2.5.8)
     //REWORK: Soundeffects and Graphics
-    //REWORK: Treasure Bounce
-    //REWORK: Item with DialogBox
     //REWORK: Charakter Creation (Wings, Halo, etc)
     //TODO: Ingame-Debug-Window
+    //TODO: Multiloot (lootbox?)
+    //TODO: Progress (Dialogs, Timed Progress, Items)
+    //TODO: new Map
 
     //GRAPHICS: Cave and Sky
     //GRAPHICS: New Outfits (Sci Fi, Visor, Mundschutz, Devine Robe, Halo)
@@ -79,6 +80,18 @@ public class TODOLIST : MonoBehaviour
     //Multiplayer (Mirror?)
     //Struct vs Class (int? ref)
     //Documentation Update (How did I... , usefull links)
+
+    /*
+public void SetAsTreasureItem(Transform parent)
+{
+    this.showEffectOnDisable = false;
+    this.showEffectOnEnable = false;
+    this.transform.parent = parent;
+    this.transform.position = parent.position;
+    if (this.shadowRenderer != null) this.shadowRenderer.enabled = false;
+    this.GetComponent<BoxCollider2D>().enabled = false;
+    this.enabled = false;
+}*/
 
     /*
 [BoxGroup("Mandatory")]

@@ -18,6 +18,7 @@ public class BounceAnimation : MonoBehaviour
     {
         if (alreadyBouncing) return;
         //this.anim.enabled = false;
+
         this.yValue = 0;
         this.ySpeed = 0.1f;
         this.bounces = 0;
@@ -45,5 +46,10 @@ public class BounceAnimation : MonoBehaviour
         }
         //this.anim.enabled = true;
         this.transform.localPosition = Vector2.zero;
+    }
+
+    private void OnDisable()
+    {
+        this.alreadyBouncing = false;
     }
 }

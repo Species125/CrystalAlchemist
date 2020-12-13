@@ -211,7 +211,7 @@ public class Character : MonoBehaviour
 
     public void DropItem()
     {
-        if (this.values.itemDrop != null) this.values.itemDrop.Instantiate(this.transform.position, true);
+        if (this.values.itemDrop != null) this.values.itemDrop.Instantiate(this.transform.position, false);
     }
 
     public void DropItem(GameObject position)

@@ -124,22 +124,18 @@ public class Treasure : Rewardable
 
     public void PlayTreasureSoundEffect()
     {
-        if(this.soundEffect) AudioUtil.playSoundEffect(this.gameObject, this.soundEffect);
+        if(this.soundEffect != null) AudioUtil.playSoundEffect(this.gameObject, this.soundEffect);
     }
 
     public void PlayTreasureMusic()
     {
-        if (this.treasureMusic && this.itemDrop)
+        if (this.treasureMusic != null && this.itemDrop != null)
             MusicEvents.current.PlayMusicAndResume(this.treasureMusic, true, this.fadeOld, this.fadeNew);
     }
 
     public void ShowTreasureItem()
     {
-        if (this.itemDrop)
-        {
-            Vector2 position = (Vector2)this.transform.position + new Vector2(0, 1);
-            this.itemDrop.Instantiate(position, true);
-        }
+        if (this.itemDrop != null) this.itemDrop.Instantiate(this.transform.position, true, this.player.GetGroundPosition());        
 
         if (this.treasureType == TreasureType.lootbox)
         {

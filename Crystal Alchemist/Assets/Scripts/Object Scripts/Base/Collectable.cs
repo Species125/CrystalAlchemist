@@ -4,6 +4,7 @@ using AssetIcons;
 using DG.Tweening;
 using System.Collections;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Collectable : MonoBehaviour
 {
     [Required]
@@ -46,6 +47,10 @@ public class Collectable : MonoBehaviour
     private float blinkElapsed;
     private float blinkSpeed = 0.1f;
 
+    private Rigidbody2D myRigidbody;
+    private bool canMoveBounce = false;
+    private Vector2 direction;
+
     [AssetIcon]
     private Sprite GetSprite()
     {
@@ -67,12 +72,22 @@ public class Collectable : MonoBehaviour
         this.itemStats = temp;
     }
 
-    public void SetBounce(bool value) => this.showEffectOnEnable = value;
+    public void SetBounce(bool value, Vector2 direction)
+    {
+        this.showEffectOnEnable = value;
+        this.direction = direction;
+    }
+
+    public ItemStats GetStats()
+    {
+        return this.itemStats;
+    }
 
     public void SetSmoke(bool value) => this.showEffectOnDisable = value;
 
     private void Start()
     {
+        this.myRigidbody = this.GetComponent<Rigidbody2D>();
         Bounce();
         setItemStats();
 
@@ -124,7 +139,13 @@ public class Collectable : MonoBehaviour
 
     private void Bounce()
     {
-        if (this.showEffectOnEnable && this.bounceAnimation != null) this.bounceAnimation.Bounce();
+        if (this.showEffectOnEnable && this.bounceAnimation != null)
+        {
+            this.bounceAnimation.Bounce();
+
+            Vector2 targetPosition = (Vector2)this.transform.position + (this.direction * 1.5f);
+            this.GetComponent<Rigidbody2D>().DOMove(targetPosition, 1.75f);            
+        }
     }
 
     [Button]
@@ -154,28 +175,21 @@ public class Collectable : MonoBehaviour
         if (!character.isTrigger)
         {
             Player player = character.GetComponent<Player>();
-            if (player != null)
-            {
-                this.showEffectOnDisable = false;
-                GameEvents.current.DoCollect(this.itemStats);
-                playSounds();
-                DestroyIt();
-                Instantiate(MasterManager.itemCollectGlitter, this.transform.position, Quaternion.identity);
-            }
+            if (player != null) CollectIt(player);            
         }
     }
 
-    /*
-    public void SetAsTreasureItem(Transform parent)
+    private void CollectIt(Player player)
     {
+        if (this.GetComponent<DialogSystem>() != null) this.GetComponent<DialogSystem>().showDialog(player, this);
+
         this.showEffectOnDisable = false;
-        this.showEffectOnEnable = false;
-        this.transform.parent = parent;
-        this.transform.position = parent.position;
-        if (this.shadowRenderer != null) this.shadowRenderer.enabled = false;
-        this.GetComponent<BoxCollider2D>().enabled = false;
-        this.enabled = false;
-    }*/
+        GameEvents.current.DoCollect(this.itemStats);
+
+        playSounds();
+        DestroyIt();
+        Instantiate(MasterManager.itemCollectGlitter, this.transform.position, Quaternion.identity);        
+    }
 
     public void DestroyIt()
     {

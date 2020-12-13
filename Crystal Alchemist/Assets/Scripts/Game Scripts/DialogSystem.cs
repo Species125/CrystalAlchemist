@@ -94,6 +94,11 @@ public class DialogSystem : MonoBehaviour
     public void SetDialogFailed() => this.internalTrigger = DialogTextTrigger.failed;
 
 
+    public void showDialog(Player player, Collectable collectable)
+    {
+        showDialog(player, null, DialogTextTrigger.none, collectable.GetStats());
+    }
+
     public void showDialog(Player player, Interactable interactable)
     {
         showDialog(player, interactable, null);
@@ -132,7 +137,14 @@ public class DialogSystem : MonoBehaviour
         {
             if (text.trigger == this.internalTrigger)
             {
-                string result = FormatUtil.GetLocalisedText(text.ID, text.type, new List<object>() { player, interactable, interactable.costs, loot });
+                List<object> list = new List<object>();
+
+                if (player != null) list.Add(player);
+                if (interactable != null) list.Add(interactable);
+                if (interactable != null && interactable.costs != null) list.Add(interactable.costs);
+                if (loot != null) list.Add(loot);
+
+                string result = FormatUtil.GetLocalisedText(text.ID, text.type, list);
                 ShowDialogBox(player, result, text.eventOnClose);
                 break;
             }

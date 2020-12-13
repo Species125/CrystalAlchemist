@@ -259,7 +259,7 @@ public class RespawnSystem : MonoBehaviour
         //Prevent Effect on Initialize
         if (gameObject.GetComponent<Collectable>() != null)
         {
-            gameObject.GetComponent<Collectable>().SetBounce(!this.isInit);
+            gameObject.GetComponent<Collectable>().SetBounce(!this.isInit, Vector2.zero);
             gameObject.GetComponent<Collectable>().SetSmoke(!this.isInit);
         }
         else if (gameObject.GetComponent<Interactable>() != null)
