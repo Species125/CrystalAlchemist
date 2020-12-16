@@ -19,6 +19,7 @@ MonoBehaviour:
     duration: 4
     nextPhase: {fileID: 0}
     animations: 
+    isTrigger: 0
     ability: {fileID: 11400000, guid: e78b12c317341e44aa8aa44939ee1b01, type: 2}
     overrideCastTime: 1
     castTime: 4
@@ -27,18 +28,23 @@ MonoBehaviour:
     overrideCooldown: 0
     cooldown: 0
     repeat: 0
+    keepCast: 0
     amount: 1
     delay: 0
-    sequence: {fileID: 0}
     value: 0
     signal: {fileID: 0}
     wait: 0
-  - type: 8
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
+  - type: 7
     position: {x: 0, y: 0}
     translationID: 
     duration: 4
     nextPhase: {fileID: 0}
     animations: 
+    isTrigger: 0
     ability: {fileID: 0}
     overrideCastTime: 0
     castTime: 0
@@ -47,11 +53,15 @@ MonoBehaviour:
     overrideCooldown: 0
     cooldown: 0
     repeat: 0
+    keepCast: 0
     amount: 1
     delay: 0
-    sequence: {fileID: 0}
     value: 0
     signal: {fileID: 0}
     wait: 0
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
   loopActions: 0
   events: []

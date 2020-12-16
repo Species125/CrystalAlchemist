@@ -31,15 +31,13 @@ MonoBehaviour:
     keepCast: 1
     amount: 10
     delay: 0
-    sequence: {fileID: 0}
     value: 0
     signal: {fileID: 0}
     wait: 2
     mode: 0
     fadeIn: 0
     fadeOut: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
+    music: {fileID: 0}
   - type: 2
     position: {x: 0, y: 0}
     translationID: 
@@ -58,15 +56,13 @@ MonoBehaviour:
     keepCast: 0
     amount: 1
     delay: 0
-    sequence: {fileID: 0}
     value: 0
     signal: {fileID: 0}
     wait: 0
     mode: 0
     fadeIn: 0
     fadeOut: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
+    music: {fileID: 0}
   loopActions: 1
   events:
   - triggers:
@@ -75,7 +71,7 @@ MonoBehaviour:
       life: 0
       maxLoops: 0
     actions:
-    - type: 5
+    - type: 4
       position: {x: 0, y: 0}
       translationID: 
       duration: 4
@@ -93,15 +89,13 @@ MonoBehaviour:
       keepCast: 0
       amount: 1
       delay: 0
-      sequence: {fileID: 0}
       value: 0
       signal: {fileID: 0}
       wait: 0
       mode: 0
       fadeIn: 0
       fadeOut: 0
-      start: {fileID: 0}
-      loop: {fileID: 0}
+      music: {fileID: 0}
     repeatEvent: 1
     interruptCurrentAction: 1
     eventCooldown: 0

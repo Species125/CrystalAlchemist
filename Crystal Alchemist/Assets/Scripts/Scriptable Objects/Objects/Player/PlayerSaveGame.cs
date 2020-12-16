@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
-using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Game/Player/Save Game")]
 public class PlayerSaveGame : ScriptableObject

@@ -290,9 +290,6 @@ GameObject:
   - component: {fileID: 1198186388}
   - component: {fileID: 8261187841884981235}
   - component: {fileID: 4372448001566058603}
-  - component: {fileID: 2168549126530767496}
-  - component: {fileID: 6321083283769194488}
-  - component: {fileID: 3383005342062246455}
   m_Layer: 11
   m_Name: Blob
   m_TagString: Untagged
@@ -351,8 +348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
   stats: {fileID: 11400000, guid: 4296eda28d32ab54491ee3379dc99977, type: 2}
   myRigidbody: {fileID: 2246077131478480996}
   animator: {fileID: 929082027}
@@ -381,8 +376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f5ecf49a5ed0c4784502d8b6f90d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
   character: {fileID: 0}
   startPhase: {fileID: 11400000, guid: c11053e6988188347bc5e3d9a60d4904, type: 2}
   startImmediately: 1
@@ -498,56 +491,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   graphType: 0
   updateInterval: 0.2
---- !u!114 &2168549126530767496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2246077131478480992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  serverOnly: 0
-  m_AssetId: 
-  hasSpawned: 0
---- !u!114 &6321083283769194488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2246077131478480992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 0
-  localPositionSensitivity: 0.01
-  localRotationSensitivity: 0.01
-  localScaleSensitivity: 0.01
---- !u!114 &3383005342062246455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2246077131478480992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 0
-  animator: {fileID: 929082027}
 --- !u!1 &6674156776865872386
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +561,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -633,6 +581,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -645,16 +598,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
         type: 3}

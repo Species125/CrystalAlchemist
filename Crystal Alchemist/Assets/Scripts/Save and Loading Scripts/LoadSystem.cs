@@ -30,7 +30,21 @@ public class LoadSystem
     private static void LoadProgress(PlayerData data, PlayerGameProgress progress)
     {
         progress.Clear();
-        progress.SetPermanent(data.progress);
+
+        try
+        {
+            foreach (string[] elem in data.progress)
+            {
+                string location = elem[0];
+                string key = elem[1];
+                UDateTime date = new UDateTime(elem[2]);
+                UTimeSpan span = new UTimeSpan(elem[3]);
+                bool parse = Enum.TryParse(elem[4], out ProgressType type);
+
+                if (parse) progress.AddProgress(location, key, type, date, span);
+            }
+        }
+        catch { }
     }
 
     private static void LoadTeleportList(PlayerData data, PlayerTeleportList list)

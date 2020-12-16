@@ -53,6 +53,7 @@ public class Player : Character
     {
         base.Start();
         this.presetSignal.Raise();
+        this.saveGame.progress.Initialize();
 
         /*if (this.hasAuthority) this.gameObject.name = "Player (Local)";
         else this.gameObject.name = "Player (Other)";

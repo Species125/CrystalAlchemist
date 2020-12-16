@@ -337,17 +337,6 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a1aed803-ee79-461c-982c-c4a94d1eb6a7"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Submit"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""d71d11c0-3bf7-4d18-a61d-5371a301fb1e"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",

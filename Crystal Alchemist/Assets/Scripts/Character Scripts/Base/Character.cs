@@ -561,7 +561,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void PlayerCastingAnimation(bool value)
+    public void PlayCastingAnimation(bool value)
     {
         AnimatorUtil.SetAnimatorParameter(this.animator, "Casting", value);
     }

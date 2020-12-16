@@ -10,9 +10,9 @@ public class AnalyseInfo : MonoBehaviour
 
     private GameObject target;
 
-    private void Start()
+    private void Awake()
     {
-        this.marker.GetComponent<AnalyseUI>()?.setTarget(this.target);
+        this.marker.gameObject.SetActive(this.isActive.GetValue());
     }
 
     private void LateUpdate()

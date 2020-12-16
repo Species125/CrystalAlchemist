@@ -21,7 +21,7 @@ public class PlayerData
     public string race;
     public List<string[]> colorGroups = new List<string[]>();
     public List<string[]> characterParts = new List<string[]>();
-    public List<string> progress = new List<string>();
+    public List<string[]> progress = new List<string[]>();
 
     public List<string> teleportPoints = new List<string>();
     public string startTeleport;
@@ -103,7 +103,7 @@ public class PlayerData
 
     private void SetProgress(PlayerGameProgress progress)
     {
-        this.progress.AddRange(progress.GetPermanent());
+        this.progress = progress.GetProgressRaw();
     }
 
     private void SetTeleportList(PlayerTeleportList list)

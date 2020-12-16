@@ -288,7 +288,7 @@ public class Ability : ScriptableObject
 
     public void ShowCastingAnimation()
     {
-        this.sender.PlayerCastingAnimation(true);
+        this.sender.PlayCastingAnimation(true);
 
         if (this.castAnimation != null && this.activeAnimation == null)
         {
@@ -299,7 +299,7 @@ public class Ability : ScriptableObject
 
     public void HideCastingAnimation()
     {
-        this.sender.PlayerCastingAnimation(false);
+        this.sender.PlayCastingAnimation(false);
 
         if (this.activeAnimation != null)
         {

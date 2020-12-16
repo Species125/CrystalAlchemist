@@ -28,6 +28,11 @@ public class AICombat : CharacterCombat
         this.npc = this.character.GetComponent<AI>();
     }
 
+    public void SkipPhase()
+    {
+        this.activePhase.SkipPhase();
+    }
+
     private void OnEnable()
     {
         if (this.startPhase != null && this.startImmediately) StartPhase();

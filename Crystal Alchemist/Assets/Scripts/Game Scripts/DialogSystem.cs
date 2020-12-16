@@ -81,6 +81,11 @@ public class DialogSystem : MonoBehaviour
     [Required]
     private EventValue eventValue;
 
+    [HideLabel]
+    [SerializeField]
+    private ProgressValue progress;
+
+
     private DialogTextTrigger internalTrigger = DialogTextTrigger.none;
 
     public void SetDialogTrigger(DialogTextTrigger trigger) => this.internalTrigger = trigger;
@@ -121,16 +126,6 @@ public class DialogSystem : MonoBehaviour
         show(player, interactable, loot);
     }
 
-    private void ShowDialogBox(Player player, string text, UnityEvent onClose)
-    {
-        if (player.values.currentState != CharacterState.inDialog)
-        {
-            this.textValue.SetValue(text);
-            this.eventValue.SetValue(onClose);
-            MenuEvents.current.OpenDialogBox();
-        }
-    }
-
     private void show(Player player, Interactable interactable, ItemStats loot)
     {
         foreach (DialogText text in this.texts)
@@ -148,6 +143,18 @@ public class DialogSystem : MonoBehaviour
                 ShowDialogBox(player, result, text.eventOnClose);
                 break;
             }
+        }
+    }
+
+    private void ShowDialogBox(Player player, string text, UnityEvent onClose)
+    {
+        if (!this.progress.ContainsProgress()
+            && player.values.currentState != CharacterState.inDialog)
+        {
+            this.textValue.SetValue(text);
+            this.eventValue.SetValue(onClose);
+            MenuEvents.current.OpenDialogBox();
+            this.progress.AddProgress();
         }
     }
 }

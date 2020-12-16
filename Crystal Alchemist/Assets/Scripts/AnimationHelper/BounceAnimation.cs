@@ -14,6 +14,13 @@ public class BounceAnimation : MonoBehaviour
     //private void Start() => this.anim = this.GetComponent<Animator>();
 
     [Button]
+    public void BounceItem()
+    {
+        this.alreadyBouncing = false;
+        Bounce();
+    }
+
+
     public void Bounce()
     {
         if (alreadyBouncing) return;

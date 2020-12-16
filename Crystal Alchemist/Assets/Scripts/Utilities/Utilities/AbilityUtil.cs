@@ -20,11 +20,11 @@ public static class AbilityUtil
         return newAbility;
     }
 
-    public static void instantiateSequence(BossMechanic sequence, AI npc)
+    public static void instantiateSequence(BossMechanic sequence, Character sender, Character target)
     {
         BossMechanic newSequence = Object.Instantiate(sequence);
         newSequence.name = sequence.name;
-        newSequence.Initialize(npc, npc.target);
+        newSequence.Initialize(sender, target);
     }    
 
     public static Skill getSkillByCollision(GameObject collision)

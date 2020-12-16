@@ -33,6 +33,10 @@ public class Collectable : MonoBehaviour
     [SerializeField]
     private BounceAnimation bounceAnimation;
 
+    [HideLabel]
+    [SerializeField]
+    private ProgressValue progress;
+
     //[Required]
     //[BoxGroup("Pflichtfeld")]
     //[SerializeField]
@@ -92,9 +96,9 @@ public class Collectable : MonoBehaviour
         setItemStats();
 
         string itemName = this.itemDrop.name;
-        //if(this.useUniqueName) itemName = this.gameObject.name;
-
-        if (this.itemStats.IsKeyItem() && GameEvents.current.HasKeyItem(itemName))
+        
+        if (this.progress.ContainsProgress() ||
+           (this.itemStats.IsKeyItem() && GameEvents.current.HasKeyItem(itemName)))
         {
             this.showEffectOnDisable = false;
             DestroyIt();
@@ -185,6 +189,7 @@ public class Collectable : MonoBehaviour
 
         this.showEffectOnDisable = false;
         GameEvents.current.DoCollect(this.itemStats);
+        this.progress.AddProgress();
 
         playSounds();
         DestroyIt();

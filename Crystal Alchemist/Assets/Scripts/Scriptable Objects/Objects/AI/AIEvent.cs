@@ -38,8 +38,23 @@ public class AIEvent
     [MinValue(0.1)]
     private float delay = 0.1f; //to prevent triggering bevor initial action
 
+    private bool skipManually = false;
+
+    public void SkipPhase()
+    {
+        foreach(AIAction action in this.actions)
+        {
+            if(action.GetActionType() == AIAction.AIActionType.startPhase)
+            {
+                this.skipManually = true;
+                return;
+            }
+        }        
+    }
+
     public void Initialize()
     {
+        this.skipManually = false;
         this.eventActive = true;
         this.timeLeft = 0;
 
@@ -68,7 +83,7 @@ public class AIEvent
 
     public void SetEventActions(AI npc, List<AIAction> actions, AIPhase phase)
     {
-        if (this.delay <= 0 && this.eventActive && this.isTriggered(npc, phase))
+        if ((this.delay <= 0 && this.eventActive && this.isTriggered(npc, phase)) || skipManually)
         {
             this.eventActive = false;
             if(this.repeatEvent) this.timeLeft = this.eventCooldown;

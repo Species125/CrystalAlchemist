@@ -25,6 +25,11 @@ public class AIPhase : ScriptableObject
     private int eventIndex;
     private int loops;
 
+    public void SkipPhase()
+    {
+        foreach(AIEvent ev in this.events) ev.SkipPhase();        
+    }
+
     public void Initialize(AI npc)
     {
         foreach (AIEvent aiEvent in this.events) aiEvent.Initialize();   

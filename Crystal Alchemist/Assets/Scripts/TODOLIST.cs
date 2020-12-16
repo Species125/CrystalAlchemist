@@ -2,13 +2,23 @@
 
 public class TODOLIST : MonoBehaviour
 {
-    //TODO (0.2.5.8)
+    //TODO (0.2.5.9)
+    //THINK: Progress for Key-Items? (Minigame, Collectable, Loottable, etc) -> add to Itemdrop. What about stats?
+
+    //BUG: Wrong Elder Stones (Attributes)
+    //TODO: new (better) Mini-Map. Big Map and Minimap?
+
     //REWORK: Soundeffects and Graphics
-    //REWORK: Charakter Creation (Wings, Halo, etc)
-    //TODO: Ingame-Debug-Window
+    //REWORK: Charakter Creation (Wings, Halo, etc) 
+
     //TODO: Multiloot (lootbox?)
-    //TODO: Progress (Dialogs, Timed Progress, Items)
-    //TODO: new Map
+    //TODO: Aggro verteilen
+    //SKILL: Tornado
+    //SKILL: Protect
+    //REWORK: Windklinge
+
+    //REWORK: Inventory. More usable Items (Debug?)
+    //TODO: Ingame-Debug-Window
 
     //GRAPHICS: Cave and Sky
     //GRAPHICS: New Outfits (Sci Fi, Visor, Mundschutz, Devine Robe, Halo)
@@ -19,7 +29,7 @@ public class TODOLIST : MonoBehaviour
     //CONTENT: Jukebox (slow loading)
     //CONTENT: New Enemies (Bat, Bee, Spider, Libelle, Flower, Crystal, Zombie, Ghost, Skeleton, Butterfly, etc)
     //CONTENT: Sin Eater Race (glowing eyes, halo, wings, etc)
-    //CONTENT: New Maps
+    //CONTENT: New Maps (Crystal Cave, Night Forest, Heaven)
 
     //CONTENT: BOSSFIGHT #2
     //GRAPHICS: Sin Eater
@@ -28,9 +38,6 @@ public class TODOLIST : MonoBehaviour
     //SKILLS: Dark Puddle
     //SKILLS: Tower
     //SKILLS: Stack Mark
-
-    //REWORK: Camera Target Group Network (not perfect)
-    //REWORK: Check Authority and stuff
 
     //-----------------------------------------------------------------------------
 

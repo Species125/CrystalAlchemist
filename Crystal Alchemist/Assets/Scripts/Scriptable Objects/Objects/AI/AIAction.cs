@@ -10,7 +10,6 @@ public class AIAction
         dialog,
         wait,
         ability,
-        sequence,
         startPhase,
         endPhase,
         invincible,
@@ -50,7 +49,7 @@ public class AIAction
     [HideIf("type", AIActionType.animation)]
     [HideIf("type", AIActionType.cannotDie)]
     [HideIf("type", AIActionType.ability)]
-    [HideIf("type", AIActionType.sequence)]
+    //[HideIf("type", AIActionType.sequence)]
     [HideIf("type", AIActionType.kill)]
     [HideIf("type", AIActionType.signal)]
     [HideIf("type", AIActionType.invincible)]
@@ -132,7 +131,7 @@ public class AIAction
     [OnValueChanged("RepeatChanged")]
     private bool repeat = false;
 
-    [HideIf("type", AIActionType.sequence)]
+    //[HideIf("type", AIActionType.sequence)]
     [HideIf("type", AIActionType.movement)]
     [HideIf("type", AIActionType.startPhase)]
     [HideIf("type", AIActionType.endPhase)]
@@ -171,13 +170,14 @@ public class AIAction
     [SerializeField]
     private float delay = 0f;
 
+    /*
     [ShowIf("type", AIActionType.sequence)]
     [BoxGroup("Properties")]
     [SerializeField]
-    private SkillSequence sequence;
+    private SkillSequence sequence;*/
 
     [HideIf("type", AIActionType.ability)]
-    [HideIf("type", AIActionType.sequence)]
+    //[HideIf("type", AIActionType.sequence)]
     [HideIf("type", AIActionType.movement)]
     [HideIf("type", AIActionType.startPhase)]
     [HideIf("type", AIActionType.endPhase)]
@@ -236,6 +236,11 @@ public class AIAction
 
     #region Main Functions
 
+    public AIActionType GetActionType()
+    {
+        return this.type;
+    }
+
     public AIAction(float duration, AI npc)
     {
         this.type = AIActionType.wait;
@@ -250,7 +255,7 @@ public class AIAction
         switch (this.type)
         {
             case AIActionType.ability: StartSkill(npc); break;
-            case AIActionType.sequence: StartSequence(); break;
+            //case AIActionType.sequence: StartSequence(); break;
             case AIActionType.kill: StartKill(npc); break;
             case AIActionType.animation: StartAnimation(npc); break;
             case AIActionType.cannotDie: StartCannotDie(npc); break;
@@ -270,7 +275,7 @@ public class AIAction
         switch (this.type)
         {
             case AIActionType.ability: UpdateSkill(npc); break;
-            case AIActionType.sequence: UpdateSequence(npc); break;
+            //case AIActionType.sequence: UpdateSequence(npc); break;
             case AIActionType.wait: UpdateWait(); break;
             case AIActionType.dialog: UpdateDialog(); break;
         }
@@ -389,6 +394,7 @@ public class AIAction
     #endregion
 
 
+    /*
     #region Sequence
 
     private void StartSequence()
@@ -411,7 +417,7 @@ public class AIAction
     }
 
     #endregion
-
+    */
 
     #region Wait
 
@@ -544,7 +550,7 @@ public class AIAction
 
     private void AbilityChanged()
     {
-        this.wait = (this.ability.castTime + this.delay) * this.amount;
+        //this.wait = (this.ability.castTime + this.delay) * this.amount;
     }
 
     private void RepeatChanged()
