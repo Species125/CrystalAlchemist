@@ -16,7 +16,9 @@ public class InventorySlot : MonoBehaviour
 
     public void openKeyItem(InventoryMenu menu)
     {
-        this.itemUI.getItemStat().inventoryInfo.raiseKeySignal();
+        ItemSlotInfo info = this.itemUI.getItemStat().inventoryInfo;
+        if (info == null) return;
+        info.raiseKeySignal();
         menu.ExitMenu();
     }
 

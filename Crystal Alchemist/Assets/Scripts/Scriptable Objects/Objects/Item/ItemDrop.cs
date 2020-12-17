@@ -1,17 +1,30 @@
 ﻿using AssetIcons;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(menuName = "Game/Items/Item Drop")]
 public class ItemDrop : ScriptableObject
 {
-    [SerializeField]
-    public float duration = 60f;
-
-    [SerializeField]
+    [BoxGroup("Required")]
+    [Required]
     public ItemStats stats;
 
-    [SerializeField]
+    [BoxGroup("Required")]
+    [Required]
     public Collectable collectable;
+
+    [BoxGroup("Time")]
+    [SerializeField]
+    private bool hasSelfDestruction = true;
+
+    [BoxGroup("Time")]
+    [SerializeField]
+    [ShowIf("hasSelfDestruction")]
+    [Tooltip("Destroy Collectable Gameobject x seconds after spawn")]
+    private float duration = 60f;
+
+    [HideLabel]
+    public ProgressValue progress;
 
     [AssetIcon]
     private Sprite GetSprite()
@@ -73,7 +86,7 @@ public class ItemDrop : ScriptableObject
         temp.SetBounce(bounce, direction);
         temp.name = this.name;
         temp.SetItem(this);
-        temp.SetSelfDestruction(this.duration);
+        temp.SetSelfDestruction(this.duration, this.hasSelfDestruction);
         return temp;
     }
 }

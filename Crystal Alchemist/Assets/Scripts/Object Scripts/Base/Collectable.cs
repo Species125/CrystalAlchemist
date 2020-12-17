@@ -33,17 +33,17 @@ public class Collectable : MonoBehaviour
     [SerializeField]
     private BounceAnimation bounceAnimation;
 
-    [HideLabel]
+    [BoxGroup("Time")]
     [SerializeField]
-    private ProgressValue progress;
+    [Tooltip("Destroy Gameobject x seconds after spawn")]
+    private bool hasSelfDestruction = false;
 
-    //[Required]
-    //[BoxGroup("Pflichtfeld")]
-    //[SerializeField]
-    //private bool useUniqueName = false;
+    [BoxGroup("Time")]
+    [SerializeField]
+    [ShowIf("hasSelfDestruction")]
+    private float duration = 60f;
 
     private ItemStats itemStats;
-    private bool hasDuration = false;
     private float elapsed;
     private bool showEffectOnDisable = true;
 
@@ -97,17 +97,19 @@ public class Collectable : MonoBehaviour
 
         string itemName = this.itemDrop.name;
         
-        if (this.progress.ContainsProgress() ||
-           (this.itemStats.IsKeyItem() && GameEvents.current.HasKeyItem(itemName)))
+        if (this.itemDrop.progress.ContainsProgress() ||
+           (this.itemStats.isKeyItem() && GameEvents.current.HasKeyItem(itemName)))
         {
             this.showEffectOnDisable = false;
             DestroyIt();
         }
+
+        if(this.hasSelfDestruction) this.elapsed = this.duration;
     }
 
     private void Update()
     {
-        if (!this.hasDuration) return;
+        if (!this.hasSelfDestruction) return;
 
         if (this.elapsed > 0) this.elapsed -= Time.deltaTime;
         else DestroyIt();
@@ -155,9 +157,13 @@ public class Collectable : MonoBehaviour
     [Button]
     public void SetSelfDestruction(float duration)
     {
-        if (this.itemStats.IsKeyItem() || duration <= 0) return;
-        this.hasDuration = true;
-        this.elapsed = duration;
+        SetSelfDestruction(duration, true);
+    }
+
+    public void SetSelfDestruction(float duration, bool hasSelfDestruction)
+    {
+        this.duration = duration;
+        this.hasSelfDestruction = hasSelfDestruction;
     }
 
     private void OnDisable()
@@ -189,7 +195,7 @@ public class Collectable : MonoBehaviour
 
         this.showEffectOnDisable = false;
         GameEvents.current.DoCollect(this.itemStats);
-        this.progress.AddProgress();
+        this.itemDrop.progress.AddProgress();
 
         playSounds();
         DestroyIt();

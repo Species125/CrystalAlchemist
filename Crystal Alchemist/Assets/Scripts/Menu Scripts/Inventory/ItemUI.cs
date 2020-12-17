@@ -38,7 +38,7 @@ public class ItemUI : MonoBehaviour
         {
             this.image.gameObject.SetActive(true);       
 
-            if (!item.isKeyItem() && item.GetAmount() > 1) this.amount.text = "x" + item.GetAmount();
+            if (item.canConsume && item.GetAmount() > 1) this.amount.text = "x" + item.GetAmount();
             else if (this.amount != null) this.amount.text = "";
 
             if (this.preferInventoryIcon) this.image.sprite = item.info.getSprite();
@@ -60,7 +60,7 @@ public class ItemUI : MonoBehaviour
         {
             this.image.gameObject.SetActive(true);
 
-            if (!item.IsKeyItem() && item.amount > 1) this.amount.text = "x" + item.amount;
+            if (!item.isKeyItem() && item.amount > 1) this.amount.text = "x" + item.amount;
             else if (this.amount != null) this.amount.text = "";
 
             if (this.preferInventoryIcon) this.image.sprite = item.getSprite();

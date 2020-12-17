@@ -42,14 +42,14 @@ public class PlayerInventory : ScriptableObject
     [Button]
     public void collectItem(ItemStats item)
     {
-        if (item.IsKeyItem() && !GameEvents.current.HasKeyItem(item.name))
+        if (item.isKeyItem() && !GameEvents.current.HasKeyItem(item.name))
         {           
             //add Key Item
             ItemStats keyItem = Instantiate(item);
             keyItem.name = item.name;
             this.keyItems.Add(keyItem);
         }
-        else if (!item.IsKeyItem())
+        else if (!item.isKeyItem())
         {
             //add Inventory Item or change its amount
             collectItem(item.itemGroup, item.getTotalAmount());      

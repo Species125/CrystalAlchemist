@@ -33,7 +33,7 @@ public class CharacterAttributeStats : MonoBehaviour
         int pointsLeft = this.mainMenu.GetPointsLeft();
 
         if (points > 0 && points == value) value--;
-        else if (value > pointsLeft && pointsLeft >= 0) value = pointsLeft;        
+        else if (value - points > pointsLeft) value = points + pointsLeft;
 
         this.mainMenu.attributes.SetPoints(this.type, value);
         this.mainMenu.attributes.SetValues();

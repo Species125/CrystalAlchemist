@@ -3,8 +3,6 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using AssetIcons;
 
-
-
 [CreateAssetMenu(menuName = "Game/Items/Item Stats")]
 public class ItemStats : ScriptableObject
 {
@@ -27,13 +25,13 @@ public class ItemStats : ScriptableObject
 
     [BoxGroup("Inventory")]
     [SerializeField]
-    [HideIf("inventoryInfo")]
-    [HideIf("resourceType", CostType.life)]
-    [HideIf("resourceType", CostType.mana)]
     [HideIf("resourceType", CostType.none)]
+    [HideIf("resourceType", CostType.keyItem)]
+    [Tooltip("Needed if an item have to be grouped. Normal items only!")]
     public ItemGroup itemGroup;
 
     [BoxGroup("Inventory")]
+    [Tooltip("Info is need to load names, icons and discriptions")]
     [SerializeField]
     [Required]
     public ItemInfo info;
@@ -41,10 +39,9 @@ public class ItemStats : ScriptableObject
     [BoxGroup("Inventory")]
     [SerializeField]
     [Required]
-    [HideIf("itemGroup")]
-    [HideIf("resourceType", CostType.life)]
-    [HideIf("resourceType", CostType.mana)]
     [HideIf("resourceType", CostType.none)]
+    [ShowIf("resourceType", CostType.keyItem)]
+    [Tooltip("Needed to show the item in the inventory. Only for key items!")]
     public ItemSlotInfo inventoryInfo;
 
     [HideInInspector]
@@ -59,6 +56,11 @@ public class ItemStats : ScriptableObject
     {
         //if (this.itemGroup != null) return this.itemGroup.info;
         return this.info;
+    }
+
+    public bool isKeyItem()
+    {
+        return this.resourceType == CostType.keyItem ;
     }
 
     public bool isID(int ID)
@@ -77,13 +79,6 @@ public class ItemStats : ScriptableObject
     {
         if (this.itemGroup != null) return this.itemGroup.getName();
         else return "";
-    }
-
-    public bool IsKeyItem()
-    {
-        if (this.itemGroup != null) return this.itemGroup.isKeyItem();
-        else if (this.inventoryInfo != null) return this.inventoryInfo.isKeyItem();
-        return false;
     }
 
     public int getMaxAmount()

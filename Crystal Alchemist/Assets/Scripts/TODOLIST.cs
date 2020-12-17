@@ -3,24 +3,20 @@
 public class TODOLIST : MonoBehaviour
 {
     //TODO (0.2.5.9)
-    //THINK: Progress for Key-Items? (Minigame, Collectable, Loottable, etc) -> add to Itemdrop. What about stats?
-
-    //BUG: Wrong Elder Stones (Attributes)
-    //TODO: new (better) Mini-Map. Big Map and Minimap?
-
     //REWORK: Soundeffects and Graphics
     //REWORK: Charakter Creation (Wings, Halo, etc) 
 
     //TODO: Multiloot (lootbox?)
-    //TODO: Aggro verteilen
+    //TODO: Aggro weiter leiten (Enemy Alarm)
+    //TODO: Item Manager
+    //TODO: Rework Resource Type
+    //TODO: Shopprice scriptalbe object
+
     //SKILL: Tornado
     //SKILL: Protect
     //REWORK: Windklinge
 
-    //REWORK: Inventory. More usable Items (Debug?)
-    //TODO: Ingame-Debug-Window
-
-    //GRAPHICS: Cave and Sky
+    //GRAPHICS: Sky
     //GRAPHICS: New Outfits (Sci Fi, Visor, Mundschutz, Devine Robe, Halo)
     //GRAPHICS: Player Animations (Casting, Arrow, Spear, Victory)
     //GRAPHICS: New Nitro Animation

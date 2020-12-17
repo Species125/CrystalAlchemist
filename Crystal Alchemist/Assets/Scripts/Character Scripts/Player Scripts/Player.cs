@@ -182,7 +182,7 @@ public class Player : Character
     {
         //Shop, Door, Treasure, MiniGame, Abilities, etc
         if (price != null
-            && ((price.item != null && !price.item.isKeyItem())
+            && ((price.item != null && price.item.canConsume)
               || price.item == null))
             this.updateResource(price.resourceType, price.item, -price.amount);
     }
@@ -232,7 +232,7 @@ public class Player : Character
         //Collectable, Load, MiniGame, Shop und Treasure
 
         if (stats.resourceType == CostType.life || stats.resourceType == CostType.mana) updateResource(stats.resourceType, stats.amount, true);
-        else if (stats.resourceType == CostType.item) GetComponent<PlayerItems>().CollectInventoryItem(stats);
+        else if (stats.resourceType == CostType.item || stats.resourceType == CostType.keyItem) GetComponent<PlayerItems>().CollectItem(stats);
         else if (stats.resourceType == CostType.none)
         {
             //if(this.ability != null)

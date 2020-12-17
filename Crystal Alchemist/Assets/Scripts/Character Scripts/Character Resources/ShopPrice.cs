@@ -22,8 +22,8 @@ public class ShopPrice : MonoBehaviour
         if (costs.resourceType == CostType.item && costs.item != null)
         {
             this.child.SetActive(true);
-            FormatUtil.set3DText(this.priceText, costs.amount + "", true, costs.item.color, costs.item.outline, 0.25f);
-            this.priceIcon.sprite = costs.item.shopIcon;
+            FormatUtil.set3DText(this.priceText, costs.amount + "", true, costs.item.shopPrice.color, costs.item.shopPrice.outline, 0.25f);
+            this.priceIcon.sprite = costs.item.shopPrice.shopIcon;
         }
         else this.child.SetActive(false);
     }

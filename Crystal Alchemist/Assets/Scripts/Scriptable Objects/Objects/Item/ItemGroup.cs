@@ -9,11 +9,17 @@ public class ItemGroup : ScriptableObject
     public int maxAmount;
 
     [BoxGroup("Inventory")]
+    [Tooltip("True, if the value can be changed by the player or shop")]
+    public bool canConsume = true;
+
+    [BoxGroup("Inventory")]
+    [Tooltip("Info is need to load names, icons and discriptions")]
     [SerializeField]
     [Required]
     public ItemInfo info;
 
     [BoxGroup("Inventory")]
+    [Tooltip("Needed to show the item in the inventory")]
     [SerializeField]
     public ItemSlotInfo inventoryInfo;
 
@@ -25,16 +31,7 @@ public class ItemGroup : ScriptableObject
     public AudioClip raiseSoundEffect;
 
     [BoxGroup("Shop Price")]
-    [SerializeField]
-    public Color color;
-
-    [BoxGroup("Shop Price")]
-    [SerializeField]
-    public Color outline;
-
-    [BoxGroup("Shop Price")]
-    [SerializeField]
-    public Sprite shopIcon;
+    public ShopPriceUI shopPrice;
 
     [BoxGroup("Debug")]
     [SerializeField]
@@ -45,12 +42,6 @@ public class ItemGroup : ScriptableObject
     {
         if (this.info != null) return this.info.getSprite();
         return null;
-    }
-
-    public bool isKeyItem()
-    {
-        if (this.inventoryInfo != null) return this.inventoryInfo.isKeyItem();
-        else return false;
     }
 
     public bool isID(int ID)

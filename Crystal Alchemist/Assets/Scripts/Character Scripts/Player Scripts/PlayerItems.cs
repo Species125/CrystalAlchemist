@@ -28,16 +28,9 @@ public class PlayerItems : PlayerComponent
         return this.inventory.GetAmount(group);
     }
 
-    public void CollectInventoryItem(ItemStats item)
-    {
-        //Collect
-        this.inventory.collectItem(item);
-    }
+    public void CollectItem(ItemStats item) => this.inventory.collectItem(item);    
 
-    public void UpdateInventory(ItemGroup item, int amount)
-    {
-        this.inventory.UpdateInventory(item, amount);
-    }
+    public void UpdateInventory(ItemGroup item, int amount) => this.inventory.UpdateInventory(item, amount);    
 
     public bool hasKeyItemAlready(string name)
     {
