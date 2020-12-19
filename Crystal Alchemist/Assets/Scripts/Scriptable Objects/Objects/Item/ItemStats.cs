@@ -7,28 +7,40 @@ using AssetIcons;
 public class ItemStats : ScriptableObject
 {
     [BoxGroup("Attributes")]
-    [SerializeField]
-    private int value = 1;
-
-    [BoxGroup("Attributes")]
     public CostType resourceType;
 
     [BoxGroup("Attributes")]
-    [ShowIf("resourceType", CostType.none)]
+    [SerializeField]
+    [HideIf("resourceType", CostType.none)]
+    [HideIf("resourceType", CostType.outfit)]
+    [HideIf("resourceType", CostType.ability)]
+    [HideIf("resourceType", CostType.statusEffect)]
+    [HideIf("resourceType", CostType.keyItem)]
+    private int value = 1;
+
+    [BoxGroup("Attributes")]
+    [ShowIf("resourceType", CostType.ability)]
     [SerializeField]
     private Ability ability;
 
     [BoxGroup("Attributes")]
-    [ShowIf("resourceType", CostType.none)]
+    [ShowIf("resourceType", CostType.statusEffect)]
     [SerializeField]
     public List<StatusEffect> statusEffects = new List<StatusEffect>();
 
     [BoxGroup("Inventory")]
     [SerializeField]
-    [HideIf("resourceType", CostType.none)]
-    [HideIf("resourceType", CostType.keyItem)]
+    [ShowIf("resourceType", CostType.item)]
     [Tooltip("Needed if an item have to be grouped. Normal items only!")]
+    [Required]
     public ItemGroup itemGroup;
+
+    [BoxGroup("Inventory")]
+    [SerializeField]
+    [Required]
+    [ShowIf("resourceType", CostType.keyItem)]
+    [Tooltip("Needed to show the item in the inventory. Only for key items!")]
+    public ItemSlotInfo inventoryInfo;
 
     [BoxGroup("Inventory")]
     [Tooltip("Info is need to load names, icons and discriptions")]
@@ -36,13 +48,7 @@ public class ItemStats : ScriptableObject
     [Required]
     public ItemInfo info;
 
-    [BoxGroup("Inventory")]
-    [SerializeField]
-    [Required]
-    [HideIf("resourceType", CostType.none)]
-    [ShowIf("resourceType", CostType.keyItem)]
-    [Tooltip("Needed to show the item in the inventory. Only for key items!")]
-    public ItemSlotInfo inventoryInfo;
+
 
     [HideInInspector]
     public int amount = 1;
@@ -56,6 +62,14 @@ public class ItemStats : ScriptableObject
     {
         //if (this.itemGroup != null) return this.itemGroup.info;
         return this.info;
+    }
+
+    public void SetStats(int value, CostType type, AudioClip soundEffect, ItemInfo info)
+    {
+        this.value = value;
+        this.resourceType = type;
+        this.collectSoundEffect = soundEffect;
+        this.info = info;
     }
 
     public bool isKeyItem()

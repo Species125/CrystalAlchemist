@@ -10,6 +10,7 @@ public class ItemInfo : ScriptableObject
     [AssetIcon]
     private Sprite icon;    
 
+    public void SetInfo(Sprite sprite) => this.icon = sprite;
 
     public Sprite getSprite()
     {

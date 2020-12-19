@@ -44,6 +44,15 @@ public class ItemGroup : ScriptableObject
         return null;
     }
 
+    public void SetGroup(int maxValue, bool canConsume, bool updateUI, AudioClip soundEffect, ShopPriceUI shop)
+    {
+        this.maxAmount = maxValue;
+        this.canConsume = canConsume;
+        this.updateCurrencyUI = updateUI;
+        this.raiseSoundEffect = soundEffect;
+        this.shopPrice = shop;
+    }
+
     public bool isID(int ID)
     {
         if (this.inventoryInfo != null) return this.inventoryInfo.isID(ID);

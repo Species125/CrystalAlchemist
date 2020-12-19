@@ -2,19 +2,19 @@
 
 public class TODOLIST : MonoBehaviour
 {
-    //TODO (0.2.5.9)
-    //REWORK: Soundeffects and Graphics
-    //REWORK: Charakter Creation (Wings, Halo, etc) 
+    //TODO (0.2.6)
 
-    //TODO: Multiloot (lootbox?)
-    //TODO: Aggro weiter leiten (Enemy Alarm)
-    //TODO: Item Manager
-    //TODO: Rework Resource Type
-    //TODO: Shopprice scriptalbe object
+    //TODO: Enemy Alarm mit Radius
+    //REWORK: Charakter Creation (Wings, Halo, Au Ra) 
 
-    //SKILL: Tornado
-    //SKILL: Protect
-    //REWORK: Windklinge
+    //SKILL: Tornado (Zieht Gegner ran und macht Schaden)
+    //SKILL: Geode (Fläche, die Schaden über Zeit macht)
+    //SKILL: Protect (Rundum-Schild)
+    //REWORK: Windklinge, Feuerball, Eissplitter, Frostspitze, Steinwand
+
+    //-----------------------------------------------------------------------------
+
+    //TODO (0.2.6.5)
 
     //GRAPHICS: Sky
     //GRAPHICS: New Outfits (Sci Fi, Visor, Mundschutz, Devine Robe, Halo)
@@ -35,12 +35,8 @@ public class TODOLIST : MonoBehaviour
     //SKILLS: Tower
     //SKILLS: Stack Mark
 
-    //-----------------------------------------------------------------------------
-
-    //TODO (0.2.6.0)
-
+    //REWORK: Soundeffects and Graphics
     //REWORK: Skills with Impact (Hitzeblitz, Eissplitter, Giftpfeil, etc)
-    //REWORK: Map (no lighting, dynamic size, maybe plain texture instead)
 
     //TODO: Intro
     //TODO: Glasses (HUD)

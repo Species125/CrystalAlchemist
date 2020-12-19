@@ -3,7 +3,6 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 
 public class Player : Character
 {
@@ -233,9 +232,8 @@ public class Player : Character
 
         if (stats.resourceType == CostType.life || stats.resourceType == CostType.mana) updateResource(stats.resourceType, stats.amount, true);
         else if (stats.resourceType == CostType.item || stats.resourceType == CostType.keyItem) GetComponent<PlayerItems>().CollectItem(stats);
-        else if (stats.resourceType == CostType.none)
+        else if (stats.resourceType == CostType.statusEffect)
         {
-            //if(this.ability != null)
             foreach (StatusEffect effect in stats.statusEffects)
             {
                 StatusEffectUtil.AddStatusEffect(effect, this);

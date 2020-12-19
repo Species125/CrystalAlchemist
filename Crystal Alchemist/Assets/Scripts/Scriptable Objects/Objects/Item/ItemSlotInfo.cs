@@ -15,6 +15,12 @@ public class ItemSlotInfo : ScriptableObject
     private SimpleSignal keyItemSignal;
 
 
+    public void SetSlot(int slot, SimpleSignal signal)
+    {
+        this.itemSlot = slot;
+        this.keyItemSignal = signal;
+    }
+
     public bool isID(int ID)
     {
         if (this.itemSlot == ID) return true;

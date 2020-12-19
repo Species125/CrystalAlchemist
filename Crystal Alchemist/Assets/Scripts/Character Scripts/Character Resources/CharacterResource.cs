@@ -6,7 +6,10 @@ public enum CostType
     life,
     mana,
     item,
-    keyItem
+    keyItem,
+    statusEffect,
+    ability,
+    outfit
 }
 
 [System.Serializable]

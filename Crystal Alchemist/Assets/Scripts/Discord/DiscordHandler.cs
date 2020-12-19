@@ -27,7 +27,7 @@ public class DiscordHandler : MonoBehaviour
 
     private void Start()
     {
-        if(!Application.isEditor) 
+        //if(!Application.isEditor) 
         Init();
     }
 

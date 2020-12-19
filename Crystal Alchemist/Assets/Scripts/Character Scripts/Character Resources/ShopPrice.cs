@@ -19,7 +19,7 @@ public class ShopPrice : MonoBehaviour
 
     public void Initialize(Costs costs)
     {
-        if (costs.resourceType == CostType.item && costs.item != null)
+        if (costs.resourceType == CostType.item && costs.item != null && costs.item.shopPrice != null)
         {
             this.child.SetActive(true);
             FormatUtil.set3DText(this.priceText, costs.amount + "", true, costs.item.shopPrice.color, costs.item.shopPrice.outline, 0.25f);
