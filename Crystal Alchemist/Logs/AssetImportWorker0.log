@@ -15,11 +15,11 @@ E:/Github/Crystal Alchemist
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50068
+54072
 Successfully changed project path to: E:/Github/Crystal Alchemist
 E:/Github/Crystal Alchemist
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 132.72 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 227.91 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.0b13 (655e1a328b90)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Resources/UnitySubsystems
@@ -36,272 +36,204 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56872
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56448
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002585 seconds.
+Registered in 0.005631 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 108.47 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 204.78 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.050 seconds
+- Completed reload, in  4.563 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.014182 seconds.
+Registered in 0.025171 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 111.58 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 102.95 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  4.639 seconds
+- Completed reload, in  4.226 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 1.41 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 1.88 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 4338 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 188.0 MB.
+System memory in use before: 187.9 MB.
 System memory in use after: 188.2 MB.
 
 Unloading 43 unused Assets to reduce memory usage. Loaded Objects now: 4839.
-Total: 24.473505 ms (FindLiveObjects: 0.734351 ms CreateObjectMapping: 0.493859 ms MarkObjects: 23.188829 ms  DeleteObjects: 0.053540 ms)
+Total: 30.520933 ms (FindLiveObjects: 0.747225 ms CreateObjectMapping: 0.691051 ms MarkObjects: 29.018000 ms  DeleteObjects: 0.061147 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/Arrows.asset
-  artifactKey: Guid(fa9d7ec8183e41345babd842fbfb2c36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/Arrows.asset using Guid(fa9d7ec8183e41345babd842fbfb2c36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5424d20b41ce2aecebe32306b9ef3227') in 0.091330 seconds
-  Import took 0.404503 seconds .
+  path: Assets/Resources/Scriptable Objects/Character Creation/Properties/Ears and Horns/Ears/Pony Ears.asset
+  artifactKey: Guid(bf71d76f6dbecb049b6c76cff32b293d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Scriptable Objects/Character Creation/Properties/Ears and Horns/Ears/Pony Ears.asset using Guid(bf71d76f6dbecb049b6c76cff32b293d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d8094ec3b3ae0a9ee1aa22e02bb641e') in 0.111736 seconds
+  Import took 0.194280 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014150 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 9.46 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  9.074 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 2.46 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 186.5 MB.
+System memory in use after: 186.9 MB.
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 6383.
+Total: 28.204947 ms (FindLiveObjects: 0.742251 ms CreateObjectMapping: 0.647458 ms MarkObjects: 26.760527 ms  DeleteObjects: 0.051785 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014361 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 2.07 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in 14.821 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 4.64 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 186.3 MB.
+System memory in use after: 186.8 MB.
+
+Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 6387.
+Total: 78.348862 ms (FindLiveObjects: 5.117932 ms CreateObjectMapping: 0.720893 ms MarkObjects: 72.417877 ms  DeleteObjects: 0.083383 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000230 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/Elder Stone.asset
-  artifactKey: Guid(5ed512954d83f1b4bb2fc8c256936c7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/Elder Stone.asset using Guid(5ed512954d83f1b4bb2fc8c256936c7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07e34615bbe0d9d1135286d934d19dfa') in 0.014010 seconds
-  Import took 0.067566 seconds .
+  Time since last request: 337.033510 seconds.
+  path: Assets/Resources/Scriptable Objects/Character Creation/Properties/Body/Female Body.asset
+  artifactKey: Guid(14e58966e8224b040a2c5d62285f0b50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Scriptable Objects/Character Creation/Properties/Body/Female Body.asset using Guid(14e58966e8224b040a2c5d62285f0b50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7529e08ebc088101e685936d8a4b5773') in 1.026619 seconds
+  Import took 1.131654 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000279 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/Anti Leaf.asset
-  artifactKey: Guid(2cec48297045efb489957c42447333ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/Anti Leaf.asset using Guid(2cec48297045efb489957c42447333ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0f5ac2ee2810f59e30aaa765e01aeab') in 0.018293 seconds
-  Import took 0.060474 seconds .
+  Time since last request: 47.372142 seconds.
+  path: Assets/Resources/Scriptable Objects/Character Creation/Properties/Gear/Lower Gear/Archer Boots.asset
+  artifactKey: Guid(afbfba43959e960488db8c58840cd089) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Scriptable Objects/Character Creation/Properties/Gear/Lower Gear/Archer Boots.asset using Guid(afbfba43959e960488db8c58840cd089) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d3f481d492edf09e783567dddf15435') in 0.007877 seconds
+  Import took 0.017586 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000185 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/Bomb.asset
-  artifactKey: Guid(d57de9d1907bdf04aae4abed236c713e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/Bomb.asset using Guid(d57de9d1907bdf04aae4abed236c713e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '789ff3f26f990d2317921fced7076377') in 0.010799 seconds
-  Import took 0.023174 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015491 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.37 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.597 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 3.25 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 188.3 MB.
-System memory in use after: 188.8 MB.
-
-Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 7585.
-Total: 31.062481 ms (FindLiveObjects: 0.829144 ms CreateObjectMapping: 0.762438 ms MarkObjects: 29.418236 ms  DeleteObjects: 0.048859 ms)
+  Time since last request: 3.428303 seconds.
+  path: Assets/Resources/Scriptable Objects/Character Creation/Properties/Gear/Lower Gear/Silver Boots.asset
+  artifactKey: Guid(81debca7501c722488a8cd1d5f072d56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Scriptable Objects/Character Creation/Properties/Gear/Lower Gear/Silver Boots.asset using Guid(81debca7501c722488a8cd1d5f072d56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '315f95a8ae0ad755e3e42e184f91a391') in 0.010747 seconds
+  Import took 0.057608 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 159.372526 seconds.
-  path: Assets/Resources/Prefabs/Items/Consumeables/Small Healthpotion.prefab
-  artifactKey: Guid(4f1623ac219c06a40aa2cbe59058c6b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Items/Consumeables/Small Healthpotion.prefab using Guid(4f1623ac219c06a40aa2cbe59058c6b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '819493bc7ea97ee0b8fa75c35be88a4e') in 0.988227 seconds
-  Import took 1.012178 seconds .
+  Time since last request: 11.159530 seconds.
+  path: Assets/Resources/Scriptable Objects/Character Creation/Properties/Legs/Human Legs.asset
+  artifactKey: Guid(557786c54ad65ab459fe94cde7234414) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Scriptable Objects/Character Creation/Properties/Legs/Human Legs.asset using Guid(557786c54ad65ab459fe94cde7234414) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0202ff8a80d3f0334c9fad2003986e0a') in 0.008591 seconds
+  Import took 0.087872 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 8.994092 seconds.
-  path: Assets/Resources/Prefabs/Items/Consumeables/Divine Feather.prefab
-  artifactKey: Guid(2b5759bd7bd0b574cadb08f28e359939) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Items/Consumeables/Divine Feather.prefab using Guid(2b5759bd7bd0b574cadb08f28e359939) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae00a1cd25d04c96761b92e030ba7b11') in 0.228399 seconds
-  Import took 0.268659 seconds .
+  Time since last request: 6.002317 seconds.
+  path: Assets/Resources/Scriptable Objects/Character Creation/Properties/Legs/Snake Tail.asset
+  artifactKey: Guid(827f7ee5a9d4a8541b3eca6ecb7ba50b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Scriptable Objects/Character Creation/Properties/Legs/Snake Tail.asset using Guid(827f7ee5a9d4a8541b3eca6ecb7ba50b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6bc9af418c1d0a40518301ec45ecccde') in 0.006261 seconds
+  Import took 0.031388 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.197419 seconds.
+  path: Assets/Resources/Scriptable Objects/Character Creation/Properties/Tails/Snake Tail.asset
+  artifactKey: Guid(3b766aeafc3b3994c9be8e6c46dc56e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Scriptable Objects/Character Creation/Properties/Tails/Snake Tail.asset using Guid(3b766aeafc3b3994c9be8e6c46dc56e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29fa84b9f716e616fc7fac2a58e42e8e') in 0.006025 seconds
+  Import took 0.057723 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000709 seconds.
+  path: Assets/Resources/Scriptable Objects/Character Creation/Properties/Tails/Snake Tail.asset
+  artifactKey: Guid(3b766aeafc3b3994c9be8e6c46dc56e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Scriptable Objects/Character Creation/Properties/Tails/Snake Tail.asset using Guid(3b766aeafc3b3994c9be8e6c46dc56e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29fa84b9f716e616fc7fac2a58e42e8e') in 0.025306 seconds
+  Import took 0.040580 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.497587 seconds.
+  path: Assets/Resources/Scriptable Objects/Character Creation/Properties/Tails/Pony Tail.asset
+  artifactKey: Guid(589c282cd0298cd4c8cad92878692f7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Scriptable Objects/Character Creation/Properties/Tails/Pony Tail.asset using Guid(589c282cd0298cd4c8cad92878692f7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eed1c5a5f535d906e4343c936edc5d83') in 0.006019 seconds
+  Import took 0.030215 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.015819 seconds.
+Registered in 0.014288 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.33 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 1.67 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  4.541 seconds
+- Completed reload, in  9.668 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.41 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 13.17 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 193.9 MB.
-System memory in use after: 194.4 MB.
+System memory in use before: 188.1 MB.
+System memory in use after: 188.6 MB.
 
-Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 7634.
-Total: 30.491676 ms (FindLiveObjects: 0.839384 ms CreateObjectMapping: 0.760098 ms MarkObjects: 28.850357 ms  DeleteObjects: 0.039204 ms)
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 6391.
+Total: 81.997799 ms (FindLiveObjects: 0.834703 ms CreateObjectMapping: 1.902585 ms MarkObjects: 79.175081 ms  DeleteObjects: 0.081042 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 914.644211 seconds.
+  path: Assets/Resources/Scriptable Objects/Character Creation/Properties/Gear/Upper Gear/Archer Armor.asset
+  artifactKey: Guid(d7e9162f7e8b7a9418b1b8092f454b5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Scriptable Objects/Character Creation/Properties/Gear/Upper Gear/Archer Armor.asset using Guid(d7e9162f7e8b7a9418b1b8092f454b5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f732869d555e5a9706e6e9968f79c963') in 1.249708 seconds
+  Import took 1.303793 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.013653 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.43 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.472 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.72 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 194.0 MB.
-System memory in use after: 194.4 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7638.
-Total: 30.331933 ms (FindLiveObjects: 0.816856 ms CreateObjectMapping: 0.802228 ms MarkObjects: 28.671011 ms  DeleteObjects: 0.040082 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.016048 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.39 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.715 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.42 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.2 MB.
-System memory in use after: 195.7 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7642.
-Total: 31.946043 ms (FindLiveObjects: 0.821830 ms CreateObjectMapping: 0.762731 ms MarkObjects: 30.318767 ms  DeleteObjects: 0.040960 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.016555 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.26 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.883 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 2.00 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.3 MB.
-System memory in use after: 195.7 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7646.
-Total: 29.392782 ms (FindLiveObjects: 0.587189 ms CreateObjectMapping: 0.335871 ms MarkObjects: 28.420278 ms  DeleteObjects: 0.047689 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.016268 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.38 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.445 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.43 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.3 MB.
-System memory in use after: 195.8 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7650.
-Total: 30.021223 ms (FindLiveObjects: 0.837921 ms CreateObjectMapping: 0.763901 ms MarkObjects: 28.369664 ms  DeleteObjects: 0.047982 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015738 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.42 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.837 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 3.68 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.3 MB.
-System memory in use after: 195.8 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7654.
-Total: 32.049905 ms (FindLiveObjects: 0.882685 ms CreateObjectMapping: 0.796376 ms MarkObjects: 30.323448 ms  DeleteObjects: 0.044471 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015922 seconds.
+Registered in 0.014480 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for WindowsStandalone target not found
@@ -311,1028 +243,15 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  5.096 seconds
+- Completed reload, in  4.261 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.63 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 1.65 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.3 MB.
-System memory in use after: 195.8 MB.
+System memory in use before: 189.3 MB.
+System memory in use after: 189.7 MB.
 
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7658.
-Total: 32.836042 ms (FindLiveObjects: 0.908138 ms CreateObjectMapping: 0.768875 ms MarkObjects: 31.091445 ms  DeleteObjects: 0.064951 ms)
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 6395.
+Total: 29.254689 ms (FindLiveObjects: 0.744299 ms CreateObjectMapping: 0.679933 ms MarkObjects: 27.769017 ms  DeleteObjects: 0.059392 ms)
 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015738 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.72 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.438 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.49 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.3 MB.
-System memory in use after: 195.8 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7662.
-Total: 30.406246 ms (FindLiveObjects: 0.832948 ms CreateObjectMapping: 0.757464 ms MarkObjects: 28.769900 ms  DeleteObjects: 0.043008 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 2661.411741 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Slot Infos
-  artifactKey: Guid(f4c5cd3da93082e43811ef1150ad8798) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Slot Infos using Guid(f4c5cd3da93082e43811ef1150ad8798) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acf51f97c677dcd2b3c8a70f0a1ad364') in 0.016557 seconds
-  Import took 0.033526 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.135725 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Inventory Items
-  artifactKey: Guid(643db6c9358a1f8469e18f80358e4e58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Inventory Items using Guid(643db6c9358a1f8469e18f80358e4e58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e65a9a1be6cd6c5f81fa420f208750c') in 0.009130 seconds
-  Import took 0.048367 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.231392 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Key Items
-  artifactKey: Guid(7a0f3f881c2939d409f733b854eafe2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Key Items using Guid(7a0f3f881c2939d409f733b854eafe2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e88a4877974ddec5fde62ffbdb44acc') in 0.005923 seconds
-  Import took 0.026205 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 50.903140 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Drops/Key Items/Elder Stone Titania.asset
-  artifactKey: Guid(bf0ec3d8071b5614b84e1785a5439e08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Drops/Key Items/Elder Stone Titania.asset using Guid(bf0ec3d8071b5614b84e1785a5439e08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc0cdb19ef34c81e21097450696288b1') in 0.049715 seconds
-  Import took 0.084393 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.645793 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Drops/Key Items/Elder Stone Titania.asset
-  artifactKey: Guid(bf0ec3d8071b5614b84e1785a5439e08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Drops/Key Items/Elder Stone Titania.asset using Guid(bf0ec3d8071b5614b84e1785a5439e08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc0cdb19ef34c81e21097450696288b1') in 0.013475 seconds
-  Import took 0.025223 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 33.848079 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Groups/Currencies/Crystals.asset
-  artifactKey: Guid(008b2735924e65749bc1a37e8d718d0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Groups/Currencies/Crystals.asset using Guid(008b2735924e65749bc1a37e8d718d0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb200c4ce642cccd86153206c2bf85ce') in 0.008974 seconds
-  Import took 0.026412 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015653 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.28 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.081 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.59 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.5 MB.
-System memory in use after: 196.0 MB.
-
-Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 7666.
-Total: 33.817030 ms (FindLiveObjects: 0.910771 ms CreateObjectMapping: 0.767412 ms MarkObjects: 32.087354 ms  DeleteObjects: 0.048274 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.336586 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.41 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.550 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.55 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.5 MB.
-System memory in use after: 196.0 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7670.
-Total: 30.494309 ms (FindLiveObjects: 0.828559 ms CreateObjectMapping: 0.805446 ms MarkObjects: 28.814371 ms  DeleteObjects: 0.044178 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.018020 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.55 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  5.014 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.44 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.5 MB.
-System memory in use after: 196.0 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7674.
-Total: 30.710519 ms (FindLiveObjects: 0.920719 ms CreateObjectMapping: 0.772678 ms MarkObjects: 28.968848 ms  DeleteObjects: 0.045934 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.016931 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.30 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.172 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.43 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.6 MB.
-System memory in use after: 196.0 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7678.
-Total: 30.509523 ms (FindLiveObjects: 0.823878 ms CreateObjectMapping: 0.760683 ms MarkObjects: 28.883710 ms  DeleteObjects: 0.039497 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 1137.335516 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Stats/Consumables/TEST.asset
-  artifactKey: Guid(7693240b47b107a4ba03d93f8abd489d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Stats/Consumables/TEST.asset using Guid(7693240b47b107a4ba03d93f8abd489d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30445c6fda4a8a9149016fc75b0b8912') in 0.024686 seconds
-  Import took 0.039332 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.835267 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Stats/Consumables/TEST.asset
-  artifactKey: Guid(7693240b47b107a4ba03d93f8abd489d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Stats/Consumables/TEST.asset using Guid(7693240b47b107a4ba03d93f8abd489d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30445c6fda4a8a9149016fc75b0b8912') in 0.009518 seconds
-  Import took 0.026660 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.016523 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.49 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.930 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 9.93 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.6 MB.
-System memory in use after: 196.1 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7682.
-Total: 31.506310 ms (FindLiveObjects: 0.839969 ms CreateObjectMapping: 0.775604 ms MarkObjects: 29.841877 ms  DeleteObjects: 0.046226 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.016341 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.36 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.480 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.90 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.6 MB.
-System memory in use after: 196.1 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7686.
-Total: 30.051943 ms (FindLiveObjects: 1.102405 ms CreateObjectMapping: 0.865130 ms MarkObjects: 28.038474 ms  DeleteObjects: 0.042715 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015551 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.36 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.309 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 2.25 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.6 MB.
-System memory in use after: 196.1 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7690.
-Total: 34.971805 ms (FindLiveObjects: 1.724994 ms CreateObjectMapping: 0.886195 ms MarkObjects: 32.297127 ms  DeleteObjects: 0.059977 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 315.793866 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Groups/Inventory Items/TEST.asset
-  artifactKey: Guid(85ec1c3c88649fe48a7ab4c1c523cfdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Groups/Inventory Items/TEST.asset using Guid(85ec1c3c88649fe48a7ab4c1c523cfdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '19f52a0ad3edce5c9ee23923bde5afd0') in 0.026038 seconds
-  Import took 0.037526 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.725616 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Groups/Inventory Items/TEST.asset
-  artifactKey: Guid(85ec1c3c88649fe48a7ab4c1c523cfdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Groups/Inventory Items/TEST.asset using Guid(85ec1c3c88649fe48a7ab4c1c523cfdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '19f52a0ad3edce5c9ee23923bde5afd0') in 0.009246 seconds
-  Import took 0.022945 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.777854 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Infos/Item Group Info/TEST Group Info.asset
-  artifactKey: Guid(4bf7ed3d1bbd1044f9dc3493b4496102) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Infos/Item Group Info/TEST Group Info.asset using Guid(4bf7ed3d1bbd1044f9dc3493b4496102) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee2ed1a615234c739bf98c9c682d3442') in 0.009565 seconds
-  Import took 0.020251 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.049094 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Infos/Item Group Info/TEST Group Info.asset
-  artifactKey: Guid(4bf7ed3d1bbd1044f9dc3493b4496102) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Infos/Item Group Info/TEST Group Info.asset using Guid(4bf7ed3d1bbd1044f9dc3493b4496102) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee2ed1a615234c739bf98c9c682d3442') in 0.014305 seconds
-  Import took 0.651680 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.187234 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Inventory Items/TEST.asset
-  artifactKey: Guid(aa7e4d7461788784a8ab148511b4e63b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Inventory Items/TEST.asset using Guid(aa7e4d7461788784a8ab148511b4e63b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95ecae8a1a61ca45809924e4394e3c9b') in 0.006191 seconds
-  Import took 0.019595 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.173973 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Inventory Items/TEST.asset
-  artifactKey: Guid(aa7e4d7461788784a8ab148511b4e63b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Inventory Items/TEST.asset using Guid(aa7e4d7461788784a8ab148511b4e63b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95ecae8a1a61ca45809924e4394e3c9b') in 0.016678 seconds
-  Import took 0.036210 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.693545 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Inventory Items/Mana Potions.asset
-  artifactKey: Guid(4bb12b55c937d1d4593dd60490074dc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Inventory Items/Mana Potions.asset using Guid(4bb12b55c937d1d4593dd60490074dc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e6f5a411f137240feadf3800f9161e0') in 0.019433 seconds
-  Import took 0.048124 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000066 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Inventory Items/Arrows.asset
-  artifactKey: Guid(fe5008eaf1749144aa52dddb6acb388c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Inventory Items/Arrows.asset using Guid(fe5008eaf1749144aa52dddb6acb388c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb6a18dcc53a71e5d6c8a735264fced9') in 0.011495 seconds
-  Import took 0.064894 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.651981 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/TEST.asset
-  artifactKey: Guid(abc0e43204512f64ea233fdf17977d91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/TEST.asset using Guid(abc0e43204512f64ea233fdf17977d91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '827672e595fb0ed10a2a086c942ebcc6') in 0.010425 seconds
-  Import took 0.021775 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.696211 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/TEST.asset
-  artifactKey: Guid(abc0e43204512f64ea233fdf17977d91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/TEST.asset using Guid(abc0e43204512f64ea233fdf17977d91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '827672e595fb0ed10a2a086c942ebcc6') in 0.008030 seconds
-  Import took 0.018870 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 21.696048 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Infos/Item Stat Info/TEST Info.asset
-  artifactKey: Guid(84f3cc5a499621f4d9c735b8c38687bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Infos/Item Stat Info/TEST Info.asset using Guid(84f3cc5a499621f4d9c735b8c38687bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d40e6c89353031ebc79a710657497b1') in 0.011157 seconds
-  Import took 0.035802 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 34.009791 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Infos/Item Stat Info/Test Potion Info.asset
-  artifactKey: Guid(8fd7193637d8b9a478994eccb4fdbec4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Infos/Item Stat Info/Test Potion Info.asset using Guid(8fd7193637d8b9a478994eccb4fdbec4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa7ef082f46ea3a350bc31bfc404017d') in 0.031239 seconds
-  Import took 0.068161 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 9.133009 seconds.
-  path: Assets/Materials/Shaders/Experimental Shaders/Test.prefab
-  artifactKey: Guid(265a903d2d8ede14eace87f60bfd9561) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Shaders/Experimental Shaders/Test.prefab using Guid(265a903d2d8ede14eace87f60bfd9561) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e18d9c6d40da8084b8e30b31cbbb7273') in 0.244414 seconds
-  Import took 0.271368 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.478517 seconds.
-  path: Assets/StreamingAssets/TestResults.xml
-  artifactKey: Guid(885de2e3d521d4f89bd21e9d2e384630) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/StreamingAssets/TestResults.xml using Guid(885de2e3d521d4f89bd21e9d2e384630) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f14e955313c99e199da07ba138c5475f') in 0.019985 seconds
-  Import took 0.042283 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015746 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.27 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  5.103 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.51 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.8 MB.
-System memory in use after: 196.3 MB.
-
-Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 7730.
-Total: 29.881667 ms (FindLiveObjects: 0.834703 ms CreateObjectMapping: 0.751321 ms MarkObjects: 28.252050 ms  DeleteObjects: 0.041545 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.033714 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.29 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.964 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.46 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.8 MB.
-System memory in use after: 196.3 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7734.
-Total: 30.013909 ms (FindLiveObjects: 0.923352 ms CreateObjectMapping: 0.928326 ms MarkObjects: 28.121857 ms  DeleteObjects: 0.038327 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 199.373731 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Groups/Currencies/Elder Stones.asset
-  artifactKey: Guid(6363684c89ad31449ad64519f1d1023a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Groups/Currencies/Elder Stones.asset using Guid(6363684c89ad31449ad64519f1d1023a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '372830cfac4f40c9b59b7341eee2a046') in 0.052611 seconds
-  Import took 0.075288 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.682177 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Groups/Currencies/Elder Stones.asset
-  artifactKey: Guid(6363684c89ad31449ad64519f1d1023a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Groups/Currencies/Elder Stones.asset using Guid(6363684c89ad31449ad64519f1d1023a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '372830cfac4f40c9b59b7341eee2a046') in 0.006978 seconds
-  Import took 0.026978 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019778 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.51 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.660 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.43 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.0 MB.
-System memory in use after: 196.4 MB.
-
-Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 7738.
-Total: 30.368211 ms (FindLiveObjects: 0.871567 ms CreateObjectMapping: 0.749858 ms MarkObjects: 28.690613 ms  DeleteObjects: 0.054418 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.016545 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.28 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.669 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.72 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.9 MB.
-System memory in use after: 196.4 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7742.
-Total: 31.137671 ms (FindLiveObjects: 0.838214 ms CreateObjectMapping: 0.794036 ms MarkObjects: 29.454807 ms  DeleteObjects: 0.047982 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.017004 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 2.16 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  5.134 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.60 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 195.9 MB.
-System memory in use after: 196.4 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7746.
-Total: 31.034687 ms (FindLiveObjects: 1.121715 ms CreateObjectMapping: 1.397608 ms MarkObjects: 28.470600 ms  DeleteObjects: 0.042423 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015310 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.35 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.851 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.69 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.0 MB.
-System memory in use after: 196.4 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7750.
-Total: 35.340736 ms (FindLiveObjects: 0.951439 ms CreateObjectMapping: 0.895265 ms MarkObjects: 33.446636 ms  DeleteObjects: 0.044763 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.016700 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.32 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.688 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.75 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.0 MB.
-System memory in use after: 196.5 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7754.
-Total: 30.496650 ms (FindLiveObjects: 1.378591 ms CreateObjectMapping: 0.838214 ms MarkObjects: 28.233619 ms  DeleteObjects: 0.043593 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015675 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 2.25 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.536 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.63 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.0 MB.
-System memory in use after: 196.5 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7758.
-Total: 30.892497 ms (FindLiveObjects: 1.070807 ms CreateObjectMapping: 1.308667 ms MarkObjects: 28.468260 ms  DeleteObjects: 0.042715 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.014775 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.45 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.265 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.62 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.0 MB.
-System memory in use after: 196.5 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7762.
-Total: 29.557207 ms (FindLiveObjects: 0.834118 ms CreateObjectMapping: 0.763608 ms MarkObjects: 27.917935 ms  DeleteObjects: 0.038619 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 1079.496059 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/TEST.asset
-  artifactKey: Guid(abc0e43204512f64ea233fdf17977d91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/TEST.asset using Guid(abc0e43204512f64ea233fdf17977d91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bef23985f553df8d5baa27cfcc67f9c0') in 0.026191 seconds
-  Import took 0.065552 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.636889 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/TEST.asset
-  artifactKey: Guid(abc0e43204512f64ea233fdf17977d91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Stats/Inventory Items/TEST.asset using Guid(abc0e43204512f64ea233fdf17977d91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bef23985f553df8d5baa27cfcc67f9c0') in 0.007630 seconds
-  Import took 0.019288 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015024 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.40 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.697 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.46 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.0 MB.
-System memory in use after: 196.5 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7766.
-Total: 29.611039 ms (FindLiveObjects: 0.851087 ms CreateObjectMapping: 0.752491 ms MarkObjects: 27.963576 ms  DeleteObjects: 0.041838 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.014905 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.37 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.734 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.78 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.0 MB.
-System memory in use after: 196.5 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7770.
-Total: 29.015659 ms (FindLiveObjects: 0.859279 ms CreateObjectMapping: 0.745762 ms MarkObjects: 27.367025 ms  DeleteObjects: 0.041545 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 149.292671 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Key Items/TEST.asset
-  artifactKey: Guid(3b79a6fa5c850c14b80bac13165d0866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Key Items/TEST.asset using Guid(3b79a6fa5c850c14b80bac13165d0866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1406a366d13acbfb385e8daa78a96a04') in 0.029159 seconds
-  Import took 0.057820 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 23.001884 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Stats/Key Items/TEST.asset
-  artifactKey: Guid(19f9887a62e70ce41a131d983935386e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Stats/Key Items/TEST.asset using Guid(19f9887a62e70ce41a131d983935386e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22dc70459f9410aa46010c9a9a65585f') in 0.007285 seconds
-  Import took 0.021654 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.650459 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Stats/Key Items/TEST.asset
-  artifactKey: Guid(19f9887a62e70ce41a131d983935386e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Stats/Key Items/TEST.asset using Guid(19f9887a62e70ce41a131d983935386e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22dc70459f9410aa46010c9a9a65585f') in 0.006934 seconds
-  Import took 0.024777 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015225 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.31 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.927 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.44 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.0 MB.
-System memory in use after: 196.5 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7774.
-Total: 29.194712 ms (FindLiveObjects: 0.845236 ms CreateObjectMapping: 0.813638 ms MarkObjects: 27.491953 ms  DeleteObjects: 0.041252 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.016134 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.27 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.935 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.86 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.1 MB.
-System memory in use after: 196.5 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7778.
-Total: 29.658143 ms (FindLiveObjects: 0.835873 ms CreateObjectMapping: 0.745469 ms MarkObjects: 28.024138 ms  DeleteObjects: 0.050907 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 375.757788 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Key Items/TEST.asset
-  artifactKey: Guid(3b79a6fa5c850c14b80bac13165d0866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Key Items/TEST.asset using Guid(3b79a6fa5c850c14b80bac13165d0866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'edad80b062825de4d41ae82910872964') in 0.021992 seconds
-  Import took 0.034507 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.700254 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Key Items/TEST.asset
-  artifactKey: Guid(3b79a6fa5c850c14b80bac13165d0866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Slot Infos/Key Items/TEST.asset using Guid(3b79a6fa5c850c14b80bac13165d0866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'edad80b062825de4d41ae82910872964') in 0.006327 seconds
-  Import took 0.017775 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.014778 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.66 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.016 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.39 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.1 MB.
-System memory in use after: 196.6 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7782.
-Total: 30.285414 ms (FindLiveObjects: 1.245764 ms CreateObjectMapping: 0.777944 ms MarkObjects: 28.213724 ms  DeleteObjects: 0.045641 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 457.505240 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Stats/Consumables/test.asset
-  artifactKey: Guid(7693240b47b107a4ba03d93f8abd489d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Stats/Consumables/test.asset using Guid(7693240b47b107a4ba03d93f8abd489d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfe639522e74e900fcaa7589f5c798a7') in 0.022603 seconds
-  Import took 0.033948 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.832865 seconds.
-  path: Assets/Resources/Scriptable Objects/Items/Item Stats/Consumables/test.asset
-  artifactKey: Guid(7693240b47b107a4ba03d93f8abd489d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Items/Item Stats/Consumables/test.asset using Guid(7693240b47b107a4ba03d93f8abd489d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfe639522e74e900fcaa7589f5c798a7') in 0.014285 seconds
-  Import took 0.027917 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.014312 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.33 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.008 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.44 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.1 MB.
-System memory in use after: 196.6 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7786.
-Total: 30.606949 ms (FindLiveObjects: 0.895850 ms CreateObjectMapping: 0.787892 ms MarkObjects: 28.865863 ms  DeleteObjects: 0.053540 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 446.727755 seconds.
-  path: Assets/Resources/Art/Maps/Cave/Cave.png
-  artifactKey: Guid(d2fe8f66221291b439bf5e2c647f1ba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Art/Maps/Cave/Cave.png using Guid(d2fe8f66221291b439bf5e2c647f1ba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '850440f4630491f81ef63267ca4dcee1') in 0.559640 seconds
-  Import took 0.586356 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 13.110891 seconds.
-  path: Assets/Scenes/Maps/Titanias Cave.unity
-  artifactKey: Guid(589c8f3b3241469418600e0187a9299e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Maps/Titanias Cave.unity using Guid(589c8f3b3241469418600e0187a9299e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0e1ba03bffca544900fd404ba61a839') in 0.012856 seconds
-  Import took 0.032410 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 119.913720 seconds.
-  path: Assets/Scenes/Maps/Dorf.unity
-  artifactKey: Guid(fe21039cf5db2094cbbb1431ff925b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Maps/Dorf.unity using Guid(fe21039cf5db2094cbbb1431ff925b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3c69286a00c6268a0fdaed1fce12054') in 0.014868 seconds
-  Import took 0.056005 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.031256 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 2.31 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  7.759 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 2.51 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.4 MB.
-System memory in use after: 196.9 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7795.
-Total: 30.791268 ms (FindLiveObjects: 1.071978 ms CreateObjectMapping: 0.883562 ms MarkObjects: 28.742691 ms  DeleteObjects: 0.088649 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.013084 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 3.50 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  8.988 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 2.66 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.4 MB.
-System memory in use after: 196.9 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7799.
-Total: 63.720932 ms (FindLiveObjects: 1.720898 ms CreateObjectMapping: 2.141029 ms MarkObjects: 59.794932 ms  DeleteObjects: 0.060855 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.036378 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 3.28 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  7.732 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 5.78 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.4 MB.
-System memory in use after: 196.9 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7803.
-Total: 94.419456 ms (FindLiveObjects: 6.243743 ms CreateObjectMapping: 0.945880 ms MarkObjects: 87.168101 ms  DeleteObjects: 0.057344 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 407.065764 seconds.
-  path: Assets/Scripts/Scriptable Objects/Objects/Menu/PatchNoteInfo.cs
-  artifactKey: Guid(57452ebaa768b5a41b8ea5f975747a95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Scriptable Objects/Objects/Menu/PatchNoteInfo.cs using Guid(57452ebaa768b5a41b8ea5f975747a95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f752e7b1b467cef6fd2eb4c2f6f9bbb4') in 0.111751 seconds
-  Import took 0.198751 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000363 seconds.
-  path: Assets/Resources/Scriptable Objects/Menu/PatchNotes.asset
-  artifactKey: Guid(212d8f67e03a58d48b9ba046131534fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Menu/PatchNotes.asset using Guid(212d8f67e03a58d48b9ba046131534fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b163131b5c6e7d3767037c508e7a64db') in 0.040178 seconds
-  Import took 0.885346 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 23.601479 seconds.
-  path: Assets/Resources/Scriptable Objects/Menu/PatchNotes.asset
-  artifactKey: Guid(212d8f67e03a58d48b9ba046131534fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Menu/PatchNotes.asset using Guid(212d8f67e03a58d48b9ba046131534fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a9c65f5689881b537fbe85e9177106c') in 0.020537 seconds
-  Import took 0.071185 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019576 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 3.59 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  6.205 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.84 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.5 MB.
-System memory in use after: 196.9 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7807.
-Total: 29.429061 ms (FindLiveObjects: 0.855183 ms CreateObjectMapping: 0.739325 ms MarkObjects: 27.790082 ms  DeleteObjects: 0.042423 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.013010 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Github\Crystal Alchemist\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.40 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.429 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.46 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4193 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.5 MB.
-System memory in use after: 197.0 MB.
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 7811.
-Total: 33.943713 ms (FindLiveObjects: 0.846991 ms CreateObjectMapping: 0.777359 ms MarkObjects: 32.257923 ms  DeleteObjects: 0.059392 ms)
-
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file

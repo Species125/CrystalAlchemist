@@ -5,7 +5,16 @@ public class TODOLIST : MonoBehaviour
     //TODO (0.2.6)
 
     //TODO: Enemy Alarm mit Radius
-    //REWORK: Charakter Creation (Wings, Halo, Au Ra) 
+    
+    /*
+     
+    Ohren-Auswahl: Normal, Elfe, Drache
+    Mithra: Katzenohren + Schwanz
+    Au Ra: Normale Beine + Schwanz
+    Rückenteil-Auswahl: Flügel verschiedener Art
+
+    */
+
 
     //SKILL: Tornado (Zieht Gegner ran und macht Schaden)
     //SKILL: Geode (Fläche, die Schaden über Zeit macht)

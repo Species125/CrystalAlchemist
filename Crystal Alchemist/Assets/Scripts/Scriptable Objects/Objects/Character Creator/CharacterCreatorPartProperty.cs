@@ -10,6 +10,12 @@ public enum EnableMode
     nameAndRace
 }
 
+public enum RaceRestriction
+{
+    include,
+    exclude
+}
+
 [System.Serializable]
 public struct ColorTable
 {
@@ -36,7 +42,13 @@ public class CharacterCreatorPartProperty : ScriptableObject
     [HideIf("enableMode", EnableMode.name)]
     [BoxGroup("Enable Info")]
     [SerializeField]
-    private List<Race> restrictedRaces = new List<Race>();
+    private RaceRestriction restriction = RaceRestriction.include;
+
+    [HideIf("neverDisable", true)]
+    [HideIf("enableMode", EnableMode.name)]
+    [BoxGroup("Enable Info")]
+    [SerializeField]
+    private List<Race> races = new List<Race>();
 
     [AssetIcon]
     [PreviewField]
@@ -85,7 +97,7 @@ public class CharacterCreatorPartProperty : ScriptableObject
 
     public bool raceEnabled(Race race)
     {
-        if (this.restrictedRaces.Count == 0 || this.restrictedRaces.Contains(race)) return true;
+        if (this.races.Count == 0 || this.races.Contains(race)) return true;
         return false;
     }
 }

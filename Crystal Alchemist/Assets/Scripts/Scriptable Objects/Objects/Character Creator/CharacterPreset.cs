@@ -3,9 +3,15 @@ using UnityEngine;
 
 public enum Race
 {
-    humiel,
-    felyn,
-    drea
+    human,
+    elf,
+    goblin,
+    catgirl,
+    pony,
+    unicorn,
+    drahn,
+    lamia,
+    machina
 }
 
 public enum ColorGroup
@@ -19,6 +25,7 @@ public enum ColorGroup
     underwear,
     upperGear,
     lowerGear,
+    backGear,
     none
 }
 
