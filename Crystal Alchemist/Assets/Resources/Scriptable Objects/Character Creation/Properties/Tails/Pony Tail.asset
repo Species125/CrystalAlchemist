@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0b985e1f045e945aa90cf31b10f8e8, type: 3}
   m_Name: Pony Tail
   m_EditorClassIdentifier: 
-  neverDisable: 0
-  enableMode: 1
-  restrictedRaces: 01000000
+  enableMode: 2
+  restriction: 0
+  races: 0400000005000000
   front: {fileID: -8543379145089725134, guid: 6e7f109b8bfe61e49ab23b0352404b1b, type: 3}
   back: {fileID: -5260679801054297698, guid: 6e7f109b8bfe61e49ab23b0352404b1b, type: 3}
   colorTables:
@@ -23,6 +23,7 @@ MonoBehaviour:
     main: {r: 0.9725491, g: 0.6862745, b: 1, a: 0}
     shadows: {r: 0.86666673, g: 0.48235297, b: 0.9058824, a: 0}
     lines: {r: 0.6627451, g: 0.20000002, b: 0.7137255, a: 0}
+    glow: {r: 0, g: 0, b: 0, a: 0}
   category: Body
   parentName: Tail
   partName: Pony Tail

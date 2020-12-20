@@ -2,20 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterCreatorRace : CharacterCreatorButton
+public class CharacterCreatorRace : MonoBehaviour
 {
     [SerializeField]
-    private Race race;
+    private CharacterCreatorRaceButton template;
 
     [SerializeField]
-    private CharacterCreatorSubMenu subMenu;
+    private GameObject content;
 
+    [SerializeField]
+    private List<CharacterRace> races = new List<CharacterRace>();
 
-    public override void Click()
+    private void Start()
     {
-        this.mainMenu.creatorPreset.setRace(this.race);
-        this.mainMenu.updateGear();
-        this.subMenu.ShobSubMenu();
-        base.Click();
+        this.template.gameObject.SetActive(false);
+
+        for (int i = 0; i < races.Count; i++)
+        {
+            CharacterCreatorRaceButton newButton = Instantiate(template, this.content.transform);
+            newButton.SetRace(races[i]);
+            newButton.name = "Item " + i + ":" + races[i].raceName;
+
+            newButton.gameObject.SetActive(true);
+            if (i == 0)
+            {
+                newButton.GetComponent<ButtonExtension>().SetAsFirst();
+                newButton.GetComponent<ButtonExtension>().ReSelect();
+            }
+        }
     }
 }

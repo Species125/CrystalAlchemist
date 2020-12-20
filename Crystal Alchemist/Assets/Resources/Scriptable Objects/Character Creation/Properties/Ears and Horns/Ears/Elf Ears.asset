@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0b985e1f045e945aa90cf31b10f8e8, type: 3}
   m_Name: Elf Ears
   m_EditorClassIdentifier: 
-  neverDisable: 0
   enableMode: 2
-  restrictedRaces: 00000000
+  restriction: 0
+  races: 01000000
   front: {fileID: -8543379145089725134, guid: 79d69ee045605764491ced1d4c886c83, type: 3}
   back: {fileID: -5260679801054297698, guid: 79d69ee045605764491ced1d4c886c83, type: 3}
   colorTables:
@@ -23,6 +23,7 @@ MonoBehaviour:
     main: {r: 1, g: 0.8235295, b: 0.65882355, a: 0}
     shadows: {r: 0.8745099, g: 0.6666667, b: 0.47058827, a: 0}
     lines: {r: 0.6901961, g: 0.45882356, b: 0.34117648, a: 0}
+    glow: {r: 0, g: 0, b: 0, a: 0}
   category: Head
   parentName: Ears
   partName: Elf Ears

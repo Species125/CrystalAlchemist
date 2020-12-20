@@ -5,6 +5,7 @@ using AssetIcons;
 
 public enum EnableMode
 {
+    always,
     name,
     race,
     nameAndRace
@@ -31,20 +32,16 @@ public struct ColorTable
 public class CharacterCreatorPartProperty : ScriptableObject
 {
     [BoxGroup("Enable Info")]
-    public bool neverDisable = false;
-
-    [HideIf("neverDisable", true)]
-    [BoxGroup("Enable Info")]
     [SerializeField]
-    private EnableMode enableMode;
+    private EnableMode enableMode = EnableMode.always;
 
-    [HideIf("neverDisable", true)]
+    [HideIf("enableMode", EnableMode.always)]
     [HideIf("enableMode", EnableMode.name)]
     [BoxGroup("Enable Info")]
     [SerializeField]
     private RaceRestriction restriction = RaceRestriction.include;
 
-    [HideIf("neverDisable", true)]
+    [HideIf("enableMode", EnableMode.always)]
     [HideIf("enableMode", EnableMode.name)]
     [BoxGroup("Enable Info")]
     [SerializeField]
@@ -74,11 +71,15 @@ public class CharacterCreatorPartProperty : ScriptableObject
     [BoxGroup("Part Info")]
     public string partName = "Elf Ears";
 
-
     public Sprite GetSprite(bool isFront)
     {
         if (isFront) return this.front;
         else return this.back;
+    }
+
+    public bool mandatory()
+    {
+        return this.enableMode == EnableMode.always;
     }
 
     public string getFullPath()
@@ -95,9 +96,10 @@ public class CharacterCreatorPartProperty : ScriptableObject
         return false;
     }
 
-    public bool raceEnabled(Race race)
+    private bool raceEnabled(Race race)
     {
-        if (this.races.Count == 0 || this.races.Contains(race)) return true;
+        if (this.restriction == RaceRestriction.include && this.races.Contains(race)) return true;
+        else if (this.restriction == RaceRestriction.exclude && !this.races.Contains(race)) return true;
         return false;
     }
 }

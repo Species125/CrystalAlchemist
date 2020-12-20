@@ -1,19 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CharacterCreatorSubMenuChild : MonoBehaviour
 {
     [SerializeField]
-    private List<Race> restrictedRaces = new List<Race>();
+    private Race excludedRace;
 
     [SerializeField]
     private bool enableColor = true;
 
     public bool isEnabledByRace(Race race)
     {
-        if (this.restrictedRaces.Count == 0 || this.restrictedRaces.Contains(race)) return true;
-        return false;
+        return race != excludedRace;
     }
 
     public bool isEnabledByGear()

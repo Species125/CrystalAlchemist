@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0b985e1f045e945aa90cf31b10f8e8, type: 3}
   m_Name: Archer Armor
   m_EditorClassIdentifier: 
-  neverDisable: 0
-  enableMode: 0
-  restrictedRaces: 
+  enableMode: 1
+  restriction: 0
+  races: 
   front: {fileID: -8543379145089725134, guid: 7732e846c11096443848571515442fe3, type: 3}
   back: {fileID: -5260679801054297698, guid: 7732e846c11096443848571515442fe3, type: 3}
   colorTables:
@@ -23,6 +23,7 @@ MonoBehaviour:
     main: {r: 0.19215688, g: 0.6117647, b: 0.10980393, a: 0}
     shadows: {r: 0.16470589, g: 0.38431376, b: 0.121568635, a: 0}
     lines: {r: 0.03529412, g: 0.19215688, b: 0.003921569, a: 0}
+    glow: {r: 0, g: 0, b: 0, a: 0}
   category: Body
   parentName: Upper Gear
   partName: Archer

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0b985e1f045e945aa90cf31b10f8e8, type: 3}
   m_Name: Crown
   m_EditorClassIdentifier: 
-  neverDisable: 0
-  enableMode: 0
-  restrictedRaces: 
+  enableMode: 1
+  restriction: 0
+  races: 
   front: {fileID: -8543379145089725134, guid: c25c95dd9397226418c2d9b16ceba337, type: 3}
   back: {fileID: -5260679801054297698, guid: c25c95dd9397226418c2d9b16ceba337, type: 3}
   colorTables:
@@ -23,6 +23,7 @@ MonoBehaviour:
     main: {r: 1, g: 0.78823537, b: 0, a: 0}
     shadows: {r: 0.7686275, g: 0.52156866, b: 0.09019608, a: 0}
     lines: {r: 0.32941177, g: 0.2392157, b: 0.07450981, a: 0}
+    glow: {r: 0, g: 0, b: 0, a: 0}
   category: Head
   parentName: Head Gear
   partName: Crown

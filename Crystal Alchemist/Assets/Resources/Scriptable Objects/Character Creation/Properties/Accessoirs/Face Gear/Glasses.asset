@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0b985e1f045e945aa90cf31b10f8e8, type: 3}
   m_Name: Glasses
   m_EditorClassIdentifier: 
-  neverDisable: 0
-  enableMode: 0
-  restrictedRaces: 
+  enableMode: 1
+  restriction: 0
+  races: 
   front: {fileID: -8543379145089725134, guid: 48522f6bb6dd11b49a811fe3b1d90035, type: 3}
   back: {fileID: -5260679801054297698, guid: 48522f6bb6dd11b49a811fe3b1d90035, type: 3}
   colorTables:
@@ -23,6 +23,7 @@ MonoBehaviour:
     main: {r: 0, g: 0, b: 0, a: 0}
     shadows: {r: 0, g: 0, b: 0, a: 0}
     lines: {r: 0, g: 0, b: 0, a: 0}
+    glow: {r: 0, g: 0, b: 0, a: 0}
   category: Head
   parentName: Face Gear
   partName: Glasses

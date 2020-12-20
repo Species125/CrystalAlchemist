@@ -12,7 +12,7 @@ public class ButtonExtension : MonoBehaviour, ISelectHandler, IPointerEnterHandl
     public CustomCursor cursor;
 
     [SerializeField]
-    public bool selectFirst = false;
+    private bool selectFirst = false;
 
     [SerializeField]
     private bool isInteractable = true;

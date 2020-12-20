@@ -13,20 +13,28 @@ MonoBehaviour:
   m_Name: Player Preset
   m_EditorClassIdentifier: 
   readOnly: 0
-  race: 0
+  race: 6
   colorGroups:
-  - colorGroup: 1
-    color: {r: 0.1530794, g: 0.3583522, b: 0.754717, a: 1}
+  - colorGroup: 3
+    color: {r: 0.8773585, g: 0.7080207, b: 0.15312389, a: 1}
   - colorGroup: 2
-    color: {r: 0.9622642, g: 0.8388693, b: 0.6490744, a: 1}
+    color: {r: 0.9622642, g: 0.83886933, b: 0.64907444, a: 1}
   - colorGroup: 0
-    color: {r: 0.9058824, g: 0.6117647, b: 0.4588236, a: 1}
+    color: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 1}
+  - colorGroup: 1
+    color: {r: 0.7264151, g: 0.16110165, b: 0.0788092, a: 1}
+  - colorGroup: 4
+    color: {r: 0.854902, g: 0.65882355, b: 0.14117648, a: 1}
   characterParts:
+  - parentName: Face Gear
+    name: Glasses
+  - parentName: Horns
+    name: Snake Horn
   - parentName: Upper Gear
-    name: Archer
-  - parentName: Lower Gear
-    name: Mage Shoes
+    name: Plate
   - parentName: Hairstyle
     name: Bob
   - parentName: Legs
     name: Legs
+  - parentName: Lower Gear
+    name: Plate Boots

@@ -13742,3 +13742,51 @@ Exception 19.12.2020 01:59:17: NullReferenceException: Object reference not set 
 ShopPrice.Initialize (Costs costs) (at Assets/Scripts/Character Scripts/Character Resources/ShopPrice.cs:25)
 Treasure.Start () (at Assets/Scripts/Object Scripts/Treasure.cs:69)
 
+Exception 19.12.2020 23:52:51: NullReferenceException: Object reference not set to an instance of an object
+ButtonExtension.GetNavigationNeighbor (System.Collections.Generic.List`1[T] nexts) (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:79)
+ButtonExtension.setButtonNavigation () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:66)
+ButtonExtension.Initialize () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:51)
+ButtonExtension.OnEnable () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:44)
+UnityEngine.EventSystems.EventSystem:Update() (at C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/EventSystem.cs:385)
+
+Exception 19.12.2020 23:53:37: NullReferenceException: Object reference not set to an instance of an object
+ButtonExtension.GetNavigationNeighbor (System.Collections.Generic.List`1[T] nexts) (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:79)
+ButtonExtension.setButtonNavigation () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:66)
+ButtonExtension.Initialize () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:51)
+ButtonExtension.OnEnable () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:44)
+UnityEngine.EventSystems.EventSystem:Update() (at C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/EventSystem.cs:385)
+
+Exception 19.12.2020 23:57:20: NullReferenceException: Object reference not set to an instance of an object
+ButtonExtension.GetNavigationNeighbor (System.Collections.Generic.List`1[T] nexts) (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:79)
+ButtonExtension.setButtonNavigation () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:66)
+ButtonExtension.Initialize () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:51)
+ButtonExtension.OnEnable () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:44)
+UnityEngine.EventSystems.EventSystem:Update() (at C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/EventSystem.cs:385)
+
+Exception 20.12.2020 00:08:52: NullReferenceException: Object reference not set to an instance of an object
+ButtonExtension.GetNavigationNeighbor (System.Collections.Generic.List`1[T] nexts) (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:79)
+ButtonExtension.setButtonNavigation () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:66)
+ButtonExtension.Initialize () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:51)
+ButtonExtension.OnEnable () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:44)
+UnityEngine.EventSystems.EventSystem:Update() (at C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/EventSystem.cs:385)
+
+Exception 20.12.2020 00:10:45: NullReferenceException: Object reference not set to an instance of an object
+ButtonExtension.GetNavigationNeighbor (System.Collections.Generic.List`1[T] nexts) (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:79)
+ButtonExtension.setButtonNavigation () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:66)
+ButtonExtension.Initialize () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:51)
+ButtonExtension.OnEnable () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:44)
+UnityEngine.EventSystems.EventSystem:Update() (at C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/EventSystem.cs:385)
+
+Exception 20.12.2020 02:16:11: FormatException: Input string was not in a correct format.
+System.Number.StringToNumber (System.String str, System.Globalization.NumberStyles options, System.Number+NumberBuffer& number, System.Globalization.NumberFormatInfo info, System.Boolean parseDecimal) (at <9577ac7a62ef43179789031239ba8798>:0)
+System.Number.ParseInt32 (System.String s, System.Globalization.NumberStyles style, System.Globalization.NumberFormatInfo info) (at <9577ac7a62ef43179789031239ba8798>:0)
+System.Int32.Parse (System.String s, System.IFormatProvider provider) (at <9577ac7a62ef43179789031239ba8798>:0)
+System.Convert.ToInt32 (System.String value) (at <9577ac7a62ef43179789031239ba8798>:0)
+ScrollBarExtension.OnSelect (UnityEngine.EventSystems.BaseEventData eventData) (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ScrollBarExtension.cs:16)
+UnityEngine.EventSystems.ExecuteEvents.Execute (UnityEngine.EventSystems.ISelectHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/ExecuteEvents.cs:106)
+UnityEngine.EventSystems.ExecuteEvents.Execute[T] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.ExecuteEvents+EventFunction`1[T1] functor) (at C:/Program Files/Unity/Hub/Editor/2020.2.0b13/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/ExecuteEvents.cs:262)
+UnityEngine.EventSystems.EventSystem:SetSelectedGameObject(GameObject)
+ButtonExtension:Select() (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:90)
+ButtonExtension:ReSelect() (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/ButtonExtension.cs:107)
+CharacterCreatorRace:Start() (at Assets/Scripts/Menu Scripts/Character Creation/CharacterCreatorRace.cs:27)
+

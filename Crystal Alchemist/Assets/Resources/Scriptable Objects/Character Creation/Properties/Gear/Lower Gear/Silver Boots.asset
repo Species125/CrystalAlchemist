@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0b985e1f045e945aa90cf31b10f8e8, type: 3}
   m_Name: Silver Boots
   m_EditorClassIdentifier: 
-  neverDisable: 0
-  enableMode: 2
-  restrictedRaces: 0000000001000000
+  enableMode: 3
+  restriction: 1
+  races: 07000000
   front: {fileID: -8543379145089725134, guid: 456155aca93b83b42a0bceeace6bdf5f, type: 3}
   back: {fileID: 0}
   colorTables:
@@ -23,6 +23,7 @@ MonoBehaviour:
     main: {r: 0.5803922, g: 0.69411767, b: 0.73333335, a: 0}
     shadows: {r: 0.32941177, g: 0.41176474, b: 0.43921572, a: 0}
     lines: {r: 0.07450981, g: 0.25882354, b: 0.32941177, a: 0}
+    glow: {r: 0, g: 0, b: 0, a: 0}
   category: Body
   parentName: Lower Gear
   partName: Knight Boots

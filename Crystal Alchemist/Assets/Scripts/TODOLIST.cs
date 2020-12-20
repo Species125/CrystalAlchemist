@@ -3,18 +3,15 @@
 public class TODOLIST : MonoBehaviour
 {
     //TODO (0.2.6)
-
     //TODO: Enemy Alarm mit Radius
     
-    /*
-     
-    Ohren-Auswahl: Normal, Elfe, Drache
-    Mithra: Katzenohren + Schwanz
-    Au Ra: Normale Beine + Schwanz
-    Rückenteil-Auswahl: Flügel verschiedener Art
-
+    /*     
+    GRAPHICS: Heiligenschein
+    GRAPHICS: Engelsflügel, Drachenflügel, Booster
+    GRAPHICS: Katzenohren und Katzenschwanz
+    GRAPHICS: Schuppen (Beine und Körper) und Schwanz
+    GRAPHICS: Beine ohne Animation (fürs Fliegen)
     */
-
 
     //SKILL: Tornado (Zieht Gegner ran und macht Schaden)
     //SKILL: Geode (Fläche, die Schaden über Zeit macht)
@@ -26,7 +23,7 @@ public class TODOLIST : MonoBehaviour
     //TODO (0.2.6.5)
 
     //GRAPHICS: Sky
-    //GRAPHICS: New Outfits (Sci Fi, Visor, Mundschutz, Devine Robe, Halo)
+    //GRAPHICS: New Outfits (Sci Fi, Visor, Mundschutz, Devine Robe)
     //GRAPHICS: Player Animations (Casting, Arrow, Spear, Victory)
     //GRAPHICS: New Nitro Animation
     //GRAPHICS: Smoke (Collectable, Interactable, Warp)

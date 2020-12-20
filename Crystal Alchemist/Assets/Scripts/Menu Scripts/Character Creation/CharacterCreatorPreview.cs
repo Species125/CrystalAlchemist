@@ -23,21 +23,14 @@ public class CharacterCreatorPreview : MonoBehaviour
                 Image image = part.GetComponent<Image>();
                 CharacterPartData data = this.mainMenu.creatorPreset.GetCharacterPartData(part.property.parentName);
 
-                if ((data != null
-                    && (part.restrictedRaces.Count == 0 || part.restrictedRaces.Contains(this.mainMenu.creatorPreset.getRace())))
-                    || part.property.neverDisable) part.gameObject.SetActive(true); //set active when found (tail?) or always active
+                if (data != null || part.property.mandatory()) part.gameObject.SetActive(true);
 
                 if (part.gameObject.activeInHierarchy && image != null) //set Image and Color when active
                 {
                     if (data != null)
                     {
                         CharacterCreatorPartProperty property = this.mainMenu.GetProperty(data.name, data.parentName);
-                        if (property != null) part.property = property;
-
-                        Sprite sprite = part.property.GetSprite(part.isFront);
-
-                        if (sprite != null) image.sprite = sprite;
-                        else part.gameObject.SetActive(false);
+                        part.UpdatePreview(property);
                     }
 
                     List<Color> colors = this.mainMenu.creatorPreset.getColors(part.property.colorTables);

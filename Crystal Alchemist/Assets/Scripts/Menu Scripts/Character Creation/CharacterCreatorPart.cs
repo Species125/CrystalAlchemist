@@ -12,10 +12,10 @@ public class CharacterCreatorPart : MonoBehaviour
     private bool isPreview = false;
 
     [ShowIf("isPreview", true)]
-    public List<Race> restrictedRaces = new List<Race>();
+    public bool isFront = true;
 
     [ShowIf("isPreview", true)]
-    public bool isFront = true;
+    public bool readOnly = false;
 
     private int maxAmount = 8;
 
@@ -35,6 +35,17 @@ public class CharacterCreatorPart : MonoBehaviour
             this.image.material = Instantiate<Material>(this.image.material);
             this.mat = image.material;
         }
+    }
+
+    public void UpdatePreview(CharacterCreatorPartProperty property)
+    {
+        if (this.readOnly) return;
+        if (property != null) this.property = property;
+
+        Sprite sprite = this.property.GetSprite(this.isFront);
+
+        if (sprite != null) image.sprite = sprite;
+        else this.gameObject.SetActive(false);
     }
 
     public void SetColors(List<Color> colors)

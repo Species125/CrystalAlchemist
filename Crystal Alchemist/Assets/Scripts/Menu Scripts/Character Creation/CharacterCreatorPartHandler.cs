@@ -23,7 +23,7 @@ public class CharacterCreatorPartHandler : MonoBehaviour
             part.gameObject.SetActive(false);
 
             CharacterPartData data = this.preset.GetCharacterPartData(part.property.parentName, part.property.partName);
-            if (data != null || part.property.neverDisable) part.gameObject.SetActive(true); 
+            if (data != null || part.property.mandatory()) part.gameObject.SetActive(true);
 
             if (part.gameObject.activeInHierarchy)
             {

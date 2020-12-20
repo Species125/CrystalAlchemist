@@ -14,27 +14,26 @@ public class CharacterCreatorSubMenu : MonoBehaviour
 
     public void Start()
     {
-        this.ShobSubMenu();
+        this.RaceSubMenu();
     }
 
     public void OnEnable()
     {
-        this.ShobSubMenu();
+        this.RaceSubMenu();
     }
 
     public void OnDisable()
     {
-        this.ShobSubMenu();
+        this.RaceSubMenu();
     }
 
-    public void ShobSubMenu()
+    public void RaceSubMenu()
     {
         foreach(CharacterCreatorSubMenuChild child in this.subMenu)
         {
             child.gameObject.SetActive(false);
 
             if (child.isEnabledByRace(this.mainMenu.creatorPreset.getRace())) child.gameObject.SetActive(true);
-            //if (child.isEnabledByGear()) child.gameObject.SetActive(true);
         }
     }
 }
