@@ -1,20 +1,18 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class CharacterCreatorSubMenuChild : MonoBehaviour
 {
     [SerializeField]
-    private Race excludedRace;
+    private RaceRestriction restriction = RaceRestriction.exclude;
 
     [SerializeField]
-    private bool enableColor = true;
+    private List<Race> races = new List<Race>();
 
     public bool isEnabledByRace(Race race)
     {
-        return race != excludedRace;
-    }
-
-    public bool isEnabledByGear()
-    {
-        return this.enableColor;
+        if (this.restriction == RaceRestriction.exclude && !this.races.Contains(race)) return true;
+        else if (this.restriction == RaceRestriction.include && this.races.Contains(race)) return true;
+        return false;
     }
 }

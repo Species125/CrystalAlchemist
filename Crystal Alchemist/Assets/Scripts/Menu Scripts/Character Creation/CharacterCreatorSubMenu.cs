@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
@@ -11,11 +10,6 @@ public class CharacterCreatorSubMenu : MonoBehaviour
 
     [SerializeField]
     private List<CharacterCreatorSubMenuChild> subMenu = new List<CharacterCreatorSubMenuChild>();
-
-    public void Start()
-    {
-        this.RaceSubMenu();
-    }
 
     public void OnEnable()
     {
@@ -29,6 +23,8 @@ public class CharacterCreatorSubMenu : MonoBehaviour
 
     public void RaceSubMenu()
     {
+        if (this.mainMenu.creatorPreset == null) return;
+
         foreach(CharacterCreatorSubMenuChild child in this.subMenu)
         {
             child.gameObject.SetActive(false);

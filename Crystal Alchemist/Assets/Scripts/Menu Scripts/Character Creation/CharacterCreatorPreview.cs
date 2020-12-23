@@ -10,7 +10,7 @@ public class CharacterCreatorPreview : MonoBehaviour
     private CharacterCreatorMenu mainMenu;
 
     public void UpdatePreview()
-    {
+    {        
         List<CharacterCreatorPart> parts = new List<CharacterCreatorPart>();
         UnityUtil.GetChildObjects<CharacterCreatorPart>(this.transform, parts);
 
@@ -33,7 +33,7 @@ public class CharacterCreatorPreview : MonoBehaviour
                         part.UpdatePreview(property);
                     }
 
-                    List<Color> colors = this.mainMenu.creatorPreset.getColors(part.property.colorTables);
+                    List<Color> colors = this.mainMenu.creatorPreset.getColors(part.property.GetColorTable());
                     part.SetColors(colors);
                 }
             }

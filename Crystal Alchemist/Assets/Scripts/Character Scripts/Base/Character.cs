@@ -223,10 +223,12 @@ public class Character : MonoBehaviour
 
     #region Animation and Direction
 
-    public void SetDefaultDirection() => ChangeDirection(new Vector2(0, -1));
+    public void SetDefaultDirection() => ChangeDirection(Vector2.down);
 
     public void ChangeDirection(Vector2 direction)
     {
+        if (direction == Vector2.zero) direction = Vector2.down;
+
         this.values.direction = direction;
         AnimatorUtil.SetAnimDirection(direction, this.animator);
     }

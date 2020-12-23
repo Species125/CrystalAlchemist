@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEngine.UI;
 using UnityEngine;
 
 public class CharacterCreatorRaceButton : CharacterCreatorButton
@@ -7,22 +6,24 @@ public class CharacterCreatorRaceButton : CharacterCreatorButton
     [SerializeField]
     private TMP_Text textField;
 
-    [SerializeField]
-    private Image image;
-
     private Race race;
 
-    public void SetRace(CharacterRace race)
+    public override bool IsSelected()
     {
+        return this.handler.GetComponent<CharacterCreatorRaceHandler>().IsRace(this.race);
+    }
+
+    public void SetButton(CharacterRace race, CharacterCreatorRaceHandler handler)
+    {
+        this.handler = handler;
         this.textField.text = race.raceName;
-        this.image.sprite = race.icon;
+        this.preview.sprite = race.icon;
         this.race = race.race;
     }
 
     public override void Click()
     {
-        this.mainMenu.creatorPreset.setRace(this.race);
-        this.mainMenu.updateGear();
+        this.handler.GetComponent<CharacterCreatorRaceHandler>().UpdateRace(this.race);
         base.Click();
     }
 }

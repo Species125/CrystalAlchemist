@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b985e1f045e945aa90cf31b10f8e8, type: 3}
+  m_Name: Divine Wings
+  m_EditorClassIdentifier: 
+  enableMode: 1
+  restriction: 0
+  races: 
+  front: {fileID: -8543379145089725134, guid: bb58e673ff3e7e44ebd5b49c864d2398, type: 3}
+  back: {fileID: -5260679801054297698, guid: bb58e673ff3e7e44ebd5b49c864d2398, type: 3}
+  canBeColored: 0
+  colorTables:
+  - colorGroup: 7
+    highlight: {r: 1, g: 0.91372555, b: 0.5921569, a: 0}
+    main: {r: 1, g: 0.78823537, b: 0, a: 0}
+    shadows: {r: 0.7686275, g: 0.52156866, b: 0.09019608, a: 0}
+    lines: {r: 0.32941177, g: 0.2392157, b: 0.07450981, a: 0}
+  colorEffect:
+    addGlow: 1
+    glow: {r: 1, g: 0.91372555, b: 0.5921569, a: 0}
+    default_glow: {r: 1.4980392, g: 1.1764706, b: 0.2901961, a: 1}
+  category: Body
+  parentName: Back Gear
+  partName: Divine Wings
+  size: {x: 48, y: 48}

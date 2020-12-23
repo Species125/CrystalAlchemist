@@ -8,22 +8,30 @@ public class CustomRenderer : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
     [SerializeField]
+    private bool overrideShader = true;
+
+    [ShowIf("overrideShader")]
+    [SerializeField]
     private bool useGlow = false;
 
     [SerializeField]
+    [ShowIf("overrideShader")]
     [ShowIf("useGlow")]
     private Color selectColor = Color.white;
 
+    [ShowIf("overrideShader")]
     [ShowIf("useGlow")]
     [SerializeField]
     [Range(0,1)]
     private float precision = 0f;
 
+    [ShowIf("overrideShader")]
     [ShowIf("useGlow")]
     [SerializeField]
     [ColorUsage(true, true)]
     private Color glowColor = Color.white;
 
+    [ShowIf("overrideShader")]
     [SerializeField]
     private bool invert = false;
 
@@ -53,14 +61,16 @@ public class CustomRenderer : MonoBehaviour
 
     public void InvertColors(bool invert)
     {
+        if (!this.overrideShader) return;
         this.material.SetFloat("_Invert", invert ? 1f : 0f);
     }
 
     private void AddGlow()
     {
-        this.material.SetFloat("_Use_Glow", this.useGlow ? 1f : 0f);
+        if (!this.overrideShader) return;
+        this.material.SetFloat("_UseGlow", this.useGlow ? 1f : 0f);
         this.material.SetFloat("_Precision", this.precision);
         this.material.SetColor("_SelectGlow", this.selectColor);
-        this.material.SetColor("_GlowColor", this.glowColor);
+        this.material.SetColor("_GlowColor", this.glowColor);        
     }
 }

@@ -177,6 +177,7 @@ public class PlayerSpriteSheet : ScriptableObject
 
     private void SliceAndNameSprites(CharacterCreatorPart file)
     {
+        if (file.ignoreUpdate) return;
         Debug.Log(file.name);
         string assetpath = this.assetPath + "/" + file.property.getFullPath();
 
@@ -195,8 +196,8 @@ public class PlayerSpriteSheet : ScriptableObject
 
         List<SpriteMetaData> newData = new List<SpriteMetaData>();
 
-        int SliceWidth = 32;
-        int SliceHeight = 48;
+        int SliceWidth = file.property.GetSize().x;
+        int SliceHeight = file.property.GetSize().y;
         int columnIndex = 0;
 
         List<string> spriteNames = new List<string>();

@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Centaur
   m_EditorClassIdentifier: 
   readOnly: 1
-  race: 1
-  characterName: Infia
+  race: 4
   colorGroups:
   - colorGroup: 2
     color: {r: 0.637994, g: 0.7259216, b: 0.764151, a: 1}
@@ -24,6 +23,8 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
   - colorGroup: 1
     color: {r: 0.7264151, g: 0.5437323, b: 0.065103225, a: 1}
+  - colorGroup: 9
+    color: {r: 0.6392157, g: 0.7254902, b: 0.76470596, a: 0}
   characterParts:
   - parentName: Legs
     name: Legs
@@ -39,3 +40,5 @@ MonoBehaviour:
     name: Plate
   - parentName: Lower Gear
     name: Plate Boots
+  - parentName: Back Gear
+    name: Wings

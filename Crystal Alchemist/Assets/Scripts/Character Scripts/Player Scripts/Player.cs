@@ -281,7 +281,7 @@ public class Player : Character
         this.EnableScripts(value); //prevent movement        
         this.boxCollider.enabled = value; //prevent input
 
-        AnimatorUtil.SetAnimDirection(Vector2.down, this.animator);
+        this.SetDefaultDirection();
     }
 
     private IEnumerator GetUp(float duration, Vector2 position, Action before, Action after)

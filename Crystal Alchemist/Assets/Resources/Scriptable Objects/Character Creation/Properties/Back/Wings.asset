@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b985e1f045e945aa90cf31b10f8e8, type: 3}
+  m_Name: Wings
+  m_EditorClassIdentifier: 
+  enableMode: 1
+  restriction: 0
+  races: 
+  front: {fileID: -8543379145089725134, guid: f62bb46941260c84bb778a47493b2df1, type: 3}
+  back: {fileID: -5260679801054297698, guid: f62bb46941260c84bb778a47493b2df1, type: 3}
+  canBeColored: 1
+  colorTables:
+  - colorGroup: 2
+    highlight: {r: 1, g: 1, b: 1, a: 0}
+    main: {r: 1, g: 1, b: 1, a: 0}
+    shadows: {r: 0.69411767, g: 0.69411767, b: 0.69411767, a: 0}
+    lines: {r: 0.27450982, g: 0.27450982, b: 0.27450982, a: 0}
+    addGlow: 0
+    glow: {r: 0, g: 0, b: 0, a: 0}
+    default_glow: {r: 0, g: 0, b: 0, a: 0}
+  category: Body
+  parentName: Back Gear
+  partName: Wings
+  size: {x: 48, y: 48}

@@ -4,9 +4,10 @@ using Sirenix.OdinInspector;
 
 public class CharacterCreatorMenu : MenuBehaviour
 {
-    [BoxGroup("Character Creator")]
-    [Required]
+    [HideInInspector]
     public CharacterPreset creatorPreset;
+
+    private CharacterPreset backup;
 
     [BoxGroup("Character Creator")]
     [Required]
@@ -16,31 +17,44 @@ public class CharacterCreatorMenu : MenuBehaviour
     [BoxGroup("Character Creator")]
     [Required]
     [SerializeField]
-    private SimpleSignal presetSignal;
+    private SimpleSignal signal;
 
     [BoxGroup("Character Creator")]
     [Required]
     [SerializeField]
     private List<CharacterCreatorPartProperty> properties = new List<CharacterCreatorPartProperty>();
+    
 
     public override void Start()
     {
         base.Start();
+
+        this.creatorPreset = ScriptableObject.CreateInstance<CharacterPreset>();
+        this.backup = ScriptableObject.CreateInstance<CharacterPreset>();
+
+        GameUtil.setPreset(this.saveGame.playerPreset, this.backup);
         GameUtil.setPreset(this.saveGame.playerPreset, this.creatorPreset);
         updateGear();
-        updatePreview();
     }
 
-    public void Confirm()
+    [Button]
+    public void AddProperties()
     {
-        GameUtil.setPreset(this.creatorPreset, this.saveGame.playerPreset); //save Preset 
-        updatePreview();
+        this.properties.Clear();
+        this.properties.AddRange(Resources.LoadAll<CharacterCreatorPartProperty>("Scriptable Objects/Character Creation/Properties/"));
+    }
+
+    public void Abort()
+    {
+        GameUtil.setPreset(this.backup, this.saveGame.playerPreset);
+        this.signal.Raise();
         base.ExitMenu();
     }
 
     public void updatePreview()
     {
-        this.presetSignal.Raise();
+        GameUtil.setPreset(this.creatorPreset, this.saveGame.playerPreset); //save Preset 
+        this.signal.Raise();
     }
 
     public void updateGear()

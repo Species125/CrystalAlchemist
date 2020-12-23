@@ -1,36 +1,50 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
-public class CharacterCreatorColorPaletteHandler : CharacterCreatorButton
+public class CharacterCreatorColorPaletteHandler : CharacterCreatorButtonHandler
 {
+    [Required]
     [SerializeField]
     private CharacterCreatorColorPalette palette;
 
+    [Required]
     [SerializeField]
-    private GameObject colorPick;
+    private CharacterCreatorColor template;
 
     [SerializeField]
     private bool setFirst = false;
 
-   public ColorGroup colorGroup;
+    public ColorGroup colorGroup;
 
-    private void Start()
+    private Color currentColor;
+
+    private void Awake()
     {
-        colorPick.SetActive(false);
+        template.gameObject.SetActive(false);
 
         for(int i = 0; i < this.palette.colors.Count; i++)
         {
             Color color = this.palette.colors[i];
 
-            GameObject newColorPicker = Instantiate(this.colorPick, this.transform);            
+            CharacterCreatorColor colorOption = Instantiate(this.template, this.transform);        
+            if (i == 0 && this.setFirst) colorOption.GetComponent<ButtonExtension>().SetAsFirst();
 
-            if (i == 0 && this.setFirst) newColorPicker.GetComponent<ButtonExtension>().SetAsFirst();
+            colorOption.gameObject.SetActive(true);
+            colorOption.SetButton(color, this);
 
-            newColorPicker.SetActive(true);
-
-            if (newColorPicker.transform.childCount > 0 && newColorPicker.transform.GetChild(0).GetComponent<Image>() != null)
-                newColorPicker.transform.GetChild(0).GetComponent<Image>().color = color;
-
+            this.buttons.Add(colorOption);
         }
+    }
+
+    public bool HasColor(Color color)
+    {
+        ColorGroupData data = this.mainMenu.creatorPreset.GetColorGroupData(this.colorGroup);
+        if (data != null && data.color == color) return true;
+        return false;
+    }
+
+    public void UpdateColor(Color color)
+    {
+        this.mainMenu.creatorPreset.AddColorGroup(colorGroup, color);
     }
 }

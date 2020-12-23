@@ -27,7 +27,7 @@ public class CharacterCreatorPartHandler : MonoBehaviour
 
             if (part.gameObject.activeInHierarchy)
             {
-                List<Color> colors = this.preset.getColors(part.property.colorTables);
+                List<Color> colors = this.preset.getColors(part.property.GetColorTable());
                 part.SetColors(colors);
             }
         }

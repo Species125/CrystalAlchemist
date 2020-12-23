@@ -1,22 +1,29 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterCreatorColor : MonoBehaviour
+public class CharacterCreatorColor : CharacterCreatorButton
 {
-    [SerializeField]
-    private Image image;
+    private Color color;
 
-    [SerializeField]
-    private CharacterCreatorColorPaletteHandler handler;
-
-    public void Click()
+    public void SetButton(Color color, CharacterCreatorColorPaletteHandler handler)
     {
-        this.handler.mainMenu.creatorPreset.AddColorGroup(this.handler.colorGroup, this.image.color);
-        handler.Click();
+        this.handler = handler;
+        this.color = color;
+        this.preview.color = this.color;
     }
 
-    public ColorGroup GetColorGroup()
+    public override bool IsSelected()
     {
-        return this.handler.colorGroup;
+        CharacterCreatorColorPaletteHandler colorHandler = this.handler.GetComponent<CharacterCreatorColorPaletteHandler>();
+        if (colorHandler.HasColor(this.color)) return true;
+
+        return false;
+    }
+
+    public override void Click()
+    {
+        //TODO: Swap
+        this.handler.GetComponent<CharacterCreatorColorPaletteHandler>().UpdateColor(this.color);
+        base.Click();
     }
 }

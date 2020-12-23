@@ -2,6 +2,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
+using System;
 
 public class CharacterCreatorPart : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class CharacterCreatorPart : MonoBehaviour
 
     [ShowIf("isPreview", true)]
     public bool readOnly = false;
+
+    public bool ignoreUpdate = false;
 
     private int maxAmount = 8;
 
@@ -48,47 +51,56 @@ public class CharacterCreatorPart : MonoBehaviour
         else this.gameObject.SetActive(false);
     }
 
+    [Button]
+    public void SetColors(Color color)
+    {
+        List<Color> colors = new List<Color>();
+        colors.Add(color);
+        SetColors(colors);
+    }
+
     public void SetColors(List<Color> colors)
     {
-        if (mat != null)
+        if (this.mat != null)
         {
-            mat.SetInt("_UseColorGroup", 1);
-            mat.SetInt("_Swap", 1);
+            ColorEffect effect = this.property.GetEffect();
 
-            Clear(mat);
+            Clear(this.mat);
+            this.mat.SetInt("_UseColorGroup", 1);
+            this.mat.SetInt("_Swap", Convert.ToInt32(this.property.canBeColored));
+            this.mat.SetInt("_UseGlow", Convert.ToInt32(effect.addGlow));
 
-            int i = 0;            
-
-            while (i < this.property.colorTables.Count && i < colors.Count)
+            if (this.property.canBeColored)
             {
-                ChangeColorGroup(i, colors[i], mat);
-                i++;
+                int i = 0;
+
+                while (i < this.property.GetColorTable().Count && i < colors.Count)
+                {
+                    ChangeColorGroup(i, colors[i]);
+                    i++;
+                }
             }
+            
+            if(effect.addGlow) AddGlow(effect);
         }
     }
 
-    private void ChangeColorGroup(int index, Color color, Material mat)
+    private void ChangeColorGroup(int index, Color color)
     {
-        ColorTable colorTable = this.property.colorTables[index];
+        ColorTable colorTable = this.property.GetColorTable()[index];
 
-        mat.SetColor("_Color_" + ((index * 4) + 1), colorTable.highlight);
-        mat.SetColor("_Color_" + ((index * 4) + 2), colorTable.main);
-        mat.SetColor("_Color_" + ((index * 4) + 3), colorTable.shadows);
-        mat.SetColor("_Color_" + ((index * 4) + 4), colorTable.lines);
+        this.mat.SetColor("_Color_" + ((index * 4) + 1), colorTable.highlight);
+        this.mat.SetColor("_Color_" + ((index * 4) + 2), colorTable.main);
+        this.mat.SetColor("_Color_" + ((index * 4) + 3), colorTable.shadows);
+        this.mat.SetColor("_Color_" + ((index * 4) + 4), colorTable.lines);
 
-        mat.SetColor("_New_ColorGroup_" + (index + 1), color);
+        this.mat.SetColor("_New_ColorGroup_" + (index + 1), color);
     }
 
-    private void AddGlow()
-    {
-        /*mat.SetInt("_AddGlow", Convert.ToInt32(this.addGlow));
-        mat.SetColor("_Color_Highlight", colorTable.glow);
-
-        this.highlightColor.r = color.r;
-        this.highlightColor.g = color.g;
-        this.highlightColor.b = color.b;
-
-        mat.SetColor("_New_Highlight", this.highlightColor);*/
+    private void AddGlow(ColorEffect effect)
+    {        
+        this.mat.SetColor("_SelectGlow", effect.glow);
+        this.mat.SetColor("_GlowColor", effect.default_glow);
     }
 
     private void Clear(Material mat)
@@ -104,5 +116,8 @@ public class CharacterCreatorPart : MonoBehaviour
 
         mat.SetColor("_Color_Highlight", Color.black);
         mat.SetColor("_New_Highlight", Color.black);
+
+        this.mat.SetColor("_SelectGlow", Color.black);
+        this.mat.SetColor("_GlowColor", Color.black);
     }
 }

@@ -37,11 +37,17 @@ public static class AnimatorUtil
 
     public static void SetAnimDirection(Vector2 direction, Animator animator)
     {
-        if (animator != null)
-        {
-            SetAnimatorParameter(animator, "moveX", direction.x);
-            SetAnimatorParameter(animator, "moveY", direction.y);
-        }
+        if (animator == null) return;
+
+        //converting direction to max numbers (0.6 -> 1)
+        Vector2 fixedDirection = Vector2Int.RoundToInt(direction);
+
+        //converting diagonal directions to up or down
+        if (fixedDirection.y == 1) fixedDirection = Vector2.up;
+        else if (fixedDirection.y == -1) fixedDirection = Vector2.down;
+
+        SetAnimatorParameter(animator, "moveX", fixedDirection.x);
+        SetAnimatorParameter(animator, "moveY", fixedDirection.y);
     }
 
     public static void SetAnimatorParameter(List<Animator> animators, string parameter, bool value)

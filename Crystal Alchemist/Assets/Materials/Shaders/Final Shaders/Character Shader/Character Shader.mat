@@ -24,10 +24,22 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Glow: 1
     - _Invert: 0
-    - _Precision: 0
+    - _Precision: 0.25
     - _Swap: 0
     - _UseGlow: 1
     - _UseTint: 1
@@ -41,8 +53,8 @@ Material:
     - _FromColor3: {r: 0, g: 1, b: 0, a: 1}
     - _FromColor4: {r: 0.45098042, g: 0.32156864, b: 0.20000002, a: 1}
     - _FromHighlight: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SelectGlow: {r: 1, g: 1, b: 1, a: 1}
+    - _GlowColor: {r: 4.5803924, g: 1.3176471, b: 11.984314, a: 1}
+    - _SelectGlow: {r: 0.8352942, g: 0.7490196, b: 1, a: 1}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}
     - _ToColor: {r: 1, g: 0, b: 0, a: 1}
     - _ToColor1: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}

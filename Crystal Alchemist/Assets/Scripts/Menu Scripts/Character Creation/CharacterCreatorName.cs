@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(TMP_Dropdown))]
-public class CharacterCreatorName : CharacterCreatorButton
+public class CharacterCreatorName : MonoBehaviour
 {
     [SerializeField]
     private StringValue playerName;
@@ -23,32 +23,5 @@ public class CharacterCreatorName : CharacterCreatorButton
     public void SetName()
     {
         this.playerName.SetValue(this.nameDropDown.captionText.text);
-    }
-
-    /*
-    private void Start()
-    {
-        if(GameEvents.current != null) GameEvents.current.OnCancel += Deactivate;
-    }
-
-    private void OnDestroy()
-    {
-        if (GameEvents.current != null) GameEvents.current.OnCancel -= Deactivate;
-    }
-
-    
-    public void Confirm()
-    {
-        this.playerName.SetValue(this.inputField.text);
-
-        if (this.inputField.text.Length > 1) this.confirmButton.interactable = true;
-        else this.confirmButton.interactable = false;
-
-        Deactivate();
-    }
-
-    public void activeOnSelect() => this.inputField.ActivateInputField();
-    
-    private void Deactivate() => this.inputField.DeactivateInputField();    */
-
+    }  
 }

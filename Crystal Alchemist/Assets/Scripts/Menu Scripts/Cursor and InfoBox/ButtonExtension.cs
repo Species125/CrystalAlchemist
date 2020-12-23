@@ -74,9 +74,16 @@ public class ButtonExtension : MonoBehaviour, ISelectHandler, IPointerEnterHandl
 
     private Selectable GetNavigationNeighbor(List<Selectable> nexts)
     {
-        foreach (Selectable next in nexts)
+        try
         {
-            if (next.gameObject.activeInHierarchy) return next;
+            foreach (Selectable next in nexts)
+            {
+                if (next.gameObject.activeInHierarchy) return next;
+            }
+        }
+        catch
+        {
+            Debug.LogError("Butten Extension Error at Navigation: "+this.transform.parent.gameObject.name + " - " + this.gameObject.name);
         }
         return null;
     }

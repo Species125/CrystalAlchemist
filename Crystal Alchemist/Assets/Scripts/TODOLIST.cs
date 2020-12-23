@@ -4,12 +4,13 @@ public class TODOLIST : MonoBehaviour
 {
     //TODO (0.2.6)
     //TODO: Enemy Alarm mit Radius
+
+    //CHARACTER CREATION: Selection wonky, Select first missing, swap colors = false, initial property/color
     
     /*     
-    GRAPHICS: Heiligenschein
-    GRAPHICS: Engelsflügel, Drachenflügel, Booster
+    GRAPHICS: Booster
     GRAPHICS: Katzenohren und Katzenschwanz
-    GRAPHICS: Schuppen (Beine und Körper) und Schwanz
+    GRAPHICS: Schuppen (Beine und Körper)
     GRAPHICS: Beine ohne Animation (fürs Fliegen)
     */
 

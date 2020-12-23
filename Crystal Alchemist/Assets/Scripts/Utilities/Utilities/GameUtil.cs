@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-
-public static class GameUtil
+﻿public static class GameUtil
 {
     public static void setPreset(CharacterPreset source, CharacterPreset target)
     {

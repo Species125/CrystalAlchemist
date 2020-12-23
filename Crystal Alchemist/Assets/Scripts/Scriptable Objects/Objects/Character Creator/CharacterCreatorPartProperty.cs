@@ -25,7 +25,19 @@ public struct ColorTable
     public Color main;
     public Color shadows;
     public Color lines;
+}
+
+[System.Serializable]
+public class ColorEffect
+{
+    public bool addGlow = false;
+
+    [ShowIf("addGlow")]
     public Color glow;
+
+    [ShowIf("addGlow")]
+    [ColorUsage(true, true)]
+    public Color default_glow;
 }
 
 [CreateAssetMenu(menuName = "Game/CharacterCreation/Property")]
@@ -49,18 +61,30 @@ public class CharacterCreatorPartProperty : ScriptableObject
 
     [AssetIcon]
     [PreviewField]
-    [HorizontalGroup("Preview")]
-    [VerticalGroup("Preview/Left")]
+    [BoxGroup("Sprites")]
+    [HorizontalGroup("Sprites/Preview")]
+    [VerticalGroup("Sprites/Preview/Left")]
     [SerializeField]
     private Sprite front;
 
     [PreviewField]
-    [VerticalGroup("Preview/Right")]
+    [BoxGroup("Sprites")]
+    [VerticalGroup("Sprites/Preview/Right")]
     [SerializeField]
     private Sprite back;
 
     [BoxGroup("Color Info")]
-    public List<ColorTable> colorTables = new List<ColorTable>();
+    public bool canBeColored = true;
+
+    [BoxGroup("Color Info")]
+    [ShowIf("canBeColored")]
+    [SerializeField]
+    private List<ColorTable> colorTables = new List<ColorTable>();
+
+    [BoxGroup("Color Info")]
+    [SerializeField]
+    [HideLabel]
+    private ColorEffect colorEffect;
 
     [BoxGroup("Part Info")]
     public string category = "Head";
@@ -71,10 +95,30 @@ public class CharacterCreatorPartProperty : ScriptableObject
     [BoxGroup("Part Info")]
     public string partName = "Elf Ears";
 
+    [BoxGroup("Part Info")]
+    [SerializeField]
+    private Vector2Int size = new Vector2Int(32, 48);
+
     public Sprite GetSprite(bool isFront)
     {
         if (isFront) return this.front;
         else return this.back;
+    }
+
+    public Vector2Int GetSize()
+    {
+        return this.size;
+    }
+
+    public List<ColorTable> GetColorTable()
+    {
+        if (this.canBeColored) return this.colorTables;
+        else return new List<ColorTable>();
+    }
+
+    public ColorEffect GetEffect()
+    {
+        return this.colorEffect;
     }
 
     public bool mandatory()

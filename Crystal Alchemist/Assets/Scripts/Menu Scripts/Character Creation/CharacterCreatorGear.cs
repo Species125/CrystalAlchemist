@@ -1,17 +1,25 @@
-﻿using UnityEngine;
-
-public class CharacterCreatorGear : CharacterCreatorButton
+﻿public class CharacterCreatorGear : CharacterCreatorButton
 {
     public CharacterCreatorPartProperty property;
 
-    [SerializeField]
-    private bool removeIt = false;
+    public void SetButton(CharacterCreatorPartProperty property, CharacterCreatorGearHandler handler)
+    {
+        this.handler = handler;
+        this.property = property;
+
+        this.gameObject.name = property.name;
+        this.preview.enabled = true;
+        this.preview.sprite = property.GetSprite(true);
+    }
+
+    public override bool IsSelected()
+    {
+        return this.handler.GetComponent<CharacterCreatorGearHandler>().FindGear(this.property);
+    }
 
     public override void Click()
     {
-        if(!this.removeIt) this.mainMenu.creatorPreset.AddCharacterPartData(this.property.parentName, this.property.partName);
-        else this.mainMenu.creatorPreset.RemoveCharacterPartData(this.property.parentName);
-               
+        this.handler.GetComponent<CharacterCreatorGearHandler>().UpdateGear(this.property);
         base.Click();
-    } 
+    }
 }
