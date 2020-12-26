@@ -42,7 +42,7 @@ public class CharacterCreatorColorPaletteHandler : CharacterCreatorButtonHandler
 
     private bool HasColor(Color color)
     {
-        ColorGroupData data = this.mainMenu.creatorPreset.GetColorGroupData(this.colorGroup);
+        ColorGroupData data = this.mainMenu.playerPreset.GetColorGroupData(this.colorGroup);
         if (data != null && data.color == color) return true;
         return false;
     }
@@ -64,10 +64,10 @@ public class CharacterCreatorColorPaletteHandler : CharacterCreatorButtonHandler
 
         if (this.currentColor == this.defaultColor)
         {
-            if (this.palette.canRemove) this.mainMenu.creatorPreset.RemoveColorGroup(this.colorGroup);
-            else this.mainMenu.creatorPreset.AddColorGroup(this.colorGroup, this.palette.defaultColor);
+            if (this.palette.canRemove) this.mainMenu.playerPreset.RemoveColorGroup(this.colorGroup);
+            else this.mainMenu.playerPreset.AddColorGroup(this.colorGroup, this.palette.defaultColor);
         }
-        else this.mainMenu.creatorPreset.AddColorGroup(this.colorGroup, color);
+        else this.mainMenu.playerPreset.AddColorGroup(this.colorGroup, color);
 
         this.UpdatePreview();
     }

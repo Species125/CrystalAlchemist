@@ -46,7 +46,7 @@ public class CharacterCreatorGearHandler : CharacterCreatorButtonHandler
 
     private bool FindGear(CharacterCreatorPartProperty property)
     {
-        CharacterPartData data = this.mainMenu.creatorPreset.GetCharacterPartData(property);
+        CharacterPartData data = this.mainMenu.playerPreset.GetCharacterPartData(property);
         return data != null;
     }
 
@@ -59,8 +59,8 @@ public class CharacterCreatorGearHandler : CharacterCreatorButtonHandler
     {
         SetCurrentGear(property);
 
-        if (this.currentProperty != null) this.mainMenu.creatorPreset.AddCharacterPartData(property.parentName, property.partName);
-        else this.mainMenu.creatorPreset.RemoveCharacterPartData(property.parentName);
+        if (this.currentProperty != null) this.mainMenu.playerPreset.AddCharacterPartData(property.parentName, property.partName);
+        else this.mainMenu.playerPreset.RemoveCharacterPartData(property.parentName);
 
         this.UpdatePreview();
     }

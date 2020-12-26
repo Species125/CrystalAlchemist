@@ -20,7 +20,7 @@ public class CharacterCreatorButtonHandler : MonoBehaviour
 
     public void UpdatePreview()
     {
-        this.mainMenu.updatePreview();
+        this.mainMenu.UpdatePreview();
         SetSelection();
     }
 

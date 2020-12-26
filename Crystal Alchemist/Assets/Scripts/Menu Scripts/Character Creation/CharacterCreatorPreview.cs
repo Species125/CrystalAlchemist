@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 
 public class CharacterCreatorPreview : MonoBehaviour
 {
+    /*
     [BoxGroup("Required")]
     [SerializeField]
     private CharacterCreatorMenu mainMenu;
@@ -38,7 +39,7 @@ public class CharacterCreatorPreview : MonoBehaviour
                 }
             }
         }
-    }     
+    }     */
 
 
 }

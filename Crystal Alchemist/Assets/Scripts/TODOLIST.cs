@@ -4,7 +4,6 @@ public class TODOLIST : MonoBehaviour
 {
     //TODO (0.2.6)
     //TODO: Enemy Alarm mit Radius
-    //REWORK: CharacterCreatorMenu
 
     /*     
     GRAPHICS: Booster
@@ -18,8 +17,9 @@ public class TODOLIST : MonoBehaviour
     //SKILL: Protect (Rundum-Schild)
     //REWORK: Windklinge, Feuerball, Eissplitter, Frostspitze, Steinwand
 
+    ////////////////////NEW////////////////////////////
     //REWORK: Character Creation (VR Keyboard, Races, Wings)
-    //BUGFIXES, BETTER GRAPHICS, MOUSE-CONTROLS
+    //BUGFIXES, BETTER GRAPHICS, MOUSE-CONTROLS, AUTO-UI
 
     //-----------------------------------------------------------------------------
 

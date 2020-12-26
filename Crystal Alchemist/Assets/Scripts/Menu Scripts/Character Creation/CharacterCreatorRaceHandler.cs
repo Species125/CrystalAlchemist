@@ -1,8 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class CharacterCreatorRaceHandler : CharacterCreatorButtonHandler
 {
+    [SerializeField]
+    private CharacterCreatorPropertyGroup raceGroup;
+
     [SerializeField]
     private CharacterCreatorRaceButton template;
 
@@ -41,7 +45,7 @@ public class CharacterCreatorRaceHandler : CharacterCreatorButtonHandler
 
     private bool IsRace(Race race)
     {
-        if (race == this.mainMenu.creatorPreset.getRace()) return true;
+        if (race == this.mainMenu.playerPreset.getRace()) return true;
         return false;
     }
 
@@ -50,10 +54,27 @@ public class CharacterCreatorRaceHandler : CharacterCreatorButtonHandler
         return this.currentRace == race;
     }
 
+    private void UpdateRace()
+    {
+        List<CharacterCreatorGear> gearButtons = new List<CharacterCreatorGear>();
+        UnityUtil.GetChildObjects<CharacterCreatorGear>(this.transform, gearButtons);
+
+        foreach (CharacterCreatorPartProperty part in this.raceGroup.properties)
+        {
+            CharacterPartData data = this.mainMenu.playerPreset.GetCharacterPartData(part.parentName, part.partName);
+            bool enableIt = part.enableIt(this.mainMenu.playerPreset.getRace(), data);
+
+            if (enableIt) this.mainMenu.playerPreset.AddCharacterPartData(part.parentName, part.partName);
+            else this.mainMenu.playerPreset.RemoveCharacterPartData(part.parentName, part.partName);
+
+            //check if colorgroup exists
+        }
+    }
+
     public void UpdateRace(Race race)
     {
-        this.mainMenu.creatorPreset.setRace(race);
-        this.mainMenu.updateGear();
+        this.mainMenu.playerPreset.setRace(race);
+        this.UpdateRace();
         this.UpdatePreview();
     }
 }

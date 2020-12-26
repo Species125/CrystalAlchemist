@@ -12,9 +12,9 @@ public class CharacterCreatorPreset : CharacterCreatorButton
 
     public override void Click()
     {
-        GameUtil.setPreset(this.preset, this.mainMenu.creatorPreset);
-        this.mainMenu.updateGear();
-        this.mainMenu.updatePreview();
+        GameUtil.setPreset(this.preset, this.mainMenu.playerPreset);
+        //this.mainMenu.updateGear();
+        this.mainMenu.UpdatePreview();
         base.Click();
     }
 }
