@@ -1,27 +1,16 @@
 ﻿using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
-[RequireComponent(typeof(TMP_Dropdown))]
 public class CharacterCreatorName : MonoBehaviour
 {
     [SerializeField]
-    private StringValue playerName;
+    private TextMeshProUGUI textField;
 
     [SerializeField]
-    private StringListValue values;
+    private StringValue playerName;
 
-    private TMP_Dropdown nameDropDown;
-
-    private void Start()
+    private void OnEnable()
     {
-        this.nameDropDown = GetComponent<TMP_Dropdown>();
-        this.nameDropDown.AddOptions(values.GetValue());
-        UnityUtil.SelectDropDown(this.nameDropDown, this.playerName.GetValue());
+        this.textField.text = playerName.GetValue();
     }
-
-    public void SetName()
-    {
-        this.playerName.SetValue(this.nameDropDown.captionText.text);
-    }  
 }

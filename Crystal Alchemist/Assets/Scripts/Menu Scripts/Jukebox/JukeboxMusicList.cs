@@ -13,16 +13,16 @@ public class JukeboxMusicList : MonoBehaviour
     [SerializeField]
     private GameObject content;
 
-    private void OnEnable()
+    private void Start()
     {
-        this.template.gameObject.SetActive(false);
-
         for (int i = 0; i < themes.Count; i++)
         {
             JukeboxButton newButton = Instantiate(template, this.content.transform);
             newButton.gameObject.SetActive(true);
             newButton.SetMusic(themes[i]);
-            newButton.name = "Item " + i + ":" + newButton.GetTheme().name;
+            newButton.name = newButton.GetTheme().name;
         }
+
+        Destroy(this.template.gameObject);
     }
 }

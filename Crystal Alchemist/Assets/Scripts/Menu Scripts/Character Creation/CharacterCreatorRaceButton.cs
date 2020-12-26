@@ -8,9 +8,11 @@ public class CharacterCreatorRaceButton : CharacterCreatorButton
 
     private Race race;
 
+    private CharacterCreatorRaceHandler handler;
+
     public override bool IsSelected()
     {
-        return this.handler.GetComponent<CharacterCreatorRaceHandler>().IsRace(this.race);
+        return this.handler.ContainsRace(this.race);
     }
 
     public void SetButton(CharacterRace race, CharacterCreatorRaceHandler handler)
@@ -23,7 +25,6 @@ public class CharacterCreatorRaceButton : CharacterCreatorButton
 
     public override void Click()
     {
-        this.handler.GetComponent<CharacterCreatorRaceHandler>().UpdateRace(this.race);
-        base.Click();
+        this.handler.UpdateRace(this.race);
     }
 }

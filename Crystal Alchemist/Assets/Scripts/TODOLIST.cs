@@ -4,9 +4,8 @@ public class TODOLIST : MonoBehaviour
 {
     //TODO (0.2.6)
     //TODO: Enemy Alarm mit Radius
+    //REWORK: CharacterCreatorMenu
 
-    //CHARACTER CREATION: Selection wonky, Select first missing, swap colors = false, initial property/color
-    
     /*     
     GRAPHICS: Booster
     GRAPHICS: Katzenohren und Katzenschwanz
@@ -18,6 +17,9 @@ public class TODOLIST : MonoBehaviour
     //SKILL: Geode (Fläche, die Schaden über Zeit macht)
     //SKILL: Protect (Rundum-Schild)
     //REWORK: Windklinge, Feuerball, Eissplitter, Frostspitze, Steinwand
+
+    //REWORK: Character Creation (VR Keyboard, Races, Wings)
+    //BUGFIXES, BETTER GRAPHICS, MOUSE-CONTROLS
 
     //-----------------------------------------------------------------------------
 

@@ -62,14 +62,16 @@ public class CharacterCreatorMenu : MenuBehaviour
         List<CharacterCreatorGear> gearButtons = new List<CharacterCreatorGear>();
         UnityUtil.GetChildObjects<CharacterCreatorGear>(this.transform, gearButtons);
 
+        //Only those who needed by name / name and race
         foreach (CharacterCreatorPartProperty part in this.properties)
         {
-            //enableGearButton(gearButtons, part);
             CharacterPartData data = this.creatorPreset.GetCharacterPartData(part.parentName, part.partName);
             bool enableIt = part.enableIt(this.creatorPreset.getRace(), data);
 
             if (enableIt) this.creatorPreset.AddCharacterPartData(part.parentName, part.partName);
             else this.creatorPreset.RemoveCharacterPartData(part.parentName, part.partName);
+
+            //check if colorgroup exists
         }
     }
 

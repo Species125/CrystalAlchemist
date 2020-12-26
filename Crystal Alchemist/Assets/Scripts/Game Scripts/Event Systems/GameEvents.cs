@@ -52,6 +52,7 @@ public class GameEvents : MonoBehaviour
     //public Action<string> OnOnlineSceneChanged;
 
     public Action<GameObject> OnStart;
+    public Action OnDeviceChanged;
 
     public void DoEffectAdded(StatusEffect effect) => this.OnEffectAdded?.Invoke(effect);  
     public void DoChangeState(CharacterState state) => this.OnStateChanged?.Invoke(state);  
@@ -87,6 +88,8 @@ public class GameEvents : MonoBehaviour
     public void DoStatusEffectUpdate() => this.OnEffectUpdate?.Invoke();
     public void DoManaLifeUpdate() => this.OnLifeManaUpdate?.Invoke();
     public void DoStart(GameObject gameObject) => this.OnStart?.Invoke(gameObject);
+
+    public void DoDeviceChanged() => this.OnDeviceChanged?.Invoke();
 
 
 

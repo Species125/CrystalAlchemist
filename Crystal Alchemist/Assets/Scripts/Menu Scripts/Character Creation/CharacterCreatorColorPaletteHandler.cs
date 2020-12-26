@@ -11,40 +11,64 @@ public class CharacterCreatorColorPaletteHandler : CharacterCreatorButtonHandler
     [SerializeField]
     private CharacterCreatorColor template;
 
-    [SerializeField]
-    private bool setFirst = false;
-
     public ColorGroup colorGroup;
 
     private Color currentColor;
+    private Color defaultColor = new Color(0,0,0,0);
 
     private void Awake()
     {
-        template.gameObject.SetActive(false);
-
         for(int i = 0; i < this.palette.colors.Count; i++)
         {
             Color color = this.palette.colors[i];
+            CreateButton(color, i);
 
-            CharacterCreatorColor colorOption = Instantiate(this.template, this.transform);        
-            if (i == 0 && this.setFirst) colorOption.GetComponent<ButtonExtension>().SetAsFirst();
-
-            colorOption.gameObject.SetActive(true);
-            colorOption.SetButton(color, this);
-
-            this.buttons.Add(colorOption);
+            if (HasColor(color)) SetCurrentColor(color);
         }
+
+        Destroy(this.template.gameObject);
     }
 
-    public bool HasColor(Color color)
+    private void CreateButton(Color color, int i)
+    {
+        CharacterCreatorColor colorOption = Instantiate(this.template, this.transform);
+        this.SetFirst(colorOption, i);
+
+        colorOption.gameObject.SetActive(true);
+        colorOption.SetButton(color, this);
+
+        this.buttons.Add(colorOption);
+    }
+
+    private bool HasColor(Color color)
     {
         ColorGroupData data = this.mainMenu.creatorPreset.GetColorGroupData(this.colorGroup);
         if (data != null && data.color == color) return true;
         return false;
     }
 
+    public bool ContainsColor(Color color)
+    {
+        return this.currentColor == color;
+    }
+
+    private void SetCurrentColor(Color color)
+    {
+        if (this.currentColor == color) this.currentColor = this.defaultColor;
+        else this.currentColor = color;
+    }
+
     public void UpdateColor(Color color)
     {
-        this.mainMenu.creatorPreset.AddColorGroup(colorGroup, color);
+        SetCurrentColor(color);
+
+        if (this.currentColor == this.defaultColor)
+        {
+            if (this.palette.canRemove) this.mainMenu.creatorPreset.RemoveColorGroup(this.colorGroup);
+            else this.mainMenu.creatorPreset.AddColorGroup(this.colorGroup, this.palette.defaultColor);
+        }
+        else this.mainMenu.creatorPreset.AddColorGroup(this.colorGroup, color);
+
+        this.UpdatePreview();
     }
 }

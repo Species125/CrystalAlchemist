@@ -13,10 +13,8 @@ public class QuickTravelMenu : MonoBehaviour
     [SerializeField]
     private GameObject content;
 
-    private void OnEnable()
+    private void Start()
     {
-        this.template.gameObject.SetActive(false);
-
         for(int i = 0; i < list.GetStats().Count; i++)
         {
             TeleportStats stats = list.GetStats(i);
@@ -25,7 +23,9 @@ public class QuickTravelMenu : MonoBehaviour
             QuickTravelButton newButton = Instantiate(template, this.content.transform);
             newButton.gameObject.SetActive(true);
             newButton.SetLocation(stats);
-            newButton.name = "Item "+i+":"+stats.scene;
+            newButton.name = stats.scene;
         }
+
+        Destroy(this.template.gameObject);
     }
 }

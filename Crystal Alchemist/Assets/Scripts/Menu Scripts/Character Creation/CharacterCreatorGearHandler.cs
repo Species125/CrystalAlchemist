@@ -19,34 +19,49 @@ public class CharacterCreatorGearHandler : CharacterCreatorButtonHandler
 
     private void Awake()
     {
-        this.template.gameObject.SetActive(false);
-
-        foreach (CharacterCreatorPartProperty property in this.group.properties)
+        for(int i = 0; i < this.group.properties.Count; i++)
         {
-            CreateButton(property);
+            CharacterCreatorPartProperty property = this.group.properties[i];
+            CreateButton(property, i);
+            if (FindGear(property))SetCurrentGear(property);  
         }
+
+        Destroy(this.template.gameObject);
     }
 
-    private void CreateButton(CharacterCreatorPartProperty property)
+    private void CreateButton(CharacterCreatorPartProperty property, int i)
     {
         CharacterCreatorGear button = Instantiate(template, content);
         button.gameObject.SetActive(true);
-        button.SetButton(property, this);        
+        button.SetButton(property, this);
+        this.SetFirst(button, i);
         this.buttons.Add(button);
     }
 
-    public bool FindGear(CharacterCreatorPartProperty property)
+    private void SetCurrentGear(CharacterCreatorPartProperty property)
+    {
+        if (this.currentProperty == property && this.group.canRemove) this.currentProperty = null;
+        else this.currentProperty = property;
+    }
+
+    private bool FindGear(CharacterCreatorPartProperty property)
     {
         CharacterPartData data = this.mainMenu.creatorPreset.GetCharacterPartData(property);
         return data != null;
     }
 
+    public bool ContainsGear(CharacterCreatorPartProperty property)
+    {
+        return this.currentProperty == property;
+    }
+
     public void UpdateGear(CharacterCreatorPartProperty property)
     {
-        if (this.currentProperty == property) this.currentProperty = null;
-        else this.currentProperty = property;
+        SetCurrentGear(property);
 
         if (this.currentProperty != null) this.mainMenu.creatorPreset.AddCharacterPartData(property.parentName, property.partName);
         else this.mainMenu.creatorPreset.RemoveCharacterPartData(property.parentName);
+
+        this.UpdatePreview();
     }
 }

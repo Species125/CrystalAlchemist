@@ -74,7 +74,7 @@ public class SaveSystem
             MasterManager.settings.soundEffectVolume = data.soundVolume;
 
             if (Enum.TryParse(data.language, out Language language)) MasterManager.settings.language = language;
-            if (Enum.TryParse(data.layout, out LayoutType layoutType)) MasterManager.settings.layoutType = layoutType;
+            if (Enum.TryParse(data.layout, out InputDeviceType layoutType)) MasterManager.settings.layoutType = layoutType;
 
             MasterManager.settings.healthBar = data.useHealthBar;
             MasterManager.settings.manaBar = data.useManaBar;

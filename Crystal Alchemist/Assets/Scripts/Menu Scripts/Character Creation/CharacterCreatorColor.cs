@@ -5,6 +5,8 @@ public class CharacterCreatorColor : CharacterCreatorButton
 {
     private Color color;
 
+    private CharacterCreatorColorPaletteHandler handler;
+
     public void SetButton(Color color, CharacterCreatorColorPaletteHandler handler)
     {
         this.handler = handler;
@@ -14,16 +16,13 @@ public class CharacterCreatorColor : CharacterCreatorButton
 
     public override bool IsSelected()
     {
-        CharacterCreatorColorPaletteHandler colorHandler = this.handler.GetComponent<CharacterCreatorColorPaletteHandler>();
-        if (colorHandler.HasColor(this.color)) return true;
+        if (this.handler.ContainsColor(this.color)) return true;
 
         return false;
     }
 
     public override void Click()
     {
-        //TODO: Swap
-        this.handler.GetComponent<CharacterCreatorColorPaletteHandler>().UpdateColor(this.color);
-        base.Click();
+        this.handler.UpdateColor(this.color);        
     }
 }

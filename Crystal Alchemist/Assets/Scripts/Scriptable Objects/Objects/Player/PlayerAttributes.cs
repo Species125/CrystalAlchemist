@@ -110,19 +110,26 @@ public class PlayerAttributes : ScriptableObject
 
     public void SetValues()
     {
-        playerValues.maxLife = this.expanderValues[this.health];
-        if (playerValues.life > playerValues.maxLife) playerValues.life = playerValues.maxLife;
+        try
+        {
+            playerValues.maxLife = this.expanderValues[this.health];
+            if (playerValues.life > playerValues.maxLife) playerValues.life = playerValues.maxLife;
 
-        playerValues.maxMana = this.expanderValues[this.mana];
-        if (playerValues.mana > playerValues.maxMana) playerValues.mana = playerValues.maxMana;
+            playerValues.maxMana = this.expanderValues[this.mana];
+            if (playerValues.mana > playerValues.maxMana) playerValues.mana = playerValues.maxMana;
 
-        playerValues.lifeRegen = (float)this.percentageValues[this.healthRegen] / 100f;
+            playerValues.lifeRegen = (float)this.percentageValues[this.healthRegen] / 100f;
 
-        playerValues.manaRegen = (float)this.percentageValues[this.manaRegen] / 100f;
+            playerValues.manaRegen = (float)this.percentageValues[this.manaRegen] / 100f;
 
-        playerValues.buffPlus = this.percentageValues[this.buffPlus];
+            playerValues.buffPlus = this.percentageValues[this.buffPlus];
 
-        playerValues.debuffMinus = -this.percentageValues[this.debuffMinus];
+            playerValues.debuffMinus = -this.percentageValues[this.debuffMinus];
+        }
+        catch
+        {
+
+        }
 
         GameEvents.current.DoManaLifeUpdate();
     }

@@ -25,7 +25,7 @@ public class MasterManager : SingletonScriptableObject<MasterManager>
     public static StringValue actionButtonText { get { return Instance._actionButtonText; } }
     public static GameObject itemCollectGlitter { get { return Instance._itemCollectGlitter; } }
     public static GameObject itemDisappearSmoke { get { return Instance._itemDisappearSmoke; } }
-
+    public static InputDeviceInfo inputDeviceInfo { get { return Instance._inputDeviceInfo; } }
 
     [BoxGroup("Interaction")]
     [SerializeField]
@@ -50,6 +50,9 @@ public class MasterManager : SingletonScriptableObject<MasterManager>
     [BoxGroup("Values")]
     [SerializeField]
     private TimeValue _timeValue;
+    [BoxGroup("Values")]
+    [SerializeField]
+    private InputDeviceInfo _inputDeviceInfo;
     [BoxGroup("Values")]
     [SerializeField]
     private StringValue _actionButtonText;

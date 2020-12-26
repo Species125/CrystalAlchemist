@@ -66,24 +66,39 @@ public class CharacterCreatorPart : MonoBehaviour
             ColorEffect effect = this.property.GetEffect();
 
             Clear(this.mat);
-            this.mat.SetInt("_UseColorGroup", 1);
-            this.mat.SetInt("_Swap", Convert.ToInt32(this.property.canBeColored));
-            this.mat.SetInt("_UseGlow", Convert.ToInt32(effect.addGlow));
 
-            if (this.property.canBeColored)
-            {
-                int i = 0;
+            bool canSwapColors = SetBools(colors.Count, effect.addGlow);
+            if (canSwapColors) SetColorGroup(colors);
 
-                while (i < this.property.GetColorTable().Count && i < colors.Count)
-                {
-                    ChangeColorGroup(i, colors[i]);
-                    i++;
-                }
-            }
-            
-            if(effect.addGlow) AddGlow(effect);
+            if (effect.addGlow) AddGlow(effect);
         }
     }
+
+    private bool SetBools(int colors, bool addGlow)
+    {
+        bool swapColors = false;
+
+        this.mat.SetInt("_UseColorGroup", 1);
+
+        if (this.property.canBeColored && colors > 0) swapColors = true;
+        this.mat.SetInt("_Swap", Convert.ToInt32(swapColors));
+
+        this.mat.SetInt("_UseGlow", Convert.ToInt32(addGlow));
+
+        return swapColors;
+    }
+
+    private void SetColorGroup(List<Color> colors)
+    {
+        int i = 0;
+
+        while (i < this.property.GetColorTable().Count && i < colors.Count)
+        {
+            ChangeColorGroup(i, colors[i]);
+            i++;
+        }
+    }
+
 
     private void ChangeColorGroup(int index, Color color)
     {
@@ -98,7 +113,7 @@ public class CharacterCreatorPart : MonoBehaviour
     }
 
     private void AddGlow(ColorEffect effect)
-    {        
+    {
         this.mat.SetColor("_SelectGlow", effect.glow);
         this.mat.SetColor("_GlowColor", effect.default_glow);
     }

@@ -25,10 +25,17 @@ public class ScrollBarExtension : MonoBehaviour, ISelectHandler
     [SerializeField]
     private int end = 2;
 
-    public void OnSelect(BaseEventData eventData)
+    private bool selectable = true;  
+
+    public void OnSelect(BaseEventData data)
+    {
+        if (MasterManager.inputDeviceInfo.type == InputDeviceType.mouse) return;
+        SetOnSelect();
+    }
+
+    private void SetOnSelect()
     {
         int value = this.gameObject.transform.GetSiblingIndex();
-        //int value = Convert.ToInt32(this.gameObject.name.Split(':')[0].Replace("Item ", ""));
 
         if (type == ScrollBarType.horizontal) SetHorizontal(value);
         else SetVertical(value);
@@ -46,7 +53,7 @@ public class ScrollBarExtension : MonoBehaviour, ISelectHandler
             if (child.gameObject.activeInHierarchy) count++;
         }
 
-        return count; //this.transform.parent.childCount - 1;
+        return count; 
     }
 
     private void SetHorizontal(int item)
@@ -58,8 +65,8 @@ public class ScrollBarExtension : MonoBehaviour, ISelectHandler
         float factor = 1 / (float)(count-1);
         float value = index * factor;
 
-        if (index == 0) value = 0;
-        else if (item >= count - 1) value = 1;
+        if (index < this.start) value = 0;
+        else if (item >= count - this.end) value = 1;
 
         this.scrollBar.value = value;
     }
@@ -73,10 +80,10 @@ public class ScrollBarExtension : MonoBehaviour, ISelectHandler
         float value = 0f;
 
         if (index <= this.start) value = 1f;
-        else if (index <= count - this.end)
+        else if (index < count - this.end)
         {
-            float factor = 1 / ((float)count - 1);
-            value = 1-((index-this.start) * factor);
+            float factor = 1 / ((float)count-(this.end+this.start+1));
+            value = 1-((index-(this.start)) * factor);
         }
 
         this.scrollBar.value = value;

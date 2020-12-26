@@ -191,55 +191,11 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "up",
-                    "id": "a5e9f300-8b83-4f0d-83dd-4abcf976cecc",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "027b37a1-9bee-45fb-bd47-069c2355bdf5",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "28936e66-3790-4409-bc6f-06e8534c7e1f",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "3cdce0f3-f8cf-4860-9b74-c11cc40c9549",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "864adb11-1cdd-4bde-98a6-64575213b457",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "NormalizeVector2,StickDeadzone",
+                    "processors": "NormalizeVector2,StickDeadzone(min=0.4,max=0.8)",
                     "groups": "",
                     "action": "Movement",
                     "isComposite": false,

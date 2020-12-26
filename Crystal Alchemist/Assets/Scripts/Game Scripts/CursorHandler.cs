@@ -9,6 +9,7 @@ public class CursorHandler : MonoBehaviour
     private PlayerInputs inputs;
     private float countdown;
 
+
     private void Awake()
     {
         inputs = new PlayerInputs();
@@ -31,7 +32,7 @@ public class CursorHandler : MonoBehaviour
         else
         {
             this.countdown = 0;
-            Cursor.visible = false;
+            Cursor.visible = false;            
         }
     }
 }

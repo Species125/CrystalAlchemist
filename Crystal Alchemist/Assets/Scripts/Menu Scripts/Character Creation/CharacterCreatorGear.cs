@@ -2,6 +2,8 @@
 {
     public CharacterCreatorPartProperty property;
 
+    private CharacterCreatorGearHandler handler;
+
     public void SetButton(CharacterCreatorPartProperty property, CharacterCreatorGearHandler handler)
     {
         this.handler = handler;
@@ -14,12 +16,11 @@
 
     public override bool IsSelected()
     {
-        return this.handler.GetComponent<CharacterCreatorGearHandler>().FindGear(this.property);
+        return this.handler.ContainsGear(this.property);
     }
 
     public override void Click()
     {
-        this.handler.GetComponent<CharacterCreatorGearHandler>().UpdateGear(this.property);
-        base.Click();
+        this.handler.UpdateGear(this.property);
     }
 }

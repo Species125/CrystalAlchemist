@@ -10,9 +10,6 @@ public class CharacterCreatorButton : MonoBehaviour
     [Required]
     public Image preview;
 
-    [HideInInspector]
-    public CharacterCreatorButtonHandler handler;
-
     public virtual bool IsSelected()
     {
         return false;
@@ -20,13 +17,8 @@ public class CharacterCreatorButton : MonoBehaviour
 
     public virtual void Click()
     {
-        if (this.handler == null) return;
-        this.handler.UpdatePreview();
-        this.handler.SetSelection();
+
     }
 
-    public void SetSelection()
-    {
-        this.selectedFrame.SetActive(IsSelected());
-    }
+    public void SetSelection() => this.selectedFrame.SetActive(IsSelected());    
 }

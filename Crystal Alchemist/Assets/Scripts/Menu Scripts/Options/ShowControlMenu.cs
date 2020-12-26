@@ -10,7 +10,7 @@ public class ShowControlMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        if (MasterManager.settings.layoutType == LayoutType.keyboard) showControlType(false);
+        if (MasterManager.settings.layoutType == InputDeviceType.keyboard) showControlType(false);
         else showControlType(true);
     }
 
