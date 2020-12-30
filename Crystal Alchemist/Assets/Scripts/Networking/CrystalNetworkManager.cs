@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
+using Mirror;
 
-public class CrystalNetworkManager : MonoBehaviour
+public class CrystalNetworkManager : NetworkManager
 {
     [ButtonGroup("Test")]
     public void Insert()

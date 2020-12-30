@@ -3,6 +3,13 @@
 public class TODOLIST : MonoBehaviour
 {
     //TODO (0.2.6)
+    //TODO: Gleiches Item für jeden. Unabhängige Inventare und kein Destroy beim anderen
+    //TODO: Kiste Sync
+    //TODO: Zeit Sync
+    //TODO: Skills Sync
+    //TODO: Szenenwechsel
+    //TODO: Health Sync
+
     //TODO: Enemy Alarm mit Radius
 
     /*     
@@ -56,7 +63,7 @@ public class TODOLIST : MonoBehaviour
     //CONTENT: Collectable Skins
     //CONTENT: Collectable Races (DNA)
 
-    //UTIL: Item Assistent
+    //TODO: Jahreszeiten
 
     //-----------------------------------------------------------------------------
 

@@ -42,8 +42,8 @@ public class ResolutionMenu : MonoBehaviour
         this.cameraSlider.value = cameraSize;
         this.cameraSliderValue.text = this.cameraSlider.value + "";
 
-        this.UIsize = MasterManager.settings.UISize;
-        this.UISlider.value = UIsize*100;
+        this.UIsize = MasterManager.settings.UISize * 100;
+        this.UISlider.value = UIsize;
         this.UISliderValue.text = this.UISlider.value + "";
     }
 
@@ -51,21 +51,29 @@ public class ResolutionMenu : MonoBehaviour
     {
         this.cameraSize = (int)this.cameraSlider.value;
         this.cameraSliderValue.text = this.cameraSize + "";
+
+        MasterManager.settings.cameraDistance = this.cameraSize;
+        SettingsEvents.current.DoCameraChange();
     }
 
     public void SetUIValue()
     {
         this.UIsize = (int)this.UISlider.value;
         this.UISliderValue.text = this.UIsize + "";
+
+        MasterManager.settings.UISize = this.UIsize / 100f;
+        SettingsEvents.current.DoUISizeChange();
     }
 
     public void ConfirmCamera()
     {
+        /*
         MasterManager.settings.cameraDistance = this.cameraSize;
         SettingsEvents.current.DoCameraChange();
 
-        MasterManager.settings.UISize = this.UIsize/100f;
+        MasterManager.settings.UISize = this.UIsize / 100f;
         SettingsEvents.current.DoUISizeChange();
+        */
     }
 
     public void Confirm()

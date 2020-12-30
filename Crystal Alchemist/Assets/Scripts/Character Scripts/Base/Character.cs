@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using DG.Tweening;
+using Mirror;
 
-public class Character : MonoBehaviour
+public class Character : NetworkBehaviour
 {
     [HideInInspector]
     public CharacterStats stats;
@@ -441,8 +442,24 @@ public class Character : MonoBehaviour
     [Button]
     public void KillIt() => KillIt(true);
 
-    public void KillIt(bool showAnimation) => KillCharacter(showAnimation);
-    
+    //public void KillIt(bool showAnimation) => KillCharacter(showAnimation);
+
+
+
+    public void KillIt(bool showAnimation)
+    {
+        if (this.isServer) RpcKill(showAnimation);
+        else CmdKill(showAnimation);
+    }
+
+    [Command(ignoreAuthority = true)]
+    private void CmdKill(bool animate) => RpcKill(animate);
+
+    [ClientRpc]
+    private void RpcKill(bool animate) => KillCharacter(animate);
+
+
+
 
     public virtual void KillCharacter(bool animate)
     {

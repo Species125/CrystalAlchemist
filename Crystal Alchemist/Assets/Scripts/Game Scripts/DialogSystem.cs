@@ -148,6 +148,8 @@ public class DialogSystem : MonoBehaviour
 
     private void ShowDialogBox(Player player, string text, UnityEvent onClose)
     {
+        if (!player.hasAuthority) return;
+
         if (!this.progress.ContainsProgress()
             && player.values.currentState != CharacterState.inDialog)
         {

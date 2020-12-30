@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
   runInBackground: 1
-  startOnHeadless: 1
+  autoStartServerBuild: 1
   showDebugMessages: 0
   serverTickRate: 30
   offlineScene: 
@@ -58,7 +58,7 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 759644400424337056, guid: 07f9e01eba535704bbce596da0ed4bfe,
+  playerPrefab: {fileID: 759644400424337056, guid: e8e487b463cd0914eab3948d08f3a26c,
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
@@ -122,3 +122,4 @@ MonoBehaviour:
   showGUI: 1
   offsetX: 0
   offsetY: 0
+  skillSet: {fileID: 11400000, guid: 29dcfc276674c7e42a941d5aee79bc0e, type: 2}

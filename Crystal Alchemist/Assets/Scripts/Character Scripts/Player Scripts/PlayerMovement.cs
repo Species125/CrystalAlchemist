@@ -2,6 +2,7 @@
 using UnityEngine.InputSystem;
 using DG.Tweening;
 using System.Collections;
+using Mirror;
 
 [RequireComponent(typeof(Player))]
 public class PlayerMovement : PlayerComponent
@@ -51,7 +52,7 @@ public class PlayerMovement : PlayerComponent
     private void SetChange(InputAction.CallbackContext ctx)
     {
         if (this.player.values.CanMove()
-            //&& this.hasAuthority
+            && this.hasAuthority
             )
         {
             this.change = ctx.ReadValue<Vector2>();
@@ -68,7 +69,8 @@ public class PlayerMovement : PlayerComponent
     private void SetMousePosition(InputAction.CallbackContext ctx)
     {
         if (!this.player.values.CanMove()
-            || !Camera.main) return;
+            || !Camera.main
+            || !this.hasAuthority) return;
 
         this.mousePosition = ctx.ReadValue<Vector2>();
 
@@ -86,7 +88,8 @@ public class PlayerMovement : PlayerComponent
     {
         if (!this.player.values.CanMove()
             || !this.inputPossible
-            || !Camera.main) return;
+            || !Camera.main
+            || !this.hasAuthority) return;
 
         mouseTargetPosition = Camera.main.ScreenToWorldPoint(this.mousePosition);
 
@@ -104,7 +107,8 @@ public class PlayerMovement : PlayerComponent
 
     private void FixedUpdate()
     {
-        //if (!this.hasAuthority) return;
+        if (!this.hasAuthority) return;
+
         MoveToMousePosition(); //Move to mouse position if target is not null
         UpdateAnimationAndMove(this.change);  //check if is menu and move to direction
         if (this.lockDuration > 0) this.lockDuration -= Time.deltaTime;

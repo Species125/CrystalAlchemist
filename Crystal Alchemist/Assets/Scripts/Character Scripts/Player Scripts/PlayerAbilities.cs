@@ -27,7 +27,7 @@ public class PlayerAbilities : CharacterCombat
 
     public override void Initialize()
     {
-        //if (!this.hasAuthority) return;
+        if (!this.hasAuthority) return;
 
         base.Initialize();
         this.player = this.character.GetComponent<Player>();
@@ -39,7 +39,7 @@ public class PlayerAbilities : CharacterCombat
 
     public override void Updating()
     {
-        //if (!this.hasAuthority) return;
+        if (!this.hasAuthority) return;
 
         base.Updating();
         this.skillSet.Updating();
@@ -51,13 +51,13 @@ public class PlayerAbilities : CharacterCombat
     public void SelectTargetInput(InputAction.CallbackContext ctx)
     {
         if (ctx.performed 
-            //&& this.hasAuthority
+            && this.hasAuthority
             ) this.GetTargetingSystem().SetTargetChange(ctx.ReadValue<Vector2>());
     }
 
     public void OnHoldingCallback(InputAction.CallbackContext context)
     {
-        //if (!this.hasAuthority) return;
+        if (!this.hasAuthority) return;
 
         if (context.started)
         {

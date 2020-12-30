@@ -3,6 +3,8 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using TMPro;
 
 public class Player : Character
 {
@@ -22,6 +24,10 @@ public class Player : Character
     [BoxGroup("Player Objects")]
     [SerializeField]
     private PlayerSaveGame saveGame;
+
+    [BoxGroup("Player Objects")]
+    [SerializeField]
+    private TextMeshPro textField;
 
     ///////////////////////////////////////////////////////////////
 
@@ -54,14 +60,23 @@ public class Player : Character
         this.presetSignal.Raise();
         this.saveGame.progress.Initialize();
 
-        /*if (this.hasAuthority) this.gameObject.name = "Player (Local)";
-        else this.gameObject.name = "Player (Other)";
+        string txt = "GUEST";
+        this.gameObject.name = "Player (Other)";
+
+        if (this.hasAuthority)
+        {
+            this.gameObject.name = "Player (Local)";
+            txt = "YOU";
+            if (this.isServer) this.textField.color = Color.yellow;
+        }
+
+        this.textField.text = txt;
 
         if (!this.hasAuthority)
         {
             this.GetComponent<PlayerInput>().enabled = false;
             return;
-        }*/
+        }
 
         SceneManager.LoadScene("UI", LoadSceneMode.Additive);
 
@@ -89,7 +104,7 @@ public class Player : Character
 
     public override void Update()
     {
-        //if (!this.hasAuthority) return;
+        if (!this.hasAuthority) return;
 
         base.Update();        
         if(this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Updating();
@@ -99,7 +114,7 @@ public class Player : Character
 
     public override void OnDestroy()
     {
-        //if (!this.hasAuthority) return;
+        if (!this.hasAuthority) return;
 
         base.OnDestroy();
         GameEvents.current.OnCollect -= this.CollectIt;
@@ -229,6 +244,7 @@ public class Player : Character
     private void CollectIt(ItemStats stats)
     {
         //Collectable, Load, MiniGame, Shop und Treasure
+        if (!this.hasAuthority) return;
 
         if (stats.resourceType == CostType.life || stats.resourceType == CostType.mana) updateResource(stats.resourceType, stats.amount, true);
         else if (stats.resourceType == CostType.item || stats.resourceType == CostType.keyItem) GetComponent<PlayerItems>().CollectItem(stats);

@@ -39,24 +39,24 @@ public class CustomRenderer : MonoBehaviour
     {
         this.spriteRenderer = this.GetComponent<SpriteRenderer>();
         this.material = this.GetComponent<SpriteRenderer>().material;
-        AddGlow();
+        AddGlow(this.overrideShader);
     }
 
     [Button]
     private void Check()
     {
         this.material = this.GetComponent<SpriteRenderer>().sharedMaterial;
-        AddGlow();
+        AddGlow(this.overrideShader);
         InvertColors(this.invert);
     }
 
-    public void SetGlowColor(Color color)
+    public void SetGlowColor(Color color, bool overrideColor)
     {
         if (color == null) return;
         this.glowColor = color;
 
         this.material = this.GetComponent<SpriteRenderer>().material;
-        AddGlow();
+        AddGlow(overrideColor);
     }
 
     public void InvertColors(bool invert)
@@ -65,9 +65,9 @@ public class CustomRenderer : MonoBehaviour
         this.material.SetFloat("_Invert", invert ? 1f : 0f);
     }
 
-    private void AddGlow()
+    private void AddGlow(bool overrideGlow)
     {
-        if (!this.overrideShader) return;
+        if (!overrideGlow) return;
         this.material.SetFloat("_UseGlow", this.useGlow ? 1f : 0f);
         this.material.SetFloat("_Precision", this.precision);
         this.material.SetColor("_SelectGlow", this.selectColor);

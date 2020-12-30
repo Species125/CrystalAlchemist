@@ -1,10 +1,22 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Game/Player/Time")]
+public enum season
+{
+    none,
+    winter,
+    autumn,
+    christmas,
+    halloween
+}
+
+
+[CreateAssetMenu(menuName = "Game/Time/Time Value")]
 public class TimeValue : ScriptableObject
 {
     private float seconds = 0;
+
+    public season season;
 
     [SerializeField]
     private int minute = 0;
