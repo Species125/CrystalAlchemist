@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Photon.Pun;
 
 public class CharacterRenderingHandler : MonoBehaviour
 {

@@ -2,15 +2,22 @@
 
 public class TODOLIST : MonoBehaviour
 {
-    //TODO (0.2.6)
-    //TODO: Gleiches Item für jeden. Unabhängige Inventare und kein Destroy beim anderen
-    //TODO: Kiste Sync
-    //TODO: Zeit Sync
-    //TODO: Skills Sync
-    //TODO: Szenenwechsel
-    //TODO: Health Sync
-
+    //TODO (0.2.7)
     //TODO: Enemy Alarm mit Radius
+    //TODO: Enemy Spawn on Death (Death Event?) -> Großer Blob zu kleinen Blobs
+    //TODO: Custom Debug and Exception
+    //TODO: Autosave
+
+    //ANIMATION: InMenu
+
+    //BUG: Treasure Error
+    //BUG: Treasure Multi-Items
+    //BUG: Guest Selfhit?
+
+    //NETWORKING: SCENE: Scene Change + Confirmation Screen
+    //NETWORKING: PLAYER: Teleport and StatusEffects Sync
+    //NETWORKING: ENEMY: Skill Instantiate, Kill, Aggro Sync and Phase Transition Enemy Master only
+    //NETWORKING: SKILLS: Sync and testing
 
     /*     
     GRAPHICS: Booster
@@ -26,6 +33,7 @@ public class TODOLIST : MonoBehaviour
 
     ////////////////////NEW////////////////////////////
     //REWORK: Character Creation (VR Keyboard, Races, Wings)
+    //ONLINE!!!
     //BUGFIXES, BETTER GRAPHICS, MOUSE-CONTROLS, AUTO-UI
 
     //-----------------------------------------------------------------------------
@@ -196,4 +204,47 @@ if (this.treasureEnabled)
 
         GameEvents.current.DoCollect(this.itemDrop.stats);
     }*/
+
+
+
+    //public const byte RESPAWN_SHOW_EVENT = 1;
+    //public const byte RESPAWN_HIDE_EVENT = 2;
+
+    /*
+    private void OnEnable()
+    {
+        PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+    }
+
+    private void OnDisable()
+    {
+        PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
+    }
+    
+        //object[] datas = new object[] { gameObject, isInit };
+        //RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        //PhotonNetwork.RaiseEvent(RESPAWN_SHOW_EVENT, datas, raiseEventOptions, SendOptions.SendReliable);
+         
+          
+    public void OnEvent(EventData obj)
+    {
+        
+        if(obj.Code == RESPAWN_SHOW_EVENT)
+        {
+            object[] datas = (object[])obj.CustomData;
+            GameObject gameObject = (GameObject)datas[0];
+            bool isInit = (bool)datas[1];
+
+            _ShowGameObject(gameObject, isInit);
+        }
+        else if(obj.Code == RESPAWN_HIDE_EVENT)
+        {
+            object[] datas = (object[])obj.CustomData;
+            GameObject gameObject = (GameObject)datas[0];
+            bool isInit = (bool)datas[1];
+
+            _HideGameObject(gameObject, isInit);
+        }
+    }
+    */
 }

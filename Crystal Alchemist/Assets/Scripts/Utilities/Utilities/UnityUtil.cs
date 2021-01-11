@@ -7,6 +7,13 @@ using DG.Tweening;
 
 public static class UnityUtil
 {
+#if UNITY_EDITOR
+    public static string GetResourcePath(UnityEngine.Object obj)
+    {
+        return UnityEditor.AssetDatabase.GetAssetPath(obj).Replace("Assets/Resources/", "").Split('.')[0];
+    }
+#endif
+
     public static void SelectDropDown(TMP_Dropdown dropDown, string text)
     {
         for (int i = 0; i < dropDown.options.Count; i++)

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public enum Race
 {
@@ -69,6 +70,10 @@ public class CharacterPreset : ScriptableObject
 
     [SerializeField]
     private List<CharacterPartData> characterParts = new List<CharacterPartData>();
+
+
+    [Button]
+    public void SetPreset(CharacterPreset preset) => GameUtil.setPreset(preset, this);  
 
 
     public Race getRace()

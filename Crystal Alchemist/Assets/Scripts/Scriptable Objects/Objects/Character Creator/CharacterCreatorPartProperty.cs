@@ -33,9 +33,6 @@ public class ColorEffect
     public bool addGlow = false;
 
     [ShowIf("addGlow")]
-    public Color glow;
-
-    [ShowIf("addGlow")]
     [ColorUsage(true, true)]
     public Color default_glow;
 }

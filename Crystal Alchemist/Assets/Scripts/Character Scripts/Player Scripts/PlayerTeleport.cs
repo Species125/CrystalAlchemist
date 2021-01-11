@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Photon.Pun;
+using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 
@@ -10,8 +11,17 @@ public class PlayerTeleport : PlayerComponent
     public override void Initialize()
     {
         base.Initialize();
+
         GameEvents.current.OnTeleport += SwitchScene;
         GameEvents.current.OnHasReturn += HasReturn;
+        this.teleportList.Initialize();
+        StartCoroutine(MaterializePlayer());
+    }
+
+    public void NetworkInitialize()
+    {
+        base.Initialize();
+
         this.teleportList.Initialize();
         StartCoroutine(MaterializePlayer());
     }
@@ -46,6 +56,7 @@ public class PlayerTeleport : PlayerComponent
             this.player.SetDefaultDirection();
             RespawnAnimation respawnObject = Instantiate(this.player.respawnAnimation, this.player.GetShootingPosition(), Quaternion.identity);
             respawnObject.Reverse(this.player);  //reverse
+            //SpawnTeleportEffect(true);
             yield return new WaitForSeconds(respawnObject.getAnimationLength());
         }
         else
@@ -78,7 +89,8 @@ public class PlayerTeleport : PlayerComponent
             this.player.SetDefaultDirection();
             yield return new WaitForSeconds(2f);
             RespawnAnimation respawnObject = Instantiate(this.player.respawnAnimation, new Vector2(position.x, position.y+0.5f), Quaternion.identity);
-            respawnObject.Initialize(this.player);          
+            respawnObject.Initialize(this.player);
+            //SpawnTeleportEffect(false);
         }
         else
         {
@@ -87,7 +99,24 @@ public class PlayerTeleport : PlayerComponent
         }                
     }
 
+    public void SpawnTeleportEffect(bool reverse)
+    {
+        string prefabPath = this.player.respawnAnimation.path;
+        int targetID = this.player.photonView.ViewID;
 
+        this.player.photonView.RPC("RpcSpawnTeleportEffect", RpcTarget.Others, prefabPath, targetID, reverse);
+    }
+
+    [PunRPC]
+    public void RpcSpawnTeleportEffect(string prefabPath, int targetID, bool reverse)
+    {
+        Player player = PhotonView.Find(targetID).GetComponent<Player>();
+        RespawnAnimation animation = Resources.Load<RespawnAnimation>(prefabPath);
+        RespawnAnimation temp = Instantiate(animation, player.GetShootingPosition(), Quaternion.identity);
+
+        if (reverse) temp.Reverse(player);
+        else temp.Initialize(player);
+    }
 
     public bool HasReturn()
     {

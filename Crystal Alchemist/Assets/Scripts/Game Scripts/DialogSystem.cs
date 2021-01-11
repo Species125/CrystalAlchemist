@@ -2,6 +2,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.Events;
+using Photon.Pun;
 
 public enum DialogTextTrigger
 {
@@ -148,8 +149,6 @@ public class DialogSystem : MonoBehaviour
 
     private void ShowDialogBox(Player player, string text, UnityEvent onClose)
     {
-        if (!player.hasAuthority) return;
-
         if (!this.progress.ContainsProgress()
             && player.values.currentState != CharacterState.inDialog)
         {

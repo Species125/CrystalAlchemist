@@ -22,7 +22,7 @@ public class SkillSpread : SkillExtension
         if (this.elapsed <= 0)
         {
             Transform child = this.spawnPoint.GetChild(this.index);
-            this.ability.InstantiateSkill(this.skill.target, child.position, this.skill.sender, child.rotation);
+            AbilityUtil.InstantiateSkill(this.ability, this.skill.target, child.position, this.skill.sender, child.rotation);
             this.elapsed = this.delay;
             this.index++;
         }

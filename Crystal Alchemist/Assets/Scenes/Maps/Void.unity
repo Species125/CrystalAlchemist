@@ -221,10 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
-  overrideShader: 0
   useGlow: 0
-  selectColor: {r: 0.9921569, g: 0.9921569, b: 0.7411765, a: 1}
-  precision: 0.3
   glowColor: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
   invert: 0
 --- !u!1001 &130287017
@@ -419,11 +416,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
-  overrideShader: 0
   useGlow: 1
-  selectColor: {r: 1, g: 1, b: 1, a: 1}
-  precision: 0
-  glowColor: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
+  glowColor: {r: 0.11764706, g: 0.21176471, b: 1.4980392, a: 1}
   invert: 0
 --- !u!1 &299323999
 GameObject:
@@ -974,10 +968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
-  overrideShader: 0
   useGlow: 1
-  selectColor: {r: 0.9921569, g: 0.9921569, b: 0.7411765, a: 1}
-  precision: 0.215
   glowColor: {r: 3.8952882, g: 3.8952882, b: 3.8952882, a: 1}
   invert: 0
 --- !u!4 &928063263 stripped
@@ -1221,10 +1212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
-  overrideShader: 0
   useGlow: 1
-  selectColor: {r: 0.9921569, g: 0.9921569, b: 0.7411765, a: 1}
-  precision: 0.215
   glowColor: {r: 3.8952882, g: 3.8952882, b: 3.8952882, a: 1}
   invert: 0
 --- !u!4 &1247391092 stripped
@@ -1713,10 +1701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
-  overrideShader: 0
   useGlow: 1
-  selectColor: {r: 0.9921569, g: 0.9921569, b: 0.7411765, a: 1}
-  precision: 0.215
   glowColor: {r: 3.8952882, g: 3.8952882, b: 3.8952882, a: 1}
   invert: 0
 --- !u!1001 &249431492068884313
@@ -1793,11 +1778,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6111810205584395141, guid: a52d4b66ca1e50d4c805e7d017d0a585,
         type: 3}
-      propertyPath: m_Targets.Array.data[0].target
-      value: 
-      objectReference: {fileID: 7097766301064256644}
-    - target: {fileID: 6111810205584395141, guid: a52d4b66ca1e50d4c805e7d017d0a585,
-        type: 3}
       propertyPath: m_Targets.Array.data[1].target
       value: 
       objectReference: {fileID: 928063263}
@@ -1814,13 +1794,8 @@ PrefabInstance:
     - target: {fileID: 6111810205584395143, guid: a52d4b66ca1e50d4c805e7d017d0a585,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.225
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6848298934458251394, guid: a52d4b66ca1e50d4c805e7d017d0a585,
-        type: 3}
-      propertyPath: placeHolder
-      value: 
-      objectReference: {fileID: 7097766301064256643}
     - target: {fileID: 7845337189108068749, guid: a52d4b66ca1e50d4c805e7d017d0a585,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -1829,7 +1804,7 @@ PrefabInstance:
     - target: {fileID: 7845337189108068749, guid: a52d4b66ca1e50d4c805e7d017d0a585,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.225
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 7845337189108068851, guid: a52d4b66ca1e50d4c805e7d017d0a585,
         type: 3}
@@ -2183,10 +2158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
-  overrideShader: 0
   useGlow: 0
-  selectColor: {r: 0.9921569, g: 0.9921569, b: 0.7411765, a: 1}
-  precision: 0.3
   glowColor: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 0.72156864}
   invert: 0
 --- !u!1 &2457678567808744261
@@ -2321,11 +2293,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
-  overrideShader: 0
   useGlow: 1
-  selectColor: {r: 0.2509804, g: 0.7803922, b: 1, a: 1}
-  precision: 0
-  glowColor: {r: 1.7254902, g: 5.992157, b: 5.866667, a: 1}
+  glowColor: {r: 0.8627451, g: 2.9960785, b: 2.9333334, a: 1}
   invert: 0
 --- !u!4 &6024197325049509322
 Transform:
@@ -2470,7 +2439,7 @@ PrefabInstance:
     - target: {fileID: 3691230672784358425, guid: 3fdf5e3032830d74ba994cf0ef0775f0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.225
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 3691230672784358425, guid: 3fdf5e3032830d74ba994cf0ef0775f0,
         type: 3}
@@ -2627,18 +2596,6 @@ PrefabInstance:
 --- !u!4 &7097766301064256642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3691230672784358425, guid: 3fdf5e3032830d74ba994cf0ef0775f0,
-    type: 3}
-  m_PrefabInstance: {fileID: 7097766301064256641}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7097766301064256643 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5183864404544164995, guid: 3fdf5e3032830d74ba994cf0ef0775f0,
-    type: 3}
-  m_PrefabInstance: {fileID: 7097766301064256641}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7097766301064256644 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3636377905729559455, guid: 3fdf5e3032830d74ba994cf0ef0775f0,
     type: 3}
   m_PrefabInstance: {fileID: 7097766301064256641}
   m_PrefabAsset: {fileID: 0}

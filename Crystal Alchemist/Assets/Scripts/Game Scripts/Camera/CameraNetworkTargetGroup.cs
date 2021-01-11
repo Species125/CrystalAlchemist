@@ -1,21 +1,23 @@
 ﻿using UnityEngine;
 using Cinemachine;
+using Sirenix.OdinInspector;
 
 [RequireComponent(typeof(CinemachineTargetGroup))]
 public class CameraNetworkTargetGroup : MonoBehaviour
 {
     private CinemachineTargetGroup[] groups;
 
+    [InfoBox("Replaces Placeholder with Player on Start")]
     [SerializeField]
     private GameObject placeHolder;
 
     private void Start()
     {
-        GameEvents.current.OnStart += AddPlayer;
+        GameEvents.current.OnPlayerSpawned += AddPlayer;
         this.groups = this.GetComponents<CinemachineTargetGroup>();
     }
     
-    private void OnDestroy() => GameEvents.current.OnStart -= AddPlayer;
+    private void OnDestroy() => GameEvents.current.OnPlayerSpawned -= AddPlayer;
     
     private void AddPlayer(GameObject gameObject)
     {

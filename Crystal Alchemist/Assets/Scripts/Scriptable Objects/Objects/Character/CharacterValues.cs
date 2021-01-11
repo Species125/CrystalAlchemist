@@ -55,7 +55,7 @@ public class CharacterValues : ScriptableObject
     [BoxGroup("States")]
     public bool isInvincible = false; //event
 
-    [BoxGroup("States")]
+    [BoxGroup("States")]    
     public Vector2 direction;
     [BoxGroup("States")]
     public bool lockAnimation = false;

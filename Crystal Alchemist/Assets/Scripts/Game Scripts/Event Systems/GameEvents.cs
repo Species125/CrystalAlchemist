@@ -15,6 +15,7 @@ public class GameEvents : MonoBehaviour
 
     public Action OnSubmit;
     public Action OnCancel;
+    public Action OnPresetChange;
 
     public Action<bool> OnCurrencyChanged;
     public Action<ItemStats> OnCollect;
@@ -49,11 +50,11 @@ public class GameEvents : MonoBehaviour
     public Action OnEffectUpdate;
     public Action OnLifeManaUpdate;
     public Action<string> OnSceneChanged;
-    //public Action<string> OnOnlineSceneChanged;
 
-    public Action<GameObject> OnStart;
+    public Action<GameObject> OnPlayerSpawned;
     public Action OnDeviceChanged;
 
+    public void DoPresetChange() => this.OnPresetChange?.Invoke();
     public void DoEffectAdded(StatusEffect effect) => this.OnEffectAdded?.Invoke(effect);  
     public void DoChangeState(CharacterState state) => this.OnStateChanged?.Invoke(state);  
     public void DoMenuOverlay(bool value) => this.OnMenuOverlay?.Invoke(value);
@@ -83,11 +84,10 @@ public class GameEvents : MonoBehaviour
     public void DoCameraStill(float speed) => this.OnCameraStill?.Invoke(speed);
     public void DoTeleport() => this.OnTeleport?.Invoke();
     public void DoChangeScene(string newScene) => this.OnSceneChanged?.Invoke(newScene);
-    //public void DoOnlineChangeScene(string newScene) => this.OnOnlineSceneChanged?.Invoke(newScene);
 
     public void DoStatusEffectUpdate() => this.OnEffectUpdate?.Invoke();
     public void DoManaLifeUpdate() => this.OnLifeManaUpdate?.Invoke();
-    public void DoStart(GameObject gameObject) => this.OnStart?.Invoke(gameObject);
+    public void DoPlayerSpawned(GameObject gameObject) => this.OnPlayerSpawned?.Invoke(gameObject);
 
     public void DoDeviceChanged() => this.OnDeviceChanged?.Invoke();
 

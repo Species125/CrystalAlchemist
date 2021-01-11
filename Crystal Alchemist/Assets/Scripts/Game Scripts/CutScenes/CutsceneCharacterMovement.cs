@@ -1,6 +1,5 @@
 ﻿using DG.Tweening;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
 public class CutsceneCharacterMovement : MonoBehaviour
 {
@@ -10,12 +9,19 @@ public class CutsceneCharacterMovement : MonoBehaviour
     [SerializeField]
     private float duration;
 
-    [Required]
-    [SerializeField]
-    Rigidbody2D rigidbody;
+    private Rigidbody2D myRigidbody;
+
+    private void Start() => GameEvents.current.OnPlayerSpawned += AddPlayer;    
+
+    private void OnDestroy() => GameEvents.current.OnPlayerSpawned -= AddPlayer;
+
+    private void AddPlayer(GameObject gameObject)
+    {
+        this.myRigidbody = gameObject.GetComponent<Rigidbody2D>();
+    }
 
     public void Play()
     {
-        this.rigidbody?.DOMove(position, this.duration);
+        this.myRigidbody?.DOMove(position, this.duration);
     }
 }

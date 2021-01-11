@@ -2,7 +2,7 @@
 using UnityEngine.InputSystem;
 using DG.Tweening;
 using System.Collections;
-using Mirror;
+
 
 [RequireComponent(typeof(Player))]
 public class PlayerMovement : PlayerComponent
@@ -51,9 +51,9 @@ public class PlayerMovement : PlayerComponent
 
     private void SetChange(InputAction.CallbackContext ctx)
     {
-        if (this.player.values.CanMove()
-            && this.hasAuthority
-            )
+        if (!NetworkUtil.IsLocal(this.photonView)) return;
+
+        if (this.player.values.CanMove())
         {
             this.change = ctx.ReadValue<Vector2>();
             this.mouseTargetPosition = MasterManager.globalValues.nullVector;
@@ -68,11 +68,13 @@ public class PlayerMovement : PlayerComponent
 
     private void SetMousePosition(InputAction.CallbackContext ctx)
     {
-        if (!this.player.values.CanMove()
-            || !Camera.main
-            || !this.hasAuthority) return;
+        if (!NetworkUtil.IsLocal(this.photonView)) return;
 
         this.mousePosition = ctx.ReadValue<Vector2>();
+
+        if (!this.player.values.CanMove()
+            || !Camera.main
+            ) return;
 
         SetMouseDirection();
     }
@@ -86,10 +88,11 @@ public class PlayerMovement : PlayerComponent
 
     private void SetChangeMouseClick(InputAction.CallbackContext ctx)
     {
+        if (!NetworkUtil.IsLocal(this.photonView)) return;
+
         if (!this.player.values.CanMove()
             || !this.inputPossible
-            || !Camera.main
-            || !this.hasAuthority) return;
+            || !Camera.main) return;
 
         mouseTargetPosition = Camera.main.ScreenToWorldPoint(this.mousePosition);
 
@@ -107,7 +110,7 @@ public class PlayerMovement : PlayerComponent
 
     private void FixedUpdate()
     {
-        if (!this.hasAuthority) return;
+        if (!NetworkUtil.IsLocal(this.photonView)) return;
 
         MoveToMousePosition(); //Move to mouse position if target is not null
         UpdateAnimationAndMove(this.change);  //check if is menu and move to direction

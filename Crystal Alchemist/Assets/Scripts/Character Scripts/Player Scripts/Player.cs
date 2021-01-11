@@ -3,15 +3,20 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
-using TMPro;
+using Photon.Pun;
 
 public class Player : Character
 {
-    [Required]
-    [BoxGroup("Player Objects")]
-    [SerializeField]
-    private SimpleSignal presetSignal;
+    [BoxGroup("Inspector")]
+    [ReadOnly]
+    public string path;
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        this.path = UnityUtil.GetResourcePath(this);
+    }
+#endif
 
     [BoxGroup("Player Objects")]
     [SerializeField]
@@ -25,20 +30,53 @@ public class Player : Character
     [SerializeField]
     private PlayerSaveGame saveGame;
 
-    [BoxGroup("Player Objects")]
+    [BoxGroup("Debug")]
     [SerializeField]
-    private TextMeshPro textField;
+    private CharacterCreatorPartHandler handler;
+
+    [BoxGroup("Debug")]
+    [SerializeField]
+    private CharacterPreset preset;
 
     ///////////////////////////////////////////////////////////////
+       
 
     public override void Awake()
-    {
-        this.stats = this.saveGame.stats;
-        this.values = this.saveGame.playerValue;
-
-        this.values.Initialize();    
+    {   
         SetComponents();
-        this.saveGame.attributes.SetValues();
+        SetScriptableObjects();
+    }
+
+    public override void SetComponents()
+    {
+        base.SetComponents();
+        this.handler = this.GetComponent<CharacterCreatorPartHandler>();
+    }
+
+    private void SetScriptableObjects()
+    {
+        this.gameObject.name = "Player (Guest)";
+
+        if (!NetworkUtil.IsLocal(this.photonView))
+        {
+            this.stats = ScriptableObject.CreateInstance<CharacterStats>();
+            this.values = ScriptableObject.CreateInstance<CharacterValues>();
+            this.saveGame = null;
+            this.values.Initialize();
+            this.preset = ScriptableObject.CreateInstance<CharacterPreset>();
+        }
+        else
+        {
+            this.gameObject.name = "Player (Local)";
+            this.stats = this.saveGame.stats;
+            this.values = this.saveGame.playerValue;
+            this.values.Initialize();
+            this.saveGame.attributes.SetValues();
+            this.preset = this.saveGame.playerPreset;
+            this.characterName = this.saveGame.characterName.GetValue();
+        }
+
+        this.handler.SetPreset(this.preset);
     }
 
     public override void OnEnable()
@@ -49,7 +87,7 @@ public class Player : Character
     public override void ResetValues()
     {
         base.ResetValues();
-        this.saveGame.attributes.SetValues();
+        if(this.saveGame != null) this.saveGame.attributes.SetValues();
         this.values.life = this.values.maxLife;
         this.values.mana = this.values.maxMana;
     }
@@ -57,26 +95,28 @@ public class Player : Character
     public override void Start()
     {
         base.Start();
-        this.presetSignal.Raise();
-        this.saveGame.progress.Initialize();
 
-        string txt = "GUEST";
-        this.gameObject.name = "Player (Other)";
-
-        if (this.hasAuthority)
+        LoadPlayer();
+        
+        this.ChangeDirection(this.values.direction);
+        this.animator.speed = 1;
+        this.updateTimeDistortion(0);
+        this.AddStatusEffectVisuals();
+    }     
+    
+    private void LoadPlayer()
+    {        
+        if (!NetworkUtil.IsLocal(this.photonView))
         {
-            this.gameObject.name = "Player (Local)";
-            txt = "YOU";
-            if (this.isServer) this.textField.color = Color.yellow;
-        }
-
-        this.textField.text = txt;
-
-        if (!this.hasAuthority)
-        {
-            this.GetComponent<PlayerInput>().enabled = false;
+            if (this.GetComponent<PlayerAbilities>() != null) Destroy(this.GetComponent<PlayerAbilities>());
+            if (this.GetComponent<PlayerMovement>() != null) Destroy(this.GetComponent<PlayerMovement>());
+            if (this.GetComponent<PlayerControls>() != null) Destroy(this.GetComponent<PlayerControls>());
+            if (this.GetComponent<PlayerItems>() != null) Destroy(this.GetComponent<PlayerItems>());
+            if (this.GetComponent<PlayerTeleport>() != null) this.GetComponent<PlayerTeleport>().NetworkInitialize();
             return;
         }
+
+        this.saveGame.progress.Initialize();
 
         SceneManager.LoadScene("UI", LoadSceneMode.Additive);
 
@@ -87,43 +127,44 @@ public class Player : Character
         GameEvents.current.OnWakeUp += this.WakeUp;
         GameEvents.current.OnCutScene += this.SetCutScene;
         GameEvents.current.OnEnoughCurrency += this.HasEnoughCurrency;
+        GameEvents.current.OnPresetChange += UpdateCharacterParts;
 
-        if( this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Initialize();
-        PlayerComponent[] components = this.GetComponents<PlayerComponent>();
-        for (int i = 0; i < components.Length; i++) components[i].Initialize();
+        if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Initialize();
+        if (this.GetComponent<PlayerMovement>() != null) this.GetComponent<PlayerMovement>().Initialize();
+        if (this.GetComponent<PlayerControls>() != null) this.GetComponent<PlayerControls>().Initialize();
+        if (this.GetComponent<PlayerItems>() != null) this.GetComponent<PlayerItems>().Initialize();
+        if (this.GetComponent<PlayerTeleport>() != null) this.GetComponent<PlayerTeleport>().Initialize();
 
-        GameEvents.current.DoManaLifeUpdate();  
-        this.ChangeDirection(this.values.direction);
+        GameEvents.current.DoManaLifeUpdate();
+        GameEvents.current.DoPlayerSpawned(this.gameObject);
 
-        this.animator.speed = 1;
-        this.updateTimeDistortion(0);
-        this.AddStatusEffectVisuals();
+        UpdateCharacterParts();
+        NetworkEvents.current.GetPresetFromOtherClients();
 
-        GameEvents.current.DoStart(this.gameObject);
-    }       
+        this.saveGame.skillSet.TestInitialize(this);        
+    }
 
     public override void Update()
     {
-        if (!this.hasAuthority) return;
+        if (!NetworkUtil.IsLocal(this.photonView)) return;
 
-        base.Update();        
-        if(this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Updating();
-        PlayerComponent[] components = this.GetComponents<PlayerComponent>();
-        for (int i = 0; i < components.Length; i++) components[i].Updating();
+        base.Update();
+        if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Updating();
     }
 
     public override void OnDestroy()
     {
-        if (!this.hasAuthority) return;
+        if (!NetworkUtil.IsLocal(this.photonView)) return;
 
         base.OnDestroy();
+        GameEvents.current.OnPresetChange -= UpdateCharacterParts;
         GameEvents.current.OnCollect -= this.CollectIt;
         GameEvents.current.OnReduce -= this.reduceResource;
         GameEvents.current.OnStateChanged -= this.SetState;
         GameEvents.current.OnSleep -= this.GoToSleep;
         GameEvents.current.OnWakeUp -= this.WakeUp;
         GameEvents.current.OnCutScene -= this.SetCutScene;
-        GameEvents.current.OnEnoughCurrency -= this.HasEnoughCurrency;
+        GameEvents.current.OnEnoughCurrency -= this.HasEnoughCurrency;        
     }
 
     public void GodMode(bool active)
@@ -244,7 +285,7 @@ public class Player : Character
     private void CollectIt(ItemStats stats)
     {
         //Collectable, Load, MiniGame, Shop und Treasure
-        if (!this.hasAuthority) return;
+        if (!NetworkUtil.IsLocal(this.photonView)) return;
 
         if (stats.resourceType == CostType.life || stats.resourceType == CostType.mana) updateResource(stats.resourceType, stats.amount, true);
         else if (stats.resourceType == CostType.item || stats.resourceType == CostType.keyItem) GetComponent<PlayerItems>().CollectItem(stats);
@@ -257,10 +298,6 @@ public class Player : Character
         }
     }
 
-    public override string GetCharacterName()
-    {
-        return this.saveGame.characterName.GetValue();
-    }
 
     /////////////////////////////////////////////////////////////////////////////////
     
@@ -314,5 +351,21 @@ public class Player : Character
         EnablePlayer(true);
 
         this.transform.position = position;
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+    public CharacterPreset GetPreset()
+    {
+        return this.preset;
+    }
+
+    [Button]
+    public void UpdateCharacterParts()
+    {
+        this.handler.UpdateCharacterParts();
+        NetworkEvents.current.SetPresetForOtherClients(this);
     }
 }

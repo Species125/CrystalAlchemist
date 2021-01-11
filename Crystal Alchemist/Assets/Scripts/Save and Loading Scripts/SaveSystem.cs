@@ -6,7 +6,7 @@ using System;
 public class SaveSystem
 {
     public static void Save(PlayerSaveGame saveGame, string slot)
-    {
+    {        
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/" + slot + "." + MasterManager.globalValues.saveGameFiletype;
         FileStream stream = new FileStream(path, FileMode.Create);

@@ -26,6 +26,17 @@ public class Ability : ScriptableObject
         OnTargeting
     }
 
+    [BoxGroup("Inspector")]
+    [ReadOnly]
+    public string path;
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        this.path = UnityUtil.GetResourcePath(this);
+    }
+#endif
+
     [BoxGroup("Objects")]
     [Required]
     public Skill skill;
@@ -371,87 +382,7 @@ public class Ability : ScriptableObject
             return this.sender.canUseIt(senderModule.costs);
         }
         else return true;
-    }
-
-    public Skill InstantiateSkill(Character target)
-    {
-        //Single Target
-        return InstantiateSkill(target, 1);
-    }
-
-    public Skill InstantiateSkill(Character target, float reduce)
-    {
-        //Single Target
-        return InstantiateSkill(target, this.GetSender().transform.position, reduce);
-    }
-
-    public Skill InstantiateSkill(Vector2 position, Character sender)
-    {
-        //Laser and Projectile Impact
-        return InstantiateSkill(null, position, sender, Quaternion.identity);
-    }
-
-    public Skill InstantiateSkill(Character target, Vector2 position, Character sender, Quaternion rotation)
-    {
-        //Boss Sequence
-        Skill result = InstantiateSkill(target, position, 1, true, rotation);
-        result.sender = sender;
-        return result;
-    }
-
-    public Skill InstantiateSkill(Character target, Vector2 position, float reduce)
-    {
-        return InstantiateSkill(target, position, reduce, false, Quaternion.identity);
-    }    
-
-    public Skill InstantiateSkill(Character target, Vector2 position, float reduce, bool standAlone, Quaternion rotation)
-    {
-        if (this.skill == null) return null;
-
-        Character sender = this.GetSender();
-        Skill activeSkill = Instantiate(this.skill, position, rotation);
-
-        activeSkill.name = this.skill.name;
-        activeSkill.Initialize(this.positionOffset, this.lockDirection, this.isRapidFire, this.timeDistortion, this.attachToSender);
-        activeSkill.SetMaxDuration(this.hasMaxDuration, this.maxDuration);
-        activeSkill.SetStandAlone(standAlone);
-        activeSkill.SetDelay(this.hasDelay, this.delay);
-
-        if (target != null) activeSkill.target = target;        
-
-        ReduceCostAndDamage(activeSkill, reduce, this.shareDamage);
-
-        if (sender != null)
-        {
-            if (this.attachToSender) activeSkill.transform.parent = sender.activeSkillParent.transform;
-            activeSkill.sender = sender;
-            sender.values.activeSkills.Add(activeSkill);
-        }
-
-        return activeSkill;
-    }
-
-    private void ReduceCostAndDamage(Skill activeSkill, float reduce, bool shareDamage)
-    {
-        SkillTargetModule targetModule = activeSkill.GetComponent<SkillTargetModule>();
-        SkillSenderModule sendermodule = activeSkill.GetComponent<SkillSenderModule>();
-
-        if (targetModule != null && shareDamage)
-        {
-            List<CharacterResource> temp = new List<CharacterResource>();
-
-            for (int i = 0; i < targetModule.affectedResources.Count; i++)
-            {
-                CharacterResource elem = targetModule.affectedResources[i];
-                elem.amount /= reduce;
-                temp.Add(elem);
-            }
-
-            targetModule.affectedResources = temp;
-        }
-
-        if (sendermodule != null) sendermodule.costs.amount /= reduce;
-    }
+    }     
 
     #endregion
 

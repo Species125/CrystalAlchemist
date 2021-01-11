@@ -18,11 +18,9 @@ public class TimeValue : ScriptableObject
 
     public season season;
 
-    [SerializeField]
-    private int minute = 0;
+    public int minute = 0;
 
-    [SerializeField]
-    private int hour = 13;
+    public int hour = 13;
 
     [SerializeField]
     private float normalFactor = 1;

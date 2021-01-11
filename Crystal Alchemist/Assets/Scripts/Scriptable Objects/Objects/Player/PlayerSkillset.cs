@@ -22,6 +22,15 @@ public class PlayerSkillset : ScriptableObject
         foreach (Ability ability in MasterManager.abilities) AddAbility(ability);
     }
 
+    public void TestInitialize(Character sender)
+    {
+        if (this.abilities.Count <= 0)
+        {
+            Initialize();
+            SetSender(sender);
+        }
+    }
+
     public void SetSender(Character sender)
     {
         this.abilities.RemoveAll(item => item == null);

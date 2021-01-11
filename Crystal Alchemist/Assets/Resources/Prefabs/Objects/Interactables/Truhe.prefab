@@ -225,6 +225,8 @@ GameObject:
   - component: {fileID: 5102480015612549687}
   - component: {fileID: 6780635533492049794}
   - component: {fileID: 4009619424976468428}
+  - component: {fileID: 2705314359912279818}
+  - component: {fileID: 3833503889891537791}
   m_Layer: 17
   m_Name: Truhe
   m_TagString: Untagged
@@ -371,6 +373,16 @@ MonoBehaviour:
         m_Calls: []
   textValue: {fileID: 11400000, guid: 0dee858a55e55d64ba1bcbf52a9b3e33, type: 2}
   eventValue: {fileID: 11400000, guid: f6af316cc0916024581413a59b36461b, type: 2}
+  progress:
+    progressType: 2
+    playerProgress: {fileID: 0}
+    gameProgressID: 
+    onlyThisArea: 0
+    timespan:
+      days: 0
+      hours: 0
+      minutes: 0
+      seconds: 0
 --- !u!114 &4009619424976468428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,6 +396,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   marker: {fileID: 1147623340928316011, guid: 8c8a0395715c8cf4cac071d09a67fa23, type: 3}
+--- !u!114 &2705314359912279818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5533910144408278659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 3833503889891537791}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &3833503889891537791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5533910144408278659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 2468332955695537039}
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: isOpened
+  - Type: 9
+    SynchronizeType: 1
+    Name: Empty
+  m_SynchronizeLayers:
+  - SynchronizeType: 1
+    LayerIndex: 0
 --- !u!1 &7563304959205820036
 GameObject:
   m_ObjectHideFlags: 0

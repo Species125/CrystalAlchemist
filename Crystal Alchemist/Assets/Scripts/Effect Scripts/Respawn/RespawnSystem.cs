@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Photon.Pun;
 
 public class RespawnSystem : MonoBehaviour
 {
@@ -93,6 +94,17 @@ public class RespawnSystem : MonoBehaviour
 
     private void Start()
     {
+        GameEvents.current.OnPlayerSpawned += this.OnStart;
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.current.OnPlayerSpawned -= this.OnStart;
+    }
+
+    private void OnStart(GameObject gameObject)
+    {
+        if (!NetworkUtil.IsMaster()) return;
         InvokeRepeating("Updating", 0f, this.updateTime);        
     }
     
@@ -113,14 +125,6 @@ public class RespawnSystem : MonoBehaviour
     private bool MustDespawn(GameObject child)
     {
         return (child != null && child.gameObject.activeInHierarchy);
-    }
-
-    private void DisableGameObjects()
-    {
-        for (int i = 0; i < this.transform.childCount; i++)
-        {
-            if (MustDespawn(this.transform.GetChild(i).gameObject)) HideGameObject(this.transform.GetChild(i).gameObject);            
-        }          
     }
 
     private void Updating()
@@ -166,17 +170,27 @@ public class RespawnSystem : MonoBehaviour
         }
     }
 
+
     private void SpawnObjects()
     {
         for (int i = 0; i < this.respawnObjects.Count; i++)
         {
             if (this.respawnObjects[i].spawnIt)
             {
-                SpawnGameObject(this.respawnObjects[i].gameObject);
+                NetworkEvents.current.ShowGameObject(this.respawnObjects[i].gameObject, this.isInit);
                 this.respawnObjects[i] = null;
             }
         }
         this.respawnObjects.RemoveAll(x => x == null);
+    }
+
+    private void DisableGameObjects()
+    {
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            if (MustDespawn(this.transform.GetChild(i).gameObject))
+                NetworkEvents.current.HideGameObject(this.transform.GetChild(i).gameObject, this.isInit);
+        }
     }
 
     private bool Contains(GameObject gameObject)
@@ -186,86 +200,6 @@ public class RespawnSystem : MonoBehaviour
             if(this.respawnObjects[i].gameObject == gameObject) return true;            
         }
         return false;
-    }
-
-    private void HideGameObject(GameObject gameObject)
-    {
-        Character character = gameObject.GetComponent<Character>();
-
-        if (character != null)
-        {
-            if (character.respawnAnimation != null)
-            {
-                RespawnAnimation respawnObject = Instantiate(character.respawnAnimation, character.GetSpawnPosition(), Quaternion.identity);
-                respawnObject.Reverse(character);
-                character.SetCharacterSprites(true);
-
-                StartCoroutine(InactiveCo(respawnObject.getAnimationLength(), character.gameObject));
-                StartCoroutine(InactiveCo(respawnObject.getAnimationLength(), respawnObject.gameObject));
-            }
-            else
-            {
-                if (!this.isInit) character.PlayDespawnAnimation();
-                character.SpawnOut();
-                StartCoroutine(InactiveCo(character.GetDespawnLength(), character.gameObject));
-            }
-
-            character.values.currentState = CharacterState.respawning;
-        }
-        else
-        {
-            SetGameObjectActive(gameObject, false);
-        }
-    }
-
-    private IEnumerator InactiveCo(float seconds, GameObject gameObject)
-    {
-        yield return new WaitForSeconds(seconds);
-        gameObject.SetActive(false);
-    }
-
-    private void SpawnGameObject(GameObject gameObject)
-    {
-        Character character = gameObject.GetComponent<Character>();
-
-        if (character != null)
-        {
-            character.gameObject.SetActive(true);
-            character.values.currentState = CharacterState.respawning;
-
-            if (character.respawnAnimation != null)
-            {
-                //spawn character after animation
-                RespawnAnimation respawnObject = Instantiate(character.respawnAnimation, character.GetSpawnPosition(), Quaternion.identity);
-                respawnObject.Initialize(character);
-                character.SetCharacterSprites(false);
-            }
-            else
-            {
-                //spawn character immediately
-                character.SetCharacterSprites(true);
-                if(!this.isInit) character.PlayRespawnAnimation();
-                character.SpawnIn();
-            }
-        }
-        else
-        {
-            SetGameObjectActive(gameObject, true);
-        }
-    }
-
-    private void SetGameObjectActive(GameObject gameObject, bool value)
-    {
-        //Prevent Effect on Initialize
-        if (gameObject.GetComponent<Collectable>() != null)
-        {
-            gameObject.GetComponent<Collectable>().SetBounce(!this.isInit, Vector2.zero);
-            gameObject.GetComponent<Collectable>().SetSmoke(!this.isInit);
-        }
-        else if (gameObject.GetComponent<Interactable>() != null)
-            gameObject.GetComponent<Interactable>().SetSmoke(!this.isInit);
-
-        gameObject.SetActive(value);
     }
 }
 

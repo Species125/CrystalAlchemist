@@ -92,49 +92,13 @@ public class LoadSystem
         }
     }
 
-    private static void LoadPreset(PlayerData data, CharacterPreset savedPreset)
+    private static void LoadPreset(PlayerData data, CharacterPreset preset)
     { 
-        if (data != null && data.characterParts != null && data.characterParts.Count > 0)
+        if (data != null && data.characterParts != null && data.characterParts.Length > 0)
         {
-            loadPresetData(data, savedPreset); //set Preset
+            SerializationUtil.SetPreset(preset, data.race, data.colorGroups, data.characterParts);
         }
     }
-
-    private static void loadPresetData(PlayerData data, CharacterPreset newPreset)
-    {
-        CharacterPreset preset = newPreset;
-
-        if (Enum.TryParse(data.race, out Race race)) preset.setRace(race);
-
-        List<ColorGroupData> colorGroups = new List<ColorGroupData>();
-
-        foreach(string[] colorGroup in data.colorGroups)
-        {
-            string colorGroupName = colorGroup[0];
-            float r = float.Parse(colorGroup[1]);
-            float g = float.Parse(colorGroup[2]);
-            float b = float.Parse(colorGroup[3]);
-            float a = float.Parse(colorGroup[4]);
-
-            Color color = new Color(r,g,b,a);
-            if (Enum.TryParse(colorGroup[0], out ColorGroup group)) colorGroups.Add(new ColorGroupData(group, color));
-        }
-
-        preset.AddColorGroupRange(colorGroups);
-
-        List<CharacterPartData> parts = new List<CharacterPartData>();
-
-        foreach (string[] characterPart in data.characterParts)
-        {
-            string parentName = characterPart[0];
-            string name = characterPart[1];
-
-            parts.Add(new CharacterPartData(parentName, name));
-        }
-
-        preset.AddCharacterPartDataRange(parts);
-    }
-
 
     private static void loadInventory(List<string> keyItems, List<string[]> inventoryItems, PlayerInventory inventory)
     {

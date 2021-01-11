@@ -4,34 +4,20 @@ using Sirenix.OdinInspector;
 [RequireComponent(typeof(SpriteRenderer))]
 public class CustomRenderer : MonoBehaviour
 {
+    [HideInInspector]
     public Material material;
+
+    [HideInInspector]
     public SpriteRenderer spriteRenderer;
 
     [SerializeField]
-    private bool overrideShader = true;
-
-    [ShowIf("overrideShader")]
-    [SerializeField]
     private bool useGlow = false;
 
-    [SerializeField]
-    [ShowIf("overrideShader")]
-    [ShowIf("useGlow")]
-    private Color selectColor = Color.white;
-
-    [ShowIf("overrideShader")]
-    [ShowIf("useGlow")]
-    [SerializeField]
-    [Range(0,1)]
-    private float precision = 0f;
-
-    [ShowIf("overrideShader")]
     [ShowIf("useGlow")]
     [SerializeField]
     [ColorUsage(true, true)]
     private Color glowColor = Color.white;
 
-    [ShowIf("overrideShader")]
     [SerializeField]
     private bool invert = false;
 
@@ -39,38 +25,37 @@ public class CustomRenderer : MonoBehaviour
     {
         this.spriteRenderer = this.GetComponent<SpriteRenderer>();
         this.material = this.GetComponent<SpriteRenderer>().material;
-        AddGlow(this.overrideShader);
-    }
-
-    [Button]
-    private void Check()
-    {
-        this.material = this.GetComponent<SpriteRenderer>().sharedMaterial;
-        AddGlow(this.overrideShader);
-        InvertColors(this.invert);
-    }
-
-    public void SetGlowColor(Color color, bool overrideColor)
-    {
-        if (color == null) return;
-        this.glowColor = color;
-
-        this.material = this.GetComponent<SpriteRenderer>().material;
-        AddGlow(overrideColor);
+        AddGlow();
     }
 
     public void InvertColors(bool invert)
     {
-        if (!this.overrideShader) return;
         this.material.SetFloat("_Invert", invert ? 1f : 0f);
     }
 
-    private void AddGlow(bool overrideGlow)
+    private void AddGlow()
     {
-        if (!overrideGlow) return;
         this.material.SetFloat("_UseGlow", this.useGlow ? 1f : 0f);
-        this.material.SetFloat("_Precision", this.precision);
-        this.material.SetColor("_SelectGlow", this.selectColor);
         this.material.SetColor("_GlowColor", this.glowColor);        
+    }
+
+    [Button]
+    public virtual void Test()
+    {
+        SpriteRenderer spriteRenderer = this.GetComponent<SpriteRenderer>();
+        Material mat = spriteRenderer.sharedMaterial;
+        mat.SetFloat("_Invert", invert ? 1f : 0f);
+        mat.SetFloat("_UseGlow", this.useGlow ? 1f : 0f);
+        mat.SetColor("_GlowColor", this.glowColor);
+    }
+
+    [Button]
+    public virtual void Clear()
+    {
+        SpriteRenderer spriteRenderer = this.GetComponent<SpriteRenderer>();
+        Material mat = spriteRenderer.sharedMaterial;
+        mat.SetFloat("_Invert", 0f);
+        mat.SetFloat("_UseGlow", 0f);
+        mat.SetColor("_GlowColor", Color.black);
     }
 }

@@ -135,8 +135,10 @@ public class Treasure : Rewardable
 
     public void ShowTreasureItem()
     {
-        if (this.itemDrop != null) this.itemDrop.Instantiate(this.transform.position, true, this.player.GetGroundPosition());        
-
+        if (this.itemDrop != null)
+        {
+            NetworkEvents.current.InstantiateTreasureItem(this.itemDrop, this.transform.position, true, this.player.GetGroundPosition());
+        }
         if (this.treasureType == TreasureType.lootbox)
         {
             AnimatorUtil.SetAnimatorParameter(this.anim, "isOpened", false);

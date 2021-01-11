@@ -45,10 +45,6 @@ public class SkillSenderModule : SkillModule
     [SerializeField]
     private float selfThrustTime = 0;
 
-    //[BoxGroup("Wirkungsbereich")]
-    //[Tooltip("Soll der Spieler nur diesen Skill benutzen dürfen?")]
-    //public StateType stateType = StateType.none;
-
     private float elapsed;
 
 
@@ -59,7 +55,6 @@ public class SkillSenderModule : SkillModule
             if (this.skill.sender.values.currentState != CharacterState.dead
             && this.skill.sender.values.currentState != CharacterState.respawning)
             {
-                //if (this.stateType == StateType.attack) this.skill.sender.values.currentState = CharacterState.attack;
                 updateResourceSender();
                 setSelfTrust();
 

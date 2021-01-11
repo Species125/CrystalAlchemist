@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterRenderer : CustomRenderer
@@ -15,13 +16,7 @@ public class CharacterRenderer : CustomRenderer
     {
         this.colors.Remove(color);
         if (colors.Count > 0) ChangeTint(this.colors[this.colors.Count - 1], true);
-        else ChangeTint(Color.white, false);
-    }
-
-    private void ChangeTint(Color color, bool useTint)
-    {
-        this.material.SetFloat("_Use_Tint", useTint ? 1f : 0f);
-        this.material.SetColor("_Tint", color);        
+        else ChangeTint(Color.white, false); //Reset
     }
 
     public void ChangeTint(Color color)
@@ -35,5 +30,11 @@ public class CharacterRenderer : CustomRenderer
             this.colors.Add(color);
             ChangeTint(this.colors[this.colors.Count - 1], true);
         }
+    }
+
+    private void ChangeTint(Color color, bool useTint)
+    {
+        this.material.SetFloat("_UseTint", useTint ? 1f : 0f);
+        this.material.SetColor("_Tint", color);
     }
 }

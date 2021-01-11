@@ -19,8 +19,8 @@ public class PlayerData
 
     public string characterName;
     public string race;
-    public List<string[]> colorGroups = new List<string[]>();
-    public List<string[]> characterParts = new List<string[]>();
+    public string[] colorGroups;
+    public string[] characterParts;
     public List<string[]> progress = new List<string[]>();
 
     public List<string> teleportPoints = new List<string>();
@@ -41,9 +41,9 @@ public class PlayerData
         this.buffplus = saveGame.attributes.buffPlus;
         this.debuffminus = saveGame.playerValue.debuffMinus;
 
-        setInventory(saveGame.inventory);
-        setPreset(saveGame.playerPreset);
-
+        SetInventory(saveGame.inventory);
+        SetPreset(saveGame.playerPreset);
+        
         this.abilities = saveGame.buttons.saveButtonConfig();
         this.timePlayed = saveGame.timePlayed.GetValue();
         this.characterName = saveGame.GetCharacterName();
@@ -54,7 +54,7 @@ public class PlayerData
         SetProgress(saveGame.progress);
     }
 
-    private void setInventory(PlayerInventory inventory)
+    private void SetInventory(PlayerInventory inventory)
     {
         this.keyItems.Clear();
         this.inventoryItems.Clear();
@@ -74,31 +74,9 @@ public class PlayerData
         }
     }
 
-    private void setPreset(CharacterPreset preset)
-    {     
-        this.race = preset.getRace().ToString();
-
-        this.colorGroups.Clear();
-        this.characterParts.Clear();
-
-        foreach(ColorGroupData data in preset.GetColorGroupRange())
-        {
-            string[] temp = new string[5];
-            temp[0] = data.colorGroup.ToString();
-            temp[1] = data.color.r + "";
-            temp[2] = data.color.g + "";
-            temp[3] = data.color.b + "";
-            temp[4] = data.color.a + "";
-            this.colorGroups.Add(temp);
-        }
-
-        foreach (CharacterPartData data in preset.GetCharacterPartDataRange())
-        {
-            string[] temp = new string[2];
-            temp[0] = data.parentName;
-            temp[1] = data.name;
-            this.characterParts.Add(temp);
-        }
+    private void SetPreset(CharacterPreset preset)
+    {
+        SerializationUtil.GetPreset(preset, out this.race, out this.colorGroups, out this.characterParts);
     }
 
     private void SetProgress(PlayerGameProgress progress)

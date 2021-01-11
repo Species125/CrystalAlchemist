@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using Photon.Pun;
 
-public class TimeHandler : MonoBehaviour
+public class TimeHandler : MonoBehaviour, IPunObservable
 {
+    //TODO: RPC instead of Observable
+
     [SerializeField]
     private TimeValue timeValue;
 
@@ -12,6 +15,22 @@ public class TimeHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!NetworkUtil.IsMaster()) return;
         this.timeValue.setTime(Time.fixedDeltaTime);
+    }
+
+    
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(this.timeValue.hour);
+            stream.SendNext(this.timeValue.minute);
+        }
+        else
+        {
+            this.timeValue.hour = (int)stream.ReceiveNext();
+            this.timeValue.minute = (int)stream.ReceiveNext();
+        }
     }
 }

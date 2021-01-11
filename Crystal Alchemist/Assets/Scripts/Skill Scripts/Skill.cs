@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.Events;
-using Mirror;
+using Photon.Pun;
 
 public enum SkillType
 {
@@ -17,9 +17,20 @@ public enum StateType
     defend
 }
 
-public class Skill : NetworkBehaviour
+public class Skill : MonoBehaviourPunCallbacks, IPunInstantiateMagicCallback, IPunObservable
 {
     #region Attribute
+
+    [BoxGroup("Inspector")]
+    [ReadOnly]
+    public string path;
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        this.path = UnityUtil.GetResourcePath(this);
+    }
+#endif
 
     [Space(10)]
     [BoxGroup("Easy Access")]
@@ -87,6 +98,32 @@ public class Skill : NetworkBehaviour
     {
         this.AfterDelay?.Invoke();
     }
+
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(this.direction);
+            //stream.SendNext(this.sender);
+        }
+        else
+        {
+            this.direction = (Vector2)stream.ReceiveNext();
+            //this.sender = (GameObject)stream.ReceiveNext();
+        }
+    }
+
+
+    public void OnPhotonInstantiate(PhotonMessageInfo info)
+    {
+        // Example... 
+        Debug.Log("Is this mine?... " + info.Sender.IsLocal.ToString());
+    }
+
+
+
+
 
     #region Start Funktionen (Init, set Basics, Update Sender, set Position
 

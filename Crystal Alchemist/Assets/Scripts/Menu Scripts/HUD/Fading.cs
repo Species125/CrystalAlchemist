@@ -20,12 +20,12 @@ public class Fading : MonoBehaviour
     private void Start()
     {
         StartCoroutine(delayCo());
-        MenuEvents.current.OnFadeOut += FadeOut;
+        if (NetworkUtil.IsLocal()) MenuEvents.current.OnFadeOut += FadeOut;
     }
 
     private void OnDestroy()
     {
-        MenuEvents.current.OnFadeOut -= FadeOut;
+        if (NetworkUtil.IsLocal()) MenuEvents.current.OnFadeOut -= FadeOut;
     }
 
     private void FadeIn()

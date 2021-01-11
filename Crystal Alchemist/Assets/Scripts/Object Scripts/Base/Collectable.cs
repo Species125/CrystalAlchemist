@@ -3,10 +3,10 @@ using Sirenix.OdinInspector;
 using AssetIcons;
 using DG.Tweening;
 using System.Collections;
-using Mirror;
+
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Collectable : NetworkBehaviour
+public class Collectable : MonoBehaviour
 {
     [Required]
     [BoxGroup("Pflichtfeld")]
@@ -186,7 +186,7 @@ public class Collectable : NetworkBehaviour
         if (!character.isTrigger)
         {
             Player player = character.GetComponent<Player>();
-            if (player != null) CollectIt(player);            
+            if (player != null && NetworkUtil.IsLocal(player.photonView)) CollectIt(player);            
         }
     }
 

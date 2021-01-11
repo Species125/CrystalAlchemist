@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using DG.Tweening;
-using Mirror;
+using Photon.Pun;
 
-public class Character : NetworkBehaviour
+public class Character : MonoBehaviourPunCallbacks, IPunObservable
 {
     [HideInInspector]
     public CharacterStats stats;
@@ -55,6 +55,7 @@ public class Character : NetworkBehaviour
 
     #region Attributes
 
+    private bool isVisible;
     private float selfDestructionElapsed;
     private float regenTimeElapsed;
     private float manaTime;
@@ -68,6 +69,9 @@ public class Character : NetworkBehaviour
     [HideInInspector]
     public bool IsSummoned = false;
 
+    [HideInInspector]
+    public string characterName;
+
     #endregion
 
     #region Start Functions (Spawn, Init)
@@ -75,20 +79,22 @@ public class Character : NetworkBehaviour
     {
         this.values = ScriptableObject.CreateInstance<CharacterValues>(); //create new Values when not already assigned (NPC)
         this.values.Initialize();
+        this.characterName = this.stats.GetCharacterName();
 
         this.spawnPosition = this.transform.position;
         SetComponents();
     }
 
-    public virtual void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
         this.transform.position = this.spawnPosition;
         ResetValues();
     }
 
     public virtual void Start() => GameEvents.current.OnEffectAdded += AddStatusEffectVisuals;
 
-    public void SetComponents()
+    public virtual void SetComponents()
     {
         if (this.myRigidbody == null) this.myRigidbody = this.GetComponent<Rigidbody2D>();
         if (this.skillStartPosition == null) this.skillStartPosition = this.gameObject;
@@ -212,12 +218,12 @@ public class Character : NetworkBehaviour
 
     public void DropItem()
     {
-        if (this.values.itemDrop != null) this.values.itemDrop.Instantiate(this.transform.position, false);
+        if (this.values.itemDrop != null) NetworkEvents.current.InstantiateItem(this.values.itemDrop, this.transform.position, false);
     }
 
     public void DropItem(GameObject position)
     {
-        if (this.values.itemDrop != null) this.values.itemDrop.Instantiate(position.transform.position, true);
+        if (this.values.itemDrop != null) NetworkEvents.current.InstantiateItem(this.values.itemDrop, position.transform.position, true);
     }
 
     #endregion
@@ -232,7 +238,7 @@ public class Character : NetworkBehaviour
 
         this.values.direction = direction;
         AnimatorUtil.SetAnimDirection(direction, this.animator);
-    }
+    }   
     #endregion
 
     #region Color Changes
@@ -440,26 +446,9 @@ public class Character : NetworkBehaviour
 
 
     [Button]
-    public void KillIt() => KillIt(true);
+    public void KillIt() => NetworkEvents.current.KillCharacter(this); //KillIt(true);
 
-    //public void KillIt(bool showAnimation) => KillCharacter(showAnimation);
-
-
-
-    public void KillIt(bool showAnimation)
-    {
-        if (this.isServer) RpcKill(showAnimation);
-        else CmdKill(showAnimation);
-    }
-
-    [Command(ignoreAuthority = true)]
-    private void CmdKill(bool animate) => RpcKill(animate);
-
-    [ClientRpc]
-    private void RpcKill(bool animate) => KillCharacter(animate);
-
-
-
+    public void KillIt(bool showAnimation) => NetworkEvents.current.KillCharacter(this, showAnimation);//KillCharacter(showAnimation);
 
     public virtual void KillCharacter(bool animate)
     {
@@ -605,9 +594,9 @@ public class Character : NetworkBehaviour
         else return GetShootingPosition();
     }
 
-    public virtual string GetCharacterName()
+    public string GetCharacterName()
     {
-        return this.stats.GetCharacterName();
+        return this.characterName;
     }
 
     public Vector2 GetGroundPosition()
@@ -662,10 +651,12 @@ public class Character : NetworkBehaviour
 
     public void SetCharacterSprites(bool value)
     {
-        if (this.GetComponent<CharacterRenderingHandler>() != null)
-            this.GetComponent<CharacterRenderingHandler>().enableSpriteRenderer(value);
+        this.isVisible = value;
 
-        if (this.groundPosition != null) this.groundPosition.SetActive(value);
+        if (this.GetComponent<CharacterRenderingHandler>() != null)
+            this.GetComponent<CharacterRenderingHandler>().enableSpriteRenderer(this.isVisible);
+
+        if (this.groundPosition != null) this.groundPosition.SetActive(this.isVisible);
     }
 
     public virtual void SpawnOut()
@@ -749,4 +740,34 @@ public class Character : NetworkBehaviour
         StatusEffectUtil.RemoveAllStatusEffects(this.values.debuffs);
         StatusEffectUtil.RemoveAllStatusEffects(this.values.buffs);
     }
+
+
+
+    #region Networking
+
+    public virtual void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(this.values.direction);
+            stream.SendNext(this.values.life);
+            stream.SendNext(this.values.mana);
+            stream.SendNext(this.myRigidbody.velocity);
+            stream.SendNext(this.characterName);
+            stream.SendNext(this.isVisible);
+        }
+        else
+        {
+            this.values.direction = (Vector2)stream.ReceiveNext();
+            this.values.life = (float)stream.ReceiveNext();
+            this.values.mana = (float)stream.ReceiveNext();
+            this.myRigidbody.velocity = (Vector2)stream.ReceiveNext();
+            this.characterName = (string)stream.ReceiveNext();
+            this.isVisible = (bool)stream.ReceiveNext();
+        }
+    }
+
+
+    #endregion
+
 }

@@ -7,11 +7,6 @@ public class CharacterCreatorMenu : MenuBehaviour
     [Required]
     public CharacterPreset playerPreset;
 
-    [BoxGroup("Character Creator")]
-    [Required]
-    [SerializeField]
-    private SimpleSignal signal;
-
     private CharacterPreset backup;
 
 
@@ -35,5 +30,5 @@ public class CharacterCreatorMenu : MenuBehaviour
         UpdatePreview();
     }
 
-    public void UpdatePreview() => this.signal.Raise();    
+    public void UpdatePreview() => GameEvents.current.DoPresetChange();  
 }

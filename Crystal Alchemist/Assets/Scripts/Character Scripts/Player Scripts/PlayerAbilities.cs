@@ -2,6 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
 using System;
+using Photon.Pun;
 
 public class PlayerAbilities : CharacterCombat
 {
@@ -20,6 +21,13 @@ public class PlayerAbilities : CharacterCombat
     private bool isPressed;
     private float timer;
     private Player player;
+    private PhotonView photonView;
+
+    private void Awake()
+    {
+        this.photonView = PhotonView.Get(this);
+    }
+
 
     private void Start() => GameEvents.current.OnCancel += DisableAbilities;
 
@@ -27,7 +35,7 @@ public class PlayerAbilities : CharacterCombat
 
     public override void Initialize()
     {
-        if (!this.hasAuthority) return;
+        if (!NetworkUtil.IsLocal(this.photonView)) return;
 
         base.Initialize();
         this.player = this.character.GetComponent<Player>();
@@ -39,7 +47,7 @@ public class PlayerAbilities : CharacterCombat
 
     public override void Updating()
     {
-        if (!this.hasAuthority) return;
+        if (!NetworkUtil.IsLocal(this.photonView)) return;
 
         base.Updating();
         this.skillSet.Updating();
@@ -50,14 +58,14 @@ public class PlayerAbilities : CharacterCombat
 
     public void SelectTargetInput(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed 
-            && this.hasAuthority
-            ) this.GetTargetingSystem().SetTargetChange(ctx.ReadValue<Vector2>());
+        if (!NetworkUtil.IsLocal(this.photonView)) return;
+
+        if (ctx.performed) this.GetTargetingSystem().SetTargetChange(ctx.ReadValue<Vector2>());
     }
 
     public void OnHoldingCallback(InputAction.CallbackContext context)
     {
-        if (!this.hasAuthority) return;
+        if (!NetworkUtil.IsLocal(this.photonView)) return;
 
         if (context.started)
         {

@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
+using Photon.Pun;
 
 [RequireComponent(typeof(Character))]
-public class CharacterCombat : NetworkBehaviour
+public class CharacterCombat : MonoBehaviour
 {
     private CastBar activeCastBar;
     private TargetingSystem targetingSystem;
@@ -148,7 +148,9 @@ public class CharacterCombat : NetworkBehaviour
     {
         if (ability.HasEnoughResourceAndAmount())
         {
-            Skill skill = ability.InstantiateSkill(target);            
+            AbilityUtil.InstantiateSkill(ability,target);
+            NetworkEvents.current.InstantiateSkillOverNetwork(ability, this.character, target, RpcTarget.Others);
+
             if (!ability.deactivateButtonUp && !ability.remoteActivation) ability.ResetCoolDown();
         }
     }
@@ -175,8 +177,8 @@ public class CharacterCombat : NetworkBehaviour
             if (target.values.currentState != CharacterState.dead
                 && target.values.currentState != CharacterState.respawning)
             {
-                GameObject skill = ability.InstantiateSkill(target, damageReduce).gameObject;
-
+                AbilityUtil.InstantiateSkill(ability, target, damageReduce);
+                //RPC
                 yield return new WaitForSeconds(this.GetTargetingDelay());
             }
         }

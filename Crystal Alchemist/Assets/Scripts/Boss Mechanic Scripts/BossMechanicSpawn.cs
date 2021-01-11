@@ -195,7 +195,7 @@ public class BossMechanicSpawn : BossMechanicProperty
     private void SetAbility(Vector2 position, Quaternion rotation)
     {
         Ability ability = Instantiate(this.childProperty.spawnObject) as Ability;
-        Skill skill = ability.InstantiateSkill(target, position, this.sender, rotation);
+        Skill skill = AbilityUtil.InstantiateSkill(ability, target, position, this.sender, rotation);
         skill.transform.SetParent(this.transform);
         if (this.childProperty.overrideDuration) skill.SetMaxDuration(true, this.childProperty.maxDuration);
         Destroy(ability);
