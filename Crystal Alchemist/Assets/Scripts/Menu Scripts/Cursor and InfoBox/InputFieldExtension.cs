@@ -1,36 +1,40 @@
-using UnityEngine;
+
+
 using TMPro;
-using System.Collections.Generic;
+using UnityEngine;
 
-[RequireComponent(typeof(TMP_InputField))]
-public class InputFieldExtension : MonoBehaviour
+namespace CrystalAlchemist
 {
-    private TMP_InputField inputField;
-
-    [SerializeField]
-    private ButtonExtension button;
-
-    private void Start()
+    [RequireComponent(typeof(TMP_InputField))]
+    public class InputFieldExtension : MonoBehaviour
     {
-        this.inputField = this.GetComponent<TMP_InputField>();
-        GameEvents.current.OnDeviceChanged += OnDeviceChanged;
-    }
+        private TMP_InputField inputField;
 
-    private void OnDestroy()
-    {
-        GameEvents.current.OnDeviceChanged -= OnDeviceChanged;
-    }
+        [SerializeField]
+        private ButtonExtension button;
 
-    private void OnDeviceChanged()
-    {
-        if (MasterManager.inputDeviceInfo.type == InputDeviceType.gamepad && this.inputField.interactable)
+        private void Start()
         {
-            if (button != null) button.Select();
-            this.inputField.interactable = false;
+            this.inputField = this.GetComponent<TMP_InputField>();
+            GameEvents.current.OnDeviceChanged += OnDeviceChanged;
         }
-        else if (MasterManager.inputDeviceInfo.type != InputDeviceType.gamepad && !this.inputField.interactable)
+
+        private void OnDestroy()
         {
-            this.inputField.interactable = true;
+            GameEvents.current.OnDeviceChanged -= OnDeviceChanged;
+        }
+
+        private void OnDeviceChanged()
+        {
+            if (MasterManager.inputDeviceInfo.type == InputDeviceType.gamepad && this.inputField.interactable)
+            {
+                if (button != null) button.Select();
+                this.inputField.interactable = false;
+            }
+            else if (MasterManager.inputDeviceInfo.type != InputDeviceType.gamepad && !this.inputField.interactable)
+            {
+                this.inputField.interactable = true;
+            }
         }
     }
 }

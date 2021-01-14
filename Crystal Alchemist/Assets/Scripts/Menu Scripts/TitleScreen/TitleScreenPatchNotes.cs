@@ -1,33 +1,37 @@
-﻿using UnityEngine;
+﻿
 using TMPro;
+using UnityEngine;
 
-public class TitleScreenPatchNotes : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private PatchNoteInfo infos;
-
-    [SerializeField]
-    private GameObject template;
-
-    private void OnEnable()
+    public class TitleScreenPatchNotes : MonoBehaviour
     {
-        foreach (PatchNote note in this.infos.GetPatchNotes())
+        [SerializeField]
+        private PatchNoteInfo infos;
+
+        [SerializeField]
+        private GameObject template;
+
+        private void OnEnable()
         {
-            GameObject line = Instantiate(template, this.transform);
-            line.GetComponent<TextMeshProUGUI>().text = note.GetText();
-            line.GetComponent<TextMeshProUGUI>().autoSizeTextContainer = true;
+            foreach (PatchNote note in this.infos.GetPatchNotes())
+            {
+                GameObject line = Instantiate(template, this.transform);
+                line.GetComponent<TextMeshProUGUI>().text = note.GetText();
+                line.GetComponent<TextMeshProUGUI>().autoSizeTextContainer = true;
+            }
+
+            this.template.SetActive(false);
         }
 
-        this.template.SetActive(false);
-    }
-
-    private void OnDisable()
-    {        
-        for(int i = 1; i < this.transform.childCount; i++)
+        private void OnDisable()
         {
-            Destroy(this.transform.GetChild(i).gameObject);
-        }
+            for (int i = 1; i < this.transform.childCount; i++)
+            {
+                Destroy(this.transform.GetChild(i).gameObject);
+            }
 
-        this.template.SetActive(true);
+            this.template.SetActive(true);
+        }
     }
 }

@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MiniGameAnimationHelper : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private MiniGameRound miniGameRound;
-
-    public void Check()
+    public class MiniGameAnimationHelper : MonoBehaviour
     {
-        this.miniGameRound.Check();
+        [SerializeField]
+        private MiniGameRound miniGameRound;
+
+        public void Check()
+        {
+            this.miniGameRound.Check();
+        }
     }
 }

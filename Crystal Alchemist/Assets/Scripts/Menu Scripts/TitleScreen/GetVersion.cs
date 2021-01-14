@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using TMPro;
 
-public class GetVersion : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private TextMeshProUGUI versionText;
-
-    void Start()
+    public class GetVersion : MonoBehaviour
     {
-        this.versionText.text = "Version: "+Application.version + " (Pre-Alpha)";
-    }
+        [SerializeField]
+        private TextMeshProUGUI versionText;
 
+        void Start()
+        {
+            this.versionText.text = "Version: " + Application.version + " (Pre-Alpha)";
+        }
+
+    }
 }

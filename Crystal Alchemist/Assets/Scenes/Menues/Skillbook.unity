@@ -400,7 +400,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -412,6 +412,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 46569840}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &46569839 stripped
@@ -628,7 +633,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -640,6 +645,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 89572675}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &89572674 stripped
@@ -720,12 +730,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 919052620}
-          m_TargetAssemblyTypeName: SkillMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: CrystalAlchemist.SkillMenu, Assembly-CSharp
           m_MethodName: ShowSkillDetails
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 89582261}
-            m_ObjectArgumentAssemblyTypeName: SkillMenuActiveSlots, Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: CrystalAlchemist.SkillMenuActiveSlots,
+              Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -1109,7 +1120,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -1121,6 +1132,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 117870690}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &117870689 stripped
@@ -1445,12 +1461,17 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SkillMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
@@ -1818,7 +1839,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -1830,6 +1851,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 197941837}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &197941836 stripped
@@ -2154,7 +2180,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -2166,6 +2192,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 231318616}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &231318615 stripped
@@ -2322,12 +2353,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 919052620}
-          m_TargetAssemblyTypeName: SkillMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: CrystalAlchemist.SkillMenu, Assembly-CSharp
           m_MethodName: ShowSkillDetails
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 238180102}
-            m_ObjectArgumentAssemblyTypeName: SkillMenuActiveSlots, Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: CrystalAlchemist.SkillMenuActiveSlots,
+              Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -2711,7 +2743,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -2723,6 +2755,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 277804524}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &277804523 stripped
@@ -3215,7 +3252,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -3227,6 +3264,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 322451662}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &322451661 stripped
@@ -3448,7 +3490,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -3460,6 +3502,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 341950596}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &341950595 stripped
@@ -3635,7 +3682,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -3647,6 +3694,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 356331549}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &356331548 stripped
@@ -4125,7 +4177,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -4137,6 +4189,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 449209922}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &449209921 stripped
@@ -4466,7 +4523,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -4478,6 +4535,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 469777923}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &469777922 stripped
@@ -4653,7 +4715,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -4665,6 +4727,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 545623701}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &545623700 stripped
@@ -5037,12 +5104,17 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SkillMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
@@ -5207,7 +5279,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -5219,6 +5291,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 586773761}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &586773760 stripped
@@ -5816,7 +5893,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -5828,6 +5905,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 681650788}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &681650787 stripped
@@ -6003,12 +6085,17 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SkillMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
@@ -6369,7 +6456,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -6381,6 +6468,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 745655786}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &745655785 stripped
@@ -6461,12 +6553,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 919052620}
-          m_TargetAssemblyTypeName: SkillMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: CrystalAlchemist.SkillMenu, Assembly-CSharp
           m_MethodName: ShowSkillDetails
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 771915603}
-            m_ObjectArgumentAssemblyTypeName: SkillMenuActiveSlots, Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: CrystalAlchemist.SkillMenuActiveSlots,
+              Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -6774,7 +6867,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -6786,6 +6879,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 772126102}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &772126101 stripped
@@ -6961,7 +7059,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -6973,6 +7071,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 804090627}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &804090626 stripped
@@ -7148,7 +7251,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -7160,6 +7263,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 806488890}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &806488889 stripped
@@ -7411,7 +7519,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -7423,6 +7531,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 820088975}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &820088974 stripped
@@ -7854,12 +7967,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 919052620}
-          m_TargetAssemblyTypeName: SkillMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: CrystalAlchemist.SkillMenu, Assembly-CSharp
           m_MethodName: ShowSkillDetails
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 851015419}
-            m_ObjectArgumentAssemblyTypeName: SkillMenuActiveSlots, Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: CrystalAlchemist.SkillMenuActiveSlots,
+              Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -8072,12 +8186,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 919052620}
-          m_TargetAssemblyTypeName: SkillMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: CrystalAlchemist.SkillMenu, Assembly-CSharp
           m_MethodName: ShowSkillDetails
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 853240167}
-            m_ObjectArgumentAssemblyTypeName: SkillMenuActiveSlots, Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: CrystalAlchemist.SkillMenuActiveSlots,
+              Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -8385,12 +8500,17 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SkillMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
@@ -8542,7 +8662,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7635100212f0a194fabef82456f07e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Skillbook
   changeVolume: 1
   playerValues: {fileID: 11400000, guid: 6762d3fcfc403704ab3f304728a23ccf, type: 2}
   showBlackBackground: 1
@@ -8937,7 +9056,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -8949,6 +9068,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 942464441}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &942464440 stripped
@@ -9092,12 +9216,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 919052620}
-          m_TargetAssemblyTypeName: SkillMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: CrystalAlchemist.SkillMenu, Assembly-CSharp
           m_MethodName: ShowSkillDetails
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 949533241}
-            m_ObjectArgumentAssemblyTypeName: SkillMenuActiveSlots, Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: CrystalAlchemist.SkillMenuActiveSlots,
+              Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -9561,12 +9686,17 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SkillMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
@@ -9731,7 +9861,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -9743,6 +9873,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 960547236}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &960547235 stripped
@@ -9981,7 +10116,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -9993,6 +10128,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 979245916}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &979245915 stripped
@@ -10149,12 +10289,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 919052620}
-          m_TargetAssemblyTypeName: SkillMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: CrystalAlchemist.SkillMenu, Assembly-CSharp
           m_MethodName: ShowSkillDetails
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 1008923246}
-            m_ObjectArgumentAssemblyTypeName: SkillMenuActiveSlots, Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: CrystalAlchemist.SkillMenuActiveSlots,
+              Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -10792,7 +10933,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -10804,6 +10945,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1083968885}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1083968884 stripped
@@ -11026,12 +11172,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 919052620}
-          m_TargetAssemblyTypeName: SkillMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: CrystalAlchemist.SkillMenu, Assembly-CSharp
           m_MethodName: ShowSkillDetails
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 1113530466}
-            m_ObjectArgumentAssemblyTypeName: SkillMenuActiveSlots, Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: CrystalAlchemist.SkillMenuActiveSlots,
+              Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -11928,7 +12075,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -11940,6 +12087,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1236135444}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1236135443 stripped
@@ -12115,7 +12267,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -12127,6 +12279,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1245292221}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1245292220 stripped
@@ -12441,7 +12598,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -12453,6 +12610,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1267049663}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1267049662 stripped
@@ -13042,7 +13204,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -13054,6 +13216,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1342188574}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1342188573 stripped
@@ -13279,7 +13446,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -13291,6 +13458,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1381271568}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1381271567 stripped
@@ -13466,7 +13638,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -13478,6 +13650,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1398853332}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1398853331 stripped
@@ -13653,7 +13830,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -13665,6 +13842,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1423054856}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1423054855 stripped
@@ -13916,7 +14098,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -13928,6 +14110,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1453882614}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1453882613 stripped
@@ -14178,12 +14365,17 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SkillMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
@@ -14348,7 +14540,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -14360,6 +14552,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1536164778}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1536164777 stripped
@@ -14610,7 +14807,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -14622,6 +14819,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1640685266}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1640685265 stripped
@@ -14797,7 +14999,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -14809,6 +15011,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1656964273}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1656964272 stripped
@@ -14984,7 +15191,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -14996,6 +15203,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1662479588}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1662479587 stripped
@@ -15521,12 +15733,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 919052620}
-          m_TargetAssemblyTypeName: SkillMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: CrystalAlchemist.SkillMenu, Assembly-CSharp
           m_MethodName: ShowSkillDetails
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 1770535172}
-            m_ObjectArgumentAssemblyTypeName: SkillMenuActiveSlots, Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: CrystalAlchemist.SkillMenuActiveSlots,
+              Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -15739,12 +15952,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 919052620}
-          m_TargetAssemblyTypeName: SkillMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: CrystalAlchemist.SkillMenu, Assembly-CSharp
           m_MethodName: ShowSkillDetails
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 1785771593}
-            m_ObjectArgumentAssemblyTypeName: SkillMenuActiveSlots, Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: CrystalAlchemist.SkillMenuActiveSlots,
+              Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -16052,7 +16266,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -16064,6 +16278,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1789446507}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1789446506 stripped
@@ -16188,12 +16407,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 919052620}
-          m_TargetAssemblyTypeName: SkillMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: CrystalAlchemist.SkillMenu, Assembly-CSharp
           m_MethodName: ShowSkillDetails
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 1807120912}
-            m_ObjectArgumentAssemblyTypeName: SkillMenuActiveSlots, Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: CrystalAlchemist.SkillMenuActiveSlots,
+              Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -16501,7 +16721,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -16513,6 +16733,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1819111892}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1819111891 stripped
@@ -17125,7 +17350,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -17137,6 +17362,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1904097216}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1904097215 stripped
@@ -17375,7 +17605,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -17387,6 +17617,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1936051969}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1936051968 stripped
@@ -17697,7 +17932,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -17709,6 +17944,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1948518454}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1948518453 stripped
@@ -17959,7 +18199,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -17971,6 +18211,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1978170189}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1978170188 stripped
@@ -18146,7 +18391,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -18158,6 +18403,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1983663002}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1983663001 stripped
@@ -18379,7 +18629,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -18391,6 +18641,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1998920846}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &1998920845 stripped
@@ -18566,7 +18821,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -18578,6 +18833,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 2002537334}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &2002537333 stripped
@@ -18753,7 +19013,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -18765,6 +19025,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 2024027087}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &2024027086 stripped
@@ -18940,7 +19205,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -18952,6 +19217,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 2024599733}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &2024599732 stripped
@@ -19127,7 +19397,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -19139,6 +19409,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 2040703611}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &2040703610 stripped
@@ -19468,7 +19743,7 @@ PrefabInstance:
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SkillMenu, Assembly-CSharp
+      value: CrystalAlchemist.SkillMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
         type: 3}
@@ -19480,6 +19755,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 2087864173}
+    - target: {fileID: 529980937274927934, guid: 44a68e683e8884c45a66174fc1a547c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CrystalAlchemist.SkillSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a68e683e8884c45a66174fc1a547c9, type: 3}
 --- !u!224 &2087864172 stripped
@@ -19560,12 +19840,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 919052620}
-          m_TargetAssemblyTypeName: SkillMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: CrystalAlchemist.SkillMenu, Assembly-CSharp
           m_MethodName: ShowSkillDetails
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 2108921367}
-            m_ObjectArgumentAssemblyTypeName: SkillMenuActiveSlots, Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: CrystalAlchemist.SkillMenuActiveSlots,
+              Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 

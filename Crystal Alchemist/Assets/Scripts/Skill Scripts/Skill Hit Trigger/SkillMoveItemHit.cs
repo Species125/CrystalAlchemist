@@ -1,25 +1,28 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
-
-public class SkillMoveItemHit : SkillHitTrigger
+namespace CrystalAlchemist
 {
-    private Collectable item;
-
-    public override void Updating()
+    public class SkillMoveItemHit : SkillHitTrigger
     {
-        if (this.item != null && this.item.GetComponent<Rigidbody2D>() != null)
+        private Collectable item;
+
+        public override void Updating()
         {
-            this.item.GetComponent<Rigidbody2D>().MovePosition(this.skill.transform.position);
+            if (this.item != null && this.item.GetComponent<Rigidbody2D>() != null)
+            {
+                this.item.GetComponent<Rigidbody2D>().MovePosition(this.skill.transform.position);
+            }
         }
-    }
 
-    public void moveItem(Collider2D hittedCharacter)
-    {
-        Collectable hittedItem = hittedCharacter.GetComponent<Collectable>();
-        if (hittedItem != null && this.item == null) this.item = hittedItem;
-    }
+        public void moveItem(Collider2D hittedCharacter)
+        {
+            Collectable hittedItem = hittedCharacter.GetComponent<Collectable>();
+            if (hittedItem != null && this.item == null) this.item = hittedItem;
+        }
 
-    private void OnTriggerEnter2D(Collider2D hittedCharacter) => moveItem(hittedCharacter);
-   
-    private void OnTriggerExit2D(Collider2D hittedCharacter) => moveItem(hittedCharacter);    
+        private void OnTriggerEnter2D(Collider2D hittedCharacter) => moveItem(hittedCharacter);
+
+        private void OnTriggerExit2D(Collider2D hittedCharacter) => moveItem(hittedCharacter);
+    }
 }

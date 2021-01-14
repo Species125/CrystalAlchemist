@@ -1,44 +1,48 @@
+
 using UnityEngine;
 
-public enum InputDeviceType
+namespace CrystalAlchemist
 {
-    keyboard,
-    mouse,
-    gamepad
-}
-
-
-[CreateAssetMenu(menuName = "Game/Settings/Device Info")]
-public class InputDeviceInfo : ScriptableObject
-{
-    public string button;
-
-    public InputDeviceType type;
-
-    public void SetDevice(string type, string button)
+    public enum InputDeviceType
     {
-        this.button = button;
-        if (type.Contains("Keyboard")) this.type = InputDeviceType.keyboard;
-        else if (type.Contains("Mouse")) this.type = InputDeviceType.mouse;
-        else this.type = InputDeviceType.gamepad;
-
-        UpdateLayout();
-        GameEvents.current.DoDeviceChanged();
+        keyboard,
+        mouse,
+        gamepad
     }
 
-    private void UpdateLayout()
+
+    [CreateAssetMenu(menuName = "Game/Settings/Device Info")]
+    public class InputDeviceInfo : ScriptableObject
     {
-        if (this.type == InputDeviceType.gamepad
-            && MasterManager.settings.layoutType != InputDeviceType.gamepad)
+        public string button;
+
+        public InputDeviceType type;
+
+        public void SetDevice(string type, string button)
         {
-            MasterManager.settings.layoutType = InputDeviceType.gamepad;
-            SettingsEvents.current.DoLayoutChange();
+            this.button = button;
+            if (type.Contains("Keyboard")) this.type = InputDeviceType.keyboard;
+            else if (type.Contains("Mouse")) this.type = InputDeviceType.mouse;
+            else this.type = InputDeviceType.gamepad;
+
+            UpdateLayout();
+            GameEvents.current.DoDeviceChanged();
         }
-        else if (this.type != InputDeviceType.gamepad
-            && MasterManager.settings.layoutType == InputDeviceType.gamepad)
+
+        private void UpdateLayout()
         {
-            MasterManager.settings.layoutType = InputDeviceType.keyboard;
-            SettingsEvents.current.DoLayoutChange();
+            if (this.type == InputDeviceType.gamepad
+                && MasterManager.settings.layoutType != InputDeviceType.gamepad)
+            {
+                MasterManager.settings.layoutType = InputDeviceType.gamepad;
+                SettingsEvents.current.DoLayoutChange();
+            }
+            else if (this.type != InputDeviceType.gamepad
+                     && MasterManager.settings.layoutType == InputDeviceType.gamepad)
+            {
+                MasterManager.settings.layoutType = InputDeviceType.keyboard;
+                SettingsEvents.current.DoLayoutChange();
+            }
         }
     }
 }

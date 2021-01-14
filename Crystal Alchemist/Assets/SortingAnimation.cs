@@ -1,32 +1,33 @@
+
 using UnityEngine;
 using UnityEngine.Rendering;
 
-[RequireComponent(typeof(SortingGroup))]
-public class SortingAnimation : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private int order;
-
-    [SerializeField]
-    private float height;
-
-    [SerializeField]
-    private CharacterValues player;
-
-    private SortingGroup group;
-
-    void Awake() => this.group = this.GetComponent<SortingGroup>();
-
-    private void Start()
+    [RequireComponent(typeof(SortingGroup))]
+    public class SortingAnimation : MonoBehaviour
     {
-        this.transform.localPosition = new Vector3(0, 1, 0) * height;
-        this.group.sortingOrder = this.order;
-    }
+        [SerializeField] private int order;
 
-    void LateUpdate()
-    {
-        if (this.player.currentState == CharacterState.respawning) return;
-        this.transform.localPosition = new Vector3(0, 1, 0) * height;
-        this.group.sortingOrder = this.order;
+        [SerializeField] private float height;
+
+        [SerializeField] private CharacterValues player;
+
+        private SortingGroup group;
+
+        void Awake() => this.group = this.GetComponent<SortingGroup>();
+
+        private void Start()
+        {
+            this.transform.localPosition = new Vector3(0, 1, 0) * height;
+            this.group.sortingOrder = this.order;
+        }
+
+        void LateUpdate()
+        {
+            if (this.player.currentState == CharacterState.respawning) return;
+            this.transform.localPosition = new Vector3(0, 1, 0) * height;
+            this.group.sortingOrder = this.order;
+        }
     }
 }

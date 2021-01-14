@@ -1,26 +1,30 @@
 ﻿using System.Collections.Generic;
+
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Signals/AudioClipSignal")]
-public class AudioClipSignal : ScriptableObject
+namespace CrystalAlchemist
 {
-    public List<AudioClipSignalListener> listeners = new List<AudioClipSignalListener>();
-
-    public void Raise(AudioClip value)
+    [CreateAssetMenu(menuName = "Signals/AudioClipSignal")]
+    public class AudioClipSignal : ScriptableObject
     {
-        for (int i = listeners.Count - 1; i >= 0; i--)
+        public List<AudioClipSignalListener> listeners = new List<AudioClipSignalListener>();
+
+        public void Raise(AudioClip value)
         {
-            this.listeners[i].OnSignalRaised(value);
+            for (int i = listeners.Count - 1; i >= 0; i--)
+            {
+                this.listeners[i].OnSignalRaised(value);
+            }
         }
-    }
 
-    public void RegisterListener(AudioClipSignalListener listener)
-    {
-        this.listeners.Add(listener);
-    }
+        public void RegisterListener(AudioClipSignalListener listener)
+        {
+            this.listeners.Add(listener);
+        }
 
-    public void DeRegisterListener(AudioClipSignalListener listener)
-    {
-        this.listeners.Remove(listener);
+        public void DeRegisterListener(AudioClipSignalListener listener)
+        {
+            this.listeners.Remove(listener);
+        }
     }
 }

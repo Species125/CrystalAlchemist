@@ -1,52 +1,59 @@
-﻿using UnityEngine;
+﻿
 
-public class PlayerItems : PlayerComponent
+
+
+using UnityEngine;
+
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private PlayerInventory inventory;
-
-    private void Awake()
+    public class PlayerItems : PlayerComponent
     {
-        GameEvents.current.OnKeyItem += hasKeyItemAlready; //because keyItemCheck will be called very early
-        GameEvents.current.OnItemAmount += GetAmount;
-    }
+        [SerializeField]
+        private PlayerInventory inventory;
 
-    private void OnDestroy()
-    {
-        GameEvents.current.OnKeyItem -= hasKeyItemAlready;
-        GameEvents.current.OnItemAmount -= GetAmount;
-    }
+        private void Awake()
+        {
+            GameEvents.current.OnKeyItem += hasKeyItemAlready; //because keyItemCheck will be called very early
+            GameEvents.current.OnItemAmount += GetAmount;
+        }
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        this.inventory.Initialize(); //remove null objects    
-    }
+        private void OnDestroy()
+        {
+            GameEvents.current.OnKeyItem -= hasKeyItemAlready;
+            GameEvents.current.OnItemAmount -= GetAmount;
+        }
 
-    public int GetAmount(ItemGroup group)
-    {
-        return this.inventory.GetAmount(group);
-    }
+        public override void Initialize()
+        {
+            base.Initialize();
+            this.inventory.Initialize(); //remove null objects    
+        }
 
-    public void CollectItem(ItemStats item) => this.inventory.collectItem(item);    
+        public int GetAmount(ItemGroup group)
+        {
+            return this.inventory.GetAmount(group);
+        }
 
-    public void UpdateInventory(ItemGroup item, int amount) => this.inventory.UpdateInventory(item, amount);    
+        public void CollectItem(ItemStats item) => this.inventory.collectItem(item);
 
-    public bool hasKeyItemAlready(string name)
-    {
-        foreach (ItemStats elem in this.inventory.keyItems) if (elem != null && name == elem.name) return true;      
-        return false;
-    }
+        public void UpdateInventory(ItemGroup item, int amount) => this.inventory.UpdateInventory(item, amount);
 
-    public PlayerInventory GetInventory()
-    {
-        return this.inventory;
-    }
+        public bool hasKeyItemAlready(string name)
+        {
+            foreach (ItemStats elem in this.inventory.keyItems) if (elem != null && name == elem.name) return true;
+            return false;
+        }
 
-    public int GetAmount(Costs price)
-    {
-        if (price.resourceType == CostType.item && price.item != null) return this.GetAmount(price.item);
-        else if (price.resourceType == CostType.keyItem && price.keyItem != null && GameEvents.current.HasKeyItem(price.keyItem.name)) return 1;
-        return 0;
+        public PlayerInventory GetInventory()
+        {
+            return this.inventory;
+        }
+
+        public int GetAmount(Costs price)
+        {
+            if (price.resourceType == CostType.item && price.item != null) return this.GetAmount(price.item);
+            else if (price.resourceType == CostType.keyItem && price.keyItem != null && GameEvents.current.HasKeyItem(price.keyItem.name)) return 1;
+            return 0;
+        }
     }
 }

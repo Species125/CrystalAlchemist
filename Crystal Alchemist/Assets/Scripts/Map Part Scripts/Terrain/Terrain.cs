@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public class Terrain : MonoBehaviour
+namespace CrystalAlchemist
 {
+    public class Terrain : MonoBehaviour
+    {
 
+    }
 }

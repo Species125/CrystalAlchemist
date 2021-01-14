@@ -1,56 +1,58 @@
-﻿using System.Collections;
-using UnityEngine.Rendering.Universal;
+﻿using Sirenix.OdinInspector;
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
-using Sirenix.OdinInspector;
-using System;
-using DG.Tweening;
+using UnityEngine.Rendering.Universal;
 
-public class PostProcessingHandler : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [BoxGroup]
-    [SerializeField]
-    private Volume volume;
-
-    [BoxGroup]
-    [SerializeField]
-    private float fadingSteps = 0.025f;
-
-    private ColorAdjustments colorGrading;
-
-    private void Start()
+    public class PostProcessingHandler : MonoBehaviour
     {
-        if(MenuEvents.current != null) MenuEvents.current.OnPostProcessingFade += StartFading;
-        this.volume.profile.TryGet(out this.colorGrading);
-        ResetFading();
-    }
+        [BoxGroup]
+        [SerializeField]
+        private Volume volume;
 
-    private void OnDestroy()
-    {
-        if (MenuEvents.current != null) MenuEvents.current.OnPostProcessingFade -= StartFading;
-    }
+        [BoxGroup]
+        [SerializeField]
+        private float fadingSteps = 0.025f;
 
-    [Button]
-    public void StartFading(Action action)
-    {
-        StartCoroutine(FadeOut(this.fadingSteps, action));
-    }
+        private ColorAdjustments colorGrading;
 
-    private IEnumerator FadeOut(float delay, Action action)
-    {
-        while (this.colorGrading.saturation.value > -100)
+        private void Start()
         {
-            this.colorGrading.saturation.value -= 1f;
-            yield return new WaitForSeconds(delay);
+            if (MenuEvents.current != null) MenuEvents.current.OnPostProcessingFade += StartFading;
+            this.volume.profile.TryGet(out this.colorGrading);
+            ResetFading();
         }
 
-        action?.Invoke();
-    }
+        private void OnDestroy()
+        {
+            if (MenuEvents.current != null) MenuEvents.current.OnPostProcessingFade -= StartFading;
+        }
 
-    [Button]
-    private void ResetFading()
-    {
-        this.colorGrading.saturation.value = 0;
-        this.colorGrading.colorFilter.value = Color.white;
+        [Button]
+        public void StartFading(Action action)
+        {
+            StartCoroutine(FadeOut(this.fadingSteps, action));
+        }
+
+        private IEnumerator FadeOut(float delay, Action action)
+        {
+            while (this.colorGrading.saturation.value > -100)
+            {
+                this.colorGrading.saturation.value -= 1f;
+                yield return new WaitForSeconds(delay);
+            }
+
+            action?.Invoke();
+        }
+
+        [Button]
+        private void ResetFading()
+        {
+            this.colorGrading.saturation.value = 0;
+            this.colorGrading.colorFilter.value = Color.white;
+        }
     }
 }

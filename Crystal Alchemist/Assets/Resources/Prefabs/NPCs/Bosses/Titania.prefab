@@ -354,10 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 355432992060eda49abb91f4a41cf0b7, type: 2}
   spriteRenderer: {fileID: 0}
-  overrideShader: 1
   useGlow: 1
-  selectColor: {r: 0.82745105, g: 0.9176471, b: 1, a: 1}
-  precision: 0.05
   glowColor: {r: 2.7643976, g: 5.361256, b: 7.999999, a: 1}
   invert: 0
 --- !u!114 &7433217420969690547
@@ -424,6 +421,7 @@ GameObject:
   - component: {fileID: 4885153958641905025}
   - component: {fileID: 910524742380246583}
   - component: {fileID: 2713841778097141298}
+  - component: {fileID: -2793748050859840958}
   m_Layer: 11
   m_Name: Titania
   m_TagString: Untagged
@@ -463,7 +461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594481b97dd9abf458b279f819cd0b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 55d358f1ae5b28f45b4f5f4f5a55089c, type: 2}
   myRigidbody: {fileID: 3945848509854940437}
   animator: {fileID: 910524742380246583}
   boxCollider: {fileID: 3020177091971815233}
@@ -473,8 +470,10 @@ MonoBehaviour:
   headPosition: {fileID: 9214498863456935276}
   activeSkillParent: {fileID: 3020177091833525065}
   activeStatusEffectParent: {fileID: 8464107762506563443}
+  stats: {fileID: 11400000, guid: 55d358f1ae5b28f45b4f5f4f5a55089c, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
+  characterName: 
   NPCStats: {fileID: 11400000, guid: 55d358f1ae5b28f45b4f5f4f5a55089c, type: 2}
   target: {fileID: 0}
   partner: {fileID: 0}
@@ -675,6 +674,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroStats: {fileID: 11400000, guid: 46e049ec2b630ec40aec487f31843b9f, type: 2}
   npc: {fileID: 143027468618068661}
+--- !u!114 &-2793748050859840958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945848509854940433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 143027468618068661}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &8464107762506563443
 GameObject:
   m_ObjectHideFlags: 0

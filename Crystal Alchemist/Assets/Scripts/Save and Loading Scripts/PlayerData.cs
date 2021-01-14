@@ -1,143 +1,146 @@
 ﻿using System.Collections.Generic;
 
-[System.Serializable]
-public class PlayerData
+namespace CrystalAlchemist
 {
-    public float health;
-    public float mana;
-
-    public int maxHealth;
-    public int maxMana;
-    public int healthRegen;
-    public int manaRegen;
-    public int buffplus;
-    public int debuffminus;
-
-    public List<string> keyItems = new List<string>();
-    public List<string[]> inventoryItems = new List<string[]>();
-    public List<string[]> abilities = new List<string[]>();
-
-    public string characterName;
-    public string race;
-    public string[] colorGroups;
-    public string[] characterParts;
-    public List<string[]> progress = new List<string[]>();
-
-    public List<string> teleportPoints = new List<string>();
-    public string startTeleport;
-    public string lastTeleport;
-
-    public float timePlayed;
-
-    public PlayerData(PlayerSaveGame saveGame)
+    [System.Serializable]
+    public class PlayerData
     {
-        this.health = saveGame.playerValue.life;
-        this.mana = saveGame.playerValue.mana;
+        public float health;
+        public float mana;
 
-        this.maxHealth = saveGame.attributes.health;
-        this.maxMana = saveGame.attributes.mana;
-        this.healthRegen = saveGame.attributes.healthRegen;
-        this.manaRegen = saveGame.attributes.manaRegen;
-        this.buffplus = saveGame.attributes.buffPlus;
-        this.debuffminus = saveGame.playerValue.debuffMinus;
+        public int maxHealth;
+        public int maxMana;
+        public int healthRegen;
+        public int manaRegen;
+        public int buffplus;
+        public int debuffminus;
 
-        SetInventory(saveGame.inventory);
-        SetPreset(saveGame.playerPreset);
-        
-        this.abilities = saveGame.buttons.saveButtonConfig();
-        this.timePlayed = saveGame.timePlayed.GetValue();
-        this.characterName = saveGame.GetCharacterName();
+        public List<string> keyItems = new List<string>();
+        public List<string[]> inventoryItems = new List<string[]>();
+        public List<string[]> abilities = new List<string[]>();
 
-        SetStartTeleport(saveGame.teleportList.GetNextTeleport());
-        SetLastTeleport(saveGame.teleportList.GetLastTeleport());
-        SetTeleportList(saveGame.teleportList);
-        SetProgress(saveGame.progress);
-    }
+        public string characterName;
+        public string race;
+        public string[] colorGroups;
+        public string[] characterParts;
+        public List<string[]> progress = new List<string[]>();
 
-    private void SetInventory(PlayerInventory inventory)
-    {
-        this.keyItems.Clear();
-        this.inventoryItems.Clear();
+        public List<string> teleportPoints = new List<string>();
+        public string startTeleport;
+        public string lastTeleport;
 
-        foreach (ItemGroup item in inventory.inventoryItems)
+        public float timePlayed;
+
+        public PlayerData(PlayerSaveGame saveGame)
         {
-            string[] temp = new string[2];
-            temp[0] = item.name;
-            temp[1] = item.GetAmount() + "";
-            this.inventoryItems.Add(temp);
+            this.health = saveGame.playerValue.life;
+            this.mana = saveGame.playerValue.mana;
+
+            this.maxHealth = saveGame.attributes.health;
+            this.maxMana = saveGame.attributes.mana;
+            this.healthRegen = saveGame.attributes.healthRegen;
+            this.manaRegen = saveGame.attributes.manaRegen;
+            this.buffplus = saveGame.attributes.buffPlus;
+            this.debuffminus = saveGame.playerValue.debuffMinus;
+
+            SetInventory(saveGame.inventory);
+            SetPreset(saveGame.playerPreset);
+
+            this.abilities = saveGame.buttons.saveButtonConfig();
+            this.timePlayed = saveGame.timePlayed.GetValue();
+            this.characterName = saveGame.GetCharacterName();
+
+            SetStartTeleport(saveGame.teleportList.GetNextTeleport());
+            SetLastTeleport(saveGame.teleportList.GetLastTeleport());
+            SetTeleportList(saveGame.teleportList);
+            SetProgress(saveGame.progress);
         }
 
-        foreach (ItemStats item in inventory.keyItems)
+        private void SetInventory(PlayerInventory inventory)
         {
-            string temp = item.name;
-            this.keyItems.Add(temp);
+            this.keyItems.Clear();
+            this.inventoryItems.Clear();
+
+            foreach (ItemGroup item in inventory.inventoryItems)
+            {
+                string[] temp = new string[2];
+                temp[0] = item.name;
+                temp[1] = item.GetAmount() + "";
+                this.inventoryItems.Add(temp);
+            }
+
+            foreach (ItemStats item in inventory.keyItems)
+            {
+                string temp = item.name;
+                this.keyItems.Add(temp);
+            }
+        }
+
+        private void SetPreset(CharacterPreset preset)
+        {
+            SerializationUtil.GetPreset(preset, out this.race, out this.colorGroups, out this.characterParts);
+        }
+
+        private void SetProgress(PlayerGameProgress progress)
+        {
+            this.progress = progress.GetProgressRaw();
+        }
+
+        private void SetTeleportList(PlayerTeleportList list)
+        {
+            this.teleportPoints.Clear();
+
+            foreach (TeleportStats stat in list.GetStats()) this.teleportPoints.Add(stat.teleportName);
+        }
+
+        private void SetStartTeleport(TeleportStats stats)
+        {
+            if (stats == null) return;
+            this.startTeleport = stats.teleportName;
+        }
+
+        private void SetLastTeleport(TeleportStats stats)
+        {
+            if (stats == null) return;
+            this.lastTeleport = stats.teleportName;
+        }
+
+        public string GetStartTeleportName()
+        {
+            TeleportStats stats = MasterManager.GetTeleportStats(this.startTeleport);
+            if (stats != null) return stats.GetTeleportName();
+            return "???";
         }
     }
 
-    private void SetPreset(CharacterPreset preset)
+    [System.Serializable]
+    public class GameOptions
     {
-        SerializationUtil.GetPreset(preset, out this.race, out this.colorGroups, out this.characterParts);
-    }
+        public float musicVolume;
+        public float soundVolume;
 
-    private void SetProgress(PlayerGameProgress progress)
-    {
-        this.progress = progress.GetProgressRaw();
-    }
+        public string layout;
+        public string language;
 
-    private void SetTeleportList(PlayerTeleportList list)
-    {
-        this.teleportPoints.Clear();
+        public bool useHealthBar;
+        public bool useManaBar;
 
-        foreach(TeleportStats stat in list.GetStats()) this.teleportPoints.Add(stat.teleportName);        
-    }
+        public int cameraDistance;
+        public float uiSize = 1f;
 
-    private void SetStartTeleport(TeleportStats stats)
-    {
-        if (stats == null) return;
-        this.startTeleport = stats.teleportName;
-    }
+        public GameOptions()
+        {
+            this.musicVolume = MasterManager.settings.backgroundMusicVolume;
+            this.soundVolume = MasterManager.settings.soundEffectVolume;
 
-    private void SetLastTeleport(TeleportStats stats)
-    {
-        if (stats == null) return;
-        this.lastTeleport = stats.teleportName;
-    }
+            this.layout = MasterManager.settings.layoutType.ToString().ToLower();
+            this.language = MasterManager.settings.language.ToString();
 
-    public string GetStartTeleportName()
-    {
-        TeleportStats stats = MasterManager.GetTeleportStats(this.startTeleport);
-        if (stats != null) return stats.GetTeleportName();
-        return "???";
-    }
-}
+            this.useHealthBar = MasterManager.settings.healthBar;
+            this.useManaBar = MasterManager.settings.manaBar;
 
-[System.Serializable]
-public class GameOptions
-{
-    public float musicVolume;
-    public float soundVolume;
-
-    public string layout;
-    public string language;
-
-    public bool useHealthBar;
-    public bool useManaBar;
-
-    public int cameraDistance;
-    public float uiSize = 1f;
-
-    public GameOptions()
-    {
-        this.musicVolume = MasterManager.settings.backgroundMusicVolume;
-        this.soundVolume = MasterManager.settings.soundEffectVolume;
-
-        this.layout = MasterManager.settings.layoutType.ToString().ToLower();
-        this.language = MasterManager.settings.language.ToString();
-
-        this.useHealthBar = MasterManager.settings.healthBar;
-        this.useManaBar = MasterManager.settings.manaBar;
-
-        this.cameraDistance = MasterManager.settings.cameraDistance;
-        this.uiSize = MasterManager.settings.UISize;
+            this.cameraDistance = MasterManager.settings.cameraDistance;
+            this.uiSize = MasterManager.settings.UISize;
+        }
     }
 }

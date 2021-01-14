@@ -1,18 +1,20 @@
 ﻿using UnityEngine;
-using Photon.Pun;
 
-[RequireComponent(typeof(Player))]
-public class PlayerComponent : MonoBehaviourPunCallbacks
+namespace CrystalAlchemist
 {
-    [HideInInspector]
-    public Player player;
-
-    public virtual void Initialize()
-    {        
-        this.player = this.GetComponent<Player>();
-    }
-
-    public virtual void Updating()
+    [RequireComponent(typeof(Player))]
+    public class PlayerComponent : MonoBehaviour
     {
+        [HideInInspector]
+        public Player player;
+
+        public virtual void Initialize()
+        {
+            this.player = this.GetComponent<Player>();
+        }
+
+        public virtual void Updating()
+        {
+        }
     }
 }

@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 
-public class BossMechanicAutoRotation : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private float speed;
-
-    void Update()
+    public class BossMechanicAutoRotation : MonoBehaviour
     {
-        this.transform.Rotate(0, 0, Time.deltaTime * this.speed);
+        [SerializeField]
+        private float speed;
+
+        void Update()
+        {
+            this.transform.Rotate(0, 0, Time.deltaTime * this.speed);
+        }
     }
 }

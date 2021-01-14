@@ -179,10 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 355432992060eda49abb91f4a41cf0b7, type: 2}
   spriteRenderer: {fileID: 0}
-  overrideShader: 1
   useGlow: 1
-  selectColor: {r: 0.5921569, g: 0.8000001, b: 1, a: 1}
-  precision: 0.24
   glowColor: {r: 0.66269124, g: 1.5541797, b: 2.7547169, a: 1}
   invert: 0
 --- !u!114 &6356409455879225919
@@ -247,6 +244,7 @@ GameObject:
   - component: {fileID: 1770962052738937737}
   - component: {fileID: 4308959334589917793}
   - component: {fileID: 4885153958641905025}
+  - component: {fileID: -1146514669896522168}
   m_Layer: 11
   m_Name: "K\xF6nig Glibber"
   m_TagString: Untagged
@@ -306,7 +304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 071c75d9e981e5748aaddf91a57b8143, type: 2}
   myRigidbody: {fileID: 3945848509854940437}
   animator: {fileID: 3020177092142690266}
   boxCollider: {fileID: 3020177091971815233}
@@ -316,8 +313,10 @@ MonoBehaviour:
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 3020177091833525065}
   activeStatusEffectParent: {fileID: 8464107762506563443}
+  stats: {fileID: 11400000, guid: 071c75d9e981e5748aaddf91a57b8143, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
+  characterName: 
   NPCStats: {fileID: 11400000, guid: 071c75d9e981e5748aaddf91a57b8143, type: 2}
   target: {fileID: 0}
   partner: {fileID: 0}
@@ -449,6 +448,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   graphType: 0
   updateInterval: 0.2
+--- !u!114 &-1146514669896522168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945848509854940433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 1719322071491950841}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6158303603163541246
 GameObject:
   m_ObjectHideFlags: 0

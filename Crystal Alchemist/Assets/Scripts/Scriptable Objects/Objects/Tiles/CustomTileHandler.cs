@@ -1,11 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class CustomTileHandler : MonoBehaviour
+namespace CrystalAlchemist
 {
-    /*
+    public class CustomTileHandler : MonoBehaviour
+    {
+        /*
     public TileBase tileA;
     public TileBase tileB;
 
@@ -13,25 +14,25 @@ public class CustomTileHandler : MonoBehaviour
     private TimeValue timeValue;
     */
 
-    [SerializeField]
-    private List<CustomTile> customTiles = new List<CustomTile>();
+        [SerializeField]
+        private List<CustomTile> customTiles = new List<CustomTile>();
 
-    private Tilemap tilemap;
+        private Tilemap tilemap;
 
-    void Start()
-    {
-        tilemap = GetComponent<Tilemap>();
-        RefreshMap();
-    }
-
-    public void RefreshMap()
-    {
-        if (tilemap != null)
+        void Start()
         {
-            tilemap.RefreshAllTiles();
+            tilemap = GetComponent<Tilemap>();
+            RefreshMap();
         }
-    }
-    /*
+
+        public void RefreshMap()
+        {
+            if (tilemap != null)
+            {
+                tilemap.RefreshAllTiles();
+            }
+        }
+        /*
     void Start()
     {
         Tilemap tilemap = GetComponent<Tilemap>();
@@ -44,4 +45,5 @@ public class CustomTileHandler : MonoBehaviour
 
     tilemap.SwapTile(tileA, tileB);
     }*/
+    }
 }

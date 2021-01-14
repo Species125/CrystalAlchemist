@@ -118,10 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 355432992060eda49abb91f4a41cf0b7, type: 2}
   spriteRenderer: {fileID: 0}
-  overrideShader: 1
   useGlow: 1
-  selectColor: {r: 0.8352942, g: 0.7490196, b: 1, a: 1}
-  precision: 0.25
   glowColor: {r: 4.5803924, g: 1.3176471, b: 11.984314, a: 1}
   invert: 0
 --- !u!114 &5676213603441916093
@@ -291,6 +288,7 @@ GameObject:
   - component: {fileID: 1198186388}
   - component: {fileID: 8261187841884981235}
   - component: {fileID: 4372448001566058603}
+  - component: {fileID: 5364728680716913914}
   m_Layer: 11
   m_Name: Blob
   m_TagString: Untagged
@@ -349,7 +347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 4296eda28d32ab54491ee3379dc99977, type: 2}
   myRigidbody: {fileID: 2246077131478480996}
   animator: {fileID: 929082027}
   boxCollider: {fileID: 1028641328}
@@ -359,8 +356,10 @@ MonoBehaviour:
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 1158493752}
   activeStatusEffectParent: {fileID: 6674156776865872386}
+  stats: {fileID: 11400000, guid: 4296eda28d32ab54491ee3379dc99977, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
+  characterName: 
   NPCStats: {fileID: 11400000, guid: 4296eda28d32ab54491ee3379dc99977, type: 2}
   target: {fileID: 0}
   partner: {fileID: 0}
@@ -492,6 +491,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   graphType: 0
   updateInterval: 0.2
+--- !u!114 &5364728680716913914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2246077131478480992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 4482648712296496520}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6674156776865872386
 GameObject:
   m_ObjectHideFlags: 0

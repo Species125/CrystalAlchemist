@@ -2103,7 +2103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 946fe45f31af8544caf372295024317d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: f489034bab4a8c34eb316a47f0cf1f8a, type: 2}
   myRigidbody: {fileID: 2934492601526238641}
   animator: {fileID: 2934492601526238671}
   boxCollider: {fileID: 2934492601526238640}
@@ -2114,6 +2113,7 @@ MonoBehaviour:
   headPosition: {fileID: 2934492600811253810}
   activeSkillParent: {fileID: 2934492601922974007}
   activeStatusEffectParent: {fileID: 2934492601523278533}
+  stats: {fileID: 11400000, guid: f489034bab4a8c34eb316a47f0cf1f8a, type: 2}
   values: {fileID: 11400000, guid: 6762d3fcfc403704ab3f304728a23ccf, type: 2}
   IsSummoned: 0
   characterName: 
@@ -2123,6 +2123,9 @@ MonoBehaviour:
   saveGame: {fileID: 11400000, guid: a62b63cfcbd3129468ad1e261a3f5279, type: 2}
   handler: {fileID: 0}
   preset: {fileID: 0}
+  isLocalPlayer: 1
+  isMaster: 0
+  uniqueID: 
 --- !u!114 &2934492601526238648
 MonoBehaviour:
   m_ObjectHideFlags: 0

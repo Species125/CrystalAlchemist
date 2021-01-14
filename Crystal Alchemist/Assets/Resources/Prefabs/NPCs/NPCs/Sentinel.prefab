@@ -308,6 +308,7 @@ GameObject:
   - component: {fileID: 1498514191544390102}
   - component: {fileID: -4941922827398096635}
   - component: {fileID: -5025062449260567259}
+  - component: {fileID: -7636049199412562588}
   m_Layer: 12
   m_Name: Sentinel
   m_TagString: Untagged
@@ -366,9 +367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  stats: {fileID: 11400000, guid: 044d5a2f62542b141ab2f44c3e80795b, type: 2}
   myRigidbody: {fileID: 7518508113067193758}
   animator: {fileID: 3591206468238266611}
   boxCollider: {fileID: 1498514191544390102}
@@ -378,8 +376,10 @@ MonoBehaviour:
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 8609950149900843970}
   activeStatusEffectParent: {fileID: 3162633258840045560}
+  stats: {fileID: 11400000, guid: 044d5a2f62542b141ab2f44c3e80795b, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
+  characterName: 
   NPCStats: {fileID: 11400000, guid: 044d5a2f62542b141ab2f44c3e80795b, type: 2}
   target: {fileID: 0}
   partner: {fileID: 0}
@@ -429,8 +429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f5ecf49a5ed0c4784502d8b6f90d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
   character: {fileID: 0}
   startPhase: {fileID: 11400000, guid: 9e6241ad94a039b4eb88295fc09c3c29, type: 2}
   startImmediately: 1
@@ -490,6 +488,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphType: 0
+--- !u!114 &-7636049199412562588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7518508113067193754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 5280788646405828722}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &8609950149900843970
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,8 +661,6 @@ MonoBehaviour:
   material: {fileID: 0}
   spriteRenderer: {fileID: 0}
   useGlow: 0
-  selectColor: {r: 1, g: 1, b: 1, a: 1}
-  precision: 0
   glowColor: {r: 1, g: 1, b: 1, a: 1}
   invert: 0
 --- !u!114 &6541903767476354721
@@ -660,8 +678,6 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 913c5b8c80375084d837afa00e46dfbf, type: 2}
   spriteRenderer: {fileID: 0}
   useGlow: 1
-  selectColor: {r: 1, g: 1, b: 1, a: 1}
-  precision: 0.11
   glowColor: {r: 6.4905663, g: 1.8063369, b: 6.0165663, a: 1}
   invert: 0
 --- !u!114 &7757042199332296157
@@ -686,6 +702,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -701,6 +722,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -713,16 +739,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
         type: 3}

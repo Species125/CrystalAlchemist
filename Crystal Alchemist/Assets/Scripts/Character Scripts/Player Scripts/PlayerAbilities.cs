@@ -1,153 +1,157 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
 using Sirenix.OdinInspector;
-using UnityEngine.InputSystem;
 using System;
-using Photon.Pun;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerAbilities : CharacterCombat
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    [Required]
-    private PlayerSkillset skillSet;
-
-    [SerializeField]
-    [Required]
-    private PlayerButtons buttons;
-
-    [SerializeField]
-    [Required]
-    private FloatValue timeLeftValue;
-
-    private bool isPressed;
-    private float timer;
-    private Player player;
-    private PhotonView photonView;
-
-    private void Awake()
+    public class PlayerAbilities : CharacterCombat
     {
-        this.photonView = PhotonView.Get(this);
-    }
+        [SerializeField]
+        [Required]
+        private PlayerSkillset skillSet;
 
+        [SerializeField]
+        [Required]
+        private PlayerButtons buttons;
 
-    private void Start() => GameEvents.current.OnCancel += DisableAbilities;
+        [SerializeField]
+        [Required]
+        private FloatValue timeLeftValue;
 
-    private void OnDestroy() => GameEvents.current.OnCancel -= DisableAbilities;
+        private bool isPressed;
+        private float timer;
+        private Player player;
+        private PhotonView photonView;
 
-    public override void Initialize()
-    {
-        if (!NetworkUtil.IsLocal(this.photonView)) return;
-
-        base.Initialize();
-        this.player = this.character.GetComponent<Player>();
-        this.SetTimeValue(this.timeLeftValue);
-
-        //this.skillSet.Initialize();
-        this.skillSet.SetSender(this.character);
-    }
-
-    public override void Updating()
-    {
-        if (!NetworkUtil.IsLocal(this.photonView)) return;
-
-        base.Updating();
-        this.skillSet.Updating();
-        this.buttons.Updating(this.player);
-
-        if (this.isPressed) ButtonHold(this.buttons.currentAbility);
-    }
-
-    public void SelectTargetInput(InputAction.CallbackContext ctx)
-    {
-        if (!NetworkUtil.IsLocal(this.photonView)) return;
-
-        if (ctx.performed) this.GetTargetingSystem().SetTargetChange(ctx.ReadValue<Vector2>());
-    }
-
-    public void OnHoldingCallback(InputAction.CallbackContext context)
-    {
-        if (!NetworkUtil.IsLocal(this.photonView)) return;
-
-        if (context.started)
+        private void Awake()
         {
-            this.isPressed = true;
-
-            Ability ability = GetAbility(context);
-            if (ability != null && this.buttons.currentAbility == null)
-            {
-                this.buttons.currentAbility = ability;
-                ButtonDown(this.buttons.currentAbility);
-            }            
+            this.photonView = PhotonView.Get(this);
         }
-        else if (context.canceled)
-        {
-            this.isPressed = false;
 
-            Ability ability = GetAbility(context);
-            if (ability != null && this.buttons.currentAbility == ability)
-            {                
-                ButtonUp(this.buttons.currentAbility);
-                this.buttons.currentAbility = null;
+
+        private void Start() => GameEvents.current.OnCancel += DisableAbilities;
+
+        private void OnDestroy() => GameEvents.current.OnCancel -= DisableAbilities;
+
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            this.player = this.character.GetComponent<Player>();
+            if (!NetworkUtil.IsLocal(this.player)) return;
+
+            this.SetTimeValue(this.timeLeftValue);
+
+            //this.skillSet.Initialize();
+            this.skillSet.SetSender(this.character);
+        }
+
+        public override void Updating()
+        {
+            if (!NetworkUtil.IsLocal(this.player)) return;
+
+            base.Updating();
+            this.skillSet.Updating();
+            this.buttons.Updating(this.player);
+
+            if (this.isPressed) ButtonHold(this.buttons.currentAbility);
+        }
+
+        public void SelectTargetInput(InputAction.CallbackContext ctx)
+        {
+            if (!NetworkUtil.IsLocal(this.player)) return;
+
+            if (ctx.performed) this.GetTargetingSystem().SetTargetChange(ctx.ReadValue<Vector2>());
+        }
+
+        public void OnHoldingCallback(InputAction.CallbackContext context)
+        {
+            if (!NetworkUtil.IsLocal(this.player)) return;
+
+            if (context.started)
+            {
+                this.isPressed = true;
+
+                Ability ability = GetAbility(context);
+                if (ability != null && this.buttons.currentAbility == null)
+                {
+                    this.buttons.currentAbility = ability;
+                    ButtonDown(this.buttons.currentAbility);
+                }
+            }
+            else if (context.canceled)
+            {
+                this.isPressed = false;
+
+                Ability ability = GetAbility(context);
+                if (ability != null && this.buttons.currentAbility == ability)
+                {
+                    ButtonUp(this.buttons.currentAbility);
+                    this.buttons.currentAbility = null;
+                }
             }
         }
-    }
 
-    private Ability GetAbility(InputAction.CallbackContext context)
-    {
-        foreach (enumButton item in Enum.GetValues(typeof(enumButton)))
+        private Ability GetAbility(InputAction.CallbackContext context)
         {
-            if (item.ToString().ToUpper() == context.action.name.ToString().ToUpper())
-                return this.buttons.GetAbilityFromButton(item);
+            foreach (enumButton item in Enum.GetValues(typeof(enumButton)))
+            {
+                if (item.ToString().ToUpper() == context.action.name.ToString().ToUpper())
+                    return this.buttons.GetAbilityFromButton(item);
+            }
+
+            return null;
         }
 
-        return null;
-    }
-
-    private void ButtonHold(Ability ability)
-    {
-        if (ability == null || !ability.enabled) return;
-        if (ability.state == AbilityState.notCharged)
+        private void ButtonHold(Ability ability)
         {
-            ChargeAbility(ability, this.player);
+            if (ability == null || !ability.enabled) return;
+            if (ability.state == AbilityState.notCharged)
+            {
+                ChargeAbility(ability, this.player);
+            }
+            else if (ability.isRapidFire)
+            {
+                if (ability.state == AbilityState.charged) UseAbilityOnTarget(ability, null); //use rapidFire when charged
+                else if (ability.state == AbilityState.ready) UseAbilityOnTarget(ability, null); //use rapidFire
+                else if (ability.state == AbilityState.targetRequired) ShowTargetingSystem(ability); //show TargetingSystem
+                else if (ability.state == AbilityState.lockOn) UseAbilityOnTargets(ability); //use TargetingSystem rapidfire  
+            }
         }
-        else if (ability.isRapidFire)
+
+        private void ButtonUp(Ability ability)
         {
-            if (ability.state == AbilityState.charged) UseAbilityOnTarget(ability, null); //use rapidFire when charged
-            else if (ability.state == AbilityState.ready) UseAbilityOnTarget(ability, null); //use rapidFire
-            else if (ability.state == AbilityState.targetRequired) ShowTargetingSystem(ability); //show TargetingSystem
-            else if (ability.state == AbilityState.lockOn) UseAbilityOnTargets(ability); //use TargetingSystem rapidfire  
+            if (ability == null) return;
+
+            if (ability.enabled && ability.state == AbilityState.charged && !ability.isRapidFire) UseAbilityOnTarget(ability, null); //use Skill when charged
+            else if (ability.state == AbilityState.lockOn && ability.isRapidFire) HideTargetingSystem(ability); //hide Targeting System when released
+
+            UnChargeAbility(ability);
         }
-    }
 
-    private void ButtonUp(Ability ability)
-    {
-        if (ability == null) return;
-
-        if (ability.enabled && ability.state == AbilityState.charged && !ability.isRapidFire) UseAbilityOnTarget(ability, null); //use Skill when charged
-        else if (ability.state == AbilityState.lockOn && ability.isRapidFire) HideTargetingSystem(ability); //hide Targeting System when released
-
-        UnChargeAbility(ability);
-    }
-
-    private void ButtonDown(Ability ability)
-    {
-        if (ability == null || !ability.enabled) return;
-        if (ability.state == AbilityState.ready) UseAbilityOnTarget(ability, null); //use Skill
-        else if (ability.state == AbilityState.targetRequired) ShowTargetingSystem(ability); //activate Targeting System
-        else if (ability.state == AbilityState.lockOn)
+        private void ButtonDown(Ability ability)
         {
-            UseAbilityOnTargets(ability);//use Skill on locked Targets and hide Targeting System 
-            HideTargetingSystem(ability);
+            if (ability == null || !ability.enabled) return;
+            if (ability.state == AbilityState.ready) UseAbilityOnTarget(ability, null); //use Skill
+            else if (ability.state == AbilityState.targetRequired) ShowTargetingSystem(ability); //activate Targeting System
+            else if (ability.state == AbilityState.lockOn)
+            {
+                UseAbilityOnTargets(ability);//use Skill on locked Targets and hide Targeting System 
+                HideTargetingSystem(ability);
+            }
         }
-    }
 
-    private void DisableAbilities()
-    {
-        this.skillSet.EnableAbility(false);
-        Invoke("EnableAbilities", this.skillSet.deactiveDelay);
-    }
+        private void DisableAbilities()
+        {
+            this.skillSet.EnableAbility(false);
+            Invoke("EnableAbilities", this.skillSet.deactiveDelay);
+        }
 
-    private void EnableAbilities()
-    {
-        this.skillSet.EnableAbility(true);
+        private void EnableAbilities()
+        {
+            this.skillSet.EnableAbility(true);
+        }
     }
 }

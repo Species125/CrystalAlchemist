@@ -1,37 +1,40 @@
-﻿using UnityEngine;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class ContagiousStatusEffect : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [BoxGroup("Statuseffekt Pflichtfelder")]
-    [Required]
-    [SerializeField]
-    private BoxCollider2D effectCollider;
-
-    private StatusEffect activeEffect;
-
-    private void Start()
+    public class ContagiousStatusEffect : MonoBehaviour
     {
-        this.activeEffect = this.GetComponent<StatusEffectGameObject>().getEffect();
-        this.effectCollider.size = this.activeEffect.GetTarget().GetComponent<BoxCollider2D>().size;
-        this.effectCollider.offset = this.activeEffect.GetTarget().GetComponent<BoxCollider2D>().offset;
-    }
+        [BoxGroup("Statuseffekt Pflichtfelder")]
+        [Required]
+        [SerializeField]
+        private BoxCollider2D effectCollider;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!collision.isTrigger)
+        private StatusEffect activeEffect;
+
+        private void Start()
         {
-            Character character = collision.GetComponent<Character>();
-            if (character != null) StatusEffectUtil.AddStatusEffect(this.activeEffect, character);
+            this.activeEffect = this.GetComponent<StatusEffectGameObject>().getEffect();
+            this.effectCollider.size = this.activeEffect.GetTarget().GetComponent<BoxCollider2D>().size;
+            this.effectCollider.offset = this.activeEffect.GetTarget().GetComponent<BoxCollider2D>().offset;
         }
-    }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (!collision.isTrigger)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            Character character = collision.GetComponent<Character>();
-            if (character != null) StatusEffectUtil.AddStatusEffect(this.activeEffect, character);
+            if (!collision.isTrigger)
+            {
+                Character character = collision.GetComponent<Character>();
+                if (character != null) StatusEffectUtil.AddStatusEffect(this.activeEffect, character);
+            }
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (!collision.isTrigger)
+            {
+                Character character = collision.GetComponent<Character>();
+                if (character != null) StatusEffectUtil.AddStatusEffect(this.activeEffect, character);
+            }
         }
     }
 }

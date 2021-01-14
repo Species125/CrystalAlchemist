@@ -1,36 +1,40 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
-public class Stairs : Terrain
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private bool leftToRight = false;
-
-    [SerializeField]
-    private float degree = 0.75f;
-
-    private float stepValue = 0;
-
-    private void Start()
+    public class Stairs : Terrain
     {
-        this.stepValue = degree;
-        if (leftToRight) this.stepValue = -degree;
-    }
+        [SerializeField]
+        private bool leftToRight = false;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Character character = collision.GetComponent<Character>();
-        if (character != null)
+        [SerializeField]
+        private float degree = 0.75f;
+
+        private float stepValue = 0;
+
+        private void Start()
         {
-            character.values.steps = this.stepValue;
+            this.stepValue = degree;
+            if (leftToRight) this.stepValue = -degree;
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        Character character = collision.GetComponent<Character>();
-        if (character != null)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            character.values.steps = 0;
+            Character character = collision.GetComponent<Character>();
+            if (character != null)
+            {
+                character.values.steps = this.stepValue;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            Character character = collision.GetComponent<Character>();
+            if (character != null)
+            {
+                character.values.steps = 0;
+            }
         }
     }
 }

@@ -1,30 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class Single2 : UnityEvent<bool>
+namespace CrystalAlchemist
 {
-}
-
-public class BoolSignalListener : MonoBehaviour
-{
-    public BoolSignal signal;
-    public Single2 signalEventBool;
-
-    public void OnSignalRaised(bool value)
+    [System.Serializable]
+    public class Single2 : UnityEvent<bool>
     {
-        this.signalEventBool.Invoke(value);
     }
 
-    private void OnEnable()
+    public class BoolSignalListener : MonoBehaviour
     {
-        signal.RegisterListener(this);
-    }
+        public BoolSignal signal;
+        public Single2 signalEventBool;
 
-    private void OnDisable()
-    {
-        signal.DeRegisterListener(this);
+        public void OnSignalRaised(bool value)
+        {
+            this.signalEventBool.Invoke(value);
+        }
+
+        private void OnEnable()
+        {
+            signal.RegisterListener(this);
+        }
+
+        private void OnDisable()
+        {
+            signal.DeRegisterListener(this);
+        }
     }
 }

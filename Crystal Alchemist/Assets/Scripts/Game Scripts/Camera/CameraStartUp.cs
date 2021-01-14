@@ -1,22 +1,25 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
-[RequireComponent(typeof(Camera))]
-public class CameraStartUp : MonoBehaviour
+namespace CrystalAlchemist
 {
-    private float delay = 0.2f;
-    private Camera cam;
+    [RequireComponent(typeof(UnityEngine.Camera))]
+    public class CameraStartUp : MonoBehaviour
+    {
+        private float delay = 0.2f;
+        private UnityEngine.Camera cam;
 
-    private void Awake()
-    {
-        this.cam = this.GetComponent<Camera>();
-        this.cam.enabled = false;
-        StartCoroutine(delayCo());
-    }
-    
-    private IEnumerator delayCo()
-    {
-        yield return new WaitForSeconds(this.delay);
-        this.cam.enabled = true;
+        private void Awake()
+        {
+            this.cam = this.GetComponent<UnityEngine.Camera>();
+            this.cam.enabled = false;
+            StartCoroutine(delayCo());
+        }
+
+        private IEnumerator delayCo()
+        {
+            yield return new WaitForSeconds(this.delay);
+            this.cam.enabled = true;
+        }
     }
 }

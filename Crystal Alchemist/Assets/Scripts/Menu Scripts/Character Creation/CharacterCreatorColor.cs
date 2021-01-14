@@ -1,28 +1,30 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
-public class CharacterCreatorColor : CharacterCreatorButton
+namespace CrystalAlchemist
 {
-    private Color color;
-
-    private CharacterCreatorColorPaletteHandler handler;
-
-    public void SetButton(Color color, CharacterCreatorColorPaletteHandler handler)
+    public class CharacterCreatorColor : CharacterCreatorButton
     {
-        this.handler = handler;
-        this.color = color;
-        this.preview.color = this.color;
-    }
+        private Color color;
 
-    public override bool IsSelected()
-    {
-        if (this.handler.ContainsColor(this.color)) return true;
+        private CharacterCreatorColorPaletteHandler handler;
 
-        return false;
-    }
+        public void SetButton(Color color, CharacterCreatorColorPaletteHandler handler)
+        {
+            this.handler = handler;
+            this.color = color;
+            this.preview.color = this.color;
+        }
 
-    public override void Click()
-    {
-        this.handler.UpdateColor(this.color);        
+        public override bool IsSelected()
+        {
+            if (this.handler.ContainsColor(this.color)) return true;
+
+            return false;
+        }
+
+        public override void Click()
+        {
+            this.handler.UpdateColor(this.color);
+        }
     }
 }

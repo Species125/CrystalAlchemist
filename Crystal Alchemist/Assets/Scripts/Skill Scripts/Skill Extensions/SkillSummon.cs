@@ -1,41 +1,47 @@
-﻿using UnityEngine;
+﻿
 
-public class SkillSummon : SkillExtension
+
+using UnityEngine;
+
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private Character summon;
-
-    public override void Initialize()
+    public class SkillSummon : SkillExtension
     {
-        summoning();
-    }
+        [SerializeField]
+        private Character summon;
 
-    public string getPetName()
-    {
-        return this.summon.GetCharacterName();
-    }
-
-    private void summoning()
-    {
-        AI ai = this.summon.GetComponent<AI>();
-        Breakable breakable = this.summon.GetComponent<Breakable>();
-
-        if (ai != null)
+        public override void Initialize()
         {
-            AI pet = Instantiate(ai, this.transform.position, Quaternion.Euler(0, 0, 0));
-            pet.name = ai.name;
-            pet.values.direction = this.skill.GetDirection();
-            pet.partner = this.skill.sender;
-            pet.InitializeAddSpawn();
-
-            this.skill.sender.values.activePets.Add(pet);
+            summoning();
         }
-        else if (breakable != null)
+
+        public string getPetName()
         {
-            Breakable objectPet = Instantiate(breakable, this.transform.position, Quaternion.Euler(0, 0, 0));
-            objectPet.values.direction = this.skill.GetDirection();
-            objectPet.ChangeDirection(objectPet.values.direction);
-            objectPet.InitializeAddSpawn();
-        }        
+            return this.summon.GetCharacterName();
+        }
+
+        private void summoning()
+        {
+            AI ai = this.summon.GetComponent<AI>();
+            Breakable breakable = this.summon.GetComponent<Breakable>();
+
+            if (ai != null)
+            {
+                AI pet = Instantiate(ai, this.transform.position, Quaternion.Euler(0, 0, 0));
+                pet.name = ai.name;
+                pet.values.direction = this.skill.GetDirection();
+                pet.partner = this.skill.sender;
+                pet.InitializeAddSpawn();
+
+                this.skill.sender.values.activePets.Add(pet);
+            }
+            else if (breakable != null)
+            {
+                Breakable objectPet = Instantiate(breakable, this.transform.position, Quaternion.Euler(0, 0, 0));
+                objectPet.values.direction = this.skill.GetDirection();
+                objectPet.ChangeDirection(objectPet.values.direction);
+                objectPet.InitializeAddSpawn();
+            }
+        }
     }
 }

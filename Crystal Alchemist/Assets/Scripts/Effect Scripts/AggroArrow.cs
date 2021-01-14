@@ -1,36 +1,39 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class AggroArrow : MonoBehaviour
+namespace CrystalAlchemist
 {
-    private Character target;
-    private Rigidbody2D rigidbody2D;
-
-    [SerializeField]
-    private float speed = 5f;
-
-    private void Start()
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class AggroArrow : MonoBehaviour
     {
-        this.rigidbody2D = this.GetComponent<Rigidbody2D>();
-        //this.speed = Vector2.Distance(this.transform.position, this.target.GetShootingPosition()) / 2;
-    }
+        private Character target;
+        private Rigidbody2D rigidbody2D;
 
-    public void SetTarget(Character target)
-    {
-        this.target = target;
-    }
+        [SerializeField]
+        private float speed = 5f;
 
-    private void LateUpdate()
-    {
-        float distance = Vector2.Distance(this.transform.position, this.target.GetShootingPosition());
-        if(distance > 0.5f)
+        private void Start()
         {
-            Vector2 direction = (this.target.GetShootingPosition()- (Vector2)this.transform.position).normalized;
-            this.rigidbody2D.velocity = (direction * speed);
+            this.rigidbody2D = this.GetComponent<Rigidbody2D>();
+            //this.speed = Vector2.Distance(this.transform.position, this.target.GetShootingPosition()) / 2;
         }
-        else
+
+        public void SetTarget(Character target)
         {
-            Destroy(this.gameObject);
+            this.target = target;
+        }
+
+        private void LateUpdate()
+        {
+            float distance = Vector2.Distance(this.transform.position, this.target.GetShootingPosition());
+            if (distance > 0.5f)
+            {
+                Vector2 direction = (this.target.GetShootingPosition() - (Vector2)this.transform.position).normalized;
+                this.rigidbody2D.velocity = (direction * speed);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

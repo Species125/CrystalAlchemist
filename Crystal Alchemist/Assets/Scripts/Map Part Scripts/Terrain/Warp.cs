@@ -1,16 +1,20 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
-public class Warp : Terrain
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private Vector2 position;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class Warp : Terrain
     {
-        if (!collision.isTrigger)
+        [SerializeField]
+        private Vector2 position;
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            AnimatorUtil.ShowSmoke(this.transform);
-            collision.gameObject.transform.position = position;
+            if (!collision.isTrigger)
+            {
+                AnimatorUtil.ShowSmoke(this.transform);
+                collision.gameObject.transform.position = position;
+            }
         }
     }
 }

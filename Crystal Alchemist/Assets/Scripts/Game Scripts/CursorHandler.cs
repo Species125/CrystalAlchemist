@@ -1,38 +1,41 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CursorHandler : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private float timeVisible = 3f;
-
-    private PlayerInputs inputs;
-    private float countdown;
-
-
-    private void Awake()
+    public class CursorHandler : MonoBehaviour
     {
-        inputs = new PlayerInputs();
-        inputs.Controls.MouseMovement.performed += MouseMovement;
-    }
+        [SerializeField]
+        private float timeVisible = 3f;
 
-    private void OnEnable() => inputs.Enable();
+        private PlayerInputs inputs;
+        private float countdown;
 
-    private void OnDisable() => inputs.Disable();
 
-    private void MouseMovement(InputAction.CallbackContext ctx)
-    {
-        this.countdown = this.timeVisible;
-        Cursor.visible = true;
-    }
-
-    private void FixedUpdate()
-    {
-        if (this.countdown > 0) this.countdown -= Time.fixedDeltaTime;
-        else
+        private void Awake()
         {
-            this.countdown = 0;
-            Cursor.visible = false;            
+            inputs = new PlayerInputs();
+            inputs.Controls.MouseMovement.performed += MouseMovement;
+        }
+
+        private void OnEnable() => inputs.Enable();
+
+        private void OnDisable() => inputs.Disable();
+
+        private void MouseMovement(InputAction.CallbackContext ctx)
+        {
+            this.countdown = this.timeVisible;
+            Cursor.visible = true;
+        }
+
+        private void FixedUpdate()
+        {
+            if (this.countdown > 0) this.countdown -= Time.fixedDeltaTime;
+            else
+            {
+                this.countdown = 0;
+                Cursor.visible = false;
+            }
         }
     }
 }

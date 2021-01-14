@@ -1,136 +1,139 @@
-﻿using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
-[CreateAssetMenu(menuName = "Game/AI/AI Phase")]
-public class AIPhase : ScriptableObject
+namespace CrystalAlchemist
 {
-    [BoxGroup("Action Sequence")]
-    [SerializeField]
-    private List<AIAction> actions;
-
-    [BoxGroup("Action Sequence")]
-    [SerializeField]
-    private bool loopActions;
-
-    [BoxGroup("Events")]
-    [SerializeField]
-    private List<AIEvent> events;
-
-    private AIAction currentAction;
-    private AIAction currentDialog;
-    private AIAction currentEventAction;
-    private List<AIAction> eventActions = new List<AIAction>();
-    private int index;
-    private int eventIndex;
-    private int loops;
-
-    public void SkipPhase()
+    [CreateAssetMenu(menuName = "Game/AI/AI Phase")]
+    public class AIPhase : ScriptableObject
     {
-        foreach(AIEvent ev in this.events) ev.SkipPhase();        
-    }
+        [BoxGroup("Action Sequence")]
+        [SerializeField]
+        private List<AIAction> actions;
 
-    public void Initialize(AI npc)
-    {
-        foreach (AIEvent aiEvent in this.events) aiEvent.Initialize();   
-        ResetActions(npc);
-    }
+        [BoxGroup("Action Sequence")]
+        [SerializeField]
+        private bool loopActions;
 
-    public void Updating(AI npc)
-    {
-        if (this.currentAction != null && !this.currentAction.getActive())
+        [BoxGroup("Events")]
+        [SerializeField]
+        private List<AIEvent> events;
+
+        private AIAction currentAction;
+        private AIAction currentDialog;
+        private AIAction currentEventAction;
+        private List<AIAction> eventActions = new List<AIAction>();
+        private int index;
+        private int eventIndex;
+        private int loops;
+
+        public void SkipPhase()
         {
-            if (this.currentAction.GetWait() > 0) this.currentAction = new AIAction(this.currentAction.GetWait(), npc);
-            else this.currentAction = null;
-        }
-        if (this.currentDialog != null && !this.currentDialog.getActive())
-        {
-            if (this.currentDialog.GetWait() > 0) this.currentDialog = new AIAction(this.currentDialog.GetWait(), npc);
-            else this.currentDialog = null;
+            foreach (AIEvent ev in this.events) ev.SkipPhase();
         }
 
-        foreach(AIEvent aiEvent in this.events)
+        public void Initialize(AI npc)
         {
-            aiEvent.Updating(npc);
-            aiEvent.SetEventActions(npc, this.eventActions, this);
+            foreach (AIEvent aiEvent in this.events) aiEvent.Initialize();
+            ResetActions(npc);
         }
 
-        SetNextAction(npc);
-        UpdatingAction(npc);
-    }
-
-    public int GetLoops()
-    {
-        return this.loops;
-    }
-
-    private void SetNextAction(AI npc)
-    {
-        if(this.eventActions.Count == 0)
+        public void Updating(AI npc)
         {
-            if (this.index < this.actions.Count)
+            if (this.currentAction != null && !this.currentAction.getActive())
             {
-                if (this.currentDialog == null && this.actions[this.index].isDialog())
+                if (this.currentAction.GetWait() > 0) this.currentAction = new AIAction(this.currentAction.GetWait(), npc);
+                else this.currentAction = null;
+            }
+            if (this.currentDialog != null && !this.currentDialog.getActive())
+            {
+                if (this.currentDialog.GetWait() > 0) this.currentDialog = new AIAction(this.currentDialog.GetWait(), npc);
+                else this.currentDialog = null;
+            }
+
+            foreach (AIEvent aiEvent in this.events)
+            {
+                aiEvent.Updating(npc);
+                aiEvent.SetEventActions(npc, this.eventActions, this);
+            }
+
+            SetNextAction(npc);
+            UpdatingAction(npc);
+        }
+
+        public int GetLoops()
+        {
+            return this.loops;
+        }
+
+        private void SetNextAction(AI npc)
+        {
+            if (this.eventActions.Count == 0)
+            {
+                if (this.index < this.actions.Count)
                 {
-                    this.currentDialog = this.actions[this.index];
-                    this.currentDialog.Initialize(npc);
-                    this.index++;
+                    if (this.currentDialog == null && this.actions[this.index].isDialog())
+                    {
+                        this.currentDialog = this.actions[this.index];
+                        this.currentDialog.Initialize(npc);
+                        this.index++;
+                    }
+                    else if (this.currentAction == null && !this.actions[this.index].isDialog())
+                    {
+                        this.currentAction = this.actions[this.index];
+                        this.currentAction.Initialize(npc);
+                        this.index++;
+                    }
                 }
-                else if (this.currentAction == null && !this.actions[this.index].isDialog())
+                else
                 {
-                    this.currentAction = this.actions[this.index];
-                    this.currentAction.Initialize(npc);
-                    this.index++;
+                    if (this.currentAction == null
+                        && this.currentDialog == null
+                        && this.loopActions)
+                    {
+                        this.index = 0;
+                        this.loops++;
+                    }
                 }
             }
             else
             {
-                if (this.currentAction == null
-                    && this.currentDialog == null
-                    && this.loopActions)
+                if (this.eventIndex < this.eventActions.Count)
                 {
-                    this.index = 0;
-                    this.loops++;
+                    if (this.currentDialog == null && this.eventActions[this.eventIndex].isDialog())
+                    {
+                        this.currentDialog = this.eventActions[this.eventIndex];
+                        this.currentDialog.Initialize(npc);
+                        this.eventIndex++;
+                    }
+                    else if (this.currentAction == null && !this.eventActions[this.eventIndex].isDialog())
+                    {
+                        this.currentAction = this.eventActions[this.eventIndex];
+                        this.currentAction.Initialize(npc);
+                        this.eventIndex++;
+                    }
+                }
+                else
+                {
+                    this.eventIndex = 0;
+                    this.eventActions.Clear();
                 }
             }
         }
-        else
+
+        private void UpdatingAction(AI npc)
         {
-            if (this.eventIndex < this.eventActions.Count)
-            {
-                if (this.currentDialog == null && this.eventActions[this.eventIndex].isDialog())
-                {
-                    this.currentDialog = this.eventActions[this.eventIndex];
-                    this.currentDialog.Initialize(npc);
-                    this.eventIndex++;
-                }
-                else if (this.currentAction == null && !this.eventActions[this.eventIndex].isDialog())
-                {
-                    this.currentAction = this.eventActions[this.eventIndex];
-                    this.currentAction.Initialize(npc);
-                    this.eventIndex++;
-                }
-            }
-            else
-            {
-                this.eventIndex = 0;
-                this.eventActions.Clear();
-            }
+            if (this.currentAction != null) this.currentAction.Updating(npc);
+            if (this.currentDialog != null) this.currentDialog.Updating(npc);
         }
-    }
 
-    private void UpdatingAction(AI npc)
-    {
-        if (this.currentAction != null) this.currentAction.Updating(npc);
-        if (this.currentDialog != null) this.currentDialog.Updating(npc);
-    }
+        public void ResetActions(AI npc)
+        {
+            if (this.currentAction != null) this.currentAction.Disable(npc);
+            if (this.currentDialog != null) this.currentDialog.Disable(npc);
 
-    public void ResetActions(AI npc)
-    {
-        if (this.currentAction != null) this.currentAction.Disable(npc);
-        if (this.currentDialog != null) this.currentDialog.Disable(npc);
-
-        this.currentAction = null;
-        this.currentDialog = null;
+            this.currentAction = null;
+            this.currentDialog = null;
+        }
     }
 }

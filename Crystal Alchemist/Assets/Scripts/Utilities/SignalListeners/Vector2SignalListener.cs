@@ -1,28 +1,32 @@
+
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class Vector2Event : UnityEvent<Vector2>
+namespace CrystalAlchemist
 {
-}
-
-public class Vector2SignalListener : MonoBehaviour
-{
-    public Vector2Signal signal;
-    public Vector2Event signalEventVector2;
-
-    public void OnSignalRaised(Vector2 vector)
+    [System.Serializable]
+    public class Vector2Event : UnityEvent<Vector2>
     {
-        this.signalEventVector2.Invoke(vector);
     }
 
-    private void OnEnable()
+    public class Vector2SignalListener : MonoBehaviour
     {
-        signal.RegisterListener(this);
-    }
+        public Vector2Signal signal;
+        public Vector2Event signalEventVector2;
 
-    private void OnDisable()
-    {
-        signal.DeRegisterListener(this);
+        public void OnSignalRaised(Vector2 vector)
+        {
+            this.signalEventVector2.Invoke(vector);
+        }
+
+        private void OnEnable()
+        {
+            signal.RegisterListener(this);
+        }
+
+        private void OnDisable()
+        {
+            signal.DeRegisterListener(this);
+        }
     }
 }

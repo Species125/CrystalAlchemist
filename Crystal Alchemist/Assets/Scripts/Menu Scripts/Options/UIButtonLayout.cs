@@ -1,46 +1,51 @@
 ﻿using System.Collections.Generic;
+
+
 using UnityEngine;
 
-public class UIButtonLayout : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private List<GameObject> gamepadUI;
-
-    [SerializeField]
-    private List<GameObject> keyboardUI;
-
-    [SerializeField]
-    private bool updateOnRuntime = true;
-
-    private void setActive(bool value, List<GameObject> gameObjects)
+    public class UIButtonLayout : MonoBehaviour
     {
-        foreach (GameObject obje in gameObjects) obje.SetActive(value);        
-    }
+        [SerializeField]
+        private List<GameObject> gamepadUI;
 
-    private void Start()
-    {
-        UpdateLayout();
-        if(this.updateOnRuntime) SettingsEvents.current.OnLayoutChanged += UpdateLayout;
-    }
+        [SerializeField]
+        private List<GameObject> keyboardUI;
 
-    //private void OnEnable() => UpdateLayout();
+        [SerializeField]
+        private bool updateOnRuntime = true;
 
-    private void OnDestroy()
-    {
-        if (this.updateOnRuntime) SettingsEvents.current.OnLayoutChanged -= UpdateLayout;
-    }
-
-    private void UpdateLayout()
-    {
-        if(MasterManager.settings.layoutType == InputDeviceType.keyboard)
+        private void setActive(bool value, List<GameObject> gameObjects)
         {
-            setActive(false, this.gamepadUI);
-            setActive(true, this.keyboardUI);
+            foreach (GameObject obje in gameObjects) obje.SetActive(value);
         }
-        else
+
+        private void Start()
         {
-            setActive(true, this.gamepadUI);
-            setActive(false, this.keyboardUI);
+            UpdateLayout();
+            if (this.updateOnRuntime) SettingsEvents.current.OnLayoutChanged += UpdateLayout;
+        }
+
+        //private void OnEnable() => UpdateLayout();
+
+        private void OnDestroy()
+        {
+            if (this.updateOnRuntime) SettingsEvents.current.OnLayoutChanged -= UpdateLayout;
+        }
+
+        private void UpdateLayout()
+        {
+            if (MasterManager.settings.layoutType == InputDeviceType.keyboard)
+            {
+                setActive(false, this.gamepadUI);
+                setActive(true, this.keyboardUI);
+            }
+            else
+            {
+                setActive(true, this.gamepadUI);
+                setActive(false, this.keyboardUI);
+            }
         }
     }
 }

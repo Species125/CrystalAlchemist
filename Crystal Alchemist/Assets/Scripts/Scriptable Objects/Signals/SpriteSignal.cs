@@ -1,26 +1,30 @@
 ﻿using System.Collections.Generic;
+
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Signals/SpriteSignal")]
-public class SpriteSignal : ScriptableObject
+namespace CrystalAlchemist
 {
-    public List<SpriteSignalListener> listeners = new List<SpriteSignalListener>();
-
-    public void Raise(Sprite sprite)
+    [CreateAssetMenu(menuName = "Signals/SpriteSignal")]
+    public class SpriteSignal : ScriptableObject
     {
-        for (int i = listeners.Count - 1; i >= 0; i--)
+        public List<SpriteSignalListener> listeners = new List<SpriteSignalListener>();
+
+        public void Raise(Sprite sprite)
         {
-            this.listeners[i].OnSignalRaised(sprite);
+            for (int i = listeners.Count - 1; i >= 0; i--)
+            {
+                this.listeners[i].OnSignalRaised(sprite);
+            }
         }
-    }
 
-    public void RegisterListener(SpriteSignalListener listener)
-    {
-        this.listeners.Add(listener);
-    }
+        public void RegisterListener(SpriteSignalListener listener)
+        {
+            this.listeners.Add(listener);
+        }
 
-    public void DeRegisterListener(SpriteSignalListener listener)
-    {
-        this.listeners.Remove(listener);
+        public void DeRegisterListener(SpriteSignalListener listener)
+        {
+            this.listeners.Remove(listener);
+        }
     }
 }

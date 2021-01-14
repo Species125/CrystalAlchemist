@@ -1,39 +1,43 @@
-﻿using UnityEngine;
+﻿
 using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class GroundIndicator : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [BoxGroup("Outer")]
-    public DrawPrimitive outline;
-
-    [BoxGroup("Outer")]
-    [ShowIf("outline")]
-    [SerializeField]
-    [Range(0, 5)]
-    private float lineWidth = 0.05f;
-
-    [BoxGroup("Outer")]
-    [ShowIf("outline")]
-    [SerializeField]
-    private Color outlineColor = Color.white;
-
-    [BoxGroup("Outer")]
-    [ShowIf("outline")]
-    [SerializeField]
-    private Material outlineMaterial;       
-
-    private void OnValidate()
+    public class GroundIndicator : MonoBehaviour
     {
-        SetIndicator();
-    }
+        [BoxGroup("Outer")]
+        public DrawPrimitive outline;
 
-    public virtual void SetIndicator()
-    {
-        SetOuter();
-    }
+        [BoxGroup("Outer")]
+        [ShowIf("outline")]
+        [SerializeField]
+        [Range(0, 5)]
+        private float lineWidth = 0.05f;
 
-    public virtual void SetOuter()
-    {
-        if (this.outline != null) this.outline.SetPrimitive(this.outlineMaterial, this.lineWidth, this.outlineColor);
+        [BoxGroup("Outer")]
+        [ShowIf("outline")]
+        [SerializeField]
+        private Color outlineColor = Color.white;
+
+        [BoxGroup("Outer")]
+        [ShowIf("outline")]
+        [SerializeField]
+        private Material outlineMaterial;
+
+        private void OnValidate()
+        {
+            SetIndicator();
+        }
+
+        public virtual void SetIndicator()
+        {
+            SetOuter();
+        }
+
+        public virtual void SetOuter()
+        {
+            if (this.outline != null) this.outline.SetPrimitive(this.outlineMaterial, this.lineWidth, this.outlineColor);
+        }
     }
 }

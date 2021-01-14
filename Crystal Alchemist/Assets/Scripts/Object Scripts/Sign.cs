@@ -1,4 +1,9 @@
-﻿public class Sign : Interactable
+﻿
+
+namespace CrystalAlchemist
 {
-    public override void DoOnSubmit() => ShowDialog();    
+    public class Sign : Interactable
+    {
+        public override void DoOnSubmit() => ShowDialog();
+    }
 }

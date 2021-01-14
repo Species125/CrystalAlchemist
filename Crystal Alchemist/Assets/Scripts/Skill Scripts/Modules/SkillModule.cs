@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Skill))]
-public class SkillModule : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [HideInInspector]
-    public Skill skill;
-
-    private void Awake()
+    [RequireComponent(typeof(Skill))]
+    public class SkillModule : MonoBehaviour
     {
-        this.skill = this.GetComponent<Skill>();
+        [HideInInspector]
+        public Skill skill;
+
+        private void Awake()
+        {
+            this.skill = this.GetComponent<Skill>();
+        }
+
+        public virtual void Initialize() { }
+
+        public virtual void Updating() { }
     }
-
-    public virtual void Initialize() { }
-
-    public virtual void Updating() { }
 }

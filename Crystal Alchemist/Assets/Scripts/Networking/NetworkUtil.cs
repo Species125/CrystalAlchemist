@@ -1,21 +1,33 @@
 using Photon.Pun;
-using System;
 using UnityEngine;
 
-public class NetworkUtil : MonoBehaviour
+namespace CrystalAlchemist
 {
-    public static bool IsLocal()
+    public class NetworkUtil : MonoBehaviour
     {
-        return PhotonNetwork.LocalPlayer.IsLocal;
-    }
+        public static bool IsLocal()
+        {
+            return PhotonNetwork.LocalPlayer.IsLocal;
+        }
 
-    public static bool IsLocal(PhotonView view)
-    {
-        return (view.IsMine || !PhotonNetwork.IsConnected);
-    }
+        public static bool IsLocal(PhotonView view)
+        {
+            return (view.IsMine || !PhotonNetwork.IsConnected);
+        }
 
-    public static bool IsMaster()
-    {
-        return PhotonNetwork.IsMasterClient;
+        public static bool IsLocal(Player player)
+        {
+            return (player != null && player.isLocalPlayer);
+        }
+
+        public static bool IsMaster()
+        {
+            return PhotonNetwork.IsMasterClient;
+        }
+
+        public static Player GetLocalPlayer()
+        {
+            return (Player)PhotonNetwork.LocalPlayer.TagObject;
+        }
     }
 }

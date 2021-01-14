@@ -1,22 +1,25 @@
 ﻿using UnityEngine;
 
-public class TargetingCollider : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private TargetingSystem system;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class TargetingCollider : MonoBehaviour
     {
-        system.addTarget(collision);
-    }
+        [SerializeField]
+        private TargetingSystem system;
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        system.addTarget(collision);
-    }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            system.addTarget(collision);
+        }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        system.removeTarget(collision);
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            system.addTarget(collision);
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            system.removeTarget(collision);
+        }
     }
 }

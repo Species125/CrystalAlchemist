@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4536096100201619651}
   - component: {fileID: -2857999511042139106}
   - component: {fileID: 4024286121802477044}
+  - component: {fileID: -8017965636154463035}
   m_Layer: 11
   m_Name: Titanias Turm
   m_TagString: Untagged
@@ -104,7 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 2ecf4e93db9bd0a43a3dda9972716fe8, type: 2}
   myRigidbody: {fileID: 2438936824352443031}
   animator: {fileID: 4536096100035205208}
   boxCollider: {fileID: 4536096100201619651}
@@ -114,8 +114,10 @@ MonoBehaviour:
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 4536096100877042891}
   activeStatusEffectParent: {fileID: 7092093423516748017}
+  stats: {fileID: 11400000, guid: 2ecf4e93db9bd0a43a3dda9972716fe8, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
+  characterName: 
   NPCStats: {fileID: 11400000, guid: 2ecf4e93db9bd0a43a3dda9972716fe8, type: 2}
   target: {fileID: 0}
   partner: {fileID: 0}
@@ -187,6 +189,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   marker: {fileID: 683472866742487509, guid: 9676f77d535802944ac0b0aef93ed606, type: 3}
+--- !u!114 &-8017965636154463035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2438936824352443027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 55980665602690939}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &3204627084870921371
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,10 +507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 0}
   spriteRenderer: {fileID: 0}
-  overrideShader: 0
   useGlow: 0
-  selectColor: {r: 1, g: 1, b: 1, a: 1}
-  precision: 0
   glowColor: {r: 1, g: 1, b: 1, a: 1}
   invert: 0
 --- !u!1 &4536096100807201265

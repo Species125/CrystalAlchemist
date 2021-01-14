@@ -1,28 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
 using UnityEngine;
 
-public class JukeboxMusicList : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private List<MusicTheme> themes = new List<MusicTheme>();
-
-    [SerializeField]
-    private JukeboxButton template;
-
-    [SerializeField]
-    private GameObject content;
-
-    private void Start()
+    public class JukeboxMusicList : MonoBehaviour
     {
-        for (int i = 0; i < themes.Count; i++)
-        {
-            JukeboxButton newButton = Instantiate(template, this.content.transform);
-            newButton.gameObject.SetActive(true);
-            newButton.SetMusic(themes[i]);
-            newButton.name = newButton.GetTheme().name;
-        }
+        [SerializeField]
+        private List<MusicTheme> themes = new List<MusicTheme>();
 
-        Destroy(this.template.gameObject);
+        [SerializeField]
+        private JukeboxButton template;
+
+        [SerializeField]
+        private GameObject content;
+
+        private void Start()
+        {
+            for (int i = 0; i < themes.Count; i++)
+            {
+                JukeboxButton newButton = Instantiate(template, this.content.transform);
+                newButton.gameObject.SetActive(true);
+                newButton.SetMusic(themes[i]);
+                newButton.name = newButton.GetTheme().name;
+            }
+
+            Destroy(this.template.gameObject);
+        }
     }
 }

@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using Sirenix.OdinInspector;
+﻿using UnityEngine;
 
-public class CharacterCreatorPreview : MonoBehaviour
+namespace CrystalAlchemist
 {
-    /*
+    public class CharacterCreatorPreview : MonoBehaviour
+    {
+        /*
     [BoxGroup("Required")]
     [SerializeField]
     private CharacterCreatorMenu mainMenu;
@@ -42,4 +41,5 @@ public class CharacterCreatorPreview : MonoBehaviour
     }     */
 
 
+    }
 }

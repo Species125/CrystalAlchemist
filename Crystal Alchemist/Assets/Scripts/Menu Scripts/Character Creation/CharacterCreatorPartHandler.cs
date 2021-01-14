@@ -1,43 +1,48 @@
-﻿using Sirenix.OdinInspector;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
+
+
 using UnityEngine;
 
-public class CharacterCreatorPartHandler : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private Transform parent;
-
-    private CharacterPreset preset = null;
-
-    [SerializeField]
-    private CharacterRenderingHandler handler;
-
-    private List<CharacterCreatorPart> parts = new List<CharacterCreatorPart>();
-
-    public void SetPreset(CharacterPreset preset)
+    public class CharacterCreatorPartHandler : MonoBehaviour
     {
-        this.preset = preset;
-    }
+        [SerializeField]
+        private Transform parent;
 
-    public void UpdateCharacterParts()
-    {
-        this.parts.Clear();
-        UnityUtil.GetChildObjects<CharacterCreatorPart>(this.parent, this.parts);
+        private CharacterPreset preset = null;
 
-        foreach (CharacterCreatorPart part in this.parts)
+        [SerializeField]
+        private CharacterRenderingHandler handler;
+
+        private List<CharacterCreatorPart> parts = new List<CharacterCreatorPart>();
+
+        public void SetPreset(CharacterPreset preset)
         {
-            part.gameObject.SetActive(false);
-
-            CharacterPartData data = this.preset.GetCharacterPartData(part.property.parentName, part.property.partName);
-            if (data != null || part.property.mandatory())
-            {
-                part.gameObject.SetActive(true);
-
-                List<Color> colors = this.preset.getColors(part.property.GetColorTable());
-                part.SetColors(colors);                
-            }
+            this.preset = preset;
         }
 
-        handler.Start();
+        public void UpdateCharacterParts()
+        {
+            this.parts.Clear();
+            UnityUtil.GetChildObjects<CharacterCreatorPart>(this.parent, this.parts);
+
+            foreach (CharacterCreatorPart part in this.parts)
+            {
+                part.gameObject.SetActive(false);
+
+                CharacterPartData data = this.preset.GetCharacterPartData(part.property.parentName, part.property.partName);
+                if (data != null || part.property.mandatory())
+                {
+                    part.gameObject.SetActive(true);
+
+                    List<Color> colors = this.preset.getColors(part.property.GetColorTable());
+                    part.SetColors(colors);
+                }
+            }
+
+            handler.Start();
+        }
     }
 }

@@ -2,39 +2,42 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterCreatorButtonHandler : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [Required]
-    public CharacterCreatorMenu mainMenu;
-
-    [HideInInspector]
-    public List<CharacterCreatorButton> buttons = new List<CharacterCreatorButton>();
-
-    [SerializeField]
-    private bool setFirst = false;
-
-    private void Start()
+    public class CharacterCreatorButtonHandler : MonoBehaviour
     {
-        SetSelection();
-    }
+        [Required]
+        public CharacterCreatorMenu mainMenu;
 
-    public void UpdatePreview()
-    {
-        this.mainMenu.UpdatePreview();
-        SetSelection();
-    }
+        [HideInInspector]
+        public List<CharacterCreatorButton> buttons = new List<CharacterCreatorButton>();
 
-    public void SetSelection()
-    {
-        foreach(CharacterCreatorButton button in this.buttons) button.SetSelection();        
-    }
+        [SerializeField]
+        private bool setFirst = false;
 
-    public void SetFirst(CharacterCreatorButton button, int index)
-    {
-        if (index == 0 && setFirst)
+        private void Start()
         {
-            button.GetComponent<ButtonExtension>().SetAsFirst();
-            button.GetComponent<ButtonExtension>().ReSelect();
+            SetSelection();
+        }
+
+        public void UpdatePreview()
+        {
+            this.mainMenu.UpdatePreview();
+            SetSelection();
+        }
+
+        public void SetSelection()
+        {
+            foreach (CharacterCreatorButton button in this.buttons) button.SetSelection();
+        }
+
+        public void SetFirst(CharacterCreatorButton button, int index)
+        {
+            if (index == 0 && setFirst)
+            {
+                button.GetComponent<ButtonExtension>().SetAsFirst();
+                button.GetComponent<ButtonExtension>().ReSelect();
+            }
         }
     }
 }

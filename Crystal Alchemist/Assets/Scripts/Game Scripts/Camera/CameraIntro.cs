@@ -1,27 +1,32 @@
-﻿using Sirenix.OdinInspector;
+﻿
+
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CameraIntro : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [HideLabel]
-    [SerializeField]
-    private ProgressValue progress;
-
-    [SerializeField]
-    private UnityEvent onTriggered;
-
-    private bool isPermanent = false;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class CameraIntro : MonoBehaviour
     {
-        if (!this.progress.ContainsProgress()) DoCutScene();
+        [HideLabel]
+        [SerializeField]
+        private ProgressValue progress;
+
+        [SerializeField]
+        private UnityEvent onTriggered;
+
+        private bool isPermanent = false;
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (!this.progress.ContainsProgress()) DoCutScene();
+        }
+
+        [Button]
+        private void DoCutScene() => this.onTriggered?.Invoke();
+
+        private void RaiseSignal(SimpleSignal signal) => signal?.Raise();
+
+        public void AddProgress() => this.progress.AddProgress();
     }
-
-    [Button]
-    private void DoCutScene() => this.onTriggered?.Invoke();
-
-    private void RaiseSignal(SimpleSignal signal) => signal?.Raise();
-
-    public void AddProgress() => this.progress.AddProgress();    
 }

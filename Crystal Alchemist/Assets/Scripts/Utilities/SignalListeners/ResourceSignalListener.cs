@@ -1,30 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
+
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class SingleTwo : UnityEvent<CostType, float>
+namespace CrystalAlchemist
 {
-}
-
-public class ResourceSignalListener : MonoBehaviour
-{
-    public ResourceSignal signal;
-    public SingleTwo signalEventString;
-
-    public void OnSignalRaised(CostType type, float amount)
+    [System.Serializable]
+    public class SingleTwo : UnityEvent<CostType, float>
     {
-        this.signalEventString.Invoke(type, amount);
     }
 
-    private void OnEnable()
+    public class ResourceSignalListener : MonoBehaviour
     {
-        signal.RegisterListener(this);
-    }
+        public ResourceSignal signal;
+        public SingleTwo signalEventString;
 
-    private void OnDisable()
-    {
-        signal.DeRegisterListener(this);
+        public void OnSignalRaised(CostType type, float amount)
+        {
+            this.signalEventString.Invoke(type, amount);
+        }
+
+        private void OnEnable()
+        {
+            signal.RegisterListener(this);
+        }
+
+        private void OnDisable()
+        {
+            signal.DeRegisterListener(this);
+        }
     }
 }

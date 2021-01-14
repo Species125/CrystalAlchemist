@@ -1,21 +1,24 @@
 ﻿using Sirenix.OdinInspector;
 
-public enum StatusEffectTriggerType
+namespace CrystalAlchemist
 {
-    init,
-    intervall,
-    hit,
-    life,
-    mana,
-    destroyed
-}
+    public enum StatusEffectTriggerType
+    {
+        init,
+        intervall,
+        hit,
+        life,
+        mana,
+        destroyed
+    }
 
-[System.Serializable]
-public class StatusEffectTrigger
-{
-    public StatusEffectTriggerType triggerType;
+    [System.Serializable]
+    public class StatusEffectTrigger
+    {
+        public StatusEffectTriggerType triggerType;
 
-    [HideIf("triggerType", StatusEffectTriggerType.destroyed)]
-    [HideIf("triggerType", StatusEffectTriggerType.init)]
-    public float value;
+        [HideIf("triggerType", StatusEffectTriggerType.destroyed)]
+        [HideIf("triggerType", StatusEffectTriggerType.init)]
+        public float value;
+    }
 }

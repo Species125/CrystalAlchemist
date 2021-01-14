@@ -1,32 +1,35 @@
 using UnityEngine;
 
-public class VRKeyboardHandler : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private string letters = "QWERTZUIOPÜASDFGHJKLÖÄYXCVBNM";
-
-    [SerializeField]
-    private VRKeyboardButton template;
-
-    [SerializeField]
-    private Transform content;
-
-    [SerializeField]
-    private bool isFirst = false;
-
-    private void Awake()
+    public class VRKeyboardHandler : MonoBehaviour
     {
-        char[] array = letters.ToCharArray();
+        [SerializeField]
+        private string letters = "QWERTZUIOPÜASDFGHJKLÖÄYXCVBNM";
 
-        for (int i = 0; i < array.Length; i++)
+        [SerializeField]
+        private VRKeyboardButton template;
+
+        [SerializeField]
+        private Transform content;
+
+        [SerializeField]
+        private bool isFirst = false;
+
+        private void Awake()
         {
-            char ch = array[i];
+            char[] array = letters.ToCharArray();
 
-            VRKeyboardButton button = Instantiate(template, content);
-            button.SetButton(ch, i);
+            for (int i = 0; i < array.Length; i++)
+            {
+                char ch = array[i];
+
+                VRKeyboardButton button = Instantiate(template, content);
+                button.SetButton(ch, i);
+            }
+
+            Destroy(this.template.gameObject);
+            if (!this.isFirst) this.gameObject.SetActive(false);
         }
-
-        Destroy(this.template.gameObject);
-        if (!this.isFirst) this.gameObject.SetActive(false);
     }
 }

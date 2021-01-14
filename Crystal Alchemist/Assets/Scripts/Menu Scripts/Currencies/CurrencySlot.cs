@@ -1,20 +1,23 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 
-public class CurrencySlot : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private PlayerInventory playerItems;
-
-    [SerializeField]
-    private ItemGroup item;
-
-    [SerializeField]
-    private TextMeshProUGUI textField;
-
-    public void UpdateCurrency()
+    public class CurrencySlot : MonoBehaviour
     {
-        int amount = this.playerItems.GetAmount(this.item);
-        this.textField.text = FormatUtil.formatString(amount, this.item.maxAmount);
+        [SerializeField]
+        private PlayerInventory playerItems;
+
+        [SerializeField]
+        private ItemGroup item;
+
+        [SerializeField]
+        private TextMeshProUGUI textField;
+
+        public void UpdateCurrency()
+        {
+            int amount = this.playerItems.GetAmount(this.item);
+            this.textField.text = FormatUtil.formatString(amount, this.item.maxAmount);
+        }
     }
 }

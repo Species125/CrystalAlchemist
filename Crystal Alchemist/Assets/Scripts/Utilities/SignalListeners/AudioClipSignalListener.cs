@@ -1,30 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class Single4 : UnityEvent<AudioClip>
+namespace CrystalAlchemist
 {
-}
-
-public class AudioClipSignalListener : MonoBehaviour
-{
-    public AudioClipSignal signal;
-    public Single4 signalEventBool;
-
-    public void OnSignalRaised(AudioClip value)
+    [System.Serializable]
+    public class Single4 : UnityEvent<AudioClip>
     {
-        this.signalEventBool.Invoke(value);
     }
 
-    private void OnEnable()
+    public class AudioClipSignalListener : MonoBehaviour
     {
-        signal.RegisterListener(this);
-    }
+        public AudioClipSignal signal;
+        public Single4 signalEventBool;
 
-    private void OnDisable()
-    {
-        signal.DeRegisterListener(this);
+        public void OnSignalRaised(AudioClip value)
+        {
+            this.signalEventBool.Invoke(value);
+        }
+
+        private void OnEnable()
+        {
+            signal.RegisterListener(this);
+        }
+
+        private void OnDisable()
+        {
+            signal.DeRegisterListener(this);
+        }
     }
 }

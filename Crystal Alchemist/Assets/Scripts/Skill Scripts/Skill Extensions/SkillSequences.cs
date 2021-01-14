@@ -1,15 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
+
+
 using UnityEngine;
 
-public class SkillSequences : SkillExtension
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private List<BossMechanic> bossMechanics = new List<BossMechanic>();
-
-    public override void Initialize()
+    public class SkillSequences : SkillExtension
     {
-        BossMechanic bossMechanic = this.bossMechanics[Random.Range(0, this.bossMechanics.Count)];
-        AbilityUtil.instantiateSequence(bossMechanic, this.skill.sender, this.skill.target);
+        [SerializeField]
+        private List<BossMechanic> bossMechanics = new List<BossMechanic>();
+
+        public override void Initialize()
+        {
+            BossMechanic bossMechanic = this.bossMechanics[Random.Range(0, this.bossMechanics.Count)];
+            AbilityUtil.instantiateSequence(bossMechanic, this.skill.sender, this.skill.target);
+        }
     }
 }

@@ -1,31 +1,37 @@
-﻿using UnityEngine;
+﻿
 
-public class AnalyseUI : MonoBehaviour
+
+using UnityEngine;
+
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private AnalyseEnemy enemyInfo;
-    [SerializeField]
-    private AnalyseObject objectInfo;
-
-    public void setTarget(GameObject target)
+    public class AnalyseUI : MonoBehaviour
     {
-        this.enemyInfo.gameObject.SetActive(false);
-        this.objectInfo.gameObject.SetActive(false);
+        [SerializeField]
+        private AnalyseEnemy enemyInfo;
+        [SerializeField]
+        private AnalyseObject objectInfo;
 
-        if (target.GetComponent<AI>() != null)
+        public void setTarget(GameObject target)
         {
-            this.enemyInfo.gameObject.SetActive(true);
-            this.enemyInfo.Initialize(target.GetComponent<AI>());
+            this.enemyInfo.gameObject.SetActive(false);
+            this.objectInfo.gameObject.SetActive(false);
+
+            if (target.GetComponent<AI>() != null)
+            {
+                this.enemyInfo.gameObject.SetActive(true);
+                this.enemyInfo.Initialize(target.GetComponent<AI>());
+            }
+            else if (target.GetComponent<Breakable>() != null)
+            {
+                this.objectInfo.gameObject.SetActive(true);
+                this.objectInfo.Initialize(target.GetComponent<Breakable>());
+            }
+            else if (target.GetComponent<Treasure>() != null)
+            {
+                this.objectInfo.gameObject.SetActive(true);
+                this.objectInfo.Initialize(target.GetComponent<Treasure>());
+            }
         }
-        else if (target.GetComponent<Breakable>() != null)
-        {
-            this.objectInfo.gameObject.SetActive(true);
-            this.objectInfo.Initialize(target.GetComponent<Breakable>());
-        }
-        else if (target.GetComponent<Treasure>() != null)
-        {
-            this.objectInfo.gameObject.SetActive(true);
-            this.objectInfo.Initialize(target.GetComponent<Treasure>());
-        }        
     }
 }

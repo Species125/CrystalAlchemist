@@ -1,26 +1,31 @@
-﻿public class CharacterCreatorGear : CharacterCreatorButton
+﻿
+
+namespace CrystalAlchemist
 {
-    public CharacterCreatorPartProperty property;
-
-    private CharacterCreatorGearHandler handler;
-
-    public void SetButton(CharacterCreatorPartProperty property, CharacterCreatorGearHandler handler)
+    public class CharacterCreatorGear : CharacterCreatorButton
     {
-        this.handler = handler;
-        this.property = property;
+        public CharacterCreatorPartProperty property;
 
-        this.gameObject.name = property.name;
-        this.preview.enabled = true;
-        this.preview.sprite = property.GetSprite(true);
-    }
+        private CharacterCreatorGearHandler handler;
 
-    public override bool IsSelected()
-    {
-        return this.handler.ContainsGear(this.property);
-    }
+        public void SetButton(CharacterCreatorPartProperty property, CharacterCreatorGearHandler handler)
+        {
+            this.handler = handler;
+            this.property = property;
 
-    public override void Click()
-    {
-        this.handler.UpdateGear(this.property);
+            this.gameObject.name = property.name;
+            this.preview.enabled = true;
+            this.preview.sprite = property.GetSprite(true);
+        }
+
+        public override bool IsSelected()
+        {
+            return this.handler.ContainsGear(this.property);
+        }
+
+        public override void Click()
+        {
+            this.handler.UpdateGear(this.property);
+        }
     }
 }

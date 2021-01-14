@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 1379375270786425069}
   - component: {fileID: 7784471432208139405}
   - component: {fileID: 3086287688330738372}
+  - component: {fileID: 8043299651862711109}
   m_Layer: 11
   m_Name: Magma Gel
   m_TagString: Untagged
@@ -213,7 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: eafe20572b3378f4b8231efd676d60f7, type: 2}
   myRigidbody: {fileID: 7268659838857056127}
   animator: {fileID: 8932006801801387440}
   boxCollider: {fileID: 8932006801697793323}
@@ -223,8 +223,10 @@ MonoBehaviour:
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 8932006801567842595}
   activeStatusEffectParent: {fileID: 2840507917755813145}
+  stats: {fileID: 11400000, guid: eafe20572b3378f4b8231efd676d60f7, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
+  characterName: 
   NPCStats: {fileID: 11400000, guid: eafe20572b3378f4b8231efd676d60f7, type: 2}
   target: {fileID: 0}
   partner: {fileID: 0}
@@ -356,6 +358,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphType: 0
+--- !u!114 &8043299651862711109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268659838857056123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 5026383991709977235}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7914839587969846799
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,10 +632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 355432992060eda49abb91f4a41cf0b7, type: 2}
   spriteRenderer: {fileID: 0}
-  overrideShader: 1
   useGlow: 1
-  selectColor: {r: 1, g: 0.9333334, b: 0.6431373, a: 1}
-  precision: 0.5
   glowColor: {r: 2.9960785, g: 1.3490196, b: 0, a: 1}
   invert: 0
 --- !u!114 &6173239842456863999

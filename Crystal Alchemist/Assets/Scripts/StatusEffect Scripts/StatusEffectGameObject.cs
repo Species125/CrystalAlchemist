@@ -1,41 +1,45 @@
-﻿using UnityEngine;
+﻿
+
 using Sirenix.OdinInspector;
+using UnityEngine;
 
-
-public class StatusEffectGameObject : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private bool endFromAnimator = false;
-
-    [SerializeField]
-    [ShowIf("endFromAnimator")]
-    private Animator anim;
-
-    private StatusEffect activeEffect;
-
-    public void Initialize(StatusEffect effect)
+    public class StatusEffectGameObject : MonoBehaviour
     {
-        this.activeEffect = effect;
-    }
+        [SerializeField]
+        private bool endFromAnimator = false;
 
-    public StatusEffect getEffect()
-    {
-        return this.activeEffect;
-    }
+        [SerializeField]
+        [ShowIf("endFromAnimator")]
+        private Animator anim;
 
-    public void Deactivate()
-    {
-        if (this.anim != null && this.endFromAnimator) AnimatorUtil.SetAnimatorParameter(this.anim, "End");
-        else DestroyIt();
-    }
+        private StatusEffect activeEffect;
 
-    public void DestroyIt()
-    {
-        Destroy(this.gameObject);
-    }
+        public void Initialize(StatusEffect effect)
+        {
+            this.activeEffect = effect;
+        }
 
-    public void PlaySoundEffect(AudioClip audioClip)
-    {
-        AudioUtil.playSoundEffect(this.gameObject, audioClip);
+        public StatusEffect getEffect()
+        {
+            return this.activeEffect;
+        }
+
+        public void Deactivate()
+        {
+            if (this.anim != null && this.endFromAnimator) AnimatorUtil.SetAnimatorParameter(this.anim, "End");
+            else DestroyIt();
+        }
+
+        public void DestroyIt()
+        {
+            Destroy(this.gameObject);
+        }
+
+        public void PlaySoundEffect(AudioClip audioClip)
+        {
+            AudioUtil.playSoundEffect(this.gameObject, audioClip);
+        }
     }
 }

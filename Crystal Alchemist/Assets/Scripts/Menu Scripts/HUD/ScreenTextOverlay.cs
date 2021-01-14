@@ -1,75 +1,78 @@
 ﻿using DG.Tweening;
+using Sirenix.OdinInspector;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
-[RequireComponent(typeof(TextMeshProUGUI))]
-public class ScreenTextOverlay : MonoBehaviour
+namespace CrystalAlchemist
 {
-    public enum Mode
+    [RequireComponent(typeof(TextMeshProUGUI))]
+    public class ScreenTextOverlay : MonoBehaviour
     {
-        none,
-        fade,
-        scale
-    }
+        public enum Mode
+        {
+            none,
+            fade,
+            scale
+        }
 
-    [Space(10)]
-    [SerializeField]
-    private float startDelay;
+        [Space(10)]
+        [SerializeField]
+        private float startDelay;
 
-    [SerializeField]
-    private Mode startMode;
+        [SerializeField]
+        private Mode startMode;
 
-    [HideIf("startMode", Mode.none)]
-    [SerializeField]
-    private float startLength;
+        [HideIf("startMode", Mode.none)]
+        [SerializeField]
+        private float startLength;
 
-    [Space(10)]
-    [SerializeField]
-    private float waitLength;
+        [Space(10)]
+        [SerializeField]
+        private float waitLength;
 
-    [Space(10)]
-    [SerializeField]
-    private Mode endMode;
+        [Space(10)]
+        [SerializeField]
+        private Mode endMode;
 
-    [HideIf("endMode", Mode.none)]
-    [SerializeField]
-    private float endLength;
+        [HideIf("endMode", Mode.none)]
+        [SerializeField]
+        private float endLength;
 
-    [Space(10)]
-    [SerializeField]
-    private AudioClip clip;
+        [Space(10)]
+        [SerializeField]
+        private AudioClip clip;
 
-    private TextMeshProUGUI textfield;
+        private TextMeshProUGUI textfield;
 
-    private void Awake()
-    {
-        this.textfield = this.GetComponent<TextMeshProUGUI>();        
-    }
+        private void Awake()
+        {
+            this.textfield = this.GetComponent<TextMeshProUGUI>();
+        }
 
-    private void OnEnable()
-    {
-        StartCoroutine(animateCo());
-    }
+        private void OnEnable()
+        {
+            StartCoroutine(animateCo());
+        }
 
-    private IEnumerator animateCo()
-    {
-        animate(0, startMode, 0);
+        private IEnumerator animateCo()
+        {
+            animate(0, startMode, 0);
 
-        yield return new WaitForSeconds(startDelay);
+            yield return new WaitForSeconds(startDelay);
 
-        animate(startLength, startMode, 1);
-        AudioUtil.playSoundEffect(this.clip);
+            animate(startLength, startMode, 1);
+            AudioUtil.playSoundEffect(this.clip);
 
-        yield return new WaitForSeconds(startLength + waitLength);
+            yield return new WaitForSeconds(startLength + waitLength);
 
-        animate(endLength, endMode, 0);
-    }
+            animate(endLength, endMode, 0);
+        }
 
-    private void animate(float length, Mode mode, float endValue)
-    {
-        if (mode == Mode.fade) textfield.DOFade(endValue, length);
-        else if (mode == Mode.scale) textfield.transform.DOScale(endValue, length);
+        private void animate(float length, Mode mode, float endValue)
+        {
+            if (mode == Mode.fade) textfield.DOFade(endValue, length);
+            else if (mode == Mode.scale) textfield.transform.DOScale(endValue, length);
+        }
     }
 }

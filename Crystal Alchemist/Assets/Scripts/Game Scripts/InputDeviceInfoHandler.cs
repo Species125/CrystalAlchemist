@@ -1,23 +1,27 @@
-using UnityEngine.InputSystem;
+
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class InputDeviceInfoHandler : MonoBehaviour
+namespace CrystalAlchemist
 {
-    private void Start() => InputSystem.onActionChange += OnActionChange;       
-
-    private void OnDestroy() => InputSystem.onActionChange -= OnActionChange; 
-
-    private void OnActionChange(object obj, InputActionChange change)
+    public class InputDeviceInfoHandler : MonoBehaviour
     {
-        if (change == InputActionChange.ActionPerformed)
-        {
-            var inputAction = (InputAction)obj;     
-            var lastControl = inputAction.activeControl;
-            var lastDevice = lastControl.device;
+        private void Start() => InputSystem.onActionChange += OnActionChange;
 
-            object value = inputAction.ReadValueAsObject().ToString();
-            if(value.ToString() != "(0.0, 0.0)")
-               MasterManager.inputDeviceInfo.SetDevice(lastDevice.displayName, lastControl.name);
+        private void OnDestroy() => InputSystem.onActionChange -= OnActionChange;
+
+        private void OnActionChange(object obj, InputActionChange change)
+        {
+            if (change == InputActionChange.ActionPerformed)
+            {
+                var inputAction = (InputAction)obj;
+                var lastControl = inputAction.activeControl;
+                var lastDevice = lastControl.device;
+
+                object value = inputAction.ReadValueAsObject().ToString();
+                if (value.ToString() != "(0.0, 0.0)")
+                    MasterManager.inputDeviceInfo.SetDevice(lastDevice.displayName, lastControl.name);
+            }
         }
     }
 }

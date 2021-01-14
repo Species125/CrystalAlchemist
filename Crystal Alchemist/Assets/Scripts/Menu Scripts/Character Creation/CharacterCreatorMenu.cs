@@ -1,34 +1,41 @@
-﻿using UnityEngine;
+﻿
+
+
+
 using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class CharacterCreatorMenu : MenuBehaviour
+namespace CrystalAlchemist
 {
-    [BoxGroup("Character Creator")]
-    [Required]
-    public CharacterPreset playerPreset;
-
-    private CharacterPreset backup;
-
-
-    public override void Start()
+    public class CharacterCreatorMenu : MenuBehaviour
     {
-        base.Start();
+        [BoxGroup("Character Creator")]
+        [Required]
+        public CharacterPreset playerPreset;
 
-        this.backup = ScriptableObject.CreateInstance<CharacterPreset>();
-        GameUtil.setPreset(this.playerPreset, this.backup);
+        private CharacterPreset backup;
+
+
+        public override void Start()
+        {
+            base.Start();
+
+            this.backup = ScriptableObject.CreateInstance<CharacterPreset>();
+            GameUtil.setPreset(this.playerPreset, this.backup);
+        }
+
+        public void Abort()
+        {
+            Undo();
+            base.ExitMenu();
+        }
+
+        public void Undo()
+        {
+            GameUtil.setPreset(this.backup, this.playerPreset);
+            UpdatePreview();
+        }
+
+        public void UpdatePreview() => GameEvents.current.DoPresetChange();
     }
-
-    public void Abort()
-    {
-        Undo();
-        base.ExitMenu();
-    }
-
-    public void Undo()
-    {
-        GameUtil.setPreset(this.backup, this.playerPreset);
-        UpdatePreview();
-    }
-
-    public void UpdatePreview() => GameEvents.current.DoPresetChange();  
 }

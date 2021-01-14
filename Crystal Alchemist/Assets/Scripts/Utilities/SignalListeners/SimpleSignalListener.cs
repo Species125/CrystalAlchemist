@@ -3,26 +3,29 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SimpleSignalListener : MonoBehaviour
+namespace CrystalAlchemist
 {
-    public SimpleSignal signal;
-    public UnityEvent signalEvent;
-
-    [Button]
-    public void OnSignalRaised()
+    public class SimpleSignalListener : MonoBehaviour
     {
-        this.signalEvent.Invoke();
-    }
+        public SimpleSignal signal;
+        public UnityEvent signalEvent;
 
-    private void OnEnable()
-    {
-        if (signal != null) signal.RegisterListener(this);
-        else Debug.Log(this.gameObject+" - "+this.transform.parent.gameObject);
-    }
+        [Button]
+        public void OnSignalRaised()
+        {
+            this.signalEvent.Invoke();
+        }
 
-    private void OnDisable()
-    {
-        if (signal != null) signal.DeRegisterListener(this);
-        else Debug.Log(this.gameObject + " - " + this.transform.parent.gameObject);
+        private void OnEnable()
+        {
+            if (signal != null) signal.RegisterListener(this);
+            else Debug.Log(this.gameObject + " - " + this.transform.parent.gameObject);
+        }
+
+        private void OnDisable()
+        {
+            if (signal != null) signal.DeRegisterListener(this);
+            else Debug.Log(this.gameObject + " - " + this.transform.parent.gameObject);
+        }
     }
 }

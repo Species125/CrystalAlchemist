@@ -1,96 +1,100 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ScrollBarExtension : MonoBehaviour, ISelectHandler
+namespace CrystalAlchemist
 {
-    private enum ScrollBarType
+    public class ScrollBarExtension : MonoBehaviour, ISelectHandler
     {
-        horizontal,
-        vertical
-    }
-
-    [SerializeField]
-    private Scrollbar scrollBar;
-
-    [SerializeField]
-    private CustomCursor cursor;
-
-    [SerializeField]
-    private ScrollBarType type = ScrollBarType.vertical;
-
-    [SerializeField]
-    private int start = 2;
-
-    [SerializeField]
-    private int end = 2;
-
-    private bool selectable = true;  
-
-    public void OnSelect(BaseEventData data)
-    {
-        if (MasterManager.inputDeviceInfo.type == InputDeviceType.mouse) return;
-        SetOnSelect();
-    }
-
-    private void SetOnSelect()
-    {
-        int value = this.gameObject.transform.GetSiblingIndex();
-
-        if (type == ScrollBarType.horizontal) SetHorizontal(value);
-        else SetVertical(value);
-
-        cursor.SetTransform((RectTransform)this.transform);
-        cursor.UpdatePosition();
-    }
-
-    private int GetCount()
-    {
-        int count = 0;
-
-        foreach(Transform child in this.transform.parent.transform)
+        private enum ScrollBarType
         {
-            if (child.gameObject.activeInHierarchy) count++;
+            horizontal,
+            vertical
         }
 
-        return count; 
-    }
+        [SerializeField]
+        private Scrollbar scrollBar;
 
-    private void SetHorizontal(int item)
-    {
-        if (this.scrollBar == null) return;
+        [SerializeField]
+        private CustomCursor cursor;
 
-        int count = GetCount();
-        float index = (float)item;
-        float factor = 1 / (float)(count-1);
-        float value = index * factor;
+        [SerializeField]
+        private ScrollBarType type = ScrollBarType.vertical;
 
-        if (index < this.start) value = 0;
-        else if (item >= count - this.end) value = 1;
+        [SerializeField]
+        private int start = 2;
 
-        this.scrollBar.value = value;
-    }
+        [SerializeField]
+        private int end = 2;
 
-    private void SetVertical(int item)
-    {
-        if (this.scrollBar == null) return;
-        float index = (float)item;
-        int count = GetCount();
+        private bool selectable = true;
 
-        float value = 0f;
-
-        if (index <= this.start) value = 1f;
-        else if (index < count - this.end)
+        public void OnSelect(BaseEventData data)
         {
-            float factor = 1 / ((float)count-(this.end+this.start+1));
-            value = 1-((index-(this.start)) * factor);
+            if (MasterManager.inputDeviceInfo.type == InputDeviceType.mouse) return;
+            SetOnSelect();
         }
 
-        this.scrollBar.value = value;
-    }
+        private void SetOnSelect()
+        {
+            int value = this.gameObject.transform.GetSiblingIndex();
 
-    private void OnDestroy()
-    {
-        cursor.SetPositionToSelectable(false);
+            if (type == ScrollBarType.horizontal) SetHorizontal(value);
+            else SetVertical(value);
+
+            cursor.SetTransform((RectTransform)this.transform);
+            cursor.UpdatePosition();
+        }
+
+        private int GetCount()
+        {
+            int count = 0;
+
+            foreach (Transform child in this.transform.parent.transform)
+            {
+                if (child.gameObject.activeInHierarchy) count++;
+            }
+
+            return count;
+        }
+
+        private void SetHorizontal(int item)
+        {
+            if (this.scrollBar == null) return;
+
+            int count = GetCount();
+            float index = (float)item;
+            float factor = 1 / (float)(count - 1);
+            float value = index * factor;
+
+            if (index < this.start) value = 0;
+            else if (item >= count - this.end) value = 1;
+
+            this.scrollBar.value = value;
+        }
+
+        private void SetVertical(int item)
+        {
+            if (this.scrollBar == null) return;
+            float index = (float)item;
+            int count = GetCount();
+
+            float value = 0f;
+
+            if (index <= this.start) value = 1f;
+            else if (index < count - this.end)
+            {
+                float factor = 1 / ((float)count - (this.end + this.start + 1));
+                value = 1 - ((index - (this.start)) * factor);
+            }
+
+            this.scrollBar.value = value;
+        }
+
+        private void OnDestroy()
+        {
+            cursor.SetPositionToSelectable(false);
+        }
     }
 }

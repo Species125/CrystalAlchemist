@@ -1,60 +1,63 @@
-﻿using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
-public enum ShareType
+namespace CrystalAlchemist
 {
-    less,
-    exact,
-    more
-}
-
-public class SkillStackHit : SkillHitTrigger
-{
-    [InfoBox("Hits Character depending on how many characters are in the same collider")]
-    [BoxGroup("Mechanics")]
-    [SerializeField]
-    private int amountNeeded;
-
-    [BoxGroup("Mechanics")]
-    [SerializeField]
-    private ShareType type;
-
-    //TODO: Show amount as points
-
-    private List<Character> listOfCharacters = new List<Character>();
-
-    public void CalculateDamage()
+    public enum ShareType
     {
-        if ((this.type == ShareType.exact && GetAmount() == this.amountNeeded)
-         || (this.type == ShareType.less && GetAmount() <= this.amountNeeded)
-         || (this.type == ShareType.more && GetAmount() >= this.amountNeeded)) this.skill.SetPercentage(0);
-        else this.skill.SetPercentage(100);
+        less,
+        exact,
+        more
     }
 
-    public int GetAmount()
+    public class SkillStackHit : SkillHitTrigger
     {
-        return this.listOfCharacters.Count;
-    }
+        [InfoBox("Hits Character depending on how many characters are in the same collider")]
+        [BoxGroup("Mechanics")]
+        [SerializeField]
+        private int amountNeeded;
 
-    private void OnTriggerEnter2D(Collider2D hittedCharacter)
-    {
-        if (CollisionUtil.checkCollision(hittedCharacter, this.skill))
+        [BoxGroup("Mechanics")]
+        [SerializeField]
+        private ShareType type;
+
+        //TODO: Show amount as points
+
+        private List<Character> listOfCharacters = new List<Character>();
+
+        public void CalculateDamage()
         {
-            Character character = hittedCharacter.GetComponent<Character>();
-            if (character != null)
-            {
-                if (!this.listOfCharacters.Contains(character)) this.listOfCharacters.Add(character);
-            }             
+            if ((this.type == ShareType.exact && GetAmount() == this.amountNeeded)
+                || (this.type == ShareType.less && GetAmount() <= this.amountNeeded)
+                || (this.type == ShareType.more && GetAmount() >= this.amountNeeded)) this.skill.SetPercentage(0);
+            else this.skill.SetPercentage(100);
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D hittedCharacter)
-    {
-        if (CollisionUtil.checkCollision(hittedCharacter, this.skill))
+        public int GetAmount()
         {
-            Character character = hittedCharacter.GetComponent<Character>();
-            if (character != null && this.listOfCharacters.Contains(character)) this.listOfCharacters.Remove(character);            
+            return this.listOfCharacters.Count;
+        }
+
+        private void OnTriggerEnter2D(Collider2D hittedCharacter)
+        {
+            if (CollisionUtil.checkCollision(hittedCharacter, this.skill))
+            {
+                Character character = hittedCharacter.GetComponent<Character>();
+                if (character != null)
+                {
+                    if (!this.listOfCharacters.Contains(character)) this.listOfCharacters.Add(character);
+                }
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D hittedCharacter)
+        {
+            if (CollisionUtil.checkCollision(hittedCharacter, this.skill))
+            {
+                Character character = hittedCharacter.GetComponent<Character>();
+                if (character != null && this.listOfCharacters.Contains(character)) this.listOfCharacters.Remove(character);
+            }
         }
     }
 }

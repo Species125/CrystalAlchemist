@@ -1,34 +1,37 @@
-﻿using UnityEngine;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using System.Collections;
+using UnityEngine;
 
-public class RewardArea : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [InfoBox("Maybe set bouncing to true for items", InfoMessageType.Info)]
-    [SerializeField]
-    private bool collectAll;
-
-    [SerializeField]
-    [MinValue(1)]
-    [HideIf("collectAll")]
-    private int maxAmount = 1;
-
-    private int counter;
-
-    private void Start() => GameEvents.current.OnCollect += DestroyItems;
-
-    private void OnDestroy() => GameEvents.current.OnCollect -= DestroyItems;
-
-    private void DestroyItems(ItemStats stats)
+    public class RewardArea : MonoBehaviour
     {
-        if (this.collectAll) return;
-        counter++;
-        if (counter >= this.maxAmount) StartCoroutine(disableCo());
-    }
+        [InfoBox("Maybe set bouncing to true for items", InfoMessageType.Info)]
+        [SerializeField]
+        private bool collectAll;
 
-    private IEnumerator disableCo()
-    {
-        yield return new WaitForEndOfFrame();
-        this.gameObject.SetActive(false);
+        [SerializeField]
+        [MinValue(1)]
+        [HideIf("collectAll")]
+        private int maxAmount = 1;
+
+        private int counter;
+
+        private void Start() => GameEvents.current.OnCollect += DestroyItems;
+
+        private void OnDestroy() => GameEvents.current.OnCollect -= DestroyItems;
+
+        private void DestroyItems(ItemStats stats)
+        {
+            if (this.collectAll) return;
+            counter++;
+            if (counter >= this.maxAmount) StartCoroutine(disableCo());
+        }
+
+        private IEnumerator disableCo()
+        {
+            yield return new WaitForEndOfFrame();
+            this.gameObject.SetActive(false);
+        }
     }
 }

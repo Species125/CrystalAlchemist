@@ -1,72 +1,76 @@
-﻿using UnityEngine;
+﻿
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemUI : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private Image image;
-
-    [SerializeField]
-    private TextMeshProUGUI amount;
-
-    [SerializeField]
-    private bool preferInventoryIcon = true;
-
-    private ItemGroup itemGroup;
-    private ItemStats itemStat;
-
-    public ItemGroup getItemGroup()
+    public class ItemUI : MonoBehaviour
     {
-        return this.itemGroup;
-    }
+        [SerializeField]
+        private Image image;
 
-    public ItemStats getItemStat()
-    {
-        return this.itemStat;
-    }
+        [SerializeField]
+        private TextMeshProUGUI amount;
 
-    public void setItem(ItemGroup item)
-    {
-        this.itemGroup = item;
+        [SerializeField]
+        private bool preferInventoryIcon = true;
 
-        if (item == null)
+        private ItemGroup itemGroup;
+        private ItemStats itemStat;
+
+        public ItemGroup getItemGroup()
         {
-            this.image.gameObject.SetActive(false);
+            return this.itemGroup;
         }
-        else
+
+        public ItemStats getItemStat()
         {
-            this.image.gameObject.SetActive(true);       
-
-            if (item.canConsume && item.GetAmount() > 1) this.amount.text = "x" + item.GetAmount();
-            else if (this.amount != null) this.amount.text = "";
-
-            if (this.preferInventoryIcon) this.image.sprite = item.info.getSprite();
-            else this.image.sprite = item.info.getSprite();
-
-            this.image.color = new Color(1f, 1f, 1f, 1f);
+            return this.itemStat;
         }
-    }
 
-    public void SetItem(ItemStats item)
-    {
-        this.itemStat = item;
-
-        if (item == null)
+        public void setItem(ItemGroup item)
         {
-            this.image.gameObject.SetActive(false);
+            this.itemGroup = item;
+
+            if (item == null)
+            {
+                this.image.gameObject.SetActive(false);
+            }
+            else
+            {
+                this.image.gameObject.SetActive(true);
+
+                if (item.canConsume && item.GetAmount() > 1) this.amount.text = "x" + item.GetAmount();
+                else if (this.amount != null) this.amount.text = "";
+
+                if (this.preferInventoryIcon) this.image.sprite = item.info.getSprite();
+                else this.image.sprite = item.info.getSprite();
+
+                this.image.color = new Color(1f, 1f, 1f, 1f);
+            }
         }
-        else
+
+        public void SetItem(ItemStats item)
         {
-            this.image.gameObject.SetActive(true);
+            this.itemStat = item;
 
-            if (!item.isKeyItem() && item.amount > 1) this.amount.text = "x" + item.amount;
-            else if (this.amount != null) this.amount.text = "";
+            if (item == null)
+            {
+                this.image.gameObject.SetActive(false);
+            }
+            else
+            {
+                this.image.gameObject.SetActive(true);
 
-            if (this.preferInventoryIcon) this.image.sprite = item.getSprite();
-            else this.image.sprite = item.getSprite();
+                if (!item.isKeyItem() && item.amount > 1) this.amount.text = "x" + item.amount;
+                else if (this.amount != null) this.amount.text = "";
 
-            this.image.color = new Color(1f, 1f, 1f, 1f);
+                if (this.preferInventoryIcon) this.image.sprite = item.getSprite();
+                else this.image.sprite = item.getSprite();
+
+                this.image.color = new Color(1f, 1f, 1f, 1f);
+            }
         }
     }
 }

@@ -1,26 +1,29 @@
 ﻿using TMPro;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class JukeboxButton : MonoBehaviour
+namespace CrystalAlchemist
 {
-    private MusicTheme theme;
-
-    [SerializeField]
-    private TMP_Text textField;
-
-    [SerializeField]
-    private Image image;
-
-    public void SetMusic(MusicTheme theme)
+    public class JukeboxButton : MonoBehaviour
     {
-        this.theme = theme;
-        this.textField.text = theme.name;
-        this.image.color = theme.color;
-    }
+        private MusicTheme theme;
 
-    public MusicTheme GetTheme()
-    {
-        return this.theme;
+        [SerializeField]
+        private TMP_Text textField;
+
+        [SerializeField]
+        private Image image;
+
+        public void SetMusic(MusicTheme theme)
+        {
+            this.theme = theme;
+            this.textField.text = theme.name;
+            this.image.color = theme.color;
+        }
+
+        public MusicTheme GetTheme()
+        {
+            return this.theme;
+        }
     }
 }

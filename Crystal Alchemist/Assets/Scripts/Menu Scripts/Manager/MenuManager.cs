@@ -1,77 +1,88 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
+namespace CrystalAlchemist
 {
-    private void Start()
+    public class MenuManager : MonoBehaviour
     {
-        MenuEvents.current.OnInventory += OpenInventory;
-        MenuEvents.current.OnPause += OpenPause;
-        MenuEvents.current.OnMap += OpenMap;
-        MenuEvents.current.OnSkills += OpenSkillBook;
-        MenuEvents.current.OnAttributes += OpenAttributes;
-        MenuEvents.current.OnDeath += OpenDeath;
-        MenuEvents.current.OnMiniGame += OpenMiniGame;
-        MenuEvents.current.OnEditor += OpenCharacterEditor;
-        MenuEvents.current.OnSave += OpenSavePoint;
-        MenuEvents.current.OnDialogBox += OpenDialogBox;
-        MenuEvents.current.OnMenuDialogBox += OpenMenuDialogBox;
-        MenuEvents.current.OnTutorial += OpenTutorial;
-        MenuEvents.current.OnJukeBox += OpenJukebox;
-        MenuEvents.current.OnSave += OpenSavePoint;
-    }
+        private void Start()
+        {
+            if (!NetworkUtil.IsLocal()) return;
 
-    private void OnDestroy()
-    {
-        MenuEvents.current.OnInventory -= OpenInventory;
-        MenuEvents.current.OnPause -= OpenPause;
-        MenuEvents.current.OnMap -= OpenMap;
-        MenuEvents.current.OnSkills -= OpenSkillBook;
-        MenuEvents.current.OnAttributes -= OpenAttributes;
-        MenuEvents.current.OnDeath -= OpenDeath;
-        MenuEvents.current.OnMiniGame -= OpenMiniGame;
-        MenuEvents.current.OnEditor -= OpenCharacterEditor;
-        MenuEvents.current.OnSave -= OpenSavePoint;
-        MenuEvents.current.OnDialogBox -= OpenDialogBox;
-        MenuEvents.current.OnMenuDialogBox -= OpenMenuDialogBox;
-        MenuEvents.current.OnJukeBox -= OpenJukebox;
-        MenuEvents.current.OnTutorial -= OpenTutorial;
-    }
+            MenuEvents.current.OnInventory += OpenInventory;
+            MenuEvents.current.OnPause += OpenPause;
+            MenuEvents.current.OnMap += OpenMap;
+            MenuEvents.current.OnSkills += OpenSkillBook;
+            MenuEvents.current.OnAttributes += OpenAttributes;
+            MenuEvents.current.OnDeath += OpenDeath;
+            MenuEvents.current.OnMiniGame += OpenMiniGame;
+            MenuEvents.current.OnEditor += OpenCharacterEditor;
+            MenuEvents.current.OnSave += OpenSavePoint;
+            MenuEvents.current.OnDialogBox += OpenDialogBox;
+            MenuEvents.current.OnMenuDialogBox += OpenMenuDialogBox;
+            MenuEvents.current.OnTutorial += OpenTutorial;
+            MenuEvents.current.OnJukeBox += OpenJukebox;
+            MenuEvents.current.OnSave += OpenSavePoint;
+            MenuEvents.current.OnTeleport += OpenTeleport;
+        }
 
-    public void OpenInventory() => OpenScene("InventoryMenu");
+        private void OnDestroy()
+        {
+            if (!NetworkUtil.IsLocal()) return;
 
-    public void OpenPause() => OpenScene("Pause");
+            MenuEvents.current.OnInventory -= OpenInventory;
+            MenuEvents.current.OnPause -= OpenPause;
+            MenuEvents.current.OnMap -= OpenMap;
+            MenuEvents.current.OnSkills -= OpenSkillBook;
+            MenuEvents.current.OnAttributes -= OpenAttributes;
+            MenuEvents.current.OnDeath -= OpenDeath;
+            MenuEvents.current.OnMiniGame -= OpenMiniGame;
+            MenuEvents.current.OnEditor -= OpenCharacterEditor;
+            MenuEvents.current.OnSave -= OpenSavePoint;
+            MenuEvents.current.OnDialogBox -= OpenDialogBox;
+            MenuEvents.current.OnMenuDialogBox -= OpenMenuDialogBox;
+            MenuEvents.current.OnJukeBox -= OpenJukebox;
+            MenuEvents.current.OnTutorial -= OpenTutorial;
+            MenuEvents.current.OnTeleport -= OpenTeleport;
+        }
 
-    public void OpenMap() => OpenScene("Map");
+        public void OpenInventory() => OpenScene("InventoryMenu");
 
-    public void OpenSkillBook() => OpenScene("Skillbook");
+        public void OpenPause() => OpenScene("Pause");
 
-    public void OpenAttributes() => OpenScene("Attributes");
+        public void OpenMap() => OpenScene("Map");
 
-    public void OpenCharacterEditor() => OpenScene("Character Creation");
+        public void OpenSkillBook() => OpenScene("Skillbook");
 
-    public void OpenSavePoint() => OpenScene("Savepoint");
+        public void OpenAttributes() => OpenScene("Attributes");
 
-    public void OpenDeath() => OpenScene("Death Screen");
+        public void OpenCharacterEditor() => OpenScene("Character Creation");
 
-    public void OpenMiniGame() => OpenScene("Minigame");
+        public void OpenSavePoint() => OpenScene("Savepoint");
 
-    public void OpenDialogBox() => OpenScene("DialogBox");
+        public void OpenDeath() => OpenScene("Death Screen");
 
-    public void OpenMenuDialogBox() => OpenSceneAdditive("MenuDialogBox");
+        public void OpenMiniGame() => OpenScene("Minigame");
 
-    public void OpenJukebox() => OpenScene("Jukebox");
+        public void OpenDialogBox() => OpenScene("DialogBox");
 
-    public void OpenTutorial() => OpenScene("Tutorial");
+        public void OpenMenuDialogBox() => OpenSceneAdditive("MenuDialogBox");
 
-    private void OpenScene(string scene)
-    {
-        if (UnityUtil.SceneExists(scene)) SceneManager.UnloadSceneAsync(scene);
-        else SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
-    }
+        public void OpenJukebox() => OpenScene("Jukebox");
 
-    private void OpenSceneAdditive(string scene)
-    {
-        SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        public void OpenTutorial() => OpenScene("Tutorial");
+
+        public void OpenTeleport() => OpenScene("Teleport");
+
+        private void OpenScene(string scene)
+        {
+            if (UnityUtil.SceneExists(scene)) SceneManager.UnloadSceneAsync(scene);
+            else SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        }
+
+        private void OpenSceneAdditive(string scene)
+        {
+            SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        }
     }
 }

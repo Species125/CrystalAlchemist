@@ -1,22 +1,25 @@
 ﻿using UnityEngine;
 
-public class SkillExtension : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [HideInInspector]
-    public Skill skill;
-
-    private void Awake()
+    public class SkillExtension : MonoBehaviour
     {
-        this.skill = this.GetComponent<Skill>();
-    }
+        [HideInInspector]
+        public Skill skill;
 
-    public virtual void Initialize()
-    {
+        private void Awake()
+        {
+            this.skill = this.GetComponent<Skill>();
+        }
 
-    }
+        public virtual void Initialize()
+        {
 
-    public virtual void Updating()
-    {
+        }
 
+        public virtual void Updating()
+        {
+
+        }
     }
 }

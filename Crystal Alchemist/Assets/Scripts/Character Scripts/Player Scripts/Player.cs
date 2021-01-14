@@ -1,371 +1,413 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
 using Sirenix.OdinInspector;
-using System.Collections;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using Photon.Pun;
 
-public class Player : Character
+namespace CrystalAlchemist
 {
-    [BoxGroup("Inspector")]
-    [ReadOnly]
-    public string path;
+    [System.Serializable]
+    public class TestPlayer
+        {
+        public string name = "";
+        public CharacterPreset preset;
+        public float life;
+        public float mana;
+        }
+
+    public class Player : Character, IPunInstantiateMagicCallback
+    {
+        [BoxGroup("Inspector")]
+        [ReadOnly]
+        public string path;
 
 #if UNITY_EDITOR
-    private void OnValidate()
-    {
-        this.path = UnityUtil.GetResourcePath(this);
-    }
+        private void OnValidate() => this.path = UnityUtil.GetResourcePath(this);
 #endif
 
-    [BoxGroup("Player Objects")]
-    [SerializeField]
-    private float goToBedDuration = 1f;
+        [BoxGroup("Player Objects")]
+        [SerializeField]
+        private float goToBedDuration = 1f;
 
-    [BoxGroup("Player Objects")]
-    [SerializeField]
-    private BoolValue CutSceneValue;
+        [BoxGroup("Player Objects")]
+        [SerializeField]
+        private BoolValue CutSceneValue;
 
-    [BoxGroup("Player Objects")]
-    [SerializeField]
-    private PlayerSaveGame saveGame;
+        [BoxGroup("Player Objects")]
+        [SerializeField]
+        private PlayerSaveGame saveGame;
 
-    [BoxGroup("Debug")]
-    [SerializeField]
-    private CharacterCreatorPartHandler handler;
+        [BoxGroup("Debug")]
+        [SerializeField]
+        private CharacterCreatorPartHandler handler;
 
-    [BoxGroup("Debug")]
-    [SerializeField]
-    private CharacterPreset preset;
+        [BoxGroup("Debug")]
+        [SerializeField]
+        private CharacterPreset preset;
 
-    ///////////////////////////////////////////////////////////////
-       
+        [BoxGroup("Debug")]
+        public bool isLocalPlayer = true;
 
-    public override void Awake()
-    {   
-        SetComponents();
-        SetScriptableObjects();
-    }
+        [BoxGroup("Debug")]
+        public bool isMaster = false;
 
-    public override void SetComponents()
-    {
-        base.SetComponents();
-        this.handler = this.GetComponent<CharacterCreatorPartHandler>();
-    }
+        [BoxGroup("Debug")]
+        public string uniqueID;
 
-    private void SetScriptableObjects()
-    {
-        this.gameObject.name = "Player (Guest)";
+        ///////////////////////////////////////////////////////////////
 
-        if (!NetworkUtil.IsLocal(this.photonView))
+        public override void Awake()
         {
-            this.stats = ScriptableObject.CreateInstance<CharacterStats>();
-            this.values = ScriptableObject.CreateInstance<CharacterValues>();
-            this.saveGame = null;
-            this.values.Initialize();
-            this.preset = ScriptableObject.CreateInstance<CharacterPreset>();
-        }
-        else
-        {
-            this.gameObject.name = "Player (Local)";
-            this.stats = this.saveGame.stats;
-            this.values = this.saveGame.playerValue;
-            this.values.Initialize();
-            this.saveGame.attributes.SetValues();
-            this.preset = this.saveGame.playerPreset;
-            this.characterName = this.saveGame.characterName.GetValue();
+            SetComponents();
+            SetScriptableObjects();
         }
 
-        this.handler.SetPreset(this.preset);
-    }
-
-    public override void OnEnable()
-    {
-        if (this.values.life <= 0) ResetValues();        
-    }
-
-    public override void ResetValues()
-    {
-        base.ResetValues();
-        if(this.saveGame != null) this.saveGame.attributes.SetValues();
-        this.values.life = this.values.maxLife;
-        this.values.mana = this.values.maxMana;
-    }
-
-    public override void Start()
-    {
-        base.Start();
-
-        LoadPlayer();
-        
-        this.ChangeDirection(this.values.direction);
-        this.animator.speed = 1;
-        this.updateTimeDistortion(0);
-        this.AddStatusEffectVisuals();
-    }     
-    
-    private void LoadPlayer()
-    {        
-        if (!NetworkUtil.IsLocal(this.photonView))
+        public override void SetComponents()
         {
-            if (this.GetComponent<PlayerAbilities>() != null) Destroy(this.GetComponent<PlayerAbilities>());
-            if (this.GetComponent<PlayerMovement>() != null) Destroy(this.GetComponent<PlayerMovement>());
-            if (this.GetComponent<PlayerControls>() != null) Destroy(this.GetComponent<PlayerControls>());
-            if (this.GetComponent<PlayerItems>() != null) Destroy(this.GetComponent<PlayerItems>());
-            if (this.GetComponent<PlayerTeleport>() != null) this.GetComponent<PlayerTeleport>().NetworkInitialize();
-            return;
+            base.SetComponents();
+            this.handler = this.GetComponent<CharacterCreatorPartHandler>();
         }
 
-        this.saveGame.progress.Initialize();
-
-        SceneManager.LoadScene("UI", LoadSceneMode.Additive);
-
-        GameEvents.current.OnCollect += this.CollectIt;
-        GameEvents.current.OnReduce += this.reduceResource;
-        GameEvents.current.OnStateChanged += this.SetState;
-        GameEvents.current.OnSleep += this.GoToSleep;
-        GameEvents.current.OnWakeUp += this.WakeUp;
-        GameEvents.current.OnCutScene += this.SetCutScene;
-        GameEvents.current.OnEnoughCurrency += this.HasEnoughCurrency;
-        GameEvents.current.OnPresetChange += UpdateCharacterParts;
-
-        if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Initialize();
-        if (this.GetComponent<PlayerMovement>() != null) this.GetComponent<PlayerMovement>().Initialize();
-        if (this.GetComponent<PlayerControls>() != null) this.GetComponent<PlayerControls>().Initialize();
-        if (this.GetComponent<PlayerItems>() != null) this.GetComponent<PlayerItems>().Initialize();
-        if (this.GetComponent<PlayerTeleport>() != null) this.GetComponent<PlayerTeleport>().Initialize();
-
-        GameEvents.current.DoManaLifeUpdate();
-        GameEvents.current.DoPlayerSpawned(this.gameObject);
-
-        UpdateCharacterParts();
-        NetworkEvents.current.GetPresetFromOtherClients();
-
-        this.saveGame.skillSet.TestInitialize(this);        
-    }
-
-    public override void Update()
-    {
-        if (!NetworkUtil.IsLocal(this.photonView)) return;
-
-        base.Update();
-        if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Updating();
-    }
-
-    public override void OnDestroy()
-    {
-        if (!NetworkUtil.IsLocal(this.photonView)) return;
-
-        base.OnDestroy();
-        GameEvents.current.OnPresetChange -= UpdateCharacterParts;
-        GameEvents.current.OnCollect -= this.CollectIt;
-        GameEvents.current.OnReduce -= this.reduceResource;
-        GameEvents.current.OnStateChanged -= this.SetState;
-        GameEvents.current.OnSleep -= this.GoToSleep;
-        GameEvents.current.OnWakeUp -= this.WakeUp;
-        GameEvents.current.OnCutScene -= this.SetCutScene;
-        GameEvents.current.OnEnoughCurrency -= this.HasEnoughCurrency;        
-    }
-
-    public void GodMode(bool active)
-    {
-        if (active)
+        private void SetScriptableObjects()
         {
+            this.gameObject.name = "Player (Guest)";
+
+            if (NetworkUtil.IsMaster()) this.isMaster = true;
+
+            if (!NetworkUtil.IsLocal(this.photonView))
+            {
+                this.isLocalPlayer = false;
+                this.stats = ScriptableObject.CreateInstance<CharacterStats>();
+                this.stats.SetCharacterType(CharacterType.Friend);
+                this.values = ScriptableObject.CreateInstance<CharacterValues>();
+                this.saveGame = null;
+                this.values.Initialize();
+                this.preset = ScriptableObject.CreateInstance<CharacterPreset>();
+            }
+            else
+            {
+                this.gameObject.name = "Player (Local)";
+                this.stats = this.saveGame.stats;
+                this.values = this.saveGame.playerValue;
+                this.values.Initialize();
+                if (this.saveGame.attributes) this.saveGame.attributes.SetValues();
+                this.preset = this.saveGame.playerPreset;
+                this.characterName = this.saveGame.characterName.GetValue();
+            }
+
+            this.handler.SetPreset(this.preset);
+        }
+
+        public override void OnEnable()
+        {
+            if (this.values.life <= 0) ResetValues();
+        }
+
+        public override void ResetValues()
+        {
+            base.ResetValues();
+            if (this.saveGame != null) this.saveGame.attributes.SetValues();
             this.values.life = this.values.maxLife;
             this.values.mana = this.values.maxMana;
-            RemoveAllStatusEffects();
         }
 
-        SetInvincible(active);
-        setCannotDie(active);
-    }
-
-    public override void SpawnOut()
-    {
-        base.SpawnOut();        
-        this.deactivateAllSkills();
-    }
-
-    public override void EnableScripts(bool value)
-    {
-        if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().enabled = value;
-        //if (this.GetComponent<PlayerControls>() != null) this.GetComponent<PlayerControls>().enabled = value;
-        if (this.GetComponent<PlayerMovement>() != null) this.GetComponent<PlayerMovement>().enabled = value;
-        //if (this.GetComponent<PlayerInput>() != null) this.GetComponent<PlayerInput>().enabled = value;        
-    }
-
-    private void deactivateAllSkills()
-    {
-        for (int i = 0; i < this.values.activeSkills.Count; i++)
+        public override void Start()
         {
-            Skill activeSkill = this.values.activeSkills[i];
-            activeSkill.DeactivateIt();
+            base.Start();
+
+            LoadPlayer();
+
+            this.ChangeDirection(this.values.direction);
+            this.animator.speed = 1;
+            this.updateTimeDistortion(0);
+            this.AddStatusEffectVisuals();
         }
-    }
 
-    public override void KillCharacter(bool animate)
-    {
-        if (this.values.currentState != CharacterState.dead)
+        private void LoadPlayer()
         {
-            this.SetDefaultDirection();
-
-            StatusEffectUtil.RemoveAllStatusEffects(this.values.debuffs);
-            StatusEffectUtil.RemoveAllStatusEffects(this.values.buffs);
-            AnimatorUtil.SetAnimatorParameter(this.animator, "Dead", true);
-
-            this.values.currentState = CharacterState.dead;
-            this.myRigidbody.bodyType = RigidbodyType2D.Kinematic; //Static causes Room to empty
-            MenuEvents.current.OpenDeath();
-        }
-    }
-
-    ///////////////////////////////////////////////////////////////
-
-    public override bool HasEnoughCurrency(Costs price)
-    {
-        if (price.resourceType == CostType.none) return true;
-        else if (price.resourceType == CostType.life && this.values.life - price.amount >= 0) return true;
-        else if (price.resourceType == CostType.mana && this.values.mana - price.amount >= 0) return true;
-        else if (price.resourceType == CostType.keyItem && price.keyItem != null && GameEvents.current.HasKeyItem(price.keyItem.name)) return true;
-        else if (price.resourceType == CostType.item && price.item != null && GameEvents.current.GetItemAmount(price.item) - price.amount >= 0) return true;
-
-        return false;
-    }
-
-
-    public override void reduceResource(Costs price)
-    {
-        //Shop, Door, Treasure, MiniGame, Abilities, etc
-        if (price != null
-            && ((price.item != null && price.item.canConsume)
-              || price.item == null))
-            this.updateResource(price.resourceType, price.item, -price.amount);
-    }
-
-    ///////////////////////////////////////////////////////////////
-
-
-    public override void updateResource(CostType type, ItemGroup item, float value, bool showingDamageNumber)
-    {
-        UpdateLifeMana(type, null, value, showingDamageNumber);
-
-        switch (type)
-        {
-            case CostType.life: callSignal(value); break;
-            case CostType.mana: callSignal(value); break;
-            case CostType.item: this.GetComponent<PlayerItems>().UpdateInventory(item, Mathf.RoundToInt(value)); break;
-        }
-        CheckDeath();
-    }
-
-    private void SetCutScene()
-    {
-        if (this.CutSceneValue.GetValue()) this.values.currentState = CharacterState.respawning;
-        else this.values.currentState = CharacterState.idle;
-    }
-
-    public void callSignal(float addResource)
-    {
-        if (addResource != 0) GameEvents.current.DoManaLifeUpdate();
-    }
-
-
-    public override void gotHit(Skill skill, float percentage, bool knockback)
-    {
-        GameEvents.current.DoCancel();
-        base.gotHit(skill, percentage, knockback);
-    }
-
-    private void SetState(CharacterState state)
-    {
-        if (this.values.currentState == CharacterState.dead) return;
-        this.values.currentState = state;
-    } 
-
-    private void CollectIt(ItemStats stats)
-    {
-        //Collectable, Load, MiniGame, Shop und Treasure
-        if (!NetworkUtil.IsLocal(this.photonView)) return;
-
-        if (stats.resourceType == CostType.life || stats.resourceType == CostType.mana) updateResource(stats.resourceType, stats.amount, true);
-        else if (stats.resourceType == CostType.item || stats.resourceType == CostType.keyItem) GetComponent<PlayerItems>().CollectItem(stats);
-        else if (stats.resourceType == CostType.statusEffect)
-        {
-            foreach (StatusEffect effect in stats.statusEffects)
+            if (!this.isLocalPlayer)
             {
-                StatusEffectUtil.AddStatusEffect(effect, this);
+                if (this.GetComponent<PlayerAbilities>() != null) Destroy(this.GetComponent<PlayerAbilities>());
+                if (this.GetComponent<PlayerMovement>() != null) Destroy(this.GetComponent<PlayerMovement>());
+                if (this.GetComponent<PlayerControls>() != null) Destroy(this.GetComponent<PlayerControls>());
+                if (this.GetComponent<PlayerItems>() != null) Destroy(this.GetComponent<PlayerItems>());
+                if (this.GetComponent<PlayerTeleport>() != null) this.GetComponent<PlayerTeleport>().Initialize();
+                return;
+            }
+
+            this.saveGame.progress.Initialize();
+
+            SceneManager.LoadScene("UI", LoadSceneMode.Additive);
+
+            GameEvents.current.OnCollect += this.CollectIt;
+            GameEvents.current.OnReduce += this.reduceResource;
+            GameEvents.current.OnStateChanged += this.SetState;
+            GameEvents.current.OnSleep += this.GoToSleep;
+            GameEvents.current.OnWakeUp += this.WakeUp;
+            GameEvents.current.OnCutScene += this.SetCutScene;
+            GameEvents.current.OnEnoughCurrency += this.HasEnoughCurrency;
+            GameEvents.current.OnPresetChange += UpdateCharacterParts;
+
+            if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Initialize();
+            if (this.GetComponent<PlayerMovement>() != null) this.GetComponent<PlayerMovement>().Initialize();
+            if (this.GetComponent<PlayerControls>() != null) this.GetComponent<PlayerControls>().Initialize();
+            if (this.GetComponent<PlayerItems>() != null) this.GetComponent<PlayerItems>().Initialize();
+            if (this.GetComponent<PlayerTeleport>() != null) this.GetComponent<PlayerTeleport>().Initialize();
+
+            GameEvents.current.DoManaLifeUpdate();
+            GameEvents.current.DoPlayerSpawned(this.gameObject);
+
+            UpdateCharacterParts();
+            NetworkEvents.current.GetPresetFromOtherClients();
+
+            this.saveGame.skillSet.TestInitialize(this);
+        }
+
+        public override void Update()
+        {
+            if (!isLocalPlayer) return;
+
+            base.Update();
+            if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Updating();
+        }
+
+        public override void OnDestroy()
+        {
+            if (!isLocalPlayer) return;
+
+            base.OnDestroy();
+            GameEvents.current.OnPresetChange -= UpdateCharacterParts;
+            GameEvents.current.OnCollect -= this.CollectIt;
+            GameEvents.current.OnReduce -= this.reduceResource;
+            GameEvents.current.OnStateChanged -= this.SetState;
+            GameEvents.current.OnSleep -= this.GoToSleep;
+            GameEvents.current.OnWakeUp -= this.WakeUp;
+            GameEvents.current.OnCutScene -= this.SetCutScene;
+            GameEvents.current.OnEnoughCurrency -= this.HasEnoughCurrency;
+        }
+
+        public void GodMode(bool active)
+        {
+            if (active)
+            {
+                this.values.life = this.values.maxLife;
+                this.values.mana = this.values.maxMana;
+                RemoveAllStatusEffects();
+            }
+
+            SetInvincible(active);
+            setCannotDie(active);
+        }
+
+        public override void SpawnOut()
+        {
+            base.SpawnOut();
+            this.deactivateAllSkills();
+        }
+
+        public override void EnableScripts(bool value)
+        {
+            if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().enabled = value;
+            //if (this.GetComponent<PlayerControls>() != null) this.GetComponent<PlayerControls>().enabled = value;
+            if (this.GetComponent<PlayerMovement>() != null) this.GetComponent<PlayerMovement>().enabled = value;
+            //if (this.GetComponent<PlayerInput>() != null) this.GetComponent<PlayerInput>().enabled = value;        
+        }
+
+        private void deactivateAllSkills()
+        {
+            for (int i = 0; i < this.values.activeSkills.Count; i++)
+            {
+                Skill activeSkill = this.values.activeSkills[i];
+                activeSkill.DeactivateIt();
             }
         }
-    }
+
+        public override void KillCharacter(bool animate)
+        {
+            if (this.values.currentState != CharacterState.dead)
+            {
+                this.SetDefaultDirection();
+
+                StatusEffectUtil.RemoveAllStatusEffects(this.values.debuffs);
+                StatusEffectUtil.RemoveAllStatusEffects(this.values.buffs);
+                AnimatorUtil.SetAnimatorParameter(this.animator, "Dead", true);
+
+                this.values.currentState = CharacterState.dead;
+                this.myRigidbody.bodyType = RigidbodyType2D.Kinematic; //Static causes Room to empty
+                MenuEvents.current.OpenDeath();
+            }
+        }
+
+        ///////////////////////////////////////////////////////////////
+
+        public override bool HasEnoughCurrency(Costs price)
+        {
+            if (price.resourceType == CostType.none) return true;
+            else if (price.resourceType == CostType.life && this.values.life - price.amount >= 0) return true;
+            else if (price.resourceType == CostType.mana && this.values.mana - price.amount >= 0) return true;
+            else if (price.resourceType == CostType.keyItem && price.keyItem != null && GameEvents.current.HasKeyItem(price.keyItem.name)) return true;
+            else if (price.resourceType == CostType.item && price.item != null && GameEvents.current.GetItemAmount(price.item) - price.amount >= 0) return true;
+
+            return false;
+        }
 
 
-    /////////////////////////////////////////////////////////////////////////////////
-    
+        public override void reduceResource(Costs price)
+        {
+            //Shop, Door, Treasure, MiniGame, Abilities, etc
+            if (price != null
+                && ((price.item != null && price.item.canConsume)
+                  || price.item == null))
+                this.updateResource(price.resourceType, price.item, -price.amount);
+        }
 
-    public void GoToSleep(Vector2 position, Action before, Action after)
-    {
-        StartCoroutine(GoToBed(goToBedDuration, position, before, after));
-    }
-
-    public void WakeUp(Vector2 position, Action before, Action after)
-    {
-        StartCoroutine(GetUp(goToBedDuration, position, before, after));
-    }
-
-    private IEnumerator GoToBed(float duration, Vector2 position, Action before, Action after)
-    {
-        this.transform.position = position;
-        yield return new WaitForEndOfFrame(); //Wait for Camera
-
-        EnablePlayer(false); //Disable Movement and Collision
-
-        before?.Invoke(); //Decke
-
-        AnimatorUtil.SetAnimatorParameter(this.animator, "GoSleep");
-        float animDuration = AnimatorUtil.GetAnimationLength(this.animator, "GoSleep");
-        yield return new WaitForSeconds(animDuration);
-        
-        after?.Invoke(); //Zeit    
-        this.boxCollider.enabled = true;
-    }
-
-    private void EnablePlayer(bool value)
-    {
-        this.EnableScripts(value); //prevent movement        
-        this.boxCollider.enabled = value; //prevent input
-
-        this.SetDefaultDirection();
-    }
-
-    private IEnumerator GetUp(float duration, Vector2 position, Action before, Action after)
-    {
-        this.boxCollider.enabled = false;
-        before?.Invoke(); //Zeit    
-
-        AnimatorUtil.SetAnimatorParameter(this.animator, "WakeUp");
-        float animDuration = AnimatorUtil.GetAnimationLength(this.animator, "WakeUp");
-        yield return new WaitForSeconds(animDuration);
-
-        after?.Invoke(); //Decke
-
-        EnablePlayer(true);
-
-        this.transform.position = position;
-    }
+        ///////////////////////////////////////////////////////////////
 
 
-    /////////////////////////////////////////////////////////////////////////////////
+        public override void updateResource(CostType type, ItemGroup item, float value, bool showingDamageNumber)
+        {
+            UpdateLifeMana(type, null, value, showingDamageNumber);
+
+            switch (type)
+            {
+                case CostType.life: callSignal(value); break;
+                case CostType.mana: callSignal(value); break;
+                case CostType.item: this.GetComponent<PlayerItems>().UpdateInventory(item, Mathf.RoundToInt(value)); break;
+            }
+            CheckDeath();
+        }
+
+        private void SetCutScene()
+        {
+            if (this.CutSceneValue.GetValue()) this.values.currentState = CharacterState.respawning;
+            else this.values.currentState = CharacterState.idle;
+        }
+
+        public void callSignal(float addResource)
+        {
+            if (addResource != 0) GameEvents.current.DoManaLifeUpdate();
+        }
 
 
-    public CharacterPreset GetPreset()
-    {
-        return this.preset;
-    }
+        public override void gotHit(Skill skill, float percentage, bool knockback)
+        {
+            GameEvents.current.DoCancel();
+            base.gotHit(skill, percentage, knockback);
+        }
 
-    [Button]
-    public void UpdateCharacterParts()
-    {
-        this.handler.UpdateCharacterParts();
-        NetworkEvents.current.SetPresetForOtherClients(this);
+        private void SetState(CharacterState state)
+        {
+            if (this.values.currentState == CharacterState.dead) return;
+            this.values.currentState = state;
+        }
+
+        private void CollectIt(ItemStats stats)
+        {
+            //Collectable, Load, MiniGame, Shop und Treasure
+            if (!isLocalPlayer) return;
+
+            if (stats.resourceType == CostType.life || stats.resourceType == CostType.mana) updateResource(stats.resourceType, stats.amount, true);
+            else if (stats.resourceType == CostType.item || stats.resourceType == CostType.keyItem) GetComponent<PlayerItems>().CollectItem(stats);
+            else if (stats.resourceType == CostType.statusEffect)
+            {
+                foreach (StatusEffect effect in stats.statusEffects)
+                {
+                    StatusEffectUtil.AddStatusEffect(effect, this);
+                }
+            }
+        }
+
+
+        /////////////////////////////////////////////////////////////////////////////////
+
+
+        public void GoToSleep(Vector2 position, Action before, Action after)
+        {
+            StartCoroutine(GoToBed(goToBedDuration, position, before, after));
+        }
+
+        public void WakeUp(Vector2 position, Action before, Action after)
+        {
+            StartCoroutine(GetUp(goToBedDuration, position, before, after));
+        }
+
+        private IEnumerator GoToBed(float duration, Vector2 position, Action before, Action after)
+        {
+            this.transform.position = position;
+            yield return new WaitForEndOfFrame(); //Wait for Camera
+
+            EnablePlayer(false); //Disable Movement and Collision
+
+            before?.Invoke(); //Decke
+
+            AnimatorUtil.SetAnimatorParameter(this.animator, "GoSleep");
+            float animDuration = AnimatorUtil.GetAnimationLength(this.animator, "GoSleep");
+            yield return new WaitForSeconds(animDuration);
+
+            after?.Invoke(); //Zeit    
+            this.boxCollider.enabled = true;
+        }
+
+        private void EnablePlayer(bool value)
+        {
+            this.EnableScripts(value); //prevent movement        
+            this.boxCollider.enabled = value; //prevent input
+
+            this.SetDefaultDirection();
+        }
+
+        private IEnumerator GetUp(float duration, Vector2 position, Action before, Action after)
+        {
+            this.boxCollider.enabled = false;
+            before?.Invoke(); //Zeit    
+
+            AnimatorUtil.SetAnimatorParameter(this.animator, "WakeUp");
+            float animDuration = AnimatorUtil.GetAnimationLength(this.animator, "WakeUp");
+            yield return new WaitForSeconds(animDuration);
+
+            after?.Invoke(); //Decke
+
+            EnablePlayer(true);
+
+            this.transform.position = position;
+        }
+
+
+        /////////////////////////////////////////////////////////////////////////////////
+
+
+        public CharacterPreset GetPreset()
+        {
+            return this.preset;
+        }
+
+        [Button]
+        public void UpdateCharacterParts()
+        {
+            this.handler.UpdateCharacterParts();
+            NetworkEvents.current.SetPresetForOtherClients(this);
+        }
+
+        public void OnPhotonInstantiate(PhotonMessageInfo info)
+        {
+            //if(this.isLocalPlayer) PhotonNetwork.LocalPlayer.TagObject = this;
+            this.photonView.Owner.TagObject = this;
+        }
+
+        public override void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            base.OnPhotonSerializeView(stream, info);
+
+            if (stream.IsWriting)
+            {
+                stream.SendNext(this.uniqueID);
+            }
+            else
+            {
+                this.uniqueID = (string)stream.ReceiveNext();
+            }
+        }
     }
 }

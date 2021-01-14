@@ -1,55 +1,62 @@
-﻿using Sirenix.OdinInspector;
+﻿
+
+
+
+
+using Sirenix.OdinInspector;
 using UnityEngine;
-using TMPro;
 
-public class ShopItem : Rewardable
+namespace CrystalAlchemist
 {
-    [BoxGroup("Shop-Item Attribute")]
-    [SerializeField]
-    private SpriteRenderer childSprite;
-
-    [BoxGroup("Loot")]
-    [SerializeField]
-    [HideLabel]
-    private Reward reward;
-
-    [SerializeField]
-    [BoxGroup("Mandatory")]
-    [Required]
-    private ShopPrice shopPrice;
-
-    [BoxGroup("Easy Access")]
-    [SerializeField]
-    private Animator anim;
-
-    private new void Start()
+    public class ShopItem : Rewardable
     {
-        base.Start();
-        this.setLoot();
-        this.shopPrice.Initialize(this.costs);
+        [BoxGroup("Shop-Item Attribute")]
+        [SerializeField]
+        private SpriteRenderer childSprite;
 
-        this.childSprite.sprite = this.itemDrop.stats.getSprite();
-        if (this.itemDrop == null) Destroy(this.gameObject);
-    }
+        [BoxGroup("Loot")]
+        [SerializeField]
+        [HideLabel]
+        private Reward reward;
 
-    private void setLoot()
-    {
-        this.itemDrop = this.reward.GetItemDrop();
-    }
+        [SerializeField]
+        [BoxGroup("Mandatory")]
+        [Required]
+        private ShopPrice shopPrice;
 
-    public override void DoOnSubmit()
-    {
-        if (this.player.canUseIt(this.costs))
+        [BoxGroup("Easy Access")]
+        [SerializeField]
+        private Animator anim;
+
+        private new void Start()
         {
-            this.player.reduceResource(this.costs);
-            ItemStats loot = itemDrop.stats;
+            base.Start();
+            this.setLoot();
+            this.shopPrice.Initialize(this.costs);
 
-            ShowDialog(DialogTextTrigger.success, loot);
-            if (loot != null) GameEvents.current.DoCollect(loot);
+            this.childSprite.sprite = this.itemDrop.stats.getSprite();
+            if (this.itemDrop == null) Destroy(this.gameObject);
         }
-        else
+
+        private void setLoot()
         {
-            ShowDialog(DialogTextTrigger.failed);
+            this.itemDrop = this.reward.GetItemDrop();
+        }
+
+        public override void DoOnSubmit()
+        {
+            if (this.player.canUseIt(this.costs))
+            {
+                this.player.reduceResource(this.costs);
+                ItemStats loot = itemDrop.stats;
+
+                ShowDialog(DialogTextTrigger.success, loot);
+                if (loot != null) GameEvents.current.DoCollect(loot);
+            }
+            else
+            {
+                ShowDialog(DialogTextTrigger.failed);
+            }
         }
     }
 }

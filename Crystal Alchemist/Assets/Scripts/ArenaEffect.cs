@@ -1,23 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
-[RequireComponent(typeof(Collider2D))]
-public class ArenaEffect : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    [MinValue(1)]
-    private int amount = 1;
-
-    [SerializeField]
-    private GameObject prefab;
-
-    void Start()
+    [RequireComponent(typeof(Collider2D))]
+    public class ArenaEffect : MonoBehaviour
     {
-        List<Vector2> positions = UnityUtil.GetRandomVectors(this.GetComponent<Collider2D>(), amount);
-        foreach(Vector2 position in positions)
+        [SerializeField]
+        [MinValue(1)]
+        private int amount = 1;
+
+        [SerializeField]
+        private GameObject prefab;
+
+        void Start()
         {
-            Instantiate(this.prefab, position, Quaternion.identity);
+            List<Vector2> positions = UnityUtil.GetRandomVectors(this.GetComponent<Collider2D>(), amount);
+            foreach (Vector2 position in positions)
+            {
+                Instantiate(this.prefab, position, Quaternion.identity);
+            }
         }
     }
 }

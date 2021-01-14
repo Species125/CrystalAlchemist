@@ -1,47 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class AggroBar : MonoBehaviour
+namespace CrystalAlchemist
 {
-    private AI enemy;
-
-    [SerializeField]
-    private Image charging;
-    [SerializeField]
-    private TextMeshProUGUI attacking;
-    [SerializeField]
-    private TextMeshProUGUI zielName;
-
-    public void setEnemy(AI enemy)
+    public class AggroBar : MonoBehaviour
     {
-        this.enemy = enemy;
-    }
+        private AI enemy;
 
-    private void LateUpdate()
-    {
-        if (enemy != null)
+        [SerializeField]
+        private Image charging;
+        [SerializeField]
+        private TextMeshProUGUI attacking;
+        [SerializeField]
+        private TextMeshProUGUI zielName;
+
+        public void setEnemy(AI enemy)
         {
-            float percent = 0f;
-            string ziel = "";
-            //enemy.aggroGameObject.getHighestAggro(out percent, out ziel);
+            this.enemy = enemy;
+        }
 
-            if(percent <= 0f) this.zielName.text = "";
+        private void LateUpdate()
+        {
+            if (enemy != null)
+            {
+                float percent = 0f;
+                string ziel = "";
+                //enemy.aggroGameObject.getHighestAggro(out percent, out ziel);
 
-            else this.zielName.text = "> " + ziel;
-            this.charging.fillAmount = percent;
-            
-            if (percent >= 1f)
-            {
-                this.charging.color = new Color(255, 0, 0); //red
-                this.attacking.gameObject.SetActive(true);
-            }
-            else
-            {
-                this.charging.color = new Color(255, 255, 255); //white
-                this.attacking.gameObject.SetActive(false);
+                if (percent <= 0f) this.zielName.text = "";
+
+                else this.zielName.text = "> " + ziel;
+                this.charging.fillAmount = percent;
+
+                if (percent >= 1f)
+                {
+                    this.charging.color = new Color(255, 0, 0); //red
+                    this.attacking.gameObject.SetActive(true);
+                }
+                else
+                {
+                    this.charging.color = new Color(255, 255, 255); //white
+                    this.attacking.gameObject.SetActive(false);
+                }
             }
         }
     }

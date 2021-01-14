@@ -1,76 +1,80 @@
 ﻿using System.Collections.Generic;
+
 using UnityEngine;
 
-public static class AudioUtil
+namespace CrystalAlchemist
 {
-    private static Dictionary<AudioClip, float> soundsAlreadyPlayed = new Dictionary<AudioClip, float>();
-    private static AudioSource blub;
-
-    public static void playSoundEffect(AudioClip soundeffect)
+    public static class AudioUtil
     {
-        playSoundEffect(null, soundeffect);
-    }
+        private static Dictionary<AudioClip, float> soundsAlreadyPlayed = new Dictionary<AudioClip, float>();
+        private static AudioSource blub;
 
-    public static void playSoundEffect(AudioClip soundeffect, float volume)
-    {
-        playSoundEffect(null, soundeffect, volume);
-    }
-
-    public static void playSoundEffect(GameObject gameObject, AudioClip soundeffect)
-    {
-        playSoundEffect(gameObject, soundeffect, MasterManager.settings.soundEffectVolume);
-    }
-
-    public static void playSoundEffect(GameObject gameObject, AudioClip soundeffect, float volume)
-    {
-        if (soundeffect != null)
+        public static void playSoundEffect(AudioClip soundeffect)
         {
-            GameObject parent = GameObject.FindWithTag("Audio");
+            playSoundEffect(null, soundeffect);
+        }
 
-            if (canPlaySound(soundeffect))
+        public static void playSoundEffect(AudioClip soundeffect, float volume)
+        {
+            playSoundEffect(null, soundeffect, volume);
+        }
+
+        public static void playSoundEffect(GameObject gameObject, AudioClip soundeffect)
+        {
+            playSoundEffect(gameObject, soundeffect, MasterManager.settings.soundEffectVolume);
+        }
+
+        public static void playSoundEffect(GameObject gameObject, AudioClip soundeffect, float volume)
+        {
+            if (soundeffect != null)
             {
-                GameObject temp = new GameObject(soundeffect.name);
-                if (parent != null) temp.transform.SetParent(parent.transform);
+                GameObject parent = GameObject.FindWithTag("Audio");
 
-                AudioSource source = temp.AddComponent<AudioSource>();
-                source.pitch = MasterManager.settings.soundEffectPitch;
-                source.volume = volume;
-                source.clip = soundeffect;
-
-                if (gameObject != null)
+                if (canPlaySound(soundeffect))
                 {
-                    temp.transform.position = gameObject.transform.position;
-                    source.maxDistance = 100f;
-                    source.spatialBlend = 1f;
-                    source.rolloffMode = AudioRolloffMode.Linear;
-                    source.dopplerLevel = 0f;
+                    GameObject temp = new GameObject(soundeffect.name);
+                    if (parent != null) temp.transform.SetParent(parent.transform);
+
+                    AudioSource source = temp.AddComponent<AudioSource>();
+                    source.pitch = MasterManager.settings.soundEffectPitch;
+                    source.volume = volume;
+                    source.clip = soundeffect;
+
+                    if (gameObject != null)
+                    {
+                        temp.transform.position = gameObject.transform.position;
+                        source.maxDistance = 100f;
+                        source.spatialBlend = 1f;
+                        source.rolloffMode = AudioRolloffMode.Linear;
+                        source.dopplerLevel = 0f;
+                    }
+                    source.Play();
+                    MonoBehaviour.Destroy(temp, soundeffect.length);
                 }
-                source.Play();
-                MonoBehaviour.Destroy(temp, soundeffect.length);
             }
         }
-    }
 
-    private static bool canPlaySound(AudioClip clip)
-    {
-        if (soundsAlreadyPlayed.ContainsKey(clip))
+        private static bool canPlaySound(AudioClip clip)
         {
-            float lastTimePlayed = soundsAlreadyPlayed[clip];
-            float maximum = 0.1f;
-            if (lastTimePlayed + maximum < Time.time)
+            if (soundsAlreadyPlayed.ContainsKey(clip))
             {
-                soundsAlreadyPlayed[clip] = Time.time;
-                return true;
+                float lastTimePlayed = soundsAlreadyPlayed[clip];
+                float maximum = 0.1f;
+                if (lastTimePlayed + maximum < Time.time)
+                {
+                    soundsAlreadyPlayed[clip] = Time.time;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                return false;
+                soundsAlreadyPlayed.Add(clip, Time.time);
+                return true;
             }
-        }
-        else
-        {
-            soundsAlreadyPlayed.Add(clip, Time.time);
-            return true;
         }
     }
 }

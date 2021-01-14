@@ -1,16 +1,20 @@
-﻿using UnityEngine;
+﻿
 using TMPro;
+using UnityEngine;
 
-public class CharacterCreatorName : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private TextMeshProUGUI textField;
-
-    [SerializeField]
-    private StringValue playerName;
-
-    private void OnEnable()
+    public class CharacterCreatorName : MonoBehaviour
     {
-        this.textField.text = playerName.GetValue();
+        [SerializeField]
+        private TextMeshProUGUI textField;
+
+        [SerializeField]
+        private StringValue playerName;
+
+        private void OnEnable()
+        {
+            this.textField.text = playerName.GetValue();
+        }
     }
 }

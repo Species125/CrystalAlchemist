@@ -1,29 +1,32 @@
-﻿using UnityEngine;
+﻿using AssetIcons;
 using Sirenix.OdinInspector;
-using AssetIcons;
+using UnityEngine;
 
-[CreateAssetMenu(menuName = "Game/Items/Item Info")]
-public class ItemInfo : ScriptableObject
-{    
-    [BoxGroup("Icon")]
-    [SerializeField]
-    [AssetIcon]
-    private Sprite icon;    
-
-    public void SetInfo(Sprite sprite) => this.icon = sprite;
-
-    public Sprite getSprite()
+namespace CrystalAlchemist
+{
+    [CreateAssetMenu(menuName = "Game/Items/Item Info")]
+    public class ItemInfo : ScriptableObject
     {
-        return this.icon;
-    }
+        [BoxGroup("Icon")]
+        [SerializeField]
+        [AssetIcon]
+        private Sprite icon;
 
-    public string getDescription()
-    {
-        return FormatUtil.GetLocalisedText(this.name+"_Description", LocalisationFileType.items);
-    }
+        public void SetInfo(Sprite sprite) => this.icon = sprite;
 
-    public string getName()
-    {
-        return FormatUtil.GetLocalisedText(this.name + "_Name", LocalisationFileType.items);
+        public Sprite getSprite()
+        {
+            return this.icon;
+        }
+
+        public string getDescription()
+        {
+            return FormatUtil.GetLocalisedText(this.name + "_Description", LocalisationFileType.items);
+        }
+
+        public string getName()
+        {
+            return FormatUtil.GetLocalisedText(this.name + "_Name", LocalisationFileType.items);
+        }
     }
 }

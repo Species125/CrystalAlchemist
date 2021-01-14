@@ -1,24 +1,27 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class BossMechanicParent : BossMechanicProperty
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    [HideLabel]
-    [BoxGroup("Main")]
-    private SequenceProperty selfProperty;
-
-    private void Start()
+    public class BossMechanicParent : BossMechanicProperty
     {
-        this.selfProperty.AddSpawnPoints(this.transform);
+        [SerializeField]
+        [HideLabel]
+        [BoxGroup("Main")]
+        private SequenceProperty selfProperty;
 
-        GameObject spawnpoint = GetSpawnPosition(this.selfProperty);
-        this.transform.position = spawnpoint.transform.position;
+        private void Start()
+        {
+            this.selfProperty.AddSpawnPoints(this.transform);
 
-        this.transform.rotation = this.GetRotation(this.selfProperty.rotationType, this.selfProperty.rotationFactor, this.selfProperty.GetOffset());
+            GameObject spawnpoint = GetSpawnPosition(this.selfProperty);
+            this.transform.position = spawnpoint.transform.position;
 
-        Destroy(spawnpoint, 0.3f);
-        this.enabled = false;
+            this.transform.rotation = this.GetRotation(this.selfProperty.rotationType, this.selfProperty.rotationFactor, this.selfProperty.GetOffset());
+
+            Destroy(spawnpoint, 0.3f);
+            this.enabled = false;
+        }
+
     }
-   
 }

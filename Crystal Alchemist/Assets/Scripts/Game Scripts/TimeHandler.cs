@@ -1,36 +1,41 @@
-﻿using UnityEngine;
+﻿
+
 using Photon.Pun;
+using UnityEngine;
 
-public class TimeHandler : MonoBehaviour, IPunObservable
+namespace CrystalAlchemist
 {
-    //TODO: RPC instead of Observable
-
-    [SerializeField]
-    private TimeValue timeValue;
-
-    private void Start()
+    public class TimeHandler : MonoBehaviour, IPunObservable
     {
-        this.timeValue.Reset();
-    }
+        //TODO: RPC instead of Observable
 
-    private void FixedUpdate()
-    {
-        if (!NetworkUtil.IsMaster()) return;
-        this.timeValue.setTime(Time.fixedDeltaTime);
-    }
+        [SerializeField]
+        private TimeValue timeValue;
 
-    
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
+        private void Start()
         {
-            stream.SendNext(this.timeValue.hour);
-            stream.SendNext(this.timeValue.minute);
+            this.timeValue.Reset();
         }
-        else
+
+        private void FixedUpdate()
         {
-            this.timeValue.hour = (int)stream.ReceiveNext();
-            this.timeValue.minute = (int)stream.ReceiveNext();
+            if (!NetworkUtil.IsMaster()) return;
+            this.timeValue.setTime(Time.fixedDeltaTime);
+        }
+
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(this.timeValue.hour);
+                stream.SendNext(this.timeValue.minute);
+            }
+            else
+            {
+                this.timeValue.hour = (int)stream.ReceiveNext();
+                this.timeValue.minute = (int)stream.ReceiveNext();
+            }
         }
     }
 }

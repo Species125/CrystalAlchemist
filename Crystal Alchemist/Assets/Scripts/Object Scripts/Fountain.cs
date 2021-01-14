@@ -1,15 +1,18 @@
-﻿using UnityEngine;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class Fountain : Interactable
+namespace CrystalAlchemist
 {
-    [BoxGroup("Resource")]
-    [SerializeField]
-    private List<CharacterResource> resources = new List<CharacterResource>();
-
-    public override void DoOnSubmit()
+    public class Fountain : Interactable
     {
-        foreach(CharacterResource resource in this.resources) this.player.updateResource(resource.resourceType, resource.item, resource.amount, true);
+        [BoxGroup("Resource")]
+        [SerializeField]
+        private List<CharacterResource> resources = new List<CharacterResource>();
+
+        public override void DoOnSubmit()
+        {
+            foreach (CharacterResource resource in this.resources) this.player.updateResource(resource.resourceType, resource.item, resource.amount, true);
+        }
     }
 }

@@ -1,31 +1,34 @@
-﻿using UnityEngine;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class DynamicObstacle : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    [InfoBox("Determine on which layer it shows as obstacle")]
-    private GraphType graphType = GraphType.ground;
-
-    [SerializeField]
-    [MinValue(0.1f)]
-    [MaxValue(10f)]
-    [Tooltip("How often the grid will be updated")]
-    private float updateInterval = 0.2f;
-
-    private PathfindingGrid grid;
-
-    private void Start()
+    public class DynamicObstacle : MonoBehaviour
     {
-        if (Pathfinding.Instance != null)
+        [SerializeField]
+        [InfoBox("Determine on which layer it shows as obstacle")]
+        private GraphType graphType = GraphType.ground;
+
+        [SerializeField]
+        [MinValue(0.1f)]
+        [MaxValue(10f)]
+        [Tooltip("How often the grid will be updated")]
+        private float updateInterval = 0.2f;
+
+        private PathfindingGrid grid;
+
+        private void Start()
         {
-            this.grid = Pathfinding.Instance.GetGrid(this.graphType);
-            InvokeRepeating("SetNode", 0.5f, this.updateInterval);
+            if (Pathfinding.Instance != null)
+            {
+                this.grid = Pathfinding.Instance.GetGrid(this.graphType);
+                InvokeRepeating("SetNode", 0.5f, this.updateInterval);
+            }
         }
-    }
 
-    private void SetNode()
-    {
-        if(this.grid != null) this.grid.UpdateGrid(this.gameObject, this.GetComponent<Collider2D>());
+        private void SetNode()
+        {
+            if (this.grid != null) this.grid.UpdateGrid(this.gameObject, this.GetComponent<Collider2D>());
+        }
     }
 }

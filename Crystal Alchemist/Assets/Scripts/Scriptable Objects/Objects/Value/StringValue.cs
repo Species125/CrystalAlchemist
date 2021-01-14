@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Values/StringValue")]
-public class StringValue : ScriptableObject
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private string value;
-
-    public string GetValue()
+    [CreateAssetMenu(menuName = "Values/StringValue")]
+    public class StringValue : ScriptableObject
     {
-        return this.value;
-    }
+        [SerializeField]
+        private string value;
 
-    public void SetValue(string value)
-    {
-        this.value = value;
+        public string GetValue()
+        {
+            return this.value;
+        }
+
+        public void SetValue(string value)
+        {
+            this.value = value;
+        }
     }
 }

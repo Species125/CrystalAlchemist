@@ -1,61 +1,67 @@
 ﻿using System.Collections.Generic;
+
+
+
 using UnityEngine;
 
-public class StatusEffectBar : MonoBehaviour
+namespace CrystalAlchemist
 {
-    private List<StatusEffectUI> activeStatusEffectUIs = new List<StatusEffectUI>();
-    private List<StatusEffect> activeStatusEffects = new List<StatusEffect>();
-
-    [SerializeField]
-    private GameObject statusEffectHolder;
-    [SerializeField]
-    private StatusEffectUI statusEffectGameObject;
-
-    [SerializeField]
-    private CharacterValues values;
-
-    private void Start()
+    public class StatusEffectBar : MonoBehaviour
     {
-        this.statusEffectGameObject.gameObject.SetActive(false);
-        GameEvents.current.OnEffectUpdate += updateStatusEffect;
-    }
+        private List<StatusEffectUI> activeStatusEffectUIs = new List<StatusEffectUI>();
+        private List<StatusEffect> activeStatusEffects = new List<StatusEffect>();
 
-    private void OnDestroy()
-    {
-        GameEvents.current.OnEffectUpdate -= updateStatusEffect;
-    }
+        [SerializeField]
+        private GameObject statusEffectHolder;
+        [SerializeField]
+        private StatusEffectUI statusEffectGameObject;
 
-    public void setCharacter(CharacterValues characterValues)
-    {
-        if(this.values == null) this.values = characterValues;
-    }
+        [SerializeField]
+        private CharacterValues values;
 
-    public void updateStatusEffect()
-    {
-        if (this.values != null)
+        private void Start()
         {
-            //füge ggf. beide Listen hinzu oder selektiere nur eine
-            List<StatusEffect> activeStatusEffects = new List<StatusEffect>();
+            this.statusEffectGameObject.gameObject.SetActive(false);
+            GameEvents.current.OnEffectUpdate += updateStatusEffect;
+        }
 
-            activeStatusEffects.AddRange(this.values.buffs);
-            activeStatusEffects.AddRange(this.values.debuffs);
+        private void OnDestroy()
+        {
+            GameEvents.current.OnEffectUpdate -= updateStatusEffect;
+        }
 
-            foreach (StatusEffect statusEffect in activeStatusEffects)
+        public void setCharacter(CharacterValues characterValues)
+        {
+            if (this.values == null) this.values = characterValues;
+        }
+
+        public void updateStatusEffect()
+        {
+            if (this.values != null)
             {
-                if (!this.activeStatusEffects.Contains(statusEffect))
+                //füge ggf. beide Listen hinzu oder selektiere nur eine
+                List<StatusEffect> activeStatusEffects = new List<StatusEffect>();
+
+                activeStatusEffects.AddRange(this.values.buffs);
+                activeStatusEffects.AddRange(this.values.debuffs);
+
+                foreach (StatusEffect statusEffect in activeStatusEffects)
                 {
-                    StatusEffectUI statusEffectGUI = Instantiate(this.statusEffectGameObject, this.statusEffectHolder.transform);
-                    statusEffectGUI.setUI(statusEffect);
-                    statusEffectGUI.gameObject.SetActive(true);
+                    if (!this.activeStatusEffects.Contains(statusEffect))
+                    {
+                        StatusEffectUI statusEffectGUI = Instantiate(this.statusEffectGameObject, this.statusEffectHolder.transform);
+                        statusEffectGUI.setUI(statusEffect);
+                        statusEffectGUI.gameObject.SetActive(true);
 
-                    this.activeStatusEffects.Add(statusEffect);
-                    this.activeStatusEffectUIs.Add(statusEffectGUI);
+                        this.activeStatusEffects.Add(statusEffect);
+                        this.activeStatusEffectUIs.Add(statusEffectGUI);
+                    }
                 }
-            }
 
-            foreach(StatusEffectUI statusEffectUI in this.activeStatusEffectUIs)
-            {
-                statusEffectUI.updateUI();
+                foreach (StatusEffectUI statusEffectUI in this.activeStatusEffectUIs)
+                {
+                    statusEffectUI.updateUI();
+                }
             }
         }
     }

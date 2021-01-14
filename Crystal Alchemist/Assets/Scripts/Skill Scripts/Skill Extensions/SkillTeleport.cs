@@ -1,15 +1,20 @@
-﻿using UnityEngine;
+﻿
+
 using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class SkillTeleport : SkillExtension
+namespace CrystalAlchemist
 {
-    [Required]
-    [SerializeField]
-    private PlayerTeleportList playerTeleport;
-
-    public override void Initialize()
+    public class SkillTeleport : SkillExtension
     {
-        this.playerTeleport.SetReturnTeleport();
-        GameEvents.current.DoTeleport();
+        [Required]
+        [SerializeField]
+        private PlayerTeleportList playerTeleport;
+
+        public override void Initialize()
+        {
+            this.playerTeleport.SetReturnTeleport();
+            GameEvents.current.DoTeleport();
+        }
     }
 }

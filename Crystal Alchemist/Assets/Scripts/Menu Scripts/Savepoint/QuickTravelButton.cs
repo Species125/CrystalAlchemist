@@ -1,35 +1,40 @@
-﻿using UnityEngine.SceneManagement;
-using UnityEngine;
-using UnityEngine.UI;
+﻿
+
+
 using Sirenix.OdinInspector;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class QuickTravelButton : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    [Required]
-    private PlayerTeleportList playerTeleport;
-
-    [SerializeField]
-    [Required]
-    private TextMeshProUGUI textField;
-
-    [SerializeField]
-    [Required]
-    private Image image;
-
-    private TeleportStats location;
-
-    public void SetLocation(TeleportStats stat)
+    public class QuickTravelButton : MonoBehaviour
     {
-        this.location = stat;
-        this.textField.text = this.location.GetTeleportName();
-        this.image.sprite = this.location.icon;
-    }
+        [SerializeField]
+        [Required]
+        private PlayerTeleportList playerTeleport;
 
-    public void Teleport()
-    {
-        this.playerTeleport.SetNextTeleport(this.location);
-        GameEvents.current.DoTeleport();
+        [SerializeField]
+        [Required]
+        private TextMeshProUGUI textField;
+
+        [SerializeField]
+        [Required]
+        private Image image;
+
+        private TeleportStats location;
+
+        public void SetLocation(TeleportStats stat)
+        {
+            this.location = stat;
+            this.textField.text = this.location.GetTeleportName();
+            this.image.sprite = this.location.icon;
+        }
+
+        public void Teleport()
+        {
+            this.playerTeleport.SetNextTeleport(this.location);
+            GameEvents.current.DoTeleport();
+        }
     }
 }

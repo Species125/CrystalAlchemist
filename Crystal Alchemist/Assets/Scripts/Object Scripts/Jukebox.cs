@@ -1,14 +1,20 @@
-﻿using Sirenix.OdinInspector;
+﻿
+
+
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class Jukebox : Interactable
+namespace CrystalAlchemist
 {
-    [BoxGroup("JukeBox")]
-    [SerializeField]
-    private BackgroundMusic defaultMusic;
-
-    public override void DoOnSubmit()
+    public class Jukebox : Interactable
     {
-        MenuEvents.current.OpenJukeBox();
+        [BoxGroup("JukeBox")]
+        [SerializeField]
+        private BackgroundMusic defaultMusic;
+
+        public override void DoOnSubmit()
+        {
+            MenuEvents.current.OpenJukeBox();
+        }
     }
 }

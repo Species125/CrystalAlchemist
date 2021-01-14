@@ -1,57 +1,60 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 
-public class DateLocation : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private TextMeshProUGUI textField;
-
-    [SerializeField]
-    private TextMeshProUGUI timeField;
-
-    [SerializeField]
-    private TimeValue timeValue;
-
-    [SerializeField]
-    private GameObject sun;
-
-    [SerializeField]
-    private GameObject moon;
-
-    [SerializeField]
-    private StringValue locationID;
-
-    private void Start()
+    public class DateLocation : MonoBehaviour
     {
-        SettingsEvents.current.OnLanguangeChanged += updateLocationText;
-        updateLocationText();
-    }
+        [SerializeField]
+        private TextMeshProUGUI textField;
 
-    private void Update() => UpdateTime();
+        [SerializeField]
+        private TextMeshProUGUI timeField;
 
-    private void OnDestroy() => SettingsEvents.current.OnLanguangeChanged -= updateLocationText;
+        [SerializeField]
+        private TimeValue timeValue;
 
+        [SerializeField]
+        private GameObject sun;
 
-    private void UpdateTime()
-    {
-        int hour = this.timeValue.getHour();
+        [SerializeField]
+        private GameObject moon;
 
-        this.timeField.text = hour.ToString("00") + ":" + this.timeValue.getMinute().ToString("00");
+        [SerializeField]
+        private StringValue locationID;
 
-        if (!this.timeValue.night && !sun.activeInHierarchy)
+        private void Start()
         {
-            sun.SetActive(true);
-            moon.SetActive(false);
+            SettingsEvents.current.OnLanguangeChanged += updateLocationText;
+            updateLocationText();
         }
-        else if (this.timeValue.night && !moon.activeInHierarchy)
-        {
-            sun.SetActive(false);
-            moon.SetActive(true);
-        }
-    }
 
-    private void updateLocationText()
-    {
-        this.textField.text = FormatUtil.GetLocalisedText(this.locationID.GetValue(), LocalisationFileType.maps);
+        private void Update() => UpdateTime();
+
+        private void OnDestroy() => SettingsEvents.current.OnLanguangeChanged -= updateLocationText;
+
+
+        private void UpdateTime()
+        {
+            int hour = this.timeValue.getHour();
+
+            this.timeField.text = hour.ToString("00") + ":" + this.timeValue.getMinute().ToString("00");
+
+            if (!this.timeValue.night && !sun.activeInHierarchy)
+            {
+                sun.SetActive(true);
+                moon.SetActive(false);
+            }
+            else if (this.timeValue.night && !moon.activeInHierarchy)
+            {
+                sun.SetActive(false);
+                moon.SetActive(true);
+            }
+        }
+
+        private void updateLocationText()
+        {
+            this.textField.text = FormatUtil.GetLocalisedText(this.locationID.GetValue(), LocalisationFileType.maps);
+        }
     }
 }

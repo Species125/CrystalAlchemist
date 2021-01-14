@@ -1,39 +1,42 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using Sirenix.OdinInspector;
 
-public class PauseMenu : MenuBehaviour
+namespace CrystalAlchemist
 {
-    [BoxGroup("Error Log")]
-    [SerializeField]
-    private DebugLog logging;
-
-    [BoxGroup("Error Log")]
-    [SerializeField]
-    private InfoNumber errorCount;
-
-    public override void Start()
+    public class PauseMenu : MenuBehaviour
     {
-        base.Start();
-        MenuEvents.current.OnPause += ExitMenu;
+        [BoxGroup("Error Log")]
+        [SerializeField]
+        private DebugLog logging;
 
-        errorCount.gameObject.SetActive(false);
+        [BoxGroup("Error Log")]
+        [SerializeField]
+        private InfoNumber errorCount;
 
-        if (logging.errorCount > 0)
+        public override void Start()
         {
-            errorCount.gameObject.SetActive(true);
-            errorCount.SetValue(logging.errorCount);
+            base.Start();
+            MenuEvents.current.OnPause += ExitMenu;
+
+            errorCount.gameObject.SetActive(false);
+
+            if (logging.errorCount > 0)
+            {
+                errorCount.gameObject.SetActive(true);
+                errorCount.SetValue(logging.errorCount);
+            }
         }
+
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            MenuEvents.current.OnPause -= ExitMenu;
+        }
+
+        public void ExitGame() => SceneManager.LoadSceneAsync(0);
+
+        public void SaveSettings() => SaveSystem.SaveOptions();
     }
-
-
-    public override void OnDestroy()
-    {
-        base.OnDestroy();
-        MenuEvents.current.OnPause -= ExitMenu;
-    }
-
-    public void ExitGame() => SceneManager.LoadSceneAsync(0);    
-
-    public void SaveSettings() => SaveSystem.SaveOptions();    
 }

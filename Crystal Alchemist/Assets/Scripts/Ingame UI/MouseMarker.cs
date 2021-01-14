@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class MouseMarker : MonoBehaviour
+namespace CrystalAlchemist
 {
-    public void DestroyIt() => Destroy(this.gameObject);
+    public class MouseMarker : MonoBehaviour
+    {
+        public void DestroyIt() => Destroy(this.gameObject);
+    }
 }

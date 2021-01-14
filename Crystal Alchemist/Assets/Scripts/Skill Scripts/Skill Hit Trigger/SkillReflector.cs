@@ -1,33 +1,39 @@
-﻿using UnityEngine;
+﻿
 
-public class SkillReflector : SkillHitTrigger
+
+using UnityEngine;
+
+namespace CrystalAlchemist
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class SkillReflector : SkillHitTrigger
     {
-        if (collision.GetComponent<SkillCollider>() != null)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            Skill skill = collision.GetComponent<SkillCollider>().skill;
-
-            if (skill != null && isReflected(skill))
+            if (collision.GetComponent<SkillCollider>() != null)
             {
-                skill.sender = this.skill.sender;
+                Skill skill = collision.GetComponent<SkillCollider>().skill;
 
-                if (skill.myRigidbody != null)
+                if (skill != null && isReflected(skill))
                 {
-                    skill.SetDirection(Vector2.Reflect(skill.GetDirection(), this.skill.GetDirection()));
-                    skill.GetComponent<SkillProjectile>().setVelocity();
-                    skill.transform.rotation = RotationUtil.getRotation(skill.GetDirection());
+                    skill.sender = this.skill.sender;
+
+                    if (skill.myRigidbody != null)
+                    {
+                        skill.SetDirection(Vector2.Reflect(skill.GetDirection(), this.skill.GetDirection()));
+                        skill.GetComponent<SkillProjectile>().setVelocity();
+                        skill.transform.rotation = RotationUtil.getRotation(skill.GetDirection());
+                    }
                 }
             }
         }
+
+        private bool isReflected(Skill skill)
+        {
+            if (skill.GetComponent<SkillProjectileHit>() != null
+                && skill.GetComponent<SkillProjectileHit>().canBeReflected) return true;
+
+            return false;
+        }
+
     }
-
-    private bool isReflected(Skill skill)
-    {
-        if (skill.GetComponent<SkillProjectileHit>() != null
-            && skill.GetComponent<SkillProjectileHit>().canBeReflected) return true;
-
-        return false;
-    }
-
 }

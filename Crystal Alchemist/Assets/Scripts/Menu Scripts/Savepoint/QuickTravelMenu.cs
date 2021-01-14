@@ -1,31 +1,35 @@
-﻿using System.Collections.Generic;
+﻿
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class QuickTravelMenu : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private PlayerTeleportList list;
-
-    [SerializeField]
-    private QuickTravelButton template;
-
-    [SerializeField]
-    private GameObject content;
-
-    private void Start()
+    public class QuickTravelMenu : MonoBehaviour
     {
-        for(int i = 0; i < list.GetStats().Count; i++)
+        [SerializeField]
+        private PlayerTeleportList list;
+
+        [SerializeField]
+        private QuickTravelButton template;
+
+        [SerializeField]
+        private GameObject content;
+
+        private void Start()
         {
-            TeleportStats stats = list.GetStats(i);
-            if (stats.scene == SceneManager.GetActiveScene().name) continue;
+            for (int i = 0; i < list.GetStats().Count; i++)
+            {
+                TeleportStats stats = list.GetStats(i);
+                if (stats.scene == SceneManager.GetActiveScene().name) continue;
 
-            QuickTravelButton newButton = Instantiate(template, this.content.transform);
-            newButton.gameObject.SetActive(true);
-            newButton.SetLocation(stats);
-            newButton.name = stats.scene;
+                QuickTravelButton newButton = Instantiate(template, this.content.transform);
+                newButton.gameObject.SetActive(true);
+                newButton.SetLocation(stats);
+                newButton.name = stats.scene;
+            }
+
+            Destroy(this.template.gameObject);
         }
-
-        Destroy(this.template.gameObject);
     }
 }

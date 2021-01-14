@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 
-public class ExceptionHandler : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private DebugLog log;
-
-    void OnEnable()
+    public class ExceptionHandler : MonoBehaviour
     {
-        this.log.Initialize();
-        Application.logMessageReceived += HandleLog;
-    }
+        [SerializeField]
+        private DebugLog log;
 
-    void OnDisable() => Application.logMessageReceived -= HandleLog;
+        void OnEnable()
+        {
+            this.log.Initialize();
+            Application.logMessageReceived += HandleLog;
+        }
 
-    void HandleLog(string logString, string stackTrace, LogType type)
-    {
-        if (type == LogType.Exception) log.WriteLog(logString, stackTrace, type);   
+        void OnDisable() => Application.logMessageReceived -= HandleLog;
+
+        void HandleLog(string logString, string stackTrace, LogType type)
+        {
+            if (type == LogType.Exception) log.WriteLog(logString, stackTrace, type);
+        }
     }
 }

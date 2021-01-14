@@ -1,20 +1,25 @@
 ﻿
+
+
 using UnityEngine;
 
-public class MagicalMirror : Interactable
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private Vector2 playerPosition = new Vector2(0, 0);   
-
-    public override void DoOnSubmit()
+    public class MagicalMirror : Interactable
     {
-        this.player.transform.position = this.playerPosition;
-        this.player.SetDefaultDirection();
-        MenuEvents.current.OpenCharacterCreation();
-    }
+        [SerializeField]
+        private Vector2 playerPosition = new Vector2(0, 0);
 
-    public void ChangeCharacterDirection(Vector2 direction)
-    {
-        this.player.ChangeDirection(direction);
+        public override void DoOnSubmit()
+        {
+            this.player.transform.position = this.playerPosition;
+            this.player.SetDefaultDirection();
+            MenuEvents.current.OpenCharacterCreation();
+        }
+
+        public void ChangeCharacterDirection(Vector2 direction)
+        {
+            this.player.ChangeDirection(direction);
+        }
     }
 }

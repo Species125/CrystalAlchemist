@@ -1,40 +1,43 @@
-﻿using UnityEngine;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class SkillPositionZModule : SkillModifier
+namespace CrystalAlchemist
 {
-    public enum PositionType
+    public class SkillPositionZModule : SkillModifier
     {
-        none,
-        ground,
-        center,
-        custom
-    }
-
-    [BoxGroup("Position Z")]
-    [SerializeField]
-    private PositionType type = PositionType.custom;
-
-    [BoxGroup("Position Z")]
-    [Range(-1, 2)]
-    [Tooltip("Positions-Höhe")]
-    [ShowIf("type", PositionType.custom)]
-    [SerializeField]
-    private float positionHeight = 0f;
-
-    [BoxGroup("Position Z")]
-    [Tooltip("Schattencollider Höhe")]
-    [Range(-1, 0)]
-    [SerializeField]
-    private float colliderHeightOffset = -0.5f;
-
-    public void Initialize()
-    {
-        switch (this.type)
+        public enum PositionType
         {
-            case PositionType.ground: this.transform.position = this.skill.sender.GetGroundPosition(); break;
-            case PositionType.center: this.transform.position = this.skill.sender.GetShootingPosition(); break;
-            case PositionType.custom: this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + positionHeight); break;
+            none,
+            ground,
+            center,
+            custom
+        }
+
+        [BoxGroup("Position Z")]
+        [SerializeField]
+        private PositionType type = PositionType.custom;
+
+        [BoxGroup("Position Z")]
+        [Range(-1, 2)]
+        [Tooltip("Positions-Höhe")]
+        [ShowIf("type", PositionType.custom)]
+        [SerializeField]
+        private float positionHeight = 0f;
+
+        [BoxGroup("Position Z")]
+        [Tooltip("Schattencollider Höhe")]
+        [Range(-1, 0)]
+        [SerializeField]
+        private float colliderHeightOffset = -0.5f;
+
+        public void Initialize()
+        {
+            switch (this.type)
+            {
+                case PositionType.ground: this.transform.position = this.skill.sender.GetGroundPosition(); break;
+                case PositionType.center: this.transform.position = this.skill.sender.GetShootingPosition(); break;
+                case PositionType.custom: this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + positionHeight); break;
+            }
         }
     }
 }

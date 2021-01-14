@@ -1,110 +1,117 @@
 ﻿using UnityEngine;
 
-public class TODOLIST : MonoBehaviour
+namespace CrystalAlchemist
 {
-    //TODO (0.2.7)
-    //TODO: Enemy Alarm mit Radius
-    //TODO: Enemy Spawn on Death (Death Event?) -> Großer Blob zu kleinen Blobs
-    //TODO: Custom Debug and Exception
-    //TODO: Autosave
+    public class TODOLIST : MonoBehaviour
+    {
+        //TODO (0.2.7)
+        //TODO: Enemy Alarm mit Radius
+        //TODO: Enemy Spawn on Death (Death Event?) -> Großer Blob zu kleinen Blobs
+        //TODO: Custom Debug and Exception
+        //TODO: Autosave
 
-    //ANIMATION: InMenu
+        //ANIMATION: InMenu
+        //BUG: wrong enemy kill
+        //BUG: Selfhit
+        //BUG: Key Items still visible
+        //BUG: No weapon        
+        //BUG: Treasure Error
+        //BUG: Treasure Multi-Items
 
-    //BUG: Treasure Error
-    //BUG: Treasure Multi-Items
-    //BUG: Guest Selfhit?
+        //NETWORKING: ROOM: Lock Room
+        //NETWORKING: PLAYER: StatusEffects Sync
+        //NETWORKING: ENEMY: Skill Instantiate, Kill, Aggro Sync and Phase Transition Enemy Master only
+        //NETWORKING: SKILLS: Sync and testing
+        //NETWORKING: Death Screen. Master when dead. confirmation only living
 
-    //NETWORKING: SCENE: Scene Change + Confirmation Screen
-    //NETWORKING: PLAYER: Teleport and StatusEffects Sync
-    //NETWORKING: ENEMY: Skill Instantiate, Kill, Aggro Sync and Phase Transition Enemy Master only
-    //NETWORKING: SKILLS: Sync and testing
+        //NETWORKING: Boss Events, Spiegel RPC
 
-    /*     
+        /*     
     GRAPHICS: Booster
     GRAPHICS: Katzenohren und Katzenschwanz
     GRAPHICS: Schuppen (Beine und Körper)
     GRAPHICS: Beine ohne Animation (fürs Fliegen)
     */
 
-    //SKILL: Tornado (Zieht Gegner ran und macht Schaden)
-    //SKILL: Geode (Fläche, die Schaden über Zeit macht)
-    //SKILL: Protect (Rundum-Schild)
-    //REWORK: Windklinge, Feuerball, Eissplitter, Frostspitze, Steinwand
+        //SKILL: Tornado (Zieht Gegner ran und macht Schaden)
+        //SKILL: Geode (Fläche, die Schaden über Zeit macht)
+        //SKILL: Protect (Rundum-Schild)
+        //REWORK: Windklinge, Feuerball, Eissplitter, Frostspitze, Steinwand
 
-    ////////////////////NEW////////////////////////////
-    //REWORK: Character Creation (VR Keyboard, Races, Wings)
-    //ONLINE!!!
-    //BUGFIXES, BETTER GRAPHICS, MOUSE-CONTROLS, AUTO-UI
+        ////////////////////NEW////////////////////////////
+        //REWORK: Character Creation (VR Keyboard, Races, Wings)
+        //ONLINE!!!
+        //BUGFIXES, BETTER GRAPHICS, MOUSE-CONTROLS, AUTO-UI
 
-    //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
 
-    //TODO (0.2.6.5)
+        //TODO (0.2.6.5)
 
-    //GRAPHICS: Sky
-    //GRAPHICS: New Outfits (Sci Fi, Visor, Mundschutz, Devine Robe)
-    //GRAPHICS: Player Animations (Casting, Arrow, Spear, Victory)
-    //GRAPHICS: New Nitro Animation
-    //GRAPHICS: Smoke (Collectable, Interactable, Warp)
+        //GRAPHICS: Sky
+        //GRAPHICS: New Outfits (Sci Fi, Visor, Mundschutz, Devine Robe)
+        //GRAPHICS: Player Animations (Casting, Arrow, Spear, Victory)
+        //GRAPHICS: New Nitro Animation
+        //GRAPHICS: Smoke (Collectable, Interactable, Warp)
 
-    //CONTENT: Jukebox (slow loading)
-    //CONTENT: New Enemies (Bat, Bee, Spider, Libelle, Flower, Crystal, Zombie, Ghost, Skeleton, Butterfly, etc)
-    //CONTENT: Sin Eater Race (glowing eyes, halo, wings, etc)
-    //CONTENT: New Maps (Crystal Cave, Night Forest, Heaven)
+        //CONTENT: Jukebox (slow loading)
+        //CONTENT: New Enemies (Bat, Bee, Spider, Libelle, Flower, Crystal, Zombie, Ghost, Skeleton, Butterfly, etc)
+        //CONTENT: Sin Eater Race (glowing eyes, halo, wings, etc)
+        //CONTENT: New Maps (Crystal Cave, Night Forest, Heaven)
 
-    //CONTENT: BOSSFIGHT #2
-    //GRAPHICS: Sin Eater
-    //MAP: Divine Heaven
-    //SKILLS: Soak Puddle
-    //SKILLS: Dark Puddle
-    //SKILLS: Tower
-    //SKILLS: Stack Mark
+        //CONTENT: BOSSFIGHT #2
+        //GRAPHICS: Sin Eater
+        //MAP: Divine Heaven
+        //SKILLS: Soak Puddle
+        //SKILLS: Dark Puddle
+        //SKILLS: Tower
+        //SKILLS: Stack Mark
 
-    //REWORK: Soundeffects and Graphics
-    //REWORK: Skills with Impact (Hitzeblitz, Eissplitter, Giftpfeil, etc)
+        //REWORK: Soundeffects and Graphics
+        //REWORK: Skills with Impact (Hitzeblitz, Eissplitter, Giftpfeil, etc)
 
-    //TODO: Intro
-    //TODO: Glasses (HUD)
-    //TODO: Tutorial und Tutorial Log
-    //TODO: Quests and Quest Log
+        //TODO: Intro
+        //TODO: Glasses (HUD)
+        //TODO: Tutorial und Tutorial Log
+        //TODO: Quests and Quest Log
 
-    //CONTENT: Collectable Skills
-    //CONTENT: Collectable Skins
-    //CONTENT: Collectable Races (DNA)
+        //CONTENT: Collectable Skills
+        //CONTENT: Collectable Skins
+        //CONTENT: Collectable Races (DNA)
 
-    //TODO: Jahreszeiten
+        //TODO: Jahreszeiten
 
-    //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
 
-    //TODO (1.0)
-    //- Cutscenes
-    //- Quests und Story
-    //- Content!
+        //TODO (1.0)
+        //- Cutscenes
+        //- Quests und Story
+        //- Content!
 
-    //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
 
-    //TODO (1.5)
-    //- Multiplayer!
-    //- Pathfinding!
+        //TODO (1.5)
+        //- Multiplayer!
+        //- Pathfinding!
 
-    //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
 
-    //Wetter
-    //- Regen (x)
-    //- Schnee (x)
-    //- Gewitter
-    //- Nebel
-    //- Wolken
-    //- Grau
-    //- Wüste
-    //- Unterwasser
+        //Wetter
+        //- Regen (x)
+        //- Schnee (x)
+        //- Gewitter
+        //- Nebel
+        //- Wolken
+        //- Grau
+        //- Wüste
+        //- Unterwasser
 
-    //Visual Graph (Particles)
-    //Jobs Pathfinding (Jobs!)
-    //Multiplayer (Mirror?)
-    //Struct vs Class (int? ref)
-    //Documentation Update (How did I... , usefull links)
+        //Visual Graph (Particles)
+        //Jobs Pathfinding (Jobs!)
+        //Multiplayer (Mirror?)
+        //Struct vs Class (int? ref)
+        //Documentation Update (How did I... , usefull links)
 
-    /*
+        /*
 public void SetAsTreasureItem(Transform parent)
 {
     this.showEffectOnDisable = false;
@@ -116,14 +123,14 @@ public void SetAsTreasureItem(Transform parent)
     this.enabled = false;
 }*/
 
-    /*
+        /*
 [BoxGroup("Mandatory")]
 [Required]
 [SerializeField]
 private GameObject showItem;
 */
 
-    /*
+        /*
 public override void DoOnUpdate()
 {
 
@@ -136,14 +143,14 @@ public override void DoOnUpdate()
 }
 */
 
-    /*
+        /*
 if (this.treasureEnabled)
 {
     if (this.player.canUseIt(this.costs)) openChest(); //open Chest
     else ShowDialog(DialogTextTrigger.failed);
 }*/
 
-    /*
+        /*
     private void openChest()
     {
 
@@ -182,7 +189,7 @@ if (this.treasureEnabled)
 
 
 
-    /*
+        /*
     public void SetEnabled(bool enable)
     {
         //Animator Events
@@ -207,10 +214,10 @@ if (this.treasureEnabled)
 
 
 
-    //public const byte RESPAWN_SHOW_EVENT = 1;
-    //public const byte RESPAWN_HIDE_EVENT = 2;
+        //public const byte RESPAWN_SHOW_EVENT = 1;
+        //public const byte RESPAWN_HIDE_EVENT = 2;
 
-    /*
+        /*
     private void OnEnable()
     {
         PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
@@ -247,4 +254,5 @@ if (this.treasureEnabled)
         }
     }
     */
+    }
 }

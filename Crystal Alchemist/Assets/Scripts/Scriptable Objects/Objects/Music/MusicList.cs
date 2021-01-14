@@ -1,8 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicList : ScriptableObject
+namespace CrystalAlchemist
 {
-    public List<MusicTheme> themes = new List<MusicTheme>();
+    public class MusicList : ScriptableObject
+    {
+        public List<MusicTheme> themes = new List<MusicTheme>();
+    }
 }

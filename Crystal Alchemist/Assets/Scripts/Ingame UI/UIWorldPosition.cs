@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
-public class UIWorldPosition : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private GameObject parent;
+    public class UIWorldPosition : MonoBehaviour
+    {
+        [SerializeField]
+        private GameObject parent;
 
-    private void FixedUpdate() => UnityUtil.ScreenToWorld(this.transform, this.parent);
+        private void FixedUpdate() => UnityUtil.ScreenToWorld(this.transform, this.parent);
+    }
 }

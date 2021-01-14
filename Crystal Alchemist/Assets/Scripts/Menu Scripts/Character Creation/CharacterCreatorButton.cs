@@ -1,24 +1,27 @@
-﻿using UnityEngine;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterCreatorButton : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [Required]
-    public GameObject selectedFrame;
-
-    [Required]
-    public Image preview;
-
-    public virtual bool IsSelected()
+    public class CharacterCreatorButton : MonoBehaviour
     {
-        return false;
+        [Required]
+        public GameObject selectedFrame;
+
+        [Required]
+        public Image preview;
+
+        public virtual bool IsSelected()
+        {
+            return false;
+        }
+
+        public virtual void Click()
+        {
+
+        }
+
+        public void SetSelection() => this.selectedFrame.SetActive(IsSelected());
     }
-
-    public virtual void Click()
-    {
-
-    }
-
-    public void SetSelection() => this.selectedFrame.SetActive(IsSelected());    
 }

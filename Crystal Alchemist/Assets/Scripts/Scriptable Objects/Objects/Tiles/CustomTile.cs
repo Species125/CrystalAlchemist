@@ -1,40 +1,43 @@
-using UnityEngine.Tilemaps;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 
-[System.Serializable]
-public struct TileSprites
+namespace CrystalAlchemist
 {
-    public Sprite sprite;
-    public season season;
-}
-
-[CreateAssetMenu(menuName = "Game/Tiles/Custom Tile")]
-public class CustomTile : Tile
-{    
-    [SerializeField]
-    private Sprite defaultSprite;
-
-    [SerializeField]
-    private List<TileSprites> tileSprites = new List<TileSprites>();
-    
-    [SerializeField]
-    private TimeValue timeValue;
-    
-    public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
+    [System.Serializable]
+    public struct TileSprites
     {
-        tileData.sprite = defaultSprite;
-        Sprite sprite = GetSprite(this.timeValue);
-        if (sprite != null) tileData.sprite = sprite;
+        public Sprite sprite;
+        public season season;
     }
 
-    public Sprite GetSprite(TimeValue value)
+    [CreateAssetMenu(menuName = "Game/Tiles/Custom Tile")]
+    public class CustomTile : Tile
     {
-        foreach(TileSprites sprites in this.tileSprites)
+        [SerializeField]
+        private Sprite defaultSprite;
+
+        [SerializeField]
+        private List<TileSprites> tileSprites = new List<TileSprites>();
+
+        [SerializeField]
+        private TimeValue timeValue;
+
+        public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
-            if(sprites.season == value.season) return sprites.sprite;            
+            tileData.sprite = defaultSprite;
+            Sprite sprite = GetSprite(this.timeValue);
+            if (sprite != null) tileData.sprite = sprite;
         }
 
-        return null;
+        public Sprite GetSprite(TimeValue value)
+        {
+            foreach (TileSprites sprites in this.tileSprites)
+            {
+                if (sprites.season == value.season) return sprites.sprite;
+            }
+
+            return null;
+        }
     }
 }

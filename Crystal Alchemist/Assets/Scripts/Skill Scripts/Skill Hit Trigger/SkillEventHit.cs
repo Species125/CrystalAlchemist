@@ -1,59 +1,63 @@
-﻿using Sirenix.OdinInspector;
+﻿
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SkillEventHit : SkillHitTrigger
+namespace CrystalAlchemist
 {
-    [InfoBox("Fires Event after a time > 0 or onCollisionEnter > 0 or both")]
-    [BoxGroup("Timed Event")]
-    [SerializeField]
-    private float time;
-
-    [BoxGroup("Timed Event")]
-    [SerializeField]
-    private UnityEvent OnTime;
-
-    [BoxGroup("Collision Event")]
-    [SerializeField]
-    private int amount;
-
-    [BoxGroup("Collision Event")]
-    [SerializeField]
-    private UnityEvent OnCollision;
-
-    private float elapsed;
-    private int counter;
-
-    public override void Initialize()
+    public class SkillEventHit : SkillHitTrigger
     {
-        elapsed = time;
-    }
+        [InfoBox("Fires Event after a time > 0 or onCollisionEnter > 0 or both")]
+        [BoxGroup("Timed Event")]
+        [SerializeField]
+        private float time;
 
-    public override void Updating()
-    {
-        if (time > 0)
+        [BoxGroup("Timed Event")]
+        [SerializeField]
+        private UnityEvent OnTime;
+
+        [BoxGroup("Collision Event")]
+        [SerializeField]
+        private int amount;
+
+        [BoxGroup("Collision Event")]
+        [SerializeField]
+        private UnityEvent OnCollision;
+
+        private float elapsed;
+        private int counter;
+
+        public override void Initialize()
         {
-            if (elapsed > 0) elapsed -= (Time.deltaTime * this.skill.getTimeDistortion());
-            else
+            elapsed = time;
+        }
+
+        public override void Updating()
+        {
+            if (time > 0)
             {
-                OnTime?.Invoke();
-                elapsed = time;
+                if (elapsed > 0) elapsed -= (Time.deltaTime * this.skill.getTimeDistortion());
+                else
+                {
+                    OnTime?.Invoke();
+                    elapsed = time;
+                }
+            }
+
+            if (amount > 0)
+            {
+                if (counter >= amount)
+                {
+                    OnCollision?.Invoke();
+                    counter = 0;
+                }
             }
         }
 
-        if (amount > 0)
+
+        private void OnTriggerEnter2D(Collider2D hittedCharacter)
         {
-            if (counter >= amount)
-            {
-                OnCollision?.Invoke();
-                counter = 0;
-            }
+            if (CollisionUtil.checkCollision(hittedCharacter, this.skill)) counter++;
         }
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D hittedCharacter)
-    {
-        if (CollisionUtil.checkCollision(hittedCharacter, this.skill)) counter++;
     }
 }

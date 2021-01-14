@@ -1,91 +1,96 @@
-﻿using UnityEngine;
+﻿using AssetIcons;
+
+
 using Sirenix.OdinInspector;
-using AssetIcons;
+using UnityEngine;
 
-[CreateAssetMenu(menuName = "Game/Items/Item Group")]
-public class ItemGroup : ScriptableObject
+namespace CrystalAlchemist
 {
-    [BoxGroup("Inventory")]
-    public int maxAmount;
-
-    [BoxGroup("Inventory")]
-    [Tooltip("True, if the value can be changed by the player or shop")]
-    public bool canConsume = true;
-
-    [BoxGroup("Inventory")]
-    [Tooltip("Info is need to load names, icons and discriptions")]
-    [SerializeField]
-    [Required]
-    public ItemInfo info;
-
-    [BoxGroup("Inventory")]
-    [Tooltip("Needed to show the item in the inventory")]
-    [SerializeField]
-    public ItemSlotInfo inventoryInfo;
-
-    [BoxGroup("Inventory")]
-    [SerializeField]
-    private bool updateCurrencyUI;
-
-    [BoxGroup("Inventory")]
-    public AudioClip raiseSoundEffect;
-
-    [BoxGroup("Shop Price")]
-    public ShopPriceUI shopPrice;
-
-    [BoxGroup("Debug")]
-    [SerializeField]
-    private int amount;
-
-    [AssetIcon]
-    public Sprite GetSprite()
+    [CreateAssetMenu(menuName = "Game/Items/Item Group")]
+    public class ItemGroup : ScriptableObject
     {
-        if (this.info != null) return this.info.getSprite();
-        return null;
-    }
+        [BoxGroup("Inventory")]
+        public int maxAmount;
 
-    public void SetGroup(int maxValue, bool canConsume, bool updateUI, AudioClip soundEffect, ShopPriceUI shop)
-    {
-        this.maxAmount = maxValue;
-        this.canConsume = canConsume;
-        this.updateCurrencyUI = updateUI;
-        this.raiseSoundEffect = soundEffect;
-        this.shopPrice = shop;
-    }
+        [BoxGroup("Inventory")]
+        [Tooltip("True, if the value can be changed by the player or shop")]
+        public bool canConsume = true;
 
-    public bool isID(int ID)
-    {
-        if (this.inventoryInfo != null) return this.inventoryInfo.isID(ID);
-        return false;
-    }
+        [BoxGroup("Inventory")]
+        [Tooltip("Info is need to load names, icons and discriptions")]
+        [SerializeField]
+        [Required]
+        public ItemInfo info;
 
-    public string getName()
-    {
-        return this.info.getName();
-    }
+        [BoxGroup("Inventory")]
+        [Tooltip("Needed to show the item in the inventory")]
+        [SerializeField]
+        public ItemSlotInfo inventoryInfo;
 
-    public int GetAmount()
-    {
-        return this.amount;
-    }
+        [BoxGroup("Inventory")]
+        [SerializeField]
+        private bool updateCurrencyUI;
 
-    public string GetAmountString()
-    {
-        return FormatUtil.formatString(this.amount, this.maxAmount);
-    }
+        [BoxGroup("Inventory")]
+        public AudioClip raiseSoundEffect;
 
-    [Button]
-    public void UpdateAmount(int amount)
-    {
-        this.amount += amount;
-    }
+        [BoxGroup("Shop Price")]
+        public ShopPriceUI shopPrice;
 
-    public void raiseCollectSignal()
-    {
-        if (this.updateCurrencyUI)
+        [BoxGroup("Debug")]
+        [SerializeField]
+        private int amount;
+
+        [AssetIcon]
+        public Sprite GetSprite()
         {
-            GameEvents.current.DoCurrencyChange(true);
-            AudioUtil.playSoundEffect(raiseSoundEffect);
+            if (this.info != null) return this.info.getSprite();
+            return null;
+        }
+
+        public void SetGroup(int maxValue, bool canConsume, bool updateUI, AudioClip soundEffect, ShopPriceUI shop)
+        {
+            this.maxAmount = maxValue;
+            this.canConsume = canConsume;
+            this.updateCurrencyUI = updateUI;
+            this.raiseSoundEffect = soundEffect;
+            this.shopPrice = shop;
+        }
+
+        public bool isID(int ID)
+        {
+            if (this.inventoryInfo != null) return this.inventoryInfo.isID(ID);
+            return false;
+        }
+
+        public string getName()
+        {
+            return this.info.getName();
+        }
+
+        public int GetAmount()
+        {
+            return this.amount;
+        }
+
+        public string GetAmountString()
+        {
+            return FormatUtil.formatString(this.amount, this.maxAmount);
+        }
+
+        [Button]
+        public void UpdateAmount(int amount)
+        {
+            this.amount += amount;
+        }
+
+        public void raiseCollectSignal()
+        {
+            if (this.updateCurrencyUI)
+            {
+                GameEvents.current.DoCurrencyChange(true);
+                AudioUtil.playSoundEffect(raiseSoundEffect);
+            }
         }
     }
 }

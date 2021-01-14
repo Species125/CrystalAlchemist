@@ -1,17 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-public class BlindUIManager : MonoBehaviour
+namespace CrystalAlchemist
 {
-    public Canvas canvas;
-    public Camera cam; 
-   
-    void Start()
+    public class BlindUIManager : MonoBehaviour
     {
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        canvas.worldCamera = cam;        
-    }
+        public Canvas canvas;
+        public Camera cam;
 
+        void Start()
+        {
+            cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+            canvas.worldCamera = cam;
+        }
+
+    }
 }

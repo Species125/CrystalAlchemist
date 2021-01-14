@@ -1,28 +1,32 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class SpriteEvent : UnityEvent<Sprite>
+namespace CrystalAlchemist
 {
-}
-
-public class SpriteSignalListener : MonoBehaviour
-{
-    public SpriteSignal signal;
-    public SpriteEvent signalEventString;
-
-    public void OnSignalRaised(Sprite sprite)
+    [System.Serializable]
+    public class SpriteEvent : UnityEvent<Sprite>
     {
-        this.signalEventString.Invoke(sprite);
     }
 
-    private void OnEnable()
+    public class SpriteSignalListener : MonoBehaviour
     {
-        signal.RegisterListener(this);
-    }
+        public SpriteSignal signal;
+        public SpriteEvent signalEventString;
 
-    private void OnDisable()
-    {
-        signal.DeRegisterListener(this);
+        public void OnSignalRaised(Sprite sprite)
+        {
+            this.signalEventString.Invoke(sprite);
+        }
+
+        private void OnEnable()
+        {
+            signal.RegisterListener(this);
+        }
+
+        private void OnDisable()
+        {
+            signal.DeRegisterListener(this);
+        }
     }
 }
