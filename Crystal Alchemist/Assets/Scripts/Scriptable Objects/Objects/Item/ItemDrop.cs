@@ -8,19 +8,8 @@ using UnityEngine;
 namespace CrystalAlchemist
 {
     [CreateAssetMenu(menuName = "Game/Items/Item Drop")]
-    public class ItemDrop : ScriptableObject
+    public class ItemDrop : NetworkScriptableObject
     {
-        [BoxGroup("Inspector")]
-        [ReadOnly]
-        public string path;
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            this.path = UnityUtil.GetResourcePath(this);
-        }
-#endif
-
         [BoxGroup("Required")]
         [Required]
         public ItemStats stats;

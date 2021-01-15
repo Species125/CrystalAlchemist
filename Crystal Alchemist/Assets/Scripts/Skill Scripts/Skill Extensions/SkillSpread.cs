@@ -26,7 +26,7 @@ namespace CrystalAlchemist
             if (this.elapsed <= 0)
             {
                 Transform child = this.spawnPoint.GetChild(this.index);
-                AbilityUtil.InstantiateSkill(this.ability, this.skill.target, child.position, this.skill.sender, child.rotation);
+                AbilityUtil.InstantiateSpreadSkill(this.ability, this.skill.sender, this.skill.target, child.position, child.rotation);
                 this.elapsed = this.delay;
                 this.index++;
             }

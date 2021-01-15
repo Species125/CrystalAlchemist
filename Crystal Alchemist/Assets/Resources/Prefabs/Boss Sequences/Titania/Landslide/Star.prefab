@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2814566772489808227}
   - component: {fileID: 4870883105856271781}
   - component: {fileID: 1003225598588650081}
+  - component: {fileID: -6219471713772239858}
   m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
@@ -49,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfdcb37e8bacd9f4b8cd9700a1a2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyAfter: 30
+  path: 
   sender: {fileID: 0}
   target: {fileID: 0}
 --- !u!114 &1003225598588650081
@@ -75,6 +76,27 @@ MonoBehaviour:
     rotationType: 0
     rotationFactor: 0
     direction: 0
+--- !u!114 &-6219471713772239858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814566772489808224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4434099907640164896
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +190,8 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 8c050731d4165e443878d148e57a70d6, type: 2}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.05
     repeat: 0
     repeatDelay: 1
@@ -354,6 +378,8 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 8c050731d4165e443878d148e57a70d6, type: 2}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.05
     repeat: 0
     repeatDelay: 1
@@ -420,6 +446,8 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 8c050731d4165e443878d148e57a70d6, type: 2}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.05
     repeat: 0
     repeatDelay: 1
@@ -696,6 +724,8 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 8c050731d4165e443878d148e57a70d6, type: 2}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.05
     repeat: 0
     repeatDelay: 1
@@ -792,6 +822,8 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 8c050731d4165e443878d148e57a70d6, type: 2}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.05
     repeat: 0
     repeatDelay: 1

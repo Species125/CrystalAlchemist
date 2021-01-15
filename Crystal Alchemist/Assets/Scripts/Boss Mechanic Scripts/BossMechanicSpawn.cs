@@ -150,57 +150,68 @@ namespace CrystalAlchemist
             if (this.counter >= this.childProperty.GetMax()) this.isRunning = false;
         }
 
-        private void Instantiate(Vector2 position, Quaternion rotation)
-        {
-            Character target = null;
-
-            if (this.childProperty.AddTarget) target = this.target;
+         private void Instantiate(Vector2 position, Quaternion rotation)
+         {
+            if (!NetworkUtil.IsMaster()) return;
 
             if (this.childProperty.spawnObject.GetType() == typeof(GameObject))
             {
-                GameObject spawnedObject = Instantiate(this.childProperty.spawnObject, position, Quaternion.identity, this.transform) as GameObject;
-                SetSkill(spawnedObject.GetComponent<Skill>(), target, rotation);
-                SetAdd(spawnedObject.GetComponent<Character>());
-                SetAdd(spawnedObject.GetComponent<AI>(), target);
-                SetAdd(spawnedObject.GetComponent<AddSpawn>(), target);
+                GameObject prefab = childProperty.spawnObject as GameObject;
+
+                if (prefab.GetComponent<Character>()) 
+                    SpawnCharacter(prefab.GetComponent<Character>(), position, rotation);
+                else if (prefab.GetComponent<AI>()) 
+                    SpawnAI(prefab.GetComponent<AI>(), position, rotation);
+                else if (prefab.GetComponent<AddSpawn>()) 
+                    SpawnAdd(prefab.GetComponent<AddSpawn>(), position, rotation);
+                else if (prefab.GetComponent<Skill>()) 
+                    SpawnSkill(prefab.GetComponent<Skill>(), position, rotation);
+                else if (prefab.GetComponent<NetworkBehaviour>()) 
+                    SpawnNetworkObject(prefab.GetComponent<NetworkBehaviour>(), position, rotation);
             }
             else if (this.childProperty.spawnObject.GetType() == typeof(Ability))
             {
-                SetAbility(position, rotation);
+                Ability ability = this.childProperty.spawnObject as Ability;
+                SpawnAbility(ability, position, rotation);
             }
         }
 
-        private void SetAdd(AddSpawn spawn, Character target)
+        private void SpawnNetworkObject(NetworkBehaviour obj, Vector2 position, Quaternion rotation)
         {
-            if (spawn != null) spawn.Initialize(target);
+            NetworkEvents.current.RaiseBossObjectSpawnEvent(obj, this.gameObject, position, rotation,
+                                                            this.childProperty.overrideDuration, this.childProperty.maxDuration);
         }
 
-        private void SetAdd(Character character)
+        private void SpawnCharacter(Character character, Vector2 position, Quaternion rotation)
         {
-            if (character != null) character.InitializeAddSpawn(this.childProperty.overrideDuration, this.childProperty.maxDuration);
+            NetworkEvents.current.RaiseBossCharacterSpawnEvent(character, this.gameObject, position, rotation,
+                                                               this.childProperty.overrideDuration, this.childProperty.maxDuration);
         }
 
-        private void SetAdd(AI character, Character target)
+        private void SpawnAI(AI character, Vector2 position, Quaternion rotation)
         {
-            if (character != null) character.InitializeAddSpawn(target, this.childProperty.overrideDuration, this.childProperty.maxDuration);
+            NetworkEvents.current.RaiseBossAISpawnEvent(character, this.target, this.gameObject, position, rotation,
+                                                        this.childProperty.overrideDuration, this.childProperty.maxDuration);
         }
 
-        private void SetSkill(Skill skill, Character target, Quaternion rotation)
+        private void SpawnAdd(AddSpawn addSpawn, Vector2 position, Quaternion rotation)
         {
-            if (skill != null)
-            {
-                skill.InitializeStandAlone(this.sender, target, rotation);
-                if (this.childProperty.overrideDuration) skill.SetMaxDuration(true, this.childProperty.maxDuration);
-            }
+            NetworkEvents.current.RaiseBossAddSpawnEvent(addSpawn, this.target, this.gameObject, position, rotation,
+                                                        this.childProperty.overrideDuration, this.childProperty.maxDuration);
         }
 
-        private void SetAbility(Vector2 position, Quaternion rotation)
+        private void SpawnSkill(Skill skill, Vector2 position, Quaternion rotation)
         {
-            Ability ability = Instantiate(this.childProperty.spawnObject) as Ability;
-            Skill skill = AbilityUtil.InstantiateSkill(ability, target, position, this.sender, rotation);
-            skill.transform.SetParent(this.transform);
-            if (this.childProperty.overrideDuration) skill.SetMaxDuration(true, this.childProperty.maxDuration);
-            Destroy(ability);
+            NetworkEvents.current.RaiseBossSkillSpawnEvent(skill, this.sender, this.target, this.gameObject, 
+                                                           position, rotation, this.childProperty.overrideDuration,
+                                                           this.childProperty.maxDuration, this.childProperty.AddTarget);
+        }
+
+        private void SpawnAbility(Ability ability, Vector2 position, Quaternion rotation)
+        {
+            NetworkEvents.current.RaiseBossAbilitySpawnEvent(ability, this.sender, this.target, this.gameObject,
+                                                             position, rotation, this.childProperty.overrideDuration,
+                                                             this.childProperty.maxDuration, this.childProperty.AddTarget);
         }
     }
 }

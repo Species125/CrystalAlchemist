@@ -19,20 +19,9 @@ namespace CrystalAlchemist
         defend
     }
 
-    public class Skill : MonoBehaviourPunCallbacks
+    public class Skill : NetworkBehaviour
     {
         #region Attribute
-
-        [BoxGroup("Inspector")]
-        [ReadOnly]
-        public string path;
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            this.path = UnityUtil.GetResourcePath(this);
-        }
-#endif
 
         [Space(10)]
         [BoxGroup("Easy Access")]

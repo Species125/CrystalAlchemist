@@ -1,10 +1,11 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace CrystalAlchemist
 {
-    public class AddSpawn : MonoBehaviour
+    public class AddSpawn : NetworkBehaviour
     {
         [SerializeField]
         private AI character;
@@ -28,7 +29,7 @@ namespace CrystalAlchemist
         {
             yield return new WaitForSeconds(this.delay);
             AI character = Instantiate(this.character, this.transform.position, Quaternion.identity);
-            character.InitializeAddSpawn(this.target, this.hasMaxDuration, this.maxDuration);
+            character.InitializeAddSpawn(NetworkUtil.GetID(this.target), this.hasMaxDuration, this.maxDuration);
             this.OnAfterDelay?.Invoke();
             Destroy(this.gameObject, 0.3f);
         }

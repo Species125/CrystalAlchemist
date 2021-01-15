@@ -18,7 +18,7 @@ namespace CrystalAlchemist
 
 
     [CreateAssetMenu(menuName = "Game/Ability/Ability")]
-    public class Ability : ScriptableObject
+    public class Ability : NetworkScriptableObject
     {
         public enum IndicatorType
         {
@@ -26,17 +26,6 @@ namespace CrystalAlchemist
             OnCast,
             OnTargeting
         }
-
-        [BoxGroup("Inspector")]
-        [ReadOnly]
-        public string path;
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            this.path = UnityUtil.GetResourcePath(this);
-        }
-#endif
 
         [BoxGroup("Objects")]
         [Required]

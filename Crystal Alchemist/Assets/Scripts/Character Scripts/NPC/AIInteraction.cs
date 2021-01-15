@@ -3,6 +3,7 @@
 
 
 
+using Photon.Pun;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -42,8 +43,6 @@ namespace CrystalAlchemist
         {
             this.npc.values.characterType = CharacterType.Friend;
         }
-
-        public void SetMaxAggro(Character character) => GameEvents.current.DoAggroIncrease(this.npc, character, 999);
 
         public void ClearAggro() => GameEvents.current.DoAggroClear(this.npc);
 

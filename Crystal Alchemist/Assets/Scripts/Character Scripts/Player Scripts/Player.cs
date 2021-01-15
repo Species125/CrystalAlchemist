@@ -19,14 +19,6 @@ namespace CrystalAlchemist
 
     public class Player : Character, IPunInstantiateMagicCallback
     {
-        [BoxGroup("Inspector")]
-        [ReadOnly]
-        public string path;
-
-#if UNITY_EDITOR
-        private void OnValidate() => this.path = UnityUtil.GetResourcePath(this);
-#endif
-
         [BoxGroup("Player Objects")]
         [SerializeField]
         private float goToBedDuration = 1f;
@@ -92,7 +84,7 @@ namespace CrystalAlchemist
                 this.stats = this.saveGame.stats;
                 this.values = this.saveGame.playerValue;
                 this.values.Initialize();
-                if (this.saveGame.attributes) this.saveGame.attributes.SetValues();
+                this.saveGame.attributes.SetValues();
                 this.preset = this.saveGame.playerPreset;
                 this.characterName = this.saveGame.characterName.GetValue();
             }
@@ -160,7 +152,7 @@ namespace CrystalAlchemist
             GameEvents.current.DoPlayerSpawned(this.gameObject);
 
             UpdateCharacterParts();
-            NetworkEvents.current.GetPresetFromOtherClients();
+            GetPresetFromOtherClients();
 
             this.saveGame.skillSet.TestInitialize(this);
         }
@@ -387,8 +379,64 @@ namespace CrystalAlchemist
         public void UpdateCharacterParts()
         {
             this.handler.UpdateCharacterParts();
-            NetworkEvents.current.SetPresetForOtherClients(this);
+            this.SetPresetForOtherClients();
         }
+
+
+        public void GetPresetFromOtherClients()
+        {
+            Player player = NetworkUtil.GetLocalPlayer();
+            int receiverID = player.gameObject.GetPhotonView().ViewID;
+
+            this.photonView.RPC("RpcGetPreset", RpcTarget.Others, receiverID);
+        }
+
+        [PunRPC]
+        public void RpcGetPreset(int receiverID, PhotonMessageInfo info)
+        {
+            Player localPlayer = NetworkUtil.GetLocalPlayer();
+            SetPresetOnOtherClients(localPlayer, receiverID);
+        }
+
+        public void SetPresetForOtherClients()
+        {
+            SetPresetOnOtherClients(this, -1);
+        }
+
+        public void SetPresetOnOtherClients(Player player, int receiver)
+        {
+            CharacterPreset preset = player.GetPreset();
+            int targetID = player.gameObject.GetPhotonView().ViewID;
+            string race = "";
+            string[] colorGroups;
+            string[] characterParts;
+
+            SerializationUtil.GetPreset(preset, out race, out colorGroups, out characterParts);
+            this.photonView.RPC("RpcSetPreset", RpcTarget.Others, receiver, targetID, race, colorGroups, characterParts);
+        }
+
+        [PunRPC]
+        public void RpcSetPreset(int receiver, int targetID, string race, string[] colorgroups, string[] parts, PhotonMessageInfo info)
+        {
+            Player localPlayer = NetworkUtil.GetLocalPlayer();
+            if (receiver >= 0 && localPlayer.gameObject.GetPhotonView().ViewID != receiver) return;
+
+            PhotonView view = PhotonView.Find(targetID);
+            if (view == null) return;
+
+            Player player = view.GetComponent<Player>();
+            if (player == null) return;
+
+            CharacterPreset preset = player.GetPreset();
+            SerializationUtil.SetPreset(preset, race, colorgroups, parts);
+            player.UpdateCharacterParts();
+        }
+
+
+
+
+
+
 
         public void OnPhotonInstantiate(PhotonMessageInfo info)
         {
@@ -409,5 +457,7 @@ namespace CrystalAlchemist
                 this.uniqueID = (string)stream.ReceiveNext();
             }
         }
+
+        
     }
 }

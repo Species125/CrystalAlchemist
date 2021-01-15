@@ -1,18 +1,9 @@
-﻿
-
-
-
-
-
-
-
-
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace CrystalAlchemist
 {
-    public class Interactable : MonoBehaviour
+    public class Interactable : NetworkBehaviour
     {
         #region Attribute
         [BoxGroup("Activation Requirements")]
@@ -44,7 +35,6 @@ namespace CrystalAlchemist
         public ContextClue context;
 
         #endregion
-
 
         #region Start Funktionen (init, ContextClue, Item set bzw. Lootregeln)
 

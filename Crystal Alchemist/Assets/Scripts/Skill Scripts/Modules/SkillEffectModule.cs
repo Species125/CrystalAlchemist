@@ -84,7 +84,7 @@ namespace CrystalAlchemist
                     {
                         Ability ability = Instantiate(this.effect) as Ability;
                         //Skill skill = ability.InstantiateSkill
-                        Skill skill = AbilityUtil.InstantiateSkill(ability, position, this.skill.sender);
+                        Skill skill = AbilityUtil.InstantiateEffectSkill(ability, position, this.skill.sender);
                         skill.transform.SetParent(this.transform);
                         Destroy(ability);
                         AddToList(skill.gameObject);

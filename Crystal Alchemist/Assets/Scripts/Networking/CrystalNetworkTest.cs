@@ -25,7 +25,6 @@ namespace CrystalAlchemist
                 this.saveGame.playerPreset = player.preset;
                 this.saveGame.characterName.SetValue(player.name);
 
-                this.saveGame.attributes = null;
                 this.saveGame.stats.maxLife = player.life;
                 this.saveGame.stats.startLife = player.life;
                 this.saveGame.stats.maxMana = player.mana;

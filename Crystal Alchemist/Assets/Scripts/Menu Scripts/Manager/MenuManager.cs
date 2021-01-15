@@ -1,10 +1,18 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using ExitGames.Client.Photon;
+using Sirenix.OdinInspector;
 
 namespace CrystalAlchemist
 {
     public class MenuManager : MonoBehaviour
     {
+        [BoxGroup("Required")]
+        [Required]
+        [SerializeField]
+        private StringValue teleportPath;
+
         private void Start()
         {
             if (!NetworkUtil.IsLocal()) return;
@@ -23,7 +31,7 @@ namespace CrystalAlchemist
             MenuEvents.current.OnTutorial += OpenTutorial;
             MenuEvents.current.OnJukeBox += OpenJukebox;
             MenuEvents.current.OnSave += OpenSavePoint;
-            MenuEvents.current.OnTeleport += OpenTeleport;
+            PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
         }
 
         private void OnDestroy()
@@ -43,7 +51,7 @@ namespace CrystalAlchemist
             MenuEvents.current.OnMenuDialogBox -= OpenMenuDialogBox;
             MenuEvents.current.OnJukeBox -= OpenJukebox;
             MenuEvents.current.OnTutorial -= OpenTutorial;
-            MenuEvents.current.OnTeleport -= OpenTeleport;
+            PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
         }
 
         public void OpenInventory() => OpenScene("InventoryMenu");
@@ -72,8 +80,6 @@ namespace CrystalAlchemist
 
         public void OpenTutorial() => OpenScene("Tutorial");
 
-        public void OpenTeleport() => OpenScene("Teleport");
-
         private void OpenScene(string scene)
         {
             if (UnityUtil.SceneExists(scene)) SceneManager.UnloadSceneAsync(scene);
@@ -83,6 +89,18 @@ namespace CrystalAlchemist
         private void OpenSceneAdditive(string scene)
         {
             SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        }
+
+        private void NetworkingEvent(EventData obj)
+        {
+            if (obj.Code == NetworkUtil.READY_SHOW)
+            {
+                object[] datas = (object[])obj.CustomData;
+                string path = (string)datas[0];
+
+                this.teleportPath.SetValue(path);
+                OpenScene("Teleport");
+            }
         }
     }
 }

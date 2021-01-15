@@ -359,7 +359,7 @@ namespace CrystalAlchemist
 
         private void Charge(AI npc)
         {
-            npc.GetComponent<AICombat>().ChargeAbility(this.activeAbility, npc.target);
+            npc.GetComponent<AICombat>().ChargeAbility(this.activeAbility, npc.GetTarget());
 
             if (this.activeAbility.IsTargetRequired())
                 npc.GetComponent<AICombat>().ShowTargetingSystem(this.activeAbility);        //Show Targeting System when needed
@@ -367,7 +367,7 @@ namespace CrystalAlchemist
 
         private void CheckTargets(AI npc)
         {
-            if (!this.activeAbility.IsTargetRequired() && npc.target != null)
+            if (!this.activeAbility.IsTargetRequired() && npc.targetID > 0)
                 this.activeAbility.state = AbilityState.ready; //SingleTarget
             else this.activeAbility.state = AbilityState.ready; //Target from TargetingSystem                
         }
@@ -379,7 +379,7 @@ namespace CrystalAlchemist
             if (this.activeAbility.IsTargetRequired()) npc.GetComponent<AICombat>().UseAbilityOnTargets(this.activeAbility);
             else
             {
-                npc.GetComponent<AICombat>().UseAbilityOnTarget(this.activeAbility, npc.target);
+                npc.GetComponent<AICombat>().UseAbilityOnTarget(this.activeAbility, npc.GetTarget());
                 npc.GetComponent<AICombat>().HideTargetingSystem(this.activeAbility);
             }
 

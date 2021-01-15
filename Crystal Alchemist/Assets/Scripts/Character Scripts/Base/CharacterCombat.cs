@@ -155,8 +155,8 @@ namespace CrystalAlchemist
         {
             if (ability.HasEnoughResourceAndAmount())
             {
-                AbilityUtil.InstantiateSkill(ability, target);
-                NetworkEvents.current.InstantiateSkillOverNetwork(ability, this.character, target, RpcTarget.Others);
+                //AbilityUtil.InstantiateSkill(ability, target);
+                NetworkEvents.current.InstantiateSkill(ability, this.character, target);
 
                 if (!ability.deactivateButtonUp && !ability.remoteActivation) ability.ResetCoolDown();
             }
@@ -184,8 +184,7 @@ namespace CrystalAlchemist
                 if (target.values.currentState != CharacterState.dead
                     && target.values.currentState != CharacterState.respawning)
                 {
-                    AbilityUtil.InstantiateSkill(ability, target, damageReduce);
-                    //RPC
+                    NetworkEvents.current.InstantiateAoESkill(ability, this.character, target, damageReduce);
                     yield return new WaitForSeconds(this.GetTargetingDelay());
                 }
             }

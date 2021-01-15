@@ -1,6 +1,10 @@
 ﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
+using ExitGames.Client.Photon;
+using Photon.Pun;
+using System.Collections;
+using Photon.Realtime;
 
 namespace CrystalAlchemist
 {
@@ -92,9 +96,19 @@ namespace CrystalAlchemist
         private bool isActive = false;
         private bool isInit = true;
 
+        private void OnEnable()
+        {
+            PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
+        }
+
         private void Start()
         {
             GameEvents.current.OnPlayerSpawned += this.OnStart;
+        }
+
+        private void OnDisable()
+        {
+            PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEvent;
         }
 
         private void OnDestroy()
@@ -177,7 +191,7 @@ namespace CrystalAlchemist
             {
                 if (this.respawnObjects[i].spawnIt)
                 {
-                    NetworkEvents.current.ShowGameObject(this.respawnObjects[i].gameObject, this.isInit);
+                    ShowGameObjectEvent(this.respawnObjects[i].gameObject, this.isInit);
                     this.respawnObjects[i] = null;
                 }
             }
@@ -189,7 +203,7 @@ namespace CrystalAlchemist
             for (int i = 0; i < this.transform.childCount; i++)
             {
                 if (MustDespawn(this.transform.GetChild(i).gameObject))
-                    NetworkEvents.current.HideGameObject(this.transform.GetChild(i).gameObject, this.isInit);
+                    HideGameObjectEvent(this.transform.GetChild(i).gameObject, this.isInit);
             }
         }
 
@@ -200,6 +214,141 @@ namespace CrystalAlchemist
                 if (this.respawnObjects[i].gameObject == gameObject) return true;
             }
             return false;
+        }
+
+
+        public void HideGameObjectEvent(GameObject gameObject, bool isInit)
+        {
+            if (!NetworkUtil.IsMaster() || gameObject == null) return;
+
+            int ID = gameObject.GetPhotonView().ViewID;
+
+            object[] datas = new object[] { ID, isInit };
+
+            RaiseEventOptions options = new RaiseEventOptions()
+            {
+                Receivers = ReceiverGroup.All
+            };
+
+            PhotonNetwork.RaiseEvent(NetworkUtil.HIDE_CHARACTER, datas, options, SendOptions.SendUnreliable);
+        }
+
+        public void ShowGameObjectEvent(GameObject gameObject, bool isInit)
+        {
+            if (!NetworkUtil.IsMaster() || gameObject == null) return;
+
+            int ID = gameObject.GetPhotonView().ViewID;
+
+            object[] datas = new object[] { ID, isInit };
+
+            RaiseEventOptions options = new RaiseEventOptions()
+            {
+                Receivers = ReceiverGroup.All
+            };
+
+            PhotonNetwork.RaiseEvent(NetworkUtil.SHOW_CHARACTER, datas, options, SendOptions.SendUnreliable);
+        }
+
+        private void NetworkingEvent(EventData obj)
+        {
+            if (obj.Code == NetworkUtil.HIDE_CHARACTER)
+            {
+                object[] datas = (object[])obj.CustomData;
+                int ID = (int)datas[0];
+                bool isInit = (bool)datas[1];
+
+                GameObject gameObject = PhotonView.Find(ID).gameObject;
+                if (gameObject != null) HideGameObject(gameObject, isInit);
+            }
+            else if (obj.Code == NetworkUtil.SHOW_CHARACTER)
+            {
+                object[] datas = (object[])obj.CustomData;
+                int ID = (int)datas[0];
+                bool isInit = (bool)datas[1];
+
+                GameObject gameObject = PhotonView.Find(ID).gameObject;
+                if (gameObject != null) ShowGameObject(gameObject, isInit);
+            }
+        }
+
+        private void HideGameObject(GameObject gameObject, bool isInit)
+        {
+            Character character = gameObject.GetComponent<Character>();
+
+            if (character != null)
+            {
+                if (character.respawnAnimation != null)
+                {
+                    RespawnAnimation respawnObject = Instantiate(character.respawnAnimation, character.GetSpawnPosition(), Quaternion.identity);
+                    respawnObject.Reverse(character);
+                    character.SetCharacterSprites(true);
+
+                    StartCoroutine(InactiveCo(respawnObject.getAnimationLength(), character.gameObject));
+                    StartCoroutine(InactiveCo(respawnObject.getAnimationLength(), respawnObject.gameObject));
+                }
+                else
+                {
+                    if (!isInit) character.PlayDespawnAnimation();
+                    character.SpawnOut();
+                    StartCoroutine(InactiveCo(character.GetDespawnLength(), character.gameObject));
+                }
+
+                character.values.currentState = CharacterState.respawning;
+            }
+            else
+            {
+                SetGameObjectActive(gameObject, false, isInit);
+            }
+        }
+
+        private IEnumerator InactiveCo(float seconds, GameObject gameObject)
+        {
+            yield return new WaitForSeconds(seconds);
+            gameObject.SetActive(false);
+        }
+
+        private void ShowGameObject(GameObject gameObject, bool isInit)
+        {
+            Character character = gameObject.GetComponent<Character>();
+
+            if (character != null)
+            {
+                character.gameObject.SetActive(true);
+                character.values.currentState = CharacterState.respawning;
+
+                if (character.respawnAnimation != null)
+                {
+                    //spawn character after animation
+                    RespawnAnimation respawnObject = Instantiate(character.respawnAnimation, character.GetSpawnPosition(), Quaternion.identity);
+                    respawnObject.Initialize(character);
+                    character.SetCharacterSprites(false);
+                }
+                else
+                {
+                    //spawn character immediately
+                    character.SetCharacterSprites(true);
+                    if (!isInit) character.PlayRespawnAnimation();
+                    character.SpawnIn();
+                }
+            }
+            else
+            {
+                SetGameObjectActive(gameObject, true, isInit);
+            }
+        }
+
+        private void SetGameObjectActive(GameObject gameObject, bool value, bool isInit)
+        {
+            //Prevent Effect on Initialize
+            if (gameObject.GetComponent<Collectable>() != null)
+            {
+                gameObject.GetComponent<Collectable>().SetBounce(!isInit, Vector2.zero);
+                gameObject.GetComponent<Collectable>().SetSmoke(!isInit);
+            }
+            else if (gameObject.GetComponent<Interactable>() != null)
+                gameObject.GetComponent<Interactable>().SetSmoke(!isInit);
+
+            gameObject.SetActive(value);
         }
     }
 }

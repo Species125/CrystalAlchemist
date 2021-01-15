@@ -1,4 +1,6 @@
-﻿using Photon.Pun;
+﻿using ExitGames.Client.Photon;
+using Photon.Pun;
+using Photon.Realtime;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -39,8 +41,21 @@ namespace CrystalAlchemist
                 this.teleportList.SetNextTeleport(this.stats);
                 GameEvents.current.DoTeleport();  
             }
-            else 
-                NetworkEvents.current.ShowReadywindow(this.stats);
+            else ShowReadywindow(this.stats);
+        }
+
+
+
+        public void ShowReadywindow(TeleportStats stats)
+        {
+            object[] datas = new object[] { stats.path };
+
+            RaiseEventOptions options = new RaiseEventOptions()
+            {
+                Receivers = ReceiverGroup.All
+            };
+
+            PhotonNetwork.RaiseEvent(NetworkUtil.READY_SET, datas, options, SendOptions.SendUnreliable);
         }
     }
 }

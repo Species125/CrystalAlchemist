@@ -46,10 +46,10 @@ namespace CrystalAlchemist
         public static Vector2 SetStartDirection(Skill skill)
         {
             if (skill.sender == null) return skill.GetDirection();
-            else if (skill.sender.GetComponent<AI>() != null && skill.sender.GetComponent<AI>().target != null)
+            else if (skill.sender.GetComponent<AI>() != null && skill.sender.GetComponent<AI>().targetID > 0)
             {
                 float offset = skill.transform.position.y - skill.GetPosition().y;
-                Vector2 targetPosition = skill.sender.GetComponent<AI>().target.GetGroundPosition();
+                Vector2 targetPosition = skill.sender.GetComponent<AI>().GetTarget().GetGroundPosition();
                 Vector2 position = new Vector2(targetPosition.x, targetPosition.y + offset);
                 return (position - (Vector2)skill.transform.position).normalized;
             }

@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 6713319740368580512}
   - component: {fileID: 6113533277726319404}
   - component: {fileID: 6113533277726319405}
+  - component: {fileID: 8616950750920588715}
   m_Layer: 0
   m_Name: Two
   m_TagString: Untagged
@@ -79,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfdcb37e8bacd9f4b8cd9700a1a2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   sender: {fileID: 0}
   target: {fileID: 0}
 --- !u!114 &6113533277726319404
@@ -132,9 +134,32 @@ MonoBehaviour:
       type: 3}
     amount: 2
     AddTarget: 1
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0
     repeat: 0
     repeatDelay: 1
+--- !u!114 &8616950750920588715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6113533277726319395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6113533277880421637
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,8 @@ using UnityEngine;
 
 namespace CrystalAlchemist
 {
-    public class Character : MonoBehaviourPunCallbacks, IPunObservable
+    [RequireComponent(typeof(PhotonView))]
+    public class Character : NetworkBehaviour, IPunObservable
     {
         #region Basic Attributes
 
@@ -220,13 +221,13 @@ namespace CrystalAlchemist
 
         public void DropItem()
         {
-            if (this.values.itemDrop != null && NetworkUtil.IsMaster()) 
+            if (this.values.itemDrop != null && NetworkUtil.IsMaster())
                 NetworkEvents.current.InstantiateItem(this.values.itemDrop, this.transform.position, false);
         }
 
         public void DropItem(GameObject position)
         {
-            if (this.values.itemDrop != null && NetworkUtil.IsMaster()) 
+            if (this.values.itemDrop != null && NetworkUtil.IsMaster())
                 NetworkEvents.current.InstantiateItem(this.values.itemDrop, position.transform.position, true);
         }
 
@@ -450,9 +451,9 @@ namespace CrystalAlchemist
 
 
         [Button]
-        public void KillIt() => NetworkEvents.current.KillCharacter(this); //KillIt(true);
+        public void KillIt() => this.KillCharacter(this); //KillIt(true);
 
-        public void KillIt(bool showAnimation) => NetworkEvents.current.KillCharacter(this, showAnimation);//KillCharacter(showAnimation);
+        public void KillIt(bool showAnimation) => this.KillCharacter(this, showAnimation);//KillCharacter(showAnimation);
 
         public virtual void KillCharacter(bool animate)
         {
@@ -748,6 +749,30 @@ namespace CrystalAlchemist
 
 
         #region Networking
+
+        public void KillCharacter(Character target)
+        {
+            KillCharacter(target, true);
+        }
+
+        public void KillCharacter(Character target, bool value)
+        {
+            int targetID = target.gameObject.GetPhotonView().ViewID;
+            this.photonView.RPC("RpcKillCharacterMaster", RpcTarget.MasterClient, targetID, value);
+        }
+
+        [PunRPC]
+        public void RpcKillCharacterMaster(int targetID, bool value, PhotonMessageInfo info)
+        {
+            this.photonView.RPC("RpcKillCharacter", RpcTarget.All, targetID, value);
+        }
+
+        [PunRPC]
+        public void RpcKillCharacter(int targetID, bool value, PhotonMessageInfo info)
+        {
+            Character target = PhotonView.Find(targetID).GetComponent<Character>();
+            if (target != null) target.KillCharacter(value);
+        }
 
         public virtual void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {

@@ -7,19 +7,8 @@ using UnityEngine;
 namespace CrystalAlchemist
 {
     [CreateAssetMenu(menuName = "Game/Player/Teleport Stats")]
-    public class TeleportStats : ScriptableObject
+    public class TeleportStats : NetworkScriptableObject
     {
-        [BoxGroup("Inspector")]
-        [ReadOnly]
-        public string path;
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            this.path = UnityUtil.GetResourcePath(this);
-        }
-#endif
-
         public string teleportName = "";
         public string scene;
         public Vector2 position;

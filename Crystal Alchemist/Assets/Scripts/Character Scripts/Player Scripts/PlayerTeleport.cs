@@ -43,7 +43,7 @@ namespace CrystalAlchemist
         }
 
         [PunRPC]
-        public void RpcSwitchScene()
+        public void RpcSwitchScene(PhotonMessageInfo info)
         {
             StartCoroutine(DematerializePlayer(true));
         }
@@ -118,7 +118,7 @@ namespace CrystalAlchemist
         }
 
         [PunRPC]
-        public void RpcSpawnTeleportEffect(string prefabPath, int targetID, bool reverse)
+        public void RpcSpawnTeleportEffect(string prefabPath, int targetID, bool reverse, PhotonMessageInfo info)
         {
             Player player = PhotonView.Find(targetID).GetComponent<Player>();
             RespawnAnimation animation = Resources.Load<RespawnAnimation>(prefabPath);

@@ -59,6 +59,8 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 0aee03b560131a041b13f1bbcf73bd42, type: 2}
     amount: 20
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.5
     repeat: 0
     repeatDelay: 1
@@ -136,6 +138,8 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 0aee03b560131a041b13f1bbcf73bd42, type: 2}
     amount: 10
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 1
     repeat: 0
     repeatDelay: 1
@@ -197,6 +201,8 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 0aee03b560131a041b13f1bbcf73bd42, type: 2}
     amount: 5
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 2
     repeat: 0
     repeatDelay: 1
@@ -210,6 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7357022452559686245}
   - component: {fileID: 6521607739125667180}
+  - component: {fileID: 797829385029431797}
   m_Layer: 0
   m_Name: All
   m_TagString: Untagged
@@ -246,6 +253,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfdcb37e8bacd9f4b8cd9700a1a2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyAfter: 15
+  path: 
   sender: {fileID: 0}
   target: {fileID: 0}
+--- !u!114 &797829385029431797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8549439675706880630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

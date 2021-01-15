@@ -7,7 +7,7 @@ using UnityEngine;
 namespace CrystalAlchemist
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Collectable : MonoBehaviour
+    public class Collectable : NetworkBehaviour
     {
         [Required]
         [BoxGroup("Pflichtfeld")]

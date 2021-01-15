@@ -1,10 +1,12 @@
-﻿using Sirenix.OdinInspector;
+﻿using Photon.Pun;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace CrystalAlchemist
 {
-    public class BossMechanic : MonoBehaviour
+    [RequireComponent(typeof(PhotonView))]
+    public class BossMechanic : NetworkBehaviour
     {
         [BoxGroup("Debug")]
         [SerializeField]
@@ -14,7 +16,7 @@ namespace CrystalAlchemist
         [SerializeField]
         private Character target;
 
-        List<BossMechanicProperty> properties = new List<BossMechanicProperty>();
+        private List<BossMechanicProperty> properties = new List<BossMechanicProperty>();
 
         [Button]
         private void AddCharacters()

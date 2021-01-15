@@ -12,18 +12,18 @@ namespace CrystalAlchemist
 
         //ANIMATION: InMenu
         //BUG: wrong enemy kill
-        //BUG: Selfhit
-        //BUG: Key Items still visible
-        //BUG: No weapon        
-        //BUG: Treasure Error
-        //BUG: Treasure Multi-Items
+        //BUG: Key Items still visible      
+        //BUG: Keep Aggro, Multi-Target
+
+        //TODO: IsMaster on AIActions, Events, etc. Phase Transition RPC
+        //TODO: RPC DamageNumbers
+        //TODO: AIAction
 
         //NETWORKING: ROOM: Lock Room
         //NETWORKING: PLAYER: StatusEffects Sync
-        //NETWORKING: ENEMY: Skill Instantiate, Kill, Aggro Sync and Phase Transition Enemy Master only
+        //NETWORKING: ENEMY: Phase Transition Enemy Master only
         //NETWORKING: SKILLS: Sync and testing
         //NETWORKING: Death Screen. Master when dead. confirmation only living
-
         //NETWORKING: Boss Events, Spiegel RPC
 
         /*     

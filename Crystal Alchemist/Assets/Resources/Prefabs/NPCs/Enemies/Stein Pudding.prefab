@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 8261187841884981235}
   - component: {fileID: 4372448001566058603}
   - component: {fileID: 1303251095467679536}
+  - component: {fileID: 8046961103477308248}
   m_Layer: 11
   m_Name: Stein Pudding
   m_TagString: Untagged
@@ -362,7 +363,7 @@ MonoBehaviour:
   IsSummoned: 0
   characterName: 
   NPCStats: {fileID: 11400000, guid: 4f2cb5bc19fd27642abfad3e82fb141f, type: 2}
-  target: {fileID: 0}
+  targetID: 0
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &4482648712296496522
@@ -511,9 +512,25 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 4482648712296496520}
+  - {fileID: 8046961103477308248}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &8046961103477308248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2246077131478480992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!1 &6674156776865872386
 GameObject:
   m_ObjectHideFlags: 0

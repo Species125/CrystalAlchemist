@@ -24,7 +24,7 @@ namespace CrystalAlchemist
             return newAbility;
         }
 
-        public static void instantiateSequence(BossMechanic sequence, Character sender, Character target)
+        public static void InstantiateSequence(BossMechanic sequence, Character sender, Character target)
         {
             BossMechanic newSequence = Object.Instantiate(sequence);
             newSequence.name = sequence.name;
@@ -43,49 +43,21 @@ namespace CrystalAlchemist
 
 
 
-
-
-
-        public static Skill InstantiateSkill(Ability ability, Character target)
+        public static Skill InstantiateEffectSkill(Ability ability, Vector2 position, Character sender)
         {
-            //Single Target
-            return InstantiateSkill(ability, target, 1);
+            //Laser and Projectile Impact CLIENT ONLY
+            return InstantiateSkill(ability, sender, null, position, 1, true, Quaternion.identity);
         }
 
-        public static Skill InstantiateSkill(Ability ability, Character target, float reduce)
+        public static Skill InstantiateSpreadSkill(Ability ability, Character sender, Character target, Vector2 position, Quaternion rotation)
         {
-            //Single Target
-            return InstantiateSkill(ability, target, ability.GetSender().transform.position, reduce);
+            return InstantiateSkill(ability, sender, target, position, 1, true, rotation);
         }
 
-        public static Skill InstantiateSkill(Ability ability, Vector2 position, Character sender)
-        {
-            //Laser and Projectile Impact
-            return InstantiateSkill(ability, null, position, sender, Quaternion.identity);
-        }
-
-        public static Skill InstantiateSkill(Ability ability, Character target, Vector2 position, Character sender, Quaternion rotation)
-        {
-            //Boss Sequence
-            Skill result = InstantiateSkill(ability, target, position, 1, true, rotation);
-            result.sender = sender;
-            return result;
-        }
-
-        public static Skill InstantiateSkill(Ability ability, Character target, Vector2 position, float reduce)
-        {
-            return InstantiateSkill(ability, target, position, reduce, false, Quaternion.identity);
-        }
-
-        public static Skill InstantiateSkill(Ability ability, Character target, Vector2 position, float reduce, bool standAlone, Quaternion rotation)
+        public static Skill InstantiateSkill(Ability ability, Character sender, Character target, Vector2 position, float reduce, bool standAlone, Quaternion rotation)
         {
             if (ability.skill == null) return null;
-
-            Character sender = ability.GetSender();
-
             Skill activeSkill = Object.Instantiate(ability.skill, position, rotation);
-            //Skill activeSkill = temp.GetComponent<Skill>();
-            //GameObject temp = PhotonNetwork.Instantiate(ability.skill.path, position, rotation);
 
             activeSkill.name = ability.skill.name;
             activeSkill.Initialize(ability.positionOffset, ability.lockDirection, ability.isRapidFire, ability.timeDistortion, ability.attachToSender);

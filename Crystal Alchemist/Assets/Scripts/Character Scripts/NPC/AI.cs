@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Photon.Pun;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,10 +9,10 @@ namespace CrystalAlchemist
     public class AI : NonPlayer
     {
         [BoxGroup("Debug")]
-        public Character target;
+        public int targetID;
 
         [BoxGroup("Debug")]
-        public Dictionary<Character, float[]> aggroList = new Dictionary<Character, float[]>();
+        public Dictionary<int, float[]> aggroList = new Dictionary<int, float[]>();
 
         [BoxGroup("Debug")]
         public Character partner;
@@ -25,14 +26,20 @@ namespace CrystalAlchemist
         public override void Awake()
         {
             base.Awake();
-            this.target = null;
+            this.targetID = 0;
         }
+
         #region Animation, StateMachine
 
-        public void InitializeAddSpawn(Character target, bool hasMaxDuration, float maxDuration)
+        public void InitializeAddSpawn(int target, bool hasMaxDuration, float maxDuration)
         {
             this.InitializeAddSpawn(hasMaxDuration, maxDuration);
-            this.target = target;
+            this.targetID = target;
+        }
+
+        public Character GetTarget()
+        {
+            return NetworkUtil.GetCharacter(this.targetID);
         }
 
         public override void Start()
@@ -60,12 +67,12 @@ namespace CrystalAlchemist
         {
             base.Update();
 
-            if (this.target != null && this.isSleeping)
+            if (this.targetID > 0 && this.isSleeping)
             {
                 AnimatorUtil.SetAnimatorParameter(this.animator, "WakeUp");
                 this.isSleeping = false;
             }
-            else if (this.target == null && !this.isSleeping)
+            else if (this.targetID > 0 && !this.isSleeping)
             {
                 AnimatorUtil.SetAnimatorParameter(this.animator, "Sleep");
                 this.isSleeping = true;
@@ -87,6 +94,33 @@ namespace CrystalAlchemist
         }
 
         #endregion
+
+
+        public void SetMaxAggro(float aggro)
+        {
+            foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
+            {
+                Player player = (Player)p.TagObject;
+                GameEvents.current.DoAggroIncrease(this, player, aggro);
+            }
+        }
+
+
+        public override void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            base.OnPhotonSerializeView(stream, info);
+
+            if (stream.IsWriting)
+            {
+                stream.SendNext(this.aggroList);
+                stream.SendNext(this.targetID);
+            }
+            else
+            {
+                this.aggroList = (Dictionary<int,float[]>)stream.ReceiveNext();
+                this.targetID = (int)stream.ReceiveNext();
+            }
+        }
 
     }
 }

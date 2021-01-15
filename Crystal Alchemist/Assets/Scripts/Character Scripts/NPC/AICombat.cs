@@ -84,7 +84,7 @@ namespace CrystalAlchemist
         public override List<Character> GetTargetsFromTargeting()
         {
             List<Character> result = new List<Character>();
-            foreach (KeyValuePair<Character, float[]> aggro in this.npc.aggroList) result.Add(aggro.Key);
+            foreach (KeyValuePair<int, float[]> aggro in this.npc.aggroList) result.Add(NetworkUtil.GetCharacter(aggro.Key));
             return result;
         }
 

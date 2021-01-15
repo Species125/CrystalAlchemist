@@ -13,7 +13,7 @@ namespace CrystalAlchemist
         public override void Initialize()
         {
             BossMechanic bossMechanic = this.bossMechanics[Random.Range(0, this.bossMechanics.Count)];
-            AbilityUtil.instantiateSequence(bossMechanic, this.skill.sender, this.skill.target);
+            NetworkEvents.current.InstantiateBossSequence(bossMechanic, this.skill.sender, this.skill.target);
         }
     }
 }

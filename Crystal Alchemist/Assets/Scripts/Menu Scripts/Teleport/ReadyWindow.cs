@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using ExitGames.Client.Photon;
+using Photon.Realtime;
 
 namespace CrystalAlchemist
 {
@@ -76,7 +78,8 @@ namespace CrystalAlchemist
 
         private void Inititialize()
         {           
-            MenuEvents.current.OnTeleportStatus += UpdateStatus; //Listener to others RPC
+            PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
+
             this.stats = Resources.Load<TeleportStats>(this.path.GetValue());
             this.textField.text = this.stats.GetTeleportName();
 
@@ -85,6 +88,18 @@ namespace CrystalAlchemist
             this.bar.DOFillAmount(0, this.duration);
 
             AddBoxes(); //add players to UI
+        }
+
+        private void NetworkingEvent(EventData obj)
+        {
+            if (obj.Code == NetworkUtil.READY_SET)
+            {
+                object[] datas = (object[])obj.CustomData;
+                int ID = (int)datas[0];
+                bool value = (bool)datas[1];
+
+                UpdateStatus(ID, value);
+            }            
         }
 
         private void AddBoxes()
@@ -112,11 +127,11 @@ namespace CrystalAlchemist
 
         public override void OnDestroy()
         {
-            MenuEvents.current.OnTeleportStatus -= UpdateStatus;
+            PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEvent;
             base.OnDestroy();
         }
 
-        public void Ready() => NetworkEvents.current.SetReadyWindow(true);        
+        public void Ready() => SetReadyWindow(true);        
 
         public void NotReady() => ExitMenu();
 
@@ -159,6 +174,21 @@ namespace CrystalAlchemist
             GameEvents.current.DoTeleport();            
 
             this.ExitMenu();
+        }
+
+
+        public void SetReadyWindow(bool value)
+        {
+            int ID = PhotonNetwork.LocalPlayer.GetPlayerNumber();
+
+            object[] datas = new object[] { ID, value };
+
+            RaiseEventOptions options = new RaiseEventOptions()
+            {
+                Receivers = ReceiverGroup.All
+            };
+
+            PhotonNetwork.RaiseEvent(NetworkUtil.READY_SET, datas, options, SendOptions.SendUnreliable);
         }
     }
 }

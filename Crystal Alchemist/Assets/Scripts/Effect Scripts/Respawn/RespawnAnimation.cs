@@ -4,19 +4,8 @@ using UnityEngine;
 namespace CrystalAlchemist
 {
     [RequireComponent(typeof(Animator))]
-    public class RespawnAnimation : MonoBehaviour
+    public class RespawnAnimation : NetworkBehaviour
     {
-        [BoxGroup("Inspector")]
-        [ReadOnly]
-        public string path;
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            this.path = UnityUtil.GetResourcePath(this);
-        }
-#endif
-
         private Character character;
         private Animator animator;
 

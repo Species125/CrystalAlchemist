@@ -139,6 +139,8 @@ namespace CrystalAlchemist
         {
             base.Initialize();
 
+            if (!NetworkUtil.IsMaster()) return;
+
             AnimatorUtil.SetAnimatorParameter(this.npc.animator, "isWalking", false);
             if (Pathfinding.Instance != null) this.seeker = this.GetComponent<PathSeeker>();
 
@@ -152,6 +154,8 @@ namespace CrystalAlchemist
         #region Update und Movement Funktionen
         private void FixedUpdate()
         {
+            if (!NetworkUtil.IsMaster()) return;
+
             if (this.npc.values.currentState != CharacterState.knockedback && !this.npc.values.isOnIce)
             {
                 if (this.npc.myRigidbody.bodyType != RigidbodyType2D.Static) this.npc.myRigidbody.velocity = Vector2.zero;
@@ -195,6 +199,8 @@ namespace CrystalAlchemist
             Vector3 spawnVector = MasterManager.globalValues.nullVector;
             Vector3 chaseVector = MasterManager.globalValues.nullVector;
 
+            Character target = this.npc.GetTarget();
+
             if (this.isPatrol)
             {
                 if (this.patrolType == PatrolType.path && this.patrolPath.Count > 0)
@@ -208,9 +214,9 @@ namespace CrystalAlchemist
             if (this.backToStart) spawnVector = GetNextPoint(this.npc.GetSpawnPosition(), 0.25f);
 
             if (this.movementPriority == MovementPriority.partner)
-                chaseVector = CheckTargets(this.npc.partner, this.partnerRadius, this.npc.target, this.targetRadius);
+                chaseVector = CheckTargets(this.npc.partner, this.partnerRadius, target, this.targetRadius);
             else
-                chaseVector = CheckTargets(this.npc.target, this.targetRadius, this.npc.partner, this.partnerRadius);
+                chaseVector = CheckTargets(target, this.targetRadius, this.npc.partner, this.partnerRadius);
 
             SetVector(patrolVector, spawnVector, chaseVector);
         }
