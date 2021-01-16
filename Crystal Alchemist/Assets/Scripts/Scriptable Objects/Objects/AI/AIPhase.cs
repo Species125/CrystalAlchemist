@@ -5,7 +5,7 @@ using UnityEngine;
 namespace CrystalAlchemist
 {
     [CreateAssetMenu(menuName = "Game/AI/AI Phase")]
-    public class AIPhase : ScriptableObject
+    public class AIPhase : NetworkScriptableObject
     {
         [BoxGroup("Action Sequence")]
         [SerializeField]

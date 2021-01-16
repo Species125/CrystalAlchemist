@@ -7,7 +7,7 @@ using UnityEngine;
 namespace CrystalAlchemist
 {
     [CreateAssetMenu(menuName = "Game/Items/Item Group")]
-    public class ItemGroup : ScriptableObject
+    public class ItemGroup : NetworkScriptableObject
     {
         [BoxGroup("Inventory")]
         public int maxAmount;

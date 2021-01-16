@@ -31,6 +31,8 @@ namespace CrystalAlchemist
         public const byte READY_SHOW = 41;
         public const byte READY_SET = 42;
 
+        public const byte SKILL_AFFECTIONS = 101;
+
         public static bool IsLocal()
         {
             return PhotonNetwork.LocalPlayer.IsLocal;

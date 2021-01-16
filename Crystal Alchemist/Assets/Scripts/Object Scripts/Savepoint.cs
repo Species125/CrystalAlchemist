@@ -28,8 +28,8 @@ namespace CrystalAlchemist
 
         public override void DoOnSubmit()
         {
-            this.player.updateResource(CostType.life, this.player.values.maxLife);
-            this.player.updateResource(CostType.mana, this.player.values.maxMana);
+            this.player.UpdateResource(CostType.life, this.player.values.maxLife);
+            this.player.UpdateResource(CostType.mana, this.player.values.maxMana);
 
             this.teleportList.AddTeleport(this.teleportPoint); //add to teleport list    
             this.savePointInfo.stats = this.teleportPoint;

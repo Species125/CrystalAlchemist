@@ -39,7 +39,7 @@ namespace CrystalAlchemist
                 character.transform.position = this.position;
                 character.transform.DOScale(1, 0f);
                 character.EnableScripts(true);
-                character.updateResource(cost.resourceType, -cost.amount);
+                character.UpdateResource(cost.resourceType, -cost.amount);
             }
             else
             {

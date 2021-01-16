@@ -47,7 +47,7 @@ namespace CrystalAlchemist
         {
             if (this.player.canUseIt(this.costs))
             {
-                this.player.reduceResource(this.costs);
+                this.player.ReduceResource(this.costs);
                 ItemStats loot = itemDrop.stats;
 
                 ShowDialog(DialogTextTrigger.success, loot);

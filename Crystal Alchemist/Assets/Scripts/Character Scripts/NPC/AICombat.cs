@@ -1,6 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace CrystalAlchemist
 {
@@ -30,17 +31,12 @@ namespace CrystalAlchemist
             this.npc = this.character.GetComponent<AI>();
         }
 
-        public void SkipPhase()
-        {
-            this.activePhase.SkipPhase();
-        }
+        public void SkipPhase() => this.activePhase.SkipPhase();        
 
         private void OnEnable()
         {
             if (this.startPhase != null && this.startImmediately) StartPhase();
         }
-
-        public void StartPhase() => StartPhase(this.startPhase);
 
         public override void Updating()
         {
@@ -54,30 +50,12 @@ namespace CrystalAlchemist
 
         private void OnDestroy() => EndPhase();
 
-        public void EndPhase()
-        {
-            this.isActive = false;
-            DestroyActivePhase();
-        }
-
         private void DestroyActivePhase()
         {
             if (this.activePhase != null)
             {
                 this.activePhase.ResetActions(this.npc);
                 Destroy(this.activePhase);
-            }
-        }
-
-        public void StartPhase(AIPhase phase)
-        {
-            if (phase != null)
-            {
-                this.isActive = true;
-
-                DestroyActivePhase();
-                this.activePhase = Instantiate(phase);
-                this.activePhase.Initialize(this.npc);
             }
         }
 
@@ -91,6 +69,44 @@ namespace CrystalAlchemist
         public override void ShowTargetingSystem(Ability ability)
         {
 
+        }
+
+        public void StartPhase() => StartPhase(this.startPhase);
+
+        public void StartPhase(AIPhase phase)
+        {
+            if (!NetworkUtil.IsMaster()) return;
+            string path = phase.path;
+            
+            PhotonView.Get(this).RPC("RpcStartPhase", RpcTarget.All, path);
+        }
+
+        [PunRPC]
+        protected void RpcStartPhase(string path, PhotonMessageInfo info)
+        {
+            AIPhase phase = Resources.Load<AIPhase>(path);
+
+            if (phase != null)
+            {
+                this.isActive = true;
+
+                DestroyActivePhase();
+                this.activePhase = Instantiate(phase);
+                this.activePhase.Initialize(this.npc);
+            }
+        }
+
+        public void EndPhase()
+        {
+            if (!NetworkUtil.IsMaster()) return;
+            PhotonView.Get(this).RPC("RpcEndPhase", RpcTarget.All);
+        }
+
+        [PunRPC]
+        protected void RpcEndPhase(PhotonMessageInfo info)
+        {
+            this.isActive = false;
+            DestroyActivePhase();
         }
     }
 }

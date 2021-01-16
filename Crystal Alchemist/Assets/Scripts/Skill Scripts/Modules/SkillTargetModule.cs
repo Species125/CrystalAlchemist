@@ -26,10 +26,6 @@ namespace CrystalAlchemist
         public List<CharacterResource> affectedResources;
 
         [BoxGroup("Ziel Attribute")]
-        [Tooltip("Statuseffekte")]
-        public List<StatusEffect> statusEffects;
-
-        [BoxGroup("Ziel Attribute")]
         public List<ResourceModifier> modifiers = new List<ResourceModifier>();
 
         [Space(10)]
@@ -48,7 +44,25 @@ namespace CrystalAlchemist
         [Required]
         public SkillAffections affections;
 
-        public List<CharacterResource> GetAffectedResource(Character target)
+        public StatusEffect GetStatusEffect()
+        {
+            foreach(CharacterResource resource in this.affectedResources)
+            {
+                if (resource.resourceType == CostType.statusEffect) return resource.statusEffect;
+            }
+            return null;
+        }
+
+        public string[] GetAffectedResourcesArray(Character target)
+        {
+            List<string> result = new List<string>();
+
+            foreach (CharacterResource characterResource in GetAffectedResource(target)) result.Add(characterResource.GetAsString());
+
+            return result.ToArray();
+        }
+
+        private List<CharacterResource> GetAffectedResource(Character target)
         {
             for (int i = 0; i < modifiers.Count; i++)
             {

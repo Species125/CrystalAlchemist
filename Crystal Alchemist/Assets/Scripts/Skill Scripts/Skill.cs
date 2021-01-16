@@ -253,7 +253,7 @@ namespace CrystalAlchemist
         public void hitIt(Character target)
         {
             //Gegner zurückstoßen + Hit
-            target.gotHit(this);
+            target.GotHit(this);
         }
 
         public void hitIt(Collider2D hittedObject, float percentage)
@@ -267,7 +267,7 @@ namespace CrystalAlchemist
         public void hitIt(Character target, float percentage)
         {
             //Gegner zurückstoßen + Hit
-            target.gotHit(this, percentage);
+            target.GotHit(this, percentage);
         }
 
         #endregion

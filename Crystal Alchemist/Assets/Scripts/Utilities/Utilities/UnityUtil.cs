@@ -201,6 +201,6 @@ namespace CrystalAlchemist
             if (!throwIf) return;
             Debug.Log("<color=red>" + message + "</color>");
             throw new Exception(message + " in " + origin.ToString());
-        }
+        }        
     }
 }

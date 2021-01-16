@@ -58,7 +58,7 @@ namespace CrystalAlchemist
                         if (this.player.canUseIt(this.costs))
                         {
                             //Tür offen!
-                            this.player.reduceResource(this.costs);
+                            this.player.ReduceResource(this.costs);
                             OpenCloseDoor(true);
                             ShowDialog(DialogTextTrigger.success);
                         }

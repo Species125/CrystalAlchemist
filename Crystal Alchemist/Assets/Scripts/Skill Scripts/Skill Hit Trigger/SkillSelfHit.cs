@@ -13,7 +13,7 @@ namespace CrystalAlchemist
         public override void Initialize()
         {
             if (this.invincibleTimer > 0) this.skill.sender.SetCannotHit(this.invincibleTimer, false);
-            this.skill.sender.gotHit(this.skill);
+            this.skill.sender.GotHit(this.skill);
         }
     }
 }

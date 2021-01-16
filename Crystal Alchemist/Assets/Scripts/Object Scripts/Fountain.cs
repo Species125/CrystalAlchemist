@@ -12,7 +12,7 @@ namespace CrystalAlchemist
 
         public override void DoOnSubmit()
         {
-            foreach (CharacterResource resource in this.resources) this.player.updateResource(resource.resourceType, resource.item, resource.amount, true);
+            foreach (CharacterResource resource in this.resources) this.player.UpdateResource(resource);
         }
     }
 }

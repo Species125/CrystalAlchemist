@@ -15,13 +15,11 @@ namespace CrystalAlchemist
         //BUG: Key Items still visible      
         //BUG: Keep Aggro, Multi-Target
 
-        //TODO: IsMaster on AIActions, Events, etc. Phase Transition RPC
-        //TODO: RPC DamageNumbers
-        //TODO: AIAction
+        //TODO: HitEvent RPC on Character (Local only)
+        //TODO: Skill Multi Target (parallel, sequentiell)
 
         //NETWORKING: ROOM: Lock Room
         //NETWORKING: PLAYER: StatusEffects Sync
-        //NETWORKING: ENEMY: Phase Transition Enemy Master only
         //NETWORKING: SKILLS: Sync and testing
         //NETWORKING: Death Screen. Master when dead. confirmation only living
         //NETWORKING: Boss Events, Spiegel RPC

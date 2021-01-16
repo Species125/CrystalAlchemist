@@ -1,11 +1,4 @@
-﻿
-
-
-
-
-
-
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -401,32 +394,7 @@ namespace CrystalAlchemist
         }
 
         #endregion
-
-
-        /*
-    #region Sequence
-
-    private void StartSequence()
-    {
-        if (!this.repeat) this.amount = 1;
-        this.counter = 0;
-    }
-
-    private void UpdateSequence(AI npc)
-    {
-        if (this.elapsed > 0) this.elapsed -= Time.deltaTime;
-        else 
-        {
-            this.sequence.InstantiateSequence(npc);
-            this.elapsed = this.delay;
-            this.counter++;
-        }
-
-        if(counter >= this.amount) Deactivate();
-    }
-
-    #endregion
-    */
+        
 
         #region Wait
 

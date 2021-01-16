@@ -99,8 +99,6 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
   useGlow: 1
-  selectColor: {r: 1, g: 0.8705883, b: 0.13333334, a: 1}
-  precision: 0.08
   glowColor: {r: 4.237095, g: 1.1535546, b: 0, a: 1}
   invert: 0
 --- !u!58 &2628124864901156633
@@ -373,8 +371,6 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
   useGlow: 1
-  selectColor: {r: 1, g: 0.8705883, b: 0.13333334, a: 1}
-  precision: 0.08
   glowColor: {r: 4, g: 1.082353, b: 0, a: 1}
   invert: 0
 --- !u!1 &8134692059877465040
@@ -431,9 +427,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   spriteRenderer: {fileID: 0}
   myRigidbody: {fileID: 5931400148651378231}
   animator: {fileID: 8134692059877465041}
+  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -493,9 +491,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
-  affectedResources: []
+  affectedResources:
+  - resourceType: 5
+    item: {fileID: 0}
+    keyItem: {fileID: 0}
+    statusEffect: {fileID: 11400000, guid: a79e7d06af44ae74ab6e78a7265b76df, type: 2}
+    amount: 1
   statusEffects:
   - {fileID: 11400000, guid: a79e7d06af44ae74ab6e78a7265b76df, type: 2}
+  modifiers: []
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}
@@ -594,6 +598,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7599257305882927249, guid: d88964005fb52a940952d00fc8c9e068,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599257305882927249, guid: d88964005fb52a940952d00fc8c9e068,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -609,6 +618,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7599257305882927249, guid: d88964005fb52a940952d00fc8c9e068,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599257305882927249, guid: d88964005fb52a940952d00fc8c9e068,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -620,16 +634,6 @@ PrefabInstance:
     - target: {fileID: 7599257305882927249, guid: d88964005fb52a940952d00fc8c9e068,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599257305882927249, guid: d88964005fb52a940952d00fc8c9e068,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599257305882927249, guid: d88964005fb52a940952d00fc8c9e068,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7599257305882927249, guid: d88964005fb52a940952d00fc8c9e068,

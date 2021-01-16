@@ -60,7 +60,7 @@ namespace CrystalAlchemist
         {
             foreach (CharacterResource resource in this.resources)
             {
-                character.updateResource(resource.resourceType, resource.item, resource.amount);
+                character.UpdateResource(resource);
             }
         }
 

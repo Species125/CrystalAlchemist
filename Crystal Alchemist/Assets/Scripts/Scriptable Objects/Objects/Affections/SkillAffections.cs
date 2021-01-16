@@ -1,5 +1,7 @@
 ﻿using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
+
 
 namespace CrystalAlchemist
 {
@@ -20,6 +22,7 @@ namespace CrystalAlchemist
         [Tooltip("Unverwundbarkeit ignorieren (z.B. für Heals)?")]
         [SerializeField]
         private bool ignoreInvincibility = false;
+        
 
         protected override bool IsAffected(Character sender, Character target)
         {

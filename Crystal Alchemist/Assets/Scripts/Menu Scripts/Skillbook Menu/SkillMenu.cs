@@ -1,7 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace CrystalAlchemist
 {
@@ -33,9 +32,6 @@ namespace CrystalAlchemist
         [BoxGroup("Detail-Ansicht")]
         [SerializeField]
         private TextMeshProUGUI skillDetailsCost;
-        [BoxGroup("Detail-Ansicht")]
-        [SerializeField]
-        private Image StatusEffects;
 
         private Ability selectedAbility;
 
@@ -123,13 +119,6 @@ namespace CrystalAlchemist
                 {
                     if (targetModule.affectedResources.Count > 0) strength = Mathf.Abs(targetModule.affectedResources[0].amount);
                     this.skillDetailsStrength.text = strength + "";
-
-                    if (targetModule.statusEffects.Count > 0)
-                    {
-                        this.StatusEffects.enabled = true;
-                        this.StatusEffects.sprite = targetModule.statusEffects[0].iconSprite;
-                    }
-                    else this.StatusEffects.enabled = false;
                 }
             }
             else
@@ -143,8 +132,6 @@ namespace CrystalAlchemist
             this.skillDetailsName.text = "";
             this.skillDetailsStrength.text = "";
             this.skillDetailsCost.text = "";
-
-            this.StatusEffects.enabled = false;
         }
 
         public void ShowCategory(string category)

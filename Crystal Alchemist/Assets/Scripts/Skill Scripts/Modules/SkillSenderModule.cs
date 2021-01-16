@@ -100,7 +100,7 @@ namespace CrystalAlchemist
 
         private void updateResourceSender()
         {
-            if (this.skill.sender != null) this.skill.sender.reduceResource(this.costs);
+            if (this.skill.sender != null) this.skill.sender.ReduceResource(this.costs);
         }
 
         private void setSelfTrust()

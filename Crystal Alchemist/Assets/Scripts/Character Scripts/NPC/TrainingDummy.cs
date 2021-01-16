@@ -58,12 +58,12 @@ namespace CrystalAlchemist
             }
         }
 
-        public override void updateResource(CostType type, ItemGroup item, float value, bool showingDamageNumber)
+        public override void UpdateLife(float value, bool showingDamageNumber)
         {
             if (this.state != DummyState.showing)
             {
                 this.damage -= value;
-                UpdateLifeMana(type, item, value, showingDamageNumber);
+                base.UpdateLife(value, showingDamageNumber);
                 if (this.values.life <= 0) this.values.life = this.values.maxLife;
 
                 if (this.state != DummyState.counting) StartCountDown();

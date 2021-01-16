@@ -5,34 +5,33 @@ using UnityEngine;
 
 namespace CrystalAlchemist
 {
+    public enum ItemType
+    {
+        consumable,
+        item,
+        keyItem,
+        outfit,
+        ability
+    }
+
     [CreateAssetMenu(menuName = "Game/Items/Item Stats")]
     public class ItemStats : ScriptableObject
     {
         [BoxGroup("Attributes")]
-        public CostType resourceType;
+        public ItemType itemType;
 
         [BoxGroup("Attributes")]
+        [ShowIf("itemType", ItemType.consumable)]
+        public List<CharacterResource> resources = new List<CharacterResource>();
+
+        [BoxGroup("Attributes")]
+        [ShowIf("itemType", ItemType.item)]
         [SerializeField]
-        [HideIf("resourceType", CostType.none)]
-        [HideIf("resourceType", CostType.outfit)]
-        [HideIf("resourceType", CostType.ability)]
-        [HideIf("resourceType", CostType.statusEffect)]
-        [HideIf("resourceType", CostType.keyItem)]
         private int value = 1;
-
-        [BoxGroup("Attributes")]
-        [ShowIf("resourceType", CostType.ability)]
-        [SerializeField]
-        private Ability ability;
-
-        [BoxGroup("Attributes")]
-        [ShowIf("resourceType", CostType.statusEffect)]
-        [SerializeField]
-        public List<StatusEffect> statusEffects = new List<StatusEffect>();
 
         [BoxGroup("Inventory")]
         [SerializeField]
-        [ShowIf("resourceType", CostType.item)]
+        [ShowIf("itemType", ItemType.item)]
         [Tooltip("Needed if an item have to be grouped. Normal items only!")]
         [Required]
         public ItemGroup itemGroup;
@@ -40,7 +39,7 @@ namespace CrystalAlchemist
         [BoxGroup("Inventory")]
         [SerializeField]
         [Required]
-        [ShowIf("resourceType", CostType.keyItem)]
+        [ShowIf("itemType", ItemType.keyItem)]
         [Tooltip("Needed to show the item in the inventory. Only for key items!")]
         public ItemSlotInfo inventoryInfo;
 
@@ -49,8 +48,6 @@ namespace CrystalAlchemist
         [SerializeField]
         [Required]
         public ItemInfo info;
-
-
 
         [HideInInspector]
         public int amount = 1;
@@ -66,17 +63,17 @@ namespace CrystalAlchemist
             return this.info;
         }
 
-        public void SetStats(int value, CostType type, AudioClip soundEffect, ItemInfo info)
+        public void SetStats(int value, ItemType type, AudioClip soundEffect, ItemInfo info)
         {
             this.value = value;
-            this.resourceType = type;
+            this.itemType = type;
             this.collectSoundEffect = soundEffect;
             this.info = info;
         }
 
         public bool isKeyItem()
         {
-            return this.resourceType == CostType.keyItem;
+            return this.itemType == ItemType.keyItem;
         }
 
         public bool isID(int ID)

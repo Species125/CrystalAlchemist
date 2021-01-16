@@ -47,12 +47,14 @@ namespace CrystalAlchemist
                 this.descriptionField.text = ability.info.getDescription();
             }
 
-            if (ability.skill.GetComponent<SkillTargetModule>() != null && ability.skill.GetComponent<SkillTargetModule>().statusEffects.Count > 0)
+            SkillTargetModule module = ability.skill.GetComponent<SkillTargetModule>();
+
+            if(module != null)
             {
+                StatusEffect statusEffect = module.GetStatusEffect();
+                if (statusEffect == null) return;
+
                 this.additionalInfo.SetActive(true);
-
-                StatusEffect statusEffect = ability.skill.GetComponent<SkillTargetModule>().statusEffects[0];
-
                 this.statusEffectPreviewImage.sprite = statusEffect.iconSprite;
                 this.statusEffectNameField.text = statusEffect.GetName();
                 this.statusEffectDescriptionField.text = statusEffect.GetDescription();

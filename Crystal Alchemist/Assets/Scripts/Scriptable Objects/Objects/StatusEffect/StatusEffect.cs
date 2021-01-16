@@ -12,7 +12,7 @@ namespace CrystalAlchemist
     }
 
     [CreateAssetMenu(menuName = "Game/StatusEffect")]
-    public class StatusEffect : ScriptableObject
+    public class StatusEffect : NetworkScriptableObject
     {
         #region Attribute
         [FoldoutGroup("Basis Attribute")]

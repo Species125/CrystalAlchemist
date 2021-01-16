@@ -134,7 +134,7 @@ namespace CrystalAlchemist
             SceneManager.LoadScene("UI", LoadSceneMode.Additive);
 
             GameEvents.current.OnCollect += this.CollectIt;
-            GameEvents.current.OnReduce += this.reduceResource;
+            GameEvents.current.OnReduce += this.ReduceResource;
             GameEvents.current.OnStateChanged += this.SetState;
             GameEvents.current.OnSleep += this.GoToSleep;
             GameEvents.current.OnWakeUp += this.WakeUp;
@@ -172,7 +172,7 @@ namespace CrystalAlchemist
             base.OnDestroy();
             GameEvents.current.OnPresetChange -= UpdateCharacterParts;
             GameEvents.current.OnCollect -= this.CollectIt;
-            GameEvents.current.OnReduce -= this.reduceResource;
+            GameEvents.current.OnReduce -= this.ReduceResource;
             GameEvents.current.OnStateChanged -= this.SetState;
             GameEvents.current.OnSleep -= this.GoToSleep;
             GameEvents.current.OnWakeUp -= this.WakeUp;
@@ -246,30 +246,16 @@ namespace CrystalAlchemist
         }
 
 
-        public override void reduceResource(Costs price)
+        public override void ReduceResource(Costs price)
         {
             //Shop, Door, Treasure, MiniGame, Abilities, etc
             if (price != null
                 && ((price.item != null && price.item.canConsume)
                   || price.item == null))
-                this.updateResource(price.resourceType, price.item, -price.amount);
+                this.UpdateResource(price.Convert(), false);
         }
 
         ///////////////////////////////////////////////////////////////
-
-
-        public override void updateResource(CostType type, ItemGroup item, float value, bool showingDamageNumber)
-        {
-            UpdateLifeMana(type, null, value, showingDamageNumber);
-
-            switch (type)
-            {
-                case CostType.life: callSignal(value); break;
-                case CostType.mana: callSignal(value); break;
-                case CostType.item: this.GetComponent<PlayerItems>().UpdateInventory(item, Mathf.RoundToInt(value)); break;
-            }
-            CheckDeath();
-        }
 
         private void SetCutScene()
         {
@@ -282,11 +268,10 @@ namespace CrystalAlchemist
             if (addResource != 0) GameEvents.current.DoManaLifeUpdate();
         }
 
-
-        public override void gotHit(Skill skill, float percentage, bool knockback)
+        public override void GotHit(Skill skill, float percentage, bool knockback)
         {
-            GameEvents.current.DoCancel();
-            base.gotHit(skill, percentage, knockback);
+            if (this.isLocalPlayer) GameEvents.current.DoCancel();
+            base.GotHit(skill, percentage, knockback);
         }
 
         private void SetState(CharacterState state)
@@ -300,15 +285,44 @@ namespace CrystalAlchemist
             //Collectable, Load, MiniGame, Shop und Treasure
             if (!isLocalPlayer) return;
 
-            if (stats.resourceType == CostType.life || stats.resourceType == CostType.mana) updateResource(stats.resourceType, stats.amount, true);
-            else if (stats.resourceType == CostType.item || stats.resourceType == CostType.keyItem) GetComponent<PlayerItems>().CollectItem(stats);
-            else if (stats.resourceType == CostType.statusEffect)
+            if (stats.itemType == ItemType.consumable)
             {
-                foreach (StatusEffect effect in stats.statusEffects)
-                {
-                    StatusEffectUtil.AddStatusEffect(effect, this);
-                }
+                foreach (CharacterResource resource in stats.resources) UpdateResource(resource, true);
             }
+            else if (stats.itemType == ItemType.item || stats.itemType == ItemType.keyItem)
+            {
+                GetComponent<PlayerItems>().CollectItem(stats);
+            }
+            else if (stats.itemType == ItemType.ability)
+            {
+                //add ability to skillset
+            }
+            else if (stats.itemType == ItemType.outfit)
+            {
+                //add outfit to glamour
+            }
+        }
+
+        public override void UpdateLife(float value, bool showingDamageNumber)
+        {
+            base.UpdateLife(value, showingDamageNumber);
+            callSignal(value);
+        }
+
+        public override void UpdateMana(float value, bool showingDamageNumber)
+        {
+            base.UpdateMana(value, showingDamageNumber);
+            callSignal(value);
+        }
+
+        public override void UpdateItem(ItemGroup item, int value)
+        {
+            GetComponent<PlayerItems>().UpdateInventory(item, value);
+        }
+
+        public override void UpdateKeyItem(ItemDrop keyItem)
+        {
+            GetComponent<PlayerItems>().CollectItem(keyItem.stats);
         }
 
 

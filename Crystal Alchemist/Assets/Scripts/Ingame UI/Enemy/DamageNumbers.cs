@@ -1,13 +1,11 @@
-﻿
-
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 namespace CrystalAlchemist
 {
-    public enum NumberColor
+    public enum NumberColor : byte
     {
-        white,
+        white = 0,
         green,
         blue,
         yellow,
@@ -16,6 +14,8 @@ namespace CrystalAlchemist
 
     public class DamageNumbers : MonoBehaviour
     {
+        //TODO: NETWORKING RPC OTHER
+
         [SerializeField]
         private float factor = 1;
 

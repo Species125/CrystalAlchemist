@@ -326,9 +326,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   spriteRenderer: {fileID: 5634262924188748619}
   myRigidbody: {fileID: 1942275408024995949}
   animator: {fileID: 2130774073635876181}
+  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -356,6 +358,7 @@ MonoBehaviour:
     resourceType: 3
     item: {fileID: 11400000, guid: c4c6c59263410ba41a80d318974e1abb, type: 2}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 1
   intervallSender: 0
   speedDuringCasting: 0
@@ -364,7 +367,6 @@ MonoBehaviour:
   forward: 0
   selfThrust: 0
   selfThrustTime: 0
-  stateType: 0
 --- !u!114 &1161617724197733977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,9 +384,15 @@ MonoBehaviour:
   - resourceType: 1
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: -1
-  statusEffects:
-  - {fileID: 11400000, guid: 56c3a03a9c810be4a8960260c51efbb5, type: 2}
+  - resourceType: 5
+    item: {fileID: 0}
+    keyItem: {fileID: 0}
+    statusEffect: {fileID: 11400000, guid: 56c3a03a9c810be4a8960260c51efbb5, type: 2}
+    amount: 1
+  statusEffects: []
+  modifiers: []
   thrust: 2
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}
@@ -447,7 +455,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
   canBeReflected: 0
-  skillOnImpact: {fileID: 0}
 --- !u!114 &5085618712826816977
 MonoBehaviour:
   m_ObjectHideFlags: 0
