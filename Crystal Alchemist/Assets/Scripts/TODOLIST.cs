@@ -7,16 +7,18 @@ namespace CrystalAlchemist
         //TODO (0.2.7)
         //TODO: Enemy Alarm mit Radius
         //TODO: Enemy Spawn on Death (Death Event?) -> Großer Blob zu kleinen Blobs
-        //TODO: Custom Debug and Exception
-        //TODO: Autosave
+        //TODO: Autosave, Savemenu anpassen
 
         //ANIMATION: InMenu
+
         //BUG: wrong enemy kill
         //BUG: Key Items still visible      
-        //BUG: Keep Aggro, Multi-Target
+        //BUG: Damage Number doppelt bei Hit (doppel-RPC)
+        //BUG: Doppelte Items beim Treasure (wegen Animator sync)
+        //BUG: Titanias Turm auf und zu...
 
-        //TODO: HitEvent RPC on Character (Local only)
-        //TODO: Skill Multi Target (parallel, sequentiell)
+        //TODO: AIAction -> Skill Multi Target (parallel, sequentiell)
+        //TODO: AIAggroSystem -> Testen
 
         //NETWORKING: ROOM: Lock Room
         //NETWORKING: PLAYER: StatusEffects Sync
@@ -25,11 +27,11 @@ namespace CrystalAlchemist
         //NETWORKING: Boss Events, Spiegel RPC
 
         /*     
-    GRAPHICS: Booster
-    GRAPHICS: Katzenohren und Katzenschwanz
-    GRAPHICS: Schuppen (Beine und Körper)
-    GRAPHICS: Beine ohne Animation (fürs Fliegen)
-    */
+        GRAPHICS: Booster
+        GRAPHICS: Katzenohren und Katzenschwanz
+        GRAPHICS: Schuppen (Beine und Körper)
+        GRAPHICS: Beine ohne Animation (fürs Fliegen)
+        */
 
         //SKILL: Tornado (Zieht Gegner ran und macht Schaden)
         //SKILL: Geode (Fläche, die Schaden über Zeit macht)

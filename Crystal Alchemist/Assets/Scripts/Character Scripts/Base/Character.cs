@@ -350,7 +350,7 @@ namespace CrystalAlchemist
             CheckDeath();
         }
 
-        public virtual void UpdateLife (float value, bool showingDamageNumber)
+        public virtual void UpdateLife(float value, bool showingDamageNumber)
         {
             this.values.life = GameUtil.setResource(this.values.life, this.values.maxLife, value);
 
@@ -362,7 +362,7 @@ namespace CrystalAlchemist
                 && showingDamageNumber) ShowDamageNumber(value, color);
         }
 
-        public virtual void UpdateMana (float value, bool showingDamageNumber)
+        public virtual void UpdateMana(float value, bool showingDamageNumber)
         {
             this.values.mana = GameUtil.setResource(this.values.mana, this.values.maxMana, value);
             if (showingDamageNumber && value > 0) ShowDamageNumber(value, NumberColor.blue);
@@ -381,93 +381,91 @@ namespace CrystalAlchemist
         public virtual void UpdateStatusEffect(StatusEffect effect, int value)
         {
             //TODO: Dispell with amount (value negativ)
-            for(int i = 0; i < value; i++) StatusEffectUtil.AddStatusEffect(effect, this);
+            for (int i = 0; i < value; i++) StatusEffectUtil.AddStatusEffect(effect, this);
         }
 
         #endregion
 
         #region Damage Functions
 
-        private void showDamageNumber(float value) => ShowDamageNumber(value, NumberColor.yellow);        
+        private void showDamageNumber(float value) => ShowDamageNumber(value, NumberColor.yellow);
 
         private void ShowDamageNumber(float value, NumberColor color)
         {
-            if (this.stats.showDamageNumbers) this.photonView.RPC("RpcShowDamageNumber", RpcTarget.All, value, (byte)color);
+            if (this.stats.showDamageNumbers) //this.photonView.RPC("RpcShowDamageNumber", RpcTarget.All, value, (byte)color);
+                RpcShowDamageNumber(value, (byte)color);
         }
 
         [PunRPC]
-        protected void RpcShowDamageNumber(float value, byte color, PhotonMessageInfo info)
+        protected void RpcShowDamageNumber(float value, byte color)
         {
             DamageNumbers damageNumberClone = Instantiate(MasterManager.damageNumber, this.transform.position, Quaternion.identity, this.transform);
             damageNumberClone.Initialize(value, (NumberColor)color);
         }
 
         public void GotHit(Skill skill) => GotHit(skill, 100);
-        
+
         public void GotHit(Skill skill, float percentage) => GotHit(skill, percentage, true);
 
         public virtual void GotHit(Skill skill, float percentage, bool knockback)
         {
             SkillTargetModule targetModule = skill.GetComponent<SkillTargetModule>();
 
-            if (targetModule == null) return;
+            if (targetModule == null
+                || this.values.currentState == CharacterState.dead
+                || (!targetModule.affections.CanIgnoreInvinvibility() && this.values.cantBeHit)) return;
 
             Vector2 position = skill.transform.position;
             int ID = skill.sender.photonView.ViewID;
             string[] resources = targetModule.GetAffectedResourcesArray(this);
-            bool ignore = targetModule.affections.CanIgnoreInvinvibility();
             float thrust = targetModule.thrust;
             float duration = targetModule.knockbackTime;
 
-            this.photonView.RPC("RpcGotHit", RpcTarget.All, ID, resources, 
-                                position, percentage, knockback, thrust, duration, ignore);
+            this.photonView.RPC("RpcGotHit", RpcTarget.All, ID, resources,
+                            position, percentage, knockback, thrust, duration);
         }
 
         [PunRPC]
-        protected void RpcGotHit(int senderID, string[] resourcesArray, Vector2 position, 
-                                 float percentage, bool knockback, float thrust, float duration, bool ignore)
+        protected void RpcGotHit(int senderID, string[] resourcesArray, Vector2 position,
+                                 float percentage, bool knockback, float thrust, float duration)
         {
             List<CharacterResource> resources = new List<CharacterResource>();
-            foreach(string elem in resourcesArray) resources.Add(new CharacterResource(elem));
+            foreach (string elem in resourcesArray) resources.Add(new CharacterResource(elem));
 
             Character sender = NetworkUtil.GetCharacter(senderID);
-            GetDamage(sender, resources, position, percentage, knockback, thrust, duration, ignore);
+            GetDamage(sender, resources, position, percentage, knockback, thrust, duration);
         }
 
-        private void GetDamage(Character sender, List<CharacterResource> resources, Vector2 position, 
-                               float percentage, bool knockback, float thrust, float duration, bool ignore)
+        private void GetDamage(Character sender, List<CharacterResource> resources, Vector2 position,
+                               float percentage, bool knockback, float thrust, float duration)
         {
-            if (this.values.currentState != CharacterState.dead
-                && ((!this.values.cantBeHit) || ignore))
+            if (this.values.isInvincible)
             {
-                if (this.values.isInvincible)
+                showDamageNumber(0);
+                SetCannotHit(false);
+            }
+            else
+            {
+                foreach (CharacterResource elem in resources)
                 {
-                    showDamageNumber(0);
-                    SetCannotHit(false);
+                    elem.amount *= percentage / 100;
+                    UpdateResource(elem);
+
+                    if (this.values.life > 0 && elem.resourceType == CostType.life && elem.amount < 0)
+                    {
+                        GameEvents.current.DoAggroHit(this, sender, elem.amount);
+
+                        //Charakter-Treffer (Schaden) animieren
+                        AudioUtil.playSoundEffect(this.gameObject, this.stats.hitSoundEffect);
+                        SetCannotHit();
+                    }
                 }
-                else
+
+                if (this.values.life > 0 && knockback)
                 {
-                    foreach (CharacterResource elem in resources)
-                    {
-                        elem.amount *= percentage / 100;
-                        UpdateResource(elem);
-
-                        if (this.values.life > 0 && elem.resourceType == CostType.life && elem.amount < 0)
-                        {
-                            GameEvents.current.DoAggroHit(this, sender, elem.amount);
-
-                            //Charakter-Treffer (Schaden) animieren
-                            AudioUtil.playSoundEffect(this.gameObject, this.stats.hitSoundEffect);
-                            SetCannotHit();
-                        }
-                    }
-
-                    if (this.values.life > 0 && knockback)
-                    {
-                        //Rückstoß ermitteln
-                        float knockbackTrust = thrust - (this.stats.antiKnockback / 100 * thrust);
-                        knockBack(duration, knockbackTrust, position);
-                    }
+                    //Rückstoß ermitteln
+                    float knockbackTrust = thrust - (this.stats.antiKnockback / 100 * thrust);
+                    knockBack(duration, knockbackTrust, position);
                 }
             }
         }

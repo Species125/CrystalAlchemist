@@ -145,7 +145,7 @@ namespace CrystalAlchemist
 
         public void ShowTreasureItem()
         {
-            Debug.Log(this.itemDrop);
+            //TODO: RPC for chest open
 
             if (this.itemDrop != null)
             {

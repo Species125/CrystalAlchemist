@@ -44,8 +44,6 @@ namespace CrystalAlchemist
             else ShowReadywindow(this.stats);
         }
 
-
-
         public void ShowReadywindow(TeleportStats stats)
         {
             object[] datas = new object[] { stats.path };
@@ -55,7 +53,7 @@ namespace CrystalAlchemist
                 Receivers = ReceiverGroup.All
             };
 
-            PhotonNetwork.RaiseEvent(NetworkUtil.READY_SET, datas, options, SendOptions.SendUnreliable);
+            PhotonNetwork.RaiseEvent(NetworkUtil.READY_SHOW, datas, options, SendOptions.SendUnreliable);
         }
     }
 }

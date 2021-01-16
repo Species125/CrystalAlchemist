@@ -442,7 +442,7 @@ namespace CrystalAlchemist
 
             RaiseEventOptions options = new RaiseEventOptions()
             {
-                Receivers = ReceiverGroup.MasterClient
+                Receivers = ReceiverGroup.All
             };
 
             PhotonNetwork.RaiseEvent(NetworkUtil.ITEMDROP, datas, options, SendOptions.SendUnreliable);
