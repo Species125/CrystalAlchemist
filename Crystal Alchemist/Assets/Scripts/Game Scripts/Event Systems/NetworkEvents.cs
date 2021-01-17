@@ -433,12 +433,19 @@ namespace CrystalAlchemist
         public void InstantiateTreasureItem(ItemDrop drop, Vector2 position, bool bounce, Vector2 playerPosition)
         {
             Vector2 direction = position - playerPosition;
-            InstantiateItem(drop, position, bounce, direction);
+            //InstantiateItem(drop, position, bounce, direction);
+
+            DropItem(drop, position, bounce, direction);
         }
 
-        private void InstantiateItem(ItemDrop drop, Vector2 position, bool bounce, Vector2 direction)
+        public void InstantiateItem(ItemDrop drop, Vector2 position, bool bounce, Vector2 direction)
+        {
+            InstantiateItem(drop.path, position, bounce, direction);
+        }
+
+        private void InstantiateItem(string path, Vector2 position, bool bounce, Vector2 direction)
         {            
-            object[] datas = new object[] { drop.path, position, bounce, direction };
+            object[] datas = new object[] { path, position, bounce, direction };
 
             RaiseEventOptions options = new RaiseEventOptions()
             {

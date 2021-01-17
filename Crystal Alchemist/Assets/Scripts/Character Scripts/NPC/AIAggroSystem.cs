@@ -24,6 +24,18 @@ namespace CrystalAlchemist
         private AggroClue activeClue;
         private float needed;
 
+        [SerializeField]
+        [BoxGroup("Debug")]
+        private string mainTarget;
+
+        [SerializeField]
+        [BoxGroup("Debug")]
+        private List<string> aggrodata = new List<string>();
+
+
+
+        private int ID;
+
         #endregion
 
 
@@ -36,6 +48,7 @@ namespace CrystalAlchemist
 
         private void Start()
         {
+            this.ID = this.npc.photonView.ViewID;
             this.npc.aggroList.Clear();
             this.needed = this.aggroStats.aggroNeededToTarget / 100f;
 
@@ -68,9 +81,14 @@ namespace CrystalAlchemist
         {
             float add = (float)(aggro / 100);
 
-            if (newTarget > 0 
-                && this.npc.aggroList.ContainsKey(newTarget)
-                && this.npc.aggroList[newTarget][0] < this.needed) this.npc.aggroList[newTarget][0] += add;
+            if (newTarget > 0 && this.npc.aggroList.ContainsKey(newTarget))
+            {
+                this.npc.aggroList[newTarget][0] += add;
+
+                if (this.npc.aggroList[newTarget][0] > this.needed) this.npc.aggroList[newTarget][0] = this.needed;
+                else if (this.npc.aggroList[newTarget][0] < 0) this.npc.aggroList[newTarget][0] = 0;
+            }
+
         }
 
         private void OnDisable()
@@ -100,11 +118,17 @@ namespace CrystalAlchemist
             List<int> charactersToRemove = new List<int>();
             int currentTargetID = this.npc.targetID;
 
+            Character c = NetworkUtil.GetCharacter(currentTargetID);
+            if (c != null) this.mainTarget = c.name;
+            else this.mainTarget = "none";
+
             if (this.npc.targetID > 0 && !IsValidTarget(currentTargetID))
             {
                 this.npc.aggroList.Remove(currentTargetID);
                 this.npc.targetID = 0;
             }
+
+            this.aggrodata.Clear();
 
             foreach (KeyValuePair<int, float[]> entry in this.npc.aggroList)
             {
@@ -112,6 +136,9 @@ namespace CrystalAlchemist
 
                 //                       amount                         factor
                 addAggro(character, this.npc.aggroList[character][1] * (Time.deltaTime * this.npc.values.timeDistortion));
+
+                this.aggrodata.Add(NetworkUtil.GetCharacter(entry.Key).name + " -> Amount: " + entry.Value[0] + " Factor: " + entry.Value[1]);
+                
 
                 //if (this.npc.aggroList[character][0] > 0) Debug.Log(this.npc.GetCharacterName() + " hat " + this.npc.aggroList[character][0] + " Aggro auf" + character);
 
@@ -161,8 +188,10 @@ namespace CrystalAlchemist
 
         private void ShowClue(AggroClue clue)
         {
+            if (clue == this.activeClue) return;
+
             HideClue();
-            if (this.activeClue == null) this.activeClue = Instantiate(clue, this.npc.GetHeadPosition(), Quaternion.identity, this.npc.transform);
+            this.activeClue = Instantiate(clue, this.npc.GetHeadPosition(), Quaternion.identity, this.npc.transform);
         }
 
         private void HideClue()
@@ -217,12 +246,11 @@ namespace CrystalAlchemist
 
         #region Networking
 
-        private void RaiseAggroEvent(Character character, Character newTarget, float damage, byte code)
+        private void RaiseAggroEvent(int ID, Character newTarget, float damage, byte code)
         {
-            int characterID = NetworkUtil.GetID(character);
             int targetID = NetworkUtil.GetID(newTarget);
 
-            object[] datas = new object[] { characterID, targetID, damage };
+            object[] datas = new object[] { ID, targetID, damage };
 
             RaiseEventOptions options = new RaiseEventOptions()
             {
@@ -265,8 +293,8 @@ namespace CrystalAlchemist
 
         private void increaseAggroOnHit(Character character, Character newTarget, float damage)
         {
-            if (!NetworkUtil.IsLocal()) return;
-            RaiseAggroEvent(character, newTarget, damage, NetworkUtil.AGGRO_ON_HIT);
+            if (IsGuestPlayer(character) || character != this.npc) return;
+            RaiseAggroEvent(this.ID, newTarget, damage, NetworkUtil.AGGRO_ON_HIT);
         }
 
         private void IncreaseAggroOnHit(int characterID, int targetID, float damage)
@@ -287,14 +315,15 @@ namespace CrystalAlchemist
 
         private void increaseAggro(Character character, Character newTarget, float aggro)
         {
-            if (!NetworkUtil.IsLocal()) return;
-            RaiseAggroEvent(character, newTarget, aggro, NetworkUtil.AGGRO_INCREASE);
+            if (IsGuestPlayer(character) || character != this.npc) return;
+            RaiseAggroEvent(this.ID, newTarget, aggro, NetworkUtil.AGGRO_INCREASE);
         }
 
 
         private void IncreaseAggro(int characterID, int targetID, float aggroIncrease)
         {
             Character character = NetworkUtil.GetCharacter(characterID);
+            //if (NetworkUtil.IsLocal(character.GetComponent<Player>())) return;
 
             if (targetID > 0 && IsValidTarget(targetID) && character == this.npc)
             {
@@ -306,15 +335,20 @@ namespace CrystalAlchemist
 
         private void decreaseAggro(Character character, Character newTarget, float aggro)
         {
-            if (!NetworkUtil.IsLocal()) return;
-            RaiseAggroEvent(character, newTarget, aggro, NetworkUtil.AGGRO_DECREASE);
+            if (IsGuestPlayer(character) || character != this.npc) return;
+            RaiseAggroEvent(this.ID, newTarget, aggro, NetworkUtil.AGGRO_DECREASE);
         }
 
         private void DecreaseAggro(int characterID, int targetID, float aggroDecrease)
         {
             Character character = NetworkUtil.GetCharacter(characterID);
-
             if (targetID > 0 && character == this.npc) setParameterOfAggrolist(targetID, aggroDecrease);
+        }
+
+        private bool IsGuestPlayer(Character character)
+        {
+            if (character.GetComponent<Player>() != null && !character.GetComponent<Player>().isLocalPlayer) return true;
+            return false;
         }
 
         #endregion

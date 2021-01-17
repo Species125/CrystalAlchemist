@@ -2,6 +2,7 @@
 using Photon.Pun;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -42,6 +43,24 @@ namespace CrystalAlchemist
             return NetworkUtil.GetCharacter(this.targetID);
         }
 
+        public Character GetTarget(int index)
+        {
+            return NetworkUtil.GetCharacter(this.aggroList.ElementAt(index).Key);
+        }
+
+        public List<Character> GetTargets()
+        {
+            List<Character> targets = new List<Character>();
+
+            foreach(KeyValuePair<int,float[]> elem in this.aggroList)
+            {
+                Character character = NetworkUtil.GetCharacter(elem.Key);
+                if (character != null) targets.Add(character);
+            }
+
+            return targets;
+        }
+
         public override void Start()
         {
             base.Start();
@@ -72,7 +91,7 @@ namespace CrystalAlchemist
                 AnimatorUtil.SetAnimatorParameter(this.animator, "WakeUp");
                 this.isSleeping = false;
             }
-            else if (this.targetID > 0 && !this.isSleeping)
+            else if (this.targetID <= 0 && !this.isSleeping)
             {
                 AnimatorUtil.SetAnimatorParameter(this.animator, "Sleep");
                 this.isSleeping = true;

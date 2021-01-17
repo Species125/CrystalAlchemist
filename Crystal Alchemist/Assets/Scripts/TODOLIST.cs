@@ -11,11 +11,11 @@ namespace CrystalAlchemist
 
         //ANIMATION: InMenu
 
-        //BUG: wrong enemy kill
-        //BUG: Key Items still visible      
-        //BUG: Damage Number doppelt bei Hit (doppel-RPC)
-        //BUG: Doppelte Items beim Treasure (wegen Animator sync)
-        //BUG: Titanias Turm auf und zu...
+        //MAJOR BUG: wrong enemy kill
+        //MAJOR BUG: Key Items still visible      
+
+        //CHANGES: PLAYERABILITIES Indicator (removed this.player)
+        //CHANGES: 
 
         //TODO: AIAction -> Skill Multi Target (parallel, sequentiell)
         //TODO: AIAggroSystem -> Testen

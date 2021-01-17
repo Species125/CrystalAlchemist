@@ -270,7 +270,9 @@ namespace CrystalAlchemist
 
         public override void GotHit(Skill skill, float percentage, bool knockback)
         {
-            if (this.isLocalPlayer) GameEvents.current.DoCancel();
+            if (!this.isLocalPlayer) return; //no damage to guest
+
+            GameEvents.current.DoCancel();
             base.GotHit(skill, percentage, knockback);
         }
 
@@ -307,6 +309,10 @@ namespace CrystalAlchemist
         {
             base.UpdateLife(value, showingDamageNumber);
             callSignal(value);
+
+            NumberColor color = NumberColor.red;
+            if (value > 0) color = NumberColor.green;
+            this.photonView.RPC("RpcShowDamageNumber", RpcTarget.Others, value, (byte)color);
         }
 
         public override void UpdateMana(float value, bool showingDamageNumber)

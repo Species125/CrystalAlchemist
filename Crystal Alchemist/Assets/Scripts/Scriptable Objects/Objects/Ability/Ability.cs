@@ -279,12 +279,17 @@ namespace CrystalAlchemist
 
         public void ShowTargetingIndicator(List<Character> selectedTargets) //Sender needed?
         {
-            if (this.useIndicator == IndicatorType.OnTargeting && this.indicator != null) this.indicator.UpdateIndicators(this.sender, selectedTargets);
+            if (this.useIndicator == IndicatorType.OnTargeting && this.indicator != null) this.indicator.UpdateTargetingIndicators(this.sender, selectedTargets);
         }
 
         public void ShowCastingIndicator(Character target)
         {
-            if (this.useIndicator == IndicatorType.OnCast && this.indicator != null) this.indicator.UpdateIndicator(this.sender, target);
+            if (this.useIndicator == IndicatorType.OnCast && this.indicator != null) this.indicator.UpdateCastingIndicator(this.sender, target);
+        }
+
+        public void ShowCastingIndicator(List<Character> targets)
+        {
+            if (this.useIndicator == IndicatorType.OnCast && this.indicator != null) this.indicator.UpdateCastingIndicator(this.sender, targets);
         }
 
         public void ShowCastingAnimation()

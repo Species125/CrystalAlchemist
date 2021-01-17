@@ -82,7 +82,7 @@ namespace CrystalAlchemist
 
         private bool checkAggroLost(AI npc)
         {
-            return (npc.targetID == 0);
+            return (npc.targetID <= 0);
         }
 
         private bool checkTime()

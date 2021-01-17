@@ -11,21 +11,30 @@ namespace CrystalAlchemist
 
         private List<TargetingIndicator> appliedIndicators = new List<TargetingIndicator>();
 
-        private void Instantiate(Character sender, Character target)
+        public void UpdateCastingIndicator(Character sender, Character target)
         {
-            if (this.indicatorProperty != null) this.indicatorProperty.Instantiate(sender, target, this.appliedIndicators);
-        }
-
-        public void UpdateIndicator(Character sender, Character target)
-        {
-            if (appliedIndicators.Count > 0
-                && appliedIndicators[0].GetTarget() == target) return;
+            if (appliedIndicators.Count > 0 && appliedIndicators[0].GetTarget() == target) return;
 
             ClearIndicator();
             Instantiate(sender, target);
         }
 
-        public void UpdateIndicators(Character sender, List<Character> selectedTargets)
+        public void UpdateCastingIndicator(Character sender, List<Character> targets)
+        {
+            this.appliedIndicators.RemoveAll(item => item == null);
+
+            foreach (Character target in targets) 
+            {
+                foreach (TargetingIndicator applied in this.appliedIndicators)
+                {
+                    if (applied.GetTarget() == target) return;
+                }
+
+                Instantiate(sender, target);
+            }            
+        }
+
+        public void UpdateTargetingIndicators(Character sender, List<Character> selectedTargets)
         {
             RemoveIndicator(selectedTargets);
             AddIndicator(sender, selectedTargets);
@@ -37,6 +46,11 @@ namespace CrystalAlchemist
             {
                 this.Instantiate(sender, target);
             }
+        }
+
+        private void Instantiate(Character sender, Character target)
+        {
+            if (this.indicatorProperty != null) this.indicatorProperty.Instantiate(sender, target, this.appliedIndicators);
         }
 
         public void RemoveIndicator(List<Character> selectedTargets)

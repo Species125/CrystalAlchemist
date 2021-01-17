@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: -2857999511042139106}
   - component: {fileID: 4024286121802477044}
   - component: {fileID: -8017965636154463035}
+  - component: {fileID: 6552829752162379739}
   m_Layer: 11
   m_Name: Titanias Turm
   m_TagString: Untagged
@@ -105,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   myRigidbody: {fileID: 2438936824352443031}
   animator: {fileID: 4536096100035205208}
   boxCollider: {fileID: 4536096100201619651}
@@ -119,7 +121,7 @@ MonoBehaviour:
   IsSummoned: 0
   characterName: 
   NPCStats: {fileID: 11400000, guid: 2ecf4e93db9bd0a43a3dda9972716fe8, type: 2}
-  target: {fileID: 0}
+  targetID: 0
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &55980665602690937
@@ -211,6 +213,40 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &6552829752162379739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2438936824352443027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 4536096100035205208}
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 9
+    SynchronizeType: 1
+    Name: WakeUp
+  - Type: 9
+    SynchronizeType: 1
+    Name: Sleep
+  - Type: 4
+    SynchronizeType: 1
+    Name: Attacking
+  - Type: 9
+    SynchronizeType: 1
+    Name: Respawn
+  - Type: 9
+    SynchronizeType: 1
+    Name: Despawn
+  m_SynchronizeLayers:
+  - SynchronizeType: 1
+    LayerIndex: 0
 --- !u!1 &3204627084870921371
 GameObject:
   m_ObjectHideFlags: 0

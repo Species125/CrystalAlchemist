@@ -86,7 +86,7 @@ namespace CrystalAlchemist
 
         private void FixedUpdate()
         {
-            if (this.indicator != null) this.indicator.UpdateIndicator(this.skill.sender, this.skill.target);
+            if (this.indicator != null) this.indicator.UpdateCastingIndicator(this.skill.sender, this.skill.target);
 
             if (this.canBreak && this.type == ChainType.min && this.hasRightDistance()) DeactivateIt();
 

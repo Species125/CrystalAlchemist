@@ -6,6 +6,7 @@
 
 
 
+using Photon.Pun;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -144,13 +145,12 @@ namespace CrystalAlchemist
         }
 
         public void ShowTreasureItem()
-        {
-            //TODO: RPC for chest open
-
+        {           
             if (this.itemDrop != null)
             {
                 NetworkEvents.current.InstantiateTreasureItem(this.itemDrop, this.transform.position, true, this.player.GetGroundPosition());
             }
+
             if (this.treasureType == TreasureType.lootbox)
             {
                 AnimatorUtil.SetAnimatorParameter(this.anim, "isOpened", false);

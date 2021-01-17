@@ -110,7 +110,9 @@ namespace CrystalAlchemist
             if (ability == null || !ability.enabled) return;
             if (ability.state == AbilityState.notCharged)
             {
-                ChargeAbility(ability, this.player);
+                //CHANGED
+                //ChargeAbility(ability, this.player);
+                ChargeAbility(ability);
             }
             else if (ability.isRapidFire)
             {

@@ -40,16 +40,22 @@ namespace CrystalAlchemist
 
         public void ChargeAbility(Ability ability)
         {
-            ChargeAbility(ability, null);
-        }
-
-        public void ChargeAbility(Ability ability, Character target)
-        {
             ability.Charge(); //charge Skill when not full        
             ShowCastBar(ability); //Show Castbar
             ability.ShowCastingAnimation(); //Show Animation and stuff
             setSpeedDuringCasting(ability); //Set Speed during casting
+        }
+
+        public void ChargeAbility(Ability ability, Character target)
+        {
+            ChargeAbility(ability);
             ability.ShowCastingIndicator(target);
+        }
+
+        public void ChargeAbility(Ability ability, List<Character> targets)
+        {
+            ChargeAbility(ability);
+            ability.ShowCastingIndicator(targets);
         }
 
         public void UnChargeAbility(Ability ability)
@@ -167,15 +173,20 @@ namespace CrystalAlchemist
             List<Character> targets = new List<Character>();
             targets.AddRange(this.GetTargetsFromTargeting());
 
+            UseAbilityOnTargets(ability, targets, this.GetTargetingDelay());
+        }
+
+        public void UseAbilityOnTargets(Ability ability, List<Character> targets, float delay)
+        {
             if (targets.Count > 0) ability.ResetCoolDown();
 
             if (ability.HasEnoughResourceAndAmount())
             {
-                StartCoroutine(useSkill(ability, targets));
+                StartCoroutine(useSkill(ability, targets, delay));
             }
         }
 
-        private IEnumerator useSkill(Ability ability, List<Character> targets)
+        private IEnumerator useSkill(Ability ability, List<Character> targets, float delay)
         {
             float damageReduce = targets.Count;
 
@@ -185,7 +196,7 @@ namespace CrystalAlchemist
                     && target.values.currentState != CharacterState.respawning)
                 {
                     NetworkEvents.current.InstantiateAoESkill(ability, this.character, target, damageReduce);
-                    yield return new WaitForSeconds(this.GetTargetingDelay());
+                    yield return new WaitForSeconds(delay);
                 }
             }
         }

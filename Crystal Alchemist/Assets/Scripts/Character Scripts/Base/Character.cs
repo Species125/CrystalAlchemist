@@ -112,10 +112,9 @@ namespace CrystalAlchemist
 
             this.SetDefaultDirection();
             this.animator.speed = 1;
-            this.updateTimeDistortion(0);
-            this.updateSpellSpeed(0);
-
             this.animator.enabled = true;
+            this.updateTimeDistortion(0);
+            this.updateSpellSpeed(0);            
             this.SetCharacterSprites(true);
             this.activeDeathAnimation = null;
 
@@ -359,7 +358,10 @@ namespace CrystalAlchemist
 
             if (this.values.life > 0
                 && this.values.currentState != CharacterState.dead
-                && showingDamageNumber) ShowDamageNumber(value, color);
+                && showingDamageNumber)
+            {
+                ShowDamageNumber(value, color);
+            }
         }
 
         public virtual void UpdateMana(float value, bool showingDamageNumber)
@@ -392,8 +394,7 @@ namespace CrystalAlchemist
 
         private void ShowDamageNumber(float value, NumberColor color)
         {
-            if (this.stats.showDamageNumbers) //this.photonView.RPC("RpcShowDamageNumber", RpcTarget.All, value, (byte)color);
-                RpcShowDamageNumber(value, (byte)color);
+            if (this.stats.showDamageNumbers) RpcShowDamageNumber(value, (byte)color);  
         }
 
         [PunRPC]
@@ -410,13 +411,15 @@ namespace CrystalAlchemist
         public virtual void GotHit(Skill skill, float percentage, bool knockback)
         {
             SkillTargetModule targetModule = skill.GetComponent<SkillTargetModule>();
+            Character sender = skill.sender;
 
-            if (targetModule == null
+            if (!NetworkUtil.IsLocal(sender.GetComponent<Player>()) //no guestplayer hits
+                || targetModule == null
                 || this.values.currentState == CharacterState.dead
                 || (!targetModule.affections.CanIgnoreInvinvibility() && this.values.cantBeHit)) return;
 
             Vector2 position = skill.transform.position;
-            int ID = skill.sender.photonView.ViewID;
+            int ID = sender.photonView.ViewID;
             string[] resources = targetModule.GetAffectedResourcesArray(this);
             float thrust = targetModule.thrust;
             float duration = targetModule.knockbackTime;
