@@ -173,6 +173,7 @@ MonoBehaviour:
   path: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
 --- !u!114 &2243275195862130842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,9 +188,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   selfProperty:
-    spawnPositonType: 5
+    spawnPositonType: 7
     position: {x: 0, y: 0}
     uniqueSpawn: 1
     spawnPoints: []
@@ -210,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 0
   childProperty:
@@ -245,7 +248,8 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 0
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

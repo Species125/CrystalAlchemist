@@ -2,6 +2,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CrystalAlchemist
 {
@@ -44,6 +45,11 @@ namespace CrystalAlchemist
             PhotonNetwork.JoinOrCreateRoom(this.settings.roomName, options, TypedLobby.Default);
         }
 
+        public void GoOnline()
+        {
+            SceneManager.LoadScene("Loading");
+        }
+
         private void Instantiate()
         {
             GameObject player = PhotonNetwork.Instantiate(this.settings.playerPrefab.path, Vector2.zero, Quaternion.identity, 0);
@@ -52,7 +58,7 @@ namespace CrystalAlchemist
         }
 
         public override void OnCreatedRoom()
-        {
+        {            
             Debug.Log("Room created");
         }
 
@@ -86,13 +92,6 @@ namespace CrystalAlchemist
         public override void OnDisconnected(DisconnectCause cause)
         {
             Debug.Log("Disconnected because " + cause.ToString());
-            //PhotonNetwork.OfflineMode = true;
-            //Debug.Log("Start Offline Mode");
-        }
-
-        private void SetRoomStatus(bool value)
-        {
-            if (NetworkUtil.IsMaster()) PhotonNetwork.CurrentRoom.IsOpen = value;
         }
     }
 }

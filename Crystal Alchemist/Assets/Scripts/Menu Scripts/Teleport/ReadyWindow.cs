@@ -77,7 +77,8 @@ namespace CrystalAlchemist
         }
 
         private void Inititialize()
-        {           
+        {
+            NetworkUtil.SetRoomStatus(false);
             PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
 
             this.stats = Resources.Load<TeleportStats>(this.path.GetValue());
@@ -176,6 +177,11 @@ namespace CrystalAlchemist
             this.ExitMenu();
         }
 
+        public override void ExitMenu()
+        {
+            NetworkUtil.SetRoomStatus(true);
+            base.ExitMenu();
+        }
 
         public void SetReadyWindow(bool value)
         {

@@ -1,6 +1,7 @@
 ﻿
 
 
+using Photon.Pun;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -22,12 +23,16 @@ namespace CrystalAlchemist
 
         private void summoning()
         {
+            if (!NetworkUtil.IsMaster()) return;
+
+            //TODO: Spawn
+
             AI ai = this.summon.GetComponent<AI>();
             Breakable breakable = this.summon.GetComponent<Breakable>();
 
             if (ai != null)
             {
-                AI pet = Instantiate(ai, this.transform.position, Quaternion.Euler(0, 0, 0));
+                AI pet = PhotonNetwork.Instantiate(ai.path, this.transform.position, Quaternion.identity).GetComponent<AI>();
                 pet.name = ai.name;
                 pet.values.direction = this.skill.GetDirection();
                 pet.partner = this.skill.sender;
@@ -37,7 +42,7 @@ namespace CrystalAlchemist
             }
             else if (breakable != null)
             {
-                Breakable objectPet = Instantiate(breakable, this.transform.position, Quaternion.Euler(0, 0, 0));
+                Breakable objectPet = PhotonNetwork.Instantiate(breakable.path, this.transform.position, Quaternion.identity).GetComponent<Breakable>();
                 objectPet.values.direction = this.skill.GetDirection();
                 objectPet.ChangeDirection(objectPet.values.direction);
                 objectPet.InitializeAddSpawn();

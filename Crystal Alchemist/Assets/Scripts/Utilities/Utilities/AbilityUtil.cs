@@ -24,11 +24,11 @@ namespace CrystalAlchemist
             return newAbility;
         }
 
-        public static void InstantiateSequence(BossMechanic sequence, Character sender, Character target)
+        public static void InstantiateSequence(BossMechanic sequence, Character sender, Character target, List<Character> targets)
         {
             BossMechanic newSequence = Object.Instantiate(sequence);
             newSequence.name = sequence.name;
-            newSequence.Initialize(sender, target);
+            newSequence.Initialize(sender, target, targets);
         }
 
         public static Skill getSkillByCollision(GameObject collision)

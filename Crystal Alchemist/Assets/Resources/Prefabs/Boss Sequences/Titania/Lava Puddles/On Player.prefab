@@ -48,6 +48,7 @@ MonoBehaviour:
   path: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
 --- !u!114 &3946911209390544831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,10 +63,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 0
   childProperty:
-    spawnPositonType: 4
+    spawnPositonType: 5
     position: {x: 0, y: 0}
     uniqueSpawn: 1
     spawnPoints: []
@@ -97,7 +99,8 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 0
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

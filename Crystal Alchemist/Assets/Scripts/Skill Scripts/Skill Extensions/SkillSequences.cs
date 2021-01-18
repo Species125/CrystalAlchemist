@@ -12,8 +12,12 @@ namespace CrystalAlchemist
 
         public override void Initialize()
         {
+            List<Character> targets = new List<Character>();
+            AI npc = this.skill.sender.GetComponent<AI>();
+            if (npc != null) targets = npc.GetTargets();
+
             BossMechanic bossMechanic = this.bossMechanics[Random.Range(0, this.bossMechanics.Count)];
-            NetworkEvents.current.InstantiateBossSequence(bossMechanic, this.skill.sender, this.skill.target);
+            NetworkEvents.current.InstantiateBossSequence(bossMechanic, this.skill.sender, this.skill.target, targets);
         }
     }
 }

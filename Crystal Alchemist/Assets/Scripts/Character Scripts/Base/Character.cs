@@ -510,7 +510,7 @@ namespace CrystalAlchemist
         public void DestroyItWithoutDrop()
         {
             if (this.stats.hasRespawn) this.gameObject.SetActive(false);
-            else Destroy(this.gameObject);
+            else PhotonNetwork.Destroy(this.gameObject);
         }
 
         #endregion

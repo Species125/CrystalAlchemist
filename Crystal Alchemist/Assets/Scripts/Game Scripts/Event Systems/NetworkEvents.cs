@@ -2,6 +2,7 @@ using Photon.Pun;
 using UnityEngine;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
+using System.Collections.Generic;
 
 namespace CrystalAlchemist
 {
@@ -45,8 +46,9 @@ namespace CrystalAlchemist
                 string path = (string)datas[0];
                 int senderID = (int)datas[1];
                 int targetID = (int)datas[2];
+                int[] targetIDs = (int[])datas[3];
 
-                InstantiateSequence(path, senderID, targetID);
+                InstantiateSequence(path, senderID, targetID, targetIDs);
             }
             else if (obj.Code == NetworkUtil.ITEMDROP)
             {
@@ -92,7 +94,7 @@ namespace CrystalAlchemist
             PhotonNetwork.RaiseEvent(NetworkUtil.SKILL, datas, options, SendOptions.SendUnreliable);
         }
 
-        public void InstantiateBossSequence(BossMechanic sequence, Character sender, Character target)
+        public void InstantiateBossSequence(BossMechanic sequence, Character sender, Character target, List<Character> targets)
         {
             if (!NetworkUtil.IsMaster()) return;
 
@@ -100,7 +102,14 @@ namespace CrystalAlchemist
             int targetID = -1;
             if (target != null) targetID = NetworkUtil.GetID(target);
 
-            object[] datas = new object[] { sequence.path, characterID, targetID };
+            List<int> targetIDs = new List<int>();
+
+            foreach(Character tar in targets)
+            {
+                if (tar != null) targetIDs.Add(NetworkUtil.GetID(target));
+            }
+
+            object[] datas = new object[] { sequence.path, characterID, targetID, targetIDs };
 
             RaiseEventOptions options = new RaiseEventOptions()
             {
@@ -122,15 +131,22 @@ namespace CrystalAlchemist
             AbilityUtil.InstantiateSkill(ability, sender, target, position, reduce, standalone, rotation);
         }
 
-        private void InstantiateSequence(string path, int senderID, int targetID)
+        private void InstantiateSequence(string path, int senderID, int targetID, int[] targetIDs)
         {
             BossMechanic newSequence = Resources.Load<BossMechanic>(path);
             Character sender = PhotonView.Find(senderID).GetComponent<Character>();
 
             Character target = null;
+            List<Character> targets = new List<Character>();
+
             if (targetID >= 0) target = PhotonView.Find(targetID).GetComponent<Character>();
 
-            AbilityUtil.InstantiateSequence(newSequence, sender, target);
+            foreach(int ID in targetIDs)
+            {
+                if (ID >= 0) targets.Add(PhotonView.Find(targetID).GetComponent<Character>());
+            }
+
+            AbilityUtil.InstantiateSequence(newSequence, sender, target, targets);
         }
 
         #endregion
@@ -271,10 +287,11 @@ namespace CrystalAlchemist
                                          Vector2 position, Quaternion rotation, 
                                          bool overrideDuration, float duration)
         {
-            Character prefab = Resources.Load<Character>(path);
-
             GameObject parent = NetworkUtil.GetGameObject(parentID);
-            Character character = Instantiate(prefab, position, rotation, parent.transform);
+
+            //TODO: Spawn
+            Character character = PhotonNetwork.Instantiate(path, position, rotation).GetComponent<Character>();
+            character.transform.SetParent(parent.transform);
 
             character.InitializeAddSpawn(overrideDuration, duration);
         }
@@ -302,10 +319,11 @@ namespace CrystalAlchemist
                                   Vector2 position, Quaternion rotation, 
                                   bool overrideDuration, float duration)
         {
-            AI prefab = Resources.Load<AI>(path);
 
+            //TODO: Spawn
             GameObject parent = NetworkUtil.GetGameObject(parentID);
-            AI character = Instantiate(prefab, position, rotation, parent.transform);
+            AI character = PhotonNetwork.Instantiate(path, position, rotation).GetComponent<AI>();
+            character.transform.SetParent(parent.transform);
 
             character.InitializeAddSpawn(targetID, overrideDuration, duration);
         }

@@ -83,5 +83,10 @@ namespace CrystalAlchemist
 
             return view.gameObject;
         }
+
+        public static void SetRoomStatus(bool value)
+        {
+            if (IsMaster()) PhotonNetwork.CurrentRoom.IsOpen = value;
+        }
     }
 }

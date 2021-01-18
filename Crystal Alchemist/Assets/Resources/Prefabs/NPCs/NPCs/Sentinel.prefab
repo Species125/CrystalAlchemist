@@ -203,6 +203,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroStats: {fileID: 11400000, guid: 74151ff649b937b418adb75846e519d1, type: 2}
   npc: {fileID: 5280788646405828722}
+  mainTarget: 
+  aggrodata: []
 --- !u!58 &7862652019329232228
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -367,6 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   myRigidbody: {fileID: 7518508113067193758}
   animator: {fileID: 3591206468238266611}
   boxCollider: {fileID: 1498514191544390102}
@@ -381,7 +384,7 @@ MonoBehaviour:
   IsSummoned: 0
   characterName: 
   NPCStats: {fileID: 11400000, guid: 044d5a2f62542b141ab2f44c3e80795b, type: 2}
-  target: {fileID: 0}
+  targetID: 0
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &7518508113067193731

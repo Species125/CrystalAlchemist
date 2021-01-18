@@ -30,9 +30,11 @@ namespace CrystalAlchemist
             this.effects.RemoveAll(item => item == null);
 
             Character character = collision.GetComponent<Character>();
+            if (character == null) return;
+
             bool distance = UnityUtil.CheckDistances(character.GetGroundPosition(), this.maxDistance, this.effects);
 
-            if (character != null && this.effect != null && distance)
+            if (this.effect != null && distance)
                 this.effects.Add(Instantiate(this.effect, character.GetGroundPosition(), Quaternion.identity));
         }
 

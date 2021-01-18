@@ -142,9 +142,11 @@ namespace CrystalAlchemist
 
         private void AddSequence()
         {
-            GameObject spawnPoint = GetSpawnPosition(this.childProperty);
+            foreach (GameObject spawnpoint in GetSpawnPosition(this.childProperty))
+            {
+                this.sequences.Add(new SequenceObject(spawnpoint, this.childProperty.repeat, this.childProperty.repeatDelay, this.childProperty.GetDelete()));    
+            }
 
-            this.sequences.Add(new SequenceObject(spawnPoint, this.childProperty.repeat, this.childProperty.repeatDelay, this.childProperty.GetDelete()));
             this.timeLeftToSpawnNext = this.childProperty.spawnDelay;
             this.counter++;
             if (this.counter >= this.childProperty.GetMax()) this.isRunning = false;

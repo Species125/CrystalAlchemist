@@ -16,6 +16,10 @@ namespace CrystalAlchemist
         [SerializeField]
         private Character target;
 
+        [BoxGroup("Debug")]
+        [SerializeField]
+        private List<Character> targets = new List<Character>();
+
         private List<BossMechanicProperty> properties = new List<BossMechanicProperty>();
 
         [Button]
@@ -23,6 +27,7 @@ namespace CrystalAlchemist
         {
             this.sender = FindObjectOfType<AI>();
             this.target = FindObjectOfType<Player>();
+            
             this.gameObject.SetActive(false);
         }
 
@@ -33,7 +38,7 @@ namespace CrystalAlchemist
 
         private void Start()
         {
-            foreach (BossMechanicProperty property in this.properties) property.Initialize(this.sender, this.target);
+            foreach (BossMechanicProperty property in this.properties) property.Initialize(this.sender, this.target, this.targets);
             InvokeRepeating("Updating", 0.1f, 10f);
         }
 
@@ -45,10 +50,11 @@ namespace CrystalAlchemist
             if (counter >= this.properties.Count) Destroy(this.gameObject, 10f);
         }
 
-        public void Initialize(Character sender, Character target)
+        public void Initialize(Character sender, Character target, List<Character> targets)
         {
             this.sender = sender;
             this.target = target;
+            this.targets = targets;
         }
     }
 }

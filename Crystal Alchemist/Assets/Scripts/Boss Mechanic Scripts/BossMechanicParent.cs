@@ -14,14 +14,13 @@ namespace CrystalAlchemist
         {
             this.selfProperty.AddSpawnPoints(this.transform);
 
-            GameObject spawnpoint = GetSpawnPosition(this.selfProperty);
+            GameObject spawnpoint = GetSpawnPosition(this.selfProperty)[0];
             this.transform.position = spawnpoint.transform.position;
-
             this.transform.rotation = this.GetRotation(this.selfProperty.rotationType, this.selfProperty.rotationFactor, this.selfProperty.GetOffset());
 
             Destroy(spawnpoint, 0.3f);
+
             this.enabled = false;
         }
-
     }
 }

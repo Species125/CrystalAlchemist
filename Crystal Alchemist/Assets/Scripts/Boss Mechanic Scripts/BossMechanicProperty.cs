@@ -12,7 +12,9 @@ namespace CrystalAlchemist
             spawnPoints,
             randomPoints,
             area,
-            target,
+            mainTarget,
+            allTargets,
+            noMainTarget,
             sender,
             custom
         }
@@ -22,7 +24,7 @@ namespace CrystalAlchemist
             none,
             random,
             identity,
-            target,
+            mainTarget,
             parent
         }
 
@@ -91,41 +93,81 @@ namespace CrystalAlchemist
         [HideInInspector]
         public Character target;
         [HideInInspector]
+        public List<Character> targets = new List<Character>();
+        [HideInInspector]
         public int counter;
 
 
-        public void Initialize(Character sender, Character target)
+        public void Initialize(Character sender, Character target, List<Character> targets)
         {
             this.sender = sender;
             this.target = target;
+            this.targets = targets;
         }
 
-        public GameObject GetSpawnPosition(SequenceProperty property)
+        public List<GameObject> GetSpawnPosition(SequenceProperty property)
         {
             switch (property.spawnPositonType)
             {
                 case SpawnPositionType.sender: return CreateNewSpawnPoint(GetPositionFromCharacter(this.sender));
-                case SpawnPositionType.target: return CreateNewSpawnPoint(GetPositionFromCharacter(this.target));
+                case SpawnPositionType.mainTarget: return CreateNewSpawnPoint(GetPositionFromCharacter(this.target));
+                case SpawnPositionType.allTargets: return CreateNewSpawnPoint(GetPositionFromCharacters(this.targets, SpawnPositionType.allTargets));
+                case SpawnPositionType.noMainTarget: return CreateNewSpawnPoint(GetPositionFromCharacters(this.targets, SpawnPositionType.noMainTarget));
                 case SpawnPositionType.area: return CreateNewSpawnPoint(UnityUtil.GetRandomVector(this.GetComponent<Collider2D>()));
-                case SpawnPositionType.randomPoints: return GetRandomPositionFromSpawnPoint(property);
-                case SpawnPositionType.spawnPoints: return GetPositionFromSpawnPoint(property.spawnPoints);
+                case SpawnPositionType.randomPoints: return CreateNewSpawnPoints(GetRandomPositionFromSpawnPoint(property));
+                case SpawnPositionType.spawnPoints: return CreateNewSpawnPoints(GetPositionFromSpawnPoint(property.spawnPoints));
                 case SpawnPositionType.custom: return CreateNewSpawnPoint(property.position);
             }
 
             return CreateNewSpawnPoint(Vector2.zero);
         }
 
-        private GameObject CreateNewSpawnPoint(Vector2 position)
+        private List<GameObject> CreateNewSpawnPoint(Vector2 position)
         {
-            GameObject temp = new GameObject("spawnPoint");
-            temp.transform.position = position;
-            temp.transform.rotation = Quaternion.identity;
-            return temp;
+            List<Vector2> positions = new List<Vector2>();
+            positions.Add(position);
+            return CreateNewSpawnPoint(positions);
+        }
+
+        private List<GameObject> CreateNewSpawnPoint(List<Vector2> positions)
+        {
+            List<GameObject> spawnPoints = new List<GameObject>();
+
+            foreach (Vector2 position in positions)
+            {
+                GameObject temp = new GameObject("spawnPoint");
+                temp.transform.position = position;
+                temp.transform.rotation = Quaternion.identity;
+                spawnPoints.Add(temp);
+            }
+
+            return spawnPoints;
+        }
+
+        private List<GameObject> CreateNewSpawnPoints(GameObject spawn)
+        {
+            List<GameObject> spawnPoints = new List<GameObject>();
+            spawnPoints.Add(spawn);
+
+            return spawnPoints;
         }
 
         private Vector2 GetPositionFromCharacter(Character character)
         {
             return character.GetGroundPosition();
+        }
+
+        private List<Vector2> GetPositionFromCharacters(List<Character> characters, SpawnPositionType type)
+        {
+            List<Vector2> positions = new List<Vector2>();
+
+            foreach (Character character in characters)
+            {
+                if (type == SpawnPositionType.noMainTarget && character == this.target) continue;
+                positions.Add(character.GetGroundPosition());
+            }
+
+            return positions;
         }
 
         private GameObject GetPositionFromSpawnPoint(List<GameObject> spawnPoints)
@@ -152,7 +194,7 @@ namespace CrystalAlchemist
             switch (type)
             {
                 case RotationType.random: return SetRandomRotation(rotationfactor);
-                case RotationType.target: return SetRotationOnTarget(spawnPoint.transform.position, offset);
+                case RotationType.mainTarget: return SetRotationOnTarget(spawnPoint.transform.position, offset);
                 case RotationType.identity: return Quaternion.identity;
                 case RotationType.parent: return this.transform.rotation;
             }

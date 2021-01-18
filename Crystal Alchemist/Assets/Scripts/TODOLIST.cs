@@ -12,19 +12,20 @@ namespace CrystalAlchemist
         //ANIMATION: InMenu
 
         //MAJOR BUG: wrong enemy kill
-        //MAJOR BUG: Key Items still visible      
+        //MAJOR BUG: Key Items still visible  
+
+        //TODO: Spawn Rework (//TODO: Spawn)
+        //TODO: Entire AI on Master only
+        //TODO: Kill RPC rework
+        //TODO: Character Creator RPC
+        //TODO: Online Join Window
+        //TODO: Gruppenliste
+        //TODO: Statuseffekte Sync (on Scene change) and dispell
+        //TODO: Death Screen (only when all players are dead)
+        //TDOO: Skill Sync (RPC on disable)
 
         //CHANGES: PLAYERABILITIES Indicator (removed this.player)
-        //CHANGES: 
 
-        //TODO: AIAction -> Skill Multi Target (parallel, sequentiell)
-        //TODO: AIAggroSystem -> Testen
-
-        //NETWORKING: ROOM: Lock Room
-        //NETWORKING: PLAYER: StatusEffects Sync
-        //NETWORKING: SKILLS: Sync and testing
-        //NETWORKING: Death Screen. Master when dead. confirmation only living
-        //NETWORKING: Boss Events, Spiegel RPC
 
         /*     
         GRAPHICS: Booster
