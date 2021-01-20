@@ -12,19 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b22a3ebb90863458dba94076083e2b, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/StatusEffects/Fire
+  statusEffectType: 1
   hasDuration: 1
   maxDuration: 5
-  canOverride: 1
+  mode: 1
+  maxStacks: 1
   canBeModified: 1
-  canDeactivateIt: 0
   canBeDispelled: 1
   ignoreTimeDistortion: 0
-  maxStacks: 1
   stunTarget: 0
-  statusEffectType: 1
   statusEffectEvents:
   - trigger:
       triggerType: 1
+      mode: 2
       value: 1
     actions:
     - actionType: 0
@@ -32,10 +33,12 @@ MonoBehaviour:
       - resourceType: 1
         item: {fileID: 0}
         keyItem: {fileID: 0}
+        statusEffect: {fileID: 0}
         amount: -0.5
       - resourceType: 2
         item: {fileID: 0}
         keyItem: {fileID: 0}
+        statusEffect: {fileID: 0}
         amount: -0.25
       speed: 0
       time: 0
@@ -48,4 +51,3 @@ MonoBehaviour:
   statusEffectObject: {fileID: 71630591074221121, guid: e420e9509f9819f4188748abbdda79ee,
     type: 3}
   iconSprite: {fileID: 21300004, guid: 0ca4149b67557c449b0110d5938780ba, type: 3}
-  updateUI: {fileID: 11400000, guid: 4318c0ff35d606e4b8e9b01338571f0b, type: 2}

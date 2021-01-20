@@ -184,7 +184,7 @@ namespace CrystalAlchemist
 
         public void OnTriggerEnter2D(Collider2D character)
         {
-            if (!character.isTrigger)
+            if (!character.isTrigger) 
             {
                 Player player = character.GetComponent<Player>();
                 if (player != null && player.isLocalPlayer) CollectIt(player);

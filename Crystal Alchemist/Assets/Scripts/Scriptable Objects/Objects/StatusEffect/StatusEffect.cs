@@ -11,9 +11,20 @@ namespace CrystalAlchemist
         debuff
     }
 
+    public enum StatusEffectMode
+    {
+        none,
+        overrideIt,
+        destroyIt
+    }
+
     [CreateAssetMenu(menuName = "Game/StatusEffect")]
     public class StatusEffect : NetworkScriptableObject
     {
+        [FoldoutGroup("Basis Attribute")]
+        [Tooltip("Handelt es sich um einen positiven oder negativen Effekt?")]
+        public StatusEffectType statusEffectType = StatusEffectType.debuff;
+
         #region Attribute
         [FoldoutGroup("Basis Attribute")]
         public bool hasDuration = true;
@@ -24,35 +35,33 @@ namespace CrystalAlchemist
         public float maxDuration = 1;
 
         [FoldoutGroup("Basis Attribute")]
-        public bool canOverride = false;
-
-        [FoldoutGroup("Basis Attribute")]
-        public bool canBeModified = true;
-
-        [FoldoutGroup("Basis Attribute")]
-        public bool canDeactivateIt = false;
-
-        [FoldoutGroup("Basis Attribute")]
-        public bool canBeDispelled = true;
-
-        [FoldoutGroup("Basis Attribute")]
-        public bool ignoreTimeDistortion = false;
+        [Tooltip("Update if the same effect is applied")]
+        public StatusEffectMode mode = StatusEffectMode.none;
 
         [FoldoutGroup("Basis Attribute")]
         [Tooltip("Anzahl der maximalen gleichen Effekte (Stacks)")]
         [MinValue(1)]
         public float maxStacks = 1;
 
-        [FoldoutGroup("Basis Attribute")]
+
+        [FoldoutGroup("Basis Attribute Detail")]
+        public bool canBeModified = true;
+
+        [FoldoutGroup("Basis Attribute Detail")]
+        public bool canBeDispelled = true;
+
+        [FoldoutGroup("Basis Attribute Detail")]
+        public bool ignoreTimeDistortion = false;
+
+        [FoldoutGroup("Basis Attribute Detail")]
         [Tooltip("Ist der Charakter betäubt?")]
         public bool stunTarget = false;
 
-        [FoldoutGroup("Basis Attribute")]
-        [Tooltip("Handelt es sich um einen positiven oder negativen Effekt?")]
-        public StatusEffectType statusEffectType = StatusEffectType.debuff;
 
         [FoldoutGroup("Trigger and Actions", expanded: false)]
         public List<StatusEffectEvent> statusEffectEvents = new List<StatusEffectEvent>();
+
+
 
         [FoldoutGroup("Visuals", expanded: false)]
         [Tooltip("Farbe während der Dauer des Statuseffekts")]
@@ -61,24 +70,20 @@ namespace CrystalAlchemist
 
         [FoldoutGroup("Visuals", expanded: false)]
         [Tooltip("Farbe während der Dauer des Statuseffekts")]
-        [SerializeField]
-        private bool changeColor = true;
+        public bool changeColor = true;
 
         [FoldoutGroup("Visuals", expanded: false)]
         [Tooltip("Farbe während der Dauer des Statuseffekts")]
-        [SerializeField]
         [ShowIf("changeColor")]
         [ColorUsage(true, true)]
-        private Color statusEffectColor;
+        public Color statusEffectColor;
 
         [FoldoutGroup("Visuals", expanded: false)]
         [Tooltip("Farbe während der Dauer des Statuseffekts")]
-        [SerializeField]
-        private bool invertColor;
+        public bool invertColor;
 
         [FoldoutGroup("Visuals", expanded: false)]
         [SerializeField]
-        [Required]
         private StatusEffectGameObject statusEffectObject;
 
         [FoldoutGroup("Visuals", expanded: false)]
@@ -89,7 +94,6 @@ namespace CrystalAlchemist
         private Character target;
         private float statusEffectTimeLeft;
         private float timeDistortion = 1;
-        private StatusEffectGameObject activeObject;
         #endregion
 
 
@@ -101,9 +105,10 @@ namespace CrystalAlchemist
             initActions();
         }
 
-        public StatusEffectGameObject GetVisuals()
+        public string GetVisualsName()
         {
-            return this.statusEffectObject;
+            if(this.statusEffectObject != null) return this.statusEffectObject.name;
+            return string.Empty;
         }
 
         public Color GetColor()
@@ -121,13 +126,13 @@ namespace CrystalAlchemist
             return this.invertColor;
         }
 
-        public StatusEffectGameObject Instantiate(GameObject parent)
+        public void AddVisuals(GameObject parent)
         {
-            StatusEffectGameObject effect = Instantiate(this.statusEffectObject, parent.transform.position, Quaternion.identity, parent.transform);
-            effect.name = this.statusEffectObject.name;
-            effect.Initialize(this);
-            this.activeObject = effect;
-            return effect;
+            if (this.statusEffectObject == null) return;
+            StatusEffectGameObject activeVisuals = Instantiate(this.statusEffectObject, parent.transform.position, Quaternion.identity, parent.transform);
+            activeVisuals.name = this.statusEffectObject.name;
+            activeVisuals.Initialize(this);
+            this.target.statusEffectVisuals.Add(activeVisuals);
         }
 
         public void UpdateTimeDistortion(float distortion)
@@ -192,14 +197,11 @@ namespace CrystalAlchemist
             if (this.target != null)
             {
                 //Charakter-Farbe zurücksetzen
-                if (this.changeColor) this.target.removeColor(this.statusEffectColor);
-                if (this.invertColor) this.target.InvertColor(false);
+                this.target.RemoveStatusEffectVisual(this);                
                 this.resetValues();
             }
 
-            DoModuleDestroy();
-            if (this.activeObject != null) this.activeObject.Deactivate();
-
+            DoModuleDestroy();           
             //GUI updaten und Objekt kurz danach zerstören
             GameEvents.current.DoStatusEffectUpdate();
             Destroy(this, this.destroyDelay);
@@ -220,9 +222,16 @@ namespace CrystalAlchemist
             return this.statusEffectTimeLeft;
         }
 
+        public void SetTimeLeft(float time) => this.statusEffectTimeLeft = time;
+
         public Character GetTarget()
         {
             return this.target;
+        }
+
+        public void SetTarget(Character target)
+        {
+            if(this.target == null) this.target = target;
         }
 
         public string GetName()
@@ -237,12 +246,14 @@ namespace CrystalAlchemist
 
         public void doModule()
         {
-            if (this.statusEffectObject.GetComponent<StatusEffectModule>() != null) this.statusEffectObject.GetComponent<StatusEffectModule>().DoAction();
+            if (this.statusEffectObject != null && this.statusEffectObject.GetComponent<StatusEffectModule>() != null) 
+                this.statusEffectObject.GetComponent<StatusEffectModule>().DoAction();
         }
 
         public void DoModuleDestroy()
         {
-            if (this.statusEffectObject.GetComponent<StatusEffectModule>() != null) this.statusEffectObject.GetComponent<StatusEffectModule>().DoDestroy();
+            if (this.statusEffectObject != null && this.statusEffectObject.GetComponent<StatusEffectModule>() != null) 
+                this.statusEffectObject.GetComponent<StatusEffectModule>().DoDestroy();
         }
 
         #endregion

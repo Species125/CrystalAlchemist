@@ -116,7 +116,7 @@ namespace CrystalAlchemist
             GameEvents.current.OnPlayerSpawned -= this.OnStart;
         }
 
-        private void OnStart(GameObject gameObject)
+        private void OnStart(int ID)
         {
             if (!NetworkUtil.IsMaster()) return;
             InvokeRepeating("Updating", 0f, this.updateTime);

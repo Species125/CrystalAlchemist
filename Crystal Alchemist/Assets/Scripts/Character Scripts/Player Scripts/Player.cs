@@ -17,7 +17,7 @@ namespace CrystalAlchemist
         public float mana;
         }
 
-    public class Player : Character, IPunInstantiateMagicCallback
+    public class Player : Character
     {
         [BoxGroup("Player Objects")]
         [SerializeField]
@@ -71,12 +71,13 @@ namespace CrystalAlchemist
             if (!NetworkUtil.IsLocal(this.photonView))
             {
                 this.isLocalPlayer = false;
-                this.stats = ScriptableObject.CreateInstance<CharacterStats>();
+                this.stats = ScriptableObject.CreateInstance<CharacterStats>();                
                 this.stats.SetCharacterType(CharacterType.Friend);
-                this.values = ScriptableObject.CreateInstance<CharacterValues>();
+                this.values = ScriptableObject.CreateInstance<CharacterValues>();    
                 this.saveGame = null;
                 this.values.Initialize();
                 this.preset = ScriptableObject.CreateInstance<CharacterPreset>();
+                this.characterName = "New Player";
             }
             else
             {
@@ -91,6 +92,8 @@ namespace CrystalAlchemist
 
             this.handler.SetPreset(this.preset);
         }
+
+
 
         public override void OnEnable()
         {
@@ -114,18 +117,21 @@ namespace CrystalAlchemist
             this.ChangeDirection(this.values.direction);
             this.animator.speed = 1;
             this.updateTimeDistortion(0);
-            this.AddStatusEffectVisuals();
         }
 
         private void LoadPlayer()
         {
+            this.photonView.Owner.TagObject = this;
+
             if (!this.isLocalPlayer)
             {
-                if (this.GetComponent<PlayerAbilities>() != null) Destroy(this.GetComponent<PlayerAbilities>());
                 if (this.GetComponent<PlayerMovement>() != null) Destroy(this.GetComponent<PlayerMovement>());
                 if (this.GetComponent<PlayerControls>() != null) Destroy(this.GetComponent<PlayerControls>());
                 if (this.GetComponent<PlayerItems>() != null) Destroy(this.GetComponent<PlayerItems>());
+
+                if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Initialize();
                 if (this.GetComponent<PlayerTeleport>() != null) this.GetComponent<PlayerTeleport>().Initialize();
+                GameEvents.current.DoOtherLocalPlayerSpawned(this.photonView.ViewID);
                 return;
             }
 
@@ -141,6 +147,7 @@ namespace CrystalAlchemist
             GameEvents.current.OnCutScene += this.SetCutScene;
             GameEvents.current.OnEnoughCurrency += this.HasEnoughCurrency;
             GameEvents.current.OnPresetChange += UpdateCharacterParts;
+            GameEvents.current.OnPresetChangeToOthers += UpdateCharacterPartsOthers;
 
             if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Initialize();
             if (this.GetComponent<PlayerMovement>() != null) this.GetComponent<PlayerMovement>().Initialize();
@@ -148,11 +155,13 @@ namespace CrystalAlchemist
             if (this.GetComponent<PlayerItems>() != null) this.GetComponent<PlayerItems>().Initialize();
             if (this.GetComponent<PlayerTeleport>() != null) this.GetComponent<PlayerTeleport>().Initialize();
 
-            GameEvents.current.DoManaLifeUpdate();
-            GameEvents.current.DoPlayerSpawned(this.gameObject);
+            GameEvents.current.DoManaLifeUpdate(this.photonView.ViewID);
+            GameEvents.current.DoLocalPlayerSpawned(this.photonView.ViewID);
 
             UpdateCharacterParts();
-            GetPresetFromOtherClients();
+            UpdateCharacterPartsOthers();
+            UpdateLifeManaForOthers();
+            AddStatusEffectVisuals();
 
             this.saveGame.skillSet.TestInitialize(this);
         }
@@ -167,10 +176,15 @@ namespace CrystalAlchemist
 
         public override void OnDestroy()
         {
-            if (!isLocalPlayer) return;
+            if (!isLocalPlayer)
+            {
+                //Destroy(this.values);
+                return;
+            }
 
             base.OnDestroy();
             GameEvents.current.OnPresetChange -= UpdateCharacterParts;
+            GameEvents.current.OnPresetChangeToOthers -= UpdateCharacterPartsOthers;
             GameEvents.current.OnCollect -= this.CollectIt;
             GameEvents.current.OnReduce -= this.ReduceResource;
             GameEvents.current.OnStateChanged -= this.SetState;
@@ -198,6 +212,12 @@ namespace CrystalAlchemist
             base.SpawnOut();
             this.deactivateAllSkills();
         }
+
+        public override void SpawnIn()
+        {
+            base.SpawnIn();
+            AddStatusEffectVisuals();
+        }        
 
         public override void EnableScripts(bool value)
         {
@@ -228,7 +248,8 @@ namespace CrystalAlchemist
 
                 this.values.currentState = CharacterState.dead;
                 this.myRigidbody.bodyType = RigidbodyType2D.Kinematic; //Static causes Room to empty
-                MenuEvents.current.OpenDeath();
+
+                GameEvents.current.DoDeath();
             }
         }
 
@@ -244,7 +265,6 @@ namespace CrystalAlchemist
 
             return false;
         }
-
 
         public override void ReduceResource(Costs price)
         {
@@ -265,7 +285,7 @@ namespace CrystalAlchemist
 
         public void callSignal(float addResource)
         {
-            if (addResource != 0) GameEvents.current.DoManaLifeUpdate();
+            if (addResource != 0) GameEvents.current.DoManaLifeUpdate(this.photonView.ViewID);
         }
 
         public override void GotHit(Skill skill, float percentage, bool knockback)
@@ -285,7 +305,7 @@ namespace CrystalAlchemist
         private void CollectIt(ItemStats stats)
         {
             //Collectable, Load, MiniGame, Shop und Treasure
-            if (!isLocalPlayer) return;
+            if (!isLocalPlayer) return; 
 
             if (stats.itemType == ItemType.consumable)
             {
@@ -303,6 +323,12 @@ namespace CrystalAlchemist
             {
                 //add outfit to glamour
             }
+        }
+
+        public override void Regenerate()
+        {
+            if (!this.isLocalPlayer) return;
+            RegenerateLifeMana();
         }
 
         public override void UpdateLife(float value, bool showingDamageNumber)
@@ -387,6 +413,36 @@ namespace CrystalAlchemist
         }
 
 
+        ///////////////////////////////////////////////////////////////////////////////
+
+        private void AddStatusEffectVisuals()
+        {
+            AddStatusEffectVisualsOnStart(this.values.buffs);
+            AddStatusEffectVisualsOnStart(this.values.debuffs);
+        }
+
+        public void AddStatusEffectVisualsOnStart(List<StatusEffect> effects)
+        {
+            effects.RemoveAll(item => item == null);
+            for (int i = 0; i < effects.Count; i++)
+            {
+                effects[i].SetTarget(this);
+                AddStatusEffectVisual(effects[i]);
+            }
+        }
+
+        public override void AddStatusEffectVisual(StatusEffect effect)
+        {
+            base.AddStatusEffectVisual(effect);
+            AddStatusEffectVisualOthers(effect);
+        }
+
+        public override void RemoveStatusEffectVisual(StatusEffect effect)
+        {
+            base.RemoveStatusEffectVisual(effect);
+            RemoveStatusEffectVisualOthers(effect);
+        }
+
         /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -396,52 +452,28 @@ namespace CrystalAlchemist
         }
 
         [Button]
-        public void UpdateCharacterParts()
+        public void UpdateCharacterParts() => this.handler.UpdateCharacterParts();
+
+        public void UpdateCharacterPartsOthers()
         {
-            this.handler.UpdateCharacterParts();
-            this.SetPresetForOtherClients();
+            if (this.isLocalPlayer) this.SetPresetOnOtherClients();
         }
 
-
-        public void GetPresetFromOtherClients()
+        public void SetPresetOnOtherClients()
         {
-            Player player = NetworkUtil.GetLocalPlayer();
-            int receiverID = player.gameObject.GetPhotonView().ViewID;
-
-            this.photonView.RPC("RpcGetPreset", RpcTarget.Others, receiverID);
-        }
-
-        [PunRPC]
-        public void RpcGetPreset(int receiverID, PhotonMessageInfo info)
-        {
-            Player localPlayer = NetworkUtil.GetLocalPlayer();
-            SetPresetOnOtherClients(localPlayer, receiverID);
-        }
-
-        public void SetPresetForOtherClients()
-        {
-            SetPresetOnOtherClients(this, -1);
-        }
-
-        public void SetPresetOnOtherClients(Player player, int receiver)
-        {
-            CharacterPreset preset = player.GetPreset();
-            int targetID = player.gameObject.GetPhotonView().ViewID;
             string race = "";
+            string characterName = this.GetCharacterName();
             string[] colorGroups;
             string[] characterParts;
 
-            SerializationUtil.GetPreset(preset, out race, out colorGroups, out characterParts);
-            this.photonView.RPC("RpcSetPreset", RpcTarget.Others, receiver, targetID, race, colorGroups, characterParts);
+            SerializationUtil.GetPreset(this.preset, out race, out colorGroups, out characterParts);
+            this.photonView.RPC("RpcSetPreset", RpcTarget.OthersBuffered, race, colorGroups, characterParts, characterName);
         }
 
         [PunRPC]
-        public void RpcSetPreset(int receiver, int targetID, string race, string[] colorgroups, string[] parts, PhotonMessageInfo info)
+        public void RpcSetPreset(string race, string[] colorgroups, string[] parts, string characterName, PhotonMessageInfo info)
         {
-            Player localPlayer = NetworkUtil.GetLocalPlayer();
-            if (receiver >= 0 && localPlayer.gameObject.GetPhotonView().ViewID != receiver) return;
-
-            PhotonView view = PhotonView.Find(targetID);
+            PhotonView view = PhotonView.Find(info.photonView.ViewID);
             if (view == null) return;
 
             Player player = view.GetComponent<Player>();
@@ -449,19 +481,9 @@ namespace CrystalAlchemist
 
             CharacterPreset preset = player.GetPreset();
             SerializationUtil.SetPreset(preset, race, colorgroups, parts);
-            player.UpdateCharacterParts();
-        }
 
-
-
-
-
-
-
-        public void OnPhotonInstantiate(PhotonMessageInfo info)
-        {
-            //if(this.isLocalPlayer) PhotonNetwork.LocalPlayer.TagObject = this;
-            this.photonView.Owner.TagObject = this;
+            player.characterName = characterName;
+            player.UpdateCharacterParts();            
         }
 
         public override void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -478,6 +500,50 @@ namespace CrystalAlchemist
             }
         }
 
+        public override void UpdateLifeManaForOthers()
+        {
+            if (!this.isLocalPlayer) return;
+            this.photonView.RPC("RpcUpdateLifeMana", RpcTarget.Others, this.values.life, this.values.mana, this.values.maxLife, this.values.maxMana);
+            this.photonView.RPC("RpcShowDataOnClient", RpcTarget.Others);
+        }
         
+        [PunRPC]
+        protected void RpcShowDataOnClient(PhotonMessageInfo info)
+        {
+            int ID = info.photonView.ViewID;
+            GameEvents.current.DoManaLifeUpdate(ID);
+        }
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+
+        public void AddStatusEffectVisualOthers(StatusEffect effect)
+        {
+            if (!this.isLocalPlayer) return;            
+            this.photonView.RPC("RpcAddStatusEffectVisualOthers", RpcTarget.Others, effect.path);
+            this.photonView.RPC("RpcShowDataOnClient", RpcTarget.Others);
+        }
+
+        [PunRPC]
+        protected void RpcAddStatusEffectVisualOthers(string path, PhotonMessageInfo info)
+        {
+            StatusEffect effect = Resources.Load<StatusEffect>(path);
+            effect.SetTarget(this);
+            base.AddStatusEffectVisual(effect);
+        }
+
+        public void RemoveStatusEffectVisualOthers(StatusEffect effect)
+        {
+            if (!this.isLocalPlayer) return;
+            this.photonView.RPC("RpcRemoveStatusEffectVisualOthers", RpcTarget.Others, effect.path);
+            this.photonView.RPC("RpcShowDataOnClient", RpcTarget.Others);
+        }
+
+        [PunRPC]
+        protected void RpcRemoveStatusEffectVisualOthers(string path, PhotonMessageInfo info)
+        {
+            StatusEffect effect = Resources.Load<StatusEffect>(path);
+            base.RemoveStatusEffectVisual(effect);
+        }
     }
 }

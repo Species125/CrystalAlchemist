@@ -52,6 +52,8 @@ namespace CrystalAlchemist
             this.npc.aggroList.Clear();
             this.needed = this.aggroStats.aggroNeededToTarget / 100f;
 
+            //if (!NetworkUtil.IsMaster()) return;
+
             GameEvents.current.OnAggroHit += increaseAggroOnHit;
             GameEvents.current.OnAggroIncrease += increaseAggro;
             GameEvents.current.OnAggroDecrease += decreaseAggro;
@@ -60,6 +62,8 @@ namespace CrystalAlchemist
 
         private void OnDestroy()
         {
+            //if (!NetworkUtil.IsMaster()) return;
+
             GameEvents.current.OnAggroHit -= increaseAggroOnHit;
             GameEvents.current.OnAggroIncrease -= increaseAggro;
             GameEvents.current.OnAggroDecrease -= decreaseAggro;
@@ -68,6 +72,8 @@ namespace CrystalAlchemist
 
         private void Update()
         {
+            //if (!NetworkUtil.IsMaster()) return;
+
             if (this.GetComponent<CircleCollider2D>() == null) RotationUtil.rotateCollider(this.npc, this.gameObject);
             generateAggro();
         }
@@ -323,7 +329,6 @@ namespace CrystalAlchemist
         private void IncreaseAggro(int characterID, int targetID, float aggroIncrease)
         {
             Character character = NetworkUtil.GetCharacter(characterID);
-            //if (NetworkUtil.IsLocal(character.GetComponent<Player>())) return;
 
             if (targetID > 0 && IsValidTarget(targetID) && character == this.npc)
             {
@@ -344,6 +349,7 @@ namespace CrystalAlchemist
             Character character = NetworkUtil.GetCharacter(characterID);
             if (targetID > 0 && character == this.npc) setParameterOfAggrolist(targetID, aggroDecrease);
         }
+
 
         private bool IsGuestPlayer(Character character)
         {

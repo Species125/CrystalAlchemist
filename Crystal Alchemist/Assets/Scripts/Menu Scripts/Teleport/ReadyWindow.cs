@@ -31,11 +31,6 @@ namespace CrystalAlchemist
         [SerializeField]
         private StringValue path;
 
-        [BoxGroup("Confirmation Window UI")]
-        [SerializeField]
-        private TextMeshProUGUI textField;
-
-
 
         [BoxGroup("Confirmation Window UI")]
         [SerializeField]
@@ -65,9 +60,12 @@ namespace CrystalAlchemist
         [SerializeField]
         private TextMeshProUGUI countDownField;
 
+
+
         private int countDown;
         private List<ReadyWindowBox> boxes = new List<ReadyWindowBox>();
         private TeleportStats stats;
+        private bool blnIsReady = false;
 
 
         public override void Start()
@@ -82,7 +80,6 @@ namespace CrystalAlchemist
             PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
 
             this.stats = Resources.Load<TeleportStats>(this.path.GetValue());
-            this.textField.text = this.stats.GetTeleportName();
 
             this.countDown = this.duration;
             InvokeRepeating("Updating", 0, 1); //countdown
@@ -132,9 +129,7 @@ namespace CrystalAlchemist
             base.OnDestroy();
         }
 
-        public void Ready() => SetReadyWindow(true);        
-
-        public void NotReady() => ExitMenu();
+        public void Ready() => SetReadyWindow();        
 
         private void UpdateStatus(int ID, bool value)
         {
@@ -179,11 +174,20 @@ namespace CrystalAlchemist
 
         public override void ExitMenu()
         {
+            RPCSetReadyStatus(false);
             NetworkUtil.SetRoomStatus(true);
             base.ExitMenu();
         }
 
-        public void SetReadyWindow(bool value)
+        public void SetReadyWindow()
+        {
+            if (this.blnIsReady) this.blnIsReady = false;
+            else this.blnIsReady = true;
+
+            RPCSetReadyStatus(this.blnIsReady);
+        }
+
+        private void RPCSetReadyStatus(bool value)
         {
             int ID = PhotonNetwork.LocalPlayer.GetPlayerNumber();
 

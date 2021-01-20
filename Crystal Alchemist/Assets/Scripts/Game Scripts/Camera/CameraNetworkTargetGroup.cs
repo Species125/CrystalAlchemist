@@ -22,8 +22,10 @@ namespace CrystalAlchemist
 
         private void OnDestroy() => GameEvents.current.OnPlayerSpawned -= AddPlayer;
 
-        private void AddPlayer(GameObject gameObject)
+        private void AddPlayer(int ID)
         {
+            GameObject player = NetworkUtil.GetGameObject(ID);
+
             for (int i = 0; i < groups.Length; i++)
             {
                 CinemachineTargetGroup group = groups[i];
@@ -36,7 +38,7 @@ namespace CrystalAlchemist
                     if (target.target == placeHolder.transform)
                     {
                         group.RemoveMember(placeHolder.transform);
-                        group.AddMember(gameObject.transform, 1f, 0f);
+                        group.AddMember(player.transform, 1f, 0f);
                         break;
                     }
                 }

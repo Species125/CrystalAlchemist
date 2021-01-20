@@ -18,6 +18,7 @@ namespace CrystalAlchemist
         public Action OnSubmit;
         public Action OnCancel;
         public Action OnPresetChange;
+        public Action OnPresetChangeToOthers;
 
         public Action<bool> OnCurrencyChanged;
         public Action<ItemStats> OnCollect;
@@ -50,17 +51,19 @@ namespace CrystalAlchemist
         public Action OnTeleport;
 
         public Action OnEffectUpdate;
-        public Action OnLifeManaUpdate;
+        public Action<int> OnLifeManaUpdate;
         public Action<string> OnSceneChanged;
 
-        public Action<GameObject> OnPlayerSpawned;
+        public Action<int> OnPlayerSpawned;
+        public Action<int> OnOtherPlayerSpawned;
         public Action OnDeviceChanged;
+        public Action OnDeath;
 
         public void DoPresetChange() => this.OnPresetChange?.Invoke();
+        public void DoPresetChangeToOthers() => this.OnPresetChangeToOthers?.Invoke();
         public void DoEffectAdded(StatusEffect effect) => this.OnEffectAdded?.Invoke(effect);
         public void DoChangeState(CharacterState state) => this.OnStateChanged?.Invoke(state);
         public void DoMenuOverlay(bool value) => this.OnMenuOverlay?.Invoke(value);
-
         public void DoCurrencyChange(bool show) => this.OnCurrencyChanged?.Invoke(show);
         public void DoCollect(ItemStats stats) => this.OnCollect?.Invoke(stats);
         public void DoReduce(Costs costs) => this.OnReduce?.Invoke(costs);
@@ -71,7 +74,6 @@ namespace CrystalAlchemist
         public void DoSleep(Vector2 position, Action before, Action after) => this.OnSleep?.Invoke(position, before, after);
         public void DoWakeUp(Vector2 position, Action before, Action after) => this.OnWakeUp?.Invoke(position, before, after);
         public void DoDirectionLock() => this.OnLockDirection?.Invoke();
-
         public void DoCutScene() => this.OnCutScene?.Invoke();
         public void DoKill() => this.OnKill?.Invoke();
         public void DoTimeChange() => this.OnTimeChanged?.Invoke();
@@ -88,10 +90,14 @@ namespace CrystalAlchemist
         public void DoChangeScene(string newScene) => this.OnSceneChanged?.Invoke(newScene);
 
         public void DoStatusEffectUpdate() => this.OnEffectUpdate?.Invoke();
-        public void DoManaLifeUpdate() => this.OnLifeManaUpdate?.Invoke();
-        public void DoPlayerSpawned(GameObject gameObject) => this.OnPlayerSpawned?.Invoke(gameObject);
+        public void DoManaLifeUpdate(int ID) => this.OnLifeManaUpdate?.Invoke(ID);
+
+        public void DoLocalPlayerSpawned(int ID) => this.OnPlayerSpawned?.Invoke(ID);
+        public void DoOtherLocalPlayerSpawned(int ID) => this.OnOtherPlayerSpawned?.Invoke(ID);
 
         public void DoDeviceChanged() => this.OnDeviceChanged?.Invoke();
+
+        public void DoDeath() => this.OnDeath?.Invoke();
 
 
 

@@ -16,11 +16,13 @@ namespace CrystalAlchemist
         private void Start()
         {
             GameEvents.current.OnSceneChanged += ChangeScene;
+            GameEvents.current.OnDeath += CheckDeathOfPlayers;
         }
 
         private void OnDestroy()
         {
             GameEvents.current.OnSceneChanged -= ChangeScene;
+            GameEvents.current.OnDeath -= CheckDeathOfPlayers;
             this.timePlayed.SetValue(this.timePlayed.GetValue() + Time.timeSinceLevelLoad);
         }
 
@@ -55,6 +57,17 @@ namespace CrystalAlchemist
                 if (asyncOperation.progress >= 0.9f) asyncOperation.allowSceneActivation = true;
                 yield return null;
             }
+        }
+
+        private void CheckDeathOfPlayers()
+        {
+            foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
+            {
+                Player player = (Player)p.TagObject;
+                if (player.values.currentState != CharacterState.dead) return;
+            }
+
+            MenuEvents.current.OpenDeath();
         }
     }
 }

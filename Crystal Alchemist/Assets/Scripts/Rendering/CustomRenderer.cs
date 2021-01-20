@@ -23,7 +23,7 @@ namespace CrystalAlchemist
         [SerializeField]
         private bool invert = false;
 
-        private void Start()
+        public virtual void Start()
         {
             this.spriteRenderer = this.GetComponent<SpriteRenderer>();
             this.material = this.GetComponent<SpriteRenderer>().material;
@@ -32,11 +32,13 @@ namespace CrystalAlchemist
 
         public void InvertColors(bool invert)
         {
+            if (this.material == null) return;
             this.material.SetFloat("_Invert", invert ? 1f : 0f);
         }
 
         private void AddGlow()
         {
+            if (this.material == null) return;
             this.material.SetFloat("_UseGlow", this.useGlow ? 1f : 0f);
             this.material.SetColor("_GlowColor", this.glowColor);
         }

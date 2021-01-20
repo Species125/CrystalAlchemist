@@ -12,6 +12,7 @@ namespace CrystalAlchemist
 
         [BoxGroup("AI")]
         [SerializeField]
+        [InfoBox("Muss der Photonview hinzugefügt werden")]
         private AIPhase startPhase;
 
         [BoxGroup("AI")]
@@ -20,8 +21,10 @@ namespace CrystalAlchemist
         [Tooltip("False, wenn Animator Event verwendet wird")]
         private bool startImmediately = true;
 
+        [BoxGroup("Debug")]
+        [SerializeField]
         private AIPhase activePhase;
-        private bool isActive;
+        //private bool isActive;
         private AI npc;
         #endregion
 
@@ -43,12 +46,19 @@ namespace CrystalAlchemist
             base.Updating();
 
             if (this.activePhase != null && !this.character.values.isCharacterStunned())
+            {
                 this.activePhase.Updating(this.npc);
+                //if (NetworkUtil.IsMaster()) this.activePhase.SetNextIndex();
+            }
         }
 
-        private void OnDisable() => EndPhase();
+        private void OnDisable()
+        {
+            EndPhase();
+        }
 
         private void OnDestroy() => EndPhase();
+
 
         private void DestroyActivePhase()
         {
@@ -76,9 +86,10 @@ namespace CrystalAlchemist
         public void StartPhase(AIPhase phase)
         {
             if (!NetworkUtil.IsMaster()) return;
+
             string path = phase.path;
-            
-            PhotonView.Get(this).RPC("RpcStartPhase", RpcTarget.All, path);
+
+            this.character.photonView.RPC("RpcStartPhase", RpcTarget.All, path);
         }
 
         [PunRPC]
@@ -88,8 +99,7 @@ namespace CrystalAlchemist
 
             if (phase != null)
             {
-                this.isActive = true;
-
+                //this.isActive = true;
                 DestroyActivePhase();
                 this.activePhase = Instantiate(phase);
                 this.activePhase.Initialize(this.npc);
@@ -99,15 +109,17 @@ namespace CrystalAlchemist
         public void EndPhase()
         {
             if (!NetworkUtil.IsMaster()) return;
-            PhotonView.Get(this).RPC("RpcEndPhase", RpcTarget.All);
+            this.character.photonView.RPC("RpcEndPhase", RpcTarget.All);
         }
 
         [PunRPC]
         protected void RpcEndPhase(PhotonMessageInfo info)
         {
-            this.isActive = false;
+            //this.isActive = false;
             DestroyActivePhase();
         }
+
+        
     }
 }
 

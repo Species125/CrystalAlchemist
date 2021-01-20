@@ -18,11 +18,12 @@ namespace CrystalAlchemist
         //TODO: Entire AI on Master only
         //TODO: Kill RPC rework
         //TODO: Character Creator RPC
-        //TODO: Online Join Window
         //TODO: Gruppenliste
         //TODO: Statuseffekte Sync (on Scene change) and dispell
-        //TODO: Death Screen (only when all players are dead)
         //TDOO: Skill Sync (RPC on disable)
+
+        //TODO: Online Join Window
+        //TODO: Death Screen (only when all players are dead)
 
         //CHANGES: PLAYERABILITIES Indicator (removed this.player)
 

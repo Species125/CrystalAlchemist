@@ -12,6 +12,8 @@ namespace CrystalAlchemist
 
         private List<CharacterRenderer> colorpalettes = new List<CharacterRenderer>();
 
+        private List<Color> colors = new List<Color>();
+
 #if UNITY_EDITOR
         [Button]
         public void setExtensions()
@@ -38,17 +40,40 @@ namespace CrystalAlchemist
         public void Start()
         {
             this.colorpalettes.Clear();
-            UnityUtil.GetActiveChildObjects<CharacterRenderer>(this.characterSprite.transform, this.colorpalettes);
+            UnityUtil.GetChildObjects<CharacterRenderer>(this.characterSprite.transform, this.colorpalettes);
         }
+
 
         public void Reset()
         {
-            foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.Reset();
+            this.colors.Clear();
+            foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.ChangeTint(Color.white, false);
         }
 
-        public void RemoveTint(Color color)
+        public Color RemoveTint(Color color)
         {
-            foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.RemoveTint(color);
+            this.colors.Remove(color);
+
+            Color newColor = Color.white;
+            bool useTint = false;
+
+            if (colors.Count > 0)
+            {
+                newColor = this.colors[this.colors.Count - 1];
+                useTint = true;
+            }
+
+            foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.ChangeTint(newColor, useTint);
+
+            return newColor;
+        }
+
+        public Color ChangeTint(Color color)
+        {
+            if (!this.colors.Contains(color)) this.colors.Add(color);
+            foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.ChangeTint(color, true);
+
+            return color;
         }
 
         public void Invert(bool value)
@@ -57,10 +82,5 @@ namespace CrystalAlchemist
         }
 
         public void enableSpriteRenderer(bool value) => this.characterSprite.SetActive(value);
-
-        public void ChangeTint(Color color)
-        {
-            foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.ChangeTint(color);
-        }
     }
 }

@@ -336,6 +336,8 @@ namespace CrystalAlchemist
 
         private int getAmountOfSameSkills(Skill skill, List<Skill> activeSkills, List<Character> activePets)
         {
+            activeSkills.RemoveAll(item => item == null);
+
             int result = 0;
             SkillSummon summonSkill = skill.GetComponent<SkillSummon>();
 

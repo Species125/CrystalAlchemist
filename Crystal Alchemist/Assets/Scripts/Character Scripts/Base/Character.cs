@@ -61,7 +61,9 @@ namespace CrystalAlchemist
         private float manaTime;
         private DeathAnimation activeDeathAnimation;
         private Vector3 spawnPosition;
-        private List<StatusEffectGameObject> statusEffectVisuals = new List<StatusEffectGameObject>();
+
+        [BoxGroup("Debug")]
+        public List<StatusEffectGameObject> statusEffectVisuals = new List<StatusEffectGameObject>();
 
         [BoxGroup("Debug")]
         public CharacterStats stats;
@@ -69,10 +71,10 @@ namespace CrystalAlchemist
         [BoxGroup("Debug")]
         public CharacterValues values;
 
-        [HideInInspector]
+        [BoxGroup("Debug")]
         public bool IsSummoned = false;
 
-        [HideInInspector]
+        [BoxGroup("Debug")]
         public string characterName;
 
         #endregion
@@ -95,7 +97,9 @@ namespace CrystalAlchemist
             ResetValues();
         }
 
-        public virtual void Start() => GameEvents.current.OnEffectAdded += AddStatusEffectVisuals;
+        public virtual void Start()
+        {
+        }
 
         public virtual void SetComponents()
         {
@@ -146,7 +150,9 @@ namespace CrystalAlchemist
             }
         }
 
-        public virtual void OnDestroy() => GameEvents.current.OnEffectAdded -= AddStatusEffectVisuals;
+        public virtual void OnDestroy()
+        {
+        }
 
         #endregion
 
@@ -185,8 +191,8 @@ namespace CrystalAlchemist
 
         private void UpdateStatusEffects()
         {
-            UpdateStatusEffectGroup(this.values.buffs);
-            UpdateStatusEffectGroup(this.values.debuffs);
+            UpdatingStatusEffects(this.values.buffs);
+            UpdatingStatusEffects(this.values.debuffs);
         }
 
         private void UpdateLifeAnimation()
@@ -195,7 +201,12 @@ namespace CrystalAlchemist
             AnimatorUtil.SetAnimatorParameter(this.animator, "Life", percentage);
         }
 
-        private void Regenerate()
+        public virtual void Regenerate()
+        {
+            RegenerateLifeMana();
+        }
+
+        public void RegenerateLifeMana()
         {
             if (this.values.currentState != CharacterState.dead
                 && this.values.currentState != CharacterState.respawning
@@ -218,13 +229,13 @@ namespace CrystalAlchemist
 
         #region Item Functions (drop Item, Lootregeln)
 
-        public void DropItem()
+        public void DropItem() //Only on Master
         {
             if (this.values.itemDrop != null && NetworkUtil.IsMaster())
                 NetworkEvents.current.InstantiateItem(this.values.itemDrop, this.transform.position, false);
         }
 
-        public void DropItem(GameObject position)
+        public void DropItem(GameObject position) //Only on Master
         {
             if (this.values.itemDrop != null && NetworkUtil.IsMaster())
                 NetworkEvents.current.InstantiateItem(this.values.itemDrop, position.transform.position, true);
@@ -247,16 +258,16 @@ namespace CrystalAlchemist
 
         #region Color Changes
 
-        public void removeColor(Color color)
+        public void RemoveColor(Color color)
         {
             if (this.GetComponent<CharacterRenderingHandler>() != null)
-                this.GetComponent<CharacterRenderingHandler>().RemoveTint(color);
+                this.values.effectColor = this.GetComponent<CharacterRenderingHandler>().RemoveTint(color);
         }
 
         public void ChangeColor(Color color)
         {
             if (this.GetComponent<CharacterRenderingHandler>() != null)
-                this.GetComponent<CharacterRenderingHandler>().ChangeTint(color);
+                this.values.effectColor = this.GetComponent<CharacterRenderingHandler>().ChangeTint(color);
         }
 
         public void InvertColor(bool value)
@@ -358,16 +369,16 @@ namespace CrystalAlchemist
 
             if (this.values.life > 0
                 && this.values.currentState != CharacterState.dead
-                && showingDamageNumber)
-            {
-                ShowDamageNumber(value, color);
-            }
+                && showingDamageNumber) ShowDamageNumber(value, color);           
+
+            UpdateLifeManaForOthers();
         }
 
         public virtual void UpdateMana(float value, bool showingDamageNumber)
         {
             this.values.mana = GameUtil.setResource(this.values.mana, this.values.maxMana, value);
             if (showingDamageNumber && value > 0) ShowDamageNumber(value, NumberColor.blue);
+            UpdateLifeManaForOthers();
         }
 
         public virtual void UpdateItem(ItemGroup item, int value)
@@ -385,6 +396,24 @@ namespace CrystalAlchemist
             //TODO: Dispell with amount (value negativ)
             for (int i = 0; i < value; i++) StatusEffectUtil.AddStatusEffect(effect, this);
         }
+
+
+        public virtual void UpdateLifeManaForOthers()
+        {
+            if (!NetworkUtil.IsMaster()) return;
+            this.photonView.RPC("RpcUpdateLifeMana", RpcTarget.All, this.values.life, this.values.mana, this.values.maxLife, this.values.maxMana);
+        }
+
+        [PunRPC]
+        protected void RpcUpdateLifeMana(float life, float mana, float maxLife, float MaxMana)
+        {
+            this.values.life = life;
+            this.values.mana = mana;
+            this.values.maxLife = maxLife;
+            this.values.maxMana = MaxMana;
+        }
+
+
 
         #endregion
 
@@ -542,8 +571,6 @@ namespace CrystalAlchemist
                 && this.values.CanOpenMenu())
             {
                 Vector2 difference = direction.normalized * thrust;
-                //this.myRigidbody.velocity = Vector2.zero;
-                //this.myRigidbody.AddForce(difference, ForceMode2D.Impulse);
                 this.myRigidbody.DOMove(this.myRigidbody.position + difference, knockTime);
                 StartCoroutine(knockCo(knockTime));
             }
@@ -567,7 +594,7 @@ namespace CrystalAlchemist
             this.values.cantBeHit = true;
             if (this.stats.showHitcolor && showColor) this.ChangeColor(this.stats.hitColor);
             yield return new WaitForSeconds(duration);
-            if (showColor) this.removeColor(this.stats.hitColor);
+            if (showColor) this.RemoveColor(this.stats.hitColor);
             this.values.cantBeHit = false;
         }
 
@@ -694,7 +721,7 @@ namespace CrystalAlchemist
             this.values.currentState = CharacterState.respawning;
         }
 
-        public void SpawnIn()
+        public virtual void SpawnIn()
         {
             this.values.currentState = CharacterState.idle;
             this.EnableScripts(true);
@@ -719,40 +746,43 @@ namespace CrystalAlchemist
 
         #region StatusEffect
 
-        private void UpdateStatusEffectGroup(List<StatusEffect> effects)
+        public void AddStatusEffect(StatusEffect effect)
+        {
+            effect.Initialize(this);
+            this.values.AddStatusEffect(effect);
+            AddStatusEffectVisual(effect);
+        }
+
+        public virtual void AddStatusEffectVisual(StatusEffect effect)
+        {
+            if (effect.CanChangeColor()) ChangeColor(effect.GetColor());
+            if (effect.CanInvertColor()) InvertColor(true);
+            if (GetVisualEffect(effect) == null) effect.AddVisuals(this.activeStatusEffectParent);
+        }
+
+        public virtual void RemoveStatusEffectVisual(StatusEffect effect)
+        {
+            StatusEffectGameObject visual = GetVisualEffect(effect);
+            if (effect.changeColor) this.RemoveColor(effect.statusEffectColor);
+            if (effect.invertColor) this.InvertColor(false);
+            if (visual != null) this.statusEffectVisuals.Remove(visual);
+        }
+
+        private void UpdatingStatusEffects(List<StatusEffect> effects)
         {
             effects.RemoveAll(item => item == null);
             for (int i = 0; i < effects.Count; i++) effects[i].Updating(this);
         }
 
-        private void AddStatusEffectVisuals(List<StatusEffect> effects)
-        {
-            effects.RemoveAll(item => item == null);
-            for (int i = 0; i < effects.Count; i++) AddStatusEffectVisuals(effects[i]);
-        }
-
-        private void AddStatusEffectVisuals(StatusEffect effect)
-        {
-            if (effect == null || effect.GetTarget() != this) return;
-            if (effect.CanChangeColor()) ChangeColor(effect.GetColor());
-            if (effect.CanInvertColor()) InvertColor(true);
-            if (!ContainsEffect(effect)) this.statusEffectVisuals.Add(effect.Instantiate(this.activeStatusEffectParent));
-        }
-
-        private bool ContainsEffect(StatusEffect effect)
+        private StatusEffectGameObject GetVisualEffect(StatusEffect effect)
         {
             for (int i = 0; i < this.statusEffectVisuals.Count; i++)
             {
-                if (this.statusEffectVisuals[i] != null && this.statusEffectVisuals[i].name == effect.GetVisuals().name) return true;
+                if (this.statusEffectVisuals[i] != null && this.statusEffectVisuals[i].name == effect.GetVisualsName()) 
+                    return this.statusEffectVisuals[i];
             }
 
-            return false;
-        }
-
-        public void AddStatusEffectVisuals()
-        {
-            AddStatusEffectVisuals(this.values.buffs);
-            AddStatusEffectVisuals(this.values.debuffs);
+            return null;
         }
 
         #endregion
@@ -773,7 +803,7 @@ namespace CrystalAlchemist
 
         #region Networking
 
-        public void KillCharacter(Character target)
+        public void KillCharacter(Character target) //Kill on Master -> all Clients
         {
             KillCharacter(target, true);
         }
@@ -804,11 +834,15 @@ namespace CrystalAlchemist
                 stream.SendNext(this.values.direction);
                 stream.SendNext(this.myRigidbody.velocity);
 
+                /*
                 stream.SendNext(this.values.life);
                 stream.SendNext(this.values.mana);
 
-                stream.SendNext(this.characterName);
+                stream.SendNext(this.values.maxLife);
+                stream.SendNext(this.values.maxMana);                
 
+                stream.SendNext(this.characterName);
+                */
                 stream.SendNext(this.isVisible);
                 stream.SendNext(this.values.cantBeHit);
                 stream.SendNext(this.values.isInvincible);
@@ -819,11 +853,15 @@ namespace CrystalAlchemist
                 this.values.direction = (Vector2)stream.ReceiveNext();
                 this.myRigidbody.velocity = (Vector2)stream.ReceiveNext();
 
+                /*
                 this.values.life = (float)stream.ReceiveNext();
                 this.values.mana = (float)stream.ReceiveNext();
 
+                this.values.maxLife = (float)stream.ReceiveNext();
+                this.values.maxMana = (float)stream.ReceiveNext();
+                
                 this.characterName = (string)stream.ReceiveNext();
-
+                */
                 this.isVisible = (bool)stream.ReceiveNext();
                 this.values.cantBeHit = (bool)stream.ReceiveNext();
                 this.values.isInvincible = (bool)stream.ReceiveNext();

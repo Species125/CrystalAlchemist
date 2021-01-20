@@ -18,8 +18,9 @@ namespace CrystalAlchemist
 
         private void OnDestroy() => GameEvents.current.OnPlayerSpawned -= AddPlayer;
 
-        private void AddPlayer(GameObject gameObject)
+        private void AddPlayer(int ID)
         {
+            GameObject gameObject = NetworkUtil.GetGameObject(ID);
             this.myRigidbody = gameObject.GetComponent<Rigidbody2D>();
         }
 

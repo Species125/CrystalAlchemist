@@ -133,7 +133,7 @@ namespace CrystalAlchemist
 
             }
 
-            GameEvents.current.DoManaLifeUpdate();
+            GameEvents.current.DoManaLifeUpdate(-1);
         }
     }
 }

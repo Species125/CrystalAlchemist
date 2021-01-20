@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CrystalAlchemist
 {
-    public class StatusEffectGameObject : MonoBehaviour
+    public class StatusEffectGameObject : NetworkBehaviour
     {
         [SerializeField]
         private bool endFromAnimator = false;
@@ -15,6 +15,8 @@ namespace CrystalAlchemist
         private Animator anim;
 
         private StatusEffect activeEffect;
+
+        public bool isActive = true;
 
         public void Initialize(StatusEffect effect)
         {
@@ -35,6 +37,7 @@ namespace CrystalAlchemist
         public void DestroyIt()
         {
             Destroy(this.gameObject);
+            //this.isActive = false;
         }
 
         public void PlaySoundEffect(AudioClip audioClip)

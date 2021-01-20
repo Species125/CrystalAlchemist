@@ -95,7 +95,6 @@ namespace CrystalAlchemist
         [SerializeField]
         private float audioInterval = 1.5f;
 
-        private AudioSource audioSource;
         private bool playLow;
         private float elapsed;
         private float maxValue;
@@ -118,10 +117,9 @@ namespace CrystalAlchemist
             SettingsEvents.current.OnHUDChanged += setBarOrSymbol;
             GameEvents.current.OnLifeManaUpdate += UpdateGUIHealthMana;
 
-            this.audioSource = GetComponent<AudioSource>();
             setStatusBar();
 
-            if (this.UIType == UIType.resource) UpdateGUIHealthMana();
+            if (this.UIType == UIType.resource) UpdateGUIHealthMana(0);
             setBarOrSymbol();
         }
 
@@ -199,7 +197,7 @@ namespace CrystalAlchemist
 
 
         #region Update Signal Funktionen (Life, Mana, StatusEffects)    
-        public void UpdateGUIHealthMana()
+        public void UpdateGUIHealthMana(int ID)
         {
             setStatusBar();
             setBarValues();

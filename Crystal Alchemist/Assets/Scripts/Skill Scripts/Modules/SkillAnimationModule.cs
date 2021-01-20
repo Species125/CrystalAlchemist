@@ -28,7 +28,7 @@ namespace CrystalAlchemist
 
         private void OnDestroy()
         {
-            if (this.useColor) this.skill.sender.removeColor(this.targetColor);
+            if (this.useColor) this.skill.sender.RemoveColor(this.targetColor);
         }
     }
 }

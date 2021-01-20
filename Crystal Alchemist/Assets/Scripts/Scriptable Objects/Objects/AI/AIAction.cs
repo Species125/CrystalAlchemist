@@ -85,7 +85,6 @@ namespace CrystalAlchemist
         [ShowIf("type", AIActionType.ability)]
         [BoxGroup("Properties")]
         [SerializeField]
-        [OnValueChanged("AbilityChanged")]
         private Ability ability;
 
         [ShowIf("type", AIActionType.ability)]
@@ -408,7 +407,6 @@ namespace CrystalAlchemist
             }
         }        
 
-
         private void DisableSkill(AI npc)
         {
             npc.GetComponent<AICombat>().HideTargetingSystem(this.activeAbility);
@@ -547,10 +545,5 @@ namespace CrystalAlchemist
         private void StartMovement(AI npc) => npc.MoveCharacters(this.position, this.duration);
 
         #endregion
-
-        private void AbilityChanged()
-        {
-            //this.wait = (this.ability.castTime + this.delay) * this.amount;
-        }
     }
 }

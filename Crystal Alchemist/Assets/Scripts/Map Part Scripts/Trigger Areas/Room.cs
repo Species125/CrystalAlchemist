@@ -58,7 +58,7 @@ namespace CrystalAlchemist
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (!other.isTrigger)
+            if (!other.isTrigger && this.virtualCamera != null)
             {
                 setObjects(false);
                 this.virtualCamera.gameObject.SetActive(false);

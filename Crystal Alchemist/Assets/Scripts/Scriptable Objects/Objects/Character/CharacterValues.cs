@@ -80,6 +80,9 @@ namespace CrystalAlchemist
         public ItemDrop itemDrop;
         [BoxGroup("Debug")]
         public float speedFactor = 5;
+        [BoxGroup("Debug")]
+        [ColorUsage(true, true)]
+        public Color effectColor = Color.white;
 
         [Button]
         public void Clear(CharacterStats stats)

@@ -8,6 +8,7 @@ namespace CrystalAlchemist
     {
         private Character character;
         private Animator animator;
+        private bool isReverse = false;
 
         private void Awake() => this.animator = this.GetComponent<Animator>();
 
@@ -15,6 +16,7 @@ namespace CrystalAlchemist
 
         public void Reverse(Character character)
         {
+            this.isReverse = true;
             this.character = character;
             AnimatorUtil.SetAnimatorParameter(animator, "Reverse");
         }
@@ -43,7 +45,7 @@ namespace CrystalAlchemist
 
         public void DestroyIt()
         {
-            if (this.character != null) this.character.SpawnIn();
+            if (this.character != null && !this.isReverse) this.character.SpawnIn();
             Destroy(this.gameObject, 0.1f);
         }
     }

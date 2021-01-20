@@ -20,8 +20,7 @@ namespace CrystalAlchemist
 
         [HideInInspector]
         public bool rangeTriggered;
-
-
+        
         private bool isSleeping = true;
 
         public override void Awake()
@@ -64,6 +63,9 @@ namespace CrystalAlchemist
         public override void Start()
         {
             base.Start();
+
+            //if (!NetworkUtil.IsMaster()) return;
+
             GameEvents.current.OnRangeTriggered += SetRangeTriggered;
 
             this.GetComponent<AICombat>().Initialize();
@@ -73,6 +75,7 @@ namespace CrystalAlchemist
 
         public override void OnDestroy()
         {
+            //if (!NetworkUtil.IsMaster()) return;
             base.OnDestroy();
             GameEvents.current.OnRangeTriggered -= SetRangeTriggered;
         }
@@ -85,6 +88,8 @@ namespace CrystalAlchemist
         public override void Update()
         {
             base.Update();
+
+            //if (!NetworkUtil.IsMaster()) return;
 
             if (this.targetID > 0 && this.isSleeping)
             {
@@ -102,13 +107,23 @@ namespace CrystalAlchemist
             for (int i = 0; i < components.Length; i++) components[i].Updating();
         }
 
+        public override void Regenerate()
+        {
+            if (!NetworkUtil.IsMaster()) return;
+            RegenerateLifeMana();
+        }
+
         public void changeState(CharacterState newState)
         {
+            //if (!NetworkUtil.IsMaster()) return;
+
             if (this.values.currentState != newState) this.values.currentState = newState;
         }
 
         public void MoveCharacters(Vector2 position, float duration)
         {
+            if (!NetworkUtil.IsMaster()) return;
+
             this.myRigidbody.DOMove(position, duration);
         }
 
@@ -117,6 +132,8 @@ namespace CrystalAlchemist
 
         public void SetMaxAggro(float aggro)
         {
+            //if (!NetworkUtil.IsMaster()) return;
+
             foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
             {
                 Player player = (Player)p.TagObject;

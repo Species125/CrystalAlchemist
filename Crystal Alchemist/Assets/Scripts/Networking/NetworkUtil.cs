@@ -8,6 +8,8 @@ namespace CrystalAlchemist
         //Photon-Views on Mechanics and Characters
         //Network-Behaviour on all instantiations (path)
 
+        public const byte PLAYER_JOINED = 2;
+
         public const byte AGGRO_ON_HIT = 10;
         public const byte AGGRO_INCREASE = 11;
         public const byte AGGRO_DECREASE = 12;

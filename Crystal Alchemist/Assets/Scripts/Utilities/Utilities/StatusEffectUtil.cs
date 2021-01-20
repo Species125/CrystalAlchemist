@@ -80,8 +80,8 @@ namespace CrystalAlchemist
                     }
                     else
                     {
-                        if (statusEffect.canOverride) sameEffects[0].Initialize(character);
-                        else if (statusEffect.canDeactivateIt) sameEffects[0].DestroyIt();
+                        if (statusEffect.mode == StatusEffectMode.overrideIt) sameEffects[0].Initialize(character);
+                        else if (statusEffect.mode == StatusEffectMode.destroyIt) RemoveAllStatusEffects(sameEffects);                        
                     }
                 }
             }
@@ -89,13 +89,10 @@ namespace CrystalAlchemist
 
         private static void Instantiate(StatusEffect statusEffect, Character character)
         {
-            StatusEffect effect = MonoBehaviour.Instantiate(statusEffect);
+            StatusEffect effect = Object.Instantiate(statusEffect);
 
             effect.name = statusEffect.name;
-            character.values.AddStatusEffect(effect);
-            effect.Initialize(character);
-
-            GameEvents.current.DoEffectAdded(effect);
+            character.AddStatusEffect(effect);
         }
     }
 }

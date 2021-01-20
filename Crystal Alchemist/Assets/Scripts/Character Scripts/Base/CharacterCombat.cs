@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace CrystalAlchemist
 {
-
     [RequireComponent(typeof(Character))]
     public class CharacterCombat : MonoBehaviour
     {
@@ -63,7 +62,7 @@ namespace CrystalAlchemist
             ability.ResetCharge(); //reset charge when not full  
             HideCastBar(); //Hide Castbar
             ability.HideCastingAnimation(); //Hide Animation and stuff
-            deactivatePlayerButtonUp(ability); //deactivate Skill when button up, Player only
+            DeactivateAbility(ability); //deactivate Skill when button up, Player only
             resetSpeedAfterCasting(); //set Speed to normal
             ability.HideIndicator();
         }
@@ -80,14 +79,12 @@ namespace CrystalAlchemist
             character.updateSpeed(0); //Set Speed to normal
         }
 
-        private void deactivatePlayerButtonUp(Ability ability)
+        public virtual void DeactivateAbility(Ability ability)
         {
-            if (ability.deactivateButtonUp
-                && character.GetComponent<Player>() != null)
-                deactivateSkill(ability);
+            
         }
 
-        private void deactivateSkill(Ability ability)
+        public void DeactivateSkill(Ability ability)
         {
             int deactivatedSkills = DeactivateSkills(ability);
             if (deactivatedSkills > 0) ability.ResetCoolDown(); //prevent Cooldown when not used skill
@@ -96,12 +93,13 @@ namespace CrystalAlchemist
         private int DeactivateSkills(Ability ability)
         {
             int counter = 0;
+            this.character.values.activeSkills.RemoveAll(item => item == null);
 
-            for (int i = 0; i < character.values.activeSkills.Count; i++)
+            for (int i = 0; i < this.character.values.activeSkills.Count; i++)
             {
-                if (character.values.activeSkills[i].name == ability.skill.name)
+                if (this.character.values.activeSkills[i].name == ability.skill.name)
                 {
-                    character.values.activeSkills[i].DeactivateIt();
+                    this.character.values.activeSkills[i].DeactivateIt();
                     counter++;
                 }
             }
@@ -157,18 +155,17 @@ namespace CrystalAlchemist
 
         #region useAbility
 
-        public void UseAbilityOnTarget(Ability ability, Character target)
+        public virtual void UseAbilityOnTarget(Ability ability, Character target)
         {
             if (ability.HasEnoughResourceAndAmount())
             {
-                //AbilityUtil.InstantiateSkill(ability, target);
                 NetworkEvents.current.InstantiateSkill(ability, this.character, target);
 
                 if (!ability.deactivateButtonUp && !ability.remoteActivation) ability.ResetCoolDown();
             }
         }
 
-        public void UseAbilityOnTargets(Ability ability)
+        public virtual void UseAbilityOnTargets(Ability ability)
         {
             List<Character> targets = new List<Character>();
             targets.AddRange(this.GetTargetsFromTargeting());
@@ -176,17 +173,17 @@ namespace CrystalAlchemist
             UseAbilityOnTargets(ability, targets, this.GetTargetingDelay());
         }
 
-        public void UseAbilityOnTargets(Ability ability, List<Character> targets, float delay)
+        public virtual void UseAbilityOnTargets(Ability ability, List<Character> targets, float delay)
         {
             if (targets.Count > 0) ability.ResetCoolDown();
 
             if (ability.HasEnoughResourceAndAmount())
             {
-                StartCoroutine(useSkill(ability, targets, delay));
+                StartCoroutine(UseSkill(ability, targets, delay));
             }
         }
 
-        private IEnumerator useSkill(Ability ability, List<Character> targets, float delay)
+        public IEnumerator UseSkill(Ability ability, List<Character> targets, float delay)
         {
             float damageReduce = targets.Count;
 

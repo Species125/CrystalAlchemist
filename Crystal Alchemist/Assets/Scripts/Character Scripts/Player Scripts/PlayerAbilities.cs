@@ -23,13 +23,6 @@ namespace CrystalAlchemist
         private bool isPressed;
         private float timer;
         private Player player;
-        private PhotonView photonView;
-
-        private void Awake()
-        {
-            this.photonView = PhotonView.Get(this);
-        }
-
 
         private void Start() => GameEvents.current.OnCancel += DisableAbilities;
 
@@ -40,6 +33,7 @@ namespace CrystalAlchemist
             base.Initialize();
 
             this.player = this.character.GetComponent<Player>();
+
             if (!NetworkUtil.IsLocal(this.player)) return;
 
             this.SetTimeValue(this.timeLeftValue);
@@ -50,7 +44,7 @@ namespace CrystalAlchemist
 
         public override void Updating()
         {
-            if (!NetworkUtil.IsLocal(this.player)) return;
+            if (!this.player.isLocalPlayer) return;
 
             base.Updating();
             this.skillSet.Updating();
@@ -107,6 +101,8 @@ namespace CrystalAlchemist
 
         private void ButtonHold(Ability ability)
         {
+            if (!NetworkUtil.IsLocal(this.player)) return;
+
             if (ability == null || !ability.enabled) return;
             if (ability.state == AbilityState.notCharged)
             {
@@ -125,6 +121,8 @@ namespace CrystalAlchemist
 
         private void ButtonUp(Ability ability)
         {
+            if (!NetworkUtil.IsLocal(this.player)) return;
+
             if (ability == null) return;
 
             if (ability.enabled && ability.state == AbilityState.charged && !ability.isRapidFire) UseAbilityOnTarget(ability, null); //use Skill when charged
@@ -135,6 +133,8 @@ namespace CrystalAlchemist
 
         private void ButtonDown(Ability ability)
         {
+            if (!NetworkUtil.IsLocal(this.player)) return;
+
             if (ability == null || !ability.enabled) return;
             if (ability.state == AbilityState.ready) UseAbilityOnTarget(ability, null); //use Skill
             else if (ability.state == AbilityState.targetRequired) ShowTargetingSystem(ability); //activate Targeting System
@@ -149,6 +149,20 @@ namespace CrystalAlchemist
         {
             this.skillSet.EnableAbility(false);
             Invoke("EnableAbilities", this.skillSet.deactiveDelay);
+        }
+
+        public override void DeactivateAbility(Ability ability)
+        {
+            if (!this.player.isLocalPlayer) return;
+
+            this.player.photonView.RPC("RpcDeactivateSkill", RpcTarget.All, ability.path);
+        }
+
+        [PunRPC]
+        protected void RpcDeactivateSkill(string path)
+        {
+            Ability ability = Resources.Load<Ability>(path);
+            if (ability.deactivateButtonUp) DeactivateSkill(ability);
         }
 
         private void EnableAbilities()

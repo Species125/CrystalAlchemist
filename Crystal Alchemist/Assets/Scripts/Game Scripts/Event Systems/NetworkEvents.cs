@@ -15,17 +15,27 @@ namespace CrystalAlchemist
         private void OnEnable()
         {
             PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
+            PhotonNetwork.NetworkingClient.EventReceived += NetworkingEventSkillItems;
             PhotonNetwork.NetworkingClient.EventReceived += NetworkingEventBoss;
         }
 
         private void OnDisable()
         {
-            PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEvent;
+            PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
+            PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEventSkillItems;
             PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEventBoss;
         }
         
-
         private void NetworkingEvent(EventData obj)
+        {
+            if (obj.Code == NetworkUtil.PLAYER_JOINED)
+            {
+                object[] datas = (object[])obj.CustomData;
+
+            }
+        }
+
+        private void NetworkingEventSkillItems(EventData obj)
         {
             if (obj.Code == NetworkUtil.SKILL)
             {
@@ -38,7 +48,7 @@ namespace CrystalAlchemist
                 Quaternion rotation = (Quaternion)datas[5];
                 bool standalone = (bool)datas[6];
 
-                InstantiateSkill(path, senderID, targetID, reduce, position, rotation, standalone);
+                InstantiateSkillOnClients(path, senderID, targetID, reduce, position, rotation, standalone);
             }
             else if (obj.Code == NetworkUtil.BOSSSKILL)
             {
@@ -48,7 +58,7 @@ namespace CrystalAlchemist
                 int targetID = (int)datas[2];
                 int[] targetIDs = (int[])datas[3];
 
-                InstantiateSequence(path, senderID, targetID, targetIDs);
+                InstantiateSequenceOnClients(path, senderID, targetID, targetIDs);
             }
             else if (obj.Code == NetworkUtil.ITEMDROP)
             {
@@ -64,17 +74,35 @@ namespace CrystalAlchemist
             }
         }
 
+
+        #region Player
+
+
+
+
+        #endregion
+
+
+
+
+
         #region Skills
 
         public void InstantiateSkill(Ability ability, Character sender, Character target)
         {
             //Normal (Single)
+            AI npc = sender.GetComponent<AI>();
+            if (npc != null && !NetworkUtil.IsMaster()) return; //only Player and Master-NPC allowed
+
             InstantiateAoESkill(ability, sender, target, 1);
         }
 
         public void InstantiateAoESkill(Ability ability, Character sender, Character target, float reduce)
         {
             //Reduced (AoE)
+            AI npc = sender.GetComponent<AI>();
+            if (npc != null && !NetworkUtil.IsMaster()) return; //only Player and Master-NPC allowed
+
             RaiseAbilityEvent(ability, sender, target, reduce, sender.transform.position, Quaternion.identity, false);
         }
 
@@ -119,7 +147,7 @@ namespace CrystalAlchemist
             PhotonNetwork.RaiseEvent(NetworkUtil.BOSSSKILL, datas, options, SendOptions.SendUnreliable);
         }
 
-        public void InstantiateSkill(string path, int senderID, int targetID, float reduce, Vector2 position, Quaternion rotation, bool standalone)
+        public void InstantiateSkillOnClients(string path, int senderID, int targetID, float reduce, Vector2 position, Quaternion rotation, bool standalone)
         {
             Ability ability = Resources.Load<Ability>(path);
             Character sender = PhotonView.Find(senderID).GetComponent<Character>();
@@ -131,7 +159,7 @@ namespace CrystalAlchemist
             AbilityUtil.InstantiateSkill(ability, sender, target, position, reduce, standalone, rotation);
         }
 
-        private void InstantiateSequence(string path, int senderID, int targetID, int[] targetIDs)
+        private void InstantiateSequenceOnClients(string path, int senderID, int targetID, int[] targetIDs)
         {
             BossMechanic newSequence = Resources.Load<BossMechanic>(path);
             Character sender = PhotonView.Find(senderID).GetComponent<Character>();
@@ -494,5 +522,7 @@ namespace CrystalAlchemist
         }
 
         #endregion
+
+
     }
 }

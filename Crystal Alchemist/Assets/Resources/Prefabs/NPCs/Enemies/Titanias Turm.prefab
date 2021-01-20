@@ -139,6 +139,7 @@ MonoBehaviour:
   character: {fileID: 0}
   startPhase: {fileID: 11400000, guid: 78faa3a529e2a7d48ae42755421cd4da, type: 2}
   startImmediately: 1
+  activePhase: {fileID: 0}
 --- !u!61 &4536096100201619651
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -293,6 +294,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroStats: {fileID: 11400000, guid: bb622e4c94811f244af5ad122c30d82e, type: 2}
   npc: {fileID: 55980665602690939}
+  mainTarget: 
+  aggrodata: []
 --- !u!58 &3866322097961817499
 CircleCollider2D:
   m_ObjectHideFlags: 0
