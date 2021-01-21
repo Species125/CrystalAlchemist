@@ -1,8 +1,4 @@
-﻿
-
-
-
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CrystalAlchemist
 {
@@ -11,17 +7,9 @@ namespace CrystalAlchemist
         [SerializeField]
         private PlayerInventory inventory;
 
-        private void Awake()
-        {
-            GameEvents.current.OnKeyItem += hasKeyItemAlready; //because keyItemCheck will be called very early
-            GameEvents.current.OnItemAmount += GetAmount;
-        }
+        private void Awake() => GameEvents.current.OnItemAmount += GetAmount;        
 
-        private void OnDestroy()
-        {
-            GameEvents.current.OnKeyItem -= hasKeyItemAlready;
-            GameEvents.current.OnItemAmount -= GetAmount;
-        }
+        private void OnDestroy() => GameEvents.current.OnItemAmount -= GetAmount;        
 
         public override void Initialize()
         {
@@ -38,11 +26,7 @@ namespace CrystalAlchemist
 
         public void UpdateInventory(ItemGroup item, int amount) => this.inventory.UpdateInventory(item, amount);
 
-        public bool hasKeyItemAlready(string name)
-        {
-            foreach (ItemStats elem in this.inventory.keyItems) if (elem != null && name == elem.name) return true;
-            return false;
-        }
+
 
         public PlayerInventory GetInventory()
         {

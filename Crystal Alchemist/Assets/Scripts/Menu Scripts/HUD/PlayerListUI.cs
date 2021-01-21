@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Photon.Realtime;
 
 namespace CrystalAlchemist
 {
@@ -25,6 +24,7 @@ namespace CrystalAlchemist
             {
                 if (p.TagObject == null || p == PhotonNetwork.LocalPlayer) continue;
                 Player player = (Player)p.TagObject;
+                if (player == null) return;
                 int ID = player.photonView.ViewID;
                 Create(ID);
             }

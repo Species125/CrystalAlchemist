@@ -12,7 +12,21 @@ namespace CrystalAlchemist
         public int uniqueID = 4711;
         public string version = "0.0.1";
         public byte maxPlayers = 4;
-        public string roomName = "Online";
+        public string roomName = "";
         public Player playerPrefab;
+        public StringValue playerName;
+        public StringValue currentScene;
+
+        private void OnEnable()
+        {
+            SetOfflineStatus(true);
+        }
+
+        public void SetOfflineStatus(bool value, string name = "")
+        {
+            this.offlineMode = value;
+            if (offlineMode) this.roomName = "Offline";
+            else this.roomName = name;
+        }
     }
 }

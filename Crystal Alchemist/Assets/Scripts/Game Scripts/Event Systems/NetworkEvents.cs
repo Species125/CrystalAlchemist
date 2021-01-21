@@ -153,7 +153,12 @@ namespace CrystalAlchemist
             Character sender = PhotonView.Find(senderID).GetComponent<Character>();
 
             Character target = null;
-            if (targetID >= 0) target = PhotonView.Find(targetID).GetComponent<Character>();
+            if (targetID >= 0) 
+            {
+                PhotonView view = PhotonView.Find(targetID);
+                if (view) view.GetComponent<Character>();
+            }
+
             ability.SetSender(sender);
 
             AbilityUtil.InstantiateSkill(ability, sender, target, position, reduce, standalone, rotation);

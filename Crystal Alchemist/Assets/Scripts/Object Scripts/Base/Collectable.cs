@@ -100,7 +100,7 @@ namespace CrystalAlchemist
             string itemName = this.itemDrop.name;
 
             if (this.itemDrop.progress.ContainsProgress() ||
-                (this.itemStats.isKeyItem() && GameEvents.current.HasKeyItem(itemName)))
+               (this.itemStats.isKeyItem() && GameEvents.current.HasKeyItem(itemName)))
             {
                 this.showEffectOnDisable = false;
                 DestroyIt();

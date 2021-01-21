@@ -54,7 +54,7 @@ namespace CrystalAlchemist
         private int[] expanderValues = new int[] { 1, 3, 5, 7, 9 };
 
         [BoxGroup("Base")]
-        public int pointsSpent;
+        public int pointsSpent;   
 
         public void Clear()
         {

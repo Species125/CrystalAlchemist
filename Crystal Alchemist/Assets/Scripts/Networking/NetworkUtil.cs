@@ -88,7 +88,19 @@ namespace CrystalAlchemist
 
         public static void SetRoomStatus(bool value)
         {
-            if (IsMaster()) PhotonNetwork.CurrentRoom.IsOpen = value;
+            if (IsMaster() && PhotonNetwork.InRoom)
+            {
+                //PhotonNetwork.CurrentRoom.IsVisible = value;
+                //PhotonNetwork.CurrentRoom.IsOpen = value;
+                PhotonNetwork.CurrentRoom.IsOpen = true;
+                PhotonNetwork.CurrentRoom.IsVisible = true;
+            }
+        }
+
+        public static void LeaveRoom()
+        {
+            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.Disconnect();
         }
     }
 }

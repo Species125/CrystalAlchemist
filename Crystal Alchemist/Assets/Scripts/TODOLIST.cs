@@ -12,7 +12,6 @@ namespace CrystalAlchemist
         //ANIMATION: InMenu
 
         //MAJOR BUG: wrong enemy kill
-        //MAJOR BUG: Key Items still visible  
 
         //TODO: Spawn Rework (//TODO: Spawn)
         //TODO: Entire AI on Master only
@@ -22,11 +21,12 @@ namespace CrystalAlchemist
         //TODO: Statuseffekte Sync (on Scene change) and dispell
         //TDOO: Skill Sync (RPC on disable)
 
-        //TODO: Online Join Window
+        //TODO: Private Match/Open Match, Max players, Nickname
+        //TODO: Cant join, restrict CCUs, Exceptions, 
         //TODO: Death Screen (only when all players are dead)
 
         //CHANGES: PLAYERABILITIES Indicator (removed this.player)
-
+        //CHANGES: AGGROSYSTEM NewTarget is Guest
 
         /*     
         GRAPHICS: Booster

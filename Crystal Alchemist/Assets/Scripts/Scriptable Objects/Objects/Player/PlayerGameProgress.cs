@@ -79,7 +79,7 @@ namespace CrystalAlchemist
 
     [CreateAssetMenu(menuName = "Game/Player/Game Progress")]
     public class PlayerGameProgress : ScriptableObject
-    {
+    {        
         [SerializeField]
         private List<ProgressDetails> progressList = new List<ProgressDetails>();
 
