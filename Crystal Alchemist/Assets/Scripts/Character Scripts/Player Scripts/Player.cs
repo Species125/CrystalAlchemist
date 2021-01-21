@@ -31,6 +31,10 @@ namespace CrystalAlchemist
         [SerializeField]
         private PlayerSaveGame saveGame;
 
+        [BoxGroup("Player Objects")]
+        [SerializeField]
+        private StringValue currentScene;
+
         [BoxGroup("Debug")]
         [SerializeField]
         private CharacterCreatorPartHandler handler;
@@ -164,6 +168,7 @@ namespace CrystalAlchemist
             AddStatusEffectVisuals();
 
             this.saveGame.skillSet.TestInitialize(this);
+            this.currentScene.SetValue(this.gameObject.scene.name);
         }
 
         public override void Update()
@@ -286,6 +291,11 @@ namespace CrystalAlchemist
         public void callSignal(float addResource)
         {
             if (addResource != 0) GameEvents.current.DoManaLifeUpdate(this.photonView.ViewID);
+        }
+
+        public override bool IsGuestPlayer()
+        {
+            return !this.isLocalPlayer;
         }
 
         public override void GotHit(Skill skill, float percentage, bool knockback)

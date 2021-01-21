@@ -13,6 +13,9 @@ namespace CrystalAlchemist
         [SerializeField]
         private FloatValue fadeDuration;
 
+        [SerializeField]
+        private StringValue nextScene;
+
         private void Start()
         {
             GameEvents.current.OnSceneChanged += ChangeScene;
@@ -28,26 +31,23 @@ namespace CrystalAlchemist
 
         private void ChangeScene(string newScene)
         {
-            Scene scene = SceneManager.GetActiveScene();
-            if (
-                //scene.name != newScene && 
-                NetworkUtil.IsMaster())
+            if (NetworkUtil.IsMaster()) //Master in online and offline mode
             {
-                //Only Master is allowed to load level
-                //PhotonNetwork.CurrentRoom.IsOpen = false; //no join when room is open
-                //PhotonNetwork.CurrentRoom.IsVisible = false; //not visible when room is there
-                PhotonNetwork.LoadLevel(newScene);
+                this.nextScene.SetValue(newScene);
+                PhotonNetwork.LoadLevel("Loading");
             }
-
-            //StartCoroutine(loadSceneCo(newScene));
+            else if (!PhotonNetwork.IsConnected) //Not connected and also no master (startup)
+            {
+                this.nextScene.SetValue(newScene);
+                //StartCoroutine(loadSceneCo("Loading"));
+                SceneManager.LoadScene("Loading");
+            }
         }
 
         private IEnumerator loadSceneCo(string targetScene)
         {
-            MenuEvents.current.DoFadeOut();
+            if (MenuEvents.current) MenuEvents.current.DoFadeOut();
             yield return new WaitForSeconds(this.fadeDuration.GetValue());
-
-            //GameEvents.current.DoOnlineChangeScene(targetScene);
 
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(targetScene);
             asyncOperation.allowSceneActivation = false;
@@ -67,7 +67,7 @@ namespace CrystalAlchemist
                 if (player.values.currentState != CharacterState.dead) return;
             }
 
-            MenuEvents.current.OpenDeath();
+            if (MenuEvents.current) MenuEvents.current.OpenDeath();
         }
     }
 }

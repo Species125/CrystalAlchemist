@@ -297,9 +297,9 @@ namespace CrystalAlchemist
             }
         }
 
-        private void increaseAggroOnHit(Character character, Character newTarget, float damage)
+        private void increaseAggroOnHit(Character npc, Character newTarget, float damage)
         {
-            if (IsGuestPlayer(character) || character != this.npc) return;
+            if (!IsValidTarget(npc, newTarget)) return;
             RaiseAggroEvent(this.ID, newTarget, damage, NetworkUtil.AGGRO_ON_HIT);
         }
 
@@ -311,7 +311,7 @@ namespace CrystalAlchemist
             {
                 addToAggroList(targetID);
 
-                addAggro(targetID, (this.aggroStats.aggroOnHitIncreaseFactor));
+                addAggro(targetID, (this.aggroStats.aggroOnHitIncreaseFactor*damage));
                 if (this.npc.aggroList.Count == 1 && this.aggroStats.firstHitMaxAggro) addAggro(targetID, (this.aggroStats.aggroNeededToTarget + (this.aggroStats.aggroDecreaseFactor * (-1))));
 
                 if (this.npc.aggroList[targetID][1] == 0) setParameterOfAggrolist(targetID, this.aggroStats.aggroDecreaseFactor);
@@ -319,9 +319,9 @@ namespace CrystalAlchemist
             }
         }
 
-        private void increaseAggro(Character character, Character newTarget, float aggro)
+        private void increaseAggro(Character npc, Character newTarget, float aggro)
         {
-            if (IsGuestPlayer(character) || character != this.npc) return;
+            if (!IsValidTarget(npc, newTarget)) return;
             RaiseAggroEvent(this.ID, newTarget, aggro, NetworkUtil.AGGRO_INCREASE);
         }
 
@@ -338,9 +338,9 @@ namespace CrystalAlchemist
             }
         }
 
-        private void decreaseAggro(Character character, Character newTarget, float aggro)
+        private void decreaseAggro(Character npc, Character newTarget, float aggro)
         {
-            if (IsGuestPlayer(character) || character != this.npc) return;
+            if (!IsValidTarget(npc, newTarget)) return;
             RaiseAggroEvent(this.ID, newTarget, aggro, NetworkUtil.AGGRO_DECREASE);
         }
 
@@ -350,6 +350,11 @@ namespace CrystalAlchemist
             if (targetID > 0 && character == this.npc) setParameterOfAggrolist(targetID, aggroDecrease);
         }
 
+
+        private bool IsValidTarget(Character npc, Character newTarget)
+        {
+            return (!IsGuestPlayer(newTarget) && npc == this.npc);
+        }
 
         private bool IsGuestPlayer(Character character)
         {

@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using Photon.Pun;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,6 +51,9 @@ namespace CrystalAlchemist
         [BoxGroup("Parent")]
         [Required]
         public GameObject activeStatusEffectParent;
+
+        [HideInInspector]
+        public Action OnDeath;
 
         #endregion
 
@@ -419,6 +423,11 @@ namespace CrystalAlchemist
 
         #region Damage Functions
 
+        public virtual bool IsGuestPlayer()
+        {
+            return false;
+        }
+
         private void showDamageNumber(float value) => ShowDamageNumber(value, NumberColor.yellow);
 
         private void ShowDamageNumber(float value, NumberColor color)
@@ -439,13 +448,15 @@ namespace CrystalAlchemist
 
         public virtual void GotHit(Skill skill, float percentage, bool knockback)
         {
-            SkillTargetModule targetModule = skill.GetComponent<SkillTargetModule>();
+            SkillTargetModule targetModule = skill.GetComponent<SkillTargetModule>();            
             Character sender = skill.sender;
 
-            if (!NetworkUtil.IsLocal(sender.GetComponent<Player>()) //no guestplayer hits
+            if (sender.IsGuestPlayer() //no guestplayer hits
                 || targetModule == null
-                || this.values.currentState == CharacterState.dead
-                || (!targetModule.affections.CanIgnoreInvinvibility() && this.values.cantBeHit)) return;
+                || this.values.currentState == CharacterState.dead) return;
+
+            bool ignore = targetModule.affections.CanIgnoreInvinvibility();
+            if (!ignore && this.values.cantBeHit) return;
 
             Vector2 position = skill.transform.position;
             int ID = sender.photonView.ViewID;
@@ -538,6 +549,7 @@ namespace CrystalAlchemist
 
         public void DestroyItWithoutDrop()
         {
+            this.OnDeath?.Invoke();
             if (this.stats.hasRespawn) this.gameObject.SetActive(false);
             else PhotonNetwork.Destroy(this.gameObject);
         }

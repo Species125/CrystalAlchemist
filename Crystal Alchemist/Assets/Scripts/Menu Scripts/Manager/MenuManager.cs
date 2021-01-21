@@ -27,10 +27,10 @@ namespace CrystalAlchemist
             MenuEvents.current.OnEditor += OpenCharacterEditor;
             MenuEvents.current.OnSave += OpenSavePoint;
             MenuEvents.current.OnDialogBox += OpenDialogBox;
-            MenuEvents.current.OnMenuDialogBox += OpenMenuDialogBox;
-            MenuEvents.current.OnTutorial += OpenTutorial;
+            MenuEvents.current.OnMenuDialogBox += OpenMenuDialogBox; 
             MenuEvents.current.OnJukeBox += OpenJukebox;
-            MenuEvents.current.OnSave += OpenSavePoint;
+            MenuEvents.current.OnOnlineMenu += OpenOnlineMenu;
+            MenuEvents.current.OnTutorial += OpenTutorial;
             PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
         }
 
@@ -50,6 +50,7 @@ namespace CrystalAlchemist
             MenuEvents.current.OnDialogBox -= OpenDialogBox;
             MenuEvents.current.OnMenuDialogBox -= OpenMenuDialogBox;
             MenuEvents.current.OnJukeBox -= OpenJukebox;
+            MenuEvents.current.OnOnlineMenu -= OpenOnlineMenu;
             MenuEvents.current.OnTutorial -= OpenTutorial;
             PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
         }
@@ -79,6 +80,8 @@ namespace CrystalAlchemist
         public void OpenJukebox() => OpenScene("Jukebox");
 
         public void OpenTutorial() => OpenScene("Tutorial");
+
+        public void OpenOnlineMenu() => OpenScene("Online Menu");
 
         private void OpenScene(string scene)
         {

@@ -25,6 +25,7 @@ namespace CrystalAlchemist
         public Action OnMenuDialogBox;
         public Action OnTutorial;
         public Action OnJukeBox;
+        public Action OnOnlineMenu;
         public Action OnAttributeUpdate;
         public Action<Action> OnPostProcessingFade;
         public Action OnFadeOut;
@@ -42,6 +43,7 @@ namespace CrystalAlchemist
         public void OpenMiniGame() => this.OnMiniGame?.Invoke();
         public void OpenTutorial() => this.OnTutorial?.Invoke();
         public void OpenJukeBox() => this.OnJukeBox?.Invoke();
+        public void OpenOnlineMenu() => this.OnOnlineMenu?.Invoke();
         public void SelectAbility(Ability ability) => this.OnAbilitySelected?.Invoke(ability);
         public Ability SetAbility() => this.OnAbilitySet?.Invoke();
         public void AssignAbility() => this.OnAbilityAssigned?.Invoke();

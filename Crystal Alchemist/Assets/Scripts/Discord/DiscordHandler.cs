@@ -18,7 +18,7 @@ namespace CrystalAlchemist
         private CharacterPreset preset;
 
         [SerializeField]
-        private string applicationId = "786040495158853673";
+        private StringValue discordID;
 
         [SerializeField]
         private bool debug = false;
@@ -37,7 +37,7 @@ namespace CrystalAlchemist
         {
             try
             {
-                discord = new global::Discord.Discord(long.Parse(applicationId), (long)CreateFlags.NoRequireDiscord);
+                discord = new global::Discord.Discord(long.Parse(this.discordID.GetValue()), (long)CreateFlags.NoRequireDiscord);
                 activityManager = discord.GetActivityManager();
                 InvokeRepeating("UpdateActivity", 0.3f, 10f);
             }

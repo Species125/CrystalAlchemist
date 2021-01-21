@@ -1,7 +1,4 @@
-﻿
-
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 namespace CrystalAlchemist
 {
@@ -17,7 +14,7 @@ namespace CrystalAlchemist
         {
             //Cursor.visible = false;
             this.saveGame.teleportList.SetNextTeleport(this.startTeleport);
-            SceneManager.LoadSceneAsync(this.saveGame.teleportList.GetNextTeleport().scene);
+            GameEvents.current.DoChangeScene(this.saveGame.teleportList.GetNextTeleport().scene);
         }
     }
 }

@@ -26,19 +26,23 @@ namespace CrystalAlchemist
         private AIPhase activePhase;
         //private bool isActive;
         private AI npc;
+
+        private bool isInit = true;
         #endregion
 
         public override void Initialize()
         {
             base.Initialize();
             this.npc = this.character.GetComponent<AI>();
+            StartPhase();
+            isInit = true;
         }
 
         public void SkipPhase() => this.activePhase.SkipPhase();        
 
         private void OnEnable()
         {
-            if (this.startPhase != null && this.startImmediately) StartPhase();
+            if (!this.isInit && this.startPhase != null && this.startImmediately) StartPhase();
         }
 
         public override void Updating()

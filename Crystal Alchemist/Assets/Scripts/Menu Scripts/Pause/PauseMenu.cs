@@ -35,7 +35,11 @@ namespace CrystalAlchemist
             MenuEvents.current.OnPause -= ExitMenu;
         }
 
-        public void ExitGame() => SceneManager.LoadSceneAsync(0);
+        public void ExitGame()
+        {
+            NetworkUtil.LeaveRoom();
+            SceneManager.LoadSceneAsync(0);
+        }
 
         public void SaveSettings() => SaveSystem.SaveOptions();
     }
