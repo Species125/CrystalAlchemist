@@ -1,6 +1,4 @@
-﻿
-
-using Cinemachine;
+﻿using Cinemachine;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -33,22 +31,20 @@ namespace CrystalAlchemist
 
         private void Awake()
         {
-            setObjects(false);
+            SetObjects(false);
             this.virtualCamera.gameObject.SetActive(false);
         }
 
-        private void setObjects(bool value)
+        private void SetObjects(bool value)
         {
             if (this.objectsInArea != null && deactivate) this.objectsInArea.SetActive(value);
         }
 
-        private void OnTriggerEnter2D(Collider2D other) => SetRoom(other);
-
-        private void SetRoom(Collider2D collider)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!collider.isTrigger)
+            if (!other.isTrigger && NetworkUtil.IsLocal(other.GetComponent<Player>()))
             {
-                setObjects(true);
+                SetObjects(true);
                 this.virtualCamera.gameObject.SetActive(true);
 
                 this.stringValue.SetValue(this.localisationID);
@@ -58,9 +54,9 @@ namespace CrystalAlchemist
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (!other.isTrigger && this.virtualCamera != null)
+            if (!other.isTrigger && this.virtualCamera != null && NetworkUtil.IsLocal(other.GetComponent<Player>()))
             {
-                setObjects(false);
+                SetObjects(false);
                 this.virtualCamera.gameObject.SetActive(false);
             }
         }

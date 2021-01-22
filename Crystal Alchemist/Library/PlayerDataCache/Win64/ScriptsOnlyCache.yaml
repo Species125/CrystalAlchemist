@@ -312,7 +312,6 @@ ScriptsOnlyBuild:
     - CrystalAlchemist.TimeHandler
     - CrystalAlchemist.TimeValue
     - CrystalAlchemist.TitleScreen
-    - CrystalAlchemist.TitleScreenAutoUpdate
     - CrystalAlchemist.TitleScreenControls
     - CrystalAlchemist.TitleScreenFading
     - CrystalAlchemist.TitleScreenPatchNotes
@@ -360,6 +359,8 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
+    PhotonUnityNetworking.Editor.dll:
+    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.Utilities.dll:
     - Photon.Pun.UtilityScripts.PlayerNumbering
     PhotonUnityNetworking.dll:
@@ -369,6 +370,7 @@ ScriptsOnlyBuild:
     - Photon.Pun.PhotonView
     - Photon.Pun.ServerSettings
     Sirenix.OdinInspector.Editor.dll:
+    - Sirenix.OdinInspector.Editor.GeneralDrawerConfig
     - Sirenix.OdinInspector.Editor.ImportSettingsConfig
     - Sirenix.OdinInspector.Editor.InspectorConfig
     - Sirenix.Serialization.AOTGenerationConfig
@@ -1097,7 +1099,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10936}
     - Class: 114
-      Script: {instanceID: 112416}
+      Script: {instanceID: 65750}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -5335,7 +5337,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10936}
     - Class: 114
-      Script: {instanceID: 112416}
+      Script: {instanceID: 65750}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -5910,8 +5912,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 7730}
     - Class: 114
-      Script: {instanceID: 7750}
-    - Class: 114
       Script: {instanceID: 7756}
     - Class: 114
       Script: {instanceID: 7792}
@@ -6144,19 +6144,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10936}
     - Class: 114
-      Script: {instanceID: 111896}
+      Script: {instanceID: 64680}
     - Class: 114
-      Script: {instanceID: 111900}
+      Script: {instanceID: 64684}
     - Class: 114
-      Script: {instanceID: 111904}
+      Script: {instanceID: 64688}
     - Class: 114
-      Script: {instanceID: 112366}
+      Script: {instanceID: 65644}
     - Class: 114
-      Script: {instanceID: 112406}
+      Script: {instanceID: 65740}
     - Class: 114
-      Script: {instanceID: 112416}
+      Script: {instanceID: 65750}
     - Class: 114
-      Script: {instanceID: 112430}
+      Script: {instanceID: 65780}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -11273,7 +11273,7 @@ ScriptsOnlyBuild:
     className: ItemInfo
   - hash:
       serializedVersion: 2
-      Hash: 348d3376da20a7cf07ce8b44a86472f5
+      Hash: 1c61c54fc307093a5d0e5c94638219b5
     assemblyName: Assembly-CSharp.dll
     namespaceName: CrystalAlchemist
     className: PlayerListUIChild

@@ -28,6 +28,7 @@ namespace CrystalAlchemist
 
         private void Start()
         {
+            this.debug.text = "";
             SetProgress(0);
             NetworkUtil.SetRoomStatus(false);
 

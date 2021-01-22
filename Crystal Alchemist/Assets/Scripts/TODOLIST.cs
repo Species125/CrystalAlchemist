@@ -5,25 +5,31 @@ namespace CrystalAlchemist
     public class TODOLIST : MonoBehaviour
     {
         //TODO (0.2.7)
-        //TODO: Enemy Alarm mit Radius
-        //TODO: Enemy Spawn on Death (Death Event?) -> Großer Blob zu kleinen Blobs
-        //TODO: Autosave, Savemenu anpassen
 
-        //ANIMATION: InMenu
+        /*
+        Online-Multiplayer:
+        - Player Rooms (Options: private, max Players, etc) and Listings
+        - Death Screen Adjustments
+        - Testing
 
-        //MAJOR BUG: wrong enemy kill
+        Rework:
+        - Character Creation: Performance and Fixes
+        - Skills: Wind blade, Fireball, Ice Shard, Frost Needle, Stonewall
 
-        //TODO: Spawn Rework (//TODO: Spawn)
-        //TODO: Entire AI on Master only
-        //TODO: Kill RPC rework
-        //TODO: Character Creator RPC
-        //TODO: Gruppenliste
-        //TODO: Statuseffekte Sync (on Scene change) and dispell
-        //TDOO: Skill Sync (RPC on disable)
+        New Features:
+        - Enemy Alarm
+        - Enemy Split
+        - Autosave
 
-        //TODO: Private Match/Open Match, Max players, Nickname
-        //TODO: Cant join, restrict CCUs, Exceptions, 
-        //TODO: Death Screen (only when all players are dead)
+        New Content:
+        - New Skill: Tornado
+        - New Skill: Geode
+        - New Skill: Protect
+        - New Skill: Revive
+        - New Animation: Player in Menu
+        - New Race: Catgirl
+        - New Customization: Scales for Lamia and Drahn
+        */
 
         //CHANGES: PLAYERABILITIES Indicator (removed this.player)
         //CHANGES: AGGROSYSTEM NewTarget is Guest

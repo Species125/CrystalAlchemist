@@ -109,8 +109,7 @@ namespace CrystalAlchemist
         private void RaiseAbilityEvent(Ability ability, Character sender, Character target, float reduce, Vector2 position, Quaternion rotation, bool standalone)
         {
             int characterID = NetworkUtil.GetID(sender);
-            int targetID = -1;
-            if (target != null) targetID = NetworkUtil.GetID(target); 
+            int targetID = NetworkUtil.GetID(target); 
 
             object[] datas = new object[] { ability.path, characterID, targetID, reduce, position, rotation, standalone };
 
@@ -127,8 +126,7 @@ namespace CrystalAlchemist
             if (!NetworkUtil.IsMaster()) return;
 
             int characterID = NetworkUtil.GetID(sender);
-            int targetID = -1;
-            if (target != null) targetID = NetworkUtil.GetID(target);
+            int targetID = NetworkUtil.GetID(target);
 
             List<int> targetIDs = new List<int>();
 
@@ -150,14 +148,8 @@ namespace CrystalAlchemist
         public void InstantiateSkillOnClients(string path, int senderID, int targetID, float reduce, Vector2 position, Quaternion rotation, bool standalone)
         {
             Ability ability = Resources.Load<Ability>(path);
-            Character sender = PhotonView.Find(senderID).GetComponent<Character>();
-
-            Character target = null;
-            if (targetID >= 0) 
-            {
-                PhotonView view = PhotonView.Find(targetID);
-                if (view) view.GetComponent<Character>();
-            }
+            Character sender = NetworkUtil.GetCharacter(senderID);
+            Character target = NetworkUtil.GetCharacter(targetID);
 
             ability.SetSender(sender);
 
@@ -167,16 +159,13 @@ namespace CrystalAlchemist
         private void InstantiateSequenceOnClients(string path, int senderID, int targetID, int[] targetIDs)
         {
             BossMechanic newSequence = Resources.Load<BossMechanic>(path);
-            Character sender = PhotonView.Find(senderID).GetComponent<Character>();
+            Character sender = NetworkUtil.GetCharacter(senderID);            
+            Character target = NetworkUtil.GetCharacter(targetID);
 
-            Character target = null;
             List<Character> targets = new List<Character>();
-
-            if (targetID >= 0) target = PhotonView.Find(targetID).GetComponent<Character>();
-
-            foreach(int ID in targetIDs)
+            foreach (int ID in targetIDs)
             {
-                if (ID >= 0) targets.Add(PhotonView.Find(targetID).GetComponent<Character>());
+                if (ID >= 0) targets.Add(NetworkUtil.GetCharacter(ID));
             }
 
             AbilityUtil.InstantiateSequence(newSequence, sender, target, targets);

@@ -835,7 +835,7 @@ namespace CrystalAlchemist
         [PunRPC]
         protected void RpcKillCharacter(int targetID, bool value, PhotonMessageInfo info)
         {
-            Character target = PhotonView.Find(targetID).GetComponent<Character>();
+            Character target = NetworkUtil.GetCharacter(targetID);
             if (target != null) target.KillCharacter(value);
         }
 

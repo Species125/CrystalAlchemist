@@ -62,7 +62,8 @@ namespace CrystalAlchemist
 
         public static int GetID(Character character)
         {
-            return character.photonView.ViewID;
+            if(character && character.photonView) return character.photonView.ViewID;
+            return -1;
         }
 
         public static int GetID(GameObject gameObject)
@@ -72,10 +73,20 @@ namespace CrystalAlchemist
 
         public static Character GetCharacter(int ID)
         {
+            if (ID <= 0) return null;
             PhotonView view = PhotonView.Find(ID);
             if (!view) return null;
 
             return view.GetComponent<Character>();
+        }
+
+        public static Player GetPlayer(int ID)
+        {
+            if (ID <= 0) return null;
+            PhotonView view = PhotonView.Find(ID);
+            if (!view) return null;
+
+            return view.GetComponent<Player>();
         }
 
         public static GameObject GetGameObject(int ID)
@@ -90,10 +101,8 @@ namespace CrystalAlchemist
         {
             if (IsMaster() && PhotonNetwork.InRoom)
             {
-                //PhotonNetwork.CurrentRoom.IsVisible = value;
-                //PhotonNetwork.CurrentRoom.IsOpen = value;
-                PhotonNetwork.CurrentRoom.IsOpen = true;
-                PhotonNetwork.CurrentRoom.IsVisible = true;
+                PhotonNetwork.CurrentRoom.IsVisible = value;
+                PhotonNetwork.CurrentRoom.IsOpen = value;
             }
         }
 

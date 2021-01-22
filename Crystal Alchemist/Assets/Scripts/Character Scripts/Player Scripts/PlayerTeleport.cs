@@ -120,7 +120,7 @@ namespace CrystalAlchemist
         [PunRPC]
         public void RpcSpawnTeleportEffect(string prefabPath, int targetID, bool reverse, PhotonMessageInfo info)
         {
-            Player player = PhotonView.Find(targetID).GetComponent<Player>();
+            Player player = NetworkUtil.GetPlayer(targetID);
             RespawnAnimation animation = Resources.Load<RespawnAnimation>(prefabPath);
             RespawnAnimation temp = Instantiate(animation, player.GetShootingPosition(), Quaternion.identity);
 

@@ -483,7 +483,7 @@ namespace CrystalAlchemist
         [PunRPC]
         public void RpcSetPreset(string race, string[] colorgroups, string[] parts, string characterName, PhotonMessageInfo info)
         {
-            PhotonView view = PhotonView.Find(info.photonView.ViewID);
+            PhotonView view = info.photonView;
             if (view == null) return;
 
             Player player = view.GetComponent<Player>();

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -14,7 +13,13 @@ namespace Launcher
     {
         private DirectoryInfo currentDir;
         private DirectoryInfo targetDir;
+
         private string uri = "http://www.gungnir-arts.com/Download/";
+        private string versionFileName = "Version.txt";
+        private string exeFileName = "Crystal Alchemist.exe";
+        private string zipFilename = "CrystalAlchemist.zip";
+        private string subFolder = "Game";
+
         private string content;
         private string gamePath;
         private string versionPath;
@@ -25,11 +30,11 @@ namespace Launcher
 
             this.currentDir = new DirectoryInfo(Directory.GetCurrentDirectory());
 
-            string target = this.currentDir.FullName + "\\Game";
+            string target = this.currentDir.FullName + "\\"+this.subFolder;
             if (!Directory.Exists(target)) Directory.CreateDirectory(target);
             this.targetDir = new DirectoryInfo(target);
 
-            this.versionPath = targetDir.FullName + "\\Version.txt";
+            this.versionPath = targetDir.FullName + "\\"+this.versionFileName;
 
             CanPlay();
             this.label1.Visible = false;
@@ -46,7 +51,7 @@ namespace Launcher
         {
             try
             {
-                string versionUri = this.uri + "Version.txt";
+                string versionUri = this.uri + this.versionFileName;
                 using (WebClient myWebClient = new WebClient())
                 {
                     this.content = myWebClient.DownloadString(versionUri);
@@ -112,7 +117,7 @@ namespace Launcher
         private void CanPlay()
         {
             this.label1.Visible = false;
-            FileInfo file = new FileInfo(this.targetDir.FullName+"\\Crystal Alchemist.exe");
+            FileInfo file = new FileInfo(this.targetDir.FullName+"\\"+this.exeFileName);
             if (file.Exists) this.gamePath = file.FullName;
             else this.gamePath = "";
 
@@ -131,14 +136,14 @@ namespace Launcher
             this.PlayButton.Enabled = false;
             this.downloadButton.Visible = false;
             this.progressBar1.Visible = true;
-            DownloadNewVersion("CrystalAlchemist.zip");
+            DownloadNewVersion(this.zipFilename);
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
-                FileInfo[] file = this.targetDir.GetFiles("CrystalAlchemist.zip", SearchOption.TopDirectoryOnly);
+                FileInfo[] file = this.targetDir.GetFiles(this.zipFilename, SearchOption.TopDirectoryOnly);
 
                 if (file.Length > 0)
                 {

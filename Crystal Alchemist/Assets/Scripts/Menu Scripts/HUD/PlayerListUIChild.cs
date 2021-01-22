@@ -17,6 +17,9 @@ namespace CrystalAlchemist {
         private Image manabar;
 
         [SerializeField]
+        private Image dead;
+
+        [SerializeField]
         private CharacterValues values;
 
         public int ID;
@@ -40,6 +43,9 @@ namespace CrystalAlchemist {
             this.healthbar.fillAmount = (float)(this.values.life / this.values.maxLife);
             this.manabar.fillAmount = (float)(this.values.mana / this.values.maxMana);
             this.nameField.color = this.values.effectColor;
+
+            if (this.values.life <= 0) this.dead.gameObject.SetActive(true);
+            else this.dead.gameObject.SetActive(false);
         }
     }
 }

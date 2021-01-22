@@ -257,7 +257,7 @@ namespace CrystalAlchemist
                 int ID = (int)datas[0];
                 bool isInit = (bool)datas[1];
 
-                GameObject gameObject = PhotonView.Find(ID).gameObject;
+                GameObject gameObject = NetworkUtil.GetGameObject(ID);
                 if (gameObject != null) HideGameObject(gameObject, isInit);
             }
             else if (obj.Code == NetworkUtil.SHOW_CHARACTER)
@@ -266,7 +266,7 @@ namespace CrystalAlchemist
                 int ID = (int)datas[0];
                 bool isInit = (bool)datas[1];
 
-                GameObject gameObject = PhotonView.Find(ID).gameObject;
+                GameObject gameObject = NetworkUtil.GetGameObject(ID);
                 if (gameObject != null) ShowGameObject(gameObject, isInit);
             }
         }
