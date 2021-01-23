@@ -37,7 +37,7 @@ namespace CrystalAlchemist
         //TODO: Check if Name already exists
 
 
-        [MenuItem("Alchemist Menu/Wizard/Add New Item")]
+        [MenuItem("Alchemist Menu/Tools/Item Wizard")]
         public static void ItemWizard()
         {
             CustomUnityItemManager window =

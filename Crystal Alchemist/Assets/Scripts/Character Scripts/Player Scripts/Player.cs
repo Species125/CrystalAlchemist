@@ -36,14 +36,6 @@ namespace CrystalAlchemist
         private StringValue currentScene;
 
         [BoxGroup("Debug")]
-        [SerializeField]
-        private CharacterCreatorPartHandler handler;
-
-        [BoxGroup("Debug")]
-        [SerializeField]
-        private CharacterPreset preset;
-
-        [BoxGroup("Debug")]
         public bool isLocalPlayer = true;
 
         [BoxGroup("Debug")]
@@ -60,12 +52,6 @@ namespace CrystalAlchemist
             SetScriptableObjects();
         }
 
-        public override void SetComponents()
-        {
-            base.SetComponents();
-            this.handler = this.GetComponent<CharacterCreatorPartHandler>();
-        }
-
         private void SetScriptableObjects()
         {
             this.gameObject.name = "Player (Guest)";
@@ -80,7 +66,6 @@ namespace CrystalAlchemist
                 this.values = ScriptableObject.CreateInstance<CharacterValues>();    
                 this.saveGame = null;
                 this.values.Initialize();
-                this.preset = ScriptableObject.CreateInstance<CharacterPreset>();
                 this.characterName = "New Player";
             }
             else
@@ -90,14 +75,9 @@ namespace CrystalAlchemist
                 this.values = this.saveGame.playerValue;
                 this.values.Initialize();
                 this.saveGame.attributes.SetValues();
-                this.preset = this.saveGame.playerPreset;
                 this.characterName = this.saveGame.characterName.GetValue();
             }
-
-            this.handler.SetPreset(this.preset);
         }
-
-
 
         public override void OnEnable()
         {
@@ -150,8 +130,6 @@ namespace CrystalAlchemist
             GameEvents.current.OnWakeUp += this.WakeUp;
             GameEvents.current.OnCutScene += this.SetCutScene;
             GameEvents.current.OnEnoughCurrency += this.HasEnoughCurrency;
-            GameEvents.current.OnPresetChange += UpdateCharacterParts;
-            GameEvents.current.OnPresetChangeToOthers += UpdateCharacterPartsOthers;
 
             if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Initialize();
             if (this.GetComponent<PlayerMovement>() != null) this.GetComponent<PlayerMovement>().Initialize();
@@ -162,8 +140,6 @@ namespace CrystalAlchemist
             GameEvents.current.DoManaLifeUpdate(this.photonView.ViewID);
             GameEvents.current.DoLocalPlayerSpawned(this.photonView.ViewID);
 
-            UpdateCharacterParts();
-            UpdateCharacterPartsOthers();
             UpdateLifeManaForOthers();
             AddStatusEffectVisuals();
 
@@ -188,8 +164,6 @@ namespace CrystalAlchemist
             }
 
             base.OnDestroy();
-            GameEvents.current.OnPresetChange -= UpdateCharacterParts;
-            GameEvents.current.OnPresetChangeToOthers -= UpdateCharacterPartsOthers;
             GameEvents.current.OnCollect -= this.CollectIt;
             GameEvents.current.OnReduce -= this.ReduceResource;
             GameEvents.current.OnStateChanged -= this.SetState;
@@ -453,48 +427,7 @@ namespace CrystalAlchemist
             RemoveStatusEffectVisualOthers(effect);
         }
 
-        /////////////////////////////////////////////////////////////////////////////////
-
-
-        public CharacterPreset GetPreset()
-        {
-            return this.preset;
-        }
-
-        [Button]
-        public void UpdateCharacterParts() => this.handler.UpdateCharacterParts();
-
-        public void UpdateCharacterPartsOthers()
-        {
-            if (this.isLocalPlayer) this.SetPresetOnOtherClients();
-        }
-
-        public void SetPresetOnOtherClients()
-        {
-            string race = "";
-            string characterName = this.GetCharacterName();
-            string[] colorGroups;
-            string[] characterParts;
-
-            SerializationUtil.GetPreset(this.preset, out race, out colorGroups, out characterParts);
-            this.photonView.RPC("RpcSetPreset", RpcTarget.OthersBuffered, race, colorGroups, characterParts, characterName);
-        }
-
-        [PunRPC]
-        public void RpcSetPreset(string race, string[] colorgroups, string[] parts, string characterName, PhotonMessageInfo info)
-        {
-            PhotonView view = info.photonView;
-            if (view == null) return;
-
-            Player player = view.GetComponent<Player>();
-            if (player == null) return;
-
-            CharacterPreset preset = player.GetPreset();
-            SerializationUtil.SetPreset(preset, race, colorgroups, parts);
-
-            player.characterName = characterName;
-            player.UpdateCharacterParts();            
-        }
+        /////////////////////////////////////////////////////////////////////////////////       
 
         public override void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
@@ -523,7 +456,6 @@ namespace CrystalAlchemist
             int ID = info.photonView.ViewID;
             GameEvents.current.DoManaLifeUpdate(ID);
         }
-
 
         /////////////////////////////////////////////////////////////////////////////////////////////
 

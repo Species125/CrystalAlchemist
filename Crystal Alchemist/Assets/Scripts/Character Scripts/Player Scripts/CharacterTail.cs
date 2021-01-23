@@ -22,13 +22,14 @@ namespace CrystalAlchemist
             LateUpdate
         }
 
-
-
         [SerializeField]
         private Mode mode;
 
         [SerializeField]
         private UpdateMethod updateMethod;
+
+        [SerializeField]
+        private SpriteRenderer main;
 
         [SerializeField]
         private List<GameObject> parts = new List<GameObject>();
@@ -81,7 +82,7 @@ namespace CrystalAlchemist
                 part.GetComponent<SpriteRenderer>().sortingOrder = parent.GetComponent<SpriteRenderer>().sortingOrder + modify;
 
             if (parent != null && parent.GetComponent<SortingGroup>() != null)
-                parent.GetComponent<SortingGroup>().sortingOrder = modify;
+                parent.GetComponent<SortingGroup>().sortingOrder = this.main.sortingOrder + modify;
         }
     }
 }

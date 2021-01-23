@@ -5,7 +5,6 @@ namespace CrystalAlchemist
 {
     public class CustomUnityWindow : EditorWindow
     {
-        [MenuItem("Alchemist Menu/Testing/Player Animation Update")]
         public static void ShowWindow()
         {
             GetWindow(typeof(CustomUnityWindow));
@@ -23,9 +22,9 @@ namespace CrystalAlchemist
 
         private void UpdateAnimations()
         {
-            PlayerSpriteSheet sheet =
-                Resources.Load<PlayerSpriteSheet>("Scriptable Objects/Editor/Player Sprite Sheet");
-            if (sheet != null) sheet.UpdateSpritesAndAnimations();
+            PlayerSpriteTool sheet =
+                Resources.Load<PlayerSpriteTool>("Scriptable Objects/Editor/Player Sprite Sheet");
+            if (sheet != null) sheet.UpdateSprites();
         }
     }
 }

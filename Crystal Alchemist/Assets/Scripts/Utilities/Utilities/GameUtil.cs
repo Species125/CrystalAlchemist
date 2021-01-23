@@ -4,11 +4,11 @@ namespace CrystalAlchemist
 {
     public static class GameUtil
     {
-        public static void setPreset(CharacterPreset source, CharacterPreset target)
+        public static void SetPreset(CharacterPreset source, CharacterPreset target)
         {
             target.setRace(source.getRace());
             target.AddColorGroupRange(source.GetColorGroupRange());
-            target.AddCharacterPartDataRange(source.GetCharacterPartDataRange());
+            target.AddProperty(source.GetProperties());
         }
 
         public static float setResource(float resource, float max, float addResource)

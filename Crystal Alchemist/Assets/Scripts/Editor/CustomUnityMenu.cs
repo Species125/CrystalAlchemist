@@ -9,6 +9,14 @@ namespace CrystalAlchemist
     {
         private static bool toggleGodMode = false;
 
+        [MenuItem("Alchemist Menu/Tools/Player Sprites")]
+        public static void SpriteTool()
+        {
+            PlayerSpriteTool sheet =
+                   Resources.Load<PlayerSpriteTool>("Scriptable Objects/Editor/Player Sprite Tool");
+            EditorGUIUtility.PingObject(sheet);
+        }
+
         [MenuItem("Alchemist Menu/Menues/Map")]
         public static void OpenMap()
         {

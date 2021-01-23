@@ -6,6 +6,9 @@ namespace CrystalAlchemist
     {
         //TODO (0.2.7)
 
+        //PlayerRenderer Index better (rename sprites?)
+        //Sleep Animation
+
         /*
         Online-Multiplayer:
         - Player Rooms (Options: private, max Players, etc) and Listings
@@ -13,7 +16,6 @@ namespace CrystalAlchemist
         - Testing
 
         Rework:
-        - Character Creation: Performance and Fixes
         - Skills: Wind blade, Fireball, Ice Shard, Frost Needle, Stonewall
 
         New Features:

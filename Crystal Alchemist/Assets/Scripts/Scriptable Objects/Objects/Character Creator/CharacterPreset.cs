@@ -45,19 +45,6 @@ namespace CrystalAlchemist
         }
     }
 
-    [System.Serializable]
-    public class CharacterPartData
-    {
-        public string parentName;
-        public string name;
-
-        public CharacterPartData(string parent, string name)
-        {
-            this.parentName = parent;
-            this.name = name;
-        }
-    }
-
     [CreateAssetMenu(menuName = "Game/CharacterCreation/Character Preset")]
     public class CharacterPreset : ScriptableObject
     {
@@ -71,12 +58,13 @@ namespace CrystalAlchemist
         private List<ColorGroupData> colorGroups = new List<ColorGroupData>();
 
         [SerializeField]
-        private List<CharacterPartData> characterParts = new List<CharacterPartData>();
-
+        private List<CharacterCreatorProperty> properties = new List<CharacterCreatorProperty>();
 
         [Button]
-        public void SetPreset(CharacterPreset preset) => GameUtil.setPreset(preset, this);
+        public void SetPreset(CharacterPreset preset) => GameUtil.SetPreset(preset, this);
+       
 
+        public void Clear() => this.properties.RemoveAll(item => item == null);
 
         public Race getRace()
         {
@@ -88,86 +76,68 @@ namespace CrystalAlchemist
             if (!this.readOnly) this.race = race;
         }
 
+        public CharacterCreatorProperty GetProperty(BodyPart type)
+        {
+            this.properties.RemoveAll(item => item == null);
+
+            foreach (CharacterCreatorProperty property in this.properties)
+            {
+                if (property.type == type) return property;
+            }
+            return null;
+        }
+
 
         #region CharacterPartData
-
-        public CharacterPartData GetCharacterPartData(CharacterCreatorPartProperty property)
+        
+        public List<CharacterCreatorProperty> GetProperties()
         {
-            return GetCharacterPartData(property.parentName, property.partName);
+            return this.properties;
         }
 
-        public CharacterPartData GetCharacterPartData(string parentName, string name)
+        public bool ContainsProperty(CharacterCreatorProperty property)
         {
-            foreach (CharacterPartData data in this.characterParts)
+            return this.properties.Contains(property);
+        }
+
+        public void AddProperty(List<CharacterCreatorProperty> properties)
+        {
+            this.properties.RemoveAll(item => item == null);
+
+            if (this.readOnly) return;
+
+            this.properties.Clear();
+            foreach (CharacterCreatorProperty property in properties) AddProperty(property);
+        }
+
+        public void AddProperty(CharacterCreatorProperty property)
+        {
+            if (this.readOnly) return;
+
+            CharacterCreatorProperty propertyOfSameType = GetPropertyOfSameType(property);
+            this.properties.Remove(propertyOfSameType);
+
+            this.properties.Add(property);
+        }
+
+        public void RemoveProperty(CharacterCreatorProperty property)
+        {
+            if (this.readOnly) return;
+
+            if (!property) this.properties.Remove(property);
+        }
+
+        public CharacterCreatorProperty GetPropertyOfSameType(CharacterCreatorProperty property)
+        {
+            if (property == null) return null;
+            this.properties.RemoveAll(item => item == null);
+
+            foreach (CharacterCreatorProperty prop in this.properties)
             {
-                if (((data.parentName.ToUpper() == parentName.ToUpper())
-                     && (name == null || data.name.ToUpper() == name.ToUpper()))) return data;
+                if (property.type == prop.type) return prop;
             }
+
             return null;
-        }
-
-        public CharacterPartData GetCharacterPartData(string parentName)
-        {
-            foreach (CharacterPartData characterPartData in this.characterParts)
-            {
-                if (characterPartData.parentName.ToUpper() == parentName.ToUpper()) return characterPartData;
-            }
-            return null;
-        }
-
-        public List<CharacterPartData> GetCharacterPartDataRange()
-        {
-            return this.characterParts;
-        }
-
-
-        public void AddCharacterPartData(CharacterPartData data)
-        {
-            AddCharacterPartData(data.parentName, data.name);
-        }
-
-        public void AddCharacterPartData(string parentName, string name)
-        {
-            if (!this.readOnly)
-            {
-                CharacterPartData characterPartData = this.GetCharacterPartData(parentName);
-                this.characterParts.Remove(characterPartData);
-
-                CharacterPartData newGroup = new CharacterPartData(parentName, name);
-                this.characterParts.Add(newGroup);
-            }
-        }
-
-        public void AddCharacterPartDataRange(List<CharacterPartData> groups)
-        {
-            if (!this.readOnly)
-            {
-                this.characterParts.Clear();
-
-                foreach (CharacterPartData group in groups)
-                {
-                    AddCharacterPartData(group);
-                }
-            }
-        }
-
-
-        public void RemoveCharacterPartData(string parentName, string name)
-        {
-            if (!this.readOnly)
-            {
-                CharacterPartData characterPartData = this.GetCharacterPartData(parentName, name);
-                if (characterPartData != null) this.characterParts.Remove(characterPartData);
-            }
-        }
-
-        public void RemoveCharacterPartData(string parentName)
-        {
-            if (!this.readOnly)
-            {
-                CharacterPartData characterPartData = this.GetCharacterPartData(parentName);
-                if (characterPartData != null) this.characterParts.Remove(characterPartData);
-            }
         }
 
         #endregion

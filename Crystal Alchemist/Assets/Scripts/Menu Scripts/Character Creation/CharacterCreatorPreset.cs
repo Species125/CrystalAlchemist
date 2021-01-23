@@ -16,8 +16,7 @@ namespace CrystalAlchemist
 
         public override void Click()
         {
-            GameUtil.setPreset(this.preset, this.mainMenu.playerPreset);
-            //this.mainMenu.updateGear();
+            GameUtil.SetPreset(this.preset, this.mainMenu.playerPreset);
             this.mainMenu.UpdatePreview();
             base.Click();
         }

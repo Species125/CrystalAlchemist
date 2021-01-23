@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0b985e1f045e945aa90cf31b10f8e8, type: 3}
   m_Name: Wings
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/Character Creation/Properties/Back/Wings
+  type: 8
+  dontUpdateSprites: 0
+  size: {x: 48, y: 48}
   enableMode: 1
   restriction: 0
   races: 
-  front: {fileID: -8543379145089725134, guid: f62bb46941260c84bb778a47493b2df1, type: 3}
-  back: {fileID: -5260679801054297698, guid: f62bb46941260c84bb778a47493b2df1, type: 3}
+  preview: {fileID: -8543379145089725134, guid: f62bb46941260c84bb778a47493b2df1,
+    type: 3}
+  texture: {fileID: 2800000, guid: f62bb46941260c84bb778a47493b2df1, type: 3}
+  useCustomShader: 0
+  material: {fileID: 2100000, guid: a992ab17a4e18d64f93d2e70c1372908, type: 2}
   canBeColored: 1
   colorTables:
   - colorGroup: 2
@@ -24,10 +31,8 @@ MonoBehaviour:
     main: {r: 1, g: 1, b: 1, a: 0}
     shadows: {r: 0.69411767, g: 0.69411767, b: 0.69411767, a: 0}
     lines: {r: 0.27450982, g: 0.27450982, b: 0.27450982, a: 0}
+  colorEffect:
     addGlow: 0
-    glow: {r: 0, g: 0, b: 0, a: 0}
     default_glow: {r: 0, g: 0, b: 0, a: 0}
-  category: Body
-  parentName: Back Gear
-  partName: Wings
-  size: {x: 48, y: 48}
+  texturePath: Art/Characters/Player Sprites/BackGear/Wings
+  fullPath: Assets/Resources/Art/Characters/Player Sprites/BackGear/Wings.png

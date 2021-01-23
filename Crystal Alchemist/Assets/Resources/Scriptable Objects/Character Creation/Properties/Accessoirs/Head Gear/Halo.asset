@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0b985e1f045e945aa90cf31b10f8e8, type: 3}
   m_Name: Halo
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/Character Creation/Properties/Accessoirs/Head Gear/Halo
+  type: 0
+  dontUpdateSprites: 0
+  size: {x: 32, y: 48}
   enableMode: 1
   restriction: 0
   races: 
-  front: {fileID: -8543379145089725134, guid: 19412aafeed4c064ea32ed212fabded1, type: 3}
-  back: {fileID: -5260679801054297698, guid: 19412aafeed4c064ea32ed212fabded1, type: 3}
+  preview: {fileID: -8543379145089725134, guid: 19412aafeed4c064ea32ed212fabded1,
+    type: 3}
+  texture: {fileID: 2800000, guid: 19412aafeed4c064ea32ed212fabded1, type: 3}
+  useCustomShader: 1
+  material: {fileID: 2100000, guid: c7487f5d140c37a4c816b1db25d467b9, type: 2}
   canBeColored: 0
   colorTables:
   - colorGroup: 5
@@ -26,9 +33,6 @@ MonoBehaviour:
     lines: {r: 1, g: 1, b: 1, a: 0}
   colorEffect:
     addGlow: 1
-    glow: {r: 1, g: 0.91372555, b: 0.5921569, a: 0}
     default_glow: {r: 6.716981, g: 4.1989307, b: 1.1089354, a: 1}
-  category: Head
-  parentName: Head Gear
-  partName: Halo
-  size: {x: 32, y: 48}
+  texturePath: Art/Characters/Player Sprites/HeadGear/Halo
+  fullPath: Assets/Resources/Art/Characters/Player Sprites/HeadGear/Halo.png

@@ -62,15 +62,12 @@ namespace CrystalAlchemist
             List<CharacterCreatorGear> gearButtons = new List<CharacterCreatorGear>();
             UnityUtil.GetChildObjects<CharacterCreatorGear>(this.transform, gearButtons);
 
-            foreach (CharacterCreatorPartProperty part in this.raceGroup.properties)
+            foreach (CharacterCreatorProperty property in this.raceGroup.properties)
             {
-                CharacterPartData data = this.mainMenu.playerPreset.GetCharacterPartData(part.parentName, part.partName);
-                bool enableIt = part.enableIt(this.mainMenu.playerPreset.getRace(), data);
+                bool enableIt = property.EnableIt(this.mainMenu.playerPreset.getRace());
 
-                if (enableIt) this.mainMenu.playerPreset.AddCharacterPartData(part.parentName, part.partName);
-                else this.mainMenu.playerPreset.RemoveCharacterPartData(part.parentName, part.partName);
-
-                //check if colorgroup exists
+                if (enableIt) this.mainMenu.playerPreset.AddProperty(property);
+                else this.mainMenu.playerPreset.RemoveProperty(property);
             }
         }
 

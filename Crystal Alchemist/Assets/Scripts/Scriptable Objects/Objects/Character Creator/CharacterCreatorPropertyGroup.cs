@@ -8,9 +8,14 @@ namespace CrystalAlchemist
     public class CharacterCreatorPropertyGroup : ScriptableObject
     {
         [BoxGroup]
+        [SerializeField]
+        [TextArea]
+        private string note;
+
+        [BoxGroup]
         public bool canRemove = true;
 
         [BoxGroup]
-        public List<CharacterCreatorPartProperty> properties = new List<CharacterCreatorPartProperty>();
+        public List<CharacterCreatorProperty> properties = new List<CharacterCreatorProperty>();
     }
 }

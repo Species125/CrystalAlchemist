@@ -54,28 +54,21 @@ namespace CrystalAlchemist
             return colorGroups;
         }
 
-        public static string[] CharacterPartsToArray(List<CharacterPartData> datas)
+        public static string[] PlayerSpritesToArray(List<CharacterCreatorProperty> properties)
         {
             List<string> list = new List<string>();
-            foreach (CharacterPartData data in datas)
-            {
-                string result = data.parentName + ":" + data.name;
-                list.Add(result);
-            }
+            foreach (CharacterCreatorProperty property in properties) list.Add(property.path);            
             return list.ToArray();
         }
 
-        public static List<CharacterPartData> ArrayToCharacterPartData(string[] datas)
+        public static List<CharacterCreatorProperty> ArrayToPlayerSprites(string[] paths)
         {
-            List<CharacterPartData> parts = new List<CharacterPartData>();
+            List<CharacterCreatorProperty> parts = new List<CharacterCreatorProperty>();
 
-            foreach (string data in datas)
+            foreach (string path in paths)
             {
-                string[] characterPart = data.Split(':');
-                string parentName = characterPart[0];
-                string name = characterPart[1];
-
-                parts.Add(new CharacterPartData(parentName, name));
+                CharacterCreatorProperty result = Resources.Load<CharacterCreatorProperty>(path);
+                parts.Add(result);
             }
             return parts;
         }
@@ -87,15 +80,15 @@ namespace CrystalAlchemist
             List<ColorGroupData> colorGroups = ArrayToColorGroups(colorGroupsArray);
             preset.AddColorGroupRange(colorGroups);
 
-            List<CharacterPartData> parts = ArrayToCharacterPartData(characterPartsArray);
-            preset.AddCharacterPartDataRange(parts);
+            List<CharacterCreatorProperty> parts = ArrayToPlayerSprites(characterPartsArray);
+            preset.AddProperty(parts);
         }
 
         public static void GetPreset(CharacterPreset preset, out string race, out string[] colorGroups, out string[] characterParts)
         {
             race = RaceToString(preset.getRace());
             colorGroups = ColorGroupsToArray(preset.GetColorGroupRange());
-            characterParts = CharacterPartsToArray(preset.GetCharacterPartDataRange());
+            characterParts = PlayerSpritesToArray(preset.GetProperties());
         }
     }
 }

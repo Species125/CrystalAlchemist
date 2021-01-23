@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -44,7 +43,7 @@ namespace CrystalAlchemist
             else SetVertical(value);
 
             cursor.SetTransform((RectTransform)this.transform);
-            cursor.UpdatePosition();
+            cursor.UpdatePosition();            
         }
 
         private int GetCount()

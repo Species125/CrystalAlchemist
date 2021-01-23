@@ -48,6 +48,7 @@ namespace CrystalAlchemist
         [Button]
         public void Clear()
         {
+            this.playerPreset.Clear();
             this.time.Clear();
             this.timePlayed.SetValue(0f);
             this.characterName.SetValue("Hero");
@@ -58,7 +59,7 @@ namespace CrystalAlchemist
             this.attributes.Clear();
             this.progress.Clear();
 
-            GameUtil.setPreset(this.defaultPreset, this.playerPreset);
+            GameUtil.SetPreset(this.defaultPreset, this.playerPreset);
 
             Debug.Log("Savegame cleared");
 

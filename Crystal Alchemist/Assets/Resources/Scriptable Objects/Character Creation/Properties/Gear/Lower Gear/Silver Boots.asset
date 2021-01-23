@@ -12,18 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0b985e1f045e945aa90cf31b10f8e8, type: 3}
   m_Name: Silver Boots
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/Character Creation/Properties/Gear/Lower Gear/Silver Boots
+  type: 13
+  dontUpdateSprites: 0
+  size: {x: 32, y: 48}
   enableMode: 3
   restriction: 1
   races: 07000000
-  front: {fileID: -8543379145089725134, guid: 456155aca93b83b42a0bceeace6bdf5f, type: 3}
-  back: {fileID: 0}
+  preview: {fileID: -8543379145089725134, guid: 456155aca93b83b42a0bceeace6bdf5f,
+    type: 3}
+  texture: {fileID: 2800000, guid: 456155aca93b83b42a0bceeace6bdf5f, type: 3}
+  useCustomShader: 0
+  material: {fileID: 2100000, guid: a992ab17a4e18d64f93d2e70c1372908, type: 2}
+  canBeColored: 1
   colorTables:
   - colorGroup: 8
     highlight: {r: 0.77647066, g: 0.909804, b: 0.95294124, a: 0}
     main: {r: 0.5803922, g: 0.69411767, b: 0.73333335, a: 0}
     shadows: {r: 0.32941177, g: 0.41176474, b: 0.43921572, a: 0}
     lines: {r: 0.07450981, g: 0.25882354, b: 0.32941177, a: 0}
-    glow: {r: 0, g: 0, b: 0, a: 0}
-  category: Body
-  parentName: Lower Gear
-  partName: Knight Boots
+  colorEffect:
+    addGlow: 0
+    default_glow: {r: 0, g: 0, b: 0, a: 0}
+  texturePath: Art/Characters/Player Sprites/Lower Gear/Knight Boots
+  fullPath: Assets/Resources/Art/Characters/Player Sprites/Lower Gear/Knight Boots.png

@@ -6,9 +6,8 @@ namespace CrystalAlchemist
 {
     public class CharacterRenderingHandler : MonoBehaviour
     {
-        [SerializeField]
         [Required]
-        private GameObject characterSprite;
+        public GameObject characterSprite;
 
         private List<CharacterRenderer> colorpalettes = new List<CharacterRenderer>();
 
@@ -37,12 +36,11 @@ namespace CrystalAlchemist
         }
 #endif
 
-        public void Start()
+        public virtual void Start()
         {
             this.colorpalettes.Clear();
             UnityUtil.GetChildObjects<CharacterRenderer>(this.characterSprite.transform, this.colorpalettes);
         }
-
 
         public void Reset()
         {

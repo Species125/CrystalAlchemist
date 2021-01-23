@@ -18,13 +18,13 @@ namespace CrystalAlchemist
         [SerializeField]
         private CharacterCreatorPropertyGroup group;
 
-        private CharacterCreatorPartProperty currentProperty;
+        private CharacterCreatorProperty currentProperty;
 
         private void Awake()
         {
             for (int i = 0; i < this.group.properties.Count; i++)
             {
-                CharacterCreatorPartProperty property = this.group.properties[i];
+                CharacterCreatorProperty property = this.group.properties[i];
                 CreateButton(property, i);
                 if (FindGear(property)) SetCurrentGear(property);
             }
@@ -32,7 +32,7 @@ namespace CrystalAlchemist
             Destroy(this.template.gameObject);
         }
 
-        private void CreateButton(CharacterCreatorPartProperty property, int i)
+        private void CreateButton(CharacterCreatorProperty property, int i)
         {
             CharacterCreatorGear button = Instantiate(template, content);
             button.gameObject.SetActive(true);
@@ -41,29 +41,28 @@ namespace CrystalAlchemist
             this.buttons.Add(button);
         }
 
-        private void SetCurrentGear(CharacterCreatorPartProperty property)
+        private void SetCurrentGear(CharacterCreatorProperty property)
         {
             if (this.currentProperty == property && this.group.canRemove) this.currentProperty = null;
             else this.currentProperty = property;
         }
 
-        private bool FindGear(CharacterCreatorPartProperty property)
+        private bool FindGear(CharacterCreatorProperty property)
         {
-            CharacterPartData data = this.mainMenu.playerPreset.GetCharacterPartData(property);
-            return data != null;
+            return this.mainMenu.playerPreset.ContainsProperty(property);
         }
 
-        public bool ContainsGear(CharacterCreatorPartProperty property)
+        public bool ContainsGear(CharacterCreatorProperty property)
         {
             return this.currentProperty == property;
         }
 
-        public void UpdateGear(CharacterCreatorPartProperty property)
+        public void UpdateGear(CharacterCreatorProperty property)
         {
             SetCurrentGear(property);
 
-            if (this.currentProperty != null) this.mainMenu.playerPreset.AddCharacterPartData(property.parentName, property.partName);
-            else this.mainMenu.playerPreset.RemoveCharacterPartData(property.parentName);
+            if (this.currentProperty != null) this.mainMenu.playerPreset.AddProperty(property);
+            else this.mainMenu.playerPreset.RemoveProperty(property);
 
             this.UpdatePreview();
         }

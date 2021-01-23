@@ -12,24 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0b985e1f045e945aa90cf31b10f8e8, type: 3}
   m_Name: Snake Tail
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/Character Creation/Properties/Tails/Snake Tail
+  type: 7
+  dontUpdateSprites: 1
+  size: {x: 32, y: 48}
   enableMode: 2
   restriction: 0
   races: 07000000
-  front: {fileID: -8255954111728690043, guid: 54a416a6c9e277e49a06d596d6dec41b, type: 3}
-  back: {fileID: -8255954111728690043, guid: 54a416a6c9e277e49a06d596d6dec41b, type: 3}
+  preview: {fileID: 656650671376855965, guid: 54a416a6c9e277e49a06d596d6dec41b, type: 3}
+  texture: {fileID: 2800000, guid: 54a416a6c9e277e49a06d596d6dec41b, type: 3}
+  useCustomShader: 0
+  material: {fileID: 0}
+  canBeColored: 1
   colorTables:
   - colorGroup: 2
     highlight: {r: 0, g: 0, b: 0, a: 0}
     main: {r: 1, g: 0.8235295, b: 0.65882355, a: 0}
     shadows: {r: 0.8745099, g: 0.6666667, b: 0.47058827, a: 0}
     lines: {r: 0.6901961, g: 0.45882356, b: 0.34117648, a: 0}
-    glow: {r: 0, g: 0, b: 0, a: 0}
   - colorGroup: 3
     highlight: {r: 0.24313727, g: 1, b: 0, a: 0}
     main: {r: 0, g: 0.80392164, b: 0.04705883, a: 0}
     shadows: {r: 0, g: 0.80392164, b: 0.04705883, a: 0}
     lines: {r: 0, g: 0.54509807, b: 0.03137255, a: 0}
-    glow: {r: 0, g: 0, b: 0, a: 0}
-  category: Body
-  parentName: Tails
-  partName: Snake Tail
+  colorEffect:
+    addGlow: 0
+    default_glow: {r: 0, g: 0, b: 0, a: 0}
+  texturePath: Art/Characters/Player Sprites/Tail/Snake Tail Parts
+  fullPath: Assets/Resources/Art/Characters/Player Sprites/Tail/Snake Tail Parts.png

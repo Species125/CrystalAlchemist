@@ -21,7 +21,7 @@ namespace CrystalAlchemist
             base.Start();
 
             this.backup = ScriptableObject.CreateInstance<CharacterPreset>();
-            GameUtil.setPreset(this.playerPreset, this.backup);
+            GameUtil.SetPreset(this.playerPreset, this.backup);
         }
 
         public void Abort()
@@ -32,7 +32,7 @@ namespace CrystalAlchemist
 
         public void Undo()
         {
-            GameUtil.setPreset(this.backup, this.playerPreset);
+            GameUtil.SetPreset(this.backup, this.playerPreset);
             UpdatePreview();
         }
 
