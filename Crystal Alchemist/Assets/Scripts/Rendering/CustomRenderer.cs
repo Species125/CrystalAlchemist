@@ -34,7 +34,13 @@ namespace CrystalAlchemist
 
         public virtual void Start()
         {
-            AddGlow(this.useGlow, this.glowColor);
+            AddGlow();
+        }
+
+        public void SetGlow(bool useGlow, Color glowColor)
+        {
+            this.useGlow = useGlow;
+            this.glowColor = glowColor;
         }
 
         public void InvertColors(bool invert)
@@ -43,11 +49,11 @@ namespace CrystalAlchemist
             this.material.SetFloat("_Invert", invert ? 1f : 0f);
         }
 
-        public void AddGlow(bool useGlow, Color glowColor)
+        private void AddGlow()
         {
             if (this.material == null) return;
-            this.material.SetFloat("_UseGlow", useGlow ? 1f : 0f);
-            this.material.SetColor("_GlowColor", glowColor);
+            this.material.SetFloat("_UseGlow", this.useGlow ? 1f : 0f);
+            this.material.SetColor("_GlowColor", this.glowColor);
         }
 
         [Button]

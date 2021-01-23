@@ -34,8 +34,6 @@ namespace CrystalAlchemist {
 
         public virtual void UpdateRenderer()
         {
-            base.Start();
-
             if (this.property != null 
                 && this.property.useCustomShader 
                 && this.property.material != null) this.spriteRenderer.material = this.property.material;
@@ -49,7 +47,7 @@ namespace CrystalAlchemist {
                 Clear();
 
                 SetColorGroup(colors);
-                AddGlow(effect.addGlow, effect.default_glow);
+                SetGlow(effect.addGlow, effect.default_glow);
             }
         }
 
