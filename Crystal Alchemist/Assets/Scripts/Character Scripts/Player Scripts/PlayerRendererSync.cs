@@ -1,6 +1,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace CrystalAlchemist
 {
@@ -55,7 +56,7 @@ namespace CrystalAlchemist
 
         private void LateUpdate()
         {
-            if (isMaster) frameIndex = GetIndex(spriteRenderer.sprite.name);
+            if (isMaster) GetIndex(spriteRenderer.sprite.name);
             else if (this.newSpritesheet != null)
             {
                 frameIndex = master.GetParentFrameIndex();
@@ -81,16 +82,9 @@ namespace CrystalAlchemist
             return frameIndex;
         }
 
-        private int GetIndex(string name)
+        private void GetIndex(string name)
         {
-            //int.TryParse(Regex.Replace(currentFrameName, "[^0-9]", ""), out frameIndex);
-            //currentFrameName = Regex.Replace(currentFrameName, "r2c", "");
-
-            for (int i = 0; i < this.newSpritesheet.Length; i++)
-            {
-                if (name == this.newSpritesheet[i].name) return i;
-            }
-            return 0;
+            int.TryParse(Regex.Replace(name, "[^0-9]", ""), out this.frameIndex);    
         }
 
         public override void UpdateRenderer()

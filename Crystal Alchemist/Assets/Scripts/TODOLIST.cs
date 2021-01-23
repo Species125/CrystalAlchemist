@@ -5,14 +5,11 @@ namespace CrystalAlchemist
     public class TODOLIST : MonoBehaviour
     {
         //TODO (0.2.7)
-
-        //PlayerRenderer Index better (rename sprites?)
-        //Sleep Animation
-
         /*
         Online-Multiplayer:
         - Player Rooms (Options: private, max Players, etc) and Listings
-        - Death Screen Adjustments
+        - Death Screen Adjustments (RPC) and changes (no new scene load, just teleport), 
+        - Rework Loading-Screen (show only when connecting)
         - Testing
 
         Rework:

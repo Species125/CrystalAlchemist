@@ -1,6 +1,9 @@
 ﻿using AssetIcons;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -156,7 +159,7 @@ namespace CrystalAlchemist
 
         public Sprite[] GetSprites()
         {
-            return Resources.LoadAll<Sprite>(this.GetPath());
+            return Resources.LoadAll<Sprite>(this.GetPath()).OrderBy(x => Convert.ToInt32(Regex.Replace(x.name, "[^0-9]", ""))).ToArray();
         }
 
         public List<ColorTable> GetColorTable()
