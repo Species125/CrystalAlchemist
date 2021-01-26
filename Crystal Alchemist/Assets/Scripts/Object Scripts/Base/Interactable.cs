@@ -10,6 +10,10 @@ namespace CrystalAlchemist
         [HideLabel]
         public Costs costs;
 
+        [BoxGroup("Activation Requirements")]
+        [SerializeField]
+        private bool masterOnly = false;
+
         [BoxGroup("ContextMenu")]
         [SerializeField]
         private bool customActionButton = false;
@@ -44,15 +48,11 @@ namespace CrystalAlchemist
             this.context = Instantiate(MasterManager.contextClue, this.transform.position, Quaternion.identity, this.transform);
         }
 
-        private void Update() => DoOnUpdate();
-
         public string translationID
         {
             get { return this.ID; }
             set { this.ID = value; }
         }
-
-        public virtual void DoOnUpdate() { }
 
         private void OnSubmit()
         {
@@ -63,13 +63,15 @@ namespace CrystalAlchemist
 
         private void OnDestroy() => GameEvents.current.OnSubmit -= OnSubmit;
 
-        private void OnEnable()
+        public override void OnEnable()
         {
+            base.OnEnable();
             if (this.showEffectOnEnable) AnimatorUtil.ShowSmoke(this.transform);
         }
 
-        private void OnDisable()
+        public override void OnDisable()
         {
+            base.OnDisable();
             if (this.showEffectOnDisable) AnimatorUtil.ShowSmoke(this.transform);
             ShowContextClue(false);
         }
@@ -84,14 +86,11 @@ namespace CrystalAlchemist
 
         #region Context Clue Funktionen
 
-        public void CheckInteraction(Player player)
+        private void CheckInteraction(Player player)
         {
-            if (player != null)
-            {
-                if (this.player != player) this.player = player;
-                this.isPlayerInRange = true;
-                this.isPlayerLookingAtIt = PlayerIsLooking();
-            }
+            if (this.player != player) this.player = player;
+            this.isPlayerInRange = true;
+            this.isPlayerLookingAtIt = PlayerIsLooking();
 
             if (PlayerCanInteract())
             {
@@ -119,7 +118,18 @@ namespace CrystalAlchemist
             if (this.context != null) this.context.gameObject.SetActive(value);
         }
 
-        public void DeactivateInteraction()
+        public virtual void OnEnterstay(Collider2D characterCollisionBox)
+        {
+            if (!characterCollisionBox.isTrigger)
+            {
+                Player player = characterCollisionBox.GetComponent<Player>();
+                if (NetworkUtil.IsLocal(player)
+                && (!this.masterOnly 
+                || (this.masterOnly && player.isMaster))) CheckInteraction(player);
+            }
+        }
+
+        public virtual void OnExit()
         {
             if (this.player != null)
             {
@@ -130,15 +140,6 @@ namespace CrystalAlchemist
             this.isPlayerInRange = false;
             this.isPlayerLookingAtIt = false;
             ShowContextClue(false);
-        }
-
-        private void interact(Collider2D characterCollisionBox)
-        {
-            if (!characterCollisionBox.isTrigger)
-            {
-                Player player = characterCollisionBox.GetComponent<Player>();
-                CheckInteraction(player);
-            }
         }
 
         public bool PlayerCanInteract()
@@ -155,13 +156,13 @@ namespace CrystalAlchemist
             return false;
         }
 
-        private void OnTriggerStay2D(Collider2D characterCollisionBox) => interact(characterCollisionBox);
+        private void OnTriggerStay2D(Collider2D characterCollisionBox) => OnEnterstay(characterCollisionBox);
 
-        private void OnTriggerEnter2D(Collider2D characterCollisionBox) => interact(characterCollisionBox);
+        private void OnTriggerEnter2D(Collider2D characterCollisionBox) => OnEnterstay(characterCollisionBox);
 
         private void OnTriggerExit2D(Collider2D characterCollisionBox)
         {
-            if (!characterCollisionBox.isTrigger) DeactivateInteraction();
+            if (!characterCollisionBox.isTrigger) OnExit();
         }
 
         public void ShowDialog(DialogTextTrigger trigger, ItemStats stats)

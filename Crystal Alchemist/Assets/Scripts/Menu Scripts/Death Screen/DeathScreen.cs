@@ -3,11 +3,15 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 namespace CrystalAlchemist
 {
-    public class DeathScreen : MonoBehaviour
+    public class DeathScreen : MonoBehaviourPunCallbacks
     {
+        //TODO: Change buttons depending on offline or online...
+        //READY CHECK
+
         [BoxGroup("Mandatory")]
         [SerializeField]
         private BoolValue CutSceneValue;
@@ -148,7 +152,7 @@ namespace CrystalAlchemist
             {
                 this.currentText = this.fullText.Substring(0, i);
 
-                if (skip)
+                if (this.skip)
                 {
                     this.currentText = this.fullText;
                     i = this.fullText.Length;

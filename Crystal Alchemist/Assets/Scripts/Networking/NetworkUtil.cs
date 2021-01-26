@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -8,7 +9,7 @@ namespace CrystalAlchemist
         //Photon-Views on Mechanics and Characters
         //Network-Behaviour on all instantiations (path)
 
-        public const byte PLAYER_JOINED = 2;
+        public const byte PLAYER_JOINED = 2;        
 
         public const byte AGGRO_ON_HIT = 10;
         public const byte AGGRO_INCREASE = 11;
@@ -32,6 +33,8 @@ namespace CrystalAlchemist
 
         public const byte READY_SHOW = 41;
         public const byte READY_SET = 42;
+
+        public const byte PLAYERS_DEATH = 66;
 
         public const byte SKILL_AFFECTIONS = 101;
 
@@ -110,6 +113,21 @@ namespace CrystalAlchemist
         {
             PhotonNetwork.LeaveRoom();
             PhotonNetwork.Disconnect();
+        }
+
+        public static void CreateRoom(string roomName, byte maxPlayers = 1, bool isOpen = false, bool privat = false, string password = "")
+        {
+            if (!PhotonNetwork.IsConnected) return;
+
+            RoomOptions options = new RoomOptions();
+            options.PublishUserId = true;
+            options.MaxPlayers = maxPlayers;
+            options.IsVisible = true;
+            options.IsOpen = isOpen;
+            options.CustomRoomPropertiesForLobby = new string[] { "Private","Password" };
+            options.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable { { "Private", privat }, {"Password", password } };
+
+            PhotonNetwork.CreateRoom(roomName, options, TypedLobby.Default);
         }
     }
 }

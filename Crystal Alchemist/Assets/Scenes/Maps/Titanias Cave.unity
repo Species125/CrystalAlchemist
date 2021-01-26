@@ -25343,6 +25343,16 @@ PrefabInstance:
       propertyPath: actionOnConfirm.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1136470329}
+    - target: {fileID: 8991369037405528509, guid: e9f39d5ceba4a6643b52883e6a3ebe77,
+        type: 3}
+      propertyPath: path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991369037405528509, guid: e9f39d5ceba4a6643b52883e6a3ebe77,
+        type: 3}
+      propertyPath: masterOnly
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9f39d5ceba4a6643b52883e6a3ebe77, type: 3}
 --- !u!4 &988377717 stripped
@@ -25398,7 +25408,8 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 0
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 0}
   viewIdField: 8
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -26011,6 +26022,7 @@ MonoBehaviour:
     resourceType: 1
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 1
   position: {x: 0.5, y: -1}
   duration: 1.5
@@ -26293,6 +26305,7 @@ MonoBehaviour:
     resourceType: 1
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 1
   position: {x: 0.5, y: -12}
   duration: 1.5

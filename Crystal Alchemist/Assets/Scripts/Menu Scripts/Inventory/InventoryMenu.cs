@@ -74,5 +74,11 @@ namespace CrystalAlchemist
             MenuEvents.current.OpenAttributes();
             ExitMenu();
         }
+
+        public void OpenOnlineMenu()
+        {
+            MenuEvents.current.OpenOnlineMenu();
+            ExitMenu();
+        }
     }
 }

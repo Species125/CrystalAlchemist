@@ -24,6 +24,12 @@ namespace CrystalAlchemist
             Id = this.gameObject.name;
         }
 
+        public void ChangeName(string newName)
+        {
+            this.Id = newName;
+            ChangeLanguageText();
+        }
+
         public string Id { set { _id = value; } }
 
         private void Start() => SettingsEvents.current.OnLanguangeChanged += ChangeLanguageText;

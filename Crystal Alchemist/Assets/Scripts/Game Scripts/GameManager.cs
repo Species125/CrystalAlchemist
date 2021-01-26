@@ -43,17 +43,7 @@ namespace CrystalAlchemist
 
         private void ChangeScene(string newScene)
         {
-            if (NetworkUtil.IsMaster()) //Master in online and offline mode
-            {
-                this.nextScene.SetValue(newScene);
-                PhotonNetwork.LoadLevel("Loading");
-            }
-            else if (!PhotonNetwork.IsConnected) //Not connected and also no master (startup)
-            {
-                this.nextScene.SetValue(newScene);
-                //StartCoroutine(loadSceneCo("Loading"));
-                SceneManager.LoadScene("Loading");
-            }
+            StartCoroutine(loadSceneCo(newScene));
         }
 
         private IEnumerator loadSceneCo(string targetScene)
@@ -61,25 +51,39 @@ namespace CrystalAlchemist
             if (MenuEvents.current) MenuEvents.current.DoFadeOut();
             yield return new WaitForSeconds(this.fadeDuration.GetValue());
 
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(targetScene);
-            asyncOperation.allowSceneActivation = false;
-
-            while (!asyncOperation.isDone)
+            if (NetworkUtil.IsMaster()) //Master in online and offline mode
             {
-                if (asyncOperation.progress >= 0.9f) asyncOperation.allowSceneActivation = true;
-                yield return null;
+                this.nextScene.SetValue(targetScene);
+                PhotonNetwork.LoadLevel("Loading");
+            }
+            else if (!PhotonNetwork.IsConnected) //Not connected and also no master (startup)
+            {
+                this.nextScene.SetValue(targetScene);                
+                SceneManager.LoadScene("Loading");
+
+                /*
+                AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Loading");
+                asyncOperation.allowSceneActivation = false;
+
+                while (!asyncOperation.isDone)
+                {
+                    if (asyncOperation.progress >= 0.9f) asyncOperation.allowSceneActivation = true;
+                    yield return null;
+                }*/
             }
         }
 
         private void CheckDeathOfPlayers()
         {
+            if (!NetworkUtil.IsMaster()) return;
+
             foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
             {
                 Player player = (Player)p.TagObject;
                 if (player.values.currentState != CharacterState.dead) return;
             }
 
-            if (MenuEvents.current) MenuEvents.current.OpenDeath();
+            NetworkEvents.current.RaiseDeathEvent();
         }
     }
 }

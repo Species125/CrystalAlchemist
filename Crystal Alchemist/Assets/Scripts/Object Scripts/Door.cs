@@ -38,9 +38,11 @@ namespace CrystalAlchemist
             if (this.isOpen) AnimatorUtil.SetAnimatorParameter(this.animator, "Close");
         }
 
-        public override void DoOnUpdate()
+        public override void OnExit()
         {
-            if (!this.isPlayerInRange && this.isOpen && this.doorType == DoorType.normal)
+            base.OnExit();
+
+            if (this.isOpen && this.doorType == DoorType.normal)
             {
                 //Normale Tür fällt von alleine wieder zu
                 if (this.autoClose) OpenCloseDoor(false);

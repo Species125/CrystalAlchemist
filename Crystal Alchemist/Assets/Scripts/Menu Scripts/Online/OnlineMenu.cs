@@ -1,6 +1,8 @@
 using Photon.Pun;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 namespace CrystalAlchemist
 {
@@ -8,53 +10,40 @@ namespace CrystalAlchemist
     {
         [BoxGroup("Online Menu")]
         [SerializeField]
-        private GameObject joinControls;
-
-        [BoxGroup("Online Menu")]
-        [SerializeField]
-        private GameObject leaveControls;
-
-        [BoxGroup("Online Menu")]
-        [SerializeField]
         private NetworkSettings settings;
 
-        string sceneName;
-        //Room name
-        //scene Name
-        //is online or offline
+        [BoxGroup("Online Menu")]
+        [SerializeField]
+        private GameObject joinOrCreate;
 
-        //Are you sure to create/leave/join?
-        //Cannot join because
+        [BoxGroup("Online Menu")]
+        [SerializeField]
+        private GameObject leave;
 
         public override void Start()
         {
             base.Start();
 
-            /*
-            if (PhotonNetwork.OfflineMode == false && PhotonNetwork.InRoom)
-            {
-                this.joinControls.SetActive(false);
-                this.leaveControls.SetActive(true);
-            } 
-            else
-            {
-                this.joinControls.SetActive(true);
-                this.leaveControls.SetActive(false);
-            }*/
+            joinOrCreate.SetActive(false);
+            leave.SetActive(false);
+
+            if (PhotonNetwork.OfflineMode) joinOrCreate.SetActive(true);
+            else leave.SetActive(true);
         }
 
-        public void CreateGroup()
+        public void JoinOrCreateGroup()
         {
-            settings.SetOfflineStatus(false);
+            settings.offlineMode = false;
             ExitMenu();
-            GameEvents.current.DoChangeScene(this.settings.currentScene.GetValue()); //save current scene
+            SceneManager.LoadScene("Loading");
         }
 
         public void LeaveGroup()
         {
-            settings.SetOfflineStatus(true);
+            settings.offlineMode = true;
+            PhotonNetwork.Disconnect();
             ExitMenu();
-            GameEvents.current.DoChangeScene(this.settings.currentScene.GetValue()); //save current scene
+            GameEvents.current.DoChangeScene(this.settings.currentScene.GetValue()); //go back to last scene
         }        
     }
 }

@@ -76,11 +76,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db39479d1d77a243b2d669976e244e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   costs:
     resourceType: 0
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 1
+  masterOnly: 1
   customActionButton: 1
   ID: Reden
   showEffectOnEnable: 0
@@ -191,6 +194,7 @@ MonoBehaviour:
     resourceType: 4
     item: {fileID: 0}
     keyItem: {fileID: 11400000, guid: 6d9d0b7b21a062f488da81e1c855e840, type: 2}
+    statusEffect: {fileID: 0}
     amount: 1
   actionOnConfirm:
     m_PersistentCalls:
@@ -461,6 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594481b97dd9abf458b279f819cd0b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   myRigidbody: {fileID: 3945848509854940437}
   animator: {fileID: 910524742380246583}
   boxCollider: {fileID: 3020177091971815233}
@@ -470,12 +475,13 @@ MonoBehaviour:
   headPosition: {fileID: 9214498863456935276}
   activeSkillParent: {fileID: 3020177091833525065}
   activeStatusEffectParent: {fileID: 8464107762506563443}
+  statusEffectVisuals: []
   stats: {fileID: 11400000, guid: 55d358f1ae5b28f45b4f5f4f5a55089c, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
   characterName: 
   NPCStats: {fileID: 11400000, guid: 55d358f1ae5b28f45b4f5f4f5a55089c, type: 2}
-  target: {fileID: 0}
+  targetID: 0
   partner: {fileID: 0}
   rangeTriggered: 0
   onDefeated:
@@ -541,6 +547,7 @@ MonoBehaviour:
   character: {fileID: 0}
   startPhase: {fileID: 0}
   startImmediately: 0
+  activePhase: {fileID: 0}
 --- !u!50 &3945848509854940437
 Rigidbody2D:
   serializedVersion: 4
@@ -674,6 +681,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroStats: {fileID: 11400000, guid: 46e049ec2b630ec40aec487f31843b9f, type: 2}
   npc: {fileID: 143027468618068661}
+  mainTarget: 
+  aggrodata: []
 --- !u!114 &-2793748050859840958
 MonoBehaviour:
   m_ObjectHideFlags: 0

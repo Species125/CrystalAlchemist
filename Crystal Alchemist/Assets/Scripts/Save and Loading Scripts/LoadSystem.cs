@@ -109,12 +109,15 @@ namespace CrystalAlchemist
                 foreach (string keyItem in keyItems)
                 {
                     ItemDrop master = MasterManager.getItemDrop(keyItem);
-                    if (master != null)
+                    if (master == null)
                     {
-                        ItemDrop drop = master.Instantiate(1);
-                        inventory.collectItem(drop.stats);
-                        UnityEngine.Object.Destroy(drop);
+                        Debug.Log(keyItem + " is missing in master");
+                        continue;
                     }
+
+                    ItemDrop drop = master.Instantiate(1);
+                    inventory.collectItem(drop.stats);
+                    UnityEngine.Object.Destroy(drop);
                 }
             }
 
@@ -123,7 +126,13 @@ namespace CrystalAlchemist
                 foreach (string[] item in inventoryItems)
                 {
                     ItemGroup master = MasterManager.getItemGroup(item[0]);
-                    if (master != null) inventory.collectItem(master, Convert.ToInt32(item[1]));
+
+                    if (master == null)
+                    {
+                        Debug.Log(item[0] + " is missing in master");
+                        continue;
+                    }
+                    inventory.collectItem(master, Convert.ToInt32(item[1]));
                 }
             }
         }

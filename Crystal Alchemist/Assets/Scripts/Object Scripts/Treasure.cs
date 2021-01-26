@@ -1,14 +1,6 @@
-﻿
-
-
-
-
-
-
-
-using Photon.Pun;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using Photon.Pun;
 
 namespace CrystalAlchemist
 {
@@ -34,6 +26,11 @@ namespace CrystalAlchemist
         [BoxGroup("Treasure Options")]
         [SerializeField]
         private TreasureType treasureType = TreasureType.normal;
+
+        [BoxGroup("Treasure Options")]
+        [SerializeField]
+        [Tooltip("Spawn Items for all players?")]
+        private bool isShared = false;
 
         [BoxGroup("Loot")]
         [SerializeField]
@@ -114,6 +111,7 @@ namespace CrystalAlchemist
             {
                 this.player.ReduceResource(this.costs);
                 AnimatorUtil.SetAnimatorParameter(this.anim, "isOpened", true);
+                if (isShared) SharedSubmit();
             }
             else ShowDialog(DialogTextTrigger.failed);
         }
@@ -147,15 +145,30 @@ namespace CrystalAlchemist
         public void ShowTreasureItem()
         {           
             if (this.itemDrop != null)
-            {
-                NetworkEvents.current.InstantiateTreasureItem(this.itemDrop, this.transform.position, true, this.player.GetGroundPosition());
-            }
+                NetworkEvents.current.InstantiateTreasureItem(this.itemDrop, this.transform.position, true, 
+                                                              this.player.GetGroundPosition());             
 
             if (this.treasureType == TreasureType.lootbox)
             {
                 AnimatorUtil.SetAnimatorParameter(this.anim, "isOpened", false);
                 this.setLoot();
             }
+        }
+
+        private void SharedSubmit()
+        {
+            string path = "";
+            if (this.itemDrop != null) path = this.itemDrop.path;
+            this.photonView.RPC("RpcSetAnimation", RpcTarget.Others, path);
+        }
+
+        [PunRPC]
+        protected void RpcSetAnimation(string path)
+        {
+            if (path != "") this.itemDrop = null;
+            else this.itemDrop = Resources.Load<ItemDrop>(path);
+
+            AnimatorUtil.SetAnimatorParameter(this.anim, "isOpened", true);
         }
 
         #endregion

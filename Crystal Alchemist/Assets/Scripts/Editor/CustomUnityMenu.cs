@@ -17,6 +17,14 @@ namespace CrystalAlchemist
             EditorGUIUtility.PingObject(sheet);
         }
 
+        [MenuItem("Alchemist Menu/Tools/Input System")]
+        public static void ShowInputSystem()
+        {
+            PlayerSpriteTool sheet =
+                   Resources.Load<PlayerSpriteTool>("Scriptable Objects/Editor/Player Sprite Tool");
+            EditorGUIUtility.PingObject(sheet);
+        }
+
         [MenuItem("Alchemist Menu/Menues/Map")]
         public static void OpenMap()
         {

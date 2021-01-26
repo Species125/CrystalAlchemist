@@ -138,12 +138,14 @@ namespace CrystalAlchemist
         private string replace = "Assets/Resources/";
 
 #if UNITY_EDITOR
+        [Button]
         public void SetPreview()
         {            
             this.fullPath = UnityEditor.AssetDatabase.GetAssetPath(this.texture);
             this.texturePath = this.fullPath.Replace(replace,"").Split('.')[0];
 
-            this.preview = GetSprites()[1];
+            Sprite[] sprites = GetSprites();
+            this.preview = sprites[0];
         }
         #endif
 

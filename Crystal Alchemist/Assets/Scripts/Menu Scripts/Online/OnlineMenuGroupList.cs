@@ -43,5 +43,10 @@ namespace CrystalAlchemist
                 }
             }
         }
+
+        public override void OnJoinedRoom()
+        {
+            //close
+        }
     }
 }

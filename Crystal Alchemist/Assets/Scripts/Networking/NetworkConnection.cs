@@ -4,51 +4,81 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using Sirenix.OdinInspector;
 
 namespace CrystalAlchemist
 {
     public class NetworkConnection : MonoBehaviourPunCallbacks
     {
+        [BoxGroup("Network")]
         [SerializeField]
         private NetworkSettings settings;
 
+        [BoxGroup("Network")]
         [SerializeField]
         private PlayerSaveGame saveGame;
 
+        [BoxGroup("Network")]
         [SerializeField]
         private StringValue scene;
 
+        [BoxGroup("Network")]
         [SerializeField]
         private TextMeshProUGUI debug;
 
+        [BoxGroup("Network")]
         [SerializeField]
         private Image loadingBar;
 
+        [BoxGroup("UI")]
+        [SerializeField]
+        private GameObject loadingInfo;
+
+        [BoxGroup("UI")]
+        [SerializeField]
+        private GameObject partyFinderMenu;
+
+        [BoxGroup("UI")]
+        [SerializeField]
+        private Camera cam;
+
         private bool loaded = false;
 
-        private void Start()
+
+        private void Awake()
         {
             this.debug.text = "";
             SetProgress(0);
             NetworkUtil.SetRoomStatus(false);
-
+            this.partyFinderMenu.SetActive(false);
+            SetLoadingAppearance();
+        }
+        
+        private void Start()
+        {
             if (this.settings.offlineMode != PhotonNetwork.OfflineMode) //Offline Mode changed
             {
                 if (!PhotonNetwork.OfflineMode && PhotonNetwork.IsConnected) PhotonNetwork.Disconnect(); //when online -> disconnect
                 else PhotonNetwork.OfflineMode = this.settings.offlineMode; //offline
             }            
 
-            if (!PhotonNetwork.IsConnected)
+            if (!PhotonNetwork.IsConnected) //Connect neither if online or offline
             {
                 Connect();
                 return;
             }
 
-            if (PhotonNetwork.InRoom)
+            if (PhotonNetwork.InRoom) //just load level
             {
-                FinishConnection();
+                LoadScene();
                 return;
             }
+        }
+
+        private void SetLoadingAppearance()
+        {
+            if (PhotonNetwork.IsConnected) this.loadingInfo.SetActive(false);
+            if (PhotonNetwork.InRoom) this.cam.backgroundColor = Color.black;         
         }
 
         public void Connect()
@@ -61,11 +91,11 @@ namespace CrystalAlchemist
             PhotonNetwork.ConnectUsingSettings();
         }
 
-        private void FinishConnection()
+        public void LoadScene()
         {
             if (this.loaded) return;
-            SetProgress(1);
-            AddText("Loading " + this.scene.GetValue());
+            //SetProgress(1);
+            //AddText("Loading " + this.scene.GetValue());
             if (NetworkUtil.IsMaster()) PhotonNetwork.LoadLevel(this.scene.GetValue());
             this.loaded = true;
         }
@@ -78,7 +108,7 @@ namespace CrystalAlchemist
 
         private void SetProgress(float value)
         {
-            if (this.loadingBar) this.loadingBar.fillAmount = value;
+            if (this.loadingBar) this.loadingBar.fillAmount = value;            
         }
 
         private void OnDestroy()
@@ -86,20 +116,9 @@ namespace CrystalAlchemist
             NetworkUtil.SetRoomStatus(true);
         }
 
-        private void CreateRoom()
-        {
-            if (!PhotonNetwork.IsConnected) return;
-
-            RoomOptions options = new RoomOptions();
-            options.PublishUserId = true;
-            options.MaxPlayers = this.settings.maxPlayers;
-            options.IsVisible = true;
-            options.IsOpen = true;
-            PhotonNetwork.JoinOrCreateRoom(this.settings.roomName, options, TypedLobby.Default);
-        }
-
         public override void OnCreatedRoom()
         {
+            if (PhotonNetwork.InLobby) PhotonNetwork.LeaveLobby();
             SetProgress(0.75f);
             AddText("Room created");
         }
@@ -112,14 +131,15 @@ namespace CrystalAlchemist
         public override void OnJoinedRoom()
         {
             AddText("Room joined");
-            FinishConnection();
+            LoadScene();
         }
 
         public override void OnJoinedLobby()
         {
             AddText("Lobby joined");
-            SetProgress(0.5f);
-            CreateRoom();            
+            SetProgress(1);
+            this.loadingInfo.SetActive(true);
+            this.partyFinderMenu.SetActive(true);          
         }
 
         public override void OnJoinRoomFailed(short returnCode, string message)
@@ -142,7 +162,7 @@ namespace CrystalAlchemist
             AddText("Connected To Server");
             SetProgress(0.25f);
             if (!PhotonNetwork.OfflineMode && !PhotonNetwork.InLobby) PhotonNetwork.JoinLobby();
-            else CreateRoom();
+            else NetworkUtil.CreateRoom("Offline"); //Offline Mode
         }
 
         public override void OnDisconnected(DisconnectCause cause)
@@ -152,9 +172,10 @@ namespace CrystalAlchemist
             if (!PhotonNetwork.OfflineMode)
             {
                 AddText("Start Offline Mode");
-                this.settings.SetOfflineStatus(true);
-                PhotonNetwork.OfflineMode = true;
+                this.settings.offlineMode = true;
+                PhotonNetwork.OfflineMode = this.settings.offlineMode;
             }
         }
+
     }
 }

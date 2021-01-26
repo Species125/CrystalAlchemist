@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 
 namespace CrystalAlchemist
-{
+{   
     public class TODOLIST : MonoBehaviour
     {
         //TODO (0.2.7)
         /*
         Online-Multiplayer:
-        - Player Rooms (Options: private, max Players, etc) and Listings
-        - Death Screen Adjustments (RPC) and changes (no new scene load, just teleport), 
-        - Rework Loading-Screen (show only when connecting)
+        - Death Screen Adjustments (Network-Event) and changes
+        - RPC Time
+        - Update when changing attributes!
+
+        - Teleport Animation on Client
         - Testing
+        - Minigame Testing
+
 
         Rework:
         - Skills: Wind blade, Fireball, Ice Shard, Frost Needle, Stonewall
@@ -25,6 +29,7 @@ namespace CrystalAlchemist
         - New Skill: Geode
         - New Skill: Protect
         - New Skill: Revive
+        - New Skill: Heal-Area
         - New Animation: Player in Menu
         - New Race: Catgirl
         - New Customization: Scales for Lamia and Drahn
