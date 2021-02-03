@@ -27,26 +27,7 @@ namespace CrystalAlchemist
             GameEvents.current.OnHasReturn -= HasReturn;
         }
 
-        public void SwitchScene()
-        {
-            if (!this.player.isLocalPlayer) 
-            {
-                //Simulate Despawn for Guest Players
-                StartCoroutine(DematerializePlayer(false));
-                return;
-            }
-
-            if (NetworkUtil.IsMaster()) //only master is allowed to send RPC "Scene Change" to all
-            {
-                this.player.photonView.RPC("RpcSwitchScene", RpcTarget.All);
-            }
-        }
-
-        [PunRPC]
-        public void RpcSwitchScene(PhotonMessageInfo info)
-        {
-            StartCoroutine(DematerializePlayer(true));
-        }
+        public void SwitchScene() => StartCoroutine(DematerializePlayer());        
 
         private void SetPosition(Vector2 position)
         {
@@ -54,7 +35,7 @@ namespace CrystalAlchemist
             this.player.ChangeDirection(this.player.values.direction);
         }
 
-        private IEnumerator DematerializePlayer(bool changeScene)
+        private IEnumerator DematerializePlayer()
         {
             this.player.SpawnOut(); //Disable Player        
             bool animation = this.teleportList.GetShowSpawnOut();
@@ -74,7 +55,7 @@ namespace CrystalAlchemist
             }
                
             //For Network Scene-change, only LocalPlayer and Master are allowed to change scene
-            if (changeScene && NetworkUtil.IsMaster()) GameEvents.current.DoChangeScene(this.teleportList.GetNextTeleport().scene);
+            if (this.player.isLocalPlayer) GameEvents.current.DoChangeScene(this.teleportList.GetLatestTeleport().scene);
         }
 
         private IEnumerator MaterializePlayer()
@@ -82,14 +63,14 @@ namespace CrystalAlchemist
             this.player.SetCharacterSprites(false);
             this.player.SpawnOut(); //Disable Player
 
-            if (this.teleportList.GetNextTeleport() == null)
+            if (this.teleportList.GetLatestTeleport() == null)
             {
                 this.player.SetCharacterSprites(true);
                 this.player.SpawnIn();
                 yield break;
             }
 
-            Vector2 position = this.teleportList.GetNextTeleport().position;
+            Vector2 position = this.teleportList.GetLatestTeleport().position;
             bool animation = this.teleportList.GetShowSpawnIn();
 
             SetPosition(position);
@@ -130,7 +111,7 @@ namespace CrystalAlchemist
 
         public bool HasReturn()
         {
-            return this.teleportList.HasLast();
+            return this.teleportList.HasReturn();
         }
     }
 }

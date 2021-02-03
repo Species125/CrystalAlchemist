@@ -33,13 +33,12 @@ namespace CrystalAlchemist
             base.Initialize();
 
             this.player = this.character.GetComponent<Player>();
-
             if (!NetworkUtil.IsLocal(this.player)) return;
 
             this.SetTimeValue(this.timeLeftValue);
 
-            //this.skillSet.Initialize();
             this.skillSet.SetSender(this.character);
+            this.buttons.currentAbility = null;
         }
 
         public override void Updating()
@@ -49,6 +48,9 @@ namespace CrystalAlchemist
             base.Updating();
             this.skillSet.Updating();
             this.buttons.Updating(this.player);
+
+            if (this.buttons.currentAbility == null) this.player.values.isAttacking = false;
+            else this.player.values.isAttacking = true;
 
             if (this.isPressed) ButtonHold(this.buttons.currentAbility);
         }
@@ -63,28 +65,22 @@ namespace CrystalAlchemist
         public void OnHoldingCallback(InputAction.CallbackContext context)
         {
             if (!NetworkUtil.IsLocal(this.player)) return;
+            if (!this.player.values.CanUseAbilities()) return;
 
             if (context.started)
             {
                 this.isPressed = true;
 
                 Ability ability = GetAbility(context);
-                if (ability != null && this.buttons.currentAbility == null)
-                {
-                    this.buttons.currentAbility = ability;
-                    ButtonDown(this.buttons.currentAbility);
-                }
+                if (ability != null && (this.buttons.currentAbility == null || this.buttons.currentAbility == ability)) ButtonDown(ability);                
             }
-            else if (context.canceled)
+
+            if (context.canceled)
             {
                 this.isPressed = false;
 
                 Ability ability = GetAbility(context);
-                if (ability != null && this.buttons.currentAbility == ability)
-                {
-                    ButtonUp(this.buttons.currentAbility);
-                    this.buttons.currentAbility = null;
-                }
+                if (ability != null && this.buttons.currentAbility == ability) ButtonUp(ability);        
             }
         }
 
@@ -102,14 +98,10 @@ namespace CrystalAlchemist
         private void ButtonHold(Ability ability)
         {
             if (!NetworkUtil.IsLocal(this.player)) return;
-
+            if (!this.player.values.CanUseAbilities()) return;
             if (ability == null || !ability.enabled) return;
-            if (ability.state == AbilityState.notCharged)
-            {
-                //CHANGED
-                //ChargeAbility(ability, this.player);
-                ChargeAbility(ability);
-            }
+
+            if (ability.state == AbilityState.notCharged) ChargeAbility(ability); //CHANGED: ChargeAbility(ability, this.player);            
             else if (ability.isRapidFire)
             {
                 if (ability.state == AbilityState.charged) UseAbilityOnTarget(ability, null); //use rapidFire when charged
@@ -119,23 +111,13 @@ namespace CrystalAlchemist
             }
         }
 
-        private void ButtonUp(Ability ability)
-        {
-            if (!NetworkUtil.IsLocal(this.player)) return;
-
-            if (ability == null) return;
-
-            if (ability.enabled && ability.state == AbilityState.charged && !ability.isRapidFire) UseAbilityOnTarget(ability, null); //use Skill when charged
-            else if (ability.state == AbilityState.lockOn && ability.isRapidFire) HideTargetingSystem(ability); //hide Targeting System when released
-
-            UnChargeAbility(ability);
-        }
-
         private void ButtonDown(Ability ability)
-        {
+        {         
             if (!NetworkUtil.IsLocal(this.player)) return;
-
             if (ability == null || !ability.enabled) return;
+
+            if (ability.state != AbilityState.onCooldown) SetAbility(ability);
+
             if (ability.state == AbilityState.ready) UseAbilityOnTarget(ability, null); //use Skill
             else if (ability.state == AbilityState.targetRequired) ShowTargetingSystem(ability); //activate Targeting System
             else if (ability.state == AbilityState.lockOn)
@@ -145,11 +127,57 @@ namespace CrystalAlchemist
             }
         }
 
+        private void ButtonUp(Ability ability)
+        {
+            if (!NetworkUtil.IsLocal(this.player)) return;
+            if (ability == null) return;
+
+            if (ability.enabled && ability.state == AbilityState.charged && !ability.isRapidFire) UseAbilityOnTarget(ability, null); //use Skill when charged
+            else if (ability.state == AbilityState.lockOn && ability.isRapidFire) HideTargetingSystem(ability); //hide Targeting System when released
+
+            UnChargeAbility(ability);
+            GlobalCooldownUp(ability);            
+        }
+
+        public override void GlobalCooldown(Ability ability)
+        {
+            if (ability.isRapidFire || ability.deactivateButtonUp) return;
+            Invoke("ClearCurrentAbility", ability.globalCooldown);          
+        }
+
+        private void GlobalCooldownUp(Ability ability)
+        {
+            if (ability.state == AbilityState.notCharged) ClearCurrentAbility();
+            if (!ability.isRapidFire && !ability.deactivateButtonUp) return;
+            
+            Invoke("ClearCurrentAbility", ability.globalCooldown);
+        }
+
+        private void SetGlobalCooldown(Ability ability) //Experimental
+        {
+            ClearCurrentAbility();
+            this.buttons.SetGlobalCooldown(ability);
+        }
+
+        private void SetAbility(Ability ability)
+        {
+            this.buttons.currentAbility = ability;
+            //this.player.values.currentState = CharacterState.attack;
+        }
+
+        public override void ClearCurrentAbility()
+        {
+            this.buttons.currentAbility = null;
+            //if (this.player.values.CanOpenMenu()) this.player.values.currentState = CharacterState.idle;
+        }
+
         private void DisableAbilities()
         {
             this.skillSet.EnableAbility(false);
             Invoke("EnableAbilities", this.skillSet.deactiveDelay);
         }
+
+        private void EnableAbilities() => this.skillSet.EnableAbility(true);    
 
         public override void DeactivateAbility(Ability ability)
         {
@@ -163,11 +191,6 @@ namespace CrystalAlchemist
         {
             Ability ability = Resources.Load<Ability>(path);
             if (ability.deactivateButtonUp) DeactivateSkill(ability);
-        }
-
-        private void EnableAbilities()
-        {
-            this.skillSet.EnableAbility(true);
         }
     }
 }

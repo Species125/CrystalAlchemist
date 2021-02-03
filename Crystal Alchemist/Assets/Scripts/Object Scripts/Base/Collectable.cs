@@ -45,6 +45,10 @@ namespace CrystalAlchemist
         [ShowIf("hasSelfDestruction")]
         private float duration = 60f;
 
+        [BoxGroup("Progress")]
+        [SerializeField]
+        private PlayerGameProgress playerProgress;
+
         private ItemStats itemStats;
         private float elapsed;
         private bool showEffectOnDisable = true;
@@ -99,7 +103,7 @@ namespace CrystalAlchemist
 
             string itemName = this.itemDrop.name;
 
-            if (this.itemDrop.progress.ContainsProgress() ||
+            if (this.itemDrop.progress.ContainsProgress(this.playerProgress) ||
                (this.itemStats.isKeyItem() && GameEvents.current.HasKeyItem(itemName)))
             {
                 this.showEffectOnDisable = false;
@@ -143,7 +147,11 @@ namespace CrystalAlchemist
             this.itemSprite.DOColor(Color.white, delay);
         }
 
-        private void OnEnable() => Bounce();
+        public override void OnEnable()
+        {
+            base.OnEnable();
+            Bounce();
+        }
 
         private void Bounce()
         {
@@ -168,8 +176,9 @@ namespace CrystalAlchemist
             this.hasSelfDestruction = hasSelfDestruction;
         }
 
-        private void OnDisable()
+        public override void OnDisable()
         {
+            base.OnDisable();
             if (this.showEffectOnDisable) AnimatorUtil.ShowSmoke(this.transform);
         }
 
@@ -197,7 +206,7 @@ namespace CrystalAlchemist
 
             this.showEffectOnDisable = false;
             GameEvents.current.DoCollect(this.itemStats);
-            this.itemDrop.progress.AddProgress();
+            this.itemDrop.progress.AddProgress(this.playerProgress);
 
             playSounds();
             DestroyIt();

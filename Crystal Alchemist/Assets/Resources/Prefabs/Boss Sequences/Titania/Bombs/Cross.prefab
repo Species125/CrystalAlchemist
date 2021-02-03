@@ -227,6 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 727490230825903540}
   - component: {fileID: 727490230825903541}
+  - component: {fileID: 7832163976601347138}
   m_Layer: 0
   m_Name: Row 2
   m_TagString: Untagged
@@ -274,7 +275,7 @@ MonoBehaviour:
     position: {x: 0, y: 0}
     uniqueSpawn: 1
     spawnPoints: []
-    rotationType: 0
+    rotationType: 2
     rotationFactor: 0
     direction: 0
     spawnObject: {fileID: 1592666365359642889, guid: b4087b705ae0fd145abd094067fc2b01,
@@ -286,6 +287,28 @@ MonoBehaviour:
     spawnDelay: 0
     repeat: 0
     repeatDelay: 1
+--- !u!114 &7832163976601347138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727490230825903543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &727490230846516096
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 727490231943509264}
   - component: {fileID: 727490231943509265}
+  - component: {fileID: 3251813267774416089}
   m_Layer: 0
   m_Name: Row 1
   m_TagString: Untagged
@@ -494,7 +518,7 @@ MonoBehaviour:
     position: {x: 0, y: 0}
     uniqueSpawn: 1
     spawnPoints: []
-    rotationType: 0
+    rotationType: 2
     rotationFactor: 0
     direction: 0
     spawnObject: {fileID: 1592666365359642889, guid: b4087b705ae0fd145abd094067fc2b01,
@@ -506,3 +530,25 @@ MonoBehaviour:
     spawnDelay: 0
     repeat: 0
     repeatDelay: 1
+--- !u!114 &3251813267774416089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727490231943509267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

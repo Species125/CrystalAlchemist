@@ -21,7 +21,7 @@ namespace CrystalAlchemist
 
         private void OnDisable()
         {
-            PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
+            PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEvent;
             PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEventSkillItems;
             PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEventBoss;
         }
@@ -56,8 +56,10 @@ namespace CrystalAlchemist
                 int senderID = (int)datas[1];
                 int targetID = (int)datas[2];
                 int[] targetIDs = (int[])datas[3];
+                Vector2 position = (Vector2)datas[4];
+                Quaternion rotation = (Quaternion)datas[5];
 
-                InstantiateSequenceOnClients(path, senderID, targetID, targetIDs);
+                InstantiateSequenceOnClients(path, senderID, targetID, targetIDs, position, rotation);
             }
             else if (obj.Code == NetworkUtil.ITEMDROP)
             {
@@ -79,13 +81,17 @@ namespace CrystalAlchemist
         public void RaiseDeathEvent()
         {
             object[] datas = new object[] {};
-
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.PLAYERS_DEATH, datas, options, SendOptions.SendUnreliable);
+        }
+
+        public void DisconnectPlayer(int ID = 0)
+        {
+            object[] datas = new object[] { ID };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
+
+            PhotonNetwork.RaiseEvent(NetworkUtil.DISCONNECT, datas, options, SendOptions.SendUnreliable);
         }
 
 
@@ -121,16 +127,12 @@ namespace CrystalAlchemist
             int targetID = NetworkUtil.GetID(target); 
 
             object[] datas = new object[] { ability.path, characterID, targetID, reduce, position, rotation, standalone };
-
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.SKILL, datas, options, SendOptions.SendUnreliable);
         }
 
-        public void InstantiateBossSequence(BossMechanic sequence, Character sender, Character target, List<Character> targets)
+        public void InstantiateBossSequence(BossMechanic sequence, Character sender, Character target, List<Character> targets, Vector2 position, Quaternion rotation)
         {
             if (!NetworkUtil.IsMaster()) return;
 
@@ -144,12 +146,8 @@ namespace CrystalAlchemist
                 if (tar != null) targetIDs.Add(NetworkUtil.GetID(target));
             }
 
-            object[] datas = new object[] { sequence.path, characterID, targetID, targetIDs };
-
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            object[] datas = new object[] { sequence.path, characterID, targetID, targetIDs.ToArray(), position, rotation };
+            RaiseEventOptions options = NetworkUtil.TargetMaster();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.BOSSSKILL, datas, options, SendOptions.SendUnreliable);
         }
@@ -165,9 +163,8 @@ namespace CrystalAlchemist
             AbilityUtil.InstantiateSkill(ability, sender, target, position, reduce, standalone, rotation);
         }
 
-        private void InstantiateSequenceOnClients(string path, int senderID, int targetID, int[] targetIDs)
-        {
-            BossMechanic newSequence = Resources.Load<BossMechanic>(path);
+        private void InstantiateSequenceOnClients(string path, int senderID, int targetID, int[] targetIDs, Vector2 position, Quaternion rotation)
+        {            
             Character sender = NetworkUtil.GetCharacter(senderID);            
             Character target = NetworkUtil.GetCharacter(targetID);
 
@@ -176,8 +173,9 @@ namespace CrystalAlchemist
             {
                 if (ID >= 0) targets.Add(NetworkUtil.GetCharacter(ID));
             }
-
-            AbilityUtil.InstantiateSequence(newSequence, sender, target, targets);
+            
+            BossMechanic _newSequence = PhotonNetwork.Instantiate(path,position,rotation).GetComponent<BossMechanic>();
+            _newSequence.Initialize(sender, target, targets); 
         }
 
         #endregion
@@ -279,11 +277,7 @@ namespace CrystalAlchemist
             int parentID = NetworkUtil.GetID(parent);
 
             object[] datas = new object[] { gameObject.path, parentID, position, rotation, overrideDuration, duration };
-
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.MECHANIC_OBJECT, datas, options, SendOptions.SendUnreliable);
         }
@@ -305,11 +299,7 @@ namespace CrystalAlchemist
             int parentID = NetworkUtil.GetID(parent);
 
             object[] datas = new object[] { character.path, parentID, position, rotation, overrideDuration, duration };
-
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            RaiseEventOptions options = NetworkUtil.TargetMaster();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.MECHANIC_CHARACTER, datas, options, SendOptions.SendUnreliable);
         }
@@ -337,11 +327,7 @@ namespace CrystalAlchemist
             if (target != null) targetID = NetworkUtil.GetID(target);
 
             object[] datas = new object[] { character.path, targetID, parentID, position, rotation, overrideDuration, duration };
-
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            RaiseEventOptions options = NetworkUtil.TargetMaster();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.MECHANIC_AI, datas, options, SendOptions.SendUnreliable);
         }
@@ -369,11 +355,7 @@ namespace CrystalAlchemist
             if (target != null) targetID = NetworkUtil.GetID(target);
 
             object[] datas = new object[] { addSpawn.path, targetID, parentID, position, rotation, overrideDuration, duration };
-
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            RaiseEventOptions options = NetworkUtil.TargetMaster();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.MECHANIC_ADDSPAWN, datas, options, SendOptions.SendUnreliable);
         }
@@ -402,11 +384,7 @@ namespace CrystalAlchemist
             int senderID = NetworkUtil.GetID(sender);
 
             object[] datas = new object[] { skill.path, senderID, targetID, parentID, position, rotation, overrideDuration, duration, addTarget };
-
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.MECHANIC_SKILL, datas, options, SendOptions.SendUnreliable);
         }
@@ -439,11 +417,7 @@ namespace CrystalAlchemist
             int senderID = NetworkUtil.GetID(sender);
 
             object[] datas = new object[] { ability.path, senderID, targetID, parentID, position, rotation, overrideDuration, duration, addTarget };
-
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.MECHANIC_ABILITY, datas, options, SendOptions.SendUnreliable);
         }
@@ -496,11 +470,7 @@ namespace CrystalAlchemist
         private void InstantiateItemNetworkEvent(string path, Vector2 position, bool bounce, Vector2 direction)
         {            
             object[] datas = new object[] { path, position, bounce, direction };
-
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.ITEMDROP, datas, options, SendOptions.SendUnreliable);
         }
@@ -527,6 +497,20 @@ namespace CrystalAlchemist
 
         #endregion
 
+        public void ShowReadywindow(TeleportStats stats)
+        {
+            object[] datas = new object[] { stats.path };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
 
+            PhotonNetwork.RaiseEvent(NetworkUtil.READY_SHOW, datas, options, SendOptions.SendUnreliable);
+        }
+
+        public void SetNextTeleport(TeleportStats stats)
+        {
+            object[] datas = new object[] { stats.path };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
+
+            PhotonNetwork.RaiseEvent(NetworkUtil.SET_NEXT_TELEPORT, datas, options, SendOptions.SendUnreliable);
+        }
     }
 }

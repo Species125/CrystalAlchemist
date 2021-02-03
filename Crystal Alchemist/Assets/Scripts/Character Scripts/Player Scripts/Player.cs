@@ -36,12 +36,11 @@ namespace CrystalAlchemist
         private StringValue currentScene;
 
         [BoxGroup("Debug")]
-        public bool isLocalPlayer = true;
+        [ReadOnly]
+        public bool isLocalPlayer = true;        
 
         [BoxGroup("Debug")]
-        public bool isMaster = false;
-
-        [BoxGroup("Debug")]
+        [ReadOnly]
         public string uniqueID;
 
         ///////////////////////////////////////////////////////////////
@@ -56,8 +55,6 @@ namespace CrystalAlchemist
         {
             this.gameObject.name = "Player (Guest)";
 
-            if (NetworkUtil.IsMaster()) this.isMaster = true;
-
             if (!NetworkUtil.IsLocal(this.photonView))
             {
                 this.isLocalPlayer = false;
@@ -70,6 +67,8 @@ namespace CrystalAlchemist
             }
             else
             {
+                if (NetworkUtil.IsMaster()) this.values.isMaster = true;
+
                 this.gameObject.name = "Player (Local)";
                 this.stats = this.saveGame.stats;
                 this.values = this.saveGame.playerValue;
@@ -119,7 +118,7 @@ namespace CrystalAlchemist
                 return;
             }
 
-            this.saveGame.progress.Initialize();
+            this.saveGame.progress.Updating();
 
             SceneManager.LoadScene("UI", LoadSceneMode.Additive);
 
@@ -130,6 +129,7 @@ namespace CrystalAlchemist
             GameEvents.current.OnWakeUp += this.WakeUp;
             GameEvents.current.OnCutScene += this.SetCutScene;
             GameEvents.current.OnEnoughCurrency += this.HasEnoughCurrency;
+            GameEvents.current.OnLifeManaUpdateLocal += UpdateLifeManaUI;
 
             if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Initialize();
             if (this.GetComponent<PlayerMovement>() != null) this.GetComponent<PlayerMovement>().Initialize();
@@ -141,7 +141,7 @@ namespace CrystalAlchemist
             GameEvents.current.DoLocalPlayerSpawned(this.photonView.ViewID);
 
             UpdateLifeManaForOthers();
-            AddStatusEffectVisuals();
+            //AddStatusEffectVisuals();
 
             this.saveGame.skillSet.TestInitialize(this);
             this.currentScene.SetValue(this.gameObject.scene.name);
@@ -171,6 +171,7 @@ namespace CrystalAlchemist
             GameEvents.current.OnWakeUp -= this.WakeUp;
             GameEvents.current.OnCutScene -= this.SetCutScene;
             GameEvents.current.OnEnoughCurrency -= this.HasEnoughCurrency;
+            GameEvents.current.OnLifeManaUpdateLocal -= UpdateLifeManaUI;
         }
 
         public void GodMode(bool active)
@@ -262,7 +263,9 @@ namespace CrystalAlchemist
             else this.values.currentState = CharacterState.idle;
         }
 
-        public void callSignal(float addResource)
+        private void UpdateLifeManaUI() => UpdateLifeManaUI(-1);
+
+        public void UpdateLifeManaUI(float addResource)
         {
             if (addResource != 0) GameEvents.current.DoManaLifeUpdate(this.photonView.ViewID);
         }
@@ -318,7 +321,7 @@ namespace CrystalAlchemist
         public override void UpdateLife(float value, bool showingDamageNumber)
         {
             base.UpdateLife(value, showingDamageNumber);
-            callSignal(value);
+            UpdateLifeManaUI(value);
 
             NumberColor color = NumberColor.red;
             if (value > 0) color = NumberColor.green;
@@ -328,17 +331,17 @@ namespace CrystalAlchemist
         public override void UpdateMana(float value, bool showingDamageNumber)
         {
             base.UpdateMana(value, showingDamageNumber);
-            callSignal(value);
+            UpdateLifeManaUI(value);
         }
 
         public override void UpdateItem(ItemGroup item, int value)
         {
-            GetComponent<PlayerItems>().UpdateInventory(item, value);
+            if(this.GetComponent<PlayerItems>() != null) this.GetComponent<PlayerItems>().UpdateInventory(item, value);
         }
 
         public override void UpdateKeyItem(ItemDrop keyItem)
         {
-            GetComponent<PlayerItems>().CollectItem(keyItem.stats);
+            if (this.GetComponent<PlayerItems>() != null) this.GetComponent<PlayerItems>().CollectItem(keyItem.stats);
         }
 
 
@@ -357,6 +360,8 @@ namespace CrystalAlchemist
 
         private IEnumerator GoToBed(float duration, Vector2 position, Action before, Action after)
         {
+            this.values.currentState = CharacterState.sleeping;
+            this.myRigidbody.velocity = Vector2.zero;
             this.transform.position = position;
             yield return new WaitForEndOfFrame(); //Wait for Camera
 
@@ -366,7 +371,7 @@ namespace CrystalAlchemist
 
             AnimatorUtil.SetAnimatorParameter(this.animator, "GoSleep");
             float animDuration = AnimatorUtil.GetAnimationLength(this.animator, "GoSleep");
-            yield return new WaitForSeconds(animDuration);
+            yield return new WaitForSeconds(animDuration + duration);
 
             after?.Invoke(); //Zeit    
             this.boxCollider.enabled = true;
@@ -382,18 +387,20 @@ namespace CrystalAlchemist
 
         private IEnumerator GetUp(float duration, Vector2 position, Action before, Action after)
         {
+            this.myRigidbody.velocity = Vector2.zero;
             this.boxCollider.enabled = false;
             before?.Invoke(); //Zeit    
 
             AnimatorUtil.SetAnimatorParameter(this.animator, "WakeUp");
             float animDuration = AnimatorUtil.GetAnimationLength(this.animator, "WakeUp");
-            yield return new WaitForSeconds(animDuration);
+            yield return new WaitForSeconds(animDuration + duration);
 
             after?.Invoke(); //Decke
 
             EnablePlayer(true);
 
             this.transform.position = position;
+            this.values.currentState = CharacterState.idle;
         }
 
 
@@ -436,10 +443,12 @@ namespace CrystalAlchemist
             if (stream.IsWriting)
             {
                 stream.SendNext(this.uniqueID);
+                stream.SendNext(this.values.isMaster);
             }
             else
             {
                 this.uniqueID = (string)stream.ReceiveNext();
+                this.values.isMaster = (bool)stream.ReceiveNext();
             }
         }
 
@@ -486,6 +495,18 @@ namespace CrystalAlchemist
         {
             StatusEffect effect = Resources.Load<StatusEffect>(path);
             base.RemoveStatusEffectVisual(effect);
+        }
+
+
+        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+        {
+            this.photonView.RPC("RpcSetPlayerPosition", RpcTarget.Others, (Vector2)this.transform.position);
+        }
+
+        [PunRPC]
+        protected void RpcSetPlayerPosition(Vector2 position)
+        {
+            this.transform.position = position;
         }
     }
 }

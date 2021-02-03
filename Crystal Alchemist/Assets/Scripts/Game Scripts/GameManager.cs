@@ -23,6 +23,7 @@ namespace CrystalAlchemist
         {
             GameEvents.current.OnKeyItem += HasKeyItemAlready; 
             GameEvents.current.OnSceneChanged += ChangeScene;
+            GameEvents.current.OnTitleScreen += ReturnTitleScreen;
             GameEvents.current.OnDeath += CheckDeathOfPlayers;
         }
 
@@ -30,6 +31,7 @@ namespace CrystalAlchemist
         {
             GameEvents.current.OnKeyItem -= HasKeyItemAlready; 
             GameEvents.current.OnSceneChanged -= ChangeScene;
+            GameEvents.current.OnTitleScreen -= ReturnTitleScreen;
             GameEvents.current.OnDeath -= CheckDeathOfPlayers;
             this.timePlayed.SetValue(this.timePlayed.GetValue() + Time.timeSinceLevelLoad);
         }
@@ -39,6 +41,12 @@ namespace CrystalAlchemist
             if (this.inventory == null) return false;
             foreach (ItemStats elem in this.inventory.keyItems) if (elem != null && name == elem.name) return true;
             return false;
+        }
+
+        private void ReturnTitleScreen()
+        {
+            PhotonNetwork.Disconnect();
+            SceneManager.LoadScene(0);
         }
 
         private void ChangeScene(string newScene)

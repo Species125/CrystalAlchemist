@@ -1,5 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CrystalAlchemist
 {
@@ -8,6 +9,10 @@ namespace CrystalAlchemist
         [Required]
         [BoxGroup("Pflichtfelder")]
         public CharacterStats NPCStats;
+
+        [BoxGroup("Events")]
+        [SerializeField]
+        public UnityEvent onDefeated;
 
         public override void Awake()
         {
@@ -42,8 +47,13 @@ namespace CrystalAlchemist
 
         public override void OnDestroy()
         {
-            //GameEvents.current.OnKill -= DestroyItWithoutDrop;
             base.OnDestroy();
+        }
+        
+        public override void DestroyItWithoutDrop()
+        {
+            this.onDefeated?.Invoke();
+            base.DestroyItWithoutDrop();
         }
     }
 }

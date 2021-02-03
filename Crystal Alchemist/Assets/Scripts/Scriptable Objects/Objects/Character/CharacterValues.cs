@@ -14,7 +14,8 @@ namespace CrystalAlchemist
         idle,
         dead,
         manually,
-        respawning
+        respawning,
+        sleeping
     }
 
     [CreateAssetMenu(menuName = "Game/Characters/Character Values")]
@@ -67,22 +68,34 @@ namespace CrystalAlchemist
         public float steps = 0;
         [BoxGroup("States")]
         public bool isOnIce = false;
+        [BoxGroup("States")]
+        public bool isAttacking = false;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         public List<StatusEffect> buffs = new List<StatusEffect>();
         [BoxGroup("Debug")]
+        [ReadOnly]
         public List<StatusEffect> debuffs = new List<StatusEffect>();
         [BoxGroup("Debug")]
+        [ReadOnly]
         public List<Character> activePets = new List<Character>();
         [BoxGroup("Debug")]
+        [ReadOnly]
         public List<Skill> activeSkills = new List<Skill>();
         [BoxGroup("Debug")]
+        [ReadOnly]
         public ItemDrop itemDrop;
         [BoxGroup("Debug")]
+        [ReadOnly]
         public float speedFactor = 5;
         [BoxGroup("Debug")]
+        [ReadOnly]
         [ColorUsage(true, true)]
         public Color effectColor = Color.white;
+        [BoxGroup("Debug")]
+        [ReadOnly]
+        public bool isMaster = false;
 
         [Button]
         public void Clear(CharacterStats stats)
@@ -137,8 +150,8 @@ namespace CrystalAlchemist
 
         public bool CanMove()
         {
-            return (CanOpenMenu()
-                    //&& this.currentState != CharacterState.attack
+            return (CanOpenMenu() 
+                    && this.currentState != CharacterState.sleeping 
                     && !this.isCharacterStunned());
         }
 
@@ -149,11 +162,13 @@ namespace CrystalAlchemist
             return false;
         }
 
+        /// <summary>
+        /// Is Alive, not in menu, no knockback, not stunned and no attacking
+        /// </summary>
+        /// <returns></returns>
         public bool CanInteract()
         {
-            return (this.currentState == CharacterState.interact
-                    || this.currentState == CharacterState.idle
-                    || this.currentState == CharacterState.walk);
+            return (!this.isAttacking && CanMove());
         }
 
 

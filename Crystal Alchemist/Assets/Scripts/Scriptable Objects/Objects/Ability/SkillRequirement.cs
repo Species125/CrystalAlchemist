@@ -24,7 +24,7 @@ namespace CrystalAlchemist
 
         public bool Granted()
         {
-            if (this.type == Type.teleport && this.playerTeleport.HasLast()) return true;
+            if (this.type == Type.teleport && this.playerTeleport.HasReturn()) return true;
             return false;
         }
     }

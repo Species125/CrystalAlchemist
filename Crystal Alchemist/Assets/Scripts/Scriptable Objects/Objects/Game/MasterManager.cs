@@ -25,6 +25,7 @@ namespace CrystalAlchemist
         public static TargetingSystem targetingSystem { get { return Instance._targetingSystem; } }
         public static TimeValue timeValue { get { return Instance._timeValue; } }
         public static StringValue actionButtonText { get { return Instance._actionButtonText; } }
+        public static FloatValue menuDelay { get { return Instance._menuDelay; } }
         public static GameObject itemCollectGlitter { get { return Instance._itemCollectGlitter; } }
         public static GameObject itemDisappearSmoke { get { return Instance._itemDisappearSmoke; } }
         public static InputDeviceInfo inputDeviceInfo { get { return Instance._inputDeviceInfo; } }
@@ -58,6 +59,9 @@ namespace CrystalAlchemist
         [BoxGroup("Values")]
         [SerializeField]
         private StringValue _actionButtonText;
+        [BoxGroup("Values")]
+        [SerializeField]
+        private FloatValue _menuDelay;
 
         [BoxGroup("Bubbles")]
         [SerializeField]

@@ -19,23 +19,35 @@ namespace CrystalAlchemist
     {
         private float seconds = 0;
 
-        public season season;
+        [BoxGroup("private fields")]
+        [SerializeField]
+        private int minute = 0;
 
-        public int minute = 0;
+        [BoxGroup("private fields")]
+        [SerializeField]
+        private int hour = 13;
 
-        public int hour = 13;
-
+        [BoxGroup("private fields")]
         [SerializeField]
         private float normalFactor = 1;
 
-        public int update = 30;
+        [BoxGroup("private fields")]
+        [SerializeField]
+        private int update = 30;
 
-        public bool night;
+        [BoxGroup("private fields")]
+        [SerializeField]
+        private float factor = 1;
 
-        public float factor = 1;
-
+        [BoxGroup("private fields")]
         [SerializeField]
         private Gradient colorGradient;
+
+        [BoxGroup("public fields")]
+        public bool night;
+
+        [BoxGroup("public fields")]
+        public season season;
 
         public void Clear() => SetStartTime();
 
@@ -72,24 +84,25 @@ namespace CrystalAlchemist
             return this.colorGradient.Evaluate(percentage);
         }
 
-        public int getMinute()
+        public int GetMinute()
         {
             return this.minute;
         }
 
-        public int getHour()
+        public int GetHour()
         {
             return this.hour;
         }
 
-        public void setTime(int minute, int hour)
+        public void SetTime(int hour, int minute)
         {
             this.minute = minute;
             this.hour = hour;
+            this.seconds = 0;
             updateTimer();
         }
 
-        public void setTime(float seconds)
+        public void SetTime(float seconds)
         {
             this.seconds += seconds;
             updateTimer();
@@ -105,7 +118,7 @@ namespace CrystalAlchemist
                 this.minute += 1;
                 this.seconds = 0;
 
-                if (this.minute % this.update == 0) GameEvents.current.DoTimeChange();
+                if (this.minute % this.update == 0) GameEvents.current.DoNightChange();
 
                 if (this.minute >= 60)
                 {

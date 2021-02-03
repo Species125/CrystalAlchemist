@@ -1,7 +1,4 @@
-﻿
-
-
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CrystalAlchemist
 {
@@ -12,14 +9,13 @@ namespace CrystalAlchemist
 
         public override void DoOnSubmit()
         {
-            this.player.transform.position = this.playerPosition;
-            this.player.SetDefaultDirection();
+            this.player.transform.position = this.playerPosition;            
             MenuEvents.current.OpenCharacterCreation();
+            Invoke("SetDefaultDirection", 0.3f);
         }
 
-        public void ChangeCharacterDirection(Vector2 direction)
-        {
-            this.player.ChangeDirection(direction);
-        }
+        private void SetDefaultDirection() => this.player.SetDefaultDirection();        
+
+        public void ChangeCharacterDirection(Vector2 direction) => this.player.ChangeDirection(direction); //signal
     }
 }

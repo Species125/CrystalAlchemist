@@ -30,8 +30,8 @@ namespace CrystalAlchemist
         public override void Start()
         {
             base.Start();
-            SetText(teleportList.GetLastTeleport(), this.returnIcon, this.returnName);
-            SetText(teleportList.GetNextTeleport(), this.lastIcon, this.lastName);
+            SetText(teleportList.GetReturnTeleport(), this.returnIcon, this.returnName);
+            SetText(teleportList.GetLatestTeleport(), this.lastIcon, this.lastName);
         }
 
         private void SetText(TeleportStats stats, Image image, TextMeshProUGUI textField)

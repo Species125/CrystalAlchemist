@@ -26,13 +26,20 @@ namespace CrystalAlchemist
 
         [SerializeField]
         [BoxGroup("Debug")]
+        [ReadOnly]
+        private bool debug = false;
+
+        [SerializeField]
+        [ShowIf("debug")]
+        [BoxGroup("Debug")]
+        [ReadOnly]
         private string mainTarget;
 
         [SerializeField]
+        [ShowIf("debug")]
         [BoxGroup("Debug")]
+        [ReadOnly]
         private List<string> aggrodata = new List<string>();
-
-
 
         private int ID;
 
@@ -54,9 +61,9 @@ namespace CrystalAlchemist
 
             //if (!NetworkUtil.IsMaster()) return;
 
-            GameEvents.current.OnAggroHit += increaseAggroOnHit;
-            GameEvents.current.OnAggroIncrease += increaseAggro;
-            GameEvents.current.OnAggroDecrease += decreaseAggro;
+            GameEvents.current.OnAggroHit += _IncreaseAggroOnHit;
+            GameEvents.current.OnAggroIncrease += _IncreaseAggro;
+            GameEvents.current.OnAggroDecrease += _DecreaseAggro;
             GameEvents.current.OnAggroClear += ClearAggro;
         }
 
@@ -64,9 +71,9 @@ namespace CrystalAlchemist
         {
             //if (!NetworkUtil.IsMaster()) return;
 
-            GameEvents.current.OnAggroHit -= increaseAggroOnHit;
-            GameEvents.current.OnAggroIncrease -= increaseAggro;
-            GameEvents.current.OnAggroDecrease -= decreaseAggro;
+            GameEvents.current.OnAggroHit -= _IncreaseAggroOnHit;
+            GameEvents.current.OnAggroIncrease -= _IncreaseAggro;
+            GameEvents.current.OnAggroDecrease -= _DecreaseAggro;
             GameEvents.current.OnAggroClear -= ClearAggro;
         }
 
@@ -75,7 +82,8 @@ namespace CrystalAlchemist
             //if (!NetworkUtil.IsMaster()) return;
 
             if (this.GetComponent<CircleCollider2D>() == null) RotationUtil.rotateCollider(this.npc, this.gameObject);
-            generateAggro();
+            GenerateAggro();
+            DebugAggro();
         }
 
         #endregion
@@ -101,13 +109,15 @@ namespace CrystalAlchemist
         {
             PhotonNetwork.NetworkingClient.EventReceived -= NetworkingAggroEvent;
 
-            this.npc.targetID = 0;
+            this.npc.ClearMainTarget();
             this.HideClue();
             this.npc.aggroList.Clear();
         }
 
         private bool IsValidTarget(int ID)
         {
+            if (ID <= 0) return false;
+
             Character target = NetworkUtil.GetCharacter(ID);
 
             if (target == null
@@ -119,59 +129,61 @@ namespace CrystalAlchemist
             return true;
         }
 
-        private void generateAggro()
+        private void DebugAggro()
         {
-            List<int> charactersToRemove = new List<int>();
-            int currentTargetID = this.npc.targetID;
+            if (!this.debug) return;
 
-            Character c = NetworkUtil.GetCharacter(currentTargetID);
+            Character c = NetworkUtil.GetCharacter(this.npc.GetMainTargetID());
             if (c != null) this.mainTarget = c.name;
             else this.mainTarget = "none";
-
-            if (this.npc.targetID > 0 && !IsValidTarget(currentTargetID))
-            {
-                this.npc.aggroList.Remove(currentTargetID);
-                this.npc.targetID = 0;
-            }
 
             this.aggrodata.Clear();
 
             foreach (KeyValuePair<int, float[]> entry in this.npc.aggroList)
             {
-                int character = entry.Key;
+                Character character = NetworkUtil.GetCharacter(entry.Key);
+                string characterName = "" + entry.Key;
+                if (character != null) characterName = character.name;
+                this.aggrodata.Add(characterName + " -> Amount: " + entry.Value[0] + " Factor: " + entry.Value[1]); //ERROR
+            }
+        }
+
+        private void GenerateAggro()
+        {
+            List<int> charactersToRemove = new List<int>();
+
+            if (!IsValidTarget(this.npc.GetMainTargetID()))
+            {
+                this.npc.aggroList.Remove(this.npc.GetMainTargetID());
+                this.npc.ClearMainTarget();
+            }
+
+            foreach (KeyValuePair<int, float[]> entry in this.npc.aggroList)
+            {
+                int characterID = entry.Key;
 
                 //                       amount                         factor
-                addAggro(character, this.npc.aggroList[character][1] * (Time.deltaTime * this.npc.values.timeDistortion));
+                addAggro(characterID, this.npc.aggroList[characterID][1] * (Time.deltaTime * this.npc.values.timeDistortion));
 
-                this.aggrodata.Add(NetworkUtil.GetCharacter(entry.Key).name + " -> Amount: " + entry.Value[0] + " Factor: " + entry.Value[1]);
-                
-
-                //if (this.npc.aggroList[character][0] > 0) Debug.Log(this.npc.GetCharacterName() + " hat " + this.npc.aggroList[character][0] + " Aggro auf" + character);
-
-                if (this.npc.aggroList[character][0] >= this.needed)
-                {
-                    //this.enemy.aggroList[character][0] = 1f; //aggro                             
-
-                    //Aggro max, Target!
-                    if (this.npc.targetID == 0)
-                    {
-                        StartCoroutine(switchTargetCo(0, character));
-                    }
+                if (this.npc.aggroList[characterID][0] >= this.needed) //Aggro max, Target!
+                {                    
+                    if (!this.npc.HasMainTarget()) StartCoroutine(SwitchTargetCo(0, characterID)); //Hautpziel weg, neues Ziel suchen!
                     else
                     {
-                        if (this.npc.aggroList[currentTargetID][1] < this.npc.aggroList[character][1])
+                        if (this.npc.aggroList.ContainsKey(this.npc.GetMainTargetID()) //Neues Ziel mehr Aggro als Hauptziel -> Switch
+                         && this.npc.aggroList[this.npc.GetMainTargetID()][1] < this.npc.aggroList[characterID][1])
                         {
-                            StartCoroutine(switchTargetCo(this.aggroStats.targetChangeDelay, character));
+                            StartCoroutine(SwitchTargetCo(this.aggroStats.targetChangeDelay, characterID));
                         }
                     }
                 }
-                else if (this.npc.aggroList[character][0] <= 0)
+                else if (this.npc.aggroList[characterID][0] <= 0)
                 {
-                    this.npc.aggroList[character][0] = 0; //aggro   
+                    this.npc.aggroList[characterID][0] = 0; //aggro   
 
                     //Aggro lost, Target lost
-                    if (currentTargetID == character) this.npc.targetID = 0;
-                    charactersToRemove.Add(character);
+                    if (this.npc.GetMainTargetID() == characterID) this.npc.ClearMainTarget();
+                    charactersToRemove.Add(characterID);
                     HideClue();
                 }
             }
@@ -183,18 +195,17 @@ namespace CrystalAlchemist
         }
 
 
-        private IEnumerator switchTargetCo(float delay, int character)
+        private IEnumerator SwitchTargetCo(float delay, int character)
         {
             yield return new WaitForSeconds(delay);
-            this.npc.targetID = character;
-            //AggroArrow temp = Instantiate(MasterManager.aggroArrow, this.npc.GetHeadPosition(), Quaternion.identity);
-            //temp.SetTarget(this.npc.target);
+
+            this.npc.SetMainTargetID(character);
             ShowClue(MasterManager.markAttack);
         }
 
         private void ShowClue(AggroClue clue)
         {
-            if (clue == this.activeClue) return;
+            if (clue.name == this.activeClue.name) return;
 
             HideClue();
             this.activeClue = Instantiate(clue, this.npc.GetHeadPosition(), Quaternion.identity, this.npc.transform);
@@ -233,13 +244,21 @@ namespace CrystalAlchemist
         {
             if (this.aggroStats.affections.IsAffected(this.npc, collision))
             {
-                increaseAggro(this.npc, collision.GetComponent<Character>(), this.aggroStats.aggroIncreaseFactor);
+                _IncreaseAggro(this.npc, collision.GetComponent<Character>(), this.aggroStats.aggroIncreaseFactor);
+            }
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (this.aggroStats.affections.IsAffected(this.npc, collision))
+            {
+                _IncreaseAggro(this.npc, collision.GetComponent<Character>(), this.aggroStats.aggroIncreaseFactor);
             }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            decreaseAggro(this.npc, collision.GetComponent<Character>(), this.aggroStats.aggroDecreaseFactor);
+            _DecreaseAggro(this.npc, collision.GetComponent<Character>(), this.aggroStats.aggroDecreaseFactor);
         }
 
         private void ClearAggro(Character character)
@@ -257,11 +276,7 @@ namespace CrystalAlchemist
             int targetID = NetworkUtil.GetID(newTarget);
 
             object[] datas = new object[] { ID, targetID, damage };
-
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
 
             PhotonNetwork.RaiseEvent(code, datas, options, SendOptions.SendUnreliable);
         }
@@ -297,7 +312,7 @@ namespace CrystalAlchemist
             }
         }
 
-        private void increaseAggroOnHit(Character npc, Character newTarget, float damage)
+        private void _IncreaseAggroOnHit(Character npc, Character newTarget, float damage)
         {
             if (!IsValidTarget(npc, newTarget)) return;
             RaiseAggroEvent(this.ID, newTarget, damage, NetworkUtil.AGGRO_ON_HIT);
@@ -311,15 +326,15 @@ namespace CrystalAlchemist
             {
                 addToAggroList(targetID);
 
-                addAggro(targetID, (this.aggroStats.aggroOnHitIncreaseFactor*damage));
+                addAggro(targetID, (this.aggroStats.aggroOnHitIncreaseFactor * damage));
                 if (this.npc.aggroList.Count == 1 && this.aggroStats.firstHitMaxAggro) addAggro(targetID, (this.aggroStats.aggroNeededToTarget + (this.aggroStats.aggroDecreaseFactor * (-1))));
 
                 if (this.npc.aggroList[targetID][1] == 0) setParameterOfAggrolist(targetID, this.aggroStats.aggroDecreaseFactor);
-                if (this.npc.targetID == 0) ShowClue(MasterManager.markTarget);
+                //if (this.npc.mainTargetID == 0) ShowClue(MasterManager.markTarget);
             }
         }
 
-        private void increaseAggro(Character npc, Character newTarget, float aggro)
+        private void _IncreaseAggro(Character npc, Character newTarget, float aggro)
         {
             if (!IsValidTarget(npc, newTarget)) return;
             RaiseAggroEvent(this.ID, newTarget, aggro, NetworkUtil.AGGRO_INCREASE);
@@ -334,11 +349,11 @@ namespace CrystalAlchemist
             {
                 addToAggroList(targetID);
                 setParameterOfAggrolist(targetID, aggroIncrease);
-                if (this.npc.targetID == 0) ShowClue(MasterManager.markTarget);
+                if (!this.npc.HasMainTarget()) ShowClue(MasterManager.markTarget);
             }
         }
 
-        private void decreaseAggro(Character npc, Character newTarget, float aggro)
+        private void _DecreaseAggro(Character npc, Character newTarget, float aggro)
         {
             if (!IsValidTarget(npc, newTarget)) return;
             RaiseAggroEvent(this.ID, newTarget, aggro, NetworkUtil.AGGRO_DECREASE);
@@ -358,7 +373,7 @@ namespace CrystalAlchemist
 
         private bool IsGuestPlayer(Character character)
         {
-            if (character.GetComponent<Player>() != null && !character.GetComponent<Player>().isLocalPlayer) return true;
+            if (character != null && character.GetComponent<Player>() != null && !character.GetComponent<Player>().isLocalPlayer) return true;
             return false;
         }
 

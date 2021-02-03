@@ -50,8 +50,8 @@ namespace CrystalAlchemist
             this.timePlayed = saveGame.timePlayed.GetValue();
             this.characterName = saveGame.GetCharacterName();
 
-            SetStartTeleport(saveGame.teleportList.GetNextTeleport());
-            SetLastTeleport(saveGame.teleportList.GetLastTeleport());
+            SetStartTeleport(saveGame.teleportList.GetLatestTeleport());
+            SetLastTeleport(saveGame.teleportList.GetReturnTeleport());
             SetTeleportList(saveGame.teleportList);
             SetProgress(saveGame.progress);
         }

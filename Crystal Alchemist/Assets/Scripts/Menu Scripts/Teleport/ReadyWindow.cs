@@ -60,8 +60,6 @@ namespace CrystalAlchemist
         [SerializeField]
         private TextMeshProUGUI countDownField;
 
-
-
         private int countDown;
         private List<ReadyWindowBox> boxes = new List<ReadyWindowBox>();
         private TeleportStats stats;
@@ -75,8 +73,7 @@ namespace CrystalAlchemist
         }
 
         private void Inititialize()
-        {
-            NetworkUtil.SetRoomStatus(false);
+        {            
             PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
 
             this.stats = Resources.Load<TeleportStats>(this.path.GetValue());
@@ -85,7 +82,7 @@ namespace CrystalAlchemist
             InvokeRepeating("Updating", 0, 1); //countdown
             this.bar.DOFillAmount(0, this.duration);
 
-            AddBoxes(); //add players to UI
+            UpdateBoxList(); //add players to UI
         }
 
         private void NetworkingEvent(EventData obj)
@@ -100,8 +97,13 @@ namespace CrystalAlchemist
             }            
         }
 
-        private void AddBoxes()
+        private void UpdateBoxList()
         {
+            this.template.gameObject.SetActive(true);
+
+            foreach(ReadyWindowBox box in this.boxes) Destroy(box.gameObject);
+            this.boxes.Clear();
+
             foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
             {
                 Player player = (Player)p.TagObject;
@@ -112,7 +114,7 @@ namespace CrystalAlchemist
                 this.boxes.Add(newBox);
             }
 
-            Destroy(this.template.gameObject);
+            this.template.gameObject.SetActive(false);
         }
 
         private void Updating()
@@ -174,8 +176,7 @@ namespace CrystalAlchemist
 
         public override void ExitMenu()
         {
-            RPCSetReadyStatus(false);
-            NetworkUtil.SetRoomStatus(true);
+            RPCSetReadyStatus(false);            
             base.ExitMenu();
         }
 
@@ -192,13 +193,13 @@ namespace CrystalAlchemist
             int ID = PhotonNetwork.LocalPlayer.GetPlayerNumber();
 
             object[] datas = new object[] { ID, value };
-
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.READY_SET, datas, options, SendOptions.SendUnreliable);
         }
+
+        public override void OnJoinedRoom() => UpdateBoxList();
+        
+        public override void OnLeftRoom() => UpdateBoxList();
     }
 }

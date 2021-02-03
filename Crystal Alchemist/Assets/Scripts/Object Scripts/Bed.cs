@@ -14,10 +14,6 @@ namespace CrystalAlchemist
 
         [BoxGroup("Bett")]
         [SerializeField]
-        private TimeValue time;
-
-        [BoxGroup("Bett")]
-        [SerializeField]
         private float newValue;
 
         [BoxGroup("Bett")]
@@ -58,7 +54,7 @@ namespace CrystalAlchemist
         public override void DoOnSubmit()
         {
             if (!this.isSleeping)
-            {
+            {                
                 this.position = this.player.transform.position;
                 Vector2 position = new Vector2(this.transform.position.x, this.transform.position.y + offset);
 
@@ -70,14 +66,15 @@ namespace CrystalAlchemist
             }
             else
             {
-                GameEvents.current.DoWakeUp(this.position, () => this.time.Reset(), () => PlayerAwake());
+                this.player.myRigidbody.velocity = Vector2.zero;
+                GameEvents.current.DoWakeUp(this.position, () => GameEvents.current.DoTimeReset(), () => PlayerAwake());
                 this.translationID = this.oldID;
             }
         }
 
         private void StartSleeping()
         {
-            this.time.SetFactor(this.newValue);
+            GameEvents.current.DoTimeChange(this.newValue);
             this.isSleeping = true;
         }
 

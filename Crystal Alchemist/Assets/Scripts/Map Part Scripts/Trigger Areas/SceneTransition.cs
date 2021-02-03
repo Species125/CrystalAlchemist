@@ -1,12 +1,11 @@
-﻿using ExitGames.Client.Photon;
-using Photon.Pun;
-using Photon.Realtime;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using Photon.Pun;
+using System.Collections.Generic;
 
 namespace CrystalAlchemist
 {
-    public class SceneTransition : MonoBehaviour
+    public class SceneTransition : NetworkBehaviour
     {
         [BoxGroup("Required")]
         [Required]
@@ -22,39 +21,77 @@ namespace CrystalAlchemist
         [SerializeField]
         private PlayerTeleportList teleportList;
 
-        public void OnTriggerEnter2D(Collider2D other)
+        private PhotonView photon;
+        private int players;
+        private int playerCount;
+
+        private void Start()
+        {
+            this.photon = this.GetComponent<PhotonView>();
+            if (PhotonNetwork.InRoom) this.playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
+        }
+
+        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+        {
+            this.playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
+        }
+
+        public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+        {
+            this.playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
         {
             Player player = other.GetComponent<Player>();
-            if (!NetworkUtil.IsMaster() || !NetworkUtil.IsLocal(player)) return;
+            if (other.isTrigger || !NetworkUtil.IsLocal(player)) return;
 
-            if (!other.isTrigger)
-            {
-                if (this.dialogBox == null) transferToScene();
-                else this.dialogBox.ShowDialogBox();
-            }
+            if (this.dialogBox == null) TransferToScene();
+            else this.dialogBox.ShowDialogBox();
         }
 
-        public void transferToScene()
-        { 
-            if (PhotonNetwork.OfflineMode || PhotonNetwork.PlayerList.Length <= 1)
-            {                
-                this.teleportList.SetNextTeleport(this.stats);
-                GameEvents.current.DoTeleport();  
-            }
-            else ShowReadywindow(this.stats);
-        }
-
-        public void ShowReadywindow(TeleportStats stats)
+        private void OnTriggerExit2D(Collider2D other)
         {
-            object[] datas = new object[] { stats.path };
+            Player player = other.GetComponent<Player>();
+            if (other.isTrigger || !NetworkUtil.IsLocal(player)) return;
 
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
-
-            PhotonNetwork.RaiseEvent(NetworkUtil.READY_SHOW, datas, options, SendOptions.SendUnreliable);
+            SetPlayer(-1);
         }
+
+        public void SetTeleport(TeleportStats stats)
+        {
+            this.stats = stats;
+            this.teleportList.SetAnimation(true, true);
+        }
+
+        public void TransferToScene() => SetPlayer(1);
+
+        private void SetPlayer(int value)
+        {
+            if (!PhotonNetwork.IsConnected) return;
+            this.photon.RPC("RpcSetPlayer", RpcTarget.All, value);
+        }
+
+        [PunRPC]
+        protected void RpcSetPlayer(int value)
+        {
+            this.players += value;
+
+            if (this.players < this.playerCount) return;
+
+            this.teleportList.SetNextTeleport(this.stats);
+            GameEvents.current.DoTeleport();
+        }
+
+        /*
+        private void ShowPoints()
+        {
+            for (int i = 1; i <= this.points.Count; i++)
+            {
+                if (i <= this.players) this.points[i - 1].SetActive(true);
+                else this.points[i - 1].SetActive(false);
+            }
+        }*/
     }
 }
 

@@ -14,7 +14,7 @@ namespace CrystalAlchemist
         {
             //Cursor.visible = false;
             this.saveGame.teleportList.SetNextTeleport(this.startTeleport);
-            GameEvents.current.DoChangeScene(this.saveGame.teleportList.GetNextTeleport().scene);
+            GameEvents.current.DoChangeScene(this.saveGame.teleportList.GetLatestTeleport().scene);
         }
     }
 }

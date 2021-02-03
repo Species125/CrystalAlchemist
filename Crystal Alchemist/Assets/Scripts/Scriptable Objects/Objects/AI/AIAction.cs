@@ -7,6 +7,41 @@ namespace CrystalAlchemist
     [System.Serializable]
     public class AIAction
     {
+        public enum AbilityOverrideType
+        {
+            casttime,
+            castbar,
+            cooldown,
+            indicator,
+            repeat
+        }
+
+        [System.Serializable]
+        public class AbilityOverride
+        {
+            public AbilityOverrideType type;
+
+            [ShowIf("type", AbilityOverrideType.castbar)]            
+            public bool value;
+
+            [HideIf("type", AbilityOverrideType.indicator)]
+            [HideIf("type", AbilityOverrideType.castbar)]
+            [HideIf("type", AbilityOverrideType.repeat)]            
+            public float time;
+
+            [ShowIf("type", AbilityOverrideType.repeat)]            
+            public int amount;
+
+            [ShowIf("type", AbilityOverrideType.repeat)]
+            [HorizontalGroup("Temp")]
+            public bool keepCast;
+
+            [ShowIf("type", AbilityOverrideType.repeat)]
+            [HorizontalGroup("Temp")]
+            public float delay = 0f;
+        }
+
+
         public enum AIActionType
         {
             movement,
@@ -20,7 +55,8 @@ namespace CrystalAlchemist
             cannotDie,
             animation,
             signal,
-            music
+            music,
+            interruptAll
         }
 
         private enum MusicMode
@@ -58,8 +94,8 @@ namespace CrystalAlchemist
         [HideIf("type", AIActionType.animation)]
         [HideIf("type", AIActionType.cannotDie)]
         [HideIf("type", AIActionType.ability)]
-        //[HideIf("type", AIActionType.sequence)]
         [HideIf("type", AIActionType.kill)]
+        [HideIf("type", AIActionType.interruptAll)]
         [HideIf("type", AIActionType.signal)]
         [HideIf("type", AIActionType.invincible)]
         [HideIf("type", AIActionType.music)]
@@ -106,80 +142,17 @@ namespace CrystalAlchemist
         [SerializeField]
         private bool multiCast; //sequence only
 
+        [BoxGroup("Properties")]
         [ShowIf("type", AIActionType.ability)]
-        [HorizontalGroup("Properties/Cast")]
         [SerializeField]
-        private bool overrideCastTime = false;
-
-        [ShowIf("type", AIActionType.ability)]
-        [ShowIf("overrideCastTime")]
-        [HorizontalGroup("Properties/Cast")]
-        [SerializeField]
-        private float castTime = 0;
-
-        [ShowIf("type", AIActionType.ability)]
-        [HorizontalGroup("Properties/CastBar")]
-        [SerializeField]
-        private bool overrideShowCastBar = false;
-
-        [ShowIf("type", AIActionType.ability)]
-        [ShowIf("overrideShowCastBar")]
-        [HorizontalGroup("Properties/CastBar")]
-        [SerializeField]
-        private bool showCastBar = false;
-
-        [ShowIf("type", AIActionType.ability)]
-        [HorizontalGroup("Properties/Cooldown")]
-        [SerializeField]
-        private bool overrideCooldown;
-
-        [ShowIf("type", AIActionType.ability)]
-        [ShowIf("overrideCooldown")]
-        [HorizontalGroup("Properties/Cooldown")]
-        [SerializeField]
-        private float cooldown = 0;
-
-        [ShowIf("type", AIActionType.ability)]
-        [HorizontalGroup("Properties/Repeat")]
-        [SerializeField]
-        [Tooltip("Repeat Ability?")]
-        private bool repeat = false;
-
-        [ShowIf("type", AIActionType.ability)]
-        [ShowIf("repeat")]
-        [HorizontalGroup("Properties/Repeat")]
-        [Tooltip("Amount of Ability repeated")]
-        [SerializeField]
-        [MinValue(1)]
-        private int amount = 1;
-
-        [ShowIf("type", AIActionType.ability)]
-        [HorizontalGroup("Properties/Repeat2")]
-        [ShowIf("repeat")]
-        [Tooltip("Keep Cast during repeat")]
-        [SerializeField]
-        private bool keepCast = false;
-
-        [ShowIf("type", AIActionType.ability)]
-        [ShowIf("repeat")]
-        [HorizontalGroup("Properties/Repeat2")]
-        [Tooltip("Delay between Skills")]
-        [SerializeField]
-        [MinValue(0)]
-        private float delay = 0f;
-
-        /*
-    [ShowIf("type", AIActionType.sequence)]
-    [BoxGroup("Properties")]
-    [SerializeField]
-    private SkillSequence sequence;*/
+        private List<AbilityOverride> overrides = new List<AbilityOverride>();
 
         [HideIf("type", AIActionType.ability)]
-        //[HideIf("type", AIActionType.sequence)]
         [HideIf("type", AIActionType.movement)]
         [HideIf("type", AIActionType.startPhase)]
         [HideIf("type", AIActionType.endPhase)]
         [HideIf("type", AIActionType.kill)]
+        [HideIf("type", AIActionType.interruptAll)]
         [HideIf("type", AIActionType.dialog)]
         [HideIf("type", AIActionType.wait)]
         [HideIf("type", AIActionType.signal)]
@@ -196,6 +169,7 @@ namespace CrystalAlchemist
 
         [HideIf("type", AIActionType.wait)]
         [HideIf("type", AIActionType.kill)]
+        [HideIf("type", AIActionType.interruptAll)]
         [BoxGroup("Properties")]
         [SerializeField]
         private float wait = 0f;
@@ -230,6 +204,9 @@ namespace CrystalAlchemist
         private Ability activeAbility;
         private int counter = 0;
         private int targetIndex = 0;
+        private int _amount = 1;
+        private bool _keepCast = false;
+        private float _delay = 0;
 
         //TODO: Add status effect
 
@@ -265,6 +242,7 @@ namespace CrystalAlchemist
                 case AIActionType.signal: StartSignal(); break;
                 case AIActionType.music: StartMusic(); break;
                 case AIActionType.movement: StartMovement(npc); break;
+                case AIActionType.interruptAll: StartInterrupt(); break;
             }
         }
 
@@ -312,21 +290,39 @@ namespace CrystalAlchemist
         {
             this.targetIndex = 0;
             this.counter = 0;
+            this._amount = 1;
 
             this.activeAbility = Object.Instantiate(this.ability);
 
-            if (this.overrideCastTime)
+            foreach(AbilityOverride _override in this.overrides)
             {
-                this.activeAbility.castTime = this.castTime;
-                if (this.activeAbility.castTime > 0) this.activeAbility.hasCastTime = true;
-                else this.activeAbility.hasCastTime = false;
+                if (_override.type == AbilityOverrideType.castbar)
+                {
+                    this.activeAbility.showCastbar = _override.value;
+                }
+                else if (_override.type == AbilityOverrideType.casttime)
+                {
+                    this.activeAbility.castTime = _override.time;
+                    if (this.activeAbility.castTime > 0) this.activeAbility.hasCastTime = true;
+                    else this.activeAbility.hasCastTime = false;
+                }
+                else if (_override.type == AbilityOverrideType.cooldown)
+                {
+                    this.activeAbility.cooldown = _override.time;
+                }
+                else if (_override.type == AbilityOverrideType.indicator)
+                {
+                    this.activeAbility.useIndicator = Ability.IndicatorType.None;
+                }
+                else if (_override.type == AbilityOverrideType.repeat)
+                {
+                    this._amount = _override.amount;
+                    this._keepCast = _override.keepCast;
+                    this._delay = _override.delay;
+                }
             }
-            if (this.overrideShowCastBar) this.activeAbility.showCastbar = this.showCastBar;
-            if (this.overrideCooldown) this.activeAbility.cooldown = this.cooldown;
 
-            this.activeAbility = AbilityUtil.InstantiateAbility(this.activeAbility, npc);
-
-            if (!this.repeat) this.amount = 1;
+            this.activeAbility = AbilityUtil.InstantiateAbility(this.activeAbility, npc);            
         }
 
         private void UpdateSkill(AI npc)
@@ -344,7 +340,7 @@ namespace CrystalAlchemist
                          || this.activeAbility.state == AbilityState.ready) UseSkill(npc);
             }
 
-            if (this.counter >= this.amount)
+            if (this.counter >= this._amount)
             {
                 if (this.targetMode != TargetMode.allSequence) DisableSkill(npc);
                 else
@@ -372,7 +368,7 @@ namespace CrystalAlchemist
 
         private void CheckTargets(AI npc)
         {
-            if (!this.activeAbility.IsTargetRequired() && npc.targetID > 0)
+            if (!this.activeAbility.IsTargetRequired() && npc.HasMainTarget())
                 this.activeAbility.state = AbilityState.ready; //SingleTarget
             else this.activeAbility.state = AbilityState.ready; //Target from TargetingSystem                
         }
@@ -397,10 +393,10 @@ namespace CrystalAlchemist
                 combat.HideTargetingSystem(this.activeAbility);
             }
 
-            this.elapsed = this.delay;
+            this.elapsed = this._delay;
             this.counter++;
 
-            if (!this.keepCast)
+            if (!this._keepCast)
             {
                 combat.HideTargetingSystem(this.activeAbility);
                 combat.UnChargeAbility(this.activeAbility); //reset Charge
@@ -543,6 +539,17 @@ namespace CrystalAlchemist
         #region Movement
 
         private void StartMovement(AI npc) => npc.MoveCharacters(this.position, this.duration);
+
+        #endregion
+
+
+        #region Interrupt
+
+        private void StartInterrupt()
+        {
+            GameEvents.current.DoInterrupt();
+            Deactivate();
+        }
 
         #endregion
     }

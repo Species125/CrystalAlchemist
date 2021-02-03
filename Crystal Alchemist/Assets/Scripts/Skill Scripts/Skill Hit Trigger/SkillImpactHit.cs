@@ -124,7 +124,7 @@ namespace CrystalAlchemist
 
         private void hitTargetCollision(Collider2D hittedCharacter)
         {
-            if (CollisionUtil.checkCollision(hittedCharacter, this.skill))
+            if (CollisionUtil.CheckCollision(hittedCharacter, this.skill))
             {
                 if (this.type == aoeType.hide)
                 {

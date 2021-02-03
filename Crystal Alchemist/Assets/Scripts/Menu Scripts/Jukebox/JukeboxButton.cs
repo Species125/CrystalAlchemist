@@ -6,6 +6,7 @@ namespace CrystalAlchemist
 {
     public class JukeboxButton : MonoBehaviour
     {
+        [SerializeField]
         private MusicTheme theme;
 
         [SerializeField]

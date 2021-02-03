@@ -57,12 +57,17 @@ namespace CrystalAlchemist
             return true;
         }
 
-        public static bool checkCollision(Collider2D hittedCharacter, Skill skill)
+        public static bool CheckCollision(Collider2D hittedCharacter, Skill skill)
         {
-            return checkCollision(hittedCharacter, skill, skill.sender);
+            return CheckCollision(hittedCharacter, skill, skill.sender);
         }
 
-        public static bool checkCollision(Collider2D other, Skill skill, Character sender)
+        public static bool CheckCollisionDead(Collider2D hittedCharacter, Skill skill)
+        {
+            return CheckCollisionDead(hittedCharacter, skill, skill.sender);
+        }
+
+        public static bool CheckCollision(Collider2D other, Skill skill, Character sender)
         {
             if (skill != null && skill.GetTriggerActive())
             {
@@ -75,6 +80,28 @@ namespace CrystalAlchemist
 
                     if (hittedCharacter != null &&
                         targetModule.affections.IsAffected(sender, other)) return true;
+
+                    Skill hittedSkill = AbilityUtil.getSkillByCollision(other.gameObject);
+                    return targetModule.affections.isSkillAffected(skill, hittedSkill);
+                }
+            }
+
+            return false;
+        }
+
+        public static bool CheckCollisionDead(Collider2D other, Skill skill, Character sender)
+        {
+            if (skill != null && skill.GetTriggerActive())
+            {
+                SkillTargetModule targetModule = skill.GetComponent<SkillTargetModule>();
+
+                if (targetModule != null)
+                {
+                    Character hittedCharacter = null;
+                    if (!other.isTrigger) hittedCharacter = other.GetComponent<Character>();
+
+                    if (hittedCharacter != null &&
+                        targetModule.affections.IsDeadAffected(sender, other)) return true;
 
                     Skill hittedSkill = AbilityUtil.getSkillByCollision(other.gameObject);
                     return targetModule.affections.isSkillAffected(skill, hittedSkill);

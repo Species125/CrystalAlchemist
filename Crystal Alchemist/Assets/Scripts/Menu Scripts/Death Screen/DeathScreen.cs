@@ -2,23 +2,19 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using Photon.Pun;
 
 namespace CrystalAlchemist
 {
-    public class DeathScreen : MonoBehaviourPunCallbacks
+    public class DeathScreen : MonoBehaviour
     {
-        //TODO: Change buttons depending on offline or online...
-        //READY CHECK
+        [BoxGroup("Mandatory")]
+        [Required]
+        [SerializeField]
+        private PlayerTeleportList playerTeleport;
 
         [BoxGroup("Mandatory")]
         [SerializeField]
         private BoolValue CutSceneValue;
-
-        [BoxGroup("Mandatory")]
-        [SerializeField]
-        private PlayerTeleportList playerTeleport;
 
         [BoxGroup("Music")]
         [SerializeField]
@@ -34,51 +30,39 @@ namespace CrystalAlchemist
 
         [BoxGroup("Mandatory")]
         [SerializeField]
-        private CustomCursor cursor;
-
-        [BoxGroup("Mandatory")]
-        [SerializeField]
         private TextMeshProUGUI textField;
 
         [BoxGroup("Mandatory")]
         [SerializeField]
-        private TextMeshProUGUI countDown;
+        private GameObject controls;
 
         [BoxGroup("Mandatory")]
         [SerializeField]
-        private GameObject returnTitleScreen;
-
-        [BoxGroup("Mandatory")]
-        [SerializeField]
-        private GameObject returnSavePoint;
-
-        [BoxGroup("Mandatory")]
-        [SerializeField]
-        private GameObject returnLastPoint;
-
-        [BoxGroup("Time")]
-        [SerializeField]
-        private float timer = 30;
-
-        [BoxGroup("Time")]
-        [SerializeField]
-        private float textDelay = 0.1f;
+        private GameObject restart;
 
         [BoxGroup("Time")]
         [SerializeField]
         private float cursorDelay = 2f;
 
+        [BoxGroup("Time")]
+        [SerializeField]
+        private float textDelay = 0.1f;
+
         private string currentText;
         private string fullText;
         private bool skip = false;
-        private bool inputPossible = false;
-        private bool startCountdown = false;
+
+        private void Awake()
+        {
+            if (NetworkUtil.IsMaster()) NetworkEvents.current.SetNextTeleport(this.playerTeleport.GetLatestTeleport());
+            this.textField.gameObject.SetActive(false);
+            this.controls.SetActive(false);
+            this.restart.SetActive(false);
+        }
 
         private void Start()
         {
-            Invoke("ReturnToTitleScreen", 60);
-
-            this.CutSceneValue.setValue(true);
+            this.CutSceneValue.SetValue(true);
             GameEvents.current.DoCutScene();
             MusicEvents.current.StopMusic(this.fadeOut);
             MenuEvents.current.DoPostProcessingFade(ShowText);
@@ -89,61 +73,13 @@ namespace CrystalAlchemist
 
         private void Skip() => this.skip = true;
 
-        private void Update()
-        {
-            if (this.startCountdown)
-            {
-                if (this.timer <= 0) ReturnToTitleScreen();
-                else this.timer -= Time.deltaTime;
-                this.countDown.text = (int)this.timer + "s";
-            }
-        }
-
         private void ShowText()
         {
-            this.inputPossible = true;
             MusicEvents.current.PlayMusicOnce(this.deathMusic, 0, this.fadeIn);
             this.textField.gameObject.SetActive(true);
             this.fullText = this.textField.text;
-            StartCoroutine(this.ShowTextCo(this.textDelay));
-        }
 
-        public void ShowButtons()
-        {
-            this.cursor.gameObject.SetActive(true);
-            this.returnTitleScreen.SetActive(true);
-            if (this.playerTeleport.HasLast()) this.returnSavePoint.SetActive(true);
-            if (this.playerTeleport.HasNext()) this.returnLastPoint.SetActive(true);
-            startCountdown = true;
-        }
-
-        private void DisableButtons()
-        {
-            this.returnLastPoint.SetActive(false);
-            this.returnSavePoint.SetActive(false);
-            this.returnTitleScreen.SetActive(false);
-            this.cursor.gameObject.SetActive(false);
-            this.textField.gameObject.SetActive(false);
-        }
-
-        public void ReturnToTitleScreen()
-        {
-            DisableButtons();
-            SceneManager.LoadSceneAsync(0);
-        }
-
-        public void ReturnSaveGame()
-        {
-            DisableButtons();
-            this.playerTeleport.SetReturnTeleport();
-            GameEvents.current.DoTeleport();
-        }
-
-        public void ReturnLastPoint()
-        {
-            DisableButtons();
-            this.playerTeleport.SetAnimation(true, true);
-            GameEvents.current.DoTeleport();
+            StartCoroutine(this.ShowTextCo(this.textDelay));            
         }
 
         private IEnumerator ShowTextCo(float delay)
@@ -162,7 +98,7 @@ namespace CrystalAlchemist
 
                 if (i >= this.fullText.Length)
                 {
-                    StartCoroutine(showButtonCo(this.cursorDelay));
+                    Invoke("EnableOptions", this.cursorDelay);
                     break;
                 }
 
@@ -170,10 +106,10 @@ namespace CrystalAlchemist
             }
         }
 
-        private IEnumerator showButtonCo(float delay)
+        private void EnableOptions()
         {
-            yield return new WaitForSeconds(delay);
-            ShowButtons();
+            if (NetworkUtil.IsSolo()) this.controls.SetActive(true);
+            else this.restart.SetActive(true);
         }
     }
 }

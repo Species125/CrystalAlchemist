@@ -1,7 +1,6 @@
 ﻿using DG.Tweening;
 using Photon.Pun;
 using Sirenix.OdinInspector;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,9 +51,6 @@ namespace CrystalAlchemist
         [Required]
         public GameObject activeStatusEffectParent;
 
-        [HideInInspector]
-        public Action OnDeath;
-
         #endregion
 
         #region Attributes
@@ -67,18 +63,23 @@ namespace CrystalAlchemist
         private Vector3 spawnPosition;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         public List<StatusEffectGameObject> statusEffectVisuals = new List<StatusEffectGameObject>();
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         public CharacterStats stats;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         public CharacterValues values;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         public bool IsSummoned = false;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         public string characterName;
 
         #endregion
@@ -133,6 +134,17 @@ namespace CrystalAlchemist
             if (this.boxCollider != null) this.boxCollider.enabled = true;
 
             if (this.stats.hasSelfDestruction) this.selfDestructionElapsed = this.stats.selfDestructionTimer;
+        }
+
+        public virtual void Revive()
+        {
+            this.ResetValues();
+            this.values.currentState = CharacterState.idle;
+
+            UpdateResource(new CharacterResource(CostType.life, 0.25f),true);
+            UpdateResource(new CharacterResource(CostType.mana, 0.25f), true);
+
+            AnimatorUtil.SetAnimatorParameter(this.animator, "Dead", false);
         }
 
         public void InitializeAddSpawn()
@@ -451,9 +463,7 @@ namespace CrystalAlchemist
             SkillTargetModule targetModule = skill.GetComponent<SkillTargetModule>();            
             Character sender = skill.sender;
 
-            if (sender.IsGuestPlayer() //no guestplayer hits
-                || targetModule == null
-                || this.values.currentState == CharacterState.dead) return;
+            if (targetModule == null || this.values.currentState == CharacterState.dead) return;
 
             bool ignore = targetModule.affections.CanIgnoreInvinvibility();
             if (!ignore && this.values.cantBeHit) return;
@@ -476,6 +486,7 @@ namespace CrystalAlchemist
             foreach (string elem in resourcesArray) resources.Add(new CharacterResource(elem));
 
             Character sender = NetworkUtil.GetCharacter(senderID);
+
             GetDamage(sender, resources, position, percentage, knockback, thrust, duration);
         }
 
@@ -514,9 +525,16 @@ namespace CrystalAlchemist
         }
 
         [Button]
-        public void KillIt() => this.KillCharacter(this); //KillIt(true);
+        public void KillIt() => this.KillIt(true);
 
-        public void KillIt(bool showAnimation) => this.KillCharacter(this, showAnimation);//KillCharacter(showAnimation);
+        public void KillIt(bool showAnimation) => this.photonView.RPC("RpcKillCharacterMaster", RpcTarget.MasterClient, showAnimation);        
+
+        [PunRPC]
+        protected void RpcKillCharacterMaster(bool value) => this.photonView.RPC("RpcKillCharacter", RpcTarget.All, value);        
+
+        [PunRPC]
+        protected void RpcKillCharacter(bool value) => KillCharacter(value);
+        
 
         public virtual void KillCharacter(bool animate)
         {
@@ -547,11 +565,10 @@ namespace CrystalAlchemist
             DestroyItWithoutDrop();
         }
 
-        public void DestroyItWithoutDrop()
-        {
-            this.OnDeath?.Invoke();
+        public virtual void DestroyItWithoutDrop()
+        {            
             if (this.stats.hasRespawn) this.gameObject.SetActive(false);
-            else PhotonNetwork.Destroy(this.gameObject);
+            else Destroy(this.gameObject);
         }
 
         #endregion
@@ -767,6 +784,9 @@ namespace CrystalAlchemist
 
         public virtual void AddStatusEffectVisual(StatusEffect effect)
         {
+            int amount = StatusEffectUtil.GetAmount(effect, this);
+            if (amount > 1 || effect == null) return;
+
             if (effect.CanChangeColor()) ChangeColor(effect.GetColor());
             if (effect.CanInvertColor()) InvertColor(true);
             if (GetVisualEffect(effect) == null) effect.AddVisuals(this.activeStatusEffectParent);
@@ -774,10 +794,17 @@ namespace CrystalAlchemist
 
         public virtual void RemoveStatusEffectVisual(StatusEffect effect)
         {
+            int amount = StatusEffectUtil.GetAmount(effect, this);
+            if (amount > 1 || effect == null) return;
+
             StatusEffectGameObject visual = GetVisualEffect(effect);
             if (effect.changeColor) this.RemoveColor(effect.statusEffectColor);
             if (effect.invertColor) this.InvertColor(false);
-            if (visual != null) this.statusEffectVisuals.Remove(visual);
+            if (visual != null)
+            {                
+                this.statusEffectVisuals.Remove(visual);
+                Destroy(visual.gameObject);
+            }
         }
 
         private void UpdatingStatusEffects(List<StatusEffect> effects)
@@ -815,29 +842,6 @@ namespace CrystalAlchemist
 
         #region Networking
 
-        public void KillCharacter(Character target) //Kill on Master -> all Clients
-        {
-            KillCharacter(target, true);
-        }
-
-        private void KillCharacter(Character target, bool value)
-        {
-            int targetID = target.gameObject.GetPhotonView().ViewID;
-            this.photonView.RPC("RpcKillCharacterMaster", RpcTarget.MasterClient, targetID, value);
-        }
-
-        [PunRPC]
-        protected void RpcKillCharacterMaster(int targetID, bool value, PhotonMessageInfo info)
-        {
-            this.photonView.RPC("RpcKillCharacter", RpcTarget.All, targetID, value);
-        }
-
-        [PunRPC]
-        protected void RpcKillCharacter(int targetID, bool value, PhotonMessageInfo info)
-        {
-            Character target = NetworkUtil.GetCharacter(targetID);
-            if (target != null) target.KillCharacter(value);
-        }
 
         public virtual void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
@@ -845,16 +849,6 @@ namespace CrystalAlchemist
             {
                 stream.SendNext(this.values.direction);
                 stream.SendNext(this.myRigidbody.velocity);
-
-                /*
-                stream.SendNext(this.values.life);
-                stream.SendNext(this.values.mana);
-
-                stream.SendNext(this.values.maxLife);
-                stream.SendNext(this.values.maxMana);                
-
-                stream.SendNext(this.characterName);
-                */
                 stream.SendNext(this.isVisible);
                 stream.SendNext(this.values.cantBeHit);
                 stream.SendNext(this.values.isInvincible);
@@ -864,16 +858,6 @@ namespace CrystalAlchemist
             {
                 this.values.direction = (Vector2)stream.ReceiveNext();
                 this.myRigidbody.velocity = (Vector2)stream.ReceiveNext();
-
-                /*
-                this.values.life = (float)stream.ReceiveNext();
-                this.values.mana = (float)stream.ReceiveNext();
-
-                this.values.maxLife = (float)stream.ReceiveNext();
-                this.values.maxMana = (float)stream.ReceiveNext();
-                
-                this.characterName = (string)stream.ReceiveNext();
-                */
                 this.isVisible = (bool)stream.ReceiveNext();
                 this.values.cantBeHit = (bool)stream.ReceiveNext();
                 this.values.isInvincible = (bool)stream.ReceiveNext();

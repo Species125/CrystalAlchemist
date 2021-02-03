@@ -1,5 +1,4 @@
 ﻿using Sirenix.OdinInspector;
-using System.Collections;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -25,13 +24,7 @@ namespace CrystalAlchemist
         {
             if (this.collectAll) return;
             counter++;
-            if (counter >= this.maxAmount) StartCoroutine(disableCo());
-        }
-
-        private IEnumerator disableCo()
-        {
-            yield return new WaitForEndOfFrame();
-            this.gameObject.SetActive(false);
+            if (counter >= this.maxAmount) this.gameObject.SetActive(false);
         }
     }
 }

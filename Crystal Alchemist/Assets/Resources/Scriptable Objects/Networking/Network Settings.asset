@@ -12,15 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1541d90521619464891cf2301a53d6b3, type: 3}
   m_Name: Network Settings
   m_EditorClassIdentifier: 
-  offlineMode: 1
+  offlineMode: {fileID: 11400000, guid: 8a268e11288e0554b9b082b035513e48, type: 2}
+  gotKicked: {fileID: 11400000, guid: 6cc3c999928e75342be410cf72df2212, type: 2}
   sendRate: 10
   serializationRate: 10
   nickname: Gungnir
   uniqueID: 4711
   version: 0.0.1
-  maxPlayers: 4
-  roomName: Offline
-  playerPrefab: {fileID: 2934492601526238649, guid: beecbe18451d18a4aa203ee85290faff,
-    type: 3}
-  playerName: {fileID: 11400000, guid: b7d7d51acc1e7fd4c825134b5aae5ec7, type: 2}
   currentScene: {fileID: 11400000, guid: b34fa8ed513eae042b02f332a16bef4e, type: 2}

@@ -65,7 +65,7 @@ namespace CrystalAlchemist
 
             if (this.resourceType == CostType.item) this.item = Resources.Load<ItemGroup>(path);
             else if (this.resourceType == CostType.keyItem) this.keyItem = Resources.Load<ItemDrop>(path);
-            else if (this.resourceType == CostType.item) this.statusEffect = Resources.Load<StatusEffect>(path);
+            else if (this.resourceType == CostType.statusEffect) this.statusEffect = Resources.Load<StatusEffect>(path);
         }
 
         public string GetAsString()

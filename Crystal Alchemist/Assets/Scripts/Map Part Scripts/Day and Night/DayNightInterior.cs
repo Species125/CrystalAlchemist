@@ -16,11 +16,11 @@ namespace CrystalAlchemist
 
         private void Start()
         {
-            GameEvents.current.OnTimeChanged += switchInteriorLights;
+            GameEvents.current.OnNightChange += switchInteriorLights;
             switchInteriorLights();
         }
 
-        private void OnDestroy() => GameEvents.current.OnTimeChanged -= switchInteriorLights;
+        private void OnDestroy() => GameEvents.current.OnNightChange -= switchInteriorLights;
 
         public void switchInteriorLights()
         {

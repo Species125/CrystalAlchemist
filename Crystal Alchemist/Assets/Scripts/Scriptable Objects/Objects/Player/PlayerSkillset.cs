@@ -82,7 +82,5 @@ namespace CrystalAlchemist
         {
             foreach (Ability ability in this.abilities) ability.active = value;
         }
-
-
     }
 }

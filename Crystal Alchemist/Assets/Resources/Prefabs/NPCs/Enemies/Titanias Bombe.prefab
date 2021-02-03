@@ -131,6 +131,8 @@ MonoBehaviour:
   useGlow: 0
   glowColor: {r: 1, g: 1, b: 1, a: 1}
   invert: 0
+  useTint: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1592666365359642889
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   myRigidbody: {fileID: 1592666365359642893}
   animator: {fileID: 4671007298509633225}
   boxCollider: {fileID: 662560067376231257}
@@ -214,12 +217,13 @@ MonoBehaviour:
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 662560065627314001}
   activeStatusEffectParent: {fileID: 6174079830825720683}
+  statusEffectVisuals: []
   stats: {fileID: 11400000, guid: 111de9de902cc5e47880fc2eb47930b9, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
   characterName: 
   NPCStats: {fileID: 11400000, guid: 111de9de902cc5e47880fc2eb47930b9, type: 2}
-  target: {fileID: 0}
+  mainTargetID: 0
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &3964420695413562595
@@ -237,6 +241,7 @@ MonoBehaviour:
   character: {fileID: 0}
   startPhase: {fileID: 11400000, guid: 4ce81881eb35d1a4aaed586183faa692, type: 2}
   startImmediately: 0
+  activePhase: {fileID: 0}
 --- !u!61 &662560067376231257
 BoxCollider2D:
   m_ObjectHideFlags: 0

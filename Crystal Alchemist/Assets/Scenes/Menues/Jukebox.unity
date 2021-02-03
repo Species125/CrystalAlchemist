@@ -588,12 +588,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 919052619}
-        m_TargetAssemblyTypeName: JukeboxMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: CrystalAlchemist.JukeboxMenu, Assembly-CSharp
         m_MethodName: PlayMusic
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 363707767}
-          m_ObjectArgumentAssemblyTypeName: JukeboxButton, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: CrystalAlchemist.JukeboxButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Haus
@@ -666,6 +666,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollBar: {fileID: 2068145231}
   cursor: {fileID: 175733141}
+  type: 1
+  start: 2
+  end: 2
 --- !u!1 &581734971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,7 +1103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd77d8620c9fdc84e9905887b28dc789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Jukebox
   changeVolume: 1
   playerValues: {fileID: 11400000, guid: 6762d3fcfc403704ab3f304728a23ccf, type: 2}
   showBlackBackground: 1
@@ -1405,13 +1407,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   themes:
-  - {fileID: 2019777603947980323, guid: dbbb82a56a34a75409f3f1b596be08b9, type: 3}
-  - {fileID: 2019777603947980323, guid: 8d250a0d4cca77f409860d35ed4e30c0, type: 3}
-  - {fileID: 2019777603947980323, guid: 44a8235e8eea02745b42952603313535, type: 3}
-  - {fileID: 2019777603947980323, guid: 8358974a98ecf65478dc7a829c4bb9c3, type: 3}
-  - {fileID: 2019777603947980323, guid: 9eee67c6189a3c043a0c39521f95be2e, type: 3}
-  - {fileID: 2019777603947980323, guid: 7f9031719a7a470478b1adc34f3b2a6a, type: 3}
-  - {fileID: 2019777603947980323, guid: 1701f5f651818bb46b6250d967a30311, type: 3}
+  - {fileID: 11400000, guid: 6720119c87f612d4594d511118a35c53, type: 2}
+  - {fileID: 11400000, guid: 02f13c5266810ea4dbcde2c599e8c52f, type: 2}
+  - {fileID: 11400000, guid: 6575765b38816f9409c77fc31872d31b, type: 2}
+  - {fileID: 11400000, guid: 950a734ba96d6ec4a85c8e8240d649d1, type: 2}
+  - {fileID: 11400000, guid: 8aeaaed2bbc2c5d4ca2b9b85475db668, type: 2}
+  - {fileID: 11400000, guid: 941cc5cb79ca6b144907ed9cc8de0c42, type: 2}
+  - {fileID: 11400000, guid: 711b6ba74fcae4443b6df5532f12078b, type: 2}
+  - {fileID: 11400000, guid: 4884b680a0a33b149bec70c037f356a1, type: 2}
+  - {fileID: 11400000, guid: efb4de896a0ea944f907ee921d281244, type: 2}
   template: {fileID: 363707767}
   content: {fileID: 98151957}
 --- !u!114 &1252973047

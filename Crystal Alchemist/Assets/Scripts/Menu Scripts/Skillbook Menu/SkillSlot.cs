@@ -1,5 +1,4 @@
-﻿
-
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +6,16 @@ namespace CrystalAlchemist
 {
     public class SkillSlot : MonoBehaviour
     {
+        [BoxGroup("Debug")]
+        [ReadOnly]
         public Image image;
+
+        [BoxGroup("Debug")]
+        [ReadOnly]
         public Ability ability;
+
+        [BoxGroup("Debug")]
+        [ReadOnly]
         public int ID;
 
         public int Initialize(int page)

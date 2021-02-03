@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   spriteRenderer: {fileID: 3924551678506968721}
   myRigidbody: {fileID: 0}
   animator: {fileID: 6859513477840706715}
@@ -158,6 +159,7 @@ MonoBehaviour:
     resourceType: 2
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 0.25
   intervallSender: 0.25
   speedDuringCasting: 0
@@ -183,8 +185,8 @@ MonoBehaviour:
   - resourceType: 1
     item: {fileID: 0}
     keyItem: {fileID: 0}
-    amount: -1
-  statusEffects: []
+    statusEffect: {fileID: 0}
+    amount: -2
   modifiers: []
   thrust: 0
   knockbackTime: 0.2

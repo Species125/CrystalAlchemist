@@ -24,19 +24,19 @@ namespace CrystalAlchemist
         [HideIf("progressType", ProgressType.none)]
         [Required]
         [SerializeField]
-        private PlayerGameProgress playerProgress;
-
-        [BoxGroup("Progress")]
-        [HideIf("progressType", ProgressType.none)]
-        [Required]
-        [SerializeField]
         private string gameProgressID;
 
         [BoxGroup("Progress")]
+        [ReadOnly]
+        [SerializeField]
+        private string location;
+
+        [BoxGroup("Progress")]
         [HideIf("progressType", ProgressType.none)]
         [Required]
         [SerializeField]
-        private bool onlyThisArea = false;
+        [OnValueChanged("SetLocation")]
+        private bool addLocation = false;
 
         [BoxGroup("Progress")]
         [ShowIf("progressType", ProgressType.expire)]
@@ -45,36 +45,80 @@ namespace CrystalAlchemist
         [HideLabel]
         private UTimeSpan timespan;
 
-        public bool ContainsProgress()
+        private void SetLocation()
         {
-            if (this.progressType == ProgressType.none) return false;
-
-            string location = SceneManager.GetActiveScene().name;
-            if (!this.onlyThisArea) location = "";
-
-            return this.playerProgress.Contains(location, this.gameProgressID, this.progressType);
+            this.location = SceneManager.GetActiveScene().name;
+            if (!this.addLocation) this.location = "";
         }
 
-        public void AddProgress()
+        public bool ContainsProgress(PlayerGameProgress playerProgress)
         {
-            if (this.progressType == ProgressType.none) return;
-            this.playerProgress.AddProgress(this.gameProgressID, this.progressType, this.timespan, this.onlyThisArea);
+            if (this.progressType == ProgressType.none || playerProgress == null) return false;
+
+            SetLocation();
+
+            return playerProgress.Contains(this.location, this.gameProgressID, this.progressType);
+        }
+
+        public void AddProgress(PlayerGameProgress playerProgress)
+        {
+            if (this.progressType == ProgressType.none || playerProgress == null) return;
+
+            SetLocation();
+
+            playerProgress.AddProgress(this.location, this.gameProgressID, this.progressType, this.timespan);
+        }
+
+        public bool IsSame(ProgressDetails details)
+        {
+            if (details.key == this.gameProgressID
+                && details.location == this.location
+                && details.type == this.progressType) return true;
+
+            return false;
         }
     }
 
     [System.Serializable]
-    public struct ProgressDetails
+    public class ProgressDetails
     {
-        [HorizontalGroup("Group", LabelWidth = 40, MaxWidth = 125, MarginRight = 10)]
+        [BoxGroup("Group")]
+        [ReadOnly]
         public ProgressType type;
-        [HorizontalGroup("Group", LabelWidth = 5, MaxWidth = 150, MarginRight = 10)]
+
+        [SerializeField]
+        [ReadOnly]
+        [BoxGroup("Group")]
+        private string ID;
+
+        [HideInInspector]
         public string key;
-        [HorizontalGroup("Group", LabelWidth = 50, MaxWidth = 150)]
+        [HideInInspector]
         public string location;
 
-
+        [HideInInspector]
         public UDateTime date;
+
+        [HideInInspector]
         public UTimeSpan timespan;
+
+        [SerializeField]
+        [ReadOnly]
+        [BoxGroup("Group")]
+        private string progessDate;
+
+        [SerializeField]
+        [ReadOnly]
+        [BoxGroup("Group")]
+        [ShowIf("type", ProgressType.expire)]
+        private string progressDuration;
+        
+        public void UpdateInspector()
+        {
+            this.ID = this.location + " -> " + this.key;
+            this.progessDate = date.ToString();
+            this.progressDuration = timespan.ToInspector();
+        }
     }
 
     [CreateAssetMenu(menuName = "Game/Player/Game Progress")]
@@ -83,15 +127,23 @@ namespace CrystalAlchemist
         [SerializeField]
         private List<ProgressDetails> progressList = new List<ProgressDetails>();
 
-        public void Initialize()
+        public bool Updating(ProgressValue progressValue = null)
         {
+            bool result = false;
+
             for (int i = 0; i < this.progressList.Count; i++)
             {
                 ProgressDetails progress = this.progressList[i];
+
                 if (progress.type != ProgressType.permanent
                     && DateTime.Now > progress.date.ToDateTime() + progress.timespan.ToTimeSpan())
+                {
+                    if (progressValue != null && progressValue.IsSame(progress)) result = true;
                     this.progressList.RemoveAt(i);
+                }
             }
+
+            return result;
         }
 
         public void Clear()
@@ -99,11 +151,8 @@ namespace CrystalAlchemist
             progressList.Clear();
         }
 
-        public void AddProgress(string key, ProgressType type, UTimeSpan span, bool addLocation)
+        public void AddProgress(string location, string key, ProgressType type, UTimeSpan span)
         {
-            string location = SceneManager.GetActiveScene().name;
-            if (!addLocation) location = "";
-
             AddProgress(location, key, type, new UDateTime(DateTime.Now), span);
         }
 
@@ -116,8 +165,10 @@ namespace CrystalAlchemist
             progress.key = key;
             progress.date = date;
             progress.timespan = span;
+            progress.type = type;
+            progress.UpdateInspector();
 
-            if (!Contains(location, key, type)) this.progressList.Add(progress);
+            if (!Contains(location, key, type)) this.progressList.Add(progress); 
         }
 
         public bool Contains(string location, string key, ProgressType type)

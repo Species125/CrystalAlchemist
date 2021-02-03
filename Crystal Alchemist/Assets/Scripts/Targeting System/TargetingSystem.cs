@@ -187,7 +187,7 @@ namespace CrystalAlchemist
         public void removeTarget(Collider2D collision)
         {
             Character character = collision.GetComponent<Character>();
-            if (character != null && CollisionUtil.checkCollision(collision, this.ability.skill, this.sender))
+            if (character != null && CollisionUtil.CheckCollision(collision, this.ability.skill, this.sender))
             {
                 if (this.allTargetsInRange.Contains(character)) this.allTargetsInRange.Remove(character);
                 if (this.selectedTargets.Contains(character)) this.selectedTargets.Remove(character);
@@ -197,7 +197,7 @@ namespace CrystalAlchemist
         public void addTarget(Collider2D collision)
         {
             Character character = collision.GetComponent<Character>();
-            if (character != null && !character.values.isInvincible && CollisionUtil.checkCollision(collision, this.ability.skill, this.sender))  //WHY?
+            if (character != null && !character.values.isInvincible && CollisionUtil.CheckCollision(collision, this.ability.skill, this.sender))  //WHY?
             {
                 if (!this.allTargetsInRange.Contains(character)) this.allTargetsInRange.Add(character);
             }

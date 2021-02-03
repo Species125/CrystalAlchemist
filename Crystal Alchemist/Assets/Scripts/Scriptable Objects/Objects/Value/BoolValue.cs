@@ -13,7 +13,7 @@ namespace CrystalAlchemist
             return this.value;
         }
 
-        public void setValue(bool value)
+        public void SetValue(bool value)
         {
             this.value = value;
         }

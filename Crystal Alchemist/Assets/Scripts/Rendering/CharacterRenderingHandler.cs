@@ -36,7 +36,7 @@ namespace CrystalAlchemist
         }
 #endif
 
-        public virtual void Start()
+        public virtual void Awake()
         {
             this.colorpalettes.Clear();
             UnityUtil.GetChildObjects<CharacterRenderer>(this.characterSprite.transform, this.colorpalettes);

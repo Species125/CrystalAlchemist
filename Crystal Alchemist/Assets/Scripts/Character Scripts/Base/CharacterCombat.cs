@@ -62,7 +62,7 @@ namespace CrystalAlchemist
             ability.ResetCharge(); //reset charge when not full  
             HideCastBar(); //Hide Castbar
             ability.HideCastingAnimation(); //Hide Animation and stuff
-            DeactivateAbility(ability); //deactivate Skill when button up, Player only
+            DeactivateAbility(ability); //deactivate Skill when button up, Player only            
             resetSpeedAfterCasting(); //set Speed to normal
             ability.HideIndicator();
         }
@@ -77,6 +77,16 @@ namespace CrystalAlchemist
         private void resetSpeedAfterCasting()
         {
             character.updateSpeed(0); //Set Speed to normal
+        }
+
+        public virtual void ClearCurrentAbility()
+        {
+
+        }
+
+        public virtual void GlobalCooldown(Ability ability)
+        {
+
         }
 
         public virtual void DeactivateAbility(Ability ability)
@@ -159,10 +169,12 @@ namespace CrystalAlchemist
         {
             if (ability.HasEnoughResourceAndAmount())
             {
+                GlobalCooldown(ability);
                 NetworkEvents.current.InstantiateSkill(ability, this.character, target);
 
                 if (!ability.deactivateButtonUp && !ability.remoteActivation) ability.ResetCoolDown();
             }
+            else ClearCurrentAbility();
         }
 
         public virtual void UseAbilityOnTargets(Ability ability)
@@ -179,8 +191,10 @@ namespace CrystalAlchemist
 
             if (ability.HasEnoughResourceAndAmount())
             {
+                GlobalCooldown(ability);
                 StartCoroutine(UseSkill(ability, targets, delay));
             }
+            else ClearCurrentAbility();
         }
 
         public IEnumerator UseSkill(Ability ability, List<Character> targets, float delay)

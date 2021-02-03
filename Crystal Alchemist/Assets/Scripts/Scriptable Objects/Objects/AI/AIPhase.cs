@@ -20,24 +20,30 @@ namespace CrystalAlchemist
         private List<AIEvent> events;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private AIAction currentAction;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private AIAction currentDialog;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private List<AIAction> eventActions = new List<AIAction>();
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         public int index;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         public int eventIndex;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         public int loops;
 
         public void SkipPhase()

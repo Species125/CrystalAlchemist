@@ -39,6 +39,7 @@ namespace CrystalAlchemist
 
         private void UpdateCurrency(bool show)
         {
+            if (!this.gameObject.activeInHierarchy || !this.enabled) return;
             if (show) ShowUI();
             else child.SetActive(false);
         }

@@ -4,21 +4,31 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CrystalAlchemist
 {
     public class AI : NonPlayer
     {
-        [BoxGroup("Debug")]
-        public int targetID;
+        [BoxGroup("Events")]
+        [SerializeField]
+        public UnityEvent onTarget;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
+        [SerializeField]
+        private int mainTargetID;
+
+        [BoxGroup("Debug")]
+        [ReadOnly]
         public Dictionary<int, float[]> aggroList = new Dictionary<int, float[]>();
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         public Character partner;
 
-        [HideInInspector]
+        [BoxGroup("Debug")]
+        [ReadOnly]
         public bool rangeTriggered;
         
         private bool isSleeping = true;
@@ -26,20 +36,44 @@ namespace CrystalAlchemist
         public override void Awake()
         {
             base.Awake();
-            this.targetID = 0;
+            ClearMainTarget();
         }
 
         #region Animation, StateMachine
 
+        public int GetMainTargetID()
+        {
+            return this.mainTargetID;
+        }
+
+        public void SetMainTargetID(int ID)
+        {
+            if (this.mainTargetID != ID)
+            {
+                this.mainTargetID = ID;
+                this.onTarget?.Invoke();
+            }
+        }
+
+        public void ClearMainTarget()
+        {
+            if (this.mainTargetID != 0) this.mainTargetID = 0;
+        }
+        
+        public bool HasMainTarget()
+        {
+            return this.mainTargetID > 0;
+        }       
+        
         public void InitializeAddSpawn(int target, bool hasMaxDuration, float maxDuration)
         {
             this.InitializeAddSpawn(hasMaxDuration, maxDuration);
-            this.targetID = target;
+            this.mainTargetID = target;
         }
 
         public Character GetTarget()
         {
-            return NetworkUtil.GetCharacter(this.targetID);
+            return NetworkUtil.GetCharacter(this.mainTargetID);
         }
 
         public Character GetTarget(int index)
@@ -91,12 +125,12 @@ namespace CrystalAlchemist
 
             //if (!NetworkUtil.IsMaster()) return;
 
-            if (this.targetID > 0 && this.isSleeping)
+            if (this.HasMainTarget() && this.isSleeping)
             {
                 AnimatorUtil.SetAnimatorParameter(this.animator, "WakeUp");
                 this.isSleeping = false;
             }
-            else if (this.targetID <= 0 && !this.isSleeping)
+            else if (!this.HasMainTarget() && !this.isSleeping)
             {
                 AnimatorUtil.SetAnimatorParameter(this.animator, "Sleep");
                 this.isSleeping = true;
@@ -149,12 +183,12 @@ namespace CrystalAlchemist
             if (stream.IsWriting)
             {
                 stream.SendNext(this.aggroList);
-                stream.SendNext(this.targetID);
+                stream.SendNext(this.mainTargetID);
             }
             else
             {
                 this.aggroList = (Dictionary<int,float[]>)stream.ReceiveNext();
-                this.targetID = (int)stream.ReceiveNext();
+                this.mainTargetID = (int)stream.ReceiveNext();
             }
         }
 

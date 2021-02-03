@@ -38,6 +38,8 @@ namespace CrystalAlchemist
         [HideInInspector]
         public ContextClue context;
 
+        private bool canInteract = false;
+
         #endregion
 
         #region Start Funktionen (init, ContextClue, Item set bzw. Lootregeln)
@@ -56,7 +58,12 @@ namespace CrystalAlchemist
 
         private void OnSubmit()
         {
-            if (PlayerCanInteract()) DoOnSubmit();
+            if (this.canInteract) DoOnSubmit();
+        }
+
+        public virtual void Update()
+        {
+            if (this.isPlayerInRange) CheckInteraction();
         }
 
         public virtual void DoOnSubmit() { }
@@ -86,30 +93,22 @@ namespace CrystalAlchemist
 
         #region Context Clue Funktionen
 
-        private void CheckInteraction(Player player)
+        private void CheckInteraction()
         {
-            if (this.player != player) this.player = player;
-            this.isPlayerInRange = true;
-            this.isPlayerLookingAtIt = PlayerIsLooking();
-
             if (PlayerCanInteract())
             {
-                if (this.player.values.currentState != CharacterState.interact)
-                {
-                    if (this.customActionButton) MasterManager.actionButtonText.SetValue(this.ID);
-                    else MasterManager.actionButtonText.SetValue(string.Empty);
+                if (this.customActionButton) MasterManager.actionButtonText.SetValue(this.ID);
+                else MasterManager.actionButtonText.SetValue(string.Empty);
 
-                    ShowContextClue(true);
-                    this.player.values.currentState = CharacterState.interact;
-                }
+                ShowContextClue(true);
+                this.player.values.currentState = CharacterState.interact;
+                this.canInteract = true;
             }
-            else
+            else 
             {
-                if (this.player.values.currentState == CharacterState.interact)
-                {
-                    ShowContextClue(false);
-                    this.player.values.currentState = CharacterState.idle;
-                }
+                ShowContextClue(false);
+                if(this.player.values.CanInteract()) this.player.values.currentState = CharacterState.idle;
+                this.canInteract = false;
             }
         }
 
@@ -118,14 +117,20 @@ namespace CrystalAlchemist
             if (this.context != null) this.context.gameObject.SetActive(value);
         }
 
-        public virtual void OnEnterstay(Collider2D characterCollisionBox)
+        public virtual void OnEnter(Collider2D characterCollisionBox)
         {
             if (!characterCollisionBox.isTrigger)
             {
                 Player player = characterCollisionBox.GetComponent<Player>();
+
                 if (NetworkUtil.IsLocal(player)
-                && (!this.masterOnly 
-                || (this.masterOnly && player.isMaster))) CheckInteraction(player);
+                && (!this.masterOnly
+                || (this.masterOnly && player.values.isMaster))
+                && this.player != player)
+                {
+                    this.player = player;
+                    this.isPlayerInRange = true;
+                }
             }
         }
 
@@ -134,16 +139,19 @@ namespace CrystalAlchemist
             if (this.player != null)
             {
                 this.player.values.currentState = CharacterState.idle;
-                this.player = null;
+                this.player = null;                
             }
 
             this.isPlayerInRange = false;
+            this.canInteract = false;
             this.isPlayerLookingAtIt = false;
             ShowContextClue(false);
         }
 
-        public bool PlayerCanInteract()
+        public virtual bool PlayerCanInteract()
         {
+            this.isPlayerLookingAtIt = PlayerIsLooking();
+
             return (this.player != null
                     && this.isPlayerInRange
                     && this.isPlayerLookingAtIt
@@ -156,9 +164,9 @@ namespace CrystalAlchemist
             return false;
         }
 
-        private void OnTriggerStay2D(Collider2D characterCollisionBox) => OnEnterstay(characterCollisionBox);
+        //private void OnTriggerStay2D(Collider2D characterCollisionBox) => OnEnterstay(characterCollisionBox);
 
-        private void OnTriggerEnter2D(Collider2D characterCollisionBox) => OnEnterstay(characterCollisionBox);
+        private void OnTriggerEnter2D(Collider2D characterCollisionBox) => OnEnter(characterCollisionBox);
 
         private void OnTriggerExit2D(Collider2D characterCollisionBox)
         {

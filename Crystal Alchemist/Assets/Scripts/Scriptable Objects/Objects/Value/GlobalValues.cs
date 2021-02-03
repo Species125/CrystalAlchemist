@@ -22,10 +22,6 @@ namespace CrystalAlchemist
         public Color buttonNotActive = new Color32(200, 200, 200, 120);
 
         [BoxGroup("Misc")]
-        public float playerDelay = 0.1f;
-        [BoxGroup("Misc")]
-        public float transitionDuration = 1f;
-        [BoxGroup("Misc")]
         public Vector3 nullVector = new Vector3(0, 0, 999);
         [BoxGroup("Misc")]
         public string saveGameFiletype = "dat";

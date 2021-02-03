@@ -1,10 +1,11 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 namespace CrystalAlchemist
 {
-    public class MenuBehaviour : MonoBehaviour
+    public class MenuBehaviour : MonoBehaviourPunCallbacks
     {
         [BoxGroup("Menu")]
         [SerializeField]
@@ -23,12 +24,8 @@ namespace CrystalAlchemist
 
         public virtual void Start()
         {
-            //MenuEvents.current.OnDeath += ExitMenu;
-
             if (MasterManager.globalValues.openedMenues.Count == 0)
             {
-                //Cursor.visible = true;
-
                 MasterManager.globalValues.lastState = this.playerValues.currentState;
                 GameEvents.current.DoChangeState(CharacterState.inMenu);
                 if (this.showBlackBackground) GameEvents.current.DoMenuOverlay(true);
@@ -45,13 +42,10 @@ namespace CrystalAlchemist
 
         public virtual void OnDestroy()
         {
-            //MenuEvents.current.OnDeath -= ExitMenu;
             MasterManager.globalValues.openedMenues.Remove(this.gameObject);
 
             if (MasterManager.globalValues.openedMenues.Count <= 0)
             {
-                //Cursor.visible = false;
-
                 GameEvents.current.DoChangeState(MasterManager.globalValues.lastState);
                 GameEvents.current.DoMenuOverlay(false);
 

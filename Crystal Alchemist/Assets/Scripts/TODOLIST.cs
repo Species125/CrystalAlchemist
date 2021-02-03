@@ -1,42 +1,52 @@
 ﻿using UnityEngine;
 
 namespace CrystalAlchemist
-{   
+{
     public class TODOLIST : MonoBehaviour
     {
         //TODO (0.2.7)
-        /*
-        Online-Multiplayer:
-        - Death Screen Adjustments (Network-Event) and changes
-        - RPC Time
-        - Update when changing attributes!
+        /*        
+        BUGS:
+        - Minor Bug: Stromschlag Orb noch zu lange da 
+        - Minor Bug: Teleport Animation on Client    
+        - Minor Bug: No Player when trying to connect but failed
 
-        - Teleport Animation on Client
-        - Testing
-        - Minigame Testing
-
-
-        Rework:
-        - Skills: Wind blade, Fireball, Ice Shard, Frost Needle, Stonewall
+        TODO:
+        - Boss Mechanic Rework (RPCs)
 
         New Features:
-        - Enemy Alarm
-        - Enemy Split
-        - Autosave
+        - Autosave (on collect, progress, scene change)
+
+        Rework:
+        - Skill: Wind blade
+        - Skill: Fireball
+        - Skill: Ice Shard
+        - Skill: Frost Needle
+        - Skill: Stonewall
 
         New Content:
         - New Skill: Tornado
         - New Skill: Geode
         - New Skill: Protect
         - New Skill: Revive
-        - New Skill: Heal-Area
+        - New Skill: Heal-Area  
+        - New Skill: Mana-Song
+        - New Skill: Aggro
         - New Animation: Player in Menu
         - New Race: Catgirl
         - New Customization: Scales for Lamia and Drahn
+
+        New Animations:
+        - In Menu
+        - Casting
         */
 
         //CHANGES: PLAYERABILITIES Indicator (removed this.player)
         //CHANGES: AGGROSYSTEM NewTarget is Guest
+
+        //-----------------------------------------------------------------------------
+
+        //TODO (0.2.6.5)
 
         /*     
         GRAPHICS: Booster
@@ -44,20 +54,6 @@ namespace CrystalAlchemist
         GRAPHICS: Schuppen (Beine und Körper)
         GRAPHICS: Beine ohne Animation (fürs Fliegen)
         */
-
-        //SKILL: Tornado (Zieht Gegner ran und macht Schaden)
-        //SKILL: Geode (Fläche, die Schaden über Zeit macht)
-        //SKILL: Protect (Rundum-Schild)
-        //REWORK: Windklinge, Feuerball, Eissplitter, Frostspitze, Steinwand
-
-        ////////////////////NEW////////////////////////////
-        //REWORK: Character Creation (VR Keyboard, Races, Wings)
-        //ONLINE!!!
-        //BUGFIXES, BETTER GRAPHICS, MOUSE-CONTROLS, AUTO-UI
-
-        //-----------------------------------------------------------------------------
-
-        //TODO (0.2.6.5)
 
         //GRAPHICS: Sky
         //GRAPHICS: New Outfits (Sci Fi, Visor, Mundschutz, Devine Robe)
@@ -81,10 +77,14 @@ namespace CrystalAlchemist
         //REWORK: Soundeffects and Graphics
         //REWORK: Skills with Impact (Hitzeblitz, Eissplitter, Giftpfeil, etc)
 
+        //TODO: Mobile Controls(Keyboard, Mouse, Gamepad, Mobile)
         //TODO: Intro
         //TODO: Glasses (HUD)
         //TODO: Tutorial und Tutorial Log
         //TODO: Quests and Quest Log
+        //TODO: Scene Transition mit Text and Player Count
+
+        //SKILLS: Mobiler Savepoint 
 
         //CONTENT: Collectable Skills
         //CONTENT: Collectable Skins
@@ -122,6 +122,21 @@ namespace CrystalAlchemist
         //Multiplayer (Mirror?)
         //Struct vs Class (int? ref)
         //Documentation Update (How did I... , usefull links)
+
+
+        /*if (info.RemovedFromList)
+{
+    int index = this.groupList.FindIndex(x => x.info.Name == info.Name);
+    if (index >= 0)
+    {
+        Destroy(this.groupList[index].gameObject);
+        this.groupList.RemoveAt(index);
+    }
+}
+else
+{*/
+
+
 
         /*
 public void SetAsTreasureItem(Transform parent)

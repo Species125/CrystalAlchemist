@@ -71,55 +71,59 @@ namespace CrystalAlchemist
         [SerializeField]
         public SkillBookInfo info;
 
-        [BoxGroup("Restrictions")]
+        [HorizontalGroup("Restrictions/GCD")]
         [SerializeField]
         public float cooldown;
 
-        [BoxGroup("Restrictions")]
+        [HorizontalGroup("Restrictions/GCD")]
         [SerializeField]
+        public float globalCooldown;
+        
+        [SerializeField]
+        [HorizontalGroup("Restrictions/Duration")]
         public bool hasMaxDuration;
-
-        [BoxGroup("Restrictions")]
+        
         [SerializeField]
         [ShowIf("hasMaxDuration")]
+        [HorizontalGroup("Restrictions/Duration")]
         [MinValue(0)]
         public float maxDuration = 1;
 
-        [BoxGroup("Restrictions")]
+        [HorizontalGroup("Restrictions/Delay")]
         [SerializeField]
         public bool hasDelay;
 
-        [BoxGroup("Restrictions")]
+        [HorizontalGroup("Restrictions/Delay")]
         [SerializeField]
         [ShowIf("hasDelay")]
         [MinValue(0)]
         public float delay = 1;
 
-        [BoxGroup("Restrictions")]
         [OnValueChanged("OnCastTimeChange")]
+        [HorizontalGroup("Restrictions/Casttime")]
         [SerializeField]
         public bool hasCastTime = false;
 
-        [BoxGroup("Restrictions")]
         [ShowIf("hasCastTime")]
+        [HorizontalGroup("Restrictions/Casttime")]
         [MinValue(0)]
         public float castTime;
 
-        [BoxGroup("Restrictions")]
+        [HorizontalGroup("Restrictions/Casttime2")]
         [ShowIf("hasCastTime")]
         public bool showCastbar = true;
 
-        [BoxGroup("Restrictions")]
+        [HorizontalGroup("Restrictions/Casttime2")]
         [ShowIf("hasCastTime")]
         [SerializeField]
         private CastingAnimation castAnimation;
 
-        [BoxGroup("Restrictions")]
+        [HorizontalGroup("Restrictions/maxAmount")]
         [SerializeField]
         private bool hasMaxAmount = false;
 
-        [BoxGroup("Restrictions")]
         [ShowIf("hasMaxAmount")]
+        [HorizontalGroup("Restrictions/maxAmount")]
         [SerializeField]
         private int maxAmount = 1;
 
@@ -165,21 +169,28 @@ namespace CrystalAlchemist
         public bool timeDistortion = true;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         public float cooldownLeft;
         [BoxGroup("Debug")]
+        [ReadOnly]
         public float holdTimer;
         [BoxGroup("Debug")]
+        [ReadOnly]
         public AbilityState state;
         [BoxGroup("Debug")]
+        [ReadOnly]
         public bool enabled = true;
         [BoxGroup("Debug")]
+        [ReadOnly]
         public bool active = true;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private Character sender;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private CastingAnimation activeAnimation;
 
@@ -314,11 +325,13 @@ namespace CrystalAlchemist
             }
         }
 
-        public void ResetCoolDown()
+        public void ResetCoolDown(float coolDown)
         {
-            this.cooldownLeft = this.cooldown;
+            this.cooldownLeft = coolDown;
             this.state = AbilityState.onCooldown;
         }
+
+        public void ResetCoolDown() => ResetCoolDown(this.cooldown);
 
         public bool HasEnoughResourceAndAmount()
         {

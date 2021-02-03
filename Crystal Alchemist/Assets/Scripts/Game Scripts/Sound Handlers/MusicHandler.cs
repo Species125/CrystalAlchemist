@@ -46,10 +46,10 @@ namespace CrystalAlchemist
 
         private void PlayMusic(MusicTheme music, float fadeIn)
         {
-            if (music.loop == null) return;
+            if (!music.IsValid()) return;
             GameObject newGameObject = new GameObject("Music: " + music.name);
             MusicObject musicObject = newGameObject.AddComponent<MusicObject>();
-            musicObject.Instantiate(music.intro, music.loop, fadeIn);
+            musicObject.Instantiate(music, fadeIn);
             this.backgroundMusic = musicObject;
         }
 
@@ -124,12 +124,12 @@ namespace CrystalAlchemist
             return this.audioSource;
         }
 
-        public void Instantiate(AudioClip startMusic, AudioClip loopMusic, float fadeIn)
+        public void Instantiate(MusicTheme theme, float fadeIn)
         {
             this.fadeIn = fadeIn;
             this.loop = true;
-            this.startMusic = startMusic;
-            this.loopMusic = loopMusic;
+            this.startMusic = theme.GetAudioClipIntro();
+            this.loopMusic = theme.GetAudioClipLoop();
         }
 
         private void FadeIn(float value)
@@ -158,6 +158,26 @@ namespace CrystalAlchemist
             Initialize();
         }
 
+        private void Initialize()
+        {
+            FadeIn(this.fadeIn);
+
+            if (this.startMusic != null)
+            {
+                this.audioSource.loop = false;
+                this.audioSource.PlayOneShot(this.startMusic);
+            }
+            else
+            {
+                playLoop();
+            }
+        }
+
+        private void Update()
+        {
+            if (this.startMusic != null && !this.paused && !this.audioSource.isPlaying) playLoop();
+        }
+
         public void RestartMusic(float fadeIn)
         {
             this.fadeIn = fadeIn;
@@ -178,7 +198,6 @@ namespace CrystalAlchemist
 
         public void Stop(float fadeOut)
         {
-            //StartCoroutine(stopCO(fadeOut, this.audioSource.Stop));
             StartCoroutine(stopCO(fadeOut, null));
             Destroy(this.gameObject, fadeOut);
         }
@@ -197,22 +216,7 @@ namespace CrystalAlchemist
             FadeIn(fadeIn);
         }
 
-        private void Initialize()
-        {
-            FadeIn(this.fadeIn);
 
-            if (this.startMusic != null)
-            {
-                this.audioSource.loop = false;
-                this.audioSource.PlayOneShot(this.startMusic);
-
-                StartCoroutine(playLoopMusic());
-            }
-            else
-            {
-                playLoop();
-            }
-        }
 
         private void playLoop()
         {
@@ -222,12 +226,6 @@ namespace CrystalAlchemist
                 this.audioSource.loop = this.loop;
                 this.audioSource.Play();
             }
-        }
-
-        private IEnumerator playLoopMusic()
-        {
-            yield return new WaitForSecondsRealtime(this.startMusic.length);
-            playLoop();
         }
     }
 }

@@ -44,7 +44,6 @@ namespace CrystalAlchemist
 
         private bool loaded = false;
 
-
         private void Awake()
         {
             this.debug.text = "";
@@ -56,10 +55,10 @@ namespace CrystalAlchemist
         
         private void Start()
         {
-            if (this.settings.offlineMode != PhotonNetwork.OfflineMode) //Offline Mode changed
+            if (this.settings.offlineMode.GetValue() != PhotonNetwork.OfflineMode) //Offline Mode changed
             {
                 if (!PhotonNetwork.OfflineMode && PhotonNetwork.IsConnected) PhotonNetwork.Disconnect(); //when online -> disconnect
-                else PhotonNetwork.OfflineMode = this.settings.offlineMode; //offline
+                else PhotonNetwork.OfflineMode = this.settings.offlineMode.GetValue(); //offline
             }            
 
             if (!PhotonNetwork.IsConnected) //Connect neither if online or offline
@@ -89,19 +88,29 @@ namespace CrystalAlchemist
             PhotonNetwork.NickName = this.settings.nickname;
             PhotonNetwork.GameVersion = this.settings.version;
             PhotonNetwork.ConnectUsingSettings();
+
+            AddText("Connecting to server...");
+            SetProgress(0);
+            this.loadingInfo.SetActive(true);
         }
 
-        public void LoadScene()
+        private void LoadScene()
         {
             if (this.loaded) return;
-            //SetProgress(1);
-            //AddText("Loading " + this.scene.GetValue());
             if (NetworkUtil.IsMaster()) PhotonNetwork.LoadLevel(this.scene.GetValue());
             this.loaded = true;
         }
 
+        public void Disconnect()
+        {
+            this.settings.offlineMode.SetValue(true);
+            PhotonNetwork.Disconnect();
+        }
+
         private void AddText(string text)
         {
+            if (PhotonNetwork.OfflineMode) return;
+
             if (this.debug) this.debug.text += text + Environment.NewLine;
             Debug.Log(text);
         }
@@ -120,7 +129,7 @@ namespace CrystalAlchemist
         {
             if (PhotonNetwork.InLobby) PhotonNetwork.LeaveLobby();
             SetProgress(0.75f);
-            AddText("Room created");
+            if (!PhotonNetwork.OfflineMode) AddText("Room created");
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)
@@ -130,7 +139,7 @@ namespace CrystalAlchemist
 
         public override void OnJoinedRoom()
         {
-            AddText("Room joined");
+            if (!PhotonNetwork.OfflineMode)AddText("Room joined");
             LoadScene();
         }
 
@@ -172,10 +181,9 @@ namespace CrystalAlchemist
             if (!PhotonNetwork.OfflineMode)
             {
                 AddText("Start Offline Mode");
-                this.settings.offlineMode = true;
-                PhotonNetwork.OfflineMode = this.settings.offlineMode;
+                this.settings.offlineMode.SetValue(true);
+                PhotonNetwork.OfflineMode = this.settings.offlineMode.GetValue();
             }
         }
-
     }
 }

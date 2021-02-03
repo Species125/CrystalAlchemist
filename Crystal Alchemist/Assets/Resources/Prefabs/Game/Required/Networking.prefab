@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 550109463226461186}
   - component: {fileID: 7997691027296190942}
   - component: {fileID: 2560911518177267052}
-  - component: {fileID: 2560911518177267055}
-  - component: {fileID: 8339113683408115751}
+  - component: {fileID: 1266409792264759748}
   m_Layer: 0
   m_Name: Networking
   m_TagString: Untagged
@@ -47,7 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23edfbb6772b1c04d99dc1544593f01d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 2934492601526238649, guid: beecbe18451d18a4aa203ee85290faff, type: 3}
   settings: {fileID: 11400000, guid: eb0ddd97242ba9544897515fabfb9371, type: 2}
+  gotKicked: {fileID: 11400000, guid: 6cc3c999928e75342be410cf72df2212, type: 2}
 --- !u!114 &7997691027296190942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,8 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc65814b0c94494eb9322a47fe59d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportPath: {fileID: 11400000, guid: ebb857b22648d554582ab5a8a1c4ee5c, type: 2}
---- !u!114 &2560911518177267055
+--- !u!114 &1266409792264759748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,29 +83,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2560911518177267051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf93d62510e8f9c40bca4ac9fa16764a, type: 3}
+  m_Script: {fileID: 11500000, guid: c77986e177388f34594c39f9c358dd6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeValue: {fileID: 11400000, guid: 2e74ee9fc7c012b4db454fc0922670d4, type: 2}
---- !u!114 &8339113683408115751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2560911518177267051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 2560911518177267055}
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
+  parentMenu: {fileID: 0}
+  cursor: {fileID: 0}
+  info: {fileID: 11400000, guid: 2bcb9f36b1ec28e4a88d642592a8aa7f, type: 2}
+  dialogBoxType: 1
+  price:
+    resourceType: 0
+    item: {fileID: 0}
+    keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
+    amount: 1
+  actionOnConfirm:
+    m_PersistentCalls:
+      m_Calls: []
+  translationID: Aus der Gruppe geworfen
+  type: 4

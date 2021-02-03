@@ -22,7 +22,6 @@ namespace CrystalAlchemist
         [Tooltip("Unverwundbarkeit ignorieren (z.B. für Heals)?")]
         [SerializeField]
         private bool ignoreInvincibility = false;
-        
 
         protected override bool IsAffected(Character sender, Character target)
         {

@@ -39,7 +39,8 @@ namespace CrystalAlchemist
         Underwear,
         LowerGear,
         UpperGear,
-        Empty
+        Empty,
+        SnakeTail
     }
 
     [System.Serializable]

@@ -68,9 +68,9 @@ namespace CrystalAlchemist
 
         private void UpdateTime()
         {
-            int hour = this.timeValue.getHour();
+            int hour = this.timeValue.GetHour();
 
-            this.timeField.text = hour.ToString("00") + ":" + this.timeValue.getMinute().ToString("00");
+            this.timeField.text = hour.ToString("00") + ":" + this.timeValue.GetMinute().ToString("00");
 
             if (!this.timeValue.night && !sun.activeInHierarchy)
             {

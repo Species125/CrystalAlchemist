@@ -57,6 +57,20 @@ namespace CrystalAlchemist
             }
         }
 
+        public void SetGlobalCooldown(Ability ability)
+        {
+            if (ability.globalCooldown <= 0) return;
+
+            foreach (PlayerButton playerButton in this.buttons)
+            {
+                Ability _ability = playerButton.ability;
+                if (_ability != null 
+                    && _ability != ability     
+                    && _ability.cooldownLeft < ability.globalCooldown) 
+                    _ability.ResetCoolDown(ability.globalCooldown);
+            }
+        }
+
         public Ability GetAbilityFromButton(enumButton button)
         {
             foreach (PlayerButton playerButton in this.buttons)

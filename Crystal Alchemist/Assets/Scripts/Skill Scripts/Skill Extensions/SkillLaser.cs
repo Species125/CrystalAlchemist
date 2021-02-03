@@ -60,7 +60,7 @@ namespace CrystalAlchemist
 
             if (hitted != null && this.skill.GetTriggerActive())
             {
-                if (CollisionUtil.checkCollision(hitted, this.skill)) this.skill.hitIt(hitted);
+                if (CollisionUtil.CheckCollision(hitted, this.skill)) this.skill.hitIt(hitted);
                 AbilityUtil.SetEffectOnHit(this.skill, hitPoint);
             }
         }

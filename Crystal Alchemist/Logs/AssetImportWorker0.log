@@ -15,11 +15,11 @@ E:/Github/Crystal Alchemist
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-60642
+64801
 Successfully changed project path to: E:/Github/Crystal Alchemist
 E:/Github/Crystal Alchemist
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 144.67 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 142.49 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.2f1 (068178b99f32)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/UnitySubsystems
@@ -36,92 +36,24 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56912
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56768
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002966 seconds.
+Registered in 0.002647 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 151.08 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 126.16 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.852 seconds
+- Completed reload, in  6.061 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.020689 seconds.
+Registered in 0.016055 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 171.10 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 122.20 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  8.761 seconds
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Refreshing native plugins compatible for Editor in 1.67 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4597 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 196.4 MB.
-System memory in use after: 196.7 MB.
-
-Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 5094.
-Total: 949.420477 ms (FindLiveObjects: 0.871859 ms CreateObjectMapping: 0.686077 ms MarkObjects: 947.790862 ms  DeleteObjects: 0.068754 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Resources/Scriptable Objects/Aggro Behaviors/Goddess.asset
-  artifactKey: Guid(46e049ec2b630ec40aec487f31843b9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/Aggro Behaviors/Goddess.asset using Guid(46e049ec2b630ec40aec487f31843b9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5afdbbce32e2544cb43872df6d1c65a2') in 0.122539 seconds
-  Import took 0.155449 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.324957 seconds.
-  path: Assets/Resources/Art/Characters/Boss Sprites/Titania.xcf
-  artifactKey: Guid(8c7f27ebef027df4da516f746e8b48b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Art/Characters/Boss Sprites/Titania.xcf using Guid(8c7f27ebef027df4da516f746e8b48b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0048c3e5c8305311e01275cac88c71fd') in 0.020822 seconds
-  Import took 0.050272 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 78.507319 seconds.
-  path: Assets/Scenes/Loading/Loading.unity
-  artifactKey: Guid(a9d14113a3de33648a4f1727da24ecaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Loading/Loading.unity using Guid(a9d14113a3de33648a4f1727da24ecaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dea28f980a919367f1d30359b14269fd') in 0.019043 seconds
-  Import took 0.044661 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.016526 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.47 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.618 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.57 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4450 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 189.3 MB.
-System memory in use after: 189.5 MB.
-
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 5098.
-Total: 27.755250 ms (FindLiveObjects: 0.624345 ms CreateObjectMapping: 0.500587 ms MarkObjects: 26.581459 ms  DeleteObjects: 0.046811 ms)
-
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file

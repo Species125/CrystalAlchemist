@@ -18,11 +18,11 @@ namespace CrystalAlchemist
 
         private void Start()
         {
-            GameEvents.current.OnTimeChanged += changeColor;
+            GameEvents.current.OnNightChange += changeColor;
             changeColor();
         }
 
-        private void OnDestroy() => GameEvents.current.OnTimeChanged -= changeColor;
+        private void OnDestroy() => GameEvents.current.OnNightChange -= changeColor;
 
         public void changeColor() => Lighting.color = this.timeValue.GetColor();
     }

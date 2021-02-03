@@ -59,7 +59,7 @@ namespace CrystalAlchemist
             }
 
             list.SetNextTeleport(MasterManager.GetTeleportStats(data.startTeleport));
-            list.SetLastTeleport(MasterManager.GetTeleportStats(data.lastTeleport));
+            list.SetReturnTeleport(MasterManager.GetTeleportStats(data.lastTeleport));
         }
 
         private static void LoadBasicValues(PlayerData data, CharacterValues playerValue, PlayerAttributes attributes)

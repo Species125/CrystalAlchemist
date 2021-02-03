@@ -22,6 +22,7 @@ namespace CrystalAlchemist
         private bool startImmediately = true;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private AIPhase activePhase;
         //private bool isActive;
@@ -33,9 +34,10 @@ namespace CrystalAlchemist
         public override void Initialize()
         {
             base.Initialize();
+
             this.npc = this.character.GetComponent<AI>();
             StartPhase();
-            isInit = true;
+            isInit = false;
         }
 
         public void SkipPhase() => this.activePhase.SkipPhase();        
@@ -58,14 +60,17 @@ namespace CrystalAlchemist
 
         private void OnDisable()
         {
-            EndPhase();
+            if (!this.isInit) EndPhase();
         }
 
-        private void OnDestroy() => EndPhase();
+        private void OnDestroy()
+        {
+            if (!this.isInit) EndPhase();
+        }
 
 
         private void DestroyActivePhase()
-        {
+        {   
             if (this.activePhase != null)
             {
                 this.activePhase.ResetActions(this.npc);
@@ -91,7 +96,8 @@ namespace CrystalAlchemist
         {
             if (!NetworkUtil.IsMaster()) return;
 
-            string path = phase.path;
+            string path = "";
+            if(phase != null) path = phase.path;
 
             this.character.photonView.RPC("RpcStartPhase", RpcTarget.All, path);
         }
@@ -99,6 +105,7 @@ namespace CrystalAlchemist
         [PunRPC]
         protected void RpcStartPhase(string path, PhotonMessageInfo info)
         {
+            if (path.Replace(" ","").Length <= 1) return;
             AIPhase phase = Resources.Load<AIPhase>(path);
 
             if (phase != null)
@@ -121,9 +128,7 @@ namespace CrystalAlchemist
         {
             //this.isActive = false;
             DestroyActivePhase();
-        }
-
-        
+        }        
     }
 }
 

@@ -16,9 +16,6 @@ namespace CrystalAlchemist
         private bool selectFirst = false;
 
         [SerializeField]
-        private bool isInteractable = true;
-
-        [SerializeField]
         private bool overrideNavigation = false;
 
         [ShowIf("overrideNavigation", true)]
@@ -96,19 +93,16 @@ namespace CrystalAlchemist
             {
                 EventSystem.current.firstSelectedGameObject = this.gameObject;
                 EventSystem.current.SetSelectedGameObject(this.gameObject);
-            }
 
-            SetCursor();
+                SetCursor(); //CHANGED
+            }            
         }
 
         public void OnPointerEnter(PointerEventData eventData) => Select();
 
         public void OnSelect(BaseEventData eventData) => SetCursor();
 
-        public void SetCursor()
-        {
-            this.cursor.Select(!this.isInit, this.selectable);
-        }
+        public void SetCursor() => this.cursor.Select(!this.isInit, this.selectable);
 
         public void ReSelect()
         {

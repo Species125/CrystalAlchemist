@@ -124,12 +124,15 @@ namespace CrystalAlchemist
 
         private int factor = 1;
         private int currentPoint = 0;
+
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private Vector3 targetPosition;
         private Vector3 randomColliderPoint;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private float areaCountdown = 0f;
 

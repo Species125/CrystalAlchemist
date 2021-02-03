@@ -24,13 +24,12 @@ namespace CrystalAlchemist
 
         public void Initialize(Character target) => this.target = target;
 
-        private void Start() => StartCoroutine(delayCo());
+        private void Start() => Invoke("Spawn", this.delay);
 
-        private IEnumerator delayCo()
+        private void Spawn()
         {
-            //TODO: Spawn
+            if (!NetworkUtil.IsMaster()) return;
 
-            yield return new WaitForSeconds(this.delay);
             AI character = PhotonNetwork.Instantiate(this.character.path, this.transform.position, Quaternion.identity).GetComponent<AI>();
             character.InitializeAddSpawn(NetworkUtil.GetID(this.target), this.hasMaxDuration, this.maxDuration);
             this.OnAfterDelay?.Invoke();

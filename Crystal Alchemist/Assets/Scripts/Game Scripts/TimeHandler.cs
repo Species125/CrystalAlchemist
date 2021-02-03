@@ -1,14 +1,12 @@
-﻿
-
-using Photon.Pun;
+﻿using Photon.Pun;
 using UnityEngine;
+using ExitGames.Client.Photon;
+using Photon.Realtime;
 
 namespace CrystalAlchemist
 {
-    public class TimeHandler : MonoBehaviour, IPunObservable
+    public class TimeHandler : MonoBehaviourPunCallbacks
     {
-        //TODO: RPC instead of Observable
-
         [SerializeField]
         private TimeValue timeValue;
 
@@ -17,24 +15,78 @@ namespace CrystalAlchemist
             this.timeValue.Reset();
         }
 
-        private void FixedUpdate()
+        public override void OnEnable()
         {
-            if (!NetworkUtil.IsMaster()) return;
-            this.timeValue.setTime(Time.fixedDeltaTime);
+            base.OnEnable();
+            PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
+            GameEvents.current.OnTimeChange += RaiseTimeChangedEvent;
+            GameEvents.current.OnTimeReset += RaiseTimeResetEvent;
         }
 
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        public override void OnDisable()
         {
-            if (stream.IsWriting)
+            base.OnDisable();
+            PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEvent;
+            GameEvents.current.OnTimeChange -= RaiseTimeChangedEvent;
+            GameEvents.current.OnTimeReset -= RaiseTimeResetEvent;
+        }
+
+        private void NetworkingEvent(EventData obj)
+        {
+            if (obj.Code == NetworkUtil.TIME_STARTUP)
             {
-                stream.SendNext(this.timeValue.hour);
-                stream.SendNext(this.timeValue.minute);
+                object[] datas = (object[])obj.CustomData;
+                int hour = (int)datas[0];
+                int minute = (int)datas[1];
+
+                this.timeValue.SetTime(hour, minute);
             }
-            else
+            else if (obj.Code == NetworkUtil.TIME_CHANGED)
             {
-                this.timeValue.hour = (int)stream.ReceiveNext();
-                this.timeValue.minute = (int)stream.ReceiveNext();
+                object[] datas = (object[])obj.CustomData;
+                float factor = (float)datas[0];
+
+                this.timeValue.SetFactor(factor);
+            }
+            else if (obj.Code == NetworkUtil.TIME_RESET)
+            {
+                this.timeValue.Reset();
             }
         }
+
+        private void RaiseTimeStartEvent()
+        {
+            if (!NetworkUtil.IsMaster()) return;
+
+            object[] datas = new object[] { this.timeValue.GetHour(), this.timeValue.GetMinute() };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
+
+            PhotonNetwork.RaiseEvent(NetworkUtil.TIME_STARTUP, datas, options, SendOptions.SendUnreliable);
+        }
+
+        private void RaiseTimeResetEvent()
+        {
+            if (!NetworkUtil.IsMaster()) return;
+
+            object[] datas = new object[0];
+            RaiseEventOptions options = NetworkUtil.TargetAll();
+
+            PhotonNetwork.RaiseEvent(NetworkUtil.TIME_RESET, datas, options, SendOptions.SendUnreliable);
+        }
+
+        private void RaiseTimeChangedEvent(float factor)
+        {
+            if (!NetworkUtil.IsMaster()) return;
+
+            object[] datas = new object[] { factor };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
+
+            PhotonNetwork.RaiseEvent(NetworkUtil.TIME_CHANGED, datas, options, SendOptions.SendUnreliable);
+        }
+
+        private void FixedUpdate() => this.timeValue.SetTime(Time.fixedDeltaTime);        
+
+        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer) => RaiseTimeStartEvent();
+     
     }
 }

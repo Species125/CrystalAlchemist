@@ -1,11 +1,12 @@
 ﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace CrystalAlchemist
 {
     public class BossMechanicSpawn : BossMechanicProperty
-    {
+    {        
         [System.Serializable]
         public class ChildSequenceProperty : SequenceProperty
         {
@@ -83,6 +84,7 @@ namespace CrystalAlchemist
             }
         }
 
+        [InfoBox("Photon View required on this!", InfoMessageType.Warning)]
         [SerializeField]
         [BoxGroup("Children")]
         private float startDelay = 0f;
@@ -93,11 +95,16 @@ namespace CrystalAlchemist
         private ChildSequenceProperty childProperty;
 
         private float timeLeftToSpawnNext;
-
+        private bool isCanceld = false;
         private bool isRunning = true;
 
         private List<SequenceObject> sequences = new List<SequenceObject>();
 
+        private void Awake()
+        {
+            GameEvents.current.OnInterrupt += InterruptSequence;
+            if (PhotonView.Get(this) == null) Debug.LogError("PhotonView is missing on " + this.gameObject.name);
+        }
 
         private void Start()
         {
@@ -105,8 +112,23 @@ namespace CrystalAlchemist
             this.timeLeftToSpawnNext = this.startDelay;
         }
 
+        private void OnDestroy()
+        {
+            GameEvents.current.OnInterrupt -= InterruptSequence;
+        }
+
+        private void InterruptSequence()
+        {
+            this.isCanceld = true;
+            this.isRunning = false;
+            this.sequences.Clear();
+            this.enabled = false;
+            this.gameObject.SetActive(false);
+        }
+
         private void Update()
         {
+            if (this.isCanceld) return;
             if (this.isRunning) AddSequences(); //Add new sequence 
 
             UpdatingSequences(); //update existing sequences
@@ -125,7 +147,7 @@ namespace CrystalAlchemist
                     if (sequence.spawnIt)
                     {
                         Quaternion rotation = GetRotation(this.childProperty.rotationType, this.childProperty.rotationFactor, sequence.spawnPoint, this.childProperty.GetOffset());
-                        Instantiate(sequence.spawnPoint.transform.position, rotation);
+                        Instantiate(sequence.spawnPoint.transform.position, rotation);     
                         sequence.SetNext();
                     }
                 }

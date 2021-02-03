@@ -46,18 +46,24 @@ namespace CrystalAlchemist
         public Func<bool> OnHasReturn;
 
         public Action OnCutScene;
-        public Action OnTimeChanged;
+        public Action OnNightChange;
         public Action OnKill;
+        public Action OnInterrupt;
         public Action OnTeleport;
+        public Action OnTitleScreen;
 
         public Action OnEffectUpdate;
         public Action<int> OnLifeManaUpdate;
+        public Action OnLifeManaUpdateLocal;
         public Action<string> OnSceneChanged;
 
         public Action<int> OnPlayerSpawned;
         public Action<int> OnOtherPlayerSpawned;
         public Action OnDeviceChanged;
         public Action OnDeath;
+
+        public Action<float> OnTimeChange;
+        public Action OnTimeReset;
 
         public void DoPresetChange() => this.OnPresetChange?.Invoke();
         public void DoPresetChangeToOthers() => this.OnPresetChangeToOthers?.Invoke();
@@ -76,7 +82,9 @@ namespace CrystalAlchemist
         public void DoDirectionLock() => this.OnLockDirection?.Invoke();
         public void DoCutScene() => this.OnCutScene?.Invoke();
         public void DoKill() => this.OnKill?.Invoke();
-        public void DoTimeChange() => this.OnTimeChanged?.Invoke();
+        public void DoInterrupt() => this.OnInterrupt?.Invoke();
+        public void DoTitleScreen() => this.OnTitleScreen?.Invoke();
+        public void DoNightChange() => this.OnNightChange?.Invoke();
         public void DoRangeTrigger(Character character, bool value) => this.OnRangeTriggered?.Invoke(character, value);
 
         public void DoAggroHit(Character character, Character target, float value) => this.OnAggroHit?.Invoke(character, target, value);
@@ -91,14 +99,15 @@ namespace CrystalAlchemist
 
         public void DoStatusEffectUpdate() => this.OnEffectUpdate?.Invoke();
         public void DoManaLifeUpdate(int ID) => this.OnLifeManaUpdate?.Invoke(ID);
+        public void DoManaLifeUpdateLocal() => this.OnLifeManaUpdateLocal?.Invoke();
 
         public void DoLocalPlayerSpawned(int ID) => this.OnPlayerSpawned?.Invoke(ID);
         public void DoOtherLocalPlayerSpawned(int ID) => this.OnOtherPlayerSpawned?.Invoke(ID);
 
         public void DoDeviceChanged() => this.OnDeviceChanged?.Invoke();
-
         public void DoDeath() => this.OnDeath?.Invoke();
-
+        public void DoTimeChange(float value) => this.OnTimeChange?.Invoke(value);
+        public void DoTimeReset() => this.OnTimeReset?.Invoke();
 
 
         public bool HasReturn()

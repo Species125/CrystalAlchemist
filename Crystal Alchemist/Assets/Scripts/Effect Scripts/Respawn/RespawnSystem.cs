@@ -127,7 +127,7 @@ namespace CrystalAlchemist
             bool result = ((this.spawnType == SpawnType.none)
                            || (this.spawnType == SpawnType.day && !time.night)
                            || (this.spawnType == SpawnType.night && time.night)
-                           || (this.spawnType == SpawnType.time && this.from >= time.getHour() && this.to <= time.getHour()));
+                           || (this.spawnType == SpawnType.time && this.from >= time.GetHour() && this.to <= time.GetHour()));
 
             if (result != this.isActive)
             {
@@ -224,11 +224,7 @@ namespace CrystalAlchemist
             int ID = gameObject.GetPhotonView().ViewID;
 
             object[] datas = new object[] { ID, isInit };
-
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.HIDE_CHARACTER, datas, options, SendOptions.SendUnreliable);
         }
@@ -240,11 +236,7 @@ namespace CrystalAlchemist
             int ID = gameObject.GetPhotonView().ViewID;
 
             object[] datas = new object[] { ID, isInit };
-
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.SHOW_CHARACTER, datas, options, SendOptions.SendUnreliable);
         }

@@ -31,10 +31,6 @@ namespace CrystalAlchemist
 
         public void StopMusic() => MusicEvents.current.StopMusic(this.fadeOut);
 
-        public void PlayMusic(AudioClip music)
-        {
-            StopMusic();
-            //MusicEvents.current.PlayMusic(null, music, this.fadeIn);
-        }
+        public void PlayMusic(AudioClip music) => StopMusic();   
     }
 }

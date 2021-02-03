@@ -122,6 +122,8 @@ MonoBehaviour:
   useGlow: 1
   glowColor: {r: 9.085569, g: 2.5770411, b: 0.9989368, a: 1}
   invert: 0
+  useTint: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &5676213603441916093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +257,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroStats: {fileID: 11400000, guid: 74151ff649b937b418adb75846e519d1, type: 2}
   npc: {fileID: 4482648712296496520}
+  debug: 0
+  mainTarget: 
+  aggrodata: []
 --- !u!58 &699278166353142346
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -349,6 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   myRigidbody: {fileID: 2246077131478480996}
   animator: {fileID: 4695825613378725826}
   boxCollider: {fileID: 1028641328}
@@ -358,12 +364,13 @@ MonoBehaviour:
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 1158493752}
   activeStatusEffectParent: {fileID: 6674156776865872386}
+  statusEffectVisuals: []
   stats: {fileID: 11400000, guid: 4296eda28d32ab54491ee3379dc99977, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
   characterName: 
   NPCStats: {fileID: 11400000, guid: 4f2cb5bc19fd27642abfad3e82fb141f, type: 2}
-  targetID: 0
+  mainTargetID: 0
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &4482648712296496522
@@ -381,6 +388,7 @@ MonoBehaviour:
   character: {fileID: 0}
   startPhase: {fileID: 11400000, guid: ff7cd6a17546bc24a8801a5250cd4872, type: 2}
   startImmediately: 1
+  activePhase: {fileID: 0}
 --- !u!61 &1028641328
 BoxCollider2D:
   m_ObjectHideFlags: 0

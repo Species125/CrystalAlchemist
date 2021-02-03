@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Threading;
@@ -57,18 +58,24 @@ namespace Launcher
                     this.content = myWebClient.DownloadString(versionUri);
 
                     FileInfo file = new FileInfo(this.versionPath);
+
                     if (file.Exists)
                     {
+                        this.downloadButton.Text = "UPDATE";
                         string text = File.ReadAllText(this.versionPath);
 
-                        int onlineVersion = Convert.ToInt32(content.Replace(".", ""));
-                        int localVersion = Convert.ToInt32(text.Replace(".", ""));
+                        string on = "0." + content.Replace(".", "");
+                        string lo = "0." + text.Replace(".", "");
 
-                        if (localVersion >= onlineVersion)
-                        {
-                            return true;
-                        }
+                        double onlineVersion = double.Parse(on, CultureInfo.InvariantCulture);
+                        double localVersion = double.Parse(lo, CultureInfo.InvariantCulture);
+
+                        if (localVersion >= onlineVersion) return true;                        
                     }
+                    else
+                    {
+                        this.downloadButton.Text = "DOWNLOAD";
+                    }               
                 }
             }
             catch { }
@@ -121,8 +128,16 @@ namespace Launcher
             if (file.Exists) this.gamePath = file.FullName;
             else this.gamePath = "";
 
-            if (this.gamePath.Length <= 5) this.PlayButton.Enabled = false;
-            else this.PlayButton.Enabled = true;
+            if (this.gamePath.Length <= 5)
+            {
+                this.PlayButton.Text = "NOT  INSTALLED";
+                this.PlayButton.Enabled = false;
+            }
+            else
+            {
+                this.PlayButton.Text = "START";
+                this.PlayButton.Enabled = true;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -134,6 +149,7 @@ namespace Launcher
         private void button2_Click(object sender, EventArgs e)
         {
             this.PlayButton.Enabled = false;
+            this.PlayButton.Text = "PLEASE  WAIT";
             this.downloadButton.Visible = false;
             this.progressBar1.Visible = true;
             DownloadNewVersion(this.zipFilename);
@@ -167,6 +183,7 @@ namespace Launcher
         {
             this.label1.Text = "Unzip completed!";
             this.PlayButton.Enabled = true;
+            this.PlayButton.Text = "START";
             this.progressBar1.Visible = false;
 
             File.WriteAllText(this.versionPath, this.content);

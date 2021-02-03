@@ -29,7 +29,7 @@ namespace CrystalAlchemist
         public virtual void Awake()
         {
             if (this.spriteRenderer == null) this.spriteRenderer = this.GetComponent<SpriteRenderer>();
-            if (this.material == null) this.material = this.GetComponent<SpriteRenderer>().material;
+            this.material = this.spriteRenderer.material;
         }
 
         public virtual void Start()

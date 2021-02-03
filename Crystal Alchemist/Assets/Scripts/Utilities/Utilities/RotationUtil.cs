@@ -46,7 +46,7 @@ namespace CrystalAlchemist
         public static Vector2 SetStartDirection(Skill skill)
         {
             if (skill.sender == null) return skill.GetDirection();
-            else if (skill.sender.GetComponent<AI>() != null && skill.sender.GetComponent<AI>().targetID > 0)
+            else if (skill.sender.GetComponent<AI>() != null && skill.sender.GetComponent<AI>().HasMainTarget())
             {
                 float offset = skill.transform.position.y - skill.GetPosition().y;
 

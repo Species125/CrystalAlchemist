@@ -1,19 +1,10 @@
-﻿
-
-
-using Sirenix.OdinInspector;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 
 namespace CrystalAlchemist
 {
     public class Goddess : AI
     {
-        [BoxGroup("Defeat")]
-        [SerializeField]
-        private UnityEvent onDefeated;
-
-        public override void KillCharacter(bool animate)
+         public override void KillCharacter(bool animate)
         {
             for (int i = 0; i < this.values.activeSkills.Count; i++)
             {
@@ -27,8 +18,6 @@ namespace CrystalAlchemist
 
             this.onDefeated?.Invoke();
         }
-
-
 
         public void SetAnimationTrigger(string value)
         {

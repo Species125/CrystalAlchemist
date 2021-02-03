@@ -64,6 +64,8 @@ namespace CrystalAlchemist
         [SerializeField]
         private float fadeNew = 0.5f;
 
+        private Vector2 playerPosition;
+
         #endregion
 
         private bool canLoot = true;
@@ -109,6 +111,7 @@ namespace CrystalAlchemist
 
             if (this.player.canUseIt(this.costs))
             {
+                this.playerPosition = this.player.GetGroundPosition();
                 this.player.ReduceResource(this.costs);
                 AnimatorUtil.SetAnimatorParameter(this.anim, "isOpened", true);
                 if (isShared) SharedSubmit();
@@ -131,6 +134,11 @@ namespace CrystalAlchemist
             else ShowContextClue(false);
         }
 
+        public override bool PlayerCanInteract()
+        {
+            return base.PlayerCanInteract() && this.canLoot;
+        }
+
         public void PlayTreasureSoundEffect()
         {
             if (this.soundEffect != null) AudioUtil.playSoundEffect(this.gameObject, this.soundEffect);
@@ -144,9 +152,9 @@ namespace CrystalAlchemist
 
         public void ShowTreasureItem()
         {           
+
             if (this.itemDrop != null)
-                NetworkEvents.current.InstantiateTreasureItem(this.itemDrop, this.transform.position, true, 
-                                                              this.player.GetGroundPosition());             
+                NetworkEvents.current.InstantiateTreasureItem(this.itemDrop, this.transform.position, true, this.playerPosition);             
 
             if (this.treasureType == TreasureType.lootbox)
             {

@@ -9,7 +9,7 @@ namespace CrystalAlchemist
         [SerializeField]
         private BoolValue CutSceneValue;
 
-        private void Awake() => this.CutSceneValue.setValue(false);
+        private void Awake() => this.CutSceneValue.SetValue(false);
 
         private void Start()
         {

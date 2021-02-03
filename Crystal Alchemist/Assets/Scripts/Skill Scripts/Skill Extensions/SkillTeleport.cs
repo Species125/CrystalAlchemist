@@ -1,7 +1,6 @@
-﻿
-
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using Photon.Pun;
 
 namespace CrystalAlchemist
 {
@@ -9,12 +8,17 @@ namespace CrystalAlchemist
     {
         [Required]
         [SerializeField]
-        private PlayerTeleportList playerTeleport;
+        private SkillSceneTransition summon;
+
+        [SerializeField]
+        private PlayerTeleportList teleports;
 
         public override void Initialize()
         {
-            this.playerTeleport.SetReturnTeleport();
-            GameEvents.current.DoTeleport();
+            if (!NetworkUtil.IsLocal(this.skill.sender.GetComponent<Player>())) return;
+
+            object[] path = new object[] { this.teleports.GetReturnTeleport().path };
+            PhotonNetwork.Instantiate(this.summon.path, this.transform.position, Quaternion.identity, 0, path);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace CrystalAlchemist
         private void Awake()
         {
             SetObjects(false);
-            this.virtualCamera.gameObject.SetActive(false);
+            this.virtualCamera.gameObject.SetActive(false);            
         }
 
         private void SetObjects(bool value)

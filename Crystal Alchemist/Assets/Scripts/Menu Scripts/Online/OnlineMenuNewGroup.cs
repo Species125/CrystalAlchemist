@@ -24,6 +24,10 @@ namespace CrystalAlchemist
         [SerializeField]
         private TextMeshProUGUI nameField;
 
+        [BoxGroup("UI Room")]
+        [SerializeField]
+        private ByteValue maxPlayer;
+
         [BoxGroup("UI Password")]
         [SerializeField]
         private GameObject passwordBox;
@@ -53,7 +57,6 @@ namespace CrystalAlchemist
             base.OnEnable();
             this.errormessage.gameObject.SetActive(false);
             OnToggleChanged();
-            DisableButton();
         }
 
         private void UpdateTexts()
@@ -78,7 +81,7 @@ namespace CrystalAlchemist
 
         public void Confirm()
         {
-            NetworkUtil.CreateRoom(this.roomName.GetValue(), 4, true, this.toggle.isOn, this.password.GetValue());
+            NetworkUtil.CreateRoom(this.roomName.GetValue(), this.maxPlayer.GetValue(), true, this.toggle.isOn, this.password.GetValue());
         }
 
         public override void OnCreatedRoom()

@@ -203,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroStats: {fileID: 11400000, guid: 74151ff649b937b418adb75846e519d1, type: 2}
   npc: {fileID: 5280788646405828722}
+  debug: 0
   mainTarget: 
   aggrodata: []
 --- !u!58 &7862652019329232228
@@ -379,12 +380,13 @@ MonoBehaviour:
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 8609950149900843970}
   activeStatusEffectParent: {fileID: 3162633258840045560}
+  statusEffectVisuals: []
   stats: {fileID: 11400000, guid: 044d5a2f62542b141ab2f44c3e80795b, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
   characterName: 
   NPCStats: {fileID: 11400000, guid: 044d5a2f62542b141ab2f44c3e80795b, type: 2}
-  targetID: 0
+  mainTargetID: 0
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &7518508113067193731
@@ -435,6 +437,7 @@ MonoBehaviour:
   character: {fileID: 0}
   startPhase: {fileID: 11400000, guid: 9e6241ad94a039b4eb88295fc09c3c29, type: 2}
   startImmediately: 1
+  activePhase: {fileID: 0}
 --- !u!114 &1077067671459461634
 MonoBehaviour:
   m_ObjectHideFlags: 0

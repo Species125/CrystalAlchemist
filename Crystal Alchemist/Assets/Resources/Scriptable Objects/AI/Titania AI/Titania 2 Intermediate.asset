@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76a19f9cb4d358498823753290d243d, type: 3}
   m_Name: Titania 2 Intermediate
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/AI/Titania AI/Titania 2 Intermediate
   actions:
   - type: 3
     position: {x: 0, y: 0}
@@ -21,16 +22,10 @@ MonoBehaviour:
     animations: 
     isTrigger: 0
     ability: {fileID: 11400000, guid: e3b0f625464b410498c6588b9df7f90e, type: 2}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 1
-    delay: 0
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
     value: 0
     signal: {fileID: 0}
     wait: 8
@@ -46,19 +41,19 @@ MonoBehaviour:
     animations: 
     isTrigger: 0
     ability: {fileID: 11400000, guid: 315e5317b0033c14c8c59de11cab41fe, type: 2}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 1
-    keepCast: 0
-    amount: 3
-    delay: 2
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides:
+    - type: 4
+      value: 0
+      time: 0
+      amount: 3
+      keepCast: 0
+      delay: 2
     value: 0
     signal: {fileID: 0}
-    wait: 8
+    wait: 4
     mode: 0
     fadeIn: 0
     fadeOut: 0
@@ -71,16 +66,10 @@ MonoBehaviour:
     animations: 
     isTrigger: 0
     ability: {fileID: 11400000, guid: 6e896f82b51d9004cbfced7b978e2898, type: 2}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 1
-    delay: 0
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
     value: 0
     signal: {fileID: 0}
     wait: 4
@@ -96,16 +85,10 @@ MonoBehaviour:
     animations: 
     isTrigger: 0
     ability: {fileID: 11400000, guid: c721874cd598ad4449c1d57865ddaae2, type: 2}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 1
-    delay: 0
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
     value: 0
     signal: {fileID: 0}
     wait: 8
@@ -121,16 +104,10 @@ MonoBehaviour:
     animations: 
     isTrigger: 0
     ability: {fileID: 11400000, guid: 013f95fe1f8bf734b8e84b9435457209, type: 2}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 1
-    delay: 0
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
     value: 0
     signal: {fileID: 0}
     wait: 12
@@ -147,7 +124,7 @@ MonoBehaviour:
       maxLoops: 0
     - type: 1
       time: 0
-      life: 75
+      life: 60
       maxLoops: 0
     actions:
     - type: 6
@@ -158,17 +135,30 @@ MonoBehaviour:
       animations: 
       isTrigger: 0
       ability: {fileID: 0}
-      overrideCastTime: 0
-      castTime: 0
-      overrideShowCastBar: 0
-      showCastBar: 0
-      overrideCooldown: 0
-      cooldown: 0
-      repeat: 0
-      keepCast: 0
-      amount: 1
-      delay: 0
+      targetMode: 0
+      multiDelay: 0
+      multiCast: 0
+      overrides: []
       value: 1
+      signal: {fileID: 0}
+      wait: 0
+      mode: 0
+      fadeIn: 0
+      fadeOut: 0
+      music: {fileID: 0}
+    - type: 12
+      position: {x: 0, y: 0}
+      translationID: 
+      duration: 0
+      nextPhase: {fileID: 0}
+      animations: 
+      isTrigger: 0
+      ability: {fileID: 0}
+      targetMode: 0
+      multiDelay: 0
+      multiCast: 0
+      overrides: []
+      value: 0
       signal: {fileID: 0}
       wait: 0
       mode: 0
@@ -183,16 +173,10 @@ MonoBehaviour:
       animations: Resting
       isTrigger: 0
       ability: {fileID: 0}
-      overrideCastTime: 0
-      castTime: 0
-      overrideShowCastBar: 0
-      showCastBar: 0
-      overrideCooldown: 0
-      cooldown: 0
-      repeat: 0
-      keepCast: 0
-      amount: 0
-      delay: 0
+      targetMode: 0
+      multiDelay: 0
+      multiCast: 0
+      overrides: []
       value: 1
       signal: {fileID: 0}
       wait: 0
@@ -208,16 +192,10 @@ MonoBehaviour:
       animations: 
       isTrigger: 0
       ability: {fileID: 0}
-      overrideCastTime: 0
-      castTime: 0
-      overrideShowCastBar: 0
-      showCastBar: 0
-      overrideCooldown: 0
-      cooldown: 0
-      repeat: 0
-      keepCast: 0
-      amount: 1
-      delay: 0
+      targetMode: 0
+      multiDelay: 0
+      multiCast: 0
+      overrides: []
       value: 0
       signal: {fileID: 0}
       wait: 0
@@ -233,16 +211,10 @@ MonoBehaviour:
       animations: 
       isTrigger: 0
       ability: {fileID: 11400000, guid: b0e21482f0fd4a84196c74d2a4ca1b4b, type: 2}
-      overrideCastTime: 0
-      castTime: 0
-      overrideShowCastBar: 0
-      showCastBar: 0
-      overrideCooldown: 0
-      cooldown: 0
-      repeat: 0
-      keepCast: 0
-      amount: 1
-      delay: 0
+      targetMode: 0
+      multiDelay: 0
+      multiCast: 0
+      overrides: []
       value: 0
       signal: {fileID: 0}
       wait: 12
@@ -258,16 +230,10 @@ MonoBehaviour:
       animations: 
       isTrigger: 0
       ability: {fileID: 0}
-      overrideCastTime: 0
-      castTime: 0
-      overrideShowCastBar: 0
-      showCastBar: 0
-      overrideCooldown: 0
-      cooldown: 0
-      repeat: 0
-      keepCast: 0
-      amount: 0
-      delay: 0
+      targetMode: 0
+      multiDelay: 0
+      multiCast: 0
+      overrides: []
       value: 0
       signal: {fileID: 11400000, guid: 02e9778541886904584048e6bccdc409, type: 2}
       wait: 4
@@ -283,16 +249,10 @@ MonoBehaviour:
       animations: 
       isTrigger: 0
       ability: {fileID: 0}
-      overrideCastTime: 0
-      castTime: 0
-      overrideShowCastBar: 0
-      showCastBar: 0
-      overrideCooldown: 0
-      cooldown: 0
-      repeat: 0
-      keepCast: 0
-      amount: 1
-      delay: 0
+      targetMode: 0
+      multiDelay: 0
+      multiCast: 0
+      overrides: []
       value: 0
       signal: {fileID: 0}
       wait: 0
@@ -305,3 +265,47 @@ MonoBehaviour:
     eventCooldown: 0
     requirementsNeeded: 0
     delay: 0.1
+  currentAction:
+    type: 0
+    position: {x: 0, y: 0}
+    translationID: 
+    duration: 0
+    nextPhase: {fileID: 0}
+    animations: 
+    isTrigger: 0
+    ability: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
+    value: 0
+    signal: {fileID: 0}
+    wait: 0
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
+  currentDialog:
+    type: 0
+    position: {x: 0, y: 0}
+    translationID: 
+    duration: 0
+    nextPhase: {fileID: 0}
+    animations: 
+    isTrigger: 0
+    ability: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
+    value: 0
+    signal: {fileID: 0}
+    wait: 0
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
+  eventActions: []
+  index: 0
+  eventIndex: 0
+  loops: 0

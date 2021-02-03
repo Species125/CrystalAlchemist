@@ -45,13 +45,13 @@ namespace Launcher
             this.PlayButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(62)))), ((int)(((byte)(33)))));
             this.PlayButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(62)))), ((int)(((byte)(33)))));
             this.PlayButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PlayButton.Font = new System.Drawing.Font("Arial", 16F);
+            this.PlayButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(228)))), ((int)(((byte)(191)))));
-            this.PlayButton.Location = new System.Drawing.Point(418, 325);
+            this.PlayButton.Location = new System.Drawing.Point(412, 325);
             this.PlayButton.Name = "PlayButton";
-            this.PlayButton.Size = new System.Drawing.Size(154, 52);
+            this.PlayButton.Size = new System.Drawing.Size(160, 52);
             this.PlayButton.TabIndex = 0;
-            this.PlayButton.Text = "Play";
+            this.PlayButton.Text = "NOT  INSTALLED";
             this.PlayButton.UseVisualStyleBackColor = false;
             this.PlayButton.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -61,7 +61,7 @@ namespace Launcher
             this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(168)))), ((int)(((byte)(0)))));
             this.progressBar1.Location = new System.Drawing.Point(12, 336);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(400, 26);
+            this.progressBar1.Size = new System.Drawing.Size(394, 26);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 1;
             this.progressBar1.Visible = false;
@@ -74,13 +74,13 @@ namespace Launcher
             this.downloadButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(62)))), ((int)(((byte)(33)))));
             this.downloadButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(62)))), ((int)(((byte)(33)))));
             this.downloadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.downloadButton.Font = new System.Drawing.Font("Arial", 16F);
+            this.downloadButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.downloadButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(228)))), ((int)(((byte)(191)))));
-            this.downloadButton.Location = new System.Drawing.Point(258, 325);
+            this.downloadButton.Location = new System.Drawing.Point(246, 325);
             this.downloadButton.Name = "downloadButton";
-            this.downloadButton.Size = new System.Drawing.Size(154, 52);
+            this.downloadButton.Size = new System.Drawing.Size(160, 52);
             this.downloadButton.TabIndex = 3;
-            this.downloadButton.Text = "Download";
+            this.downloadButton.Text = "DOWNLOAD";
             this.downloadButton.UseVisualStyleBackColor = false;
             this.downloadButton.Visible = false;
             this.downloadButton.Click += new System.EventHandler(this.button2_Click);
@@ -117,7 +117,7 @@ namespace Launcher
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Crystal Alchemist Launcher";
+            this.Text = "Crystal Alchemist Launcher 1.0";
             this.ResumeLayout(false);
             this.PerformLayout();
 

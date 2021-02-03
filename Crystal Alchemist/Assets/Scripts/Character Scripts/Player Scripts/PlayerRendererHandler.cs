@@ -14,8 +14,10 @@ namespace CrystalAlchemist
 
         private List<PlayerRenderer> parts = new List<PlayerRenderer>();
 
-        private void Awake()
+        public override void Awake()
         {
+            base.Awake();
+
             this.player = this.GetComponent<Player>();
 
             if (player.isLocalPlayer)
@@ -29,9 +31,8 @@ namespace CrystalAlchemist
             }
         }
 
-        public override void Start()
-        {
-            base.Start();
+        private void Start()
+        {            
             UpdatePlayerRenderer();
             UpdateCharacterPartsOthers();
         }

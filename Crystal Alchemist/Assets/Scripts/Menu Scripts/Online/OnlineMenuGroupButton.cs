@@ -16,9 +16,6 @@ namespace CrystalAlchemist
         private TextMeshProUGUI playerField;
 
         [SerializeField]
-        private NetworkSettings settings;
-
-        [SerializeField]
         private Image lockImage;
 
         private int maxPlayers;

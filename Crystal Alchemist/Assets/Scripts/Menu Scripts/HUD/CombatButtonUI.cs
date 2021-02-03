@@ -115,7 +115,7 @@ namespace CrystalAlchemist
 
                 SkillSenderModule senderModule = ability.skill.GetComponent<SkillSenderModule>();
 
-                if (senderModule != null && senderModule.costs.item != null)
+                if (senderModule != null && senderModule.costs.resourceType == CostType.item && senderModule.costs.item != null)
                     this.ammo.text = this.inventory.GetAmount(senderModule.costs.item) + "";
                 else this.ammo.text = "";
 

@@ -81,11 +81,24 @@ namespace CrystalAlchemist
         public override void Initialize()
         {
             base.Initialize();
-            if (this.useStartDistance) this.startDistance = Vector2.Distance(this.skill.target.GetGroundPosition(), this.skill.sender.GetGroundPosition());
+            if (this.skill.target == null)
+            {                
+                DeactivateIt();
+                return;
+            }
+
+            if (this.useStartDistance) 
+                this.startDistance = Vector2.Distance(this.skill.target.GetGroundPosition(), this.skill.sender.GetGroundPosition());
         }
 
         private void FixedUpdate()
         {
+            if (this.skill.target == null)
+            {
+                DeactivateIt();
+                return;
+            }
+
             if (this.indicator != null) this.indicator.UpdateCastingIndicator(this.skill.sender, this.skill.target);
 
             if (this.canBreak && this.type == ChainType.min && this.hasRightDistance()) DeactivateIt();

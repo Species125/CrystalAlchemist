@@ -14,17 +14,19 @@ namespace CrystalAlchemist
 
         [BoxGroup("Values")]
         [SerializeField]
-        private TeleportStats nextTeleport;
+        private TeleportStats latestTeleport;
 
         [BoxGroup("Values")]
         [SerializeField]
-        private TeleportStats lastTeleport;
+        private TeleportStats returnTeleport;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private bool ShowSpawnIn;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private bool ShowSpawnOut;
 
@@ -41,9 +43,9 @@ namespace CrystalAlchemist
 
         public void SetNextTeleport(TeleportStats stats)
         {
-            this.nextTeleport = stats;
-            this.ShowSpawnIn = this.nextTeleport.showAnimationIn;
-            this.ShowSpawnOut = this.nextTeleport.showAnimationOut;
+            this.latestTeleport = stats;
+            this.ShowSpawnIn = this.latestTeleport.showAnimationIn;
+            this.ShowSpawnOut = this.latestTeleport.showAnimationOut;
         }
 
         public void SetAnimation(bool showIn, bool showOut)
@@ -52,35 +54,35 @@ namespace CrystalAlchemist
             this.ShowSpawnOut = showOut;
         }
 
-        public void SetLastTeleport(TeleportStats stats)
+        public void SetReturnTeleport(TeleportStats stats)
         {
-            this.lastTeleport = stats;
+            this.returnTeleport = stats;
         }
 
-        public TeleportStats GetNextTeleport()
+        public TeleportStats GetLatestTeleport()
         {
-            return this.nextTeleport;
+            return this.latestTeleport;
         }
 
-        public TeleportStats GetLastTeleport()
+        public TeleportStats GetReturnTeleport()
         {
-            return this.lastTeleport;
+            return this.returnTeleport;
         }
 
-        public bool HasLast()
+        public bool HasReturn()
         {
-            return this.lastTeleport != null;
+            return this.returnTeleport != null;
         }
 
-        public bool HasNext()
+        public bool HasLatest()
         {
-            return this.nextTeleport != null;
+            return this.latestTeleport != null;
         }
 
         public void SetReturnTeleport()
         {
-            if (this.lastTeleport == null) return;
-            SetNextTeleport(this.lastTeleport);
+            if (this.returnTeleport == null) return;
+            SetNextTeleport(this.returnTeleport);
         }
 
         public void Initialize()

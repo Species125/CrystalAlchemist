@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5975672862114410655}
   - component: {fileID: 1323756168335021922}
   - component: {fileID: 5159569010988413233}
+  - component: {fileID: 9010144189203192527}
   m_Layer: 0
   m_Name: RandomSpawn
   m_TagString: Untagged
@@ -81,6 +82,28 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5
+--- !u!114 &9010144189203192527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221674453208872181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1720393925371193816
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1955702274493018656}
   - component: {fileID: 513667207127939959}
+  - component: {fileID: 1365622300759769326}
   m_Layer: 0
   m_Name: Target Spawn
   m_TagString: Untagged
@@ -145,6 +169,28 @@ MonoBehaviour:
     spawnDelay: 1
     repeat: 0
     repeatDelay: 1
+--- !u!114 &1365622300759769326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720393925371193816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7353070421346399499
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5893333804141077207}
   - component: {fileID: 1407633851760950376}
+  - component: {fileID: 8299137073887346569}
   m_Layer: 0
   m_Name: Sender Spawn
   m_TagString: Untagged
@@ -209,6 +256,28 @@ MonoBehaviour:
     spawnDelay: 2
     repeat: 0
     repeatDelay: 1
+--- !u!114 &8299137073887346569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7353070421346399499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &8549439675706880630
 GameObject:
   m_ObjectHideFlags: 0

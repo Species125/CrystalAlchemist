@@ -30,7 +30,7 @@ namespace CrystalAlchemist
 
         private void OnTriggerEnter2D(Collider2D hittedCharacter)
         {
-            if (CollisionUtil.checkCollision(hittedCharacter, this.skill))
+            if (CollisionUtil.CheckCollision(hittedCharacter, this.skill))
             {
                 Character character = hittedCharacter.GetComponent<Character>();
                 if (character != null)
@@ -42,7 +42,7 @@ namespace CrystalAlchemist
 
         private void OnTriggerExit2D(Collider2D hittedCharacter)
         {
-            if (CollisionUtil.checkCollision(hittedCharacter, this.skill))
+            if (CollisionUtil.CheckCollision(hittedCharacter, this.skill))
             {
                 Character character = hittedCharacter.GetComponent<Character>();
                 if (character != null && this.listOfCharacters.ContainsKey(character)) this.listOfCharacters.Remove(character);

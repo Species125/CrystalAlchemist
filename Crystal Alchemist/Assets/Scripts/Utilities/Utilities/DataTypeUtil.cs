@@ -18,8 +18,6 @@ namespace CrystalAlchemist
         public int hour;
         [HorizontalGroup("Date/Group 2", LabelWidth = 40, MarginRight = 10, MaxWidth = 10, Width = 0)]
         public int minute;
-        [HorizontalGroup("Date/Group 2", LabelWidth = 40, MaxWidth = 10, Width = 0)]
-        public int second;
 
         public UDateTime(DateTime date)
         {
@@ -28,7 +26,6 @@ namespace CrystalAlchemist
             this.day = date.Day;
             this.hour = date.Hour;
             this.minute = date.Minute;
-            this.second = date.Second;
         }
 
         public UDateTime(string value)
@@ -40,19 +37,19 @@ namespace CrystalAlchemist
                 this.day = Convert.ToInt32(value.Split(' ')[0].Split('.')[0]);
                 this.hour = Convert.ToInt32(value.Split(' ')[1].Split('.')[0]);
                 this.minute = Convert.ToInt32(value.Split(' ')[1].Split('.')[1]);
-                this.second = Convert.ToInt32(value.Split(' ')[1].Split('.')[2]);
+                //this.second = Convert.ToInt32(value.Split(' ')[1].Split('.')[2]);
             }
             catch { }
         }
 
         public override string ToString()
         {
-            return day + "." + month + "." + year + " " + hour + ":" + minute + ":" + second;
+            return day + "." + month + "." + year + " " + hour + ":" + minute;
         }
 
         public DateTime ToDateTime()
         {
-            return new DateTime(year, month, day, hour, minute, second);
+            return new DateTime(year, month, day, hour, minute, 0);
         }
     }
 
@@ -66,8 +63,6 @@ namespace CrystalAlchemist
         public int hours;
         [HorizontalGroup("Timespan/Group 1", LabelWidth = 30, MarginRight = 10, MaxWidth = 10, Width = 0)]
         public int minutes;
-        [HorizontalGroup("Timespan/Group 1", LabelWidth = 30, MaxWidth = 10, Width = 0)]
-        public int seconds;
 
         public UTimeSpan(int hours, int minutes, int seconds)
         {
@@ -83,19 +78,23 @@ namespace CrystalAlchemist
                 this.days = Convert.ToInt32(value.Split(':')[0]);
                 this.hours = Convert.ToInt32(value.Split(':')[1]);
                 this.minutes = Convert.ToInt32(value.Split(':')[2]);
-                this.seconds = Convert.ToInt32(value.Split(':')[3]);
             }
             catch { }
         }
 
         public override string ToString()
         {
-            return days + ":" + hours + ":" + minutes + ":" + seconds;
+            return days + ":" + hours + ":" + minutes;
+        }
+
+        public string ToInspector()
+        {
+            return days + "d " + hours + "h " + minutes+"min";
         }
 
         public TimeSpan ToTimeSpan()
         {
-            return new TimeSpan(days, hours, minutes, seconds);
+            return new TimeSpan(days, hours, minutes,0);
         }
     }
 

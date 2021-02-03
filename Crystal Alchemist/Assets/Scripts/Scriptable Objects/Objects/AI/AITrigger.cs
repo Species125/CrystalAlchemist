@@ -77,12 +77,12 @@ namespace CrystalAlchemist
 
         private bool checkAggro(AI npc)
         {
-            return (npc.targetID > 0);
+            return npc.HasMainTarget();
         }
 
         private bool checkAggroLost(AI npc)
         {
-            return (npc.targetID <= 0);
+            return !npc.HasMainTarget();
         }
 
         private bool checkTime()

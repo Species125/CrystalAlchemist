@@ -12,23 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266771f26e0200047a77d2d39c8b8900, type: 3}
   m_Name: Schwert
   m_EditorClassIdentifier: 
-  abilityName: Schwert
-  abilityNameEnglish: Sword
+  path: Scriptable Objects/Abilities/Skills/Player Skills/Schwert
   skill: {fileID: 2626038527925349230, guid: 08ac142b84c3a2547ab5aed3862039d9, type: 3}
   useTargetSystem: 0
   targetingProperty: {fileID: 0}
+  useIndicator: 0
+  indicator:
+    indicatorProperty: {fileID: 0}
   hasSkillBookInfo: 1
+  icon: {fileID: 0}
   info: {fileID: 11400000, guid: 1f7e6cc1de2eb2d4cb333bc49aa67f57, type: 2}
   cooldown: 0.3
+  globalCooldown: 0.3
   hasMaxDuration: 0
   maxDuration: 1
-  rapidFireDelay: 1
+  hasDelay: 0
+  delay: 1
   hasCastTime: 0
   castTime: 0
   showCastbar: 1
+  castAnimation: {fileID: 0}
   hasMaxAmount: 1
   maxAmount: 1
-  requirements: 0
+  requirements: {fileID: 0}
   isRapidFire: 0
   remoteActivation: 0
   deactivateButtonUp: 0
@@ -42,3 +48,6 @@ MonoBehaviour:
   holdTimer: 0
   state: 6
   enabled: 1
+  active: 1
+  sender: {fileID: 0}
+  activeAnimation: {fileID: 0}

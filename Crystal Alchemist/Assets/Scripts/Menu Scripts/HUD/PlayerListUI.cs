@@ -24,7 +24,7 @@ namespace CrystalAlchemist
             {
                 if (p.TagObject == null || p == PhotonNetwork.LocalPlayer) continue;
                 Player player = (Player)p.TagObject;
-                if (player == null) return;
+                if (player == null) continue;
                 int ID = player.photonView.ViewID;
                 Create(ID);
             }

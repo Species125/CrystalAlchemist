@@ -30,14 +30,17 @@ namespace CrystalAlchemist
         private float resultTime = 5f;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private DummyState state = DummyState.ready;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private float damage = 0f;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private float countdown = 0;
 

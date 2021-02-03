@@ -97,6 +97,7 @@ namespace CrystalAlchemist
         [HideInInspector]
         public int counter;
 
+        //if rotationtype = rotation update -> only on master!
 
         public void Initialize(Character sender, Character target, List<Character> targets)
         {

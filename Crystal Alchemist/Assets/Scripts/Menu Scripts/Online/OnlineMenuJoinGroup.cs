@@ -50,6 +50,8 @@ namespace CrystalAlchemist
         public void SetInfo(OnlineMenuGroupButton button)
         {
             this.info = button.info;
+            UpdateTexts();
+            DisableButton();
         }
 
         public void Reset()

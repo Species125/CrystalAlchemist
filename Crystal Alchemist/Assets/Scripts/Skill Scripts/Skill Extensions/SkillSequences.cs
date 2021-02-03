@@ -17,7 +17,8 @@ namespace CrystalAlchemist
             if (npc != null) targets = npc.GetTargets();
 
             BossMechanic bossMechanic = this.bossMechanics[Random.Range(0, this.bossMechanics.Count)];
-            NetworkEvents.current.InstantiateBossSequence(bossMechanic, this.skill.sender, this.skill.target, targets);
+            NetworkEvents.current.InstantiateBossSequence(bossMechanic, this.skill.sender, 
+                this.skill.target, targets, this.transform.position, this.transform.rotation);
         }
     }
 }

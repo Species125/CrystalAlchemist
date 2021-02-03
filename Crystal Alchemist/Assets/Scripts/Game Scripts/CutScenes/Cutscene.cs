@@ -41,7 +41,7 @@ namespace CrystalAlchemist
         {
             float duration = this.maxDuration;
 
-            this.CutSceneValue.setValue(true);
+            this.CutSceneValue.SetValue(true);
             GameEvents.current.DoCutScene();
             this.OnStart?.Invoke();
 
@@ -51,7 +51,7 @@ namespace CrystalAlchemist
         [ButtonGroup]
         public void Completed()
         {
-            this.CutSceneValue.setValue(false);
+            this.CutSceneValue.SetValue(false);
             GameEvents.current.DoCutScene();
             this.OnEnd?.Invoke();
         }

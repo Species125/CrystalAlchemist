@@ -31,12 +31,53 @@ namespace CrystalAlchemist
         public const byte ITEMDROP = 30;
         public const byte ITEMDROP_MASTER = 31;
 
-        public const byte READY_SHOW = 41;
-        public const byte READY_SET = 42;
+        public const byte SET_NEXT_TELEPORT = 41;
+        public const byte READY_SHOW = 42;
+        public const byte READY_SET = 43;
+        public const byte JUKEBOX_PLAY = 44;
+        public const byte JUKEBOX_PAUSE = 45;
+        public const byte JUKEBOX_STOP = 46;
+
+        public const byte TIME_STARTUP = 51;
+        public const byte TIME_CHANGED = 52;
+        public const byte TIME_RESET = 53;
 
         public const byte PLAYERS_DEATH = 66;
 
-        public const byte SKILL_AFFECTIONS = 101;
+        public const byte SKILL_AFFECTIONS = 81;
+
+        public const byte DISCONNECT = 91;
+
+
+        public static RaiseEventOptions TargetAll()
+        {
+            return new RaiseEventOptions()
+            {
+                Receivers = ReceiverGroup.All
+            };
+        }
+
+        public static RaiseEventOptions TargetMaster()
+        {
+            return new RaiseEventOptions()
+            {
+                Receivers = ReceiverGroup.MasterClient
+            };
+        }
+
+        public static RaiseEventOptions TargetOther()
+        {
+            return new RaiseEventOptions()
+            {
+                Receivers = ReceiverGroup.Others
+            };
+        }
+
+
+        public static bool IsSolo()
+        {
+            return (PhotonNetwork.OfflineMode || PhotonNetwork.PlayerList.Length <= 1);
+        }
 
         public static bool IsLocal()
         {
@@ -71,7 +112,7 @@ namespace CrystalAlchemist
 
         public static int GetID(GameObject gameObject)
         {
-            return gameObject.GetPhotonView().ViewID;
+            return gameObject.GetPhotonView().ViewID; //ERROR
         }
 
         public static Character GetCharacter(int ID)
@@ -107,12 +148,6 @@ namespace CrystalAlchemist
                 PhotonNetwork.CurrentRoom.IsVisible = value;
                 PhotonNetwork.CurrentRoom.IsOpen = value;
             }
-        }
-
-        public static void LeaveRoom()
-        {
-            PhotonNetwork.LeaveRoom();
-            PhotonNetwork.Disconnect();
         }
 
         public static void CreateRoom(string roomName, byte maxPlayers = 1, bool isOpen = false, bool privat = false, string password = "")

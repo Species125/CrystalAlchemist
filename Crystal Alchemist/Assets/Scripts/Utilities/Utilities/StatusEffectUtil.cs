@@ -1,14 +1,16 @@
 ﻿using System.Collections.Generic;
-
-
-
-
 using UnityEngine;
 
 namespace CrystalAlchemist
 {
     public static class StatusEffectUtil
     {
+        public static int GetAmount(StatusEffect effect, Character character)
+        {
+            int count = GetSameEffects(effect, character).Count;
+            return count;
+        }
+
         public static void RemoveAllStatusEffects(List<StatusEffect> statusEffects)
         {
             foreach (StatusEffect effect in statusEffects) effect.DestroyIt();

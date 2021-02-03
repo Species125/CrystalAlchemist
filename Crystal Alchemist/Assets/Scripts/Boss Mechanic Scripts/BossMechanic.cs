@@ -9,14 +9,17 @@ namespace CrystalAlchemist
     public class BossMechanic : NetworkBehaviour
     {
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private Character sender;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private Character target;
 
         [BoxGroup("Debug")]
+        [ReadOnly]
         [SerializeField]
         private List<Character> targets = new List<Character>();
 
@@ -45,7 +48,7 @@ namespace CrystalAlchemist
         private void Updating()
         {
             int counter = 0;
-            foreach (BossMechanicProperty property in this.properties) if (!property.enabled) counter++;
+            foreach (BossMechanicProperty property in this.properties) if (!property.enabled || !property.gameObject.activeInHierarchy) counter++;
 
             if (counter >= this.properties.Count) Destroy(this.gameObject, 10f);
         }

@@ -1,6 +1,4 @@
-﻿
-
-
+﻿using Photon.Pun;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -30,13 +28,6 @@ namespace CrystalAlchemist
         private bool autoClose = true;
 
         private bool isOpen;
-
-        private new void Start()
-        {
-            base.Start();
-
-            if (this.isOpen) AnimatorUtil.SetAnimatorParameter(this.animator, "Close");
-        }
 
         public override void OnExit()
         {
@@ -90,6 +81,12 @@ namespace CrystalAlchemist
         }
 
         private void OpenCloseDoor(bool isOpen)
+        {
+            this.photonView.RPC("RpcOpenCloseDoor", RpcTarget.All, isOpen);
+        }
+
+        [PunRPC]
+        protected void RpcOpenCloseDoor(bool isOpen)
         {
             this.isOpen = isOpen;
 

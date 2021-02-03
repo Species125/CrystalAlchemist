@@ -44,17 +44,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 129621293028441493}
     m_Modifications:
-    - target: {fileID: 550109463226461186, guid: 10fd24f1b0be2394dbb3289427bcba82,
-        type: 3}
-      propertyPath: offlineMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 550109463226461186, guid: 10fd24f1b0be2394dbb3289427bcba82,
-        type: 3}
-      propertyPath: playerPrefab
-      value: 
-      objectReference: {fileID: 2934492601526238649, guid: c36963d905e801f4e973e73ffc4a57b9,
-        type: 3}
     - target: {fileID: 2560911518177267050, guid: 10fd24f1b0be2394dbb3289427bcba82,
         type: 3}
       propertyPath: m_RootOrder
@@ -114,16 +103,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Networking
-      objectReference: {fileID: 0}
-    - target: {fileID: 2560911518177267053, guid: 10fd24f1b0be2394dbb3289427bcba82,
-        type: 3}
-      propertyPath: viewIdField
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2560911518177267053, guid: 10fd24f1b0be2394dbb3289427bcba82,
-        type: 3}
-      propertyPath: OwnershipTransfer
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10fd24f1b0be2394dbb3289427bcba82, type: 3}
@@ -500,8 +479,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2415569349363134286, guid: cdb6eb2ade7f68a4bb60c7ff4b62f386, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdb6eb2ade7f68a4bb60c7ff4b62f386, type: 3}
 --- !u!4 &2210021363813144353 stripped
 Transform:

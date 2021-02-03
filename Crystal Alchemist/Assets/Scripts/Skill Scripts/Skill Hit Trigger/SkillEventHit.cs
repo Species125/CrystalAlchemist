@@ -57,7 +57,7 @@ namespace CrystalAlchemist
 
         private void OnTriggerEnter2D(Collider2D hittedCharacter)
         {
-            if (CollisionUtil.checkCollision(hittedCharacter, this.skill)) counter++;
+            if (CollisionUtil.CheckCollision(hittedCharacter, this.skill)) counter++;
         }
     }
 }

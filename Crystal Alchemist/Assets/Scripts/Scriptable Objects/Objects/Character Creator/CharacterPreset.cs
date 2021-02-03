@@ -124,7 +124,7 @@ namespace CrystalAlchemist
         {
             if (this.readOnly) return;
 
-            if (!property) this.properties.Remove(property);
+            if (property) this.properties.Remove(property);
         }
 
         public CharacterCreatorProperty GetPropertyOfSameType(CharacterCreatorProperty property)

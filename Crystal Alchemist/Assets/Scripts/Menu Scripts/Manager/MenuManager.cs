@@ -96,14 +96,22 @@ namespace CrystalAlchemist
 
         private void NetworkingEvent(EventData obj)
         {
-            if (obj.Code == NetworkUtil.READY_SHOW)
+            if (obj.Code == NetworkUtil.SET_NEXT_TELEPORT)
+            {
+                object[] datas = (object[])obj.CustomData;
+                string path = (string)datas[0];
+
+                this.teleportPath.SetValue(path);                
+            }
+            else if (obj.Code == NetworkUtil.READY_SHOW)
             {
                 object[] datas = (object[])obj.CustomData;
                 string path = (string)datas[0];
 
                 this.teleportPath.SetValue(path);
+
                 OpenScene("Teleport");
-            }
+            }            
         }
     }
 }

@@ -20,6 +20,9 @@ namespace CrystalAlchemist {
         private Image dead;
 
         [SerializeField]
+        private Image leader;
+
+        [SerializeField]
         private CharacterValues values;
 
         public int ID;
@@ -44,8 +47,8 @@ namespace CrystalAlchemist {
             this.manabar.fillAmount = (float)(this.values.mana / this.values.maxMana);
             this.nameField.color = this.values.effectColor;
 
-            if (this.values.life <= 0) this.dead.gameObject.SetActive(true);
-            else this.dead.gameObject.SetActive(false);
+            this.dead.gameObject.SetActive(this.values.life <= 0);
+            this.leader.gameObject.SetActive(this.values.isMaster);
         }
     }
 }

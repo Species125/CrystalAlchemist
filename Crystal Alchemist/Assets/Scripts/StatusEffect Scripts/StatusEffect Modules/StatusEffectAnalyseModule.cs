@@ -15,9 +15,9 @@ namespace CrystalAlchemist
             this.transform.position = this.activeEffect.GetTarget().GetGroundPosition();
         }
 
-        public void DoAction() => this.isActive.setValue(true);
+        public void DoAction() => this.isActive.SetValue(true);
 
-        public void DoDestroy() => this.isActive.setValue(false);
+        public void DoDestroy() => this.isActive.SetValue(false);
 
         void FixedUpdate()
         {
