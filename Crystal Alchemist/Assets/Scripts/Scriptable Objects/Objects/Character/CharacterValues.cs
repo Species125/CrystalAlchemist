@@ -93,9 +93,6 @@ namespace CrystalAlchemist
         [ReadOnly]
         [ColorUsage(true, true)]
         public Color effectColor = Color.white;
-        [BoxGroup("Debug")]
-        [ReadOnly]
-        public bool isMaster = false;
 
         [Button]
         public void Clear(CharacterStats stats)

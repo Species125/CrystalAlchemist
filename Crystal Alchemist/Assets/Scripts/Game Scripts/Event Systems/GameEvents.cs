@@ -58,6 +58,7 @@ namespace CrystalAlchemist
         public Action<string> OnSceneChanged;
 
         public Action<int> OnPlayerSpawned;
+        public Action OnPlayerSpawnCompleted;
         public Action<int> OnOtherPlayerSpawned;
         public Action OnDeviceChanged;
         public Action OnDeath;
@@ -102,6 +103,7 @@ namespace CrystalAlchemist
         public void DoManaLifeUpdateLocal() => this.OnLifeManaUpdateLocal?.Invoke();
 
         public void DoLocalPlayerSpawned(int ID) => this.OnPlayerSpawned?.Invoke(ID);
+        public void DoPlayerSpawnCompleted() => this.OnPlayerSpawnCompleted?.Invoke();
         public void DoOtherLocalPlayerSpawned(int ID) => this.OnOtherPlayerSpawned?.Invoke(ID);
 
         public void DoDeviceChanged() => this.OnDeviceChanged?.Invoke();

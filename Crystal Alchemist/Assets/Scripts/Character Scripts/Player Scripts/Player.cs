@@ -43,6 +43,10 @@ namespace CrystalAlchemist
         [ReadOnly]
         public string uniqueID;
 
+        [BoxGroup("Debug")]
+        [ReadOnly]
+        public bool isMaster;
+
         ///////////////////////////////////////////////////////////////
 
         public override void Awake()
@@ -67,8 +71,6 @@ namespace CrystalAlchemist
             }
             else
             {
-                if (NetworkUtil.IsMaster()) this.values.isMaster = true;
-
                 this.gameObject.name = "Player (Local)";
                 this.stats = this.saveGame.stats;
                 this.values = this.saveGame.playerValue;
@@ -141,7 +143,7 @@ namespace CrystalAlchemist
             GameEvents.current.DoLocalPlayerSpawned(this.photonView.ViewID);
 
             UpdateLifeManaForOthers();
-            //AddStatusEffectVisuals();
+            SetMasterFlag();
 
             this.saveGame.skillSet.TestInitialize(this);
             this.currentScene.SetValue(this.gameObject.scene.name);
@@ -197,6 +199,7 @@ namespace CrystalAlchemist
         {
             base.SpawnIn();
             AddStatusEffectVisuals();
+            if (this.isLocalPlayer) GameEvents.current.DoPlayerSpawnCompleted();
         }        
 
         public override void EnableScripts(bool value)
@@ -443,12 +446,10 @@ namespace CrystalAlchemist
             if (stream.IsWriting)
             {
                 stream.SendNext(this.uniqueID);
-                stream.SendNext(this.values.isMaster);
             }
             else
             {
                 this.uniqueID = (string)stream.ReceiveNext();
-                this.values.isMaster = (bool)stream.ReceiveNext();
             }
         }
 
@@ -500,13 +501,28 @@ namespace CrystalAlchemist
 
         public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
         {
-            this.photonView.RPC("RpcSetPlayerPosition", RpcTarget.Others, (Vector2)this.transform.position);
+            this.photonView.RPC("RpcSetPlayerPosition", RpcTarget.Others, (Vector2)this.transform.position);            
         }
 
         [PunRPC]
-        protected void RpcSetPlayerPosition(Vector2 position)
+        protected void RpcSetPlayerPosition(Vector2 position) => this.transform.position = position;        
+
+        private void SetMasterFlag()
         {
-            this.transform.position = position;
+            if (!this.isLocalPlayer) return;
+            this.isMaster = NetworkUtil.IsMaster();
+            this.photonView.RPC("RpcSetMasterFlag", RpcTarget.OthersBuffered, this.isMaster);
+        }
+
+        public override void OnPlayerLeftRoom(Photon.Realtime.Player newPlayer)
+        {            
+            SetMasterFlag();
+        }
+
+        [PunRPC]
+        protected void RpcSetMasterFlag(bool value)
+        {
+            this.isMaster = value;
         }
     }
 }

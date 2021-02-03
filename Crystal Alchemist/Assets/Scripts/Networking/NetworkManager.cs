@@ -16,11 +16,13 @@ namespace CrystalAlchemist
         private void OnEnable()
         {
             PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
+            GameEvents.current.OnPlayerSpawnCompleted += ShowKickMessage;
         }
 
         private void OnDisable()
         {
             PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEvent;
+            GameEvents.current.OnPlayerSpawnCompleted -= ShowKickMessage;
         }
 
         private void NetworkingEvent(EventData obj)
@@ -47,13 +49,16 @@ namespace CrystalAlchemist
                 return;
             }
             if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom) Instantiate();
-
+        }      
+        
+        private void ShowKickMessage()
+        {
             if (this.settings.gotKicked.GetValue())
             {
-                if(this.GetComponent<MenuDialogBoxLauncher>() != null) this.GetComponent<MenuDialogBoxLauncher>().ShowDialogBox();
+                if (this.GetComponent<MenuDialogBoxLauncher>() != null) this.GetComponent<MenuDialogBoxLauncher>().ShowDialogBox();
                 this.settings.gotKicked.SetValue(false);
             }
-        }        
+        }
 
         private void Instantiate()
         {

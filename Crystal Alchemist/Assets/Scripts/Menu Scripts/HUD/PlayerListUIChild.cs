@@ -42,13 +42,15 @@ namespace CrystalAlchemist {
 
         private void UpdateData(int ID)
         {
-            if (ID != this.ID) return;            
+            if (ID != this.ID) return;
+            Player player = NetworkUtil.GetPlayer(ID);
+
             this.healthbar.fillAmount = (float)(this.values.life / this.values.maxLife);
             this.manabar.fillAmount = (float)(this.values.mana / this.values.maxMana);
             this.nameField.color = this.values.effectColor;
 
             this.dead.gameObject.SetActive(this.values.life <= 0);
-            this.leader.gameObject.SetActive(this.values.isMaster);
+            this.leader.gameObject.SetActive(player.isMaster);
         }
     }
 }

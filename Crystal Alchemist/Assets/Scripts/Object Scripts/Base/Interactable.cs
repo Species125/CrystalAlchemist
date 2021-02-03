@@ -125,7 +125,7 @@ namespace CrystalAlchemist
 
                 if (NetworkUtil.IsLocal(player)
                 && (!this.masterOnly
-                || (this.masterOnly && player.values.isMaster))
+                || (this.masterOnly && player.isMaster))
                 && this.player != player)
                 {
                     this.player = player;

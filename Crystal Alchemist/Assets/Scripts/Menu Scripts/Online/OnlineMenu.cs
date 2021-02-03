@@ -2,6 +2,7 @@ using Photon.Pun;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace CrystalAlchemist
 {
@@ -13,38 +14,24 @@ namespace CrystalAlchemist
 
         [BoxGroup("Online Menu")]
         [SerializeField]
-        private GameObject joinOrCreate;
+        private Selectable edit;
 
         [BoxGroup("Online Menu")]
         [SerializeField]
-        private GameObject edit;
-
-        [BoxGroup("Online Menu")]
-        [SerializeField]
-        private GameObject leave;
+        private Selectable leave;
 
         public override void Start()
         {
             base.Start();
 
-            joinOrCreate.SetActive(false);
-            leave.SetActive(false);
-
-            if (PhotonNetwork.OfflineMode)
-            {
-                joinOrCreate.SetActive(true);
-                edit.SetActive(false);
-            }
-            else
-            {
-                edit.SetActive(true);
-                leave.SetActive(true);
-            }
+            this.edit.interactable = !PhotonNetwork.OfflineMode;
+            this.leave.interactable = !PhotonNetwork.OfflineMode;
         }
 
         public void JoinOrCreateGroup()
         {
             settings.offlineMode.SetValue(false);
+            PhotonNetwork.LeaveRoom();            
             ExitMenu();
             SceneManager.LoadScene("Loading");
         }

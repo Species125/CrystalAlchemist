@@ -328,6 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 9429396}
   selectFirst: 0
+  useLocalSelectedColor: 1
   overrideNavigation: 0
   up: []
   down: []
@@ -505,7 +506,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 550, y: 420}
+  m_SizeDelta: {x: 550, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &147753927
 MonoBehaviour:
@@ -551,9 +552,8 @@ MonoBehaviour:
   showBlackBackground: 1
   infoBox: {fileID: 0}
   settings: {fileID: 11400000, guid: eb0ddd97242ba9544897515fabfb9371, type: 2}
-  joinOrCreate: {fileID: 1343338390}
-  edit: {fileID: 598682019}
-  leave: {fileID: 443829937}
+  edit: {fileID: 598682022}
+  leave: {fileID: 443829940}
 --- !u!1 &282346881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,7 +1532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 60}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &443829939
@@ -1549,6 +1549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 9429396}
   selectFirst: 0
+  useLocalSelectedColor: 0
   overrideNavigation: 0
   up: []
   down: []
@@ -1763,7 +1764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -10}
+  m_AnchoredPosition: {x: 0, y: 20}
   m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &598682021
@@ -1780,6 +1781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 9429396}
   selectFirst: 0
+  useLocalSelectedColor: 0
   overrideNavigation: 0
   up: []
   down: []
@@ -2063,6 +2065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 9429396}
   selectFirst: 0
+  useLocalSelectedColor: 0
   overrideNavigation: 0
   up: []
   down: []
@@ -2671,6 +2674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 9429396}
   selectFirst: 0
+  useLocalSelectedColor: 0
   overrideNavigation: 0
   up: []
   down: []
@@ -3345,7 +3349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 60}
+  m_AnchoredPosition: {x: 0, y: 90}
   m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1343338392
@@ -3362,6 +3366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 9429396}
   selectFirst: 0
+  useLocalSelectedColor: 0
   overrideNavigation: 0
   up: []
   down: []
@@ -3651,7 +3656,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 135}
+  m_AnchoredPosition: {x: 0, y: 167.03703}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1415855520
@@ -3748,6 +3753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 9429396}
   selectFirst: 1
+  useLocalSelectedColor: 0
   overrideNavigation: 0
   up: []
   down: []
@@ -4321,6 +4327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 9429396}
   selectFirst: 0
+  useLocalSelectedColor: 0
   overrideNavigation: 0
   up: []
   down: []
@@ -4657,7 +4664,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -120}
+  m_AnchoredPosition: {x: 0, y: -155}
   m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1695494373
@@ -4674,6 +4681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 9429396}
   selectFirst: 1
+  useLocalSelectedColor: 0
   overrideNavigation: 0
   up: []
   down: []

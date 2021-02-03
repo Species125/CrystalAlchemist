@@ -1,6 +1,3 @@
-using ExitGames.Client.Photon;
-using Photon.Pun;
-using Photon.Realtime;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -32,7 +29,7 @@ namespace CrystalAlchemist
             this.nameField.text = player.characterName;
             this.ID = ID;
 
-            if (player.values.isMaster)
+            if (player.isMaster)
             {
                 this.leadImage.gameObject.SetActive(true);
                 this.kickButton.gameObject.SetActive(false);
@@ -40,10 +37,8 @@ namespace CrystalAlchemist
             else
             {
                 this.leadImage.gameObject.SetActive(false);
-                this.kickButton.gameObject.SetActive(true);
-            }
-
-            this.kickButton.interactable = enableButtons;
+                this.kickButton.gameObject.SetActive(enableButtons);
+            }            
         }
 
         public void KickPlayer()

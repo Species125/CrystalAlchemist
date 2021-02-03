@@ -16,6 +16,9 @@ namespace CrystalAlchemist
         private bool selectFirst = false;
 
         [SerializeField]
+        private bool useLocalSelectedColor = false;
+
+        [SerializeField]
         private bool overrideNavigation = false;
 
         [ShowIf("overrideNavigation", true)]
@@ -120,7 +123,7 @@ namespace CrystalAlchemist
                 ColorBlock colors = this.selectable.colors;
                 colors.disabledColor = MasterManager.globalValues.buttonNotActive;
                 colors.highlightedColor = Color.white;
-                colors.selectedColor = MasterManager.globalValues.buttonSelect;
+                if (!this.useLocalSelectedColor) colors.selectedColor = MasterManager.globalValues.buttonSelect;
                 this.selectable.colors = colors;
             }
         }
