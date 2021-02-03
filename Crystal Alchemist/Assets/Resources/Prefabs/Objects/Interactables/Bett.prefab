@@ -277,11 +277,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e597c13d0b62b49ace7674041f100f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   costs:
     resourceType: 0
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 1
+  masterOnly: 1
   customActionButton: 1
   ID: Schlafen
   showEffectOnEnable: 0
@@ -294,7 +297,7 @@ MonoBehaviour:
   offset: -1.2
   blanket: {fileID: 5873029744290735160}
   wakeUpActionID: Aufstehen
-  music: {fileID: 8300000, guid: 083366071dd8bbf44b24253ab3a3c344, type: 3}
+  music: {fileID: 8300000, guid: c31995b633941304d86af8f96b59e67e, type: 3}
   fadeIn: 2
   fadeOut: 0.5
 --- !u!1 &7938797964226999932

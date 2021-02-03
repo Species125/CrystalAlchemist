@@ -45,6 +45,8 @@ GameObject:
   - component: {fileID: 4536096100201619651}
   - component: {fileID: -2857999511042139106}
   - component: {fileID: 4024286121802477044}
+  - component: {fileID: -8017965636154463035}
+  - component: {fileID: 6552829752162379739}
   m_Layer: 11
   m_Name: Titanias Turm
   m_TagString: Untagged
@@ -104,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 2ecf4e93db9bd0a43a3dda9972716fe8, type: 2}
+  path: 
   myRigidbody: {fileID: 2438936824352443031}
   animator: {fileID: 4536096100035205208}
   boxCollider: {fileID: 4536096100201619651}
@@ -114,10 +116,12 @@ MonoBehaviour:
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 4536096100877042891}
   activeStatusEffectParent: {fileID: 7092093423516748017}
+  stats: {fileID: 11400000, guid: 2ecf4e93db9bd0a43a3dda9972716fe8, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
-  flip: 0
-  target: {fileID: 0}
+  characterName: 
+  NPCStats: {fileID: 11400000, guid: 2ecf4e93db9bd0a43a3dda9972716fe8, type: 2}
+  targetID: 0
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &55980665602690937
@@ -135,6 +139,7 @@ MonoBehaviour:
   character: {fileID: 0}
   startPhase: {fileID: 11400000, guid: 78faa3a529e2a7d48ae42755421cd4da, type: 2}
   startImmediately: 1
+  activePhase: {fileID: 0}
 --- !u!61 &4536096100201619651
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -187,6 +192,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   marker: {fileID: 683472866742487509, guid: 9676f77d535802944ac0b0aef93ed606, type: 3}
+--- !u!114 &-8017965636154463035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2438936824352443027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 55980665602690939}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &6552829752162379739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2438936824352443027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 4536096100035205208}
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 9
+    SynchronizeType: 1
+    Name: WakeUp
+  - Type: 9
+    SynchronizeType: 1
+    Name: Sleep
+  - Type: 4
+    SynchronizeType: 1
+    Name: Attacking
+  - Type: 9
+    SynchronizeType: 1
+    Name: Respawn
+  - Type: 9
+    SynchronizeType: 1
+    Name: Despawn
+  m_SynchronizeLayers:
+  - SynchronizeType: 1
+    LayerIndex: 0
 --- !u!1 &3204627084870921371
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +294,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroStats: {fileID: 11400000, guid: bb622e4c94811f244af5ad122c30d82e, type: 2}
   npc: {fileID: 55980665602690939}
-  cluePosition: {fileID: 0}
+  mainTarget: 
+  aggrodata: []
 --- !u!58 &3866322097961817499
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -485,8 +547,6 @@ MonoBehaviour:
   material: {fileID: 0}
   spriteRenderer: {fileID: 0}
   useGlow: 0
-  selectColor: {r: 1, g: 1, b: 1, a: 1}
-  precision: 0
   glowColor: {r: 1, g: 1, b: 1, a: 1}
   invert: 0
 --- !u!1 &4536096100807201265
@@ -674,6 +734,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8537469436013784418, guid: b15da4d5551d0eb4895d1dc3d6390eaa,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537469436013784418, guid: b15da4d5551d0eb4895d1dc3d6390eaa,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -689,6 +754,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537469436013784418, guid: b15da4d5551d0eb4895d1dc3d6390eaa,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537469436013784418, guid: b15da4d5551d0eb4895d1dc3d6390eaa,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -701,16 +771,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8537469436013784418, guid: b15da4d5551d0eb4895d1dc3d6390eaa,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8537469436013784418, guid: b15da4d5551d0eb4895d1dc3d6390eaa,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537469436013784418, guid: b15da4d5551d0eb4895d1dc3d6390eaa,
         type: 3}

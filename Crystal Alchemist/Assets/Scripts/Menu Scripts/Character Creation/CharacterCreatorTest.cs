@@ -1,16 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
 using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class CharacterCreatorTest : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private SimpleSignal signal;
-
-    [Button]
-    private void UpdateCharacter()
+    public class CharacterCreatorTest : MonoBehaviour
     {
-        this.signal.Raise();
+        [SerializeField]
+        private SimpleSignal signal;
+
+        [Button]
+        private void UpdateCharacter()
+        {
+            this.signal.Raise();
+        }
     }
 }

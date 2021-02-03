@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 8793106182354825631}
   - component: {fileID: 3993855607470318713}
   - component: {fileID: 5879174397619776836}
+  - component: {fileID: 5289102778279712313}
   m_Layer: 17
   m_Name: "Boss T\xFCr"
   m_TagString: Untagged
@@ -133,11 +134,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a116d261d2820141849459fec4b1def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   costs:
     resourceType: 0
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 1
+  masterOnly: 0
   customActionButton: 1
   ID: "\xD6ffnen"
   showEffectOnEnable: 0
@@ -189,6 +193,16 @@ MonoBehaviour:
   texts: []
   textValue: {fileID: 11400000, guid: 0dee858a55e55d64ba1bcbf52a9b3e33, type: 2}
   eventValue: {fileID: 11400000, guid: f6af316cc0916024581413a59b36461b, type: 2}
+  playerProgress: {fileID: 0}
+  progress:
+    progressType: 2
+    gameProgressID: 
+    location: 
+    addLocation: 0
+    timespan:
+      days: 0
+      hours: 0
+      minutes: 0
 --- !u!95 &8793106182354825631
 Animator:
   serializedVersion: 3
@@ -234,6 +248,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightGameObject: {fileID: 5051653297162706407}
+--- !u!114 &5289102778279712313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611961934307275026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1657612909350122411
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,9 +472,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
   useGlow: 1
-  selectColor: {r: 1, g: 1, b: 1, a: 1}
-  precision: 0
   glowColor: {r: 0.9882353, g: 2.9960785, b: 0.9882353, a: 1}
+  invert: 0
 --- !u!1 &5051653297162706407
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,12 +1,16 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
-public class SkillTouch : SkillExtension
+namespace CrystalAlchemist
 {
-    public override void Initialize()
+    public class SkillTouch : SkillExtension
     {
-        Collider2D temp = this.skill.sender.boxCollider;
+        public override void Initialize()
+        {
+            Collider2D temp = this.skill.sender.boxCollider;
 
-        Collider2D te = UnityUtil.CopyComponent(temp, this.gameObject);
-        te.isTrigger = true;
+            Collider2D te = UnityUtil.CopyComponent(temp, this.gameObject);
+            te.isTrigger = true;
+        }
     }
 }

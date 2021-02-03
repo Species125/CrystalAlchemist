@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
 
-public class SkillBlendTreeModule : SkillModifier
+namespace CrystalAlchemist
 {
-    [Tooltip("Welche Winkel sollen fest gestellt werden. 0 = frei. 45 = 45° Winkel")]
-    [Range(0, 90)]
-    [SerializeField]
-    private float snapRotationInDegrees = 0f;
-
-    public void Initialize()
+    public class SkillBlendTreeModule : SkillModifier
     {
-        //Vector2Int full = Vector2Int.RoundToInt(this.skill.GetDirection());
+        [Tooltip("Welche Winkel sollen fest gestellt werden. 0 = frei. 45 = 45° Winkel")]
+        [Range(0, 90)]
+        [SerializeField]
+        private float snapRotationInDegrees = 0f;
 
-        float angle = RotationUtil.SetAngle(this.skill.GetDirection(), snapRotationInDegrees);
-        this.skill.SetDirection(RotationUtil.DegreeToVector2(angle));
+        public void Initialize()
+        {
+            //Vector2Int full = Vector2Int.RoundToInt(this.skill.GetDirection());
 
-        AnimatorUtil.SetAnimDirection(this.skill.GetDirection(), this.skill.animator);
+            float angle = RotationUtil.SetAngle(this.skill.GetDirection(), snapRotationInDegrees);
+            this.skill.SetDirection(RotationUtil.DegreeToVector2(angle));
+
+            AnimatorUtil.SetAnimDirection(this.skill.GetDirection(), this.skill.animator);
+        }
     }
 }

@@ -104,6 +104,12 @@ TextureImporter:
   - first:
       213: -4484031599090707101
     second: Frostspitze
+  - first:
+      213: -8609973278846354255
+    second: Revive
+  - first:
+      213: -3657551050585085934
+    second: AoE Heal
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -157,6 +163,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -227,7 +235,7 @@ TextureImporter:
       name: Shield
       rect:
         serializedVersion: 2
-        x: 16
+        x: 32
         y: 112
         width: 16
         height: 16
@@ -248,8 +256,8 @@ TextureImporter:
       name: Bow
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 64
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -269,8 +277,8 @@ TextureImporter:
       name: Analysis
       rect:
         serializedVersion: 2
-        x: 16
-        y: 96
+        x: 80
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -290,7 +298,7 @@ TextureImporter:
       name: Bombe
       rect:
         serializedVersion: 2
-        x: 32
+        x: 48
         y: 112
         width: 16
         height: 16
@@ -311,8 +319,8 @@ TextureImporter:
       name: Teleport
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
+        x: 96
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -332,8 +340,8 @@ TextureImporter:
       name: Boomerang
       rect:
         serializedVersion: 2
-        x: 0
-        y: 80
+        x: 80
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -353,8 +361,8 @@ TextureImporter:
       name: Impulse
       rect:
         serializedVersion: 2
-        x: 16
-        y: 80
+        x: 48
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -371,32 +379,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buch
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b4d341db4d39d4641af0fac15e5b4666
-      internalID: 21300016
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Laserbeam
       rect:
         serializedVersion: 2
-        x: 48
-        y: 80
+        x: 64
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -416,8 +403,8 @@ TextureImporter:
       name: Thunderstrike
       rect:
         serializedVersion: 2
-        x: 48
-        y: 96
+        x: 0
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -437,7 +424,7 @@ TextureImporter:
       name: Hitzeblitz
       rect:
         serializedVersion: 2
-        x: 64
+        x: 32
         y: 96
         width: 16
         height: 16
@@ -458,8 +445,8 @@ TextureImporter:
       name: Stromschlag
       rect:
         serializedVersion: 2
-        x: 64
-        y: 112
+        x: 16
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -479,8 +466,8 @@ TextureImporter:
       name: Use ManaPotion
       rect:
         serializedVersion: 2
-        x: 80
-        y: 96
+        x: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -500,8 +487,8 @@ TextureImporter:
       name: Use HealthPotion
       rect:
         serializedVersion: 2
-        x: 80
-        y: 80
+        x: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -521,8 +508,8 @@ TextureImporter:
       name: Zeitkristall
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
+        x: 48
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -539,74 +526,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fluchkristall
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3747d5f4ec9fe1846a55177d6bcdbc6a
-      internalID: -6290578985418969871
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Heiliger Kristall
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b4a523a1d21d0b440a0fe9e9b0a83e20
-      internalID: 5859294537325798540
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sanduhr
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ff6d8125fda5d3c41aa1922649ee38aa
-      internalID: 1144497880570103417
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Gegengift
       rect:
         serializedVersion: 2
-        x: 80
-        y: 64
+        x: 32
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -623,32 +547,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raumkristall
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa29aa4091a699a4eb0483870ca1601a
-      internalID: -6191310451792273140
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Dash
       rect:
         serializedVersion: 2
-        x: 80
-        y: 112
+        x: 64
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -668,8 +571,8 @@ TextureImporter:
       name: Spear
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
+        x: 16
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -689,8 +592,8 @@ TextureImporter:
       name: Feuerball
       rect:
         serializedVersion: 2
-        x: 32
-        y: 48
+        x: 0
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -710,8 +613,8 @@ TextureImporter:
       name: Eissplitter
       rect:
         serializedVersion: 2
-        x: 16
-        y: 48
+        x: 48
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -728,31 +631,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lampe
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 49f9b6da508052646ab5f24b2dddb00d
-      internalID: 3362757232229704261
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Eos
       rect:
         serializedVersion: 2
-        x: 64
+        x: 0
         y: 48
         width: 16
         height: 16
@@ -773,7 +655,7 @@ TextureImporter:
       name: Sentinel
       rect:
         serializedVersion: 2
-        x: 80
+        x: 16
         y: 48
         width: 16
         height: 16
@@ -795,7 +677,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -816,7 +698,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 32
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -836,8 +718,8 @@ TextureImporter:
       name: Windklinge
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 48
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -857,8 +739,29 @@ TextureImporter:
       name: Frostspitze
       rect:
         serializedVersion: 2
-        x: 48
-        y: 32
+        x: 64
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 365529e940585c1c0800000000000000
+      internalID: -4484031599090707101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Revive
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
         width: 16
         height: 16
       alignment: 0
@@ -868,8 +771,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 365529e940585c1c0800000000000000
-      internalID: -4484031599090707101
+      spriteID: 1bcf1c4abea338880800000000000000
+      internalID: -8609973278846354255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AoE Heal
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 218e402b2b4cd3dc0800000000000000
+      internalID: -3657551050585085934
       vertices: []
       indices: 
       edges: []

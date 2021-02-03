@@ -12,30 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 954dd7db6bc64454fac7836a181ed549, type: 3}
   m_Name: PlayerValues
   m_EditorClassIdentifier: 
-  isPlayer: 1
   characterType: 0
   life: 1
-  mana: 6
+  mana: 3
   spellspeed: 1
   speed: 5
   maxLife: 1
-  maxMana: 9
-  lifeRegen: 0.5
-  manaRegen: 1
+  maxMana: 3
+  lifeRegen: 0
+  manaRegen: 0
   buffPlus: 0
   debuffMinus: 0
-  currentState: 7
+  currentState: 5
   cantBeHit: 0
   cannotDie: 0
   isInvincible: 0
-  direction: {x: 0, y: -1}
+  direction: {x: -0.9091676, y: -0.41643038}
   lockAnimation: 0
   timeDistortion: 1
   steps: 0
   isOnIce: 0
+  isAttacking: 0
   buffs: []
   debuffs: []
-  activePets: []
+  activePets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   activeSkills: []
   itemDrop: {fileID: 0}
   speedFactor: 5
+  effectColor: {r: 1, g: 1, b: 1, a: 1}

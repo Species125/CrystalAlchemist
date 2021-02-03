@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 
-public class LoaderCallback : MonoBehaviour
+namespace CrystalAlchemist
 {
-    private bool isFirstUpdate = true;
-
-    private void Update()
+    public class LoaderCallback : MonoBehaviour
     {
-        if (this.isFirstUpdate)
+        private bool isFirstUpdate = true;
+
+        private void Update()
         {
-            this.isFirstUpdate = false;
-            SceneLoader.LoaderCallback();
+            if (this.isFirstUpdate)
+            {
+                this.isFirstUpdate = false;
+                SceneLoader.LoaderCallback();
+            }
         }
     }
 }

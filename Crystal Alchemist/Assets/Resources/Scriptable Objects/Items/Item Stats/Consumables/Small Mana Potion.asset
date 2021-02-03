@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6764ad89027d75e439b978b3b74eb382, type: 3}
   m_Name: Small Mana Potion
   m_EditorClassIdentifier: 
+  itemType: 0
+  resources:
+  - resourceType: 2
+    item: {fileID: 0}
+    keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
+    amount: 1
   value: 1
-  resourceType: 2
-  ability: {fileID: 0}
-  statusEffects: []
   itemGroup: {fileID: 0}
-  info: {fileID: 11400000, guid: c4cbd155ee4fa964197feec428ce5aeb, type: 2}
   inventoryInfo: {fileID: 0}
+  info: {fileID: 11400000, guid: c4cbd155ee4fa964197feec428ce5aeb, type: 2}
   amount: 1
   collectSoundEffect: {fileID: 8300000, guid: 36888cf2843c6ae49962b01f67e19050, type: 3}

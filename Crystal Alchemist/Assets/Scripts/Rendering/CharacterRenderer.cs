@@ -1,45 +1,35 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CharacterRenderer : CustomRenderer
+namespace CrystalAlchemist
 {
-    private List<Color> colors = new List<Color>();
-
-    public void Reset()
+    public class CharacterRenderer : CustomRenderer
     {
-        this.colors.Clear();
-        ChangeTint(Color.white, false);
-    }
+        [SerializeField]
+        private bool useTint = false;
 
-    public void RemoveTint(Color color)
-    {
-        this.colors.Remove(color);
-        if (colors.Count > 0) ChangeTint(this.colors[this.colors.Count - 1], true);
-        else ChangeTint(Color.white, false);
-    }
+        [SerializeField]
+        private Color color = Color.white;
 
-    private void ChangeTint(Color color, bool useTint)
-    {
-        this.material.SetFloat("_Use_Tint", useTint ? 1f : 0f);
-        this.material.SetColor("_Tint", color);        
-    }
-
-    public void ChangeTint(Color color)
-    {
-        if (this.colors.Contains(color))
+        public override void Start()
         {
-            ChangeTint(this.colors[this.colors.IndexOf(color)], true);
+            base.Start();
+            SetTint();
         }
-        else
-        {
-            this.colors.Add(color);
-            ChangeTint(this.colors[this.colors.Count - 1], true);
-        }
-    }
 
-    public void flipSprite(Vector2 direction)
-    {
-        if (direction.x < 0) this.spriteRenderer.flipX = true;
-        else this.spriteRenderer.flipX = false;
+        public void ChangeTint(Color color, bool useTint)
+        {
+            if (this.material == null) return;
+
+            this.color = color;
+            this.useTint = useTint;
+
+            Invoke("SetTint", 0.1f); //small delay to get it work on scene changes
+        }
+
+        private void SetTint()
+        {            
+            this.material.SetFloat("_UseTint", this.useTint ? 1f : 0f);
+            this.material.SetColor("_Tint", this.color);
+        }
     }
 }

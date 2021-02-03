@@ -1,12 +1,15 @@
-﻿public class SkillFollow : SkillExtension
+﻿namespace CrystalAlchemist
 {
-    private bool isEnabled = true;
-
-    public override void Updating()
+    public class SkillFollow : SkillExtension
     {
-        if (!isEnabled) return;
-        this.skill.myRigidbody.position = this.skill.target.GetGroundPosition();
-    }
+        private bool isEnabled = true;
 
-    public void Enable(bool value) => this.isEnabled = value;
+        public override void Updating()
+        {
+            if (!isEnabled) return;
+            this.skill.myRigidbody.position = this.skill.target.GetGroundPosition();
+        }
+
+        public void Enable(bool value) => this.isEnabled = value;
+    }
 }

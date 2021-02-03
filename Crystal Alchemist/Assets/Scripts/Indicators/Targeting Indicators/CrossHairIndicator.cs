@@ -1,27 +1,30 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
 using TMPro;
-using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class CrossHairIndicator : TargetingIndicator
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    [Required]
-    private TextMeshPro textField;
-
-    public override void Initialize(Character sender, Character target)
+    public class CrossHairIndicator : TargetingIndicator
     {
-        base.Initialize(sender, target);
+        [SerializeField]
+        [Required]
+        private TextMeshPro textField;
 
-        this.transform.position = target.transform.position;
-        this.transform.rotation = Quaternion.identity;
-        this.transform.SetParent(target.transform);
+        public override void Initialize(Character sender, Character target)
+        {
+            base.Initialize(sender, target);
 
-        this.textField.text = target.GetCharacterName();
-    }
+            this.transform.position = target.transform.position;
+            this.transform.rotation = Quaternion.identity;
+            this.transform.SetParent(target.transform);
 
-    public override void SetColor(Color color)
-    {
-        base.SetColor(color);
-        this.textField.color = color;
+            this.textField.text = target.GetCharacterName();
+        }
+
+        public override void SetColor(Color color)
+        {
+            base.SetColor(color);
+            this.textField.color = color;
+        }
     }
 }

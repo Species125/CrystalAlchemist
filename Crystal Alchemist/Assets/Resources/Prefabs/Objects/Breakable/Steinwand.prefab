@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: -7635502744899308147}
   - component: {fileID: 6331669602110681485}
   - component: {fileID: 4448067343143676642}
+  - component: {fileID: 346722533365081297}
   m_Layer: 11
   m_Name: Steinwand
   m_TagString: Untagged
@@ -308,7 +309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50edb187effa6214081b297a24971a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 0b7cb418ef38be240a9bf72bb575785f, type: 2}
   myRigidbody: {fileID: 6331669602110681485}
   animator: {fileID: 5540190085609823372}
   boxCollider: {fileID: 30635547035960434}
@@ -318,8 +318,11 @@ MonoBehaviour:
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 9215530842851801714}
   activeStatusEffectParent: {fileID: 422663672048093189}
+  stats: {fileID: 11400000, guid: 0b7cb418ef38be240a9bf72bb575785f, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
+  characterName: 
+  NPCStats: {fileID: 11400000, guid: 0b7cb418ef38be240a9bf72bb575785f, type: 2}
 --- !u!210 &2433579770756760863
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -379,6 +382,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   graphType: 0
   updateInterval: 0.2
+--- !u!114 &346722533365081297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8793839158660886956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 1294441505385801003}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &9215530842851801714
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,14 +1,17 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 
-public class InfoNumber : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private TextMeshProUGUI numberField;
-
-    public void SetValue(int value)
+    public class InfoNumber : MonoBehaviour
     {
-        this.numberField.text = value+"";
-        if (value > 99) this.numberField.text = "99+";
+        [SerializeField]
+        private TextMeshProUGUI numberField;
+
+        public void SetValue(int value)
+        {
+            this.numberField.text = value + "";
+            if (value > 99) this.numberField.text = "99+";
+        }
     }
 }

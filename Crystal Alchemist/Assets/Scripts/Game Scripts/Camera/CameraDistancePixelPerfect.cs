@@ -1,25 +1,28 @@
 ﻿using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-public class CameraDistancePixelPerfect : MonoBehaviour
+namespace CrystalAlchemist
 {
-    private PixelPerfectCamera cam;
-
-    private void Start()
+    public class CameraDistancePixelPerfect : MonoBehaviour
     {
-        SettingsEvents.current.OnCameraChanged += ChangeSize;
-        this.cam = this.GetComponent<PixelPerfectCamera>();
-        ChangeSize();
-    }
+        private PixelPerfectCamera cam;
 
-    private void ChangeSize()
-    {
-        int value = MasterManager.settings.cameraDistance-1;
-        this.cam.refResolutionY = 180 + (value * 20);
-    }
+        private void Start()
+        {
+            SettingsEvents.current.OnCameraChanged += ChangeSize;
+            this.cam = this.GetComponent<PixelPerfectCamera>();
+            ChangeSize();
+        }
 
-    private void OnDestroy()
-    {
-        SettingsEvents.current.OnCameraChanged -= ChangeSize;
+        private void ChangeSize()
+        {
+            int value = MasterManager.settings.cameraDistance - 1;
+            this.cam.refResolutionY = 180 + (value * 20);
+        }
+
+        private void OnDestroy()
+        {
+            SettingsEvents.current.OnCameraChanged -= ChangeSize;
+        }
     }
 }

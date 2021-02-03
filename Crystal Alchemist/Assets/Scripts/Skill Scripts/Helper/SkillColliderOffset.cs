@@ -1,32 +1,35 @@
 ﻿using UnityEngine;
 
-public class SkillColliderOffset : SkillCollider
+namespace CrystalAlchemist
 {
-    public enum Mode
+    public class SkillColliderOffset : SkillCollider
     {
-        none,
-        center,
-        ground
-    }
-
-    [SerializeField]
-    private Mode mode = Mode.center;
-
-    private void Start() => this.transform.position = GetPosition();    
-
-    public override Vector2 GetPosition()
-    {
-        if (this.mode == Mode.center)
+        public enum Mode
         {
-            float offsetX = ((this.skill.sender.GetGroundPosition().x - this.transform.position.x) / 2);
-            float offsetY = ((this.skill.sender.GetGroundPosition().y - this.transform.position.y) / 2);
-
-            float x = this.skill.sender.GetGroundPosition().x - offsetX;
-            float y = this.skill.sender.GetGroundPosition().y - offsetY;
-
-            return new Vector2(x, y);
+            none,
+            center,
+            ground
         }
-        else if (this.mode == Mode.ground) return this.skill.sender.GetGroundPosition();
-        return this.transform.position;
+
+        [SerializeField]
+        private Mode mode = Mode.center;
+
+        private void Start() => this.transform.position = GetPosition();
+
+        public override Vector2 GetPosition()
+        {
+            if (this.mode == Mode.center)
+            {
+                float offsetX = ((this.skill.sender.GetGroundPosition().x - this.transform.position.x) / 2);
+                float offsetY = ((this.skill.sender.GetGroundPosition().y - this.transform.position.y) / 2);
+
+                float x = this.skill.sender.GetGroundPosition().x - offsetX;
+                float y = this.skill.sender.GetGroundPosition().y - offsetY;
+
+                return new Vector2(x, y);
+            }
+            else if (this.mode == Mode.ground) return this.skill.sender.GetGroundPosition();
+            return this.transform.position;
+        }
     }
 }

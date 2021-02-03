@@ -1,27 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
+
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Signals/ResourceSignal")]
-public class ResourceSignal : ScriptableObject
+namespace CrystalAlchemist
 {
-    public List<ResourceSignalListener> listeners = new List<ResourceSignalListener>();
-
-    public void Raise(CostType type, float amount)
+    [CreateAssetMenu(menuName = "Signals/ResourceSignal")]
+    public class ResourceSignal : ScriptableObject
     {
-        for (int i = listeners.Count - 1; i >= 0; i--)
+        public List<ResourceSignalListener> listeners = new List<ResourceSignalListener>();
+
+        public void Raise(CostType type, float amount)
         {
-            this.listeners[i].OnSignalRaised(type, amount);
+            for (int i = listeners.Count - 1; i >= 0; i--)
+            {
+                this.listeners[i].OnSignalRaised(type, amount);
+            }
         }
-    }
 
-    public void RegisterListener(ResourceSignalListener listener)
-    {
-        this.listeners.Add(listener);
-    }
+        public void RegisterListener(ResourceSignalListener listener)
+        {
+            this.listeners.Add(listener);
+        }
 
-    public void DeRegisterListener(ResourceSignalListener listener)
-    {
-        this.listeners.Remove(listener);
+        public void DeRegisterListener(ResourceSignalListener listener)
+        {
+            this.listeners.Remove(listener);
+        }
     }
 }

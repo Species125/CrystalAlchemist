@@ -1,29 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class TileMiniMap : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private Material material;
-
-    [SerializeField]
-    private int layer = 30;
-
-    [SerializeField]
-    private GameObject source;
-
-    private void Start()
+    public class TileMiniMap : MonoBehaviour
     {
-        GameObject minimap = Instantiate(this.source, this.transform.parent);
+        [SerializeField]
+        private Material material;
 
-        foreach(Transform child in minimap.transform)
+        [SerializeField]
+        private int layer = 30;
+
+        [SerializeField]
+        private GameObject source;
+
+        private void Start()
         {
-            if (child.GetComponent<TilemapRenderer>() != null)
+            GameObject minimap = Instantiate(this.source, this.transform.parent);
+
+            foreach (Transform child in minimap.transform)
             {
-                child.GetComponent<TilemapRenderer>().material = this.material;
-                child.gameObject.layer = this.layer;
+                if (child.GetComponent<TilemapRenderer>() != null)
+                {
+                    child.GetComponent<TilemapRenderer>().material = this.material;
+                    child.gameObject.layer = this.layer;
+                }
             }
         }
     }

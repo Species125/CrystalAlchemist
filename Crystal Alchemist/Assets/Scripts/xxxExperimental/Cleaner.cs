@@ -1,13 +1,14 @@
-﻿using UnityEngine;
-using Sirenix.OdinInspector;
-using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class Cleaner : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [Button]
-    public void CleanUp()
+    public class Cleaner : MonoBehaviour
     {
-        /*
+        [Button]
+        public void CleanUp()
+        {
+            /*
         List<GameObject> test = new List<GameObject>();
 
         List<SimpleSignalListener> result = new List<SimpleSignalListener>();
@@ -45,7 +46,8 @@ public class Cleaner : MonoBehaviour
             Debug.Log(temp.gameObject + " - " + temp.transform.parent.gameObject);
             DestroyImmediate(temp);
         }*/
+        }
+
+
     }
-
-
 }

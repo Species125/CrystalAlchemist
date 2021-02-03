@@ -1,25 +1,31 @@
-﻿using UnityEngine;
+﻿using AssetIcons;
+
+
+
 using Sirenix.OdinInspector;
-using AssetIcons;
+using UnityEngine;
 
-[CreateAssetMenu(menuName = "Game/Ability/Skill Book Info")]
-public class SkillBookInfo : ScriptableObject
+namespace CrystalAlchemist
 {
-    [BoxGroup("Pflichtfelder")]
-    [Tooltip("Beschreibung des Skills")]
-    public SkillType category = SkillType.magical;
-
-    [BoxGroup("Pflichtfelder")]
-    [Tooltip("Sortierung")]
-    public int orderIndex = 10;
-
-    [BoxGroup("Sound und Icons")]
-    [Tooltip("Icon für den Spieler")]
-    [AssetIcon]
-    public Sprite icon;
-
-    public string getDescription()
+    [CreateAssetMenu(menuName = "Game/Ability/Skill Book Info")]
+    public class SkillBookInfo : ScriptableObject
     {
-        return FormatUtil.GetLocalisedText(this.name+"_Description", LocalisationFileType.skills);
+        [BoxGroup("Pflichtfelder")]
+        [Tooltip("Beschreibung des Skills")]
+        public SkillType category = SkillType.magical;
+
+        [BoxGroup("Pflichtfelder")]
+        [Tooltip("Sortierung")]
+        public int orderIndex = 10;
+
+        [BoxGroup("Sound und Icons")]
+        [Tooltip("Icon für den Spieler")]
+        [AssetIcon]
+        public Sprite icon;
+
+        public string getDescription()
+        {
+            return FormatUtil.GetLocalisedText(this.name + "_Description", LocalisationFileType.skills);
+        }
     }
 }

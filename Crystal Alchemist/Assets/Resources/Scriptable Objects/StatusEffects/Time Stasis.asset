@@ -12,19 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b22a3ebb90863458dba94076083e2b, type: 3}
   m_Name: Time Stasis
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/StatusEffects/Time Stasis
+  statusEffectType: 1
   hasDuration: 1
   maxDuration: 1
-  canOverride: 1
+  mode: 1
+  maxStacks: 1
   canBeModified: 0
-  canDeactivateIt: 0
   canBeDispelled: 0
   ignoreTimeDistortion: 1
-  maxStacks: 1
   stunTarget: 0
-  statusEffectType: 1
   statusEffectEvents:
   - trigger:
       triggerType: 0
+      mode: 2
       value: 0
     actions:
     - actionType: 4
@@ -40,4 +41,3 @@ MonoBehaviour:
   statusEffectObject: {fileID: 8924175854143672294, guid: 7c83829c933de2f458035ae6dddde1d3,
     type: 3}
   iconSprite: {fileID: 21300036, guid: 0ca4149b67557c449b0110d5938780ba, type: 3}
-  updateUI: {fileID: 11400000, guid: 4318c0ff35d606e4b8e9b01338571f0b, type: 2}

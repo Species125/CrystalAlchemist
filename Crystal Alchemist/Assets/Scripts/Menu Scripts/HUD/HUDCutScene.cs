@@ -1,19 +1,24 @@
-﻿using UnityEngine;
+﻿
 
-public class HUDCutScene : MonoBehaviour
+using UnityEngine;
+
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private BoolValue CutSceneValue;
-
-    private void Awake() => this.CutSceneValue.setValue(false);    
-
-    private void Start()
+    public class HUDCutScene : MonoBehaviour
     {
-        GameEvents.current.OnCutScene += this.SetCutScene;
-        SetCutScene();
+        [SerializeField]
+        private BoolValue CutSceneValue;
+
+        private void Awake() => this.CutSceneValue.SetValue(false);
+
+        private void Start()
+        {
+            GameEvents.current.OnCutScene += this.SetCutScene;
+            SetCutScene();
+        }
+
+        private void OnDestroy() => GameEvents.current.OnCutScene += this.SetCutScene;
+
+        private void SetCutScene() => this.gameObject.SetActive(!this.CutSceneValue.GetValue());
     }
-
-    private void OnDestroy() => GameEvents.current.OnCutScene += this.SetCutScene;    
-
-    private void SetCutScene() => this.gameObject.SetActive(!this.CutSceneValue.GetValue());            
 }

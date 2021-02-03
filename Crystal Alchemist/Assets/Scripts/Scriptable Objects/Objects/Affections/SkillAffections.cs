@@ -1,37 +1,42 @@
 ﻿using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Game/Affections/Ability Affection")]
-public class SkillAffections : Affections
+
+namespace CrystalAlchemist
 {
-    [BoxGroup("Wirkungsbereich")]
-    [Tooltip("Sich selbst")]
-    [SerializeField]
-    private bool self = false;
-
-    [BoxGroup("Wirkungsbereich")]
-    [Tooltip("Skills")]
-    [SerializeField]
-    private bool skills = false;
-
-    [BoxGroup("Wirkungsbereich")]
-    [Tooltip("Unverwundbarkeit ignorieren (z.B. für Heals)?")]
-    [SerializeField]
-    private bool ignoreInvincibility = false;
-
-    protected override bool IsAffected(Character sender, Character target)
+    [CreateAssetMenu(menuName = "Game/Affections/Ability Affection")]
+    public class SkillAffections : Affections
     {
-        return checkMatrix(sender, target, other, same, neutral, self);
-    }
+        [BoxGroup("Wirkungsbereich")]
+        [Tooltip("Sich selbst")]
+        [SerializeField]
+        private bool self = false;
 
-    public bool isSkillAffected(Skill origin, Skill hittedSkill)
-    {
-        if (hittedSkill != null && this.skills && hittedSkill != origin) return true;
-        return false;
-    }
+        [BoxGroup("Wirkungsbereich")]
+        [Tooltip("Skills")]
+        [SerializeField]
+        private bool skills = false;
 
-    public bool CanIgnoreInvinvibility()
-    {
-        return this.ignoreInvincibility;
+        [BoxGroup("Wirkungsbereich")]
+        [Tooltip("Unverwundbarkeit ignorieren (z.B. für Heals)?")]
+        [SerializeField]
+        private bool ignoreInvincibility = false;
+
+        protected override bool IsAffected(Character sender, Character target)
+        {
+            return checkMatrix(sender, target, other, same, neutral, self);
+        }
+
+        public bool isSkillAffected(Skill origin, Skill hittedSkill)
+        {
+            if (hittedSkill != null && this.skills && hittedSkill != origin) return true;
+            return false;
+        }
+
+        public bool CanIgnoreInvinvibility()
+        {
+            return this.ignoreInvincibility;
+        }
     }
 }

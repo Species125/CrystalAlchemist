@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public class WeatherEffects : MonoBehaviour
+namespace CrystalAlchemist
 {
-    
+    public class WeatherEffects : MonoBehaviour
+    {
+
+    }
 }

@@ -12,18 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0b985e1f045e945aa90cf31b10f8e8, type: 3}
   m_Name: Zopf
   m_EditorClassIdentifier: 
-  neverDisable: 0
-  enableMode: 0
-  restrictedRaces: 
-  front: {fileID: -8543379145089725134, guid: ba4d2272be4f6204aa4e7de314a32554, type: 3}
-  back: {fileID: -5260679801054297698, guid: ba4d2272be4f6204aa4e7de314a32554, type: 3}
+  path: Scriptable Objects/Character Creation/Properties/Hairstyles/Zopf
+  type: 3
+  dontUpdateSprites: 0
+  size: {x: 32, y: 48}
+  enableMode: 1
+  restriction: 0
+  races: 
+  preview: {fileID: -434089101993968722, guid: ba4d2272be4f6204aa4e7de314a32554, type: 3}
+  texture: {fileID: 2800000, guid: ba4d2272be4f6204aa4e7de314a32554, type: 3}
+  useCustomShader: 0
+  material: {fileID: 2100000, guid: a992ab17a4e18d64f93d2e70c1372908, type: 2}
+  canBeColored: 1
   colorTables:
   - colorGroup: 0
     highlight: {r: 1, g: 0.9803922, b: 0.9058824, a: 0}
     main: {r: 0.96470594, g: 0.8862746, b: 0.6313726, a: 0}
     shadows: {r: 0.86274517, g: 0.7568628, b: 0.4156863, a: 0}
     lines: {r: 0.65882355, g: 0.54509807, b: 0.11764707, a: 0}
-    glow: {r: 1, g: 0.9803922, b: 0.9058824, a: 0}
-  category: Head
-  parentName: Hairstyle
-  partName: Zopf
+  colorEffect:
+    addGlow: 0
+    default_glow: {r: 0, g: 0, b: 0, a: 0}
+  texturePath: Art/Characters/Player Sprites/Hairstyle/Zopf
+  fullPath: Assets/Resources/Art/Characters/Player Sprites/Hairstyle/Zopf.png

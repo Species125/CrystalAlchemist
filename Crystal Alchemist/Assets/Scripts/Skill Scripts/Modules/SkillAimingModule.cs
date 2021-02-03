@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SkillAimingModule : SkillModule
+﻿namespace CrystalAlchemist
 {
-    
+    public class SkillAimingModule : SkillModule
+    {
+
+    }
 }

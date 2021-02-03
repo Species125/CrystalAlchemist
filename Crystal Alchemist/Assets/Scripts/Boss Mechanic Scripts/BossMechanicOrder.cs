@@ -1,34 +1,37 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class BossMechanicOrder : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private float delay;
-
-    private List<GameObject> children = new List<GameObject>();
-    private float elapsed;
-
-    private void Awake()
+    public class BossMechanicOrder : MonoBehaviour
     {
-        foreach (Transform child in this.transform)
-        {
-            child.gameObject.SetActive(false);
-            children.Add(child.gameObject);
-        }
-    }
+        [SerializeField]
+        private float delay;
 
-    private void Update()
-    {
-        if (this.children.Count <= 0) this.enabled = false;
-        if (elapsed <= 0)
-        {
-            int random = Random.Range(0, this.children.Count);
-            this.children[random].SetActive(true);
-            this.children.RemoveAt(random);
+        private List<GameObject> children = new List<GameObject>();
+        private float elapsed;
 
-            elapsed = delay;
+        private void Awake()
+        {
+            foreach (Transform child in this.transform)
+            {
+                child.gameObject.SetActive(false);
+                children.Add(child.gameObject);
+            }
         }
-        else elapsed -= Time.deltaTime;
+
+        private void Update()
+        {
+            if (this.children.Count <= 0) this.enabled = false;
+            if (elapsed <= 0)
+            {
+                int random = Random.Range(0, this.children.Count);
+                this.children[random].SetActive(true);
+                this.children.RemoveAt(random);
+
+                elapsed = delay;
+            }
+            else elapsed -= Time.deltaTime;
+        }
     }
 }

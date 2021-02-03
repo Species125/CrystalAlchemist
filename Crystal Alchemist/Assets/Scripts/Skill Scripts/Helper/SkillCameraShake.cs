@@ -1,25 +1,26 @@
 ﻿using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillCameraShake : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    [MinValue(0.001f)]
-    private float strength = 1f;
+    public class SkillCameraShake : MonoBehaviour
+    {
+        [SerializeField]
+        [MinValue(0.001f)]
+        private float strength = 1f;
 
-    [SerializeField]
-    [MinValue(0.001f)]
-    private float duration = 1f;
+        [SerializeField]
+        [MinValue(0.001f)]
+        private float duration = 1f;
 
-    [SerializeField]
-    [MinValue(0.001f)]
-    private float speed = 1f;
+        [SerializeField]
+        [MinValue(0.001f)]
+        private float speed = 1f;
 
-    public void ShakeCamera() => GameEvents.current.DoCameraShake(this.strength, this.duration, this.speed);
+        public void ShakeCamera() => GameEvents.current.DoCameraShake(this.strength, this.duration, this.speed);
 
-    public void StabilizeCamera() => GameEvents.current.DoCameraStill(this.speed);
+        public void StabilizeCamera() => GameEvents.current.DoCameraStill(this.speed);
 
-    public void StabilizeCamera(float speed) => GameEvents.current.DoCameraStill(speed);
+        public void StabilizeCamera(float speed) => GameEvents.current.DoCameraStill(speed);
+    }
 }

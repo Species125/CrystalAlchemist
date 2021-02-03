@@ -1,19 +1,22 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 
-public class CurrencyInventoryUI : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private PlayerInventory inventory;
-
-    [SerializeField]
-    private TextMeshProUGUI amountField;
-
-    [SerializeField]
-    private ItemGroup item;
-
-    private void OnEnable()
+    public class CurrencyInventoryUI : MonoBehaviour
     {
-        this.amountField.text = this.inventory.GetAmountString(this.item);     
+        [SerializeField]
+        private PlayerInventory inventory;
+
+        [SerializeField]
+        private TextMeshProUGUI amountField;
+
+        [SerializeField]
+        private ItemGroup item;
+
+        private void OnEnable()
+        {
+            this.amountField.text = this.inventory.GetAmountString(this.item);
+        }
     }
 }

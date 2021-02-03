@@ -1,176 +1,115 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using TMPro;
-using UnityEngine.SceneManagement;
-using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class DeathScreen : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [BoxGroup("Mandatory")]
-    [SerializeField]
-    private BoolValue CutSceneValue;
-
-    [BoxGroup("Mandatory")]
-    [SerializeField]
-    private PlayerTeleportList playerTeleport;
-
-    [BoxGroup("Music")]
-    [SerializeField]
-    private AudioClip deathMusic;
-
-    [BoxGroup("Music")]
-    [SerializeField]
-    private float fadeIn;
-
-    [BoxGroup("Music")]
-    [SerializeField]
-    private float fadeOut = 1f;
-
-    [BoxGroup("Mandatory")]
-    [SerializeField]
-    private CustomCursor cursor;
-
-    [BoxGroup("Mandatory")]
-    [SerializeField]
-    private TextMeshProUGUI textField;
-
-    [BoxGroup("Mandatory")]
-    [SerializeField]
-    private TextMeshProUGUI countDown;
-
-    [BoxGroup("Mandatory")]
-    [SerializeField]
-    private GameObject returnTitleScreen;
-
-    [BoxGroup("Mandatory")]
-    [SerializeField]
-    private GameObject returnSavePoint;
-
-    [BoxGroup("Mandatory")]
-    [SerializeField]
-    private GameObject returnLastPoint;
-
-    [BoxGroup("Time")]
-    [SerializeField]
-    private float timer = 30;
-
-    [BoxGroup("Time")]
-    [SerializeField]
-    private float textDelay = 0.1f;
-
-    [BoxGroup("Time")]
-    [SerializeField]
-    private float cursorDelay = 2f;
-
-    [BoxGroup("Time")]
-    [SerializeField]
-    private float inputDelay = 3f;
-
-    private string currentText;
-    private string fullText;
-    private bool skip = false;
-    private bool inputPossible = false;
-    private bool startCountdown = false;
-
-    private void Start()
+    public class DeathScreen : MonoBehaviour
     {
-        Invoke("ReturnToTitleScreen", 60);
+        [BoxGroup("Mandatory")]
+        [Required]
+        [SerializeField]
+        private PlayerTeleportList playerTeleport;
 
-        this.CutSceneValue.setValue(true);
-        GameEvents.current.DoCutScene();
-        MusicEvents.current.StopMusic(this.fadeOut);
-        MenuEvents.current.DoPostProcessingFade(ShowText);
-        GameEvents.current.OnCancel += Skip;
-    }
+        [BoxGroup("Mandatory")]
+        [SerializeField]
+        private BoolValue CutSceneValue;
 
-    private void OnDestroy() => GameEvents.current.OnCancel -= Skip;
+        [BoxGroup("Music")]
+        [SerializeField]
+        private AudioClip deathMusic;
 
-    private void Skip() => this.skip = true;
+        [BoxGroup("Music")]
+        [SerializeField]
+        private float fadeIn;
 
-    private void Update()
-    {
-        if (this.startCountdown)
+        [BoxGroup("Music")]
+        [SerializeField]
+        private float fadeOut = 1f;
+
+        [BoxGroup("Mandatory")]
+        [SerializeField]
+        private TextMeshProUGUI textField;
+
+        [BoxGroup("Mandatory")]
+        [SerializeField]
+        private GameObject controls;
+
+        [BoxGroup("Mandatory")]
+        [SerializeField]
+        private GameObject restart;
+
+        [BoxGroup("Time")]
+        [SerializeField]
+        private float cursorDelay = 2f;
+
+        [BoxGroup("Time")]
+        [SerializeField]
+        private float textDelay = 0.1f;
+
+        private string currentText;
+        private string fullText;
+        private bool skip = false;
+
+        private void Awake()
         {
-            if (this.timer <= 0) ReturnToTitleScreen();
-            else this.timer -= Time.deltaTime;
-            this.countDown.text = (int)this.timer + "s";
+            if (NetworkUtil.IsMaster()) NetworkEvents.current.SetNextTeleport(this.playerTeleport.GetLatestTeleport());
+            this.textField.gameObject.SetActive(false);
+            this.controls.SetActive(false);
+            this.restart.SetActive(false);
         }
-    }
 
-    private void ShowText()
-    {
-        this.inputPossible = true;
-        MusicEvents.current.PlayMusicOnce(this.deathMusic, 0, this.fadeIn);
-        this.textField.gameObject.SetActive(true);
-        this.fullText = this.textField.text;
-        StartCoroutine(this.ShowTextCo(this.textDelay));
-    }
-
-    public void ShowButtons()
-    {
-        this.cursor.gameObject.SetActive(true);
-        this.returnTitleScreen.SetActive(true);
-        if (this.playerTeleport.HasLast()) this.returnSavePoint.SetActive(true);
-        if (this.playerTeleport.HasNext()) this.returnLastPoint.SetActive(true);
-        startCountdown = true;
-    }
-    
-    private void DisableButtons()
-    {
-        this.returnLastPoint.SetActive(false);
-        this.returnSavePoint.SetActive(false);
-        this.returnTitleScreen.SetActive(false);
-        this.cursor.gameObject.SetActive(false);
-        this.textField.gameObject.SetActive(false);
-    }
-
-    public void ReturnToTitleScreen()
-    {
-        DisableButtons();
-        SceneManager.LoadSceneAsync(0);
-    }
-
-    public void ReturnSaveGame()
-    {
-        DisableButtons();
-        this.playerTeleport.SetReturnTeleport();
-        GameEvents.current.DoTeleport();
-    }
-
-    public void ReturnLastPoint()
-    {
-        DisableButtons();
-        this.playerTeleport.SetAnimation(true, true);
-        GameEvents.current.DoTeleport();
-    }
-
-    private IEnumerator ShowTextCo(float delay)
-    {
-        for (int i = 0; i <= this.fullText.Length; i++)
+        private void Start()
         {
-            this.currentText = this.fullText.Substring(0, i);
-
-            if (skip)
-            {
-                this.currentText = this.fullText;
-                i = this.fullText.Length;
-            }
-
-            this.textField.text = this.currentText;
-
-            if (i >= this.fullText.Length)
-            {
-                StartCoroutine(showButtonCo(this.cursorDelay));
-                break;
-            }
-
-            yield return new WaitForSeconds(delay);
+            this.CutSceneValue.SetValue(true);
+            GameEvents.current.DoCutScene();
+            MusicEvents.current.StopMusic(this.fadeOut);
+            MenuEvents.current.DoPostProcessingFade(ShowText);
+            GameEvents.current.OnCancel += Skip;
         }
-    }
 
-    private IEnumerator showButtonCo(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        ShowButtons();
+        private void OnDestroy() => GameEvents.current.OnCancel -= Skip;
+
+        private void Skip() => this.skip = true;
+
+        private void ShowText()
+        {
+            MusicEvents.current.PlayMusicOnce(this.deathMusic, 0, this.fadeIn);
+            this.textField.gameObject.SetActive(true);
+            this.fullText = this.textField.text;
+
+            StartCoroutine(this.ShowTextCo(this.textDelay));            
+        }
+
+        private IEnumerator ShowTextCo(float delay)
+        {
+            for (int i = 0; i <= this.fullText.Length; i++)
+            {
+                this.currentText = this.fullText.Substring(0, i);
+
+                if (this.skip)
+                {
+                    this.currentText = this.fullText;
+                    i = this.fullText.Length;
+                }
+
+                this.textField.text = this.currentText;
+
+                if (i >= this.fullText.Length)
+                {
+                    Invoke("EnableOptions", this.cursorDelay);
+                    break;
+                }
+
+                yield return new WaitForSeconds(delay);
+            }
+        }
+
+        private void EnableOptions()
+        {
+            if (NetworkUtil.IsSolo()) this.controls.SetActive(true);
+            else this.restart.SetActive(true);
+        }
     }
 }

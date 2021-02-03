@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   spriteRenderer: {fileID: 0}
   myRigidbody: {fileID: 0}
   animator: {fileID: 0}
+  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -71,9 +73,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 2329490064039763128}
-  affectedResources: []
-  statusEffects:
-  - {fileID: 11400000, guid: 8f541562bfc667a428366e48851fef05, type: 2}
+  affectedResources:
+  - resourceType: 5
+    item: {fileID: 0}
+    keyItem: {fileID: 0}
+    statusEffect: {fileID: 11400000, guid: 8f541562bfc667a428366e48851fef05, type: 2}
+    amount: 1
+  statusEffects: []
+  modifiers: []
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: dd168bb8d1990c347ab8482d6d72d84c, type: 2}

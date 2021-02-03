@@ -243,9 +243,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
   useGlow: 1
-  selectColor: {r: 1, g: 1, b: 1, a: 1}
-  precision: 0.287
-  glowColor: {r: 1.6313726, g: 5.992157, b: 2.101961, a: 1}
+  glowColor: {r: 0.8156863, g: 2.9960785, b: 1.0509804, a: 1}
   invert: 0
 --- !u!114 &6272776818525694089
 MonoBehaviour:
@@ -371,6 +369,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5257727404935883419}
   myRigidbody: {fileID: 8945697548278569866}
   animator: {fileID: 1969718782558145669}
+  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -409,7 +408,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill: {fileID: 3816868808247662347}
   canBeReflected: 0
-  skillOnImpact: {fileID: 0}
 --- !u!114 &6564433060163094277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +442,7 @@ MonoBehaviour:
     keyItem: {fileID: 0}
     amount: -1
   statusEffects: []
+  modifiers: []
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}
@@ -472,7 +471,6 @@ MonoBehaviour:
   forward: 0
   selfThrust: 0
   selfThrustTime: 0
-  stateType: 0
 --- !u!114 &4588277751585783558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,6 +522,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -539,6 +542,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -551,16 +559,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
@@ -589,11 +587,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
-      propertyPath: m_FalloffIntensity
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
-        type: 3}
       propertyPath: m_Color.b
       value: 0.023826122
       objectReference: {fileID: 0}
@@ -604,18 +597,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
+        type: 3}
       propertyPath: m_LightVolumeOpacity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
+        type: 3}
+      propertyPath: m_PointLightInnerRadius
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
       propertyPath: m_PointLightOuterRadius
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
-        type: 3}
-      propertyPath: m_PointLightInnerRadius
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42a4137c3904df94aa0b798edf1c5d6b, type: 3}

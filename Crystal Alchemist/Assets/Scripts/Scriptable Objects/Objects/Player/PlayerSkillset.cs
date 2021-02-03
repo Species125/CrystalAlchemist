@@ -2,73 +2,85 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Game/Player/Player Skillset")]
-public class PlayerSkillset : ScriptableObject
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private List<Ability> abilities = new List<Ability>();
-
-    public float deactiveDelay = 0.3f;
-
-    public void Clear()
+    [CreateAssetMenu(menuName = "Game/Player/Player Skillset")]
+    public class PlayerSkillset : ScriptableObject
     {
-        Initialize();
-    }
+        [SerializeField]
+        private List<Ability> abilities = new List<Ability>();
 
-    [Button]
-    public void Initialize()
-    {
-        this.abilities.Clear();
-        foreach (Ability ability in MasterManager.abilities) AddAbility(ability);
-    }
+        public float deactiveDelay = 0.3f;
 
-    public void SetSender(Character sender)
-    {
-        this.abilities.RemoveAll(item => item == null);
-        foreach (Ability ability in this.abilities) ability.SetSender(sender);
-    }
-
-    public void Updating()
-    {
-        this.abilities.RemoveAll(item => item == null);
-        foreach (Ability ability in this.abilities) ability.Updating();
-    }
-
-    public Ability getAbilityByName(string name)
-    {
-        foreach (Ability ability in this.abilities)
+        public void Clear()
         {
-            if (name == ability.name) return ability;
+            Initialize();
         }
 
-        return null;
-    }
-
-    public Ability getSkillByID(int ID, SkillType category)
-    {
-        foreach (Ability ability in this.abilities)
+        [Button]
+        public void Initialize()
         {
-            SkillBookInfo info = ability.info;
-
-            if (info != null
-                && category == info.category
-                && ID == info.orderIndex) return ability;
+            this.abilities.Clear();
+            foreach (Ability ability in MasterManager.abilities) AddAbility(ability);
         }
 
-        return null;
+        public void TestInitialize(Character sender)
+        {
+            this.abilities.RemoveAll(item => item == null);
+
+            if (this.abilities.Count <= 0)
+            {
+                Initialize();
+                SetSender(sender);
+            }
+        }
+
+        public void SetSender(Character sender)
+        {
+            this.abilities.RemoveAll(item => item == null);
+            foreach (Ability ability in this.abilities) ability.SetSender(sender);
+        }
+
+        public void Updating()
+        {
+            this.abilities.RemoveAll(item => item == null);
+            foreach (Ability ability in this.abilities) ability.Updating();
+        }
+
+        public Ability getAbilityByName(string name)
+        {
+            foreach (Ability ability in this.abilities)
+            {
+                if (name == ability.name) return ability;
+            }
+
+            return null;
+        }
+
+        public Ability getSkillByID(int ID, SkillType category)
+        {
+            foreach (Ability ability in this.abilities)
+            {
+                SkillBookInfo info = ability.info;
+
+                if (info != null
+                    && category == info.category
+                    && ID == info.orderIndex) return ability;
+            }
+
+            return null;
+        }
+
+        [Button]
+        private void AddAbility(Ability ability)
+        {
+            Ability newAbility = AbilityUtil.InstantiateAbility(ability);
+            this.abilities.Add(newAbility);
+        }
+
+        public void EnableAbility(bool value)
+        {
+            foreach (Ability ability in this.abilities) ability.active = value;
+        }
     }
-
-    [Button]
-    private void AddAbility(Ability ability)
-    {
-        Ability newAbility = AbilityUtil.InstantiateAbility(ability);
-        this.abilities.Add(newAbility);
-    }
-
-    public void EnableAbility(bool value)
-    {
-        foreach (Ability ability in this.abilities) ability.active = value;
-    }
-
-
 }

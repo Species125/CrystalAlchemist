@@ -1,14 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MiniMapMarkerExtension : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private GameObject marker;
-
-    private void Start()
+    public class MiniMapMarkerExtension : MonoBehaviour
     {
-        if (this.marker != null) Instantiate(this.marker, this.transform);
+        public GameObject marker;
+
+        public virtual void Start()
+        {
+            if (this.marker != null) Instantiate(this.marker, this.transform);
+        }
     }
 }

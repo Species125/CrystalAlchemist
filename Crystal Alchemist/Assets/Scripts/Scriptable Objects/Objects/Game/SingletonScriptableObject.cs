@@ -1,15 +1,18 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-public abstract class SingletonScriptableObject<T> : ScriptableObject where T:ScriptableObject
+namespace CrystalAlchemist
 {
-    private static T _instance = null;
-    public static T Instance
+    public abstract class SingletonScriptableObject<T> : ScriptableObject where T : ScriptableObject
     {
-        get
+        private static T _instance = null;
+        public static T Instance
         {
-            if (_instance == null) _instance = Resources.FindObjectsOfTypeAll<T>().FirstOrDefault();
-            return _instance;
+            get
+            {
+                if (_instance == null) _instance = Resources.FindObjectsOfTypeAll<T>().FirstOrDefault();
+                return _instance;
+            }
         }
     }
 }

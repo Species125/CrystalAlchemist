@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   spriteRenderer: {fileID: 3924551678506968721}
   myRigidbody: {fileID: 0}
   animator: {fileID: 6859513477840706715}
@@ -158,6 +159,7 @@ MonoBehaviour:
     resourceType: 2
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 0.25
   intervallSender: 0.25
   speedDuringCasting: 0
@@ -183,8 +185,9 @@ MonoBehaviour:
   - resourceType: 1
     item: {fileID: 0}
     keyItem: {fileID: 0}
-    amount: -1
-  statusEffects: []
+    statusEffect: {fileID: 0}
+    amount: -2
+  modifiers: []
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}
@@ -336,9 +339,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
   useGlow: 1
-  selectColor: {r: 1, g: 1, b: 1, a: 1}
-  precision: 0.1
-  glowColor: {r: 5.4215446, g: 4.1245112, b: 1.5088261, a: 1}
+  glowColor: {r: 5.8352942, g: 2.3843138, b: 0.3764706, a: 1}
   invert: 0
 --- !u!1 &8651795030287470220
 GameObject:
@@ -439,7 +440,5 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
   useGlow: 1
-  selectColor: {r: 1, g: 1, b: 1, a: 1}
-  precision: 0.1
-  glowColor: {r: 5.4215446, g: 4.1245112, b: 1.5088261, a: 1}
+  glowColor: {r: 5.8352942, g: 2.3843138, b: 0.3764706, a: 1}
   invert: 0

@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
-public class MasterReferencer : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private MasterManager _globalGameObjects;
+    public class MasterReferencer : MonoBehaviour
+    {
+        [SerializeField]
+        private MasterManager _globalGameObjects;
+    }
 }

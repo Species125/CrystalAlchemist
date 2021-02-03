@@ -1,22 +1,30 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
-public class CharacterCreatorColor : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private Image image;
-
-    [SerializeField]
-    private CharacterCreatorColorPaletteHandler handler;
-
-    public void Click()
+    public class CharacterCreatorColor : CharacterCreatorButton
     {
-        this.handler.mainMenu.creatorPreset.AddColorGroup(this.handler.colorGroup, this.image.color);
-        handler.Click();
-    }
+        private Color color;
 
-    public ColorGroup GetColorGroup()
-    {
-        return this.handler.colorGroup;
+        private CharacterCreatorColorPaletteHandler handler;
+
+        public void SetButton(Color color, CharacterCreatorColorPaletteHandler handler)
+        {
+            this.handler = handler;
+            this.color = color;
+            this.preview.color = this.color;
+        }
+
+        public override bool IsSelected()
+        {
+            if (this.handler.ContainsColor(this.color)) return true;
+
+            return false;
+        }
+
+        public override void Click()
+        {
+            this.handler.UpdateColor(this.color);
+        }
     }
 }

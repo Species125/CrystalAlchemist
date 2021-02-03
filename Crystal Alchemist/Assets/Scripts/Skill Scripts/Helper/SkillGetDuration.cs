@@ -1,13 +1,17 @@
-﻿using UnityEngine;
+﻿
 using TMPro;
+using UnityEngine;
 
-public class SkillGetDuration : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private TextMeshPro textField;
+    public class SkillGetDuration : MonoBehaviour
+    {
+        [SerializeField]
+        private TextMeshPro textField;
 
-    [SerializeField]
-    private Skill skill;
+        [SerializeField]
+        private Skill skill;
 
-    private void FixedUpdate() => this.textField.text = FormatUtil.setDurationToString(skill.GetDurationLeft());    
+        private void FixedUpdate() => this.textField.text = FormatUtil.setDurationToString(skill.GetDurationLeft());
+    }
 }

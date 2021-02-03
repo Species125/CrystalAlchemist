@@ -40,7 +40,7 @@ TextureImporter:
     second: Pause
   - first:
       213: 7393202111093445550
-    second: Page Weapon
+    second: Page Weapon 1
   - first:
       213: 9166024787820430120
     second: Page Magic 1
@@ -52,7 +52,7 @@ TextureImporter:
     second: Page Magic 3
   - first:
       213: 3652590006902472081
-    second: Page Items
+    second: Page Items 1
   - first:
       213: -7479699315287212151
     second: type frame
@@ -373,10 +373,10 @@ TextureImporter:
     second: Creator Race Sin Eater
   - first:
       213: -4304876671146767577
-    second: SaveMenu Quicktravel
+    second: Return
   - first:
       213: -3863031857672296423
-    second: SaveMenu Respawn
+    second: Favorite
   - first:
       213: 4854141609620486540
     second: Creator Race Yarga
@@ -389,6 +389,54 @@ TextureImporter:
   - first:
       213: -5848844595647435669
     second: Empty
+  - first:
+      213: 1626175523486813402
+    second: Stop
+  - first:
+      213: 8302538774152493675
+    second: Play
+  - first:
+      213: 2731640878188573039
+    second: Note
+  - first:
+      213: -253206033982475501
+    second: SelectionBox
+  - first:
+      213: -7787619871920621061
+    second: SimpleBox
+  - first:
+      213: 2838516900069451474
+    second: SimpleBoxFilled
+  - first:
+      213: 4746212763614164738
+    second: Online Symbol
+  - first:
+      213: 8648132425536936263
+    second: Inventory Exit Top
+  - first:
+      213: 4390297790708840172
+    second: IsDead
+  - first:
+      213: 4087802611736110202
+    second: Add
+  - first:
+      213: -7435991583013992658
+    second: Group
+  - first:
+      213: 5021077046251380208
+    second: Locked
+  - first:
+      213: 2280192146501317595
+    second: Error
+  - first:
+      213: -8979073922778242625
+    second: Page Weapons 2
+  - first:
+      213: -9041796264067606190
+    second: Page Items 2
+  - first:
+      213: 6945938507427465787
+    second: Leader
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -442,6 +490,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -728,7 +778,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Page Weapon
+      name: Page Weapon 1
       rect:
         serializedVersion: 2
         x: 0
@@ -812,7 +862,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Page Items
+      name: Page Items 1
       rect:
         serializedVersion: 2
         x: 320
@@ -1085,37 +1135,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Inventory Sidebar
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 64
-        width: 24
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d8a71ff8b56801542b30a4a0ab67f707
-      internalID: 9014538796204917331
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Inventory Area
       rect:
         serializedVersion: 2
-        x: 144
-        y: 16
-        width: 91
-        height: 64
+        x: 400
+        y: 48
+        width: 64
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 32, y: 8, z: 29, w: 23}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -1130,8 +1159,8 @@ TextureImporter:
       name: Inventory Exit
       rect:
         serializedVersion: 2
-        x: 128
-        y: 96
+        x: 272
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -1172,13 +1201,13 @@ TextureImporter:
       name: Inventory Chest
       rect:
         serializedVersion: 2
-        x: 264
-        y: 34
-        width: 128
-        height: 94
+        x: 288
+        y: 48
+        width: 112
+        height: 80
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 78, y: 21, z: 33, w: 45}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -1844,10 +1873,10 @@ TextureImporter:
       name: Dialogbox
       rect:
         serializedVersion: 2
-        x: 400
+        x: 240
         y: 48
-        width: 48
-        height: 48
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 6, y: 6, z: 6, w: 6}
@@ -1865,8 +1894,8 @@ TextureImporter:
       name: Red Frame
       rect:
         serializedVersion: 2
-        x: 400
-        y: 0
+        x: 240
+        y: 80
         width: 48
         height: 48
       alignment: 0
@@ -2480,7 +2509,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 10, y: 0, z: 10, w: 0}
+      border: {x: 10, y: 6, z: 10, w: 9}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -2936,8 +2965,8 @@ TextureImporter:
       name: Creator Race Sin Eater
       rect:
         serializedVersion: 2
-        x: 208
-        y: 0
+        x: 144
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -2954,11 +2983,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SaveMenu Quicktravel
+      name: Return
       rect:
         serializedVersion: 2
-        x: 224
-        y: 0
+        x: 160
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -2975,11 +3004,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SaveMenu Respawn
+      name: Favorite
       rect:
         serializedVersion: 2
-        x: 240
-        y: 0
+        x: 176
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -2999,8 +3028,8 @@ TextureImporter:
       name: Creator Race Yarga
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
+        x: 192
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -3062,8 +3091,8 @@ TextureImporter:
       name: Empty
       rect:
         serializedVersion: 2
-        x: 395
-        y: 116
+        x: 273
+        y: 71
         width: 8
         height: 8
       alignment: 0
@@ -3075,6 +3104,342 @@ TextureImporter:
       bones: []
       spriteID: b6ca8f924dab4dea0800000000000000
       internalID: -5848844595647435669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adccdd3d506519610800000000000000
+      internalID: 1626175523486813402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Play
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6a344fb60b883370800000000000000
+      internalID: 8302538774152493675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Note
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f61bd56e7ecb8e520800000000000000
+      internalID: 2731640878188573039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SelectionBox
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 2, z: 2, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3133d71247e6c7cf0800000000000000
+      internalID: -253206033982475501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SimpleBox
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 1, z: 1, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf9f560bcf0dce390800000000000000
+      internalID: -7787619871920621061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SimpleBoxFilled
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d6259dd410746720800000000000000
+      internalID: 2838516900069451474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Online Symbol
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 207b5abac5fedd140800000000000000
+      internalID: 4746212763614164738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory Exit Top
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 64
+        width: 16
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7499aaa0f96540870800000000000000
+      internalID: 8648132425536936263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IsDead
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce6f16174987dec30800000000000000
+      internalID: 4390297790708840172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Add
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a74e17831dacab830800000000000000
+      internalID: 4087802611736110202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Group
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2708a58d0d0ec890800000000000000
+      internalID: -7435991583013992658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Locked
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fd5ea388f27ea540800000000000000
+      internalID: 5021077046251380208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Error
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd3b8df1daed4af10800000000000000
+      internalID: 2280192146501317595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Page Weapons 2
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 34
+        width: 64
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb164d427dbe36380800000000000000
+      internalID: -8979073922778242625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Page Items 2
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 34
+        width: 64
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259dbcc0436158280800000000000000
+      internalID: -9041796264067606190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leader
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3acbe6754ee46060800000000000000
+      internalID: 6945938507427465787
       vertices: []
       indices: 
       edges: []

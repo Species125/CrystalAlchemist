@@ -1,37 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MiniGameTrySlot : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private GameObject successMark;
-
-    [SerializeField]
-    private GameObject failMark;
-
-    [SerializeField]
-    private GameObject goldMark;
-
-    public void reset()
+    public class MiniGameTrySlot : MonoBehaviour
     {
-        this.successMark.SetActive(false);
-        this.failMark.SetActive(false);
-        this.goldMark.SetActive(false);
-    }
+        [SerializeField]
+        private GameObject successMark;
 
-    public void setAsNeccessary()
-    {
-        this.goldMark.SetActive(true);
-    }
+        [SerializeField]
+        private GameObject failMark;
 
-    public void setMark(bool success)
-    {
-        if (success) this.successMark.SetActive(true);
-        else
+        [SerializeField]
+        private GameObject goldMark;
+
+        public void reset()
         {
+            this.successMark.SetActive(false);
+            this.failMark.SetActive(false);
             this.goldMark.SetActive(false);
-            this.failMark.SetActive(true);
+        }
+
+        public void setAsNeccessary()
+        {
+            this.goldMark.SetActive(true);
+        }
+
+        public void setMark(bool success)
+        {
+            if (success) this.successMark.SetActive(true);
+            else
+            {
+                this.goldMark.SetActive(false);
+                this.failMark.SetActive(true);
+            }
         }
     }
 }

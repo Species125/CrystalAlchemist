@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 
-public class SkillIgnoreCollisionModule : SkillModule
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private Collider2D ignoredCollider2D;
+    public class SkillIgnoreCollisionModule : SkillModule
+    {
+        [SerializeField]
+        private Collider2D ignoredCollider2D;
 
-    public override void Initialize() => Physics2D.IgnoreCollision(this.skill.sender.boxCollider, this.ignoredCollider2D);
+        public override void Initialize() => Physics2D.IgnoreCollision(this.skill.sender.boxCollider, this.ignoredCollider2D);
     }
+}

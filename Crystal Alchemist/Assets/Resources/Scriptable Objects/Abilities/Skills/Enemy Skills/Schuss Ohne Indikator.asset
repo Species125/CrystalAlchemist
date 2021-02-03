@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266771f26e0200047a77d2d39c8b8900, type: 3}
+  m_Name: Schuss Ohne Indikator
+  m_EditorClassIdentifier: 
+  path: Scriptable Objects/Abilities/Skills/Enemy Skills/Schuss Ohne Indikator
+  skill: {fileID: 1676703576389572161, guid: ebbcacfde9010dc489df5125a980db67, type: 3}
+  useTargetSystem: 0
+  targetingProperty: {fileID: 0}
+  useIndicator: 0
+  indicator:
+    indicatorProperty: {fileID: 11400000, guid: 87160a655f24076429d50b1862362975,
+      type: 2}
+  hasSkillBookInfo: 0
+  icon: {fileID: -3657551050585085934, guid: 9d16c5cb29ddbed48ae7f8f2281d58ce, type: 3}
+  info: {fileID: 0}
+  cooldown: 0.1
+  globalCooldown: 0
+  hasMaxDuration: 1
+  maxDuration: 2
+  hasDelay: 0
+  delay: 1
+  hasCastTime: 1
+  castTime: 2
+  showCastbar: 1
+  castAnimation: {fileID: 0}
+  hasMaxAmount: 0
+  maxAmount: 1
+  requirements: {fileID: 0}
+  isRapidFire: 1
+  remoteActivation: 0
+  deactivateButtonUp: 0
+  keepCast: 0
+  shareDamage: 0
+  positionOffset: 0.25
+  attachToSender: 0
+  lockDirection: 0
+  timeDistortion: 1
+  cooldownLeft: 0
+  holdTimer: 0
+  state: 6
+  enabled: 1
+  active: 1
+  sender: {fileID: 0}
+  activeAnimation: {fileID: 0}

@@ -3,35 +3,37 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public static class SceneLoader
+namespace CrystalAlchemist
 {
-    private class LoadingMonoBehaviour : MonoBehaviour { }
-
-    private static Action onLoadedCallback;
-    private static AsyncOperation asyncOperation;
-
-    public static void Load(string scene)
+    public static class SceneLoader
     {
-        onLoadedCallback = () =>
+        private class LoadingMonoBehaviour : MonoBehaviour { }
+
+        private static Action onLoadedCallback;
+        private static AsyncOperation asyncOperation;
+
+        public static void Load(string scene)
         {
-            GameObject loadingGameObject = new GameObject("Loading Game Object");
-            loadingGameObject.AddComponent<LoadingMonoBehaviour>().StartCoroutine(LoadSceneAsync(scene));
-        };
+            onLoadedCallback = () =>
+            {
+                GameObject loadingGameObject = new GameObject("Loading Game Object");
+                loadingGameObject.AddComponent<LoadingMonoBehaviour>().StartCoroutine(LoadSceneAsync(scene));
+            };
 
-        SceneManager.LoadScene("Loading");
-    }
-
-    private static IEnumerator LoadSceneAsync(string scene)
-    {
-        yield return null;
-        asyncOperation = SceneManager.LoadSceneAsync(scene.ToString());
-
-        while (!asyncOperation.isDone)
-        {
-            yield return null;
+            SceneManager.LoadScene("Loading");
         }
 
-        /*
+        private static IEnumerator LoadSceneAsync(string scene)
+        {
+            yield return null;
+            asyncOperation = SceneManager.LoadSceneAsync(scene.ToString());
+
+            while (!asyncOperation.isDone)
+            {
+                yield return null;
+            }
+
+            /*
         asyncOperation.allowSceneActivation = false;
 
         while (!asyncOperation.isDone)
@@ -43,20 +45,21 @@ public static class SceneLoader
             }
             yield return null;
         }*/
-    }
+        }
 
-    public static float GetLoadingProgress()
-    {
-        if (asyncOperation != null) return asyncOperation.progress;
-        return 1f;
-    }
-
-    public static void LoaderCallback()
-    {
-        if(onLoadedCallback != null)
+        public static float GetLoadingProgress()
         {
-            onLoadedCallback();
-            onLoadedCallback = null;
+            if (asyncOperation != null) return asyncOperation.progress;
+            return 1f;
+        }
+
+        public static void LoaderCallback()
+        {
+            if (onLoadedCallback != null)
+            {
+                onLoadedCallback();
+                onLoadedCallback = null;
+            }
         }
     }
 }

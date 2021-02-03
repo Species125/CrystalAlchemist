@@ -1,42 +1,45 @@
 ﻿using System.Collections.Generic;
+
 using UnityEngine;
 
-
-public class MiniGameSlider : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private List<GameObject> stars = new List<GameObject>();
-
-    private int value = 1;
-    private int maxValue = 1;
-
-    public void SetStars(int maxValue)
+    public class MiniGameSlider : MonoBehaviour
     {
-        this.maxValue = maxValue;
+        [SerializeField]
+        private List<GameObject> stars = new List<GameObject>();
 
-        for (int i = 0; i < this.stars.Count; i++)
+        private int value = 1;
+        private int maxValue = 1;
+
+        public void SetStars(int maxValue)
         {
-            this.stars[i].SetActive(false);
-            if (i < this.maxValue) this.stars[i].SetActive(true);
-        }
-    }
+            this.maxValue = maxValue;
 
-    public void SetDifficulty(int value)
-    {
-        if (this.value == value && value > 1) this.value--;
-        else this.value = value;
-
-        for (int i = 0; i < maxValue; i++)
-        {
-            this.stars[i].transform.GetChild(0).gameObject.SetActive(false);
-            if (i < this.value) this.stars[i].transform.GetChild(0).gameObject.SetActive(true);
+            for (int i = 0; i < this.stars.Count; i++)
+            {
+                this.stars[i].SetActive(false);
+                if (i < this.maxValue) this.stars[i].SetActive(true);
+            }
         }
 
-        MiniGameEvents.current.SetDifficulty();
-    }
+        public void SetDifficulty(int value)
+        {
+            if (this.value == value && value > 1) this.value--;
+            else this.value = value;
 
-    public int GetValue()
-    {
-        return this.value;
+            for (int i = 0; i < maxValue; i++)
+            {
+                this.stars[i].transform.GetChild(0).gameObject.SetActive(false);
+                if (i < this.value) this.stars[i].transform.GetChild(0).gameObject.SetActive(true);
+            }
+
+            MiniGameEvents.current.SetDifficulty();
+        }
+
+        public int GetValue()
+        {
+            return this.value;
+        }
     }
 }

@@ -82,6 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70956daf155772744b76eea087e5eb40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   stats: {fileID: 11400000, guid: f822b5b57556be24480c3f9b9fa1b7a0, type: 2}
   myRigidbody: {fileID: 3213892141308836223}
   animator: {fileID: 4628628553128307511}
@@ -94,6 +96,7 @@ MonoBehaviour:
   activeStatusEffectParent: {fileID: 8011618576607607577}
   values: {fileID: 0}
   IsSummoned: 0
+  NPCStats: {fileID: 11400000, guid: f822b5b57556be24480c3f9b9fa1b7a0, type: 2}
   progress: {fileID: 8168851057379770378}
   timeBar: {fileID: 8563153609537171678}
   time: 10
@@ -369,6 +372,7 @@ MonoBehaviour:
   selectColor: {r: 0.8352942, g: 0.7490196, b: 1, a: 1}
   precision: 0.25
   glowColor: {r: 3.4724946, g: 0.99893683, b: 9.085568, a: 1}
+  invert: 0
 --- !u!1 &5489147363611431732
 GameObject:
   m_ObjectHideFlags: 0

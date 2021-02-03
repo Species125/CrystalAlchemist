@@ -1,17 +1,31 @@
-﻿using UnityEngine;
+﻿
 
-public class CharacterCreatorGear : CharacterCreatorButton
+namespace CrystalAlchemist
 {
-    public CharacterCreatorPartProperty property;
-
-    [SerializeField]
-    private bool removeIt = false;
-
-    public override void Click()
+    public class CharacterCreatorGear : CharacterCreatorButton
     {
-        if(!this.removeIt) this.mainMenu.creatorPreset.AddCharacterPartData(this.property.parentName, this.property.partName);
-        else this.mainMenu.creatorPreset.RemoveCharacterPartData(this.property.parentName);
-               
-        base.Click();
-    } 
+        public CharacterCreatorProperty property;
+
+        private CharacterCreatorGearHandler handler;
+
+        public void SetButton(CharacterCreatorProperty property, CharacterCreatorGearHandler handler)
+        {
+            this.handler = handler;
+            this.property = property;
+
+            this.gameObject.name = property.name;
+            this.preview.enabled = true;
+            this.preview.sprite = property.GetSprite();
+        }
+
+        public override bool IsSelected()
+        {
+            return this.handler.ContainsGear(this.property);
+        }
+
+        public override void Click()
+        {
+            this.handler.UpdateGear(this.property);
+        }
+    }
 }

@@ -1,17 +1,21 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class FloatEvent : UnityEvent<float>{}
-
-public class FloatSignalListener : MonoBehaviour
+namespace CrystalAlchemist
 {
-    public FloatSignal signal;
-    public FloatEvent signalEventBool;
+    [System.Serializable]
+    public class FloatEvent : UnityEvent<float> { }
 
-    public void OnSignalRaised(float value) => this.signalEventBool.Invoke(value);
-    
-    private void OnEnable() => signal.RegisterListener(this);    
+    public class FloatSignalListener : MonoBehaviour
+    {
+        public FloatSignal signal;
+        public FloatEvent signalEventBool;
 
-    private void OnDisable() => signal.DeRegisterListener(this);    
+        public void OnSignalRaised(float value) => this.signalEventBool.Invoke(value);
+
+        private void OnEnable() => signal.RegisterListener(this);
+
+        private void OnDisable() => signal.DeRegisterListener(this);
+    }
 }

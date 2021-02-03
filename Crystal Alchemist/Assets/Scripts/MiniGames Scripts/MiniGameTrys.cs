@@ -1,83 +1,85 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public enum MiniGameState
+namespace CrystalAlchemist
 {
-    play,
-    win,
-    lose
-}
-
-public class MiniGameTrys : MonoBehaviour
-{
-    [SerializeField]
-    private List<MiniGameTrySlot> slots = new List<MiniGameTrySlot>();
-
-    public int needed;
-    public int max;
-    public int successCounter;
-
-    private int index;
-
-    public void Reset()
+    public enum MiniGameState
     {
-        this.index = 0;
-        this.successCounter = 0;
-        setSlots();
+        play,
+        win,
+        lose
     }
 
-    public MiniGameState canStartNewRound()
+    public class MiniGameTrys : MonoBehaviour
     {
-        if (this.successCounter >= this.needed)
-            return MiniGameState.win; //win
-        else if (this.max - (this.index) < (this.needed-this.successCounter))
-            return MiniGameState.lose; //lose
-        else if (this.index < this.max)
-            return MiniGameState.play;
-        else
-            return MiniGameState.lose; //lose
-    }
+        [SerializeField]
+        private List<MiniGameTrySlot> slots = new List<MiniGameTrySlot>();
 
-    public void SetSlot(bool success)
-    {
-        if (success) this.successCounter++;
-        this.slots[this.index].setMark(success);
-        this.index++;
-        if (!success) updateNeccessary(); 
-    }
+        public int needed;
+        public int max;
+        public int successCounter;
 
-    public void SetValues(int needed, int max)
-    {
-        this.needed = needed;
-        this.max = max;
-        Reset();
-    }
+        private int index;
 
-    private void setSlots()
-    {
-        for(int i = 0; i < slots.Count; i++)
+        public void Reset()
         {
-            slots[i].reset();
-
-            if ((i + 1) <= max) slots[i].gameObject.SetActive(true);
-            else slots[i].gameObject.SetActive(false);
+            this.index = 0;
+            this.successCounter = 0;
+            setSlots();
         }
 
-        updateNeccessary();
-    }
-
-    private void updateNeccessary()
-    {
-        int neededSlotsLeft = this.needed - this.successCounter;
-        int i = this.index;
-
-        do
+        public MiniGameState canStartNewRound()
         {
-            this.slots[i].setAsNeccessary();
-            neededSlotsLeft--;
-            i++;
+            if (this.successCounter >= this.needed)
+                return MiniGameState.win; //win
+            else if (this.max - (this.index) < (this.needed - this.successCounter))
+                return MiniGameState.lose; //lose
+            else if (this.index < this.max)
+                return MiniGameState.play;
+            else
+                return MiniGameState.lose; //lose
         }
-        while (i < this.slots.Count && neededSlotsLeft > 0);
+
+        public void SetSlot(bool success)
+        {
+            if (success) this.successCounter++;
+            this.slots[this.index].setMark(success);
+            this.index++;
+            if (!success) updateNeccessary();
+        }
+
+        public void SetValues(int needed, int max)
+        {
+            this.needed = needed;
+            this.max = max;
+            Reset();
+        }
+
+        private void setSlots()
+        {
+            for (int i = 0; i < slots.Count; i++)
+            {
+                slots[i].reset();
+
+                if ((i + 1) <= max) slots[i].gameObject.SetActive(true);
+                else slots[i].gameObject.SetActive(false);
+            }
+
+            updateNeccessary();
+        }
+
+        private void updateNeccessary()
+        {
+            int neededSlotsLeft = this.needed - this.successCounter;
+            int i = this.index;
+
+            do
+            {
+                this.slots[i].setAsNeccessary();
+                neededSlotsLeft--;
+                i++;
+            }
+            while (i < this.slots.Count && neededSlotsLeft > 0);
+        }
     }
 }

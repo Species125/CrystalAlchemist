@@ -1,27 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Signals/ColorSignal")]
-public class ColorSignal : ScriptableObject
+namespace CrystalAlchemist
 {
-    public List<ColorSignalListener> listeners = new List<ColorSignalListener>();
-
-    public void Raise(Color color)
+    [CreateAssetMenu(menuName = "Signals/ColorSignal")]
+    public class ColorSignal : ScriptableObject
     {
-        for (int i = listeners.Count - 1; i >= 0; i--)
+        public List<ColorSignalListener> listeners = new List<ColorSignalListener>();
+
+        public void Raise(Color color)
         {
-            this.listeners[i].OnSignalRaised(color);
+            for (int i = listeners.Count - 1; i >= 0; i--)
+            {
+                this.listeners[i].OnSignalRaised(color);
+            }
         }
-    }
 
-    public void RegisterListener(ColorSignalListener listener)
-    {
-        this.listeners.Add(listener);
-    }
+        public void RegisterListener(ColorSignalListener listener)
+        {
+            this.listeners.Add(listener);
+        }
 
-    public void DeRegisterListener(ColorSignalListener listener)
-    {
-        this.listeners.Remove(listener);
+        public void DeRegisterListener(ColorSignalListener listener)
+        {
+            this.listeners.Remove(listener);
+        }
     }
 }

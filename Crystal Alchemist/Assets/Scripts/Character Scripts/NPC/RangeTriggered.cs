@@ -1,33 +1,38 @@
-﻿using UnityEngine;
+﻿
+
 using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class RangeTriggered : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [Required]
-    [SerializeField]
-    private Affections affections;
-
-    [Required]
-    [SerializeField]
-    private AI npc;
-
-    private void Update()
+    public class RangeTriggered : MonoBehaviour
     {
-        RotationUtil.rotateCollider(this.npc, this.gameObject);
-    }
+        [Required]
+        [SerializeField]
+        private Affections affections;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (this.affections.IsAffected(this.npc, collision)) GameEvents.current.DoRangeTrigger(this.npc, true);
-    }
+        [Required]
+        [SerializeField]
+        private AI npc;
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (this.affections.IsAffected(this.npc, collision)) GameEvents.current.DoRangeTrigger(this.npc, true);
-    }
+        private void Update()
+        {
+            RotationUtil.rotateCollider(this.npc, this.gameObject);
+        }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (this.affections.IsAffected(this.npc, collision)) GameEvents.current.DoRangeTrigger(this.npc, false);
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (this.affections.IsAffected(this.npc, collision)) GameEvents.current.DoRangeTrigger(this.npc, true);
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (this.affections.IsAffected(this.npc, collision)) GameEvents.current.DoRangeTrigger(this.npc, true);
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (this.affections.IsAffected(this.npc, collision)) GameEvents.current.DoRangeTrigger(this.npc, false);
+        }
     }
 }

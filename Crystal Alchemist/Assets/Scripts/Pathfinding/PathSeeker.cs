@@ -1,53 +1,55 @@
-﻿using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
-public class PathSeeker : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    [InfoBox("Determine on which layer it moves")]
-    private GraphType graphType = GraphType.ground;
-
-    public List<PathNode> openList = new List<PathNode>();
-    private List<PathNode> closeList = new List<PathNode>();
-    private PathfindingGrid grid;
-
-    private void Start()
+    public class PathSeeker : MonoBehaviour
     {
-        if(Pathfinding.Instance != null) this.grid = Pathfinding.Instance.GetGrid(this.graphType);
-    }
+        [SerializeField]
+        [InfoBox("Determine on which layer it moves")]
+        private GraphType graphType = GraphType.ground;
 
-    public List<Vector2> FindPath(Vector2 startPosition, Vector2 endPosition)
-    {
-        if (this.grid != null)
+        public List<PathNode> openList = new List<PathNode>();
+        private List<PathNode> closeList = new List<PathNode>();
+        private PathfindingGrid grid;
+
+        private void Start()
         {
-            List<PathNode> path = FindPath(grid.GetNode(startPosition), grid.GetNode(endPosition));
-
-            if (path != null)
-            {
-                List<Vector2> result = new List<Vector2>();
-                foreach (PathNode node in path)
-                {
-                    result.Add(node.GetVector());
-                }
-                return result;
-            }
+            if (Pathfinding.Instance != null) this.grid = Pathfinding.Instance.GetGrid(this.graphType);
         }
 
-        return null;
-    }
+        public List<Vector2> FindPath(Vector2 startPosition, Vector2 endPosition)
+        {
+            if (this.grid != null)
+            {
+                List<PathNode> path = FindPath(grid.GetNode(startPosition), grid.GetNode(endPosition));
 
-    private List<PathNode> FindPath(PathNode start, PathNode end)
-    {
-        PathNode startNode = start;
-        PathNode endNode = end;
+                if (path != null)
+                {
+                    List<Vector2> result = new List<Vector2>();
+                    foreach (PathNode node in path)
+                    {
+                        result.Add(node.GetVector());
+                    }
+                    return result;
+                }
+            }
 
-        this.closeList.Clear();
-        this.openList.Clear();
+            return null;
+        }
 
-        this.openList.Add(startNode);
+        private List<PathNode> FindPath(PathNode start, PathNode end)
+        {
+            PathNode startNode = start;
+            PathNode endNode = end;
 
-        /*
+            this.closeList.Clear();
+            this.openList.Clear();
+
+            this.openList.Add(startNode);
+
+            /*
         for(int x = 0; x < grid.GetWidth(); x++)
         {
             for(int y = 0; y < grid.GetHeight(); y++)
@@ -57,101 +59,102 @@ public class PathSeeker : MonoBehaviour
                 pathNode.CalculateFCost();
                 pathNode.previousNode = null;
             }
-        }           */   
+        }           */
 
-        this.grid.InitializeNodes();
+            this.grid.InitializeNodes();
 
-        //Set Startnode
-        startNode.SetStartNode(endNode);
+            //Set Startnode
+            startNode.SetStartNode(endNode);
 
-        while (openList.Count > 0)
-        {
-            PathNode currentNode = GetLowestFCostNode(this.openList);
-            if (currentNode == endNode)
+            while (openList.Count > 0)
             {
-                //reached final node
-                return GetPath(endNode);
-            }
-
-            openList.Remove(currentNode);
-            closeList.Add(currentNode);
-
-            foreach (PathNode neighbor in GetNeighborNodes(currentNode))
-            {
-                if (closeList.Contains(neighbor)) continue;
-                if (neighbor != endNode && !neighbor.getWalkable(this.gameObject))
+                PathNode currentNode = GetLowestFCostNode(this.openList);
+                if (currentNode == endNode)
                 {
-                    //cannot walk there
-                    this.closeList.Add(neighbor);
-                    continue;
+                    //reached final node
+                    return GetPath(endNode);
                 }
 
-                int tentantiveGCost = currentNode.CalculateTentativeGCost(neighbor);
-                if (tentantiveGCost < neighbor.gCost)
+                openList.Remove(currentNode);
+                closeList.Add(currentNode);
+
+                foreach (PathNode neighbor in GetNeighborNodes(currentNode))
                 {
-                    neighbor.SetNeighbornode(currentNode, endNode, tentantiveGCost);
-                    if (!this.openList.Contains(neighbor)) this.openList.Add(neighbor);
+                    if (closeList.Contains(neighbor)) continue;
+                    if (neighbor != endNode && !neighbor.getWalkable(this.gameObject))
+                    {
+                        //cannot walk there
+                        this.closeList.Add(neighbor);
+                        continue;
+                    }
+
+                    int tentantiveGCost = currentNode.CalculateTentativeGCost(neighbor);
+                    if (tentantiveGCost < neighbor.gCost)
+                    {
+                        neighbor.SetNeighbornode(currentNode, endNode, tentantiveGCost);
+                        if (!this.openList.Contains(neighbor)) this.openList.Add(neighbor);
+                    }
                 }
             }
+
+            //no path found;
+            return null;
         }
 
-        //no path found;
-        return null;
-    }
-
-    private List<PathNode> GetNeighborNodes(PathNode node)
-    {
-        List<PathNode> result = new List<PathNode>();
-
-        if (node.x - 1 >= 0)
+        private List<PathNode> GetNeighborNodes(PathNode node)
         {
-            result.Add(this.grid.GetNode(node.x - 1, node.y));
-            if (node.y - 1 >= 0) result.Add(this.grid.GetNode(node.x - 1, node.y - 1));
-            if (node.y + 1 < this.grid.GetHeight()) result.Add(this.grid.GetNode(node.x - 1, node.y + 1));
+            List<PathNode> result = new List<PathNode>();
+
+            if (node.x - 1 >= 0)
+            {
+                result.Add(this.grid.GetNode(node.x - 1, node.y));
+                if (node.y - 1 >= 0) result.Add(this.grid.GetNode(node.x - 1, node.y - 1));
+                if (node.y + 1 < this.grid.GetHeight()) result.Add(this.grid.GetNode(node.x - 1, node.y + 1));
+            }
+            if (node.x + 1 < this.grid.GetWidth())
+            {
+                result.Add(this.grid.GetNode(node.x + 1, node.y));
+                if (node.y - 1 >= 0) result.Add(this.grid.GetNode(node.x + 1, node.y - 1));
+                if (node.y + 1 < this.grid.GetHeight()) result.Add(this.grid.GetNode(node.x + 1, node.y + 1));
+            }
+            if (node.y - 1 >= 0)
+            {
+                result.Add(this.grid.GetNode(node.x, node.y - 1));
+            }
+            if (node.y + 1 < this.grid.GetHeight())
+            {
+                result.Add(this.grid.GetNode(node.x, node.y + 1));
+            }
+
+            return result;
         }
-        if (node.x + 1 < this.grid.GetWidth())
+
+        private List<PathNode> GetPath(PathNode endNode)
         {
-            result.Add(this.grid.GetNode(node.x + 1, node.y));
-            if (node.y - 1 >= 0) result.Add(this.grid.GetNode(node.x + 1, node.y - 1));
-            if (node.y + 1 < this.grid.GetHeight()) result.Add(this.grid.GetNode(node.x + 1, node.y + 1));
+            List<PathNode> path = new List<PathNode>();
+            path.Add(endNode);
+            PathNode currentNode = endNode;
+
+            while (currentNode.GetPreviousNode() != null)
+            {
+                path.Add(currentNode.GetPreviousNode());
+                currentNode = currentNode.GetPreviousNode();
+            }
+
+            path.Reverse();
+            return path;
         }
-        if (node.y - 1 >= 0)
+
+        private PathNode GetLowestFCostNode(List<PathNode> pathNodeList)
         {
-            result.Add(this.grid.GetNode(node.x, node.y - 1));
+            PathNode result = pathNodeList[0];
+
+            foreach (PathNode node in pathNodeList)
+            {
+                if (node.fCost < result.fCost) result = node;
+            }
+
+            return result;
         }
-        if (node.y + 1 < this.grid.GetHeight())
-        {
-            result.Add(this.grid.GetNode(node.x, node.y + 1));
-        }
-
-        return result;
-    }
-
-    private List<PathNode> GetPath(PathNode endNode)
-    {
-        List<PathNode> path = new List<PathNode>();
-        path.Add(endNode);
-        PathNode currentNode = endNode;
-
-        while (currentNode.GetPreviousNode() != null)
-        {
-            path.Add(currentNode.GetPreviousNode());
-            currentNode = currentNode.GetPreviousNode();
-        }
-
-        path.Reverse();
-        return path;
-    }
-
-    private PathNode GetLowestFCostNode(List<PathNode> pathNodeList)
-    {
-        PathNode result = pathNodeList[0];
-
-        foreach (PathNode node in pathNodeList)
-        {
-            if (node.fCost < result.fCost) result = node;
-        }
-
-        return result;
     }
 }

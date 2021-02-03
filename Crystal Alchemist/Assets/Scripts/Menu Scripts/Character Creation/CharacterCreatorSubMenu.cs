@@ -1,40 +1,29 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
-public class CharacterCreatorSubMenu : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [Required]
-    [SerializeField]
-    private CharacterCreatorMenu mainMenu;
-
-    [SerializeField]
-    private List<CharacterCreatorSubMenuChild> subMenu = new List<CharacterCreatorSubMenuChild>();
-
-    public void Start()
+    public class CharacterCreatorSubMenu : MonoBehaviour
     {
-        this.ShobSubMenu();
-    }
+        [Required]
+        public CharacterCreatorMenu mainMenu;
 
-    public void OnEnable()
-    {
-        this.ShobSubMenu();
-    }
+        [SerializeField]
+        private List<CharacterCreatorSubMenuChild> subMenu = new List<CharacterCreatorSubMenuChild>();
 
-    public void OnDisable()
-    {
-        this.ShobSubMenu();
-    }
+        public void OnEnable() => this.RaceSubMenu();
 
-    public void ShobSubMenu()
-    {
-        foreach(CharacterCreatorSubMenuChild child in this.subMenu)
+        public void OnDisable() => this.RaceSubMenu();
+
+        public void RaceSubMenu()
         {
-            child.gameObject.SetActive(false);
+            foreach (CharacterCreatorSubMenuChild child in this.subMenu)
+            {
+                child.gameObject.SetActive(false);
 
-            if (child.isEnabledByRace(this.mainMenu.creatorPreset.getRace())) child.gameObject.SetActive(true);
-            //if (child.isEnabledByGear()) child.gameObject.SetActive(true);
+                if (child.isEnabledByRace(this.mainMenu.playerPreset.getRace())) child.gameObject.SetActive(true);
+            }
         }
     }
 }

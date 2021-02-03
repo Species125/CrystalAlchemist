@@ -1,21 +1,26 @@
-﻿using UnityEngine;
+﻿
 
-public class DeathAnimation : MonoBehaviour
+using UnityEngine;
+
+namespace CrystalAlchemist
 {
-    private Character character;
-    public void setCharacter(Character character)
+    public class DeathAnimation : MonoBehaviour
     {
-        this.character = character;
-    }
+        private Character character;
+        public void setCharacter(Character character)
+        {
+            this.character = character;
+        }
 
-    public void DestroyIt()
-    {
-        this.character.DestroyIt();
-        Destroy(this.gameObject, 0.1f);
-    }
+        public void DestroyIt()
+        {
+            this.character.DestroyIt();
+            Destroy(this.gameObject, 0.1f);
+        }
 
-    public void PlayDeathSoundEffect(AudioClip soundEffect)
-    {
-        AudioUtil.playSoundEffect(soundEffect);
+        public void PlayDeathSoundEffect(AudioClip soundEffect)
+        {
+            AudioUtil.playSoundEffect(soundEffect);
+        }
     }
 }

@@ -1,50 +1,56 @@
-﻿using UnityEngine;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.Events;
 
-public class AIInteraction : Interactable
+namespace CrystalAlchemist
 {
-    [BoxGroup("NPC")]
-    [SerializeField]
-    [Required]
-    private AI npc;
-
-    [BoxGroup("NPC")]
-    [SerializeField]
-    private UnityEvent onSubmit;
-
-    private void Awake() => this.SetSmoke(false);    
-
-    public override void Start()
+    public class AIInteraction : Interactable
     {
-        base.Start();
-        this.context.transform.position = this.npc.GetHeadPosition();
-    }
+        [BoxGroup("NPC")]
+        [SerializeField]
+        [Required]
+        private AI npc;
 
-    public override void DoOnSubmit()
-    {
-        this.onSubmit?.Invoke();
-    }
+        [BoxGroup("NPC")]
+        [SerializeField]
+        private UnityEvent onSubmit;
 
-    public void TurnHostile()
-    {
-        this.npc.values.characterType = CharacterType.Enemy;
-    }
+        private void Awake() => this.SetSmoke(false);
 
-    public void TurnFriendly()
-    {
-        this.npc.values.characterType = CharacterType.Friend;        
-    }
+        public override void Start()
+        {
+            base.Start();
 
-    public void SetMaxAggro(Character character) => GameEvents.current.DoAggroIncrease(this.npc, character, 999);
+            if (!NetworkUtil.IsMaster()) return;
+            this.context.transform.position = this.npc.GetHeadPosition();
+        }
 
-    public void ClearAggro() => GameEvents.current.DoAggroClear(this.npc);
+        public override void DoOnSubmit()
+        {
+            if (!NetworkUtil.IsMaster()) return;
+            this.onSubmit?.Invoke();
+        }
 
-    public override bool PlayerIsLooking()
-    {
-        if (this.isPlayerInRange
-            && this.npc.values.characterType == CharacterType.Friend
-            && CollisionUtil.checkIfGameObjectIsViewed(this.player, this.npc.gameObject)) return true;
-        return false;
+        public void TurnHostile()
+        {
+            this.npc.values.characterType = CharacterType.Enemy;
+        }
+
+        public void TurnFriendly()
+        {
+            this.npc.values.characterType = CharacterType.Friend;
+        }
+
+        public void ClearAggro() => GameEvents.current.DoAggroClear(this.npc);
+
+        public override bool PlayerIsLooking()
+        {
+            if (!NetworkUtil.IsMaster()) return false;
+
+            if (this.isPlayerInRange
+                && this.npc.values.characterType == CharacterType.Friend
+                && CollisionUtil.checkIfGameObjectIsViewed(this.player, this.npc.gameObject)) return true;
+            return false;
+        }
     }
 }

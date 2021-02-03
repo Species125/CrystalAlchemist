@@ -1,68 +1,84 @@
-﻿using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
-public class CharacterRenderingHandler : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    [Required]
-    private GameObject characterSprite;
+    public class CharacterRenderingHandler : MonoBehaviour
+    {
+        [Required]
+        public GameObject characterSprite;
 
-    private List<CharacterRenderer> colorpalettes = new List<CharacterRenderer>();
+        private List<CharacterRenderer> colorpalettes = new List<CharacterRenderer>();
+
+        private List<Color> colors = new List<Color>();
 
 #if UNITY_EDITOR
-    [Button]
-    public void setExtensions()
-    {
-        if(this.characterSprite != null)
+        [Button]
+        public void setExtensions()
         {
-            List<SpriteRenderer> renderers = new List<SpriteRenderer>();
-            renderers.Clear();
-
-            UnityUtil.GetChildObjects<SpriteRenderer>(this.characterSprite.transform, renderers);
-
-            foreach(SpriteRenderer renderer in renderers)
+            if (this.characterSprite != null)
             {
-                if (renderer.gameObject.GetComponent<CharacterRenderer>() == null)
+                List<SpriteRenderer> renderers = new List<SpriteRenderer>();
+                renderers.Clear();
+
+                UnityUtil.GetChildObjects<SpriteRenderer>(this.characterSprite.transform, renderers);
+
+                foreach (SpriteRenderer renderer in renderers)
                 {
-                    renderer.gameObject.AddComponent<CharacterRenderer>();
-                    Debug.Log("Set Extension for " + renderer.name);
+                    if (renderer.gameObject.GetComponent<CharacterRenderer>() == null)
+                    {
+                        renderer.gameObject.AddComponent<CharacterRenderer>();
+                        Debug.Log("Set Extension for " + renderer.name);
+                    }
                 }
             }
         }
-    }
 #endif
 
-    public void Start()
-    {
-        this.colorpalettes.Clear();
-        UnityUtil.GetActiveChildObjects<CharacterRenderer>(this.characterSprite.transform, this.colorpalettes);
-    }
+        public virtual void Awake()
+        {
+            this.colorpalettes.Clear();
+            UnityUtil.GetChildObjects<CharacterRenderer>(this.characterSprite.transform, this.colorpalettes);
+        }
 
-    public void Reset()
-    {
-        foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.Reset();        
-    }
+        public void Reset()
+        {
+            this.colors.Clear();
+            foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.ChangeTint(Color.white, false);
+        }
 
-    public void RemoveTint(Color color)
-    {
-        foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.RemoveTint(color);        
-    }
+        public Color RemoveTint(Color color)
+        {
+            this.colors.Remove(color);
 
-    public void Invert(bool value)
-    {
-        foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.InvertColors(value);
-    }
+            Color newColor = Color.white;
+            bool useTint = false;
 
-    public void enableSpriteRenderer(bool value) => this.characterSprite.SetActive(value);    
+            if (colors.Count > 0)
+            {
+                newColor = this.colors[this.colors.Count - 1];
+                useTint = true;
+            }
 
-    public void ChangeTint(Color color)
-    {
-        foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.ChangeTint(color);        
-    }
+            foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.ChangeTint(newColor, useTint);
 
-    public void flipSprite(Vector2 direction)
-    {
-        foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.flipSprite(direction);        
+            return newColor;
+        }
+
+        public Color ChangeTint(Color color)
+        {
+            if (!this.colors.Contains(color)) this.colors.Add(color);
+            foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.ChangeTint(color, true);
+
+            return color;
+        }
+
+        public void Invert(bool value)
+        {
+            foreach (CharacterRenderer colorPalette in this.colorpalettes) colorPalette.InvertColors(value);
+        }
+
+        public void enableSpriteRenderer(bool value) => this.characterSprite.SetActive(value);
     }
 }

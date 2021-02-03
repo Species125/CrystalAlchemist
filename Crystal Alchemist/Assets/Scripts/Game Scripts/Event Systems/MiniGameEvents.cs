@@ -1,17 +1,21 @@
 ﻿using System;
+
 using UnityEngine;
 
-public class MiniGameEvents : MonoBehaviour
+namespace CrystalAlchemist
 {
-    public static MiniGameEvents current;
+    public class MiniGameEvents : MonoBehaviour
+    {
+        public static MiniGameEvents current;
 
-    private void Awake() => current = this;
+        private void Awake() => current = this;
 
-    public Action<MiniGameMatch> OnStartRound;
-    public Action OnDifficultyChanged;
-    public Action<bool> OnEndRound;
+        public Action<MiniGameMatch> OnStartRound;
+        public Action OnDifficultyChanged;
+        public Action<bool> OnEndRound;
 
-    public void SetDifficulty() => this.OnDifficultyChanged?.Invoke();
-    public void StartMiniGameRound(MiniGameMatch match) => this.OnStartRound?.Invoke(match);
-    public void EndMiniGameRound(bool value) => this.OnEndRound?.Invoke(value);
+        public void SetDifficulty() => this.OnDifficultyChanged?.Invoke();
+        public void StartMiniGameRound(MiniGameMatch match) => this.OnStartRound?.Invoke(match);
+        public void EndMiniGameRound(bool value) => this.OnEndRound?.Invoke(value);
+    }
 }

@@ -1,14 +1,17 @@
-﻿public class ActionButtonUITranslation : UITextTranslation
+﻿namespace CrystalAlchemist
 {
-    public override void OnEnable()
+    public class ActionButtonUITranslation : UITextTranslation
     {
-        ChangeActionButton();
-        base.OnEnable();        
-    }
+        public override void OnEnable()
+        {
+            ChangeActionButton();
+            base.OnEnable();
+        }
 
-    private void ChangeActionButton()
-    {
-        if (MasterManager.actionButtonText.GetValue() == string.Empty) this.Id = this.gameObject.name;
-        else this.Id = MasterManager.actionButtonText.GetValue();
+        private void ChangeActionButton()
+        {
+            if (MasterManager.actionButtonText.GetValue() == string.Empty) this.Id = this.gameObject.name;
+            else this.Id = MasterManager.actionButtonText.GetValue();
+        }
     }
 }

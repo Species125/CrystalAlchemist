@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   spriteRenderer: {fileID: 712452891642831029}
   myRigidbody: {fileID: 1942275408024995949}
   animator: {fileID: 1421051230670556681}
@@ -242,6 +243,7 @@ MonoBehaviour:
     resourceType: 2
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 1
   intervallSender: 0
   speedDuringCasting: 0
@@ -267,9 +269,15 @@ MonoBehaviour:
   - resourceType: 1
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: -1
-  statusEffects:
-  - {fileID: 11400000, guid: 646b7065db6bd07488bb7379d6e930a2, type: 2}
+  - resourceType: 5
+    item: {fileID: 0}
+    keyItem: {fileID: 0}
+    statusEffect: {fileID: 11400000, guid: 646b7065db6bd07488bb7379d6e930a2, type: 2}
+    amount: 1
+  statusEffects: []
+  modifiers: []
   thrust: 2
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}
@@ -485,8 +493,6 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
   useGlow: 1
-  selectColor: {r: 1, g: 0.9058824, b: 0.039215688, a: 1}
-  precision: 0.25
   glowColor: {r: 5.03257, g: 1.6673802, b: 0, a: 1}
   invert: 0
 --- !u!114 &4236037004875328903
@@ -511,6 +517,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.25
       objectReference: {fileID: 0}
@@ -526,6 +537,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -537,16 +553,6 @@ PrefabInstance:
     - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
@@ -576,13 +582,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
-      propertyPath: m_FalloffIntensity
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
@@ -591,13 +592,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
-      propertyPath: m_Color.b
-      value: 0
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
       propertyPath: m_Intensity
       value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
+        type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}

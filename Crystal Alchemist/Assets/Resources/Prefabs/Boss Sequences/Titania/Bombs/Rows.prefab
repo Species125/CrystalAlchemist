@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2790626023123061923}
   - component: {fileID: 2790626023123061922}
+  - component: {fileID: 1644773306850655285}
   m_Layer: 0
   m_Name: Row 2
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 0
   childProperty:
@@ -55,16 +57,40 @@ MonoBehaviour:
     position: {x: 0, y: 0}
     uniqueSpawn: 1
     spawnPoints: []
-    rotationType: 0
+    rotationType: 2
     rotationFactor: 0
     direction: 0
     spawnObject: {fileID: 1592666365359642889, guid: b4087b705ae0fd145abd094067fc2b01,
       type: 3}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0
     repeat: 0
     repeatDelay: 1
+--- !u!114 &1644773306850655285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2790626023123061916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2790626023883202026
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,6 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2790626023883202025}
   - component: {fileID: 2790626023883202024}
+  - component: {fileID: 6903237658565939034}
   m_Layer: 0
   m_Name: Row 3
   m_TagString: Untagged
@@ -113,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 0
   childProperty:
@@ -120,16 +148,40 @@ MonoBehaviour:
     position: {x: 0, y: 0}
     uniqueSpawn: 1
     spawnPoints: []
-    rotationType: 0
+    rotationType: 2
     rotationFactor: 0
     direction: 0
     spawnObject: {fileID: 1592666365359642889, guid: b4087b705ae0fd145abd094067fc2b01,
       type: 3}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0
     repeat: 0
     repeatDelay: 1
+--- !u!114 &6903237658565939034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2790626023883202026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4730117585695504097
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +314,7 @@ GameObject:
   - component: {fileID: 1457735646443291794}
   - component: {fileID: 4730117586736813080}
   - component: {fileID: 4730117586736813081}
+  - component: {fileID: 633725109215018576}
   m_Layer: 0
   m_Name: Rows
   m_TagString: Untagged
@@ -298,9 +351,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfdcb37e8bacd9f4b8cd9700a1a2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyAfter: 30
+  path: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
 --- !u!114 &4730117586736813080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,9 +369,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   selfProperty:
-    spawnPositonType: 6
+    spawnPositonType: 8
     position: {x: 0.5, y: 2.5}
     uniqueSpawn: 1
     spawnPoints: []
@@ -337,6 +392,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 1
+--- !u!114 &633725109215018576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730117586736813087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4730117586833355298
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,6 +484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4730117587175284537}
   - component: {fileID: 4730117587175284536}
+  - component: {fileID: 7332141852484511398}
   m_Layer: 0
   m_Name: Row 1
   m_TagString: Untagged
@@ -445,6 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 0
   childProperty:
@@ -452,16 +531,40 @@ MonoBehaviour:
     position: {x: 0, y: 0}
     uniqueSpawn: 1
     spawnPoints: []
-    rotationType: 0
+    rotationType: 2
     rotationFactor: 0
     direction: 0
     spawnObject: {fileID: 1592666365359642889, guid: b4087b705ae0fd145abd094067fc2b01,
       type: 3}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0
     repeat: 0
     repeatDelay: 1
+--- !u!114 &7332141852484511398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730117587175284542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4730117587312628195
 GameObject:
   m_ObjectHideFlags: 0
