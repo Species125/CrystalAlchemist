@@ -39,6 +39,18 @@ namespace CrystalAlchemist
         [SerializeField]
         private CharacterPreset defaultPreset;
 
+        [BoxGroup("Misc")]
+        [SerializeField]
+        private StringValue nextScene;
+
+        [BoxGroup("Misc")]
+        [SerializeField]
+        private StringValue teleportPath;
+
+        [BoxGroup("Misc")]
+        [SerializeField]
+        private MenuDialogBoxInfo dialogBoxInfo;
+
         public void Clear(Action callback)
         {
             Clear();
@@ -58,6 +70,10 @@ namespace CrystalAlchemist
             this.skillSet.Clear();
             this.attributes.Clear();
             this.progress.Clear();
+            this.nextScene.SetValue("");
+            this.teleportPath.SetValue("");
+            this.dialogBoxInfo.Clear();
+            this.teleportList.Clear();
 
             GameUtil.SetPreset(this.defaultPreset, this.playerPreset);
 
@@ -66,7 +82,6 @@ namespace CrystalAlchemist
             UnityUtil.ThrowException("Attributes not empty", this, this.attributes.pointsSpent > 0);
             UnityUtil.ThrowException("Progress not empty", this, this.progress.GetAmount() > 0);
         }
-
 
         public void SetCharacterName(string characterName) => this.characterName.SetValue(characterName);
 

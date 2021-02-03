@@ -30,6 +30,14 @@ namespace CrystalAlchemist
         [SerializeField]
         private bool ShowSpawnOut;
 
+        public void Clear()
+        {
+            this.list.Clear();
+            this.latestTeleport = null;
+            this.returnTeleport = null;
+            this.ShowSpawnIn = true;
+            this.ShowSpawnOut = true;
+        }
 
         public bool GetShowSpawnIn()
         {

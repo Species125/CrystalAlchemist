@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 3574329011111965237}
   - component: {fileID: 9189459050286663773}
   - component: {fileID: 9221035579785777317}
+  - component: {fileID: 7654634504909604730}
   m_Layer: 12
   m_Name: Eos
   m_TagString: Untagged
@@ -342,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   myRigidbody: {fileID: 4322055140194454582}
   animator: {fileID: 2652810396879462137}
   boxCollider: {fileID: 3574329011111965237}
@@ -351,12 +353,19 @@ MonoBehaviour:
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 2652810397108339306}
   activeStatusEffectParent: {fileID: 8669415238972280400}
+  statusEffectVisuals: []
   stats: {fileID: 11400000, guid: acdb7e089d2b9dc449dc40f1dfdf12c5, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
   characterName: 
   NPCStats: {fileID: 11400000, guid: acdb7e089d2b9dc449dc40f1dfdf12c5, type: 2}
-  target: {fileID: 0}
+  onDefeated:
+    m_PersistentCalls:
+      m_Calls: []
+  onTarget:
+    m_PersistentCalls:
+      m_Calls: []
+  mainTargetID: 0
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &4322055140194454571
@@ -449,6 +458,7 @@ MonoBehaviour:
   character: {fileID: 0}
   startPhase: {fileID: 0}
   startImmediately: 1
+  activePhase: {fileID: 0}
 --- !u!114 &9221035579785777317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,9 +478,25 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 1938021464261085658}
+  - {fileID: 7654634504909604730}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &7654634504909604730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4322055140194454578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!1 &4624666807855673779
 GameObject:
   m_ObjectHideFlags: 0

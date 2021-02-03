@@ -22,5 +22,15 @@ namespace CrystalAlchemist
             this.parent = parent;
             this.cursor = cursor;
         }
+
+        public void Clear()
+        {
+            this.OnConfirm = null;
+            this.costs = null;
+            this.text = "";
+            this.type = DialogBoxType.ok;
+            this.parent = null;
+            this.cursor = null;
+        }
     }
 }

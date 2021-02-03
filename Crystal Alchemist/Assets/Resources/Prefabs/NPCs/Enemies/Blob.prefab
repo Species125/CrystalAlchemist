@@ -121,6 +121,8 @@ MonoBehaviour:
   useGlow: 1
   glowColor: {r: 4.5803924, g: 1.3176471, b: 11.984314, a: 1}
   invert: 0
+  useTint: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &5676213603441916093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +256,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroStats: {fileID: 11400000, guid: 1203e243ade06754eb7ea15f7b5138d0, type: 2}
   npc: {fileID: 4482648712296496520}
+  debug: 0
+  mainTarget: 
+  aggrodata: []
 --- !u!58 &699278166353142346
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -289,6 +294,7 @@ GameObject:
   - component: {fileID: 8261187841884981235}
   - component: {fileID: 4372448001566058603}
   - component: {fileID: 5364728680716913914}
+  - component: {fileID: 8402843821210413997}
   m_Layer: 11
   m_Name: Blob
   m_TagString: Untagged
@@ -347,6 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   myRigidbody: {fileID: 2246077131478480996}
   animator: {fileID: 929082027}
   boxCollider: {fileID: 1028641328}
@@ -356,12 +363,19 @@ MonoBehaviour:
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 1158493752}
   activeStatusEffectParent: {fileID: 6674156776865872386}
+  statusEffectVisuals: []
   stats: {fileID: 11400000, guid: 4296eda28d32ab54491ee3379dc99977, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
   characterName: 
   NPCStats: {fileID: 11400000, guid: 4296eda28d32ab54491ee3379dc99977, type: 2}
-  target: {fileID: 0}
+  onDefeated:
+    m_PersistentCalls:
+      m_Calls: []
+  onTarget:
+    m_PersistentCalls:
+      m_Calls: []
+  mainTargetID: 0
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &4482648712296496522
@@ -379,6 +393,7 @@ MonoBehaviour:
   character: {fileID: 0}
   startPhase: {fileID: 11400000, guid: c11053e6988188347bc5e3d9a60d4904, type: 2}
   startImmediately: 1
+  activePhase: {fileID: 0}
 --- !u!61 &1028641328
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -510,9 +525,25 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 4482648712296496520}
+  - {fileID: 8402843821210413997}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &8402843821210413997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2246077131478480992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!1 &6674156776865872386
 GameObject:
   m_ObjectHideFlags: 0

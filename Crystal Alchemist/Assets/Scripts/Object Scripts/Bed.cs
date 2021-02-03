@@ -1,5 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using Photon.Pun;
 
 namespace CrystalAlchemist
 {
@@ -43,6 +44,7 @@ namespace CrystalAlchemist
         private Vector2 position;
         private bool isSleeping;
         private string oldID;
+        private int ID;
 
         public override void Start()
         {
@@ -51,10 +53,17 @@ namespace CrystalAlchemist
             this.oldID = this.translationID;
         }
 
+        public override bool PlayerCanInteract()
+        {
+            return (base.PlayerCanInteract() && (ID <= 0 || ID == this.player.photonView.ViewID));
+        }
+
         public override void DoOnSubmit()
         {
-            if (!this.isSleeping)
-            {                
+            if (!this.isSleeping) //sleep
+            {
+                SetBedInUse(this.player.photonView.ViewID);
+
                 this.position = this.player.transform.position;
                 Vector2 position = new Vector2(this.transform.position.x, this.transform.position.y + offset);
 
@@ -64,7 +73,7 @@ namespace CrystalAlchemist
                 MusicEvents.current.PauseMusic(this.fadeOut);
                 MusicEvents.current.PlayMusicOnce(this.music, 0, 0);
             }
-            else
+            else //wake up
             {
                 this.player.myRigidbody.velocity = Vector2.zero;
                 GameEvents.current.DoWakeUp(this.position, () => GameEvents.current.DoTimeReset(), () => PlayerAwake());
@@ -83,6 +92,12 @@ namespace CrystalAlchemist
             this.blanket.SetActive(false);
             this.isSleeping = false;
             MusicEvents.current.RestartMusic(this.fadeIn);
+            SetBedInUse(0);
         }
+
+        private void SetBedInUse(int ID) => this.photonView.RPC("RpcBedInUse", RpcTarget.All, ID);        
+
+        [PunRPC]
+        protected void RpcBedInUse(int ID) => this.ID = ID;        
     }
 }

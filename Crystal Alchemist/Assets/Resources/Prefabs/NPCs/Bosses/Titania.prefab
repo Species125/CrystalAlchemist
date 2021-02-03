@@ -83,7 +83,7 @@ MonoBehaviour:
     keyItem: {fileID: 0}
     statusEffect: {fileID: 0}
     amount: 1
-  masterOnly: 1
+  masterOnly: 0
   customActionButton: 1
   ID: Reden
   showEffectOnEnable: 0
@@ -164,16 +164,16 @@ MonoBehaviour:
         m_Calls: []
   textValue: {fileID: 11400000, guid: 0dee858a55e55d64ba1bcbf52a9b3e33, type: 2}
   eventValue: {fileID: 11400000, guid: f6af316cc0916024581413a59b36461b, type: 2}
+  playerProgress: {fileID: 0}
   progress:
     progressType: 2
-    playerProgress: {fileID: 0}
     gameProgressID: 
-    onlyThisArea: 0
+    location: 
+    addLocation: 0
     timespan:
       days: 0
       hours: 0
       minutes: 0
-      seconds: 0
 --- !u!114 &5667813256127185038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,6 +361,8 @@ MonoBehaviour:
   useGlow: 1
   glowColor: {r: 2.7643976, g: 5.361256, b: 7.999999, a: 1}
   invert: 0
+  useTint: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &7433217420969690547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +428,7 @@ GameObject:
   - component: {fileID: 910524742380246583}
   - component: {fileID: 2713841778097141298}
   - component: {fileID: -2793748050859840958}
+  - component: {fileID: -4352616169704271409}
   m_Layer: 11
   m_Name: Titania
   m_TagString: Untagged
@@ -481,9 +484,6 @@ MonoBehaviour:
   IsSummoned: 0
   characterName: 
   NPCStats: {fileID: 11400000, guid: 55d358f1ae5b28f45b4f5f4f5a55089c, type: 2}
-  targetID: 0
-  partner: {fileID: 0}
-  rangeTriggered: 0
   onDefeated:
     m_PersistentCalls:
       m_Calls:
@@ -499,6 +499,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onTarget:
+    m_PersistentCalls:
+      m_Calls: []
+  mainTargetID: 0
+  partner: {fileID: 0}
+  rangeTriggered: 0
 --- !u!114 &3945848509854940424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,6 +687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroStats: {fileID: 11400000, guid: 46e049ec2b630ec40aec487f31843b9f, type: 2}
   npc: {fileID: 143027468618068661}
+  debug: 0
   mainTarget: 
   aggrodata: []
 --- !u!114 &-2793748050859840958
@@ -702,9 +709,25 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 143027468618068661}
+  - {fileID: -4352616169704271409}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-4352616169704271409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945848509854940433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!1 &8464107762506563443
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,15 +911,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a16bd4179f071649b716a3d0358d43a, type: 3}
---- !u!1 &995233311224769710 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8867623264313772068, guid: 6a16bd4179f071649b716a3d0358d43a,
-    type: 3}
-  m_PrefabInstance: {fileID: 8565819056070435978}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &46382055281560040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8565819056070435978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &995233311224769710 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8867623264313772068, guid: 6a16bd4179f071649b716a3d0358d43a,
     type: 3}
   m_PrefabInstance: {fileID: 8565819056070435978}
   m_PrefabAsset: {fileID: 0}

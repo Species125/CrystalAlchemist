@@ -120,6 +120,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroStats: {fileID: 11400000, guid: 74151ff649b937b418adb75846e519d1, type: 2}
   npc: {fileID: 5026383991709977235}
+  debug: 0
+  mainTarget: 
+  aggrodata: []
 --- !u!58 &2711615262647934176
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -155,6 +158,7 @@ GameObject:
   - component: {fileID: 7784471432208139405}
   - component: {fileID: 3086287688330738372}
   - component: {fileID: 8043299651862711109}
+  - component: {fileID: 4622470235604946850}
   m_Layer: 11
   m_Name: Magma Gel
   m_TagString: Untagged
@@ -214,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4884ba04434e48ab9e3678b716245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   myRigidbody: {fileID: 7268659838857056127}
   animator: {fileID: 8932006801801387440}
   boxCollider: {fileID: 8932006801697793323}
@@ -223,12 +228,19 @@ MonoBehaviour:
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 8932006801567842595}
   activeStatusEffectParent: {fileID: 2840507917755813145}
+  statusEffectVisuals: []
   stats: {fileID: 11400000, guid: eafe20572b3378f4b8231efd676d60f7, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
   characterName: 
   NPCStats: {fileID: 11400000, guid: eafe20572b3378f4b8231efd676d60f7, type: 2}
-  target: {fileID: 0}
+  onDefeated:
+    m_PersistentCalls:
+      m_Calls: []
+  onTarget:
+    m_PersistentCalls:
+      m_Calls: []
+  mainTargetID: 0
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &7268659838857056098
@@ -279,6 +291,7 @@ MonoBehaviour:
   character: {fileID: 0}
   startPhase: {fileID: 11400000, guid: ef2de5e269f04244195c2b33fe08fbd5, type: 2}
   startImmediately: 1
+  activePhase: {fileID: 0}
 --- !u!61 &8932006801697793323
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -377,9 +390,25 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 5026383991709977235}
+  - {fileID: 4622470235604946850}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &4622470235604946850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268659838857056123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!1 &7914839587969846799
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,6 +664,8 @@ MonoBehaviour:
   useGlow: 1
   glowColor: {r: 2.9960785, g: 1.3490196, b: 0, a: 1}
   invert: 0
+  useTint: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &6173239842456863999
 MonoBehaviour:
   m_ObjectHideFlags: 0

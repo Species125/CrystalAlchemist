@@ -312,6 +312,7 @@ GameObject:
   - component: {fileID: -4941922827398096635}
   - component: {fileID: -5025062449260567259}
   - component: {fileID: -7636049199412562588}
+  - component: {fileID: 3314816169642152483}
   m_Layer: 12
   m_Name: Sentinel
   m_TagString: Untagged
@@ -386,6 +387,12 @@ MonoBehaviour:
   IsSummoned: 0
   characterName: 
   NPCStats: {fileID: 11400000, guid: 044d5a2f62542b141ab2f44c3e80795b, type: 2}
+  onDefeated:
+    m_PersistentCalls:
+      m_Calls: []
+  onTarget:
+    m_PersistentCalls:
+      m_Calls: []
   mainTargetID: 0
   partner: {fileID: 0}
   rangeTriggered: 0
@@ -513,9 +520,25 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 5280788646405828722}
+  - {fileID: 3314816169642152483}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &3314816169642152483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7518508113067193754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!1 &8609950149900843970
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +692,8 @@ MonoBehaviour:
   useGlow: 0
   glowColor: {r: 1, g: 1, b: 1, a: 1}
   invert: 0
+  useTint: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &6541903767476354721
 MonoBehaviour:
   m_ObjectHideFlags: 0

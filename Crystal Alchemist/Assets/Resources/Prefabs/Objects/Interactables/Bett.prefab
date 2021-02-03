@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 7130084020165139477}
   - component: {fileID: 7561797611835789475}
   - component: {fileID: 7130084020165139476}
+  - component: {fileID: 1023603077248114325}
   m_Layer: 17
   m_Name: Bett
   m_TagString: Untagged
@@ -292,7 +293,6 @@ MonoBehaviour:
   isPlayerLookingAtIt: 0
   player: {fileID: 0}
   context: {fileID: 0}
-  time: {fileID: 11400000, guid: 2e74ee9fc7c012b4db454fc0922670d4, type: 2}
   newValue: 0.001
   offset: -1.2
   blanket: {fileID: 5873029744290735160}
@@ -300,6 +300,27 @@ MonoBehaviour:
   music: {fileID: 8300000, guid: c31995b633941304d86af8f96b59e67e, type: 3}
   fadeIn: 2
   fadeOut: 0.5
+--- !u!114 &1023603077248114325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7130084020165139479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7938797964226999932
 GameObject:
   m_ObjectHideFlags: 0

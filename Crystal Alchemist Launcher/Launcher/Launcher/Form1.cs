@@ -42,10 +42,7 @@ namespace Launcher
             this.progressBar1.Visible = false;
 
             bool isUpToDate = IsVersionUpToDate();
-            if (!isUpToDate)
-            {
-                this.downloadButton.Visible = true;
-            }
+            if (!isUpToDate) this.downloadButton.Visible = true;            
         }
 
         private bool IsVersionUpToDate()
@@ -64,6 +61,8 @@ namespace Launcher
                         this.downloadButton.Text = "UPDATE";
                         string text = File.ReadAllText(this.versionPath);
 
+                        this.versionlabel.Text = "Version "+text;
+
                         string on = "0." + content.Replace(".", "");
                         string lo = "0." + text.Replace(".", "");
 
@@ -74,6 +73,7 @@ namespace Launcher
                     }
                     else
                     {
+                        this.versionlabel.Text = "";
                         this.downloadButton.Text = "DOWNLOAD";
                     }               
                 }
@@ -164,8 +164,7 @@ namespace Launcher
                 if (file.Length > 0)
                 {
                     FastZip fastZip = new FastZip();
-                    //string fileFilter = "-Launcher.exe;-ICSharpCode.SharpZipLib.dll";
-                    string fileFilter = "";
+                    string fileFilter = "-Crystal Alchemist_Data\\Fehlerprotokoll\\;-log.txt";
                     fastZip.ExtractZip(file[0].FullName, this.targetDir.FullName, fileFilter);
 
                     Thread.Sleep(500);

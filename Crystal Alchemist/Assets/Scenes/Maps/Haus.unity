@@ -2555,16 +2555,6 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 54
-      m_TileSpriteIndex: 60
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 56
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -15, y: 14, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 56
       m_TileSpriteIndex: 61
       m_TileMatrixIndex: 0
       m_TileColorIndex: 56
@@ -2825,7 +2815,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 53
-      m_TileSpriteIndex: 59
+      m_TileSpriteIndex: 60
       m_TileMatrixIndex: 0
       m_TileColorIndex: 56
       m_TileObjectToInstantiateIndex: 65535
@@ -3345,8 +3335,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 1e75a74be9931b84480d55d951bd54f0, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 003eb8a7364b95943822508a4d976cb3, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 7c04a3239fea2714f826a4cf46d5bf36, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: c27f490ac7b194b4e8819f8baf59c02c, type: 2}
   - m_RefCount: 3
@@ -3496,12 +3486,12 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300374, guid: c6e0f837fe7e0064184d53529918319c, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300404, guid: c6e0f837fe7e0064184d53529918319c, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300204, guid: c6e0f837fe7e0064184d53529918319c, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300198, guid: c6e0f837fe7e0064184d53529918319c, type: 3}
   - m_RefCount: 1
@@ -3535,7 +3525,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300044, guid: c6e0f837fe7e0064184d53529918319c, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 120
+  - m_RefCount: 119
     m_Data:
       e00: 1
       e01: 0
@@ -3666,7 +3656,7 @@ Tilemap:
     m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
   - m_RefCount: 0
     m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
-  - m_RefCount: 120
+  - m_RefCount: 119
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -8910,6 +8900,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1448332028}
     m_Modifications:
+    - target: {fileID: 1023603077248114325, guid: 384d6aace711d2346a46d13ba2ae8090,
+        type: 3}
+      propertyPath: viewIdField
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7130084020165139478, guid: 384d6aace711d2346a46d13ba2ae8090,
         type: 3}
       propertyPath: m_RootOrder

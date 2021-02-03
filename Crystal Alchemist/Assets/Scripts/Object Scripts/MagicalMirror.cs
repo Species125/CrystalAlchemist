@@ -14,7 +14,11 @@ namespace CrystalAlchemist
             Invoke("SetDefaultDirection", 0.3f);
         }
 
-        private void SetDefaultDirection() => this.player.SetDefaultDirection();        
+        private void SetDefaultDirection()
+        {
+            this.player.myRigidbody.velocity = Vector2.zero;
+            this.player.SetDefaultDirection();
+        }
 
         public void ChangeCharacterDirection(Vector2 direction) => this.player.ChangeDirection(direction); //signal
     }

@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Photon.Pun;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,11 +22,17 @@ namespace CrystalAlchemist
         [SerializeField]
         private Image star;
 
+        [BoxGroup("Crystal Orb Menu")]
+        [Required]
+        [SerializeField]
+        private Selectable quicktravel;
+
 
         public override void Start()
         {
             base.Start();
             SetStar();
+            quicktravel.interactable = PhotonNetwork.OfflineMode;
         }
 
         public void SetStar()
