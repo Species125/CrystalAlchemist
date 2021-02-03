@@ -1,4 +1,7 @@
-﻿public class Breakable : NonPlayer
+﻿namespace CrystalAlchemist
 {
+    public class Breakable : NonPlayer
+    {
 
+    }
 }

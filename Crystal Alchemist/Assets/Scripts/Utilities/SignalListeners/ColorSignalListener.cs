@@ -1,28 +1,32 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class ColorEvent : UnityEvent<Color>
+namespace CrystalAlchemist
 {
-}
-
-public class ColorSignalListener : MonoBehaviour
-{
-    public ColorSignal signal;
-    public ColorEvent signalEventColor;
-
-    public void OnSignalRaised(Color color)
+    [System.Serializable]
+    public class ColorEvent : UnityEvent<Color>
     {
-        this.signalEventColor.Invoke(color);
     }
 
-    private void OnEnable()
+    public class ColorSignalListener : MonoBehaviour
     {
-        signal.RegisterListener(this);
-    }
+        public ColorSignal signal;
+        public ColorEvent signalEventColor;
 
-    private void OnDisable()
-    {
-        signal.DeRegisterListener(this);
+        public void OnSignalRaised(Color color)
+        {
+            this.signalEventColor.Invoke(color);
+        }
+
+        private void OnEnable()
+        {
+            signal.RegisterListener(this);
+        }
+
+        private void OnDisable()
+        {
+            signal.DeRegisterListener(this);
+        }
     }
 }

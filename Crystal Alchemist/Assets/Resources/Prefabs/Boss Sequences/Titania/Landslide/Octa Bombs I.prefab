@@ -318,6 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2815820638199815817}
   - component: {fileID: 2815820638199815816}
+  - component: {fileID: 6078686439949062452}
   m_Layer: 0
   m_Name: One Row
   m_TagString: Untagged
@@ -358,6 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 4.5
   childProperty:
@@ -371,9 +373,33 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 8c050731d4165e443878d148e57a70d6, type: 2}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.05
     repeat: 0
     repeatDelay: 1
+--- !u!114 &6078686439949062452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2815820638199815822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2815820638203566921
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2815820638290664507}
   - component: {fileID: 2815820638290664506}
+  - component: {fileID: 6948923073876047247}
   m_Layer: 0
   m_Name: One Row
   m_TagString: Untagged
@@ -484,6 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 4.5
   childProperty:
@@ -497,9 +525,33 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 8c050731d4165e443878d148e57a70d6, type: 2}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.05
     repeat: 0
     repeatDelay: 1
+--- !u!114 &6948923073876047247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2815820638290664504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2815820638302667849
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2815820638302667848}
   - component: {fileID: 2815820638302667851}
+  - component: {fileID: 8618882646803267500}
   m_Layer: 0
   m_Name: One Row
   m_TagString: Untagged
@@ -550,6 +603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 4.5
   childProperty:
@@ -563,9 +617,33 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 8c050731d4165e443878d148e57a70d6, type: 2}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.05
     repeat: 0
     repeatDelay: 1
+--- !u!114 &8618882646803267500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2815820638302667849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2815820638307053253
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2815820638307053252}
   - component: {fileID: 2815820638307053255}
+  - component: {fileID: 7150445942651764391}
   m_Layer: 0
   m_Name: One Row
   m_TagString: Untagged
@@ -616,6 +695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 4.5
   childProperty:
@@ -629,9 +709,33 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 8c050731d4165e443878d148e57a70d6, type: 2}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.05
     repeat: 0
     repeatDelay: 1
+--- !u!114 &7150445942651764391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2815820638307053253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2815820638354392451
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,6 +986,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2815820638560769882}
   - component: {fileID: 2815820638560769877}
+  - component: {fileID: 5714614709859415057}
   m_Layer: 0
   m_Name: One Row
   m_TagString: Untagged
@@ -922,6 +1027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 4.5
   childProperty:
@@ -935,9 +1041,33 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 8c050731d4165e443878d148e57a70d6, type: 2}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.05
     repeat: 0
     repeatDelay: 1
+--- !u!114 &5714614709859415057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2815820638560769883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2815820638620925708
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,6 +1079,7 @@ GameObject:
   - component: {fileID: 2815820638620925711}
   - component: {fileID: 5964760552605359844}
   - component: {fileID: 2815820638620925710}
+  - component: {fileID: 9124592950071480292}
   m_Layer: 0
   m_Name: Octa Bombs I
   m_TagString: Untagged
@@ -984,9 +1115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfdcb37e8bacd9f4b8cd9700a1a2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyAfter: 10
+  path: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
 --- !u!114 &2815820638620925710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,15 +1133,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   selfProperty:
-    spawnPositonType: 6
+    spawnPositonType: 8
     position: {x: 0.5, y: 2.5}
     uniqueSpawn: 1
     spawnPoints: []
     rotationType: 1
     rotationFactor: 30
     direction: 0
+--- !u!114 &9124592950071480292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2815820638620925708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2815820638636050618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,6 +1235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2815820638663130180}
   - component: {fileID: 2815820638663130183}
+  - component: {fileID: 4171324588076411469}
   m_Layer: 0
   m_Name: One Row
   m_TagString: Untagged
@@ -1120,6 +1276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 4.5
   childProperty:
@@ -1133,9 +1290,33 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 8c050731d4165e443878d148e57a70d6, type: 2}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.05
     repeat: 0
     repeatDelay: 1
+--- !u!114 &4171324588076411469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2815820638663130181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2815820638719304499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,6 +1387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2815820638837086597}
   - component: {fileID: 2815820638837086596}
+  - component: {fileID: 1838113417132498683}
   m_Layer: 0
   m_Name: One Row
   m_TagString: Untagged
@@ -1246,6 +1428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 4.5
   childProperty:
@@ -1259,9 +1442,33 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 8c050731d4165e443878d148e57a70d6, type: 2}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.05
     repeat: 0
     repeatDelay: 1
+--- !u!114 &1838113417132498683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2815820638837086602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2815820638846171587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,6 +1569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2815820638971158593}
   - component: {fileID: 2815820638971158592}
+  - component: {fileID: 2867282527718159103}
   m_Layer: 0
   m_Name: One Row
   m_TagString: Untagged
@@ -1402,6 +1610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 4.5
   childProperty:
@@ -1415,9 +1624,33 @@ MonoBehaviour:
     spawnObject: {fileID: 11400000, guid: 8c050731d4165e443878d148e57a70d6, type: 2}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.05
     repeat: 0
     repeatDelay: 1
+--- !u!114 &2867282527718159103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2815820638971158598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2815820638973288702
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,6 +1961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2815820639366392233}
   - component: {fileID: 2815820639366392232}
+  - component: {fileID: 4558541736358815283}
   m_Layer: 0
   m_Name: Ring
   m_TagString: Untagged
@@ -1771,6 +2005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 0
   childProperty:
@@ -1785,9 +2020,33 @@ MonoBehaviour:
       type: 3}
     amount: 1
     AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0
     repeat: 0
     repeatDelay: 1
+--- !u!114 &4558541736358815283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2815820639366392238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2815820639382272886
 GameObject:
   m_ObjectHideFlags: 0

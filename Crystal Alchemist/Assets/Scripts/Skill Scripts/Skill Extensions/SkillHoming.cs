@@ -1,60 +1,64 @@
-﻿using UnityEngine;
+﻿
 using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class SkillHoming : SkillProjectile
+namespace CrystalAlchemist
 {
-    [BoxGroup("Homing-spezifische Attribute")]
-    public float offSetTime;
-
-    [BoxGroup("Homing-spezifische Attribute")]
-    public float offSetStrength;
-
-    private void Update()
+    public class SkillHoming : SkillProjectile
     {
-        moveToTarget();
-    }   
+        [BoxGroup("Homing-spezifische Attribute")]
+        public float offSetTime;
 
-    private void moveToTarget()
-    {
-        if (this.skill.target != null)
+        [BoxGroup("Homing-spezifische Attribute")]
+        public float offSetStrength;
+
+        private void Update()
         {
-            this.stopVelocity();
-            if (Vector3.Distance(this.skill.target.transform.position, this.transform.position) > 0.25f)
+            moveToTarget();
+        }
+
+        private void moveToTarget()
+        {
+            if (this.skill.target != null)
             {
-                //Ermittle Position des Ziels
-                Vector2 targetPosition = this.skill.target.GetGroundPosition();
-
-                //offSetTime und offSetStrength lassen den Skill nicht direkt, sondern in einer Kurve fliegen
-                if (this.offSetTime >= 0)
+                this.stopVelocity();
+                if (Vector3.Distance(this.skill.target.transform.position, this.transform.position) > 0.25f)
                 {
-                    this.offSetTime -= Time.deltaTime;
+                    //Ermittle Position des Ziels
+                    Vector2 targetPosition = this.skill.target.GetGroundPosition();
 
-                    if (Mathf.Abs(this.skill.target.transform.position.x) > Mathf.Abs(this.skill.target.transform.position.y))
+                    //offSetTime und offSetStrength lassen den Skill nicht direkt, sondern in einer Kurve fliegen
+                    if (this.offSetTime >= 0)
                     {
-                        targetPosition = new Vector2(targetPosition.x, targetPosition.y + offSetStrength);
-                    }
-                    else
-                    {
-                        targetPosition = new Vector2(targetPosition.x + offSetStrength, targetPosition.y);
+                        this.offSetTime -= Time.deltaTime;
+
+                        if (Mathf.Abs(this.skill.target.transform.position.x) > Mathf.Abs(this.skill.target.transform.position.y))
+                        {
+                            targetPosition = new Vector2(targetPosition.x, targetPosition.y + offSetStrength);
+                        }
+                        else
+                        {
+                            targetPosition = new Vector2(targetPosition.x + offSetStrength, targetPosition.y);
+                        }
+
+                        this.offSetStrength -= (this.offSetStrength / this.offSetTime);
                     }
 
-                    this.offSetStrength -= (this.offSetStrength / this.offSetTime);
+                    this.skill.SetDirection(targetPosition - (Vector2)this.transform.position);
+                    this.setVelocity();
                 }
-
-                this.skill.SetDirection(targetPosition - (Vector2)this.transform.position);
-                this.setVelocity();
+                else
+                {
+                    //Starte End-Animation wenn der Skill sein Ziel erreicht hat
+                    AnimatorUtil.SetAnimatorParameter(this.skill.animator, "Explode", true);
+                }
             }
             else
             {
-                //Starte End-Animation wenn der Skill sein Ziel erreicht hat
-                AnimatorUtil.SetAnimatorParameter(this.skill.animator, "Explode", true);
+                //Zerstöre Skill, wenn das Ziel nicht mehr vorhanden ist. 
+                //TODO: Weiter fliegen lassen?
+                this.skill.DeactivateIt();
             }
-        }
-        else
-        {
-            //Zerstöre Skill, wenn das Ziel nicht mehr vorhanden ist. 
-            //TODO: Weiter fliegen lassen?
-            this.skill.DeactivateIt();
         }
     }
 }

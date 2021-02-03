@@ -1,135 +1,143 @@
-﻿using UnityEngine;
+﻿
+
+
+
+
 using Sirenix.OdinInspector;
 using TMPro;
+using UnityEngine;
 
-public class MiniGameUI : MenuBehaviour
+namespace CrystalAlchemist
 {
-    [BoxGroup("Easy Access")]
-    [SerializeField]
-    [Required]
-    private MiniGameInfo info;
-
-    [BoxGroup("Easy Access")]
-    [SerializeField]
-    [Required]
-    private MiniGameDialogbox dialogBox;
-
-    [BoxGroup("Easy Access")]
-    [SerializeField]
-    [Required]
-    private TextMeshProUGUI titleField;
-
-    [BoxGroup("Easy Access")]
-    [SerializeField]
-    [Required]
-    private GameObject parent;
-
-    [BoxGroup("Easy Access")]
-    [SerializeField]
-    [Required]
-    private MiniGameTrys trySlots;
-
-    [BoxGroup("Texts")]
-    [SerializeField]
-    [Required]
-    private MiniGameText successText;
-
-    [BoxGroup("Texts")]
-    [SerializeField]
-    [Required]
-    private MiniGameText failText;
-
-    [BoxGroup("Texts")]
-    [SerializeField]
-    [Required]
-    private MiniGameText winText;
-
-    [BoxGroup("Texts")]
-    [SerializeField]
-    [Required]
-    private MiniGameText loseText;
-
-    private MiniGameRound activeRound;
-    private MiniGameMatch activeMatch;
-
-    public override void Start()
+    public class MiniGameUI : MenuBehaviour
     {
-        base.Start();
-        MiniGameEvents.current.OnStartRound += StartMiniGame;
-        MiniGameEvents.current.OnEndRound += RoundEnd;
-        
-        this.titleField.text = this.info.GetName();
-        ShowDialogBox();
-    }
+        [BoxGroup("Easy Access")]
+        [SerializeField]
+        [Required]
+        private MiniGameInfo info;
 
-    public override void OnDestroy()
-    {
-        base.OnDestroy();
-        MiniGameEvents.current.OnStartRound -= StartMiniGame;
-        MiniGameEvents.current.OnEndRound -= RoundEnd;
-    }
+        [BoxGroup("Easy Access")]
+        [SerializeField]
+        [Required]
+        private MiniGameDialogbox dialogBox;
 
-    public void ShowDialogBox()
-    {
-        this.trySlots.Reset();
-        this.dialogBox.gameObject.SetActive(true);
-        this.dialogBox.Show(this.info);
-    }
+        [BoxGroup("Easy Access")]
+        [SerializeField]
+        [Required]
+        private TextMeshProUGUI titleField;
 
-    public void StartMiniGame(MiniGameMatch match)
-    {        
-        GameEvents.current.DoReduce(match.price);
-        this.activeMatch = match;
-        StartRound();
-    }
+        [BoxGroup("Easy Access")]
+        [SerializeField]
+        [Required]
+        private GameObject parent;
 
-    public void StartRound()
-    {
-        if(this.activeRound != null) Destroy(this.activeRound.gameObject);
+        [BoxGroup("Easy Access")]
+        [SerializeField]
+        [Required]
+        private MiniGameTrys trySlots;
 
-        MiniGameState state = this.trySlots.canStartNewRound();
+        [BoxGroup("Texts")]
+        [SerializeField]
+        [Required]
+        private MiniGameText successText;
 
-        if (state == MiniGameState.play)
+        [BoxGroup("Texts")]
+        [SerializeField]
+        [Required]
+        private MiniGameText failText;
+
+        [BoxGroup("Texts")]
+        [SerializeField]
+        [Required]
+        private MiniGameText winText;
+
+        [BoxGroup("Texts")]
+        [SerializeField]
+        [Required]
+        private MiniGameText loseText;
+
+        private MiniGameRound activeRound;
+        private MiniGameMatch activeMatch;
+
+        public override void Start()
         {
-            this.activeRound = Instantiate(info.miniGameUI, this.parent.transform);
-            this.activeRound.Initialize(this.activeMatch.difficulty, this.activeMatch.maxDuration);
+            base.Start();
+            MiniGameEvents.current.OnStartRound += StartMiniGame;
+            MiniGameEvents.current.OnEndRound += RoundEnd;
+
+            this.titleField.text = this.info.GetName();
+            ShowDialogBox();
         }
-        else
+
+        public override void OnDestroy()
         {
-            if (state == MiniGameState.win) PlayerWin(this.activeMatch.GetItem().stats);
-            else if (state == MiniGameState.lose) PlayerLose();
+            base.OnDestroy();
+            MiniGameEvents.current.OnStartRound -= StartMiniGame;
+            MiniGameEvents.current.OnEndRound -= RoundEnd;
         }
-    }
 
-    private void PlayerWin(ItemStats stats)
-    {        
-        GameEvents.current.DoCollect(stats);
-        ShowTextBox(this.winText);
-    }
-
-    private void PlayerLose()
-    {
-        ShowTextBox(this.loseText);
-    }
-
-    private void ShowTextBox(MiniGameText textObject)
-    {
-        if (textObject != null) textObject.gameObject.SetActive(true);
-    }
-
-    public void RoundEnd(bool success)
-    {
-        MiniGameState state = this.trySlots.canStartNewRound();
-
-        if (success)
+        public void ShowDialogBox()
         {
-            this.trySlots.SetSlot(true);
-            if (state == MiniGameState.play) ShowTextBox(this.successText);
+            this.trySlots.Reset();
+            this.dialogBox.gameObject.SetActive(true);
+            this.dialogBox.Show(this.info);
         }
-        else
+
+        public void StartMiniGame(MiniGameMatch match)
         {
-            this.trySlots.SetSlot(false);
-            if (state == MiniGameState.play) ShowTextBox(this.failText);
-        }            
+            GameEvents.current.DoReduce(match.price);
+            this.activeMatch = match;
+            StartRound();
+        }
+
+        public void StartRound()
+        {
+            if (this.activeRound != null) Destroy(this.activeRound.gameObject);
+
+            MiniGameState state = this.trySlots.canStartNewRound();
+
+            if (state == MiniGameState.play)
+            {
+                this.activeRound = Instantiate(info.miniGameUI, this.parent.transform);
+                this.activeRound.Initialize(this.activeMatch.difficulty, this.activeMatch.maxDuration);
+            }
+            else
+            {
+                if (state == MiniGameState.win) PlayerWin(this.activeMatch.GetItem().stats);
+                else if (state == MiniGameState.lose) PlayerLose();
+            }
+        }
+
+        private void PlayerWin(ItemStats stats)
+        {
+            GameEvents.current.DoCollect(stats);
+            ShowTextBox(this.winText);
+        }
+
+        private void PlayerLose()
+        {
+            ShowTextBox(this.loseText);
+        }
+
+        private void ShowTextBox(MiniGameText textObject)
+        {
+            if (textObject != null) textObject.gameObject.SetActive(true);
+        }
+
+        public void RoundEnd(bool success)
+        {
+            MiniGameState state = this.trySlots.canStartNewRound();
+
+            if (success)
+            {
+                this.trySlots.SetSlot(true);
+                if (state == MiniGameState.play) ShowTextBox(this.successText);
+            }
+            else
+            {
+                this.trySlots.SetSlot(false);
+                if (state == MiniGameState.play) ShowTextBox(this.failText);
+            }
+        }
     }
 }

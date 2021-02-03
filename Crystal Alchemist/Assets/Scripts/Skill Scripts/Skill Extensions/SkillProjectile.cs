@@ -1,24 +1,27 @@
 ﻿using UnityEngine;
 
-public class SkillProjectile : SkillExtension
+namespace CrystalAlchemist
 {
-    public float speed = 1;
-    
-    public override void Initialize()
+    public class SkillProjectile : SkillExtension
     {
-        if (this.skill.myRigidbody != null)
+        public float speed = 1;
+
+        public override void Initialize()
         {
-            this.setVelocity();
+            if (this.skill.myRigidbody != null)
+            {
+                this.setVelocity();
+            }
         }
-    }
 
-    public void setVelocity()
-    {
-        if (this.skill.myRigidbody != null) this.skill.myRigidbody.velocity = this.skill.GetDirection() * this.speed * this.skill.getTimeDistortion();
-    }
+        public void setVelocity()
+        {
+            if (this.skill.myRigidbody != null) this.skill.myRigidbody.velocity = this.skill.GetDirection() * this.speed * this.skill.getTimeDistortion();
+        }
 
-    public void stopVelocity()
-    {
-        if (this.skill.myRigidbody != null) this.skill.myRigidbody.velocity = Vector2.zero;
+        public void stopVelocity()
+        {
+            if (this.skill.myRigidbody != null) this.skill.myRigidbody.velocity = Vector2.zero;
+        }
     }
 }

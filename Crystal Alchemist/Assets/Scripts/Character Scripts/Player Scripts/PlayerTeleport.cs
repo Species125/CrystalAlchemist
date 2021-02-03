@@ -1,113 +1,117 @@
-﻿using Sirenix.OdinInspector;
+﻿using Photon.Pun;
+using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerTeleport : PlayerComponent
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private PlayerTeleportList teleportList;
-
-    [SerializeField]
-    private FloatValue fadeDuration;
-
-    public override void Initialize()
+    public class PlayerTeleport : PlayerComponent
     {
-        base.Initialize();
-        GameEvents.current.OnTeleport += SwitchScene;
-        GameEvents.current.OnHasReturn += HasReturn;
-        this.teleportList.Initialize();
-        StartCoroutine(MaterializePlayer());
-    }
+        [SerializeField]
+        private PlayerTeleportList teleportList;
 
-    private void OnDestroy()
-    {
-        GameEvents.current.OnTeleport -= SwitchScene;
-        GameEvents.current.OnHasReturn -= HasReturn;
-    }
-
-    [Button("Teleport Player")]
-    public void SwitchScene() => StartCoroutine(DematerializePlayer());    
-    
-    private void LoadScene()
-    {
-        StartCoroutine(loadSceneCo(this.teleportList.GetNextTeleport().scene));
-    }
-
-    private void SetPosition(Vector2 position)
-    {
-        this.player.transform.position = position;
-        this.player.ChangeDirection(this.player.values.direction);
-    }
-
-    private IEnumerator DematerializePlayer()
-    {
-        this.player.SpawnOut(); //Disable Player        
-        bool animation = this.teleportList.GetShowSpawnOut();
-
-        if (this.player.respawnAnimation != null && animation) //Show Animation for DEspawn
+        public override void Initialize()
         {
-            this.player.SetDefaultDirection();
-            RespawnAnimation respawnObject = Instantiate(this.player.respawnAnimation, this.player.GetShootingPosition(), Quaternion.identity);
-            respawnObject.Reverse(this.player);  //reverse
-            yield return new WaitForSeconds(respawnObject.getAnimationLength());
-        }
-        else
-        {
-            this.player.SetCharacterSprites(false);            
+            base.Initialize();
+
+            GameEvents.current.OnTeleport += SwitchScene;
+            GameEvents.current.OnHasReturn += HasReturn;
+            this.teleportList.Initialize();
+            StartCoroutine(MaterializePlayer());
         }
 
-        LoadScene();
-    }
-
-    private IEnumerator MaterializePlayer()
-    {
-        this.player.SetCharacterSprites(false);
-        this.player.SpawnOut(); //Disable Player
-
-        if(this.teleportList.GetNextTeleport() == null)
+        private void OnDestroy()
         {
-            this.player.SetCharacterSprites(true);
-            this.player.SpawnIn();
-            yield break;
+            GameEvents.current.OnTeleport -= SwitchScene;
+            GameEvents.current.OnHasReturn -= HasReturn;
         }
 
-        Vector2 position = this.teleportList.GetNextTeleport().position;
-        bool animation = this.teleportList.GetShowSpawnIn();
+        public void SwitchScene() => StartCoroutine(DematerializePlayer());        
 
-        SetPosition(position);
-
-        if (this.player.respawnAnimation != null && animation)
+        private void SetPosition(Vector2 position)
         {
-            this.player.SetDefaultDirection();
-            yield return new WaitForSeconds(2f);
-            RespawnAnimation respawnObject = Instantiate(this.player.respawnAnimation, new Vector2(position.x, position.y+0.5f), Quaternion.identity);
-            respawnObject.Initialize(this.player);          
+            this.player.transform.position = position;
+            this.player.ChangeDirection(this.player.values.direction);
         }
-        else
+
+        private IEnumerator DematerializePlayer()
         {
-            this.player.SetCharacterSprites(true);
-            this.player.SpawnIn();            
-        }                
-    }
+            this.player.SpawnOut(); //Disable Player        
+            bool animation = this.teleportList.GetShowSpawnOut();
 
-    private IEnumerator loadSceneCo(string targetScene)
-    {
-        MenuEvents.current.DoFadeOut();
-        yield return new WaitForSeconds(this.fadeDuration.GetValue());
-
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(targetScene);
-        asyncOperation.allowSceneActivation = false;
-
-        while (!asyncOperation.isDone)
-        {
-            if (asyncOperation.progress >= 0.9f) asyncOperation.allowSceneActivation = true;            
-            yield return null;
+            if (this.player.respawnAnimation != null && animation) //Show Animation for DEspawn
+            {
+                this.player.SetDefaultDirection();
+                RespawnAnimation respawnObject = Instantiate(this.player.respawnAnimation, this.player.GetShootingPosition(), Quaternion.identity);
+                respawnObject.Reverse(this.player);  //reverse
+                //SpawnTeleportEffect(true);
+                yield return new WaitForSeconds(respawnObject.getAnimationLength());
+            }
+            else
+            {
+                this.player.SetCharacterSprites(false);
+                yield return new WaitForEndOfFrame();
+            }
+               
+            //For Network Scene-change, only LocalPlayer and Master are allowed to change scene
+            if (this.player.isLocalPlayer) GameEvents.current.DoChangeScene(this.teleportList.GetLatestTeleport().scene);
         }
-    }
 
-    public bool HasReturn()
-    {
-        return this.teleportList.HasLast();
+        private IEnumerator MaterializePlayer()
+        {
+            this.player.SetCharacterSprites(false);
+            this.player.SpawnOut(); //Disable Player
+
+            if (this.teleportList.GetLatestTeleport() == null)
+            {
+                this.player.SetCharacterSprites(true);
+                this.player.SpawnIn();
+                yield break;
+            }
+
+            Vector2 position = this.teleportList.GetLatestTeleport().position;
+            bool animation = this.teleportList.GetShowSpawnIn();
+
+            SetPosition(position);
+
+            if (this.player.respawnAnimation != null && animation)
+            {
+                this.player.SetDefaultDirection();
+                yield return new WaitForSeconds(2f);
+                RespawnAnimation respawnObject = Instantiate(this.player.respawnAnimation, new Vector2(position.x, position.y + 0.5f), Quaternion.identity);
+                respawnObject.Initialize(this.player);
+                //SpawnTeleportEffect(false);
+            }
+            else
+            {
+                this.player.SetCharacterSprites(true);
+                this.player.SpawnIn();
+            }
+        }
+
+        public void SpawnTeleportEffect(bool reverse)
+        {
+            string prefabPath = this.player.respawnAnimation.path;
+            int targetID = this.player.photonView.ViewID;
+
+            this.player.photonView.RPC("RpcSpawnTeleportEffect", RpcTarget.Others, prefabPath, targetID, reverse);
+        }
+
+        [PunRPC]
+        public void RpcSpawnTeleportEffect(string prefabPath, int targetID, bool reverse, PhotonMessageInfo info)
+        {
+            Player player = NetworkUtil.GetPlayer(targetID);
+            RespawnAnimation animation = Resources.Load<RespawnAnimation>(prefabPath);
+            RespawnAnimation temp = Instantiate(animation, player.GetShootingPosition(), Quaternion.identity);
+
+            if (reverse) temp.Reverse(player);
+            else temp.Initialize(player);
+        }
+
+        public bool HasReturn()
+        {
+            return this.teleportList.HasReturn();
+        }
     }
 }

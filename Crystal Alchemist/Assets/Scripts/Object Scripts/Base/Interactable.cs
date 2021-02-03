@@ -1,186 +1,197 @@
-﻿using UnityEngine;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class Interactable : MonoBehaviour
+namespace CrystalAlchemist
 {
-    #region Attribute
-    [BoxGroup("Activation Requirements")]
-    [HideLabel]
-    public Costs costs;
-
-    [BoxGroup("ContextMenu")]
-    [SerializeField]
-    private bool customActionButton = false;
-
-    [BoxGroup("ContextMenu")]
-    [ShowIf("customActionButton")]
-    [SerializeField]
-    private string ID;
-
-    [BoxGroup("Effects")]
-    [SerializeField]
-    private bool showEffectOnEnable = false;
-
-    private bool showEffectOnDisable = true;
-
-    [HideInInspector]
-    public bool isPlayerInRange = false;
-    [HideInInspector]
-    public bool isPlayerLookingAtIt = false;
-    [HideInInspector]
-    public Player player;
-    [HideInInspector]
-    public ContextClue context;
-
-    #endregion
-
-
-    #region Start Funktionen (init, ContextClue, Item set bzw. Lootregeln)
-
-    public virtual void Start()
+    public class Interactable : NetworkBehaviour
     {
-        GameEvents.current.OnSubmit += OnSubmit;
-        this.context = Instantiate(MasterManager.contextClue, this.transform.position, Quaternion.identity, this.transform);
-    }
+        #region Attribute
+        [BoxGroup("Activation Requirements")]
+        [HideLabel]
+        public Costs costs;
 
-    private void Update() => DoOnUpdate();
+        [BoxGroup("Activation Requirements")]
+        [SerializeField]
+        private bool masterOnly = false;
 
-    public string translationID
-    {
-        get { return this.ID; }
-        set { this.ID = value; }
-    }
+        [BoxGroup("ContextMenu")]
+        [SerializeField]
+        private bool customActionButton = false;
 
-    public virtual void DoOnUpdate() { }
+        [BoxGroup("ContextMenu")]
+        [ShowIf("customActionButton")]
+        [SerializeField]
+        private string ID;
 
-    private void OnSubmit()
-    {
-        if (PlayerCanInteract()) DoOnSubmit();
-    }
+        [BoxGroup("Effects")]
+        [SerializeField]
+        private bool showEffectOnEnable = false;
 
-    public virtual void DoOnSubmit() { }
+        private bool showEffectOnDisable = true;
 
-    private void OnDestroy() => GameEvents.current.OnSubmit -= OnSubmit;
+        [HideInInspector]
+        public bool isPlayerInRange = false;
+        [HideInInspector]
+        public bool isPlayerLookingAtIt = false;
+        [HideInInspector]
+        public Player player;
+        [HideInInspector]
+        public ContextClue context;
 
-    private void OnEnable()
-    {
-        if(this.showEffectOnEnable) AnimatorUtil.ShowSmoke(this.transform);
-    }
+        private bool canInteract = false;
 
-    private void OnDisable()
-    {
-        if (this.showEffectOnDisable) AnimatorUtil.ShowSmoke(this.transform);
-        ShowContextClue(false);
-    }
+        #endregion
 
-    public void SetSmoke(bool value)
-    {
-        this.showEffectOnEnable = value;
-        this.showEffectOnDisable = value;
-    }
+        #region Start Funktionen (init, ContextClue, Item set bzw. Lootregeln)
 
-    #endregion
-
-    #region Context Clue Funktionen
-
-    public void CheckInteraction(Player player)
-    {
-        if (player != null)
+        public virtual void Start()
         {
-            if (this.player != player) this.player = player;
-            this.isPlayerInRange = true;
-            this.isPlayerLookingAtIt = PlayerIsLooking();
+            GameEvents.current.OnSubmit += OnSubmit;
+            this.context = Instantiate(MasterManager.contextClue, this.transform.position, Quaternion.identity, this.transform);
         }
 
-        if (PlayerCanInteract())
+        public string translationID
         {
-            if (this.player.values.currentState != CharacterState.interact)
+            get { return this.ID; }
+            set { this.ID = value; }
+        }
+
+        private void OnSubmit()
+        {
+            if (this.canInteract) DoOnSubmit();
+        }
+
+        public virtual void Update()
+        {
+            if (this.isPlayerInRange) CheckInteraction();
+        }
+
+        public virtual void DoOnSubmit() { }
+
+        private void OnDestroy() => GameEvents.current.OnSubmit -= OnSubmit;
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
+            if (this.showEffectOnEnable) AnimatorUtil.ShowSmoke(this.transform);
+        }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+            if (this.showEffectOnDisable) AnimatorUtil.ShowSmoke(this.transform);
+            ShowContextClue(false);
+        }
+
+        public void SetSmoke(bool value)
+        {
+            this.showEffectOnEnable = value;
+            this.showEffectOnDisable = value;
+        }
+
+        #endregion
+
+        #region Context Clue Funktionen
+
+        private void CheckInteraction()
+        {
+            if (PlayerCanInteract())
             {
                 if (this.customActionButton) MasterManager.actionButtonText.SetValue(this.ID);
                 else MasterManager.actionButtonText.SetValue(string.Empty);
 
                 ShowContextClue(true);
                 this.player.values.currentState = CharacterState.interact;
+                this.canInteract = true;
             }
-        }
-        else
-        {
-            if (this.player.values.currentState == CharacterState.interact)
+            else 
             {
                 ShowContextClue(false);
-                this.player.values.currentState = CharacterState.idle;
+                if(this.player.values.CanInteract()) this.player.values.currentState = CharacterState.idle;
+                this.canInteract = false;
             }
         }
-    }
 
-    public virtual void ShowContextClue(bool value)
-    {
-        if(this.context != null) this.context.gameObject.SetActive(value);
-    }
-
-    public void DeactivateInteraction()
-    {
-        if (this.player != null)
+        public virtual void ShowContextClue(bool value)
         {
-            this.player.values.currentState = CharacterState.idle;
-            this.player = null;
+            if (this.context != null) this.context.gameObject.SetActive(value);
         }
 
-        this.isPlayerInRange = false;
-        this.isPlayerLookingAtIt = false;
-        ShowContextClue(false);
-    }
-
-    private void interact(Collider2D characterCollisionBox)
-    {
-        if (!characterCollisionBox.isTrigger)
+        public virtual void OnEnter(Collider2D characterCollisionBox)
         {
-            Player player = characterCollisionBox.GetComponent<Player>();
-            CheckInteraction(player);            
+            if (!characterCollisionBox.isTrigger)
+            {
+                Player player = characterCollisionBox.GetComponent<Player>();
+
+                if (NetworkUtil.IsLocal(player)
+                && (!this.masterOnly
+                || (this.masterOnly && player.values.isMaster))
+                && this.player != player)
+                {
+                    this.player = player;
+                    this.isPlayerInRange = true;
+                }
+            }
         }
+
+        public virtual void OnExit()
+        {
+            if (this.player != null)
+            {
+                this.player.values.currentState = CharacterState.idle;
+                this.player = null;                
+            }
+
+            this.isPlayerInRange = false;
+            this.canInteract = false;
+            this.isPlayerLookingAtIt = false;
+            ShowContextClue(false);
+        }
+
+        public virtual bool PlayerCanInteract()
+        {
+            this.isPlayerLookingAtIt = PlayerIsLooking();
+
+            return (this.player != null
+                    && this.isPlayerInRange
+                    && this.isPlayerLookingAtIt
+                    && this.player.values.CanInteract());
+        }
+
+        public virtual bool PlayerIsLooking()
+        {
+            if (this.isPlayerInRange && CollisionUtil.checkIfGameObjectIsViewed(this.player, this.gameObject)) return true;
+            return false;
+        }
+
+        //private void OnTriggerStay2D(Collider2D characterCollisionBox) => OnEnterstay(characterCollisionBox);
+
+        private void OnTriggerEnter2D(Collider2D characterCollisionBox) => OnEnter(characterCollisionBox);
+
+        private void OnTriggerExit2D(Collider2D characterCollisionBox)
+        {
+            if (!characterCollisionBox.isTrigger) OnExit();
+        }
+
+        public void ShowDialog(DialogTextTrigger trigger, ItemStats stats)
+        {
+            if (this.GetComponent<DialogSystem>() != null) this.GetComponent<DialogSystem>().showDialog(this.player, this, trigger, stats);
+        }
+
+        public void ShowDialog(DialogTextTrigger trigger)
+        {
+            if (this.GetComponent<DialogSystem>() != null) this.GetComponent<DialogSystem>().showDialog(this.player, this, trigger);
+        }
+
+        public void ShowDialog()
+        {
+            if (this.GetComponent<DialogSystem>() != null) this.GetComponent<DialogSystem>().showDialog(this.player, this);
+        }
+
+        public void ShowMenuDialog()
+        {
+            if (this.GetComponent<MenuDialogBoxLauncher>() != null) this.GetComponent<MenuDialogBoxLauncher>().ShowDialogBox();
+        }
+        #endregion
     }
-
-    public bool PlayerCanInteract()
-    {
-        return (this.player != null            
-            && this.isPlayerInRange
-            && this.isPlayerLookingAtIt
-            && this.player.values.CanInteract());
-    }
-
-    public virtual bool PlayerIsLooking()
-    {
-        if (this.isPlayerInRange && CollisionUtil.checkIfGameObjectIsViewed(this.player, this.gameObject)) return true;
-        return false;
-    }
-
-    private void OnTriggerStay2D(Collider2D characterCollisionBox) => interact(characterCollisionBox);
-
-    private void OnTriggerEnter2D(Collider2D characterCollisionBox) => interact(characterCollisionBox);
-
-    private void OnTriggerExit2D(Collider2D characterCollisionBox)
-    {
-        if (!characterCollisionBox.isTrigger) DeactivateInteraction();
-    }
-
-    public void ShowDialog(DialogTextTrigger trigger, ItemStats stats)
-    {
-        if (this.GetComponent<DialogSystem>() != null) this.GetComponent<DialogSystem>().showDialog(this.player, this, trigger, stats);
-    }
-
-    public void ShowDialog(DialogTextTrigger trigger)
-    {
-        if(this.GetComponent<DialogSystem>() != null) this.GetComponent<DialogSystem>().showDialog(this.player, this, trigger);
-    }
-
-    public void ShowDialog()
-    {
-        if (this.GetComponent<DialogSystem>() != null) this.GetComponent<DialogSystem>().showDialog(this.player, this);
-    }
-
-    public void ShowMenuDialog()
-    {
-        if (this.GetComponent<MenuDialogBoxLauncher>() != null) this.GetComponent<MenuDialogBoxLauncher>().ShowDialogBox();
-    }
-    #endregion
 }

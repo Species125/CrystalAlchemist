@@ -1,18 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
-public class SkillSelfHit : SkillHitTrigger
+namespace CrystalAlchemist
 {
-    [InfoBox("Wirkt auf den Sender direkt (ohne Collider)")]
-    [SerializeField]
-    [MinValue(0)]
-    private float invincibleTimer = 0;
-
-    public override void Initialize()
+    public class SkillSelfHit : SkillHitTrigger
     {
-        if (this.invincibleTimer > 0) this.skill.sender.SetCannotHit(this.invincibleTimer, false);
-        this.skill.sender.gotHit(this.skill);
+        [InfoBox("Wirkt auf den Sender direkt (ohne Collider)")]
+        [SerializeField]
+        [MinValue(0)]
+        private float invincibleTimer = 0;
+
+        public override void Initialize()
+        {
+            if (this.invincibleTimer > 0) this.skill.sender.SetCannotHit(this.invincibleTimer, false);
+            this.skill.sender.GotHit(this.skill);
+        }
     }
 }

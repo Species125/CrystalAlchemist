@@ -1,51 +1,53 @@
-﻿using UnityEngine;
-using Sirenix.OdinInspector;
-using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
-public enum TargetingMode
-{    
-    manual,
-    auto
-}
-
-public enum RangeType
+namespace CrystalAlchemist
 {
-    none,
-    circle,
-    view
-}
+    public enum TargetingMode
+    {
+        manual,
+        auto
+    }
 
-[CreateAssetMenu(menuName = "Game/Ability/Targeting Property")]
-public class TargetingProperty : ScriptableObject
-{
-    [BoxGroup("Zielerfassung")]
-    [Tooltip("Manual = Spieler kann Ziele auswählen, Auto = Sofort ohne Bestätigung")]
-    public TargetingMode targetingMode = TargetingMode.manual;
-    
-    [BoxGroup("Zielerfassung")]
-    public int maxAmountOfTargets = 1;
+    public enum RangeType
+    {
+        none,
+        circle,
+        view
+    }
 
-    [BoxGroup("Zielerfassung")]
-    public bool hasMaxDuration = true;
+    [CreateAssetMenu(menuName = "Game/Ability/Targeting Property")]
+    public class TargetingProperty : ScriptableObject
+    {
+        [BoxGroup("Zielerfassung")]
+        [Tooltip("Manual = Spieler kann Ziele auswählen, Auto = Sofort ohne Bestätigung")]
+        public TargetingMode targetingMode = TargetingMode.manual;
 
-    [ShowIf("hasMaxDuration")]
-    [BoxGroup("Zielerfassung")]
-    public float maxDuration = 20f;
+        [BoxGroup("Zielerfassung")]
+        public int maxAmountOfTargets = 1;
 
-    [BoxGroup("Zielerfassung")]
-    [Tooltip("In welchen Intervallen die Ziele getroffen werden sollen")]
-    [Range(0, 10)]
-    public float multiHitDelay = 0;
+        [BoxGroup("Zielerfassung")]
+        public bool hasMaxDuration = true;
 
-    [BoxGroup("Zielerfassung")]
-    [Tooltip("Soll die Reichweite bei der Zielerfassung angezeigt werden")]
-    public bool showRange = false;
+        [ShowIf("hasMaxDuration")]
+        [BoxGroup("Zielerfassung")]
+        public float maxDuration = 20f;
 
-    [BoxGroup("Zielerfassung")]
-    public RangeType rangeType = RangeType.circle;
+        [BoxGroup("Zielerfassung")]
+        [Tooltip("In welchen Intervallen die Ziele getroffen werden sollen")]
+        [Range(0, 10)]
+        public float multiHitDelay = 0;
 
-    [BoxGroup("Zielerfassung")]
-    [HideIf("rangeType", RangeType.none)]
-    public float range = 6f;
+        [BoxGroup("Zielerfassung")]
+        [Tooltip("Soll die Reichweite bei der Zielerfassung angezeigt werden")]
+        public bool showRange = false;
 
+        [BoxGroup("Zielerfassung")]
+        public RangeType rangeType = RangeType.circle;
+
+        [BoxGroup("Zielerfassung")]
+        [HideIf("rangeType", RangeType.none)]
+        public float range = 6f;
+
+    }
 }

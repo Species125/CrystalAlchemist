@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readOnly: 1
   race: 0
-  characterName: Hero
   colorGroups:
   - colorGroup: 0
     color: {r: 0.8980393, g: 0.6313726, b: 0.5529412, a: 1}
@@ -22,12 +21,10 @@ MonoBehaviour:
     color: {r: 0.35686275, g: 0.2392157, b: 0.1764706, a: 1}
   - colorGroup: 2
     color: {r: 0.9622642, g: 0.83886933, b: 0.64907444, a: 1}
-  characterParts:
-  - parentName: Legs
-    name: Legs
-  - parentName: Hairstyle
-    name: Bob
-  - parentName: Upper Gear
-    name: Knight
-  - parentName: Lower Gear
-    name: Knight Boots
+  properties:
+  - {fileID: 11400000, guid: 6d01d103d0cafbf4e9ebb19ca4340ab5, type: 2}
+  - {fileID: 11400000, guid: 32aec7aad5d1a894b840c74f2d680c50, type: 2}
+  - {fileID: 11400000, guid: 14e58966e8224b040a2c5d62285f0b50, type: 2}
+  - {fileID: 11400000, guid: 557786c54ad65ab459fe94cde7234414, type: 2}
+  - {fileID: 11400000, guid: c6993dbbbf654c14e84c4b9465a31534, type: 2}
+  - {fileID: 11400000, guid: 81debca7501c722488a8cd1d5f072d56, type: 2}

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76a19f9cb4d358498823753290d243d, type: 3}
   m_Name: King Blob Combat
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/AI/King Blob AI/King Blob Combat
   actions:
   - type: 3
     position: {x: 0, y: 0}
@@ -21,23 +22,29 @@ MonoBehaviour:
     animations: 
     isTrigger: 0
     ability: {fileID: 11400000, guid: f631ee9d8dcb5b54d8213a31408ae740, type: 2}
-    overrideCastTime: 1
-    castTime: 2
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 1
-    repeat: 1
-    keepCast: 0
-    amount: 5
-    delay: 0
-    sequence: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides:
+    - type: 0
+      value: 0
+      time: 2
+      amount: 0
+      keepCast: 0
+      delay: 0
+    - type: 4
+      value: 0
+      time: 0
+      amount: 5
+      keepCast: 0
+      delay: 0
     value: 0
     signal: {fileID: 0}
     wait: 2.5
     mode: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
   - type: 3
     position: {x: 0, y: 0}
     translationID: 
@@ -46,23 +53,29 @@ MonoBehaviour:
     animations: 
     isTrigger: 0
     ability: {fileID: 11400000, guid: 0fe0c6676525c2d4c8836d5b5181c12a, type: 2}
-    overrideCastTime: 1
-    castTime: 3
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 1
-    keepCast: 0
-    amount: 2
-    delay: 1
-    sequence: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides:
+    - type: 0
+      value: 0
+      time: 3
+      amount: 0
+      keepCast: 0
+      delay: 0
+    - type: 4
+      value: 0
+      time: 0
+      amount: 2
+      keepCast: 0
+      delay: 1
     value: 0
     signal: {fileID: 0}
     wait: 0
     mode: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
   loopActions: 1
   events:
   - triggers:
@@ -79,24 +92,69 @@ MonoBehaviour:
       animations: 
       isTrigger: 0
       ability: {fileID: 11400000, guid: a4406c673eead9844809ea002e9c6ba3, type: 2}
-      overrideCastTime: 1
-      castTime: 10
-      overrideShowCastBar: 0
-      showCastBar: 0
-      overrideCooldown: 0
-      cooldown: 10
-      repeat: 0
-      keepCast: 0
-      amount: 1
-      delay: 0
-      sequence: {fileID: 0}
+      targetMode: 0
+      multiDelay: 0
+      multiCast: 0
+      overrides:
+      - type: 0
+        value: 0
+        time: 10
+        amount: 0
+        keepCast: 0
+        delay: 0
       value: 0
       signal: {fileID: 0}
       wait: 0
       mode: 0
-      start: {fileID: 0}
-      loop: {fileID: 0}
+      fadeIn: 0
+      fadeOut: 0
+      music: {fileID: 0}
     repeatEvent: 1
     interruptCurrentAction: 0
     eventCooldown: 5
     requirementsNeeded: 0
+    delay: 0.1
+  currentAction:
+    type: 0
+    position: {x: 0, y: 0}
+    translationID: 
+    duration: 0
+    nextPhase: {fileID: 0}
+    animations: 
+    isTrigger: 0
+    ability: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
+    value: 0
+    signal: {fileID: 0}
+    wait: 0
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
+  currentDialog:
+    type: 0
+    position: {x: 0, y: 0}
+    translationID: 
+    duration: 0
+    nextPhase: {fileID: 0}
+    animations: 
+    isTrigger: 0
+    ability: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
+    value: 0
+    signal: {fileID: 0}
+    wait: 0
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
+  eventActions: []
+  index: 0
+  eventIndex: 0
+  loops: 0

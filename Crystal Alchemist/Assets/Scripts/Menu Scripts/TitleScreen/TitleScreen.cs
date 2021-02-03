@@ -1,44 +1,48 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
-public class TitleScreen : MonoBehaviour
-{        
-    [SerializeField]
-    private GameObject mainFrame;
-    [SerializeField]
-    private GameObject darkFrame;
-
-    private void Start()
+namespace CrystalAlchemist
+{
+    public class TitleScreen : MonoBehaviour
     {
-        this.mainFrame.SetActive(true);
-        if (this.darkFrame != null) this.darkFrame.SetActive(false);
+        [SerializeField]
+        private GameObject mainFrame;
+        [SerializeField]
+        private GameObject darkFrame;
 
-        Cursor.visible = true;
-    }
+        private void Start()
+        {
+            this.mainFrame.SetActive(true);
+            if (this.darkFrame != null) this.darkFrame.SetActive(false);
 
-    public virtual void Update()
-    {
-    }
+            //Cursor.visible = true;
+        }
 
-    public void exitGame()
-    {
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+        public virtual void Update()
+        {
+        }
 
-        Application.Quit();
-    }    
+        public void exitGame()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
 
-    public void showBackground(bool dark)
-    {
-        this.mainFrame.SetActive(false);
-        if(this.darkFrame != null) this.darkFrame.SetActive(false);
+            Application.Quit();
+        }
 
-        if (dark && this.darkFrame != null) this.darkFrame.SetActive(true);
-        else if(!dark) this.mainFrame.SetActive(true);
-    }
+        public void showBackground(bool dark)
+        {
+            this.mainFrame.SetActive(false);
+            if (this.darkFrame != null) this.darkFrame.SetActive(false);
 
-    public void SaveSettings()
-    {
-        SaveSystem.SaveOptions();
+            if (dark && this.darkFrame != null) this.darkFrame.SetActive(true);
+            else if (!dark) this.mainFrame.SetActive(true);
+        }
+
+        public void SaveSettings()
+        {
+            SaveSystem.SaveOptions();
+        }
     }
 }

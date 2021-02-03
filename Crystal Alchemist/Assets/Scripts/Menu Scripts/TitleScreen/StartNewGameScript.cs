@@ -1,18 +1,20 @@
-﻿using UnityEngine.SceneManagement;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class StartNewGameScript : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private PlayerSaveGame saveGame;
-
-    [SerializeField]
-    private TeleportStats startTeleport;
-
-    public void StartNewGame()
+    public class StartNewGameScript : MonoBehaviour
     {
-        Cursor.visible = false;
-        this.saveGame.teleportList.SetNextTeleport(this.startTeleport);
-        SceneManager.LoadSceneAsync(this.saveGame.teleportList.GetNextTeleport().scene);
+        [SerializeField]
+        private PlayerSaveGame saveGame;
+
+        [SerializeField]
+        private TeleportStats startTeleport;
+
+        public void StartNewGame()
+        {
+            //Cursor.visible = false;
+            this.saveGame.teleportList.SetNextTeleport(this.startTeleport);
+            GameEvents.current.DoChangeScene(this.saveGame.teleportList.GetLatestTeleport().scene);
+        }
     }
 }

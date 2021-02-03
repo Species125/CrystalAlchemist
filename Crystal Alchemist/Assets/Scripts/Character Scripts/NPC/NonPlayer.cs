@@ -1,35 +1,59 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
+using UnityEngine.Events;
 
-public class NonPlayer : Character
+namespace CrystalAlchemist
 {
-    public override void Start()
+    public class NonPlayer : Character
     {
-        //GameEvents.current.OnKill += DestroyItWithoutDrop;
-        if (this.IsSummoned)
+        [Required]
+        [BoxGroup("Pflichtfelder")]
+        public CharacterStats NPCStats;
+
+        [BoxGroup("Events")]
+        [SerializeField]
+        public UnityEvent onDefeated;
+
+        public override void Awake()
         {
-            SetCharacterSprites(false);
-            SpawnOut();
+            this.stats = NPCStats;
+            base.Awake();
+        }
+
+        public override void Start()
+        {
+            //GameEvents.current.OnKill += DestroyItWithoutDrop;
+            if (this.IsSummoned)
+            {
+                SetCharacterSprites(false);
+                SpawnOut();
+            }
+
+            base.Start();
+
+            if (this.stats.showAnalyse)
+            {
+                AnalyseInfo analyse = Instantiate(MasterManager.analyseInfo, this.GetHeadPosition(), Quaternion.identity, this.transform);
+                analyse.SetTarget(this.gameObject);
+            }
+
+            if (this.IsSummoned)
+            {
+                SetCharacterSprites(true);
+                PlayRespawnAnimation();
+                SpawnIn();
+            }
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
         }
         
-        base.Start();
-
-        if (this.stats.showAnalyse)
+        public override void DestroyItWithoutDrop()
         {
-            AnalyseInfo analyse = Instantiate(MasterManager.analyseInfo, this.GetHeadPosition(), Quaternion.identity, this.transform);
-            analyse.SetTarget(this.gameObject);
+            this.onDefeated?.Invoke();
+            base.DestroyItWithoutDrop();
         }
-
-        if (this.IsSummoned)
-        {
-            SetCharacterSprites(true);
-            PlayRespawnAnimation();
-            SpawnIn();
-        }
-    }
-
-    public override void OnDestroy()
-    {
-        //GameEvents.current.OnKill -= DestroyItWithoutDrop;
-        base.OnDestroy();
     }
 }

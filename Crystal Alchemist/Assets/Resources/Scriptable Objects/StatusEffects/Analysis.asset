@@ -12,19 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b22a3ebb90863458dba94076083e2b, type: 3}
   m_Name: Analysis
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/StatusEffects/Analysis
+  statusEffectType: 0
   hasDuration: 0
   maxDuration: 1
-  canOverride: 0
+  mode: 2
+  maxStacks: 1
   canBeModified: 0
-  canDeactivateIt: 1
   canBeDispelled: 0
   ignoreTimeDistortion: 0
-  maxStacks: 1
   stunTarget: 0
-  statusEffectType: 0
   statusEffectEvents:
   - trigger:
       triggerType: 0
+      mode: 2
       value: 0
     actions:
     - actionType: 5
@@ -32,6 +33,7 @@ MonoBehaviour:
       - resourceType: 3
         item: {fileID: 0}
         keyItem: {fileID: 0}
+        statusEffect: {fileID: 0}
         amount: 1
       speed: 0
       time: 0
@@ -39,6 +41,7 @@ MonoBehaviour:
       StatusEffectType: 0
   - trigger:
       triggerType: 1
+      mode: 2
       value: 3
     actions:
     - actionType: 0
@@ -46,6 +49,7 @@ MonoBehaviour:
       - resourceType: 2
         item: {fileID: 0}
         keyItem: {fileID: 0}
+        statusEffect: {fileID: 0}
         amount: -0.25
       speed: 0
       time: 0
@@ -53,6 +57,7 @@ MonoBehaviour:
       StatusEffectType: 0
   - trigger:
       triggerType: 4
+      mode: 2
       value: 0
     actions:
     - actionType: 2
@@ -68,4 +73,3 @@ MonoBehaviour:
   statusEffectObject: {fileID: 7056982587471594013, guid: c133ea91399c3144ab317096acc94303,
     type: 3}
   iconSprite: {fileID: 21300034, guid: 0ca4149b67557c449b0110d5938780ba, type: 3}
-  updateUI: {fileID: 11400000, guid: 4318c0ff35d606e4b8e9b01338571f0b, type: 2}

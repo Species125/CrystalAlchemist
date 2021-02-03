@@ -1,74 +1,77 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
-public enum WarningType
+namespace CrystalAlchemist
 {
-    lookAtIt,
-    lookAway,
-    goAway,
-    hide,
-    stack,
-    spread,
-    warning
-}
-
-[RequireComponent(typeof(SpriteRenderer))]
-public class PlayerWarnings : MonoBehaviour
-{
-    [System.Serializable]
-    public struct Warning
+    public enum WarningType
     {
-        [PreviewField]
-        public Sprite sprite;
-        public WarningType type;
+        lookAtIt,
+        lookAway,
+        goAway,
+        hide,
+        stack,
+        spread,
+        warning
     }
 
-    [SerializeField]
-    private List<Warning> warnings = new List<Warning>();
-
-    [SerializeField]
-    private float duration = 3f;
-
-    private SpriteRenderer spriteRenderer;
-
-    private void Start()
+    [RequireComponent(typeof(SpriteRenderer))]
+    public class PlayerWarnings : MonoBehaviour
     {
-        this.spriteRenderer = this.GetComponent<SpriteRenderer>();
-        GameEvents.current.OnWarning += ShowWarning;
-    }
-
-    private void ShowWarning(WarningType type)
-    {
-        Sprite sprite = GetSprite(type);
-
-        if (sprite != null)
+        [System.Serializable]
+        public struct Warning
         {
-            StopCoroutine(disableCo());
-            this.spriteRenderer.sprite = sprite;
-            StartCoroutine(disableCo());
-        }
-    }
-
-    private Sprite GetSprite(WarningType type)
-    {
-        for(int i = 0; i < this.warnings.Count; i++)
-        {
-            if (warnings[i].type == type) return warnings[i].sprite;
+            [PreviewField]
+            public Sprite sprite;
+            public WarningType type;
         }
 
-        return null;
-    }
+        [SerializeField]
+        private List<Warning> warnings = new List<Warning>();
 
-    private IEnumerator disableCo()
-    {        
-        yield return new WaitForSeconds(this.duration);
-        this.spriteRenderer.sprite = null;
-    }
+        [SerializeField]
+        private float duration = 3f;
 
-    private void OnDestroy()
-    {
-        GameEvents.current.OnWarning -= ShowWarning;
+        private SpriteRenderer spriteRenderer;
+
+        private void Start()
+        {
+            this.spriteRenderer = this.GetComponent<SpriteRenderer>();
+            GameEvents.current.OnWarning += ShowWarning;
+        }
+
+        private void ShowWarning(WarningType type)
+        {
+            Sprite sprite = GetSprite(type);
+
+            if (sprite != null)
+            {
+                StopCoroutine(disableCo());
+                this.spriteRenderer.sprite = sprite;
+                StartCoroutine(disableCo());
+            }
+        }
+
+        private Sprite GetSprite(WarningType type)
+        {
+            for (int i = 0; i < this.warnings.Count; i++)
+            {
+                if (warnings[i].type == type) return warnings[i].sprite;
+            }
+
+            return null;
+        }
+
+        private IEnumerator disableCo()
+        {
+            yield return new WaitForSeconds(this.duration);
+            this.spriteRenderer.sprite = null;
+        }
+
+        private void OnDestroy()
+        {
+            GameEvents.current.OnWarning -= ShowWarning;
+        }
     }
 }

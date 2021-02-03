@@ -1,48 +1,53 @@
-﻿using UnityEngine;
+﻿
+
 using TMPro;
+using UnityEngine;
 
-public class CastBar : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private SpriteFillBar charging;
-    [SerializeField]
-    private SpriteRenderer full;
-    [SerializeField]
-    private TextMeshPro skillName;
-    [SerializeField]
-    private TextMeshPro percentage;
-    [SerializeField]
-    private SpriteRenderer icon;
-    [SerializeField]
-
-    private float offset = 1f;
-    private Ability ability;
-
-    public void setCastBar(Character character, Ability ability)
+    public class CastBar : MonoBehaviour
     {
-        this.transform.parent = character.transform;
-        this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + this.offset);
-        this.ability = ability;
-        this.skillName.text = this.ability.GetName();
-        this.icon.sprite = ability.GetSprite();
-    }
+        [SerializeField]
+        private SpriteFillBar charging;
+        [SerializeField]
+        private SpriteRenderer full;
+        [SerializeField]
+        private TextMeshPro skillName;
+        [SerializeField]
+        private TextMeshPro percentage;
+        [SerializeField]
+        private SpriteRenderer icon;
+        [SerializeField]
 
-    private void Update()
-    {
-        float percent = ability.holdTimer / this.ability.castTime;
-        this.charging.fillAmount(percent);
+        private float offset = 1f;
+        private Ability ability;
 
-        string text = (int)(percent * 100) + "%";
-        if (percent * 100 >= 100) text = "BEREIT!";
+        public void setCastBar(Character character, Ability ability)
+        {
+            this.transform.parent = character.transform;
+            this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + this.offset);
+            this.ability = ability;
+            this.skillName.text = this.ability.GetName();
+            this.icon.sprite = ability.GetSprite();
+        }
 
-        this.percentage.text = text;
+        private void Update()
+        {
+            float percent = ability.holdTimer / this.ability.castTime;
+            this.charging.fillAmount(percent);
 
-        if (ability.holdTimer >= this.ability.castTime) this.full.enabled = true;
-        else this.full.enabled = false;
-    }
+            string text = (int)(percent * 100) + "%";
+            if (percent * 100 >= 100) text = "BEREIT!";
 
-    public void destroyIt()
-    {
-        Destroy(this.gameObject, 0.1f);
+            this.percentage.text = text;
+
+            if (ability.holdTimer >= this.ability.castTime) this.full.enabled = true;
+            else this.full.enabled = false;
+        }
+
+        public void destroyIt()
+        {
+            Destroy(this.gameObject, 0.1f);
+        }
     }
 }

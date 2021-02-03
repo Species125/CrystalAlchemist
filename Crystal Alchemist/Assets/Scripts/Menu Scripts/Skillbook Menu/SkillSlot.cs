@@ -1,33 +1,44 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.UI;
 
-
-public class SkillSlot : MonoBehaviour
-{    
-    public Image image;
-    public Ability ability;
-    public int ID;
-
-    public int Initialize(int page)
+namespace CrystalAlchemist
+{
+    public class SkillSlot : MonoBehaviour
     {
-        this.ID = (page * 10) + (this.gameObject.transform.GetSiblingIndex() + 1);
-        return this.ID;
-    }
+        [BoxGroup("Debug")]
+        [ReadOnly]
+        public Image image;
 
-    public void SetSkill(Ability ability)
-    {
-        if (ability == null || !ability.hasSkillBookInfo || ability.info == null) this.image.enabled = false;
-        else
+        [BoxGroup("Debug")]
+        [ReadOnly]
+        public Ability ability;
+
+        [BoxGroup("Debug")]
+        [ReadOnly]
+        public int ID;
+
+        public int Initialize(int page)
         {
-            this.ability = ability;
-            this.image.enabled = true;
-            this.image.sprite = ability.info.icon;
-            this.image.color = new Color(1f, 1f, 1f, 1f);
+            this.ID = (page * 10) + (this.gameObject.transform.GetSiblingIndex() + 1);
+            return this.ID;
         }
-    }    
 
-    public void SelectAbility()
-    {
-        MenuEvents.current.SelectAbility(this.ability);
+        public void SetSkill(Ability ability)
+        {
+            if (ability == null || !ability.hasSkillBookInfo || ability.info == null) this.image.enabled = false;
+            else
+            {
+                this.ability = ability;
+                this.image.enabled = true;
+                this.image.sprite = ability.info.icon;
+                this.image.color = new Color(1f, 1f, 1f, 1f);
+            }
+        }
+
+        public void SelectAbility()
+        {
+            MenuEvents.current.SelectAbility(this.ability);
+        }
     }
 }

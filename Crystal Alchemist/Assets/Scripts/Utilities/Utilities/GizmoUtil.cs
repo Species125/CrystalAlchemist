@@ -1,38 +1,42 @@
 ﻿using System.Collections.Generic;
+
 using UnityEngine;
 
-public static class GizmoUtil
+namespace CrystalAlchemist
 {
-    public static void PathfinderGizmo(PathfindingGrid grid, Color gridColor, Color collisionColor, bool showSphere)
+    public static class GizmoUtil
     {
-        Gizmos.color = gridColor;
-
-        if (grid != null && grid.gridArray != null)
+        public static void PathfinderGizmo(PathfindingGrid grid, Color gridColor, Color collisionColor, bool showSphere)
         {
-            for (int x = 0; x < grid.gridArray.GetLength(0); x++)
+            Gizmos.color = gridColor;
+
+            if (grid != null && grid.gridArray != null)
             {
-                for (int y = 0; y < grid.gridArray.GetLength(1); y++)
+                for (int x = 0; x < grid.gridArray.GetLength(0); x++)
                 {
-                    PathNode node = grid.gridArray[x, y];
-                    if (node != null)
+                    for (int y = 0; y < grid.gridArray.GetLength(1); y++)
                     {
-                        Gizmos.DrawWireCube(node.GetVector(), node.GetSize());
-                        if (showSphere) Gizmos.DrawWireSphere(node.GetVector(), node.GetRadius());
-                        if (!node.getWalkable())
-                            Gizmos.DrawIcon(node.GetVector(), "Pathfinding/NotWalkable", false, collisionColor);
+                        PathNode node = grid.gridArray[x, y];
+                        if (node != null)
+                        {
+                            Gizmos.DrawWireCube(node.GetVector(), node.GetSize());
+                            if (showSphere) Gizmos.DrawWireSphere(node.GetVector(), node.GetRadius());
+                            if (!node.getWalkable())
+                                Gizmos.DrawIcon(node.GetVector(), "Pathfinding/NotWalkable", false, collisionColor);
+                        }
                     }
                 }
             }
         }
-    }
 
-    public static void ShowWalkingLines(List<Vector2> path)
-    {
-        if (path != null)
+        public static void ShowWalkingLines(List<Vector2> path)
         {
-            for (int i = 0; i < path.Count - 1; i++)
+            if (path != null)
             {
-                Debug.DrawLine(path[i], path[i + 1], Color.green);
+                for (int i = 0; i < path.Count - 1; i++)
+                {
+                    Debug.DrawLine(path[i], path[i + 1], Color.green);
+                }
             }
         }
     }

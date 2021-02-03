@@ -1,28 +1,34 @@
-﻿using UnityEngine;
+﻿
+
+
 using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class MiniGame : Interactable
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    [Required]
-    [BoxGroup("Mandatory")]
-    private MiniGameInfo miniGame;
-
-    [SerializeField]
-    [Required]
-    [BoxGroup("Mandatory")]
-    private MiniGameInfo UIInfo;
-
-    public override void Start()
+    public class MiniGame : Interactable
     {
-        base.Start();
-        this.UIInfo.matches = this.miniGame.matches;
-        this.UIInfo.miniGameUI = this.miniGame.miniGameUI;
-        this.UIInfo.miniGameName = this.miniGame.miniGameName;
-    }
+        [SerializeField]
+        [Required]
+        [BoxGroup("Mandatory")]
+        private MiniGameInfo miniGame;
 
-    public override void DoOnSubmit()
-    {        
-        MenuEvents.current.OpenMiniGame();
+        [SerializeField]
+        [Required]
+        [BoxGroup("Mandatory")]
+        private MiniGameInfo UIInfo;
+
+        public override void Start()
+        {
+            base.Start();
+            this.UIInfo.matches = this.miniGame.matches;
+            this.UIInfo.miniGameUI = this.miniGame.miniGameUI;
+            this.UIInfo.miniGameName = this.miniGame.miniGameName;
+        }
+
+        public override void DoOnSubmit()
+        {
+            MenuEvents.current.OpenMiniGame();
+        }
     }
 }

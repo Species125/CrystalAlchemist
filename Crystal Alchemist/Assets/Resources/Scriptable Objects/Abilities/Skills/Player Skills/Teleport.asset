@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266771f26e0200047a77d2d39c8b8900, type: 3}
   m_Name: Teleport
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/Abilities/Skills/Player Skills/Teleport
   skill: {fileID: 2383572904453914523, guid: 28d171700ce5ac84fb3390e7c6068744, type: 3}
   useTargetSystem: 0
   targetingProperty: {fileID: 0}
@@ -21,16 +22,16 @@ MonoBehaviour:
   hasSkillBookInfo: 1
   icon: {fileID: 0}
   info: {fileID: 11400000, guid: 3467596e28763334490ee64d3ea26275, type: 2}
-  cooldown: 60
-  hasMaxDuration: 0
-  maxDuration: 1
+  cooldown: 120
+  globalCooldown: 0
+  hasMaxDuration: 1
+  maxDuration: 0.1
   hasDelay: 0
   delay: 1
   hasCastTime: 1
   castTime: 4
   showCastbar: 1
-  castAnimation: {fileID: 2989123697049368215, guid: 4bea464adb12fb4419adec9db5f4305b,
-    type: 3}
+  castAnimation: {fileID: 0}
   hasMaxAmount: 1
   maxAmount: 1
   requirements: {fileID: 11400000, guid: ec766a967ed3d3640958593d69b6d0dc, type: 2}
@@ -47,3 +48,6 @@ MonoBehaviour:
   holdTimer: 0
   state: 2
   enabled: 1
+  active: 1
+  sender: {fileID: 0}
+  activeAnimation: {fileID: 0}

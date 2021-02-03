@@ -1,18 +1,20 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Player))]
-public class PlayerComponent : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [HideInInspector]
-    public Player player;
-
-    public virtual void Initialize()
+    [RequireComponent(typeof(Player))]
+    public class PlayerComponent : MonoBehaviour
     {
-        this.player = this.GetComponent<Player>();
-    }
+        [HideInInspector]
+        public Player player;
 
-    public virtual void Updating()
-    {
+        public virtual void Initialize()
+        {
+            this.player = this.GetComponent<Player>();
+        }
 
+        public virtual void Updating()
+        {
+        }
     }
 }

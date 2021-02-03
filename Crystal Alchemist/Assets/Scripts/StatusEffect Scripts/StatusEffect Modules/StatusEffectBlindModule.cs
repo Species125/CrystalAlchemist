@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 
-public class StatusEffectBlindModule : MonoBehaviour, StatusEffectModule
+namespace CrystalAlchemist
 {
-    public GameObject instantiatNewGameObject;
-    private GameObject panel;
+    public class StatusEffectBlindModule : MonoBehaviour, StatusEffectModule
+    {
+        public GameObject instantiatNewGameObject;
+        private GameObject panel;
 
-    public void DoAction() =>  this.panel = Instantiate(this.instantiatNewGameObject);    
+        public void DoAction() => this.panel = Instantiate(this.instantiatNewGameObject);
 
-    public void DoDestroy() => Destroy(this.panel, 2f);
+        public void DoDestroy() => Destroy(this.panel, 2f);
+    }
 }

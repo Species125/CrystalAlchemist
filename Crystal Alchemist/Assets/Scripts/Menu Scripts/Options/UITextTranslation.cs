@@ -1,36 +1,48 @@
-﻿using UnityEngine;
-using TMPro;
+﻿
+
+
 using Sirenix.OdinInspector;
+using TMPro;
+using UnityEngine;
 
-[RequireComponent(typeof(TextMeshProUGUI))]
-public class UITextTranslation : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [InfoBox("GameObject Name muss der gleiche sein wie in csv", InfoMessageType.Info)]
-    [SerializeField]
-    private LocalisationFileType type = LocalisationFileType.menues;
-
-    private TextMeshProUGUI textMeshField;
-
-    private string _id;
-
-    private void Awake()
+    [RequireComponent(typeof(TextMeshProUGUI))]
+    public class UITextTranslation : MonoBehaviour
     {
-        this.textMeshField = this.GetComponent<TextMeshProUGUI>();
-        Id = this.gameObject.name;
-    }
+        [InfoBox("GameObject Name muss der gleiche sein wie in csv", InfoMessageType.Info)]
+        [SerializeField]
+        private LocalisationFileType type = LocalisationFileType.menues;
 
-    public string Id { set { _id = value; }}
+        private TextMeshProUGUI textMeshField;
 
-    private void Start() => SettingsEvents.current.OnLanguangeChanged += ChangeLanguageText;
+        private string _id;
 
-    private void OnDestroy() => SettingsEvents.current.OnLanguangeChanged -= ChangeLanguageText;
+        private void Awake()
+        {
+            this.textMeshField = this.GetComponent<TextMeshProUGUI>();
+            Id = this.gameObject.name;
+        }
 
-    public virtual void OnEnable() => ChangeLanguageText();
+        public void ChangeName(string newName)
+        {
+            this.Id = newName;
+            ChangeLanguageText();
+        }
 
-    private void ChangeLanguageText()
-    {
-        string text = FormatUtil.GetLocalisedText(this._id, this.type);
-        if (text != string.Empty) this.textMeshField.text = text;
+        public string Id { set { _id = value; } }
+
+        private void Start() => SettingsEvents.current.OnLanguangeChanged += ChangeLanguageText;
+
+        private void OnDestroy() => SettingsEvents.current.OnLanguangeChanged -= ChangeLanguageText;
+
+        public virtual void OnEnable() => ChangeLanguageText();
+
+        private void ChangeLanguageText()
+        {
+            string text = FormatUtil.GetLocalisedText(this._id, this.type);
+            if (text != string.Empty) this.textMeshField.text = text;
+        }
     }
 }
 

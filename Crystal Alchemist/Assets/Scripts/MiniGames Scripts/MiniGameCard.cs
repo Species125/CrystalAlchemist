@@ -1,23 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
 using TMPro;
+using UnityEngine;
 
-public class MiniGameCard : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private Animator anim;
-
-    [SerializeField]
-    private TextMeshProUGUI number;
-
-    public void setValue(int value)
+    public class MiniGameCard : MonoBehaviour
     {
-        this.number.text = value + "";
-    }
+        [SerializeField]
+        private Animator anim;
 
-    public void show()
-    {
-        AnimatorUtil.SetAnimatorParameter(this.anim, "Show");
+        [SerializeField]
+        private TextMeshProUGUI number;
+
+        public void setValue(int value)
+        {
+            this.number.text = value + "";
+        }
+
+        public void show()
+        {
+            AnimatorUtil.SetAnimatorParameter(this.anim, "Show");
+        }
     }
 }

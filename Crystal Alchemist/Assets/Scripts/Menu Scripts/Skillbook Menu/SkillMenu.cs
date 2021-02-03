@@ -1,170 +1,160 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
 using TMPro;
-using UnityEngine.UI;
-using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class SkillMenu : MenuBehaviour
+namespace CrystalAlchemist
 {
-    #region Attributes
-
-    [BoxGroup("Mandatory")]
-    [SerializeField]
-    [Required]
-    private CustomCursor cursor;
-
-    [BoxGroup("Tabs")]
-    [SerializeField]
-    private GameObject physicalSkills;
-    [BoxGroup("Tabs")]
-    [SerializeField]
-    private GameObject magicalSkills;
-    [BoxGroup("Tabs")]
-    [SerializeField]
-    private GameObject itemSkills;
-
-    [BoxGroup("Detail-Ansicht")]
-    [SerializeField]
-    private TextMeshProUGUI skillDetailsName;
-    [BoxGroup("Detail-Ansicht")]
-    [SerializeField]
-    private TextMeshProUGUI skillDetailsStrength;
-    [BoxGroup("Detail-Ansicht")]
-    [SerializeField]
-    private TextMeshProUGUI skillDetailsCost;
-    [BoxGroup("Detail-Ansicht")]
-    [SerializeField]
-    private Image StatusEffects;       
-
-    private Ability selectedAbility;
-
-    #endregion
-
-
-    #region Unity Functions
-
-    public override void Start()
+    public class SkillMenu : MenuBehaviour
     {
-        base.Start();
-        MenuEvents.current.OnAbilitySelected += SelectSkill;
-        MenuEvents.current.OnAbilitySet += GetAbility;
+        #region Attributes
 
-        InitializePages(this.physicalSkills);
-        InitializePages(this.magicalSkills);
-        InitializePages(this.itemSkills);
+        [BoxGroup("Mandatory")]
+        [SerializeField]
+        [Required]
+        private CustomCursor cursor;
 
-        ShowCategory("physical");
-    }
+        [BoxGroup("Tabs")]
+        [SerializeField]
+        private GameObject physicalSkills;
+        [BoxGroup("Tabs")]
+        [SerializeField]
+        private GameObject magicalSkills;
+        [BoxGroup("Tabs")]
+        [SerializeField]
+        private GameObject itemSkills;
 
-    private void test()
-    {
+        [BoxGroup("Detail-Ansicht")]
+        [SerializeField]
+        private TextMeshProUGUI skillDetailsName;
+        [BoxGroup("Detail-Ansicht")]
+        [SerializeField]
+        private TextMeshProUGUI skillDetailsStrength;
+        [BoxGroup("Detail-Ansicht")]
+        [SerializeField]
+        private TextMeshProUGUI skillDetailsCost;
 
-    }
+        private Ability selectedAbility;
 
-    private Ability GetAbility()
-    {
-        return this.selectedAbility;
-    }
+        #endregion
 
-    private void InitializePages(GameObject parent)
-    {
-        for(int i = 0; i < parent.transform.childCount; i++)
+
+        #region Unity Functions
+
+        public override void Start()
         {
-            SkillPage page = parent.transform.GetChild(i).GetComponent<SkillPage>();
-            if (page != null) page.Initialize();
+            base.Start();
+            MenuEvents.current.OnAbilitySelected += SelectSkill;
+            MenuEvents.current.OnAbilitySet += GetAbility;
+
+            InitializePages(this.physicalSkills);
+            InitializePages(this.magicalSkills);
+            InitializePages(this.itemSkills);
+
+            ShowCategory("physical");
         }
-    }
 
-    public override void OnDestroy()
-    {
-        MenuEvents.current.OnAbilitySelected -= SelectSkill;
-        MenuEvents.current.OnAbilitySet -= GetAbility;
-        base.OnDestroy();            
-    }
-
-    public override void Cancel()
-    {
-        if (this.selectedAbility != null) SelectSkill(null);
-        else base.Cancel();
-    }
-
-    #endregion
-
-
-    #region OnClickTrigger
-
-    public void ShowSkillDetails(SkillSlot slot)
-    {
-        showSkillDetails(slot.ability);
-    }
-
-    public void ShowSkillDetails(SkillMenuActiveSlots slot)
-    {
-        showSkillDetails(slot.ability);
-    }
-
-    private void showSkillDetails(Ability ability)
-    {
-        if (ability != null)
+        private void test()
         {
-            SkillTargetModule targetModule = ability.skill.GetComponent<SkillTargetModule>();
-            SkillSenderModule senderModule = ability.skill.GetComponent<SkillSenderModule>();
 
-            this.skillDetailsName.text = ability.GetName();
-            float strength = 0;
+        }
 
-            if(senderModule != null)
+        private Ability GetAbility()
+        {
+            return this.selectedAbility;
+        }
+
+        private void InitializePages(GameObject parent)
+        {
+            for (int i = 0; i < parent.transform.childCount; i++)
             {
-                this.skillDetailsCost.text = Mathf.Abs(senderModule.costs.amount).ToString("N1");
+                SkillPage page = parent.transform.GetChild(i).GetComponent<SkillPage>();
+                if (page != null) page.Initialize();
             }
+        }
 
-            if (targetModule != null)
+        public override void OnDestroy()
+        {
+            MenuEvents.current.OnAbilitySelected -= SelectSkill;
+            MenuEvents.current.OnAbilitySet -= GetAbility;
+            base.OnDestroy();
+        }
+
+        public override void Cancel()
+        {
+            if (this.selectedAbility != null) SelectSkill(null);
+            else base.Cancel();
+        }
+
+        #endregion
+
+
+        #region OnClickTrigger
+
+        public void ShowSkillDetails(SkillSlot slot)
+        {
+            showSkillDetails(slot.ability);
+        }
+
+        public void ShowSkillDetails(SkillMenuActiveSlots slot)
+        {
+            showSkillDetails(slot.ability);
+        }
+
+        private void showSkillDetails(Ability ability)
+        {
+            if (ability != null)
             {
-                if (targetModule.affectedResources.Count > 0) strength = Mathf.Abs(targetModule.affectedResources[0].amount);
-                this.skillDetailsStrength.text = strength + "";
+                SkillTargetModule targetModule = ability.skill.GetComponent<SkillTargetModule>();
+                SkillSenderModule senderModule = ability.skill.GetComponent<SkillSenderModule>();
 
-                if (targetModule.statusEffects.Count > 0)
+                this.skillDetailsName.text = ability.GetName();
+                float strength = 0;
+
+                if (senderModule != null)
                 {
-                    this.StatusEffects.enabled = true;
-                    this.StatusEffects.sprite = targetModule.statusEffects[0].iconSprite;
+                    this.skillDetailsCost.text = Mathf.Abs(senderModule.costs.amount).ToString("N1");
                 }
-                else this.StatusEffects.enabled = false;
+
+                if (targetModule != null)
+                {
+                    if (targetModule.affectedResources.Count > 0) strength = Mathf.Abs(targetModule.affectedResources[0].amount);
+                    this.skillDetailsStrength.text = strength + "";
+                }
+            }
+            else
+            {
+                HideSkillDetails();
             }
         }
-        else
+
+        public void HideSkillDetails()
         {
-            HideSkillDetails();
+            this.skillDetailsName.text = "";
+            this.skillDetailsStrength.text = "";
+            this.skillDetailsCost.text = "";
         }
-    }
 
-    public void HideSkillDetails()
-    {        
-        this.skillDetailsName.text = "";
-        this.skillDetailsStrength.text = "";
-        this.skillDetailsCost.text = "";
-
-        this.StatusEffects.enabled = false;
-    }
-
-    public void ShowCategory(string category)
-    {        
-        this.physicalSkills.SetActive(false);
-        this.magicalSkills.SetActive(false);
-        this.itemSkills.SetActive(false);
-
-        switch (category)
+        public void ShowCategory(string category)
         {
-            case "physical": this.physicalSkills.SetActive(true); break;
-            case "magical": this.magicalSkills.SetActive(true); break;
-            default: this.itemSkills.SetActive(true); break;
+            this.physicalSkills.SetActive(false);
+            this.magicalSkills.SetActive(false);
+            this.itemSkills.SetActive(false);
+
+            switch (category)
+            {
+                case "physical": this.physicalSkills.SetActive(true); break;
+                case "magical": this.magicalSkills.SetActive(true); break;
+                default: this.itemSkills.SetActive(true); break;
+            }
         }
+
+        public void SelectSkill(Ability ability)
+        {
+            this.selectedAbility = ability;
+            if (ability != null) this.cursor.setSelectedGameObject(ability.info.icon);
+            else this.cursor.setSelectedGameObject(null);
+        }
+
+        #endregion
     }
-
-    public void SelectSkill(Ability ability)
-    {
-        this.selectedAbility = ability;
-        if (ability != null) this.cursor.setSelectedGameObject(ability.info.icon);  
-        else this.cursor.setSelectedGameObject(null);
-    }    
-
-    #endregion
 }

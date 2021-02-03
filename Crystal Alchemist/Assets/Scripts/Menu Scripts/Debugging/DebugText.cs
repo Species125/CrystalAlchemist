@@ -1,16 +1,19 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class DebugText : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private TextMeshProUGUI textfield;
-
-    [SerializeField]
-    private DebugLog debug;
-
-    private void OnEnable()
+    public class DebugText : MonoBehaviour
     {
-        this.textfield.text = debug.lastError;
+        [SerializeField]
+        private TextMeshProUGUI textfield;
+
+        [SerializeField]
+        private DebugLog debug;
+
+        private void OnEnable()
+        {
+            this.textfield.text = debug.lastError;
+        }
     }
 }

@@ -1,23 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
 using UnityEngine;
 
-public class CharacterCreatorSubMenuChild : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private List<Race> restrictedRaces = new List<Race>();
-
-    [SerializeField]
-    private bool enableColor = true;
-
-    public bool isEnabledByRace(Race race)
+    public class CharacterCreatorSubMenuChild : MonoBehaviour
     {
-        if (this.restrictedRaces.Count == 0 || this.restrictedRaces.Contains(race)) return true;
-        return false;
-    }
+        [SerializeField]
+        private RaceRestriction restriction = RaceRestriction.exclude;
 
-    public bool isEnabledByGear()
-    {
-        return this.enableColor;
+        [SerializeField]
+        private List<Race> races = new List<Race>();
+
+        public bool isEnabledByRace(Race race)
+        {
+            if (this.restriction == RaceRestriction.exclude && !this.races.Contains(race)) return true;
+            else if (this.restriction == RaceRestriction.include && this.races.Contains(race)) return true;
+            return false;
+        }
     }
 }

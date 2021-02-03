@@ -12,19 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b22a3ebb90863458dba94076083e2b, type: 3}
   m_Name: Ice
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/StatusEffects/Ice
+  statusEffectType: 1
   hasDuration: 1
   maxDuration: 6
-  canOverride: 1
+  mode: 1
+  maxStacks: 1
   canBeModified: 1
-  canDeactivateIt: 0
   canBeDispelled: 1
   ignoreTimeDistortion: 0
-  maxStacks: 1
   stunTarget: 1
-  statusEffectType: 1
   statusEffectEvents:
   - trigger:
       triggerType: 0
+      mode: 2
       value: 0
     actions:
     - actionType: 3
@@ -40,4 +41,3 @@ MonoBehaviour:
   statusEffectObject: {fileID: 5157658974536148423, guid: 49f1ebd00c6ca964c8e6d197f4187346,
     type: 3}
   iconSprite: {fileID: 21300002, guid: 0ca4149b67557c449b0110d5938780ba, type: 3}
-  updateUI: {fileID: 11400000, guid: 4318c0ff35d606e4b8e9b01338571f0b, type: 2}

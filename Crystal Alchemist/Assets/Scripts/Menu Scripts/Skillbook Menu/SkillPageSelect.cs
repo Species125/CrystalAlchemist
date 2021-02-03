@@ -1,67 +1,72 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
+
+
 using TMPro;
+using UnityEngine;
 
-public class SkillPageSelect : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private TextMeshProUGUI textField;
-
-    [SerializeField]
-    private List<GameObject> pages = new List<GameObject>();
-
-    [SerializeField]
-    private GameObject nextButton;
-
-    [SerializeField]
-    private GameObject previousButton;
-
-    private int index;
-
-    private void Start()
+    public class SkillPageSelect : MonoBehaviour
     {
-        GameEvents.current.OnPage += SetNextPage;
-        UpdateButtons();
-        for (int i = 1; i < this.pages.Count; i++) this.pages[i].SetActive(false);
-    }
+        [SerializeField]
+        private TextMeshProUGUI textField;
 
-    private void OnDestroy()
-    {
-        GameEvents.current.OnPage -= SetNextPage;
-    }
+        [SerializeField]
+        private List<GameObject> pages = new List<GameObject>();
 
-    private void UpdateButtons()
-    {
-        if (this.index == 0) this.previousButton.SetActive(false);
-        else this.previousButton.SetActive(true);
+        [SerializeField]
+        private GameObject nextButton;
 
-        if (this.index == this.pages.Count - 1) this.nextButton.SetActive(false);
-        else this.nextButton.SetActive(true);
+        [SerializeField]
+        private GameObject previousButton;
 
-        this.textField.text = (this.index + 1) + "/" + this.pages.Count;
-    }
+        private int index;
 
-    public void SetNextPage(int value)
-    {
-        if (!this.gameObject.activeInHierarchy) return;
-
-        for(int i = 0; i < this.pages.Count; i++)
+        private void Start()
         {
-            if (pages[i].activeInHierarchy) this.index = i;
+            GameEvents.current.OnPage += SetNextPage;
+            UpdateButtons();
+            for (int i = 1; i < this.pages.Count; i++) this.pages[i].SetActive(false);
         }
 
-        pages[this.index].SetActive(false);
+        private void OnDestroy()
+        {
+            GameEvents.current.OnPage -= SetNextPage;
+        }
 
-        this.index += value;
-        if (this.index < 0) this.index = 0;
-        else if (this.index >= this.pages.Count) this.index = this.pages.Count - 1;
+        private void UpdateButtons()
+        {
+            if (this.index == 0) this.previousButton.SetActive(false);
+            else this.previousButton.SetActive(true);
 
-        pages[this.index].SetActive(true);
+            if (this.index == this.pages.Count - 1) this.nextButton.SetActive(false);
+            else this.nextButton.SetActive(true);
 
-        UpdateButtons();
+            this.textField.text = (this.index + 1) + "/" + this.pages.Count;
+        }
 
-        if (!this.nextButton.activeInHierarchy) this.previousButton.GetComponent<ButtonExtension>().Select();
-        else if (!this.previousButton.activeInHierarchy) this.nextButton.GetComponent<ButtonExtension>().Select();
+        public void SetNextPage(int value)
+        {
+            if (!this.gameObject.activeInHierarchy) return;
+
+            for (int i = 0; i < this.pages.Count; i++)
+            {
+                if (pages[i].activeInHierarchy) this.index = i;
+            }
+
+            pages[this.index].SetActive(false);
+
+            this.index += value;
+            if (this.index < 0) this.index = 0;
+            else if (this.index >= this.pages.Count) this.index = this.pages.Count - 1;
+
+            pages[this.index].SetActive(true);
+
+            UpdateButtons();
+
+            if (!this.nextButton.activeInHierarchy) this.previousButton.GetComponent<ButtonExtension>().Select();
+            else if (!this.previousButton.activeInHierarchy) this.nextButton.GetComponent<ButtonExtension>().Select();
+        }
     }
 }
 

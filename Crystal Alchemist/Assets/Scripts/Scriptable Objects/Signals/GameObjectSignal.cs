@@ -1,27 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Signals/GameObjectSignal")]
-public class GameObjectSignal : ScriptableObject
+namespace CrystalAlchemist
 {
-    public List<GameObjectSignalListener> listeners = new List<GameObjectSignalListener>();
-
-    public void Raise(GameObject gameObject)
+    [CreateAssetMenu(menuName = "Signals/GameObjectSignal")]
+    public class GameObjectSignal : ScriptableObject
     {
-        for (int i = listeners.Count - 1; i >= 0; i--)
+        public List<GameObjectSignalListener> listeners = new List<GameObjectSignalListener>();
+
+        public void Raise(GameObject gameObject)
         {
-            this.listeners[i].OnSignalRaised(gameObject);
+            for (int i = listeners.Count - 1; i >= 0; i--)
+            {
+                this.listeners[i].OnSignalRaised(gameObject);
+            }
         }
-    }
 
-    public void RegisterListener(GameObjectSignalListener listener)
-    {
-        this.listeners.Add(listener);
-    }
+        public void RegisterListener(GameObjectSignalListener listener)
+        {
+            this.listeners.Add(listener);
+        }
 
-    public void DeRegisterListener(GameObjectSignalListener listener)
-    {
-        this.listeners.Remove(listener);
+        public void DeRegisterListener(GameObjectSignalListener listener)
+        {
+            this.listeners.Remove(listener);
+        }
     }
 }

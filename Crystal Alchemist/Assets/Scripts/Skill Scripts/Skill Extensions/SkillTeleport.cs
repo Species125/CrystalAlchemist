@@ -1,15 +1,24 @@
-﻿using UnityEngine;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
+using Photon.Pun;
 
-public class SkillTeleport : SkillExtension
+namespace CrystalAlchemist
 {
-    [Required]
-    [SerializeField]
-    private PlayerTeleportList playerTeleport;
-
-    public override void Initialize()
+    public class SkillTeleport : SkillExtension
     {
-        this.playerTeleport.SetReturnTeleport();
-        GameEvents.current.DoTeleport();
+        [Required]
+        [SerializeField]
+        private SkillSceneTransition summon;
+
+        [SerializeField]
+        private PlayerTeleportList teleports;
+
+        public override void Initialize()
+        {
+            if (!NetworkUtil.IsLocal(this.skill.sender.GetComponent<Player>())) return;
+
+            object[] path = new object[] { this.teleports.GetReturnTeleport().path };
+            PhotonNetwork.Instantiate(this.summon.path, this.transform.position, Quaternion.identity, 0, path);
+        }
     }
 }

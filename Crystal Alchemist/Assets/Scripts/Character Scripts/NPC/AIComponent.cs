@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(AI))]
-public class AIComponent : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [HideInInspector]
-    public AI npc;
-
-    public virtual void Initialize()
+    [RequireComponent(typeof(AI))]
+    public class AIComponent : MonoBehaviour
     {
-        this.npc = this.GetComponent<AI>();
-    }
+        [HideInInspector]
+        public AI npc;
 
-    public virtual void Updating()
-    {
+        public virtual void Initialize()
+        {
+            this.npc = this.GetComponent<AI>();
+        }
 
+        public virtual void Updating()
+        {
+
+        }
     }
 }

@@ -1,50 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
+
 using UnityEngine;
 
-public class CurrencyUI : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private GameObject child;
-
-    [SerializeField]
-    List<CurrencySlot> slots = new List<CurrencySlot>();
-
-    [SerializeField]
-    private CharacterValues values;
-
-    [SerializeField]
-    private float delay = 5f;
-
-    private void Start()
+    public class CurrencyUI : MonoBehaviour
     {
-        GameEvents.current.OnCurrencyChanged += UpdateCurrency;
-        UpdateCurrency(true);
-    }
+        [SerializeField]
+        private GameObject child;
 
-    private void OnDestroy()
-    {
-        GameEvents.current.OnCurrencyChanged -= UpdateCurrency;
-    }
+        [SerializeField]
+        List<CurrencySlot> slots = new List<CurrencySlot>();
 
-    private IEnumerator hideCo()
-    {
-        yield return new WaitForSeconds(this.delay);
-        child.SetActive(false);
-    }
+        [SerializeField]
+        private CharacterValues values;
 
-    private void UpdateCurrency(bool show)
-    {
-        if (show) ShowUI();
-        else child.SetActive(false);
-    }
+        [SerializeField]
+        private float delay = 5f;
 
-    private void ShowUI()
-    {
-        StopAllCoroutines();
-        child.SetActive(true);
-        foreach (CurrencySlot slot in this.slots) slot.UpdateCurrency();
-        if (values.currentState != CharacterState.interact) StartCoroutine(hideCo());
-    }
+        private void Start()
+        {
+            GameEvents.current.OnCurrencyChanged += UpdateCurrency;
+            UpdateCurrency(true);
+        }
 
+        private void OnDestroy()
+        {
+            GameEvents.current.OnCurrencyChanged -= UpdateCurrency;
+        }
+
+        private IEnumerator hideCo()
+        {
+            yield return new WaitForSeconds(this.delay);
+            child.SetActive(false);
+        }
+
+        private void UpdateCurrency(bool show)
+        {
+            if (!this.gameObject.activeInHierarchy || !this.enabled) return;
+            if (show) ShowUI();
+            else child.SetActive(false);
+        }
+
+        private void ShowUI()
+        {
+            StopAllCoroutines();
+            child.SetActive(true);
+            foreach (CurrencySlot slot in this.slots) slot.UpdateCurrency();
+            if (values.currentState != CharacterState.interact) StartCoroutine(hideCo());
+        }
+
+    }
 }

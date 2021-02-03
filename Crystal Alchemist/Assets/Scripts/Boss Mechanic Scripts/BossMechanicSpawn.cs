@@ -1,203 +1,241 @@
 ﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class BossMechanicSpawn : BossMechanicProperty
+namespace CrystalAlchemist
 {
-    [System.Serializable]
-    public class ChildSequenceProperty : SequenceProperty
-    {
-        public Object spawnObject;
-
-        [ShowIf("spawnObject")]
-        [HideIf("spawnPositonType", SpawnPositionType.spawnPoints)]
-        [MinValue(1)]
-        public int amount = 1;
-
-        [Tooltip("Set to true, if skill needs to know the target")]
-        public bool AddTarget = false;
-        
-        public bool overrideDuration = false;
-
-        [ShowIf("overrideDuration")]
-        public float maxDuration = 0f;
-
-        [ShowIf("spawnObject")]
-        [Tooltip("Time between Spawns")]
-        public float spawnDelay = 0f;
-
-        [ShowIf("spawnObject")]
-        [MinValue(0)]
-        public int repeat = 0;
-
-        [ShowIf("spawnObject")]
-        [HideIf("repeat", 0)]
-        [Tooltip("Time between Spawns")]
-        [MinValue(0.1)]
-        public float repeatDelay = 1f;
-
-        public override int GetMax()
+    public class BossMechanicSpawn : BossMechanicProperty
+    {        
+        [System.Serializable]
+        public class ChildSequenceProperty : SequenceProperty
         {
-            if (this.spawnPositonType == SpawnPositionType.spawnPoints) return this.spawnPoints.Count;
-            else return this.amount;
-        }
-    }
+            public Object spawnObject;
 
-    [System.Serializable]
-    public class SequenceObject
-    {
-        private int amount = 1;
-        private float delay = 0;
-        public bool isRunning = true;
-        public bool spawnIt = false;
-        public GameObject spawnPoint;
-        private float elapsed;
-        private bool delete;
+            [ShowIf("spawnObject")]
+            [HideIf("spawnPositonType", SpawnPositionType.spawnPoints)]
+            [MinValue(1)]
+            public int amount = 1;
 
-        public SequenceObject(GameObject spawnPoint, int amount, float delay, bool delete)
-        {
-            this.spawnPoint = spawnPoint;
-            this.amount = amount;
-            this.delay = delay;
-            this.delete = delete;
-        }
+            [Tooltip("Set to true, if skill needs to know the target")]
+            public bool AddTarget = false;
 
-        public void Updating(float time)
-        {
-            if (this.elapsed <= 0) this.spawnIt = true;
-            else this.elapsed -= time;
-        }
+            public bool overrideDuration = false;
 
-        public void SetNext()
-        {
-            this.spawnIt = false;
-            this.elapsed = this.delay;
-            this.amount--;
-            if (this.amount <= 0)
+            [ShowIf("overrideDuration")]
+            public float maxDuration = 0f;
+
+            [ShowIf("spawnObject")]
+            [Tooltip("Time between Spawns")]
+            public float spawnDelay = 0f;
+
+            [ShowIf("spawnObject")]
+            [MinValue(0)]
+            public int repeat = 0;
+
+            [ShowIf("spawnObject")]
+            [HideIf("repeat", 0)]
+            [Tooltip("Time between Spawns")]
+            [MinValue(0.1)]
+            public float repeatDelay = 1f;
+
+            public override int GetMax()
             {
-                this.isRunning = false;
-                if(this.delete) Destroy(this.spawnPoint, 0.3f);
+                if (this.spawnPositonType == SpawnPositionType.spawnPoints) return this.spawnPoints.Count;
+                else return this.amount;
             }
         }
-    }
 
-    [SerializeField]
-    [BoxGroup("Children")]
-    private float startDelay = 0f;
-
-    [SerializeField]
-    [HideLabel]
-    [BoxGroup("Children")]
-    private ChildSequenceProperty childProperty;
-
-    private float timeLeftToSpawnNext;
-
-    private bool isRunning = true;
-
-    private List<SequenceObject> sequences = new List<SequenceObject>();
-    
-
-    private void Start()
-    {
-        this.childProperty.AddSpawnPoints(this.transform);
-        this.timeLeftToSpawnNext = this.startDelay;
-    }
-    
-    private void Update()
-    {
-        if(this.isRunning) AddSequences(); //Add new sequence 
-
-        UpdatingSequences(); //update existing sequences
-
-        if (!this.isRunning && this.sequences.Count == 0) this.enabled = false; //deactivate when all sequences are done
-    }
-
-    private void UpdatingSequences()
-    {
-        foreach (SequenceObject sequence in this.sequences)
+        [System.Serializable]
+        public class SequenceObject
         {
-            if (sequence.isRunning)
+            private int amount = 1;
+            private float delay = 0;
+            public bool isRunning = true;
+            public bool spawnIt = false;
+            public GameObject spawnPoint;
+            private float elapsed;
+            private bool delete;
+
+            public SequenceObject(GameObject spawnPoint, int amount, float delay, bool delete)
             {
-                sequence.Updating(Time.deltaTime);
+                this.spawnPoint = spawnPoint;
+                this.amount = amount;
+                this.delay = delay;
+                this.delete = delete;
+            }
 
-                if (sequence.spawnIt)
+            public void Updating(float time)
+            {
+                if (this.elapsed <= 0) this.spawnIt = true;
+                else this.elapsed -= time;
+            }
+
+            public void SetNext()
+            {
+                this.spawnIt = false;
+                this.elapsed = this.delay;
+                this.amount--;
+                if (this.amount <= 0)
                 {
-                    Quaternion rotation = GetRotation(this.childProperty.rotationType, this.childProperty.rotationFactor, sequence.spawnPoint, this.childProperty.GetOffset());
-                    Instantiate(sequence.spawnPoint.transform.position, rotation);
-                    sequence.SetNext();
+                    this.isRunning = false;
+                    if (this.delete) Destroy(this.spawnPoint, 0.3f);
                 }
-            }        
+            }
         }
 
-        this.sequences.RemoveAll(x => x.isRunning == false);
-    }
+        [InfoBox("Photon View required on this!", InfoMessageType.Warning)]
+        [SerializeField]
+        [BoxGroup("Children")]
+        private float startDelay = 0f;
 
-    private void AddSequences()
-    {
-        this.timeLeftToSpawnNext -= Time.deltaTime;
-        if (this.timeLeftToSpawnNext <= 0 && this.childProperty.spawnObject != null) AddSequence();
-    }
+        [SerializeField]
+        [HideLabel]
+        [BoxGroup("Children")]
+        private ChildSequenceProperty childProperty;
 
-    private void AddSequence()
-    {
-        GameObject spawnPoint = GetSpawnPosition(this.childProperty);
+        private float timeLeftToSpawnNext;
+        private bool isCanceld = false;
+        private bool isRunning = true;
 
-        this.sequences.Add(new SequenceObject(spawnPoint, this.childProperty.repeat, this.childProperty.repeatDelay, this.childProperty.GetDelete()));
-        this.timeLeftToSpawnNext = this.childProperty.spawnDelay;
-        this.counter++;
-        if (this.counter >= this.childProperty.GetMax()) this.isRunning = false;
-    }
+        private List<SequenceObject> sequences = new List<SequenceObject>();
 
-    private void Instantiate(Vector2 position, Quaternion rotation)
-    {
-        Character target = null;
-
-        if (this.childProperty.AddTarget) target = this.target;
-
-        if (this.childProperty.spawnObject.GetType() == typeof(GameObject))
+        private void Awake()
         {
-            GameObject spawnedObject = Instantiate(this.childProperty.spawnObject, position, Quaternion.identity, this.transform) as GameObject;
-            SetSkill(spawnedObject.GetComponent<Skill>(), target, rotation);
-            SetAdd(spawnedObject.GetComponent<Character>());
-            SetAdd(spawnedObject.GetComponent<AI>(), target);
-            SetAdd(spawnedObject.GetComponent<AddSpawn>(), target);
+            GameEvents.current.OnInterrupt += InterruptSequence;
+            if (PhotonView.Get(this) == null) Debug.LogError("PhotonView is missing on " + this.gameObject.name);
         }
-        else if (this.childProperty.spawnObject.GetType() == typeof(Ability))
+
+        private void Start()
         {
-            SetAbility(position, rotation);
+            this.childProperty.AddSpawnPoints(this.transform);
+            this.timeLeftToSpawnNext = this.startDelay;
         }
-    }
 
-    private void SetAdd(AddSpawn spawn, Character target)
-    {
-        if (spawn != null) spawn.Initialize(target);
-    }
-
-    private void SetAdd(Character character)
-    {
-        if (character != null) character.InitializeAddSpawn(this.childProperty.overrideDuration, this.childProperty.maxDuration);
-    }
-
-    private void SetAdd(AI character, Character target)
-    {
-        if (character != null) character.InitializeAddSpawn(target, this.childProperty.overrideDuration, this.childProperty.maxDuration);        
-    }
-
-    private void SetSkill(Skill skill, Character target, Quaternion rotation)
-    {
-        if (skill != null)
+        private void OnDestroy()
         {
-            skill.InitializeStandAlone(this.sender, target, rotation);
-            if (this.childProperty.overrideDuration) skill.SetMaxDuration(true, this.childProperty.maxDuration);
+            GameEvents.current.OnInterrupt -= InterruptSequence;
         }
-    }
 
-    private void SetAbility(Vector2 position, Quaternion rotation)
-    {
-        Ability ability = Instantiate(this.childProperty.spawnObject) as Ability;
-        Skill skill = ability.InstantiateSkill(target, position, this.sender, rotation);
-        skill.transform.SetParent(this.transform);
-        if (this.childProperty.overrideDuration) skill.SetMaxDuration(true, this.childProperty.maxDuration);
-        Destroy(ability);
+        private void InterruptSequence()
+        {
+            this.isCanceld = true;
+            this.isRunning = false;
+            this.sequences.Clear();
+            this.enabled = false;
+            this.gameObject.SetActive(false);
+        }
+
+        private void Update()
+        {
+            if (this.isCanceld) return;
+            if (this.isRunning) AddSequences(); //Add new sequence 
+
+            UpdatingSequences(); //update existing sequences
+
+            if (!this.isRunning && this.sequences.Count == 0) this.enabled = false; //deactivate when all sequences are done
+        }
+
+        private void UpdatingSequences()
+        {
+            foreach (SequenceObject sequence in this.sequences)
+            {
+                if (sequence.isRunning)
+                {
+                    sequence.Updating(Time.deltaTime);
+
+                    if (sequence.spawnIt)
+                    {
+                        Quaternion rotation = GetRotation(this.childProperty.rotationType, this.childProperty.rotationFactor, sequence.spawnPoint, this.childProperty.GetOffset());
+                        Instantiate(sequence.spawnPoint.transform.position, rotation);     
+                        sequence.SetNext();
+                    }
+                }
+            }
+
+            this.sequences.RemoveAll(x => x.isRunning == false);
+        }
+
+        private void AddSequences()
+        {
+            this.timeLeftToSpawnNext -= Time.deltaTime;
+            if (this.timeLeftToSpawnNext <= 0 && this.childProperty.spawnObject != null) AddSequence();
+        }
+
+        private void AddSequence()
+        {
+            foreach (GameObject spawnpoint in GetSpawnPosition(this.childProperty))
+            {
+                this.sequences.Add(new SequenceObject(spawnpoint, this.childProperty.repeat, this.childProperty.repeatDelay, this.childProperty.GetDelete()));    
+            }
+
+            this.timeLeftToSpawnNext = this.childProperty.spawnDelay;
+            this.counter++;
+            if (this.counter >= this.childProperty.GetMax()) this.isRunning = false;
+        }
+
+         private void Instantiate(Vector2 position, Quaternion rotation)
+         {
+            if (!NetworkUtil.IsMaster()) return;
+
+            if (this.childProperty.spawnObject.GetType() == typeof(GameObject))
+            {
+                GameObject prefab = childProperty.spawnObject as GameObject;
+
+                if (prefab.GetComponent<Character>()) 
+                    SpawnCharacter(prefab.GetComponent<Character>(), position, rotation);
+                else if (prefab.GetComponent<AI>()) 
+                    SpawnAI(prefab.GetComponent<AI>(), position, rotation);
+                else if (prefab.GetComponent<AddSpawn>()) 
+                    SpawnAdd(prefab.GetComponent<AddSpawn>(), position, rotation);
+                else if (prefab.GetComponent<Skill>()) 
+                    SpawnSkill(prefab.GetComponent<Skill>(), position, rotation);
+                else if (prefab.GetComponent<NetworkBehaviour>()) 
+                    SpawnNetworkObject(prefab.GetComponent<NetworkBehaviour>(), position, rotation);
+            }
+            else if (this.childProperty.spawnObject.GetType() == typeof(Ability))
+            {
+                Ability ability = this.childProperty.spawnObject as Ability;
+                SpawnAbility(ability, position, rotation);
+            }
+        }
+
+        private void SpawnNetworkObject(NetworkBehaviour obj, Vector2 position, Quaternion rotation)
+        {
+            NetworkEvents.current.RaiseBossObjectSpawnEvent(obj, this.gameObject, position, rotation,
+                                                            this.childProperty.overrideDuration, this.childProperty.maxDuration);
+        }
+
+        private void SpawnCharacter(Character character, Vector2 position, Quaternion rotation)
+        {
+            NetworkEvents.current.RaiseBossCharacterSpawnEvent(character, this.gameObject, position, rotation,
+                                                               this.childProperty.overrideDuration, this.childProperty.maxDuration);
+        }
+
+        private void SpawnAI(AI character, Vector2 position, Quaternion rotation)
+        {
+            NetworkEvents.current.RaiseBossAISpawnEvent(character, this.target, this.gameObject, position, rotation,
+                                                        this.childProperty.overrideDuration, this.childProperty.maxDuration);
+        }
+
+        private void SpawnAdd(AddSpawn addSpawn, Vector2 position, Quaternion rotation)
+        {
+            NetworkEvents.current.RaiseBossAddSpawnEvent(addSpawn, this.target, this.gameObject, position, rotation,
+                                                        this.childProperty.overrideDuration, this.childProperty.maxDuration);
+        }
+
+        private void SpawnSkill(Skill skill, Vector2 position, Quaternion rotation)
+        {
+            NetworkEvents.current.RaiseBossSkillSpawnEvent(skill, this.sender, this.target, this.gameObject, 
+                                                           position, rotation, this.childProperty.overrideDuration,
+                                                           this.childProperty.maxDuration, this.childProperty.AddTarget);
+        }
+
+        private void SpawnAbility(Ability ability, Vector2 position, Quaternion rotation)
+        {
+            NetworkEvents.current.RaiseBossAbilitySpawnEvent(ability, this.sender, this.target, this.gameObject,
+                                                             position, rotation, this.childProperty.overrideDuration,
+                                                             this.childProperty.maxDuration, this.childProperty.AddTarget);
+        }
     }
 }

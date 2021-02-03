@@ -1,31 +1,35 @@
 ﻿using System.Collections.Generic;
+
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Signals/SimpleSignal")]
-public class SimpleSignal : ScriptableObject
+namespace CrystalAlchemist
 {
-    public List<SimpleSignalListener> listeners = new List<SimpleSignalListener>();
-
-    public void Raise()
+    [CreateAssetMenu(menuName = "Signals/SimpleSignal")]
+    public class SimpleSignal : ScriptableObject
     {
-        List<SimpleSignalListener> activelisteners = new List<SimpleSignalListener>();
+        public List<SimpleSignalListener> listeners = new List<SimpleSignalListener>();
 
-        for (int i = listeners.Count - 1; i >= 0; i--)
+        public void Raise()
         {
-            if (this.listeners[i] != null)
+            List<SimpleSignalListener> activelisteners = new List<SimpleSignalListener>();
+
+            for (int i = listeners.Count - 1; i >= 0; i--)
             {
-                this.listeners[i].OnSignalRaised();
+                if (this.listeners[i] != null)
+                {
+                    this.listeners[i].OnSignalRaised();
+                }
             }
         }
-    }
 
-    public void RegisterListener(SimpleSignalListener listener)
-    {
-        this.listeners.Add(listener);
-    }
+        public void RegisterListener(SimpleSignalListener listener)
+        {
+            this.listeners.Add(listener);
+        }
 
-    public void DeRegisterListener(SimpleSignalListener listener)
-    {
-        this.listeners.Remove(listener);
+        public void DeRegisterListener(SimpleSignalListener listener)
+        {
+            this.listeners.Remove(listener);
+        }
     }
 }

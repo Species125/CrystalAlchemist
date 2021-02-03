@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 
-public class SkillStartEffectModule : SkillModule
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private GameObject effect;
-
-    public override void Initialize()
+    public class SkillStartEffectModule : SkillModule
     {
-        base.Initialize();
-        Instantiate(this.effect, this.transform.position, Quaternion.identity);
+        [SerializeField]
+        private GameObject effect;
+
+        public override void Initialize()
+        {
+            base.Initialize();
+            Instantiate(this.effect, this.transform.position, Quaternion.identity);
+        }
     }
 }

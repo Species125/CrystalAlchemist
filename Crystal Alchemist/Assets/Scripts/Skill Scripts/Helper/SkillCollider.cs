@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 
-public class SkillCollider : MonoBehaviour
+namespace CrystalAlchemist
 {
-    public Skill skill;
-
-    public virtual Vector2 GetPosition()
+    public class SkillCollider : MonoBehaviour
     {
-        return this.transform.position;
+        public Skill skill;
+
+        public virtual Vector2 GetPosition()
+        {
+            return this.transform.position;
+        }
     }
 }

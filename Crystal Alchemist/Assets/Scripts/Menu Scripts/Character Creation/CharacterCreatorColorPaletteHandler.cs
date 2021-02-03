@@ -1,36 +1,78 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿
+using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class CharacterCreatorColorPaletteHandler : CharacterCreatorButton
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private CharacterCreatorColorPalette palette;
-
-    [SerializeField]
-    private GameObject colorPick;
-
-    [SerializeField]
-    private bool setFirst = false;
-
-   public ColorGroup colorGroup;
-
-    private void Start()
+    public class CharacterCreatorColorPaletteHandler : CharacterCreatorButtonHandler
     {
-        colorPick.SetActive(false);
+        [Required]
+        [SerializeField]
+        private CharacterCreatorColorPalette palette;
 
-        for(int i = 0; i < this.palette.colors.Count; i++)
+        [Required]
+        [SerializeField]
+        private CharacterCreatorColor template;
+
+        public ColorGroup colorGroup;
+
+        private Color currentColor;
+        private Color defaultColor = new Color(0, 0, 0, 0);
+
+        private void Awake()
         {
-            Color color = this.palette.colors[i];
+            for (int i = 0; i < this.palette.colors.Count; i++)
+            {
+                Color color = this.palette.colors[i];
+                CreateButton(color, i);
 
-            GameObject newColorPicker = Instantiate(this.colorPick, this.transform);            
+                if (HasColor(color)) SetCurrentColor(color);
+            }
 
-            if (i == 0 && this.setFirst) newColorPicker.GetComponent<ButtonExtension>().SetAsFirst();
+            Destroy(this.template.gameObject);
+        }
 
-            newColorPicker.SetActive(true);
+        private void CreateButton(Color color, int i)
+        {
+            CharacterCreatorColor colorOption = Instantiate(this.template, this.transform);
+            this.SetFirst(colorOption, i);
 
-            if (newColorPicker.transform.childCount > 0 && newColorPicker.transform.GetChild(0).GetComponent<Image>() != null)
-                newColorPicker.transform.GetChild(0).GetComponent<Image>().color = color;
+            colorOption.gameObject.SetActive(true);
+            colorOption.SetButton(color, this);
 
+            this.buttons.Add(colorOption);
+        }
+
+        private bool HasColor(Color color)
+        {
+            ColorGroupData data = this.mainMenu.playerPreset.GetColorGroupData(this.colorGroup);
+            if (data != null && data.color == color) return true;
+            return false;
+        }
+
+        public bool ContainsColor(Color color)
+        {
+            return this.currentColor == color;
+        }
+
+        private void SetCurrentColor(Color color)
+        {
+            if (this.currentColor == color) this.currentColor = this.defaultColor;
+            else this.currentColor = color;
+        }
+
+        public void UpdateColor(Color color)
+        {
+            SetCurrentColor(color);
+
+            if (this.currentColor == this.defaultColor)
+            {
+                if (this.palette.canRemove) this.mainMenu.playerPreset.RemoveColorGroup(this.colorGroup);
+                else this.mainMenu.playerPreset.AddColorGroup(this.colorGroup, this.palette.defaultColor);
+            }
+            else this.mainMenu.playerPreset.AddColorGroup(this.colorGroup, color);
+
+            this.UpdatePreview();
         }
     }
 }

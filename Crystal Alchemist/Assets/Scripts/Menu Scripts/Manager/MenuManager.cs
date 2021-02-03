@@ -1,72 +1,117 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using ExitGames.Client.Photon;
+using Sirenix.OdinInspector;
 
-public class MenuManager : MonoBehaviour
+namespace CrystalAlchemist
 {
-    private void Start()
+    public class MenuManager : MonoBehaviour
     {
-        MenuEvents.current.OnInventory += OpenInventory;
-        MenuEvents.current.OnPause += OpenPause;
-        MenuEvents.current.OnMap += OpenMap;
-        MenuEvents.current.OnSkills += OpenSkillBook;
-        MenuEvents.current.OnAttributes += OpenAttributes;
-        MenuEvents.current.OnDeath += OpenDeath;
-        MenuEvents.current.OnMiniGame += OpenMiniGame;
-        MenuEvents.current.OnEditor += OpenCharacterEditor;
-        MenuEvents.current.OnSave += OpenSavePoint;
-        MenuEvents.current.OnDialogBox += OpenDialogBox;
-        MenuEvents.current.OnMenuDialogBox += OpenMenuDialogBox;
-        MenuEvents.current.OnTutorial += OpenTutorial;
-    }
+        [BoxGroup("Required")]
+        [Required]
+        [SerializeField]
+        private StringValue teleportPath;
 
-    private void OnDestroy()
-    {
-        MenuEvents.current.OnInventory -= OpenInventory;
-        MenuEvents.current.OnPause -= OpenPause;
-        MenuEvents.current.OnMap -= OpenMap;
-        MenuEvents.current.OnSkills -= OpenSkillBook;
-        MenuEvents.current.OnAttributes -= OpenAttributes;
-        MenuEvents.current.OnDeath -= OpenDeath;
-        MenuEvents.current.OnMiniGame -= OpenMiniGame;
-        MenuEvents.current.OnEditor -= OpenCharacterEditor;
-        MenuEvents.current.OnSave -= OpenSavePoint;
-        MenuEvents.current.OnDialogBox -= OpenDialogBox;
-        MenuEvents.current.OnMenuDialogBox -= OpenMenuDialogBox;
-        MenuEvents.current.OnTutorial -= OpenTutorial;
-    }
+        private void Start()
+        {
+            if (!NetworkUtil.IsLocal()) return;
 
-    public void OpenInventory() => OpenScene("InventoryMenu");
+            MenuEvents.current.OnInventory += OpenInventory;
+            MenuEvents.current.OnPause += OpenPause;
+            MenuEvents.current.OnMap += OpenMap;
+            MenuEvents.current.OnSkills += OpenSkillBook;
+            MenuEvents.current.OnAttributes += OpenAttributes;
+            MenuEvents.current.OnDeath += OpenDeath;
+            MenuEvents.current.OnMiniGame += OpenMiniGame;
+            MenuEvents.current.OnEditor += OpenCharacterEditor;
+            MenuEvents.current.OnSave += OpenSavePoint;
+            MenuEvents.current.OnDialogBox += OpenDialogBox;
+            MenuEvents.current.OnMenuDialogBox += OpenMenuDialogBox; 
+            MenuEvents.current.OnJukeBox += OpenJukebox;
+            MenuEvents.current.OnOnlineMenu += OpenOnlineMenu;
+            MenuEvents.current.OnTutorial += OpenTutorial;
+            PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
+        }
 
-    public void OpenPause() => OpenScene("Pause");
+        private void OnDestroy()
+        {
+            if (!NetworkUtil.IsLocal()) return;
 
-    public void OpenMap() => OpenScene("Map");
+            MenuEvents.current.OnInventory -= OpenInventory;
+            MenuEvents.current.OnPause -= OpenPause;
+            MenuEvents.current.OnMap -= OpenMap;
+            MenuEvents.current.OnSkills -= OpenSkillBook;
+            MenuEvents.current.OnAttributes -= OpenAttributes;
+            MenuEvents.current.OnDeath -= OpenDeath;
+            MenuEvents.current.OnMiniGame -= OpenMiniGame;
+            MenuEvents.current.OnEditor -= OpenCharacterEditor;
+            MenuEvents.current.OnSave -= OpenSavePoint;
+            MenuEvents.current.OnDialogBox -= OpenDialogBox;
+            MenuEvents.current.OnMenuDialogBox -= OpenMenuDialogBox;
+            MenuEvents.current.OnJukeBox -= OpenJukebox;
+            MenuEvents.current.OnOnlineMenu -= OpenOnlineMenu;
+            MenuEvents.current.OnTutorial -= OpenTutorial;
+            PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
+        }
 
-    public void OpenSkillBook() => OpenScene("Skillbook");
+        public void OpenInventory() => OpenScene("InventoryMenu");
 
-    public void OpenAttributes() => OpenScene("Attributes");
+        public void OpenPause() => OpenScene("Pause");
 
-    public void OpenCharacterEditor() => OpenScene("Character Creation");
+        public void OpenMap() => OpenScene("Map");
 
-    public void OpenSavePoint() => OpenScene("Savepoint");
+        public void OpenSkillBook() => OpenScene("Skillbook");
 
-    public void OpenDeath() => OpenScene("Death Screen");
+        public void OpenAttributes() => OpenScene("Attributes");
 
-    public void OpenMiniGame() => OpenScene("Minigame");
+        public void OpenCharacterEditor() => OpenScene("Character Creation");
 
-    public void OpenDialogBox() => OpenScene("DialogBox");
+        public void OpenSavePoint() => OpenScene("Savepoint");
 
-    public void OpenMenuDialogBox() => OpenSceneAdditive("MenuDialogBox");
+        public void OpenDeath() => OpenScene("Death Screen");
 
-    public void OpenTutorial() => OpenScene("Tutorial");
+        public void OpenMiniGame() => OpenScene("Minigame");
 
-    private void OpenScene(string scene)
-    {
-        if (UnityUtil.SceneExists(scene)) SceneManager.UnloadSceneAsync(scene);
-        else SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
-    }
+        public void OpenDialogBox() => OpenScene("DialogBox");
 
-    private void OpenSceneAdditive(string scene)
-    {
-        SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        public void OpenMenuDialogBox() => OpenSceneAdditive("MenuDialogBox");
+
+        public void OpenJukebox() => OpenScene("Jukebox");
+
+        public void OpenTutorial() => OpenScene("Tutorial");
+
+        public void OpenOnlineMenu() => OpenScene("Online Menu");
+
+        private void OpenScene(string scene)
+        {
+            if (UnityUtil.SceneExists(scene)) SceneManager.UnloadSceneAsync(scene);
+            else SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        }
+
+        private void OpenSceneAdditive(string scene)
+        {
+            SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        }
+
+        private void NetworkingEvent(EventData obj)
+        {
+            if (obj.Code == NetworkUtil.SET_NEXT_TELEPORT)
+            {
+                object[] datas = (object[])obj.CustomData;
+                string path = (string)datas[0];
+
+                this.teleportPath.SetValue(path);                
+            }
+            else if (obj.Code == NetworkUtil.READY_SHOW)
+            {
+                object[] datas = (object[])obj.CustomData;
+                string path = (string)datas[0];
+
+                this.teleportPath.SetValue(path);
+
+                OpenScene("Teleport");
+            }            
+        }
     }
 }

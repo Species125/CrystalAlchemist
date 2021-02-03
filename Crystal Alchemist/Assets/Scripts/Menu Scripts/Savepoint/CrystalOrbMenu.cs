@@ -1,41 +1,43 @@
 ﻿using Sirenix.OdinInspector;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CrystalOrbMenu : MenuBehaviour
+namespace CrystalAlchemist
 {
-    [BoxGroup("Crystal Orb Menu")]
-    [Required]
-    [SerializeField]
-    private PlayerTeleportList teleportList;
-
-    [BoxGroup("Crystal Orb Menu")]
-    [Required]
-    [SerializeField]
-    private SavePointInfo savePointInfo;
-
-    [BoxGroup("Crystal Orb Menu")]
-    [Required]
-    [SerializeField]
-    private Image star;
-    
-
-    public override void Start()
+    public class CrystalOrbMenu : MenuBehaviour
     {
-        base.Start();
-        SetStar();
-    }
+        [BoxGroup("Crystal Orb Menu")]
+        [Required]
+        [SerializeField]
+        private PlayerTeleportList teleportList;
 
-    public void SetStar()
-    {
-        if (teleportList.HasLast()
-            && teleportList.GetLastTeleport().Exists(savePointInfo.stats.teleportName)) star.gameObject.SetActive(true);
-        else star.gameObject.SetActive(false);
-    }
+        [BoxGroup("Crystal Orb Menu")]
+        [Required]
+        [SerializeField]
+        private SavePointInfo savePointInfo;
 
-    public void SetLastTeleport()
-    {
-        this.teleportList.SetLastTeleport(this.savePointInfo.stats);
+        [BoxGroup("Crystal Orb Menu")]
+        [Required]
+        [SerializeField]
+        private Image star;
+
+
+        public override void Start()
+        {
+            base.Start();
+            SetStar();
+        }
+
+        public void SetStar()
+        {
+            if (teleportList.HasReturn()
+                && teleportList.GetReturnTeleport().Exists(savePointInfo.stats.teleportName)) star.gameObject.SetActive(true);
+            else star.gameObject.SetActive(false);
+        }
+
+        public void SetLastTeleport()
+        {
+            this.teleportList.SetReturnTeleport(this.savePointInfo.stats);
+        }
     }
 }

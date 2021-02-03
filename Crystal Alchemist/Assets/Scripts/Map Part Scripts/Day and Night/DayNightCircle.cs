@@ -1,27 +1,29 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-[RequireComponent(typeof(Light2D))]
-public class DayNightCircle : MonoBehaviour
+namespace CrystalAlchemist
 {
-    private Light2D Lighting;
-    private bool isRunning = false;
-    private TimeValue timeValue;
-
-    private void Awake()
+    [RequireComponent(typeof(Light2D))]
+    public class DayNightCircle : MonoBehaviour
     {
-        this.Lighting = this.GetComponent<Light2D>();
-        this.timeValue = MasterManager.timeValue;
+        private Light2D Lighting;
+        private bool isRunning = false;
+        private TimeValue timeValue;
+
+        private void Awake()
+        {
+            this.Lighting = this.GetComponent<Light2D>();
+            this.timeValue = MasterManager.timeValue;
+        }
+
+        private void Start()
+        {
+            GameEvents.current.OnNightChange += changeColor;
+            changeColor();
+        }
+
+        private void OnDestroy() => GameEvents.current.OnNightChange -= changeColor;
+
+        public void changeColor() => Lighting.color = this.timeValue.GetColor();
     }
-
-    private void Start()
-    {
-        GameEvents.current.OnTimeChanged += changeColor;
-        changeColor();
-    }
-
-    private void OnDestroy() => GameEvents.current.OnTimeChanged -= changeColor;
-
-    public void changeColor() => Lighting.color = this.timeValue.GetColor();    
 }

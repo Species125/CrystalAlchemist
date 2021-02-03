@@ -12,23 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266771f26e0200047a77d2d39c8b8900, type: 3}
   m_Name: Steinwand
   m_EditorClassIdentifier: 
-  abilityName: Steinwand
-  abilityNameEnglish: Stone Wall
   skill: {fileID: 8843811712285971331, guid: 00d71e733b0c7114a806e954775ad101, type: 3}
   useTargetSystem: 0
   targetingProperty: {fileID: 0}
+  useIndicator: 0
+  indicator:
+    indicatorProperty: {fileID: 0}
   hasSkillBookInfo: 1
+  icon: {fileID: 0}
   info: {fileID: 11400000, guid: 4745728f664309f4a87d5d80a5cad466, type: 2}
   cooldown: 1
   hasMaxDuration: 1
-  maxDuration: 30
-  rapidFireDelay: 1
+  maxDuration: 0.5
+  hasDelay: 0
+  delay: 1
   hasCastTime: 1
   castTime: 2
   showCastbar: 1
+  castAnimation: {fileID: 0}
   hasMaxAmount: 0
   maxAmount: 1
-  requirements: 0
+  requirements: {fileID: 0}
   isRapidFire: 0
   remoteActivation: 0
   deactivateButtonUp: 0
@@ -42,3 +46,6 @@ MonoBehaviour:
   holdTimer: 0
   state: 2
   enabled: 1
+  active: 1
+  sender: {fileID: 0}
+  activeAnimation: {fileID: 0}

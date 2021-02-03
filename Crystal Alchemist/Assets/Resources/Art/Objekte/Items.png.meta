@@ -121,7 +121,7 @@ TextureImporter:
     second: Steintafeln
   - first:
       213: 2513675393388920829
-    second: Spirit 1
+    second: Spirit Kern
   - first:
       213: -1268934700509582651
     second: Karte small
@@ -130,19 +130,28 @@ TextureImporter:
     second: Karte Blatt
   - first:
       213: 8033092973025764044
-    second: Spirit 2
+    second: Spirit Ring 1
   - first:
       213: 4337684191699249041
-    second: Spirit 3
+    second: Spirit Ring 2
   - first:
       213: 160392798892558373
-    second: Spirit 4
+    second: Spirit Ring 3
   - first:
       213: 2614719038445677065
-    second: Spirit 5
+    second: Spirit Ring 4
   - first:
       213: -1740157615657646003
     second: Coin Icon
+  - first:
+      213: -488721925442295091
+    second: Spirit Ring 5
+  - first:
+      213: -7573354855677281409
+    second: Amulette small
+  - first:
+      213: 1801263428120863714
+    second: Amulette
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -196,6 +205,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -902,7 +913,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spirit 1
+      name: Spirit Kern
       rect:
         serializedVersion: 2
         x: 64
@@ -965,7 +976,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spirit 2
+      name: Spirit Ring 1
       rect:
         serializedVersion: 2
         x: 80
@@ -986,7 +997,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spirit 3
+      name: Spirit Ring 2
       rect:
         serializedVersion: 2
         x: 96
@@ -1007,7 +1018,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spirit 4
+      name: Spirit Ring 3
       rect:
         serializedVersion: 2
         x: 112
@@ -1028,7 +1039,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spirit 5
+      name: Spirit Ring 4
       rect:
         serializedVersion: 2
         x: 128
@@ -1069,6 +1080,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Spirit Ring 5
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 192
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dca21188ff5b739f0800000000000000
+      internalID: -488721925442295091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amulette small
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b306552e906e690800000000000000
+      internalID: -7573354855677281409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amulette
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e3eb0c5b8f5ff810800000000000000
+      internalID: 1801263428120863714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1078,7 +1152,9 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: abf20b6f9dad80c4c98046b2e845f7f6, type: 3}
+      name: _Emission
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 
-public class SkillModifier : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [HideInInspector]
-    public Skill skill;
-
-    private void Awake()
+    public class SkillModifier : MonoBehaviour
     {
-        this.skill = this.GetComponent<Skill>();
+        [HideInInspector]
+        public Skill skill;
+
+        private void Awake()
+        {
+            this.skill = this.GetComponent<Skill>();
+        }
     }
 }

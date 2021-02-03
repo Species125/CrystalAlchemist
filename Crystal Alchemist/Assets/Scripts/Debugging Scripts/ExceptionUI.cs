@@ -1,17 +1,21 @@
-﻿using TMPro;
+﻿
+using TMPro;
 using UnityEngine;
 
-public class ExceptionUI : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private DebugLog log;
+    public class ExceptionUI : MonoBehaviour
+    {
+        [SerializeField]
+        private DebugLog log;
 
-    [SerializeField]
-    private DebugSettings settings;
+        [SerializeField]
+        private DebugSettings settings;
 
-    [SerializeField]
-    private TextMeshProUGUI errorText;
+        [SerializeField]
+        private TextMeshProUGUI errorText;
 
-    [SerializeField]
-    private TextMeshProUGUI errorCount;
+        [SerializeField]
+        private TextMeshProUGUI errorCount;
+    }
 }

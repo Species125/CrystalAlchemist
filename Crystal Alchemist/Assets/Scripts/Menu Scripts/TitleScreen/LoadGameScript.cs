@@ -1,22 +1,24 @@
-﻿using UnityEngine.SceneManagement;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class LoadGameScript : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private PlayerSaveGame saveGame;
-
-    public void LoadGame(SaveSlot slot)
+    public class LoadGameScript : MonoBehaviour
     {
-        if (slot != null && slot.data != null)
+        [SerializeField]
+        private PlayerSaveGame saveGame;
+
+        public void LoadGame(SaveSlot slot)
         {
-            Cursor.visible = false;
-            LoadSystem.loadPlayerData(this.saveGame, slot.data, AfterLoad); //load from data into savegame         
+            if (slot != null && slot.data != null)
+            {
+                //Cursor.visible = false;
+                LoadSystem.loadPlayerData(this.saveGame, slot.data, AfterLoad); //load from data into savegame         
+            }
         }
-    }
 
-    private void AfterLoad()
-    {
-        SceneManager.LoadSceneAsync(this.saveGame.teleportList.GetNextTeleport().scene);
+        private void AfterLoad()
+        {
+            GameEvents.current.DoChangeScene(this.saveGame.teleportList.GetLatestTeleport().scene);
+        }
     }
 }

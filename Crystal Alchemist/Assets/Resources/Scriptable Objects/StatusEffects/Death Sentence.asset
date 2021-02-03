@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b22a3ebb90863458dba94076083e2b, type: 3}
   m_Name: Death Sentence
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/StatusEffects/Death Sentence
   hasDuration: 1
   maxDuration: 21
   canOverride: 0
@@ -24,7 +25,8 @@ MonoBehaviour:
   statusEffectType: 1
   statusEffectEvents:
   - trigger:
-      triggerType: 5
+      triggerType: 6
+      mode: 2
       value: 12
     actions:
     - actionType: 0
@@ -32,6 +34,7 @@ MonoBehaviour:
       - resourceType: 1
         item: {fileID: 0}
         keyItem: {fileID: 0}
+        statusEffect: {fileID: 0}
         amount: -9999
       speed: 0
       time: 0
@@ -44,4 +47,3 @@ MonoBehaviour:
   statusEffectObject: {fileID: 6292753503574655383, guid: 68fddcb9815147e4a9ed24d6c61fbda0,
     type: 3}
   iconSprite: {fileID: 21300010, guid: 0ca4149b67557c449b0110d5938780ba, type: 3}
-  updateUI: {fileID: 11400000, guid: 4318c0ff35d606e4b8e9b01338571f0b, type: 2}

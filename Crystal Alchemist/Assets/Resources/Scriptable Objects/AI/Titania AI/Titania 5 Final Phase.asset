@@ -12,88 +12,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76a19f9cb4d358498823753290d243d, type: 3}
   m_Name: Titania 5 Final Phase
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/AI/Titania AI/Titania 5 Final Phase
   actions:
-  - type: 4
+  - type: 3
     position: {x: 0, y: 0}
     translationID: 
     duration: 4
     nextPhase: {fileID: 0}
     animations: 
     isTrigger: 0
-    ability: {fileID: 0}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 1
-    delay: 0
-    sequence: {fileID: 11400000, guid: 68a4311efa353df4b8e8f60fbc4a45e7, type: 2}
+    ability: {fileID: 11400000, guid: d138a8fe0957a8c499de8fa0ada66512, type: 2}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
+    value: 0
+    signal: {fileID: 0}
+    wait: 8
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
+  - type: 3
+    position: {x: 0, y: 0}
+    translationID: 
+    duration: 4
+    nextPhase: {fileID: 0}
+    animations: 
+    isTrigger: 0
+    ability: {fileID: 11400000, guid: 013f95fe1f8bf734b8e84b9435457209, type: 2}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
     value: 0
     signal: {fileID: 0}
     wait: 10
     mode: 0
     fadeIn: 0
     fadeOut: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
-  - type: 4
+    music: {fileID: 0}
+  - type: 3
     position: {x: 0, y: 0}
     translationID: 
     duration: 4
     nextPhase: {fileID: 0}
     animations: 
     isTrigger: 0
-    ability: {fileID: 0}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 1
-    delay: 0
-    sequence: {fileID: 11400000, guid: b9a9b1d164df6c24a8fa78aac55d4571, type: 2}
-    value: 0
-    signal: {fileID: 0}
-    wait: 12
-    mode: 0
-    fadeIn: 0
-    fadeOut: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
-  - type: 4
-    position: {x: 0, y: 0}
-    translationID: 
-    duration: 4
-    nextPhase: {fileID: 0}
-    animations: 
-    isTrigger: 0
-    ability: {fileID: 0}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 1
-    delay: 3
-    sequence: {fileID: 11400000, guid: 1f87c87bdd19ecd448ac3089d6ec385f, type: 2}
+    ability: {fileID: 11400000, guid: 315e5317b0033c14c8c59de11cab41fe, type: 2}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
     value: 0
     signal: {fileID: 0}
     wait: 0
     mode: 0
     fadeIn: 0
     fadeOut: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
+    music: {fileID: 0}
   - type: 3
     position: {x: 0, y: 0}
     translationID: 
@@ -102,25 +79,17 @@ MonoBehaviour:
     animations: 
     isTrigger: 0
     ability: {fileID: 11400000, guid: 026753ea619d6c341bdd4e7e1929e785, type: 2}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 1
-    delay: 4
-    sequence: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
     value: 0
     signal: {fileID: 0}
     wait: 0
     mode: 0
     fadeIn: 0
     fadeOut: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
+    music: {fileID: 0}
   - type: 3
     position: {x: 0, y: 0}
     translationID: 
@@ -128,26 +97,30 @@ MonoBehaviour:
     nextPhase: {fileID: 0}
     animations: 
     isTrigger: 0
-    ability: {fileID: 11400000, guid: 017f55cb04fe1f9438ebb3f785c376bf, type: 2}
-    overrideCastTime: 1
-    castTime: 2
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 1
-    repeat: 1
-    keepCast: 1
-    amount: 20
-    delay: 0
-    sequence: {fileID: 0}
+    ability: {fileID: 11400000, guid: e8ea47b80804fe3479b56e105db93424, type: 2}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides:
+    - type: 0
+      value: 0
+      time: 2
+      amount: 0
+      keepCast: 0
+      delay: 0
+    - type: 4
+      value: 0
+      time: 0
+      amount: 20
+      keepCast: 1
+      delay: 0
     value: 0
     signal: {fileID: 0}
     wait: 0
     mode: 0
     fadeIn: 0
     fadeOut: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
+    music: {fileID: 0}
   - type: 3
     position: {x: 0, y: 0}
     translationID: 
@@ -156,25 +129,17 @@ MonoBehaviour:
     animations: 
     isTrigger: 0
     ability: {fileID: 11400000, guid: c2c6fae5b31cba447a750da370a09327, type: 2}
-    overrideCastTime: 0
-    castTime: 2
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 1
-    keepCast: 0
-    amount: 3
-    delay: 2
-    sequence: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
     value: 0
     signal: {fileID: 0}
     wait: 0
     mode: 0
     fadeIn: 0
     fadeOut: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
+    music: {fileID: 0}
   - type: 3
     position: {x: 0, y: 0}
     translationID: 
@@ -183,25 +148,17 @@ MonoBehaviour:
     animations: 
     isTrigger: 0
     ability: {fileID: 11400000, guid: 026753ea619d6c341bdd4e7e1929e785, type: 2}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 1
-    delay: 4
-    sequence: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
     value: 0
     signal: {fileID: 0}
     wait: 0
     mode: 0
     fadeIn: 0
     fadeOut: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
+    music: {fileID: 0}
   - type: 3
     position: {x: 0, y: 0}
     translationID: 
@@ -209,80 +166,49 @@ MonoBehaviour:
     nextPhase: {fileID: 0}
     animations: 
     isTrigger: 0
-    ability: {fileID: 11400000, guid: 017f55cb04fe1f9438ebb3f785c376bf, type: 2}
-    overrideCastTime: 1
-    castTime: 2
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 1
-    repeat: 1
-    keepCast: 1
-    amount: 20
-    delay: 0
-    sequence: {fileID: 0}
+    ability: {fileID: 11400000, guid: e8ea47b80804fe3479b56e105db93424, type: 2}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides:
+    - type: 0
+      value: 0
+      time: 2
+      amount: 0
+      keepCast: 0
+      delay: 0
+    - type: 4
+      value: 0
+      time: 0
+      amount: 20
+      keepCast: 1
+      delay: 0
     value: 0
     signal: {fileID: 0}
     wait: 0
     mode: 0
     fadeIn: 0
     fadeOut: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
+    music: {fileID: 0}
   - type: 3
     position: {x: 0, y: 0}
     translationID: 
-    duration: 4
+    duration: 0
     nextPhase: {fileID: 0}
     animations: 
     isTrigger: 0
-    ability: {fileID: 11400000, guid: 5036dbf0faf537e4b913a281b15a575a, type: 2}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 1
-    delay: 0
-    sequence: {fileID: 0}
+    ability: {fileID: 11400000, guid: c2c6fae5b31cba447a750da370a09327, type: 2}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
     value: 0
     signal: {fileID: 0}
     wait: 0
     mode: 0
     fadeIn: 0
     fadeOut: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
-  - type: 4
-    position: {x: 0, y: 0}
-    translationID: 
-    duration: 4
-    nextPhase: {fileID: 0}
-    animations: 
-    isTrigger: 0
-    ability: {fileID: 0}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 1
-    delay: 0
-    sequence: {fileID: 11400000, guid: 4bfa116ddf5c0ac47a6035434c01731c, type: 2}
-    value: 0
-    signal: {fileID: 0}
-    wait: 0
-    mode: 0
-    fadeIn: 0
-    fadeOut: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
+    music: {fileID: 0}
   - type: 3
     position: {x: 0, y: 0}
     translationID: 
@@ -291,25 +217,55 @@ MonoBehaviour:
     animations: 
     isTrigger: 0
     ability: {fileID: 11400000, guid: 5036dbf0faf537e4b913a281b15a575a, type: 2}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 1
-    delay: 0
-    sequence: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
     value: 0
     signal: {fileID: 0}
-    wait: 6
+    wait: 0
     mode: 0
     fadeIn: 0
     fadeOut: 0
-    start: {fileID: 0}
-    loop: {fileID: 0}
+    music: {fileID: 0}
+  - type: 3
+    position: {x: 0, y: 0}
+    translationID: 
+    duration: 4
+    nextPhase: {fileID: 0}
+    animations: 
+    isTrigger: 0
+    ability: {fileID: 11400000, guid: fda4235717a0d88438abdfd211620fbd, type: 2}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
+    value: 0
+    signal: {fileID: 0}
+    wait: 0
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
+  - type: 3
+    position: {x: 0, y: 0}
+    translationID: 
+    duration: 4
+    nextPhase: {fileID: 0}
+    animations: 
+    isTrigger: 0
+    ability: {fileID: 11400000, guid: 5036dbf0faf537e4b913a281b15a575a, type: 2}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
+    value: 0
+    signal: {fileID: 0}
+    wait: 4
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
   loopActions: 1
   events:
   - triggers:
@@ -326,26 +282,18 @@ MonoBehaviour:
       animations: 
       isTrigger: 0
       ability: {fileID: 0}
-      overrideCastTime: 0
-      castTime: 0
-      overrideShowCastBar: 0
-      showCastBar: 0
-      overrideCooldown: 0
-      cooldown: 0
-      repeat: 0
-      keepCast: 0
-      amount: 1
-      delay: 0
-      sequence: {fileID: 0}
+      targetMode: 0
+      multiDelay: 0
+      multiCast: 0
+      overrides: []
       value: 0
       signal: {fileID: 0}
       wait: 0
       mode: 0
       fadeIn: 0
       fadeOut: 0
-      start: {fileID: 0}
-      loop: {fileID: 0}
-    - type: 5
+      music: {fileID: 0}
+    - type: 4
       position: {x: 0, y: 0}
       translationID: 
       duration: 4
@@ -353,27 +301,63 @@ MonoBehaviour:
       animations: 
       isTrigger: 0
       ability: {fileID: 0}
-      overrideCastTime: 0
-      castTime: 0
-      overrideShowCastBar: 0
-      showCastBar: 0
-      overrideCooldown: 0
-      cooldown: 0
-      repeat: 0
-      keepCast: 0
-      amount: 1
-      delay: 0
-      sequence: {fileID: 0}
+      targetMode: 0
+      multiDelay: 0
+      multiCast: 0
+      overrides: []
       value: 0
       signal: {fileID: 0}
       wait: 0
       mode: 0
       fadeIn: 0
       fadeOut: 0
-      start: {fileID: 0}
-      loop: {fileID: 0}
+      music: {fileID: 0}
     repeatEvent: 0
     interruptCurrentAction: 1
     eventCooldown: 0
     requirementsNeeded: 0
     delay: 0.1
+  currentAction:
+    type: 0
+    position: {x: 0, y: 0}
+    translationID: 
+    duration: 0
+    nextPhase: {fileID: 0}
+    animations: 
+    isTrigger: 0
+    ability: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
+    value: 0
+    signal: {fileID: 0}
+    wait: 0
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
+  currentDialog:
+    type: 0
+    position: {x: 0, y: 0}
+    translationID: 
+    duration: 0
+    nextPhase: {fileID: 0}
+    animations: 
+    isTrigger: 0
+    ability: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
+    value: 0
+    signal: {fileID: 0}
+    wait: 0
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
+  eventActions: []
+  index: 0
+  eventIndex: 0
+  loops: 0

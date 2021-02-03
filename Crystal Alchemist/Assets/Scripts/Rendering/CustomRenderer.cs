@@ -1,66 +1,79 @@
-﻿using UnityEngine;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
-public class CustomRenderer : MonoBehaviour
+namespace CrystalAlchemist
 {
-    public Material material;
-    public SpriteRenderer spriteRenderer;
-
-    [SerializeField]
-    private bool useGlow = false;
-
-    [SerializeField]
-    [ShowIf("useGlow")]
-    private Color selectColor = Color.white;
-
-    [ShowIf("useGlow")]
-    [SerializeField]
-    [Range(0,1)]
-    private float precision = 0f;
-
-    [ShowIf("useGlow")]
-    [SerializeField]
-    [ColorUsage(true, true)]
-    private Color glowColor = Color.white;
-
-    [SerializeField]
-    private bool invert = false;
-
-    private void Start()
+    [RequireComponent(typeof(SpriteRenderer))]
+    public class CustomRenderer : MonoBehaviour
     {
-        this.spriteRenderer = this.GetComponent<SpriteRenderer>();
-        this.material = this.GetComponent<SpriteRenderer>().material;
-        AddGlow();
-    }
+        [HideInInspector]
+        public Material material;
 
-    [Button]
-    private void Check()
-    {
-        this.material = this.GetComponent<SpriteRenderer>().sharedMaterial;
-        AddGlow();
-        InvertColors(this.invert);
-    }
+        [HideInInspector]
+        public SpriteRenderer spriteRenderer;
 
-    public void SetGlowColor(Color color)
-    {
-        if (color == null) return;
-        this.glowColor = color;
+        [BoxGroup("Renderer")]
+        [SerializeField]
+        private bool useGlow = false;
 
-        this.material = this.GetComponent<SpriteRenderer>().material;
-        AddGlow();
-    }
+        [BoxGroup("Renderer")]
+        [ShowIf("useGlow")]
+        [SerializeField]
+        [ColorUsage(true, true)]
+        private Color glowColor = Color.white;
 
-    public void InvertColors(bool invert)
-    {
-        this.material.SetFloat("_Invert", invert ? 1f : 0f);
-    }
+        [BoxGroup("Renderer")]
+        [SerializeField]
+        private bool invert = false;
 
-    private void AddGlow()
-    {
-        this.material.SetFloat("_Use_Glow", this.useGlow ? 1f : 0f);
-        this.material.SetFloat("_Precision", this.precision);
-        this.material.SetColor("_SelectGlow", this.selectColor);
-        this.material.SetColor("_GlowColor", this.glowColor);
+        public virtual void Awake()
+        {
+            if (this.spriteRenderer == null) this.spriteRenderer = this.GetComponent<SpriteRenderer>();
+            this.material = this.spriteRenderer.material;
+        }
+
+        public virtual void Start()
+        {
+            AddGlow();
+        }
+
+        public void SetGlow(bool useGlow, Color glowColor)
+        {
+            this.useGlow = useGlow;
+            this.glowColor = glowColor;
+        }
+
+        public void InvertColors(bool invert)
+        {
+            if (this.material == null) return;
+            this.material.SetFloat("_Invert", invert ? 1f : 0f);
+        }
+
+        private void AddGlow()
+        {
+            if (this.material == null) return;
+            this.material.SetFloat("_UseGlow", this.useGlow ? 1f : 0f);
+            this.material.SetColor("_GlowColor", this.glowColor);
+        }
+
+        [Button]
+        public virtual void Test()
+        {
+            SpriteRenderer spriteRenderer = this.GetComponent<SpriteRenderer>();
+            Material mat = spriteRenderer.sharedMaterial;
+            mat.SetFloat("_Invert", invert ? 1f : 0f);
+            mat.SetFloat("_UseGlow", this.useGlow ? 1f : 0f);
+            mat.SetColor("_GlowColor", this.glowColor);
+        }
+
+        [Button]
+        public virtual void Clear()
+        {
+            SpriteRenderer spriteRenderer = this.GetComponent<SpriteRenderer>();
+            Material mat = spriteRenderer.sharedMaterial;
+            mat.SetFloat("_Invert", 0f);
+            mat.SetFloat("_UseGlow", 0f);
+            mat.SetColor("_GlowColor", Color.black);
+        }
     }
 }

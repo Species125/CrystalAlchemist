@@ -1,14 +1,18 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
-public class SkillStandardHit : SkillHitTrigger
+namespace CrystalAlchemist
 {
-    public virtual void OnTriggerStay2D(Collider2D hittedCharacter)
+    public class SkillStandardHit : SkillHitTrigger
     {
-        if (CollisionUtil.checkCollision(hittedCharacter, this.skill)) this.skill.hitIt(hittedCharacter);
-    }
+        private void OnTriggerStay2D(Collider2D hittedCharacter)
+        {
+            if (CollisionUtil.CheckCollision(hittedCharacter, this.skill)) this.skill.hitIt(hittedCharacter);
+        }
 
-    public virtual void OnTriggerEnter2D(Collider2D hittedCharacter)
-    {
-        if (CollisionUtil.checkCollision(hittedCharacter, this.skill)) this.skill.hitIt(hittedCharacter);
+        private void OnTriggerEnter2D(Collider2D hittedCharacter)
+        {
+            if (CollisionUtil.CheckCollision(hittedCharacter, this.skill)) this.skill.hitIt(hittedCharacter);
+        }
     }
 }

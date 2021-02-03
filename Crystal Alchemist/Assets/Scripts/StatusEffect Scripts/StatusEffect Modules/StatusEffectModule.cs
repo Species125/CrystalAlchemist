@@ -1,8 +1,9 @@
-﻿using UnityEngine;
-
-public interface StatusEffectModule
+﻿namespace CrystalAlchemist
 {
-    void DoAction();
+    public interface StatusEffectModule
+    {
+        void DoAction();
 
-    void DoDestroy();
+        void DoDestroy();
+    }
 }

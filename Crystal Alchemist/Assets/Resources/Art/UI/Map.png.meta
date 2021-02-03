@@ -29,8 +29,17 @@ TextureImporter:
   - first:
       213: -135665275369439952
     second: Boss Marker
+  - first:
+      213: 6732742066884364779
+    second: Savepoint Marker
+  - first:
+      213: -7324858090283886608
+    second: Teleport
+  - first:
+      213: 4945718543514210754
+    second: Guest
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -50,6 +59,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -81,9 +91,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -116,10 +130,10 @@ TextureImporter:
       name: Background
       rect:
         serializedVersion: 2
-        x: 0
-        y: 144
-        width: 144
-        height: 96
+        x: 32
+        y: 136
+        width: 176
+        height: 104
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,7 +151,7 @@ TextureImporter:
       name: Exit Map
       rect:
         serializedVersion: 2
-        x: 144
+        x: 0
         y: 192
         width: 16
         height: 16
@@ -158,7 +172,7 @@ TextureImporter:
       name: Point Marker
       rect:
         serializedVersion: 2
-        x: 144
+        x: 0
         y: 176
         width: 16
         height: 16
@@ -179,7 +193,7 @@ TextureImporter:
       name: Kompass
       rect:
         serializedVersion: 2
-        x: 144
+        x: 0
         y: 144
         width: 32
         height: 32
@@ -200,7 +214,7 @@ TextureImporter:
       name: House Marker
       rect:
         serializedVersion: 2
-        x: 160
+        x: 16
         y: 176
         width: 16
         height: 16
@@ -221,7 +235,7 @@ TextureImporter:
       name: Player Marker
       rect:
         serializedVersion: 2
-        x: 144
+        x: 0
         y: 208
         width: 16
         height: 16
@@ -242,7 +256,7 @@ TextureImporter:
       name: Treasure Marker
       rect:
         serializedVersion: 2
-        x: 160
+        x: 16
         y: 192
         width: 16
         height: 16
@@ -263,7 +277,7 @@ TextureImporter:
       name: Enemy Marker
       rect:
         serializedVersion: 2
-        x: 144
+        x: 0
         y: 224
         width: 16
         height: 16
@@ -284,7 +298,7 @@ TextureImporter:
       name: Boss Marker
       rect:
         serializedVersion: 2
-        x: 160
+        x: 16
         y: 224
         width: 16
         height: 16
@@ -297,6 +311,69 @@ TextureImporter:
       bones: []
       spriteID: 03dbf3d96250e1ef0800000000000000
       internalID: -135665275369439952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Savepoint Marker
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be9c8fcfc318f6d50800000000000000
+      internalID: 6732742066884364779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teleport
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f79b7a2060e85a90800000000000000
+      internalID: -7324858090283886608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guest
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c11a31dfc8b2a440800000000000000
+      internalID: 4945718543514210754
       vertices: []
       indices: 
       edges: []

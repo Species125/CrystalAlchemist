@@ -1,21 +1,24 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class ImpactIndicator : GroundIndicator
+namespace CrystalAlchemist
 {
-    [BoxGroup("Main")]
-    [SerializeField]
-    [Required]
-    private new Collider2D collider;
-
-    public override void SetIndicator()
+    public class ImpactIndicator : GroundIndicator
     {
-        SetOuter();
-    }
+        [BoxGroup("Main")]
+        [SerializeField]
+        [Required]
+        private new Collider2D collider;
 
-    public override void SetOuter()
-    {
-        base.SetOuter();
-        this.outline.SetCollider(this.collider);
+        public override void SetIndicator()
+        {
+            SetOuter();
+        }
+
+        public override void SetOuter()
+        {
+            base.SetOuter();
+            this.outline.SetCollider(this.collider);
+        }
     }
 }

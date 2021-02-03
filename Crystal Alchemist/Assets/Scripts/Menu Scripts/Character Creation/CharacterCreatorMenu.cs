@@ -1,72 +1,37 @@
-﻿using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
-using Sirenix.OdinInspector;
-using TMPro;
-using UnityEngine.UI;
 
-public class CharacterCreatorMenu : MenuBehaviour
+namespace CrystalAlchemist
 {
-    [BoxGroup("Character Creator")]
-    [Required]
-    public CharacterPreset creatorPreset;
-
-    [BoxGroup("Character Creator")]
-    [Required]
-    [SerializeField]
-    private PlayerSaveGame saveGame;
-
-    [BoxGroup("Character Creator")]
-    [Required]
-    [SerializeField]
-    private SimpleSignal presetSignal;
-
-    [BoxGroup("Character Creator")]
-    [Required]
-    [SerializeField]
-    private List<CharacterCreatorPartProperty> properties = new List<CharacterCreatorPartProperty>();
-
-    public override void Start()
+    public class CharacterCreatorMenu : MenuBehaviour
     {
-        base.Start();
-        GameUtil.setPreset(this.saveGame.playerPreset, this.creatorPreset);
-        updateGear();
-        updatePreview();
-    }
+        [BoxGroup("Character Creator")]
+        [Required]
+        public CharacterPreset playerPreset;
 
-    public void Confirm()
-    {
-        GameUtil.setPreset(this.creatorPreset, this.saveGame.playerPreset); //save Preset 
-        updatePreview();
-        base.ExitMenu();
-    }
+        private CharacterPreset backup;
 
-    public void updatePreview()
-    {
-        this.presetSignal.Raise();
-    }
 
-    public void updateGear()
-    {
-        List<CharacterCreatorGear> gearButtons = new List<CharacterCreatorGear>();
-        UnityUtil.GetChildObjects<CharacterCreatorGear>(this.transform, gearButtons);
-
-        foreach (CharacterCreatorPartProperty part in this.properties)
+        public override void Start()
         {
-            //enableGearButton(gearButtons, part);
-            CharacterPartData data = this.creatorPreset.GetCharacterPartData(part.parentName, part.partName);
-            bool enableIt = part.enableIt(this.creatorPreset.getRace(), data);
+            base.Start();
 
-            if (enableIt) this.creatorPreset.AddCharacterPartData(part.parentName, part.partName);
-            else this.creatorPreset.RemoveCharacterPartData(part.parentName, part.partName);
+            this.backup = ScriptableObject.CreateInstance<CharacterPreset>();
+            GameUtil.SetPreset(this.playerPreset, this.backup);
         }
-    }
 
-    public CharacterCreatorPartProperty GetProperty(string name, string parent)
-    {
-        foreach (CharacterCreatorPartProperty part in this.properties)
+        public void Abort()
         {
-            if (part.partName == name && part.parentName == parent) return part;
+            Undo();
+            base.ExitMenu();
         }
-        return null;
+
+        public void Undo()
+        {
+            GameUtil.SetPreset(this.backup, this.playerPreset);
+            UpdatePreview();
+        }
+
+        public void UpdatePreview() => GameEvents.current.DoPresetChange();
     }
 }

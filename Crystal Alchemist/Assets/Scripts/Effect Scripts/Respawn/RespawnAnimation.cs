@@ -1,46 +1,52 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-public class RespawnAnimation : MonoBehaviour
+namespace CrystalAlchemist
 {
-    private Character character;
-    private Animator animator;
-
-    private void Awake() => this.animator = this.GetComponent<Animator>();    
-
-    public void Initialize(Character character) => this.character = character;      
-
-    public void Reverse(Character character)
+    [RequireComponent(typeof(Animator))]
+    public class RespawnAnimation : NetworkBehaviour
     {
-        this.character = character;
-        AnimatorUtil.SetAnimatorParameter(animator, "Reverse");        
-    }
+        private Character character;
+        private Animator animator;
+        private bool isReverse = false;
 
-    public float getAnimationLength()
-    {
-        return AnimatorUtil.GetAnimationLength(this.animator);
-    }
+        private void Awake() => this.animator = this.GetComponent<Animator>();
 
-    public void HideCharacter()
-    {
-        if (this.character != null) this.character.SetCharacterSprites(false);        
-    }
+        public void Initialize(Character character) => this.character = character;
 
-    public void ShowCharacter()
-    {
-        if (this.character != null) this.character.SetCharacterSprites(true);        
-    }
+        public void Reverse(Character character)
+        {
+            this.isReverse = true;
+            this.character = character;
+            AnimatorUtil.SetAnimatorParameter(animator, "Reverse");
+        }
 
-    public void PlayAnimation()
-    {
-        if (this.character != null) this.character.PlayRespawnAnimation();
-    }
+        public float getAnimationLength()
+        {
+            return AnimatorUtil.GetAnimationLength(this.animator);
+        }
 
-    public void PlaySoundEffect(AudioClip clip) => AudioUtil.playSoundEffect(clip);
+        public void HideCharacter()
+        {
+            if (this.character != null) this.character.SetCharacterSprites(false);
+        }
 
-    public void DestroyIt()
-    {
-        if (this.character != null) this.character.SpawnIn();        
-        Destroy(this.gameObject, 0.1f);
+        public void ShowCharacter()
+        {
+            if (this.character != null) this.character.SetCharacterSprites(true);
+        }
+
+        public void PlayAnimation()
+        {
+            if (this.character != null) this.character.PlayRespawnAnimation();
+        }
+
+        public void PlaySoundEffect(AudioClip clip) => AudioUtil.playSoundEffect(clip);
+
+        public void DestroyIt()
+        {
+            if (this.character != null && !this.isReverse) this.character.SpawnIn();
+            Destroy(this.gameObject, 0.1f);
+        }
     }
 }

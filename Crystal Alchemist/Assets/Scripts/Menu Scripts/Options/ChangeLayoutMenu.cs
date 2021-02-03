@@ -1,21 +1,30 @@
-﻿using UnityEngine;
+﻿
 
-public class ChangeLayoutMenu : OptionsSwitch
+using UnityEngine;
+
+namespace CrystalAlchemist
 {
-    private void OnEnable() => getLayout();    
-
-    private void getLayout()
+    public class ChangeLayoutMenu : OptionsSwitch
     {
-        if (MasterManager.settings.layoutType == LayoutType.keyboard) this.switchButtons(this.secondButton, this.firstButton);
-        else this.switchButtons(this.firstButton, this.secondButton);
-    }
+        private void OnEnable() => getLayout();
 
-    public void changeLayout(GameObject gameObject)
-    {
-        if (gameObject.name.ToLower() == "keyboard") MasterManager.settings.layoutType = LayoutType.keyboard;
-        else MasterManager.settings.layoutType = LayoutType.gamepad;
-        
-        getLayout();
-        SettingsEvents.current.DoLayoutChange();
+        private void getLayout()
+        {
+            if (MasterManager.settings.layoutType == InputDeviceType.keyboard)
+                this.switchButtons(this.secondButton, this.firstButton);
+            else
+                this.switchButtons(this.firstButton, this.secondButton);
+        }
+
+        public void changeLayout(GameObject gameObject)
+        {
+            if (gameObject.name.ToLower() == "keyboard")
+                MasterManager.settings.layoutType = InputDeviceType.keyboard;
+            else
+                MasterManager.settings.layoutType = InputDeviceType.gamepad;
+
+            getLayout();
+            SettingsEvents.current.DoLayoutChange();
+        }
     }
 }

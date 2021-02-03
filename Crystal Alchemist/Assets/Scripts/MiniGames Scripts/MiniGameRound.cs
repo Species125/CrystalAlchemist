@@ -1,73 +1,77 @@
-﻿using System.Collections.Generic;
+﻿
+
 using UnityEngine;
 
-public class MiniGameRound : MonoBehaviour
+namespace CrystalAlchemist
 {
-    private int difficulty;
-    private float elapsed;
-    private bool timerStopped = true;
-
-    [SerializeField]
-    private FloatValue time;
-
-    [SerializeField]
-    private FloatValue maxTime;
-
-    public virtual void Start()
+    public class MiniGameRound : MonoBehaviour
     {
-        
-    }
+        private int difficulty;
+        private float elapsed;
+        private bool timerStopped = true;
 
-    public void Initialize(int difficulty, float time)
-    {
-        this.difficulty = difficulty;
-        this.elapsed = time;
-        this.time.SetValue(elapsed);
-        this.maxTime.SetValue(time);
-    }
+        [SerializeField]
+        private FloatValue time;
 
-    public virtual string GetDescription(string text, int difficulty)
-    {
-        return "";
-    }
+        [SerializeField]
+        private FloatValue maxTime;
 
-    public void StartTimer()
-    {
-        this.timerStopped = false;
-    }
+        public virtual void Start()
+        {
 
-    public void StopTimer()
-    {
-        this.timerStopped = true;
-    }
+        }
 
-    private void FixedUpdate()
-    {
-        if (timerStopped) return;
-        if (elapsed <= 0) EndRound(false);
-        else this.elapsed -= Time.fixedDeltaTime;
+        public void Initialize(int difficulty, float time)
+        {
+            this.difficulty = difficulty;
+            this.elapsed = time;
+            this.time.SetValue(elapsed);
+            this.maxTime.SetValue(time);
+        }
 
-        this.time.SetValue(this.elapsed);
-    }
+        public virtual string GetDescription(string text, int difficulty)
+        {
+            return "";
+        }
 
-    public void EndRound(bool success)
-    {
-        StopTimer();
-        MiniGameEvents.current.EndMiniGameRound(success);
-    }
+        public void StartTimer()
+        {
+            this.timerStopped = false;
+        }
 
-    public virtual void Check()
-    {
+        public void StopTimer()
+        {
+            this.timerStopped = true;
+        }
 
-    }
+        private void FixedUpdate()
+        {
+            if (timerStopped) return;
+            if (elapsed <= 0) EndRound(false);
+            else this.elapsed -= Time.fixedDeltaTime;
 
-    public float GetElapsed()
-    {
-        return this.elapsed;
-    }
+            this.time.SetValue(this.elapsed);
+        }
 
-    public int GetDifficulty()
-    {
-        return this.difficulty;
+        public void EndRound(bool success)
+        {
+            StopTimer();
+            MiniGameEvents.current.EndMiniGameRound(success);
+        }
+
+        public virtual void Check()
+        {
+
+        }
+
+        public float GetElapsed()
+        {
+            return this.elapsed;
+        }
+
+        public int GetDifficulty()
+        {
+            return this.difficulty;
+        }
     }
 }

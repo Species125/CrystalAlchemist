@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36470793f9e5daf4aad0f2299129f3b7, type: 3}
   m_Name: Coins
   m_EditorClassIdentifier: 
-  duration: 60
   maxAmount: 99
+  canConsume: 1
   info: {fileID: 11400000, guid: c8b12a7bf379b4549bfe3d3ba872441d, type: 2}
   inventoryInfo: {fileID: 0}
   updateCurrencyUI: 1
-  color: {r: 1, g: 0.7909454, b: 0, a: 1}
-  outline: {r: 0.38679248, g: 0.26230752, b: 0, a: 1}
-  shopIcon: {fileID: -2726775011504869646, guid: dca79dbc5c6657543aadf27880f0a8d6,
-    type: 3}
+  raiseSoundEffect: {fileID: 0}
+  shopPrice: {fileID: 11400000, guid: 47ca1523009ba294cbd2a1d3de511002, type: 2}
+  amount: 0

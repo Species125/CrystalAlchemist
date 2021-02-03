@@ -265,6 +265,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 362473223286555198, guid: 0053029995641684484b1154763deb53,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 362473223286555198, guid: 0053029995641684484b1154763deb53,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -277,6 +282,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 362473223286555198, guid: 0053029995641684484b1154763deb53,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 362473223286555198, guid: 0053029995641684484b1154763deb53,
         type: 3}
@@ -295,16 +305,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 362473223286555198, guid: 0053029995641684484b1154763deb53,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 362473223286555198, guid: 0053029995641684484b1154763deb53,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 362473223286555198, guid: 0053029995641684484b1154763deb53,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -320,18 +320,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5438960208231086915, guid: 0053029995641684484b1154763deb53,
         type: 3}
-      propertyPath: m_LightVolumeOpacity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5438960208231086915, guid: 0053029995641684484b1154763deb53,
-        type: 3}
       propertyPath: m_Intensity
       value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5438960208231086915, guid: 0053029995641684484b1154763deb53,
         type: 3}
+      propertyPath: m_LightVolumeOpacity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438960208231086915, guid: 0053029995641684484b1154763deb53,
+        type: 3}
       propertyPath: m_AlphaBlendOnOverlap
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438960208231086915, guid: 0053029995641684484b1154763deb53,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438960208231086915, guid: 0053029995641684484b1154763deb53,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[4]
+      value: -575399841
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0053029995641684484b1154763deb53, type: 3}

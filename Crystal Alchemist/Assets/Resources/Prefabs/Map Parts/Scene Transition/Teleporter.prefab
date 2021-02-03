@@ -315,18 +315,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentMenu: {fileID: 0}
+  cursor: {fileID: 0}
   info: {fileID: 11400000, guid: 2bcb9f36b1ec28e4a88d642592a8aa7f, type: 2}
   dialogBoxType: 0
   price:
     resourceType: 0
     item: {fileID: 0}
+    keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 1
   actionOnConfirm:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7808392554565731848}
-        m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
-        m_MethodName: transferToScene
+        m_TargetAssemblyTypeName: CrystalAlchemist.SceneTransition, Assembly-CSharp
+        m_MethodName: TransferToScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -336,8 +339,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  menuDialogBoxText: "M\xF6chtest du die Orbitale Alchemie verlassen?"
-  menuDialogBoxTextEnglish: Do you want to leave the Orbital Alchemy?
+  translationID: 
+  type: 4
 --- !u!1001 &462480945538140996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -357,6 +360,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6553018102672601274, guid: 3013b6f476dac0b46b653b76149a0fb6,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553018102672601274, guid: 3013b6f476dac0b46b653b76149a0fb6,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -369,6 +377,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553018102672601274, guid: 3013b6f476dac0b46b653b76149a0fb6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6553018102672601274, guid: 3013b6f476dac0b46b653b76149a0fb6,
         type: 3}
@@ -387,16 +400,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6553018102672601274, guid: 3013b6f476dac0b46b653b76149a0fb6,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6553018102672601274, guid: 3013b6f476dac0b46b653b76149a0fb6,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6553018102672601274, guid: 3013b6f476dac0b46b653b76149a0fb6,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -410,6 +413,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7653854717709258060, guid: 3013b6f476dac0b46b653b76149a0fb6,
+        type: 3}
+      propertyPath: path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653854717709258060, guid: 3013b6f476dac0b46b653b76149a0fb6,
+        type: 3}
+      propertyPath: dialogBox
+      value: 
+      objectReference: {fileID: 6739621124900970281}
     - target: {fileID: 7653854717709258060, guid: 3013b6f476dac0b46b653b76149a0fb6,
         type: 3}
       propertyPath: targetScene
@@ -430,22 +443,17 @@ PrefabInstance:
       propertyPath: showAnimationOut
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7653854717709258060, guid: 3013b6f476dac0b46b653b76149a0fb6,
-        type: 3}
-      propertyPath: dialogBox
-      value: 
-      objectReference: {fileID: 6739621124900970281}
-    - target: {fileID: 9170353456387763876, guid: 3013b6f476dac0b46b653b76149a0fb6,
-        type: 3}
-      propertyPath: m_Name
-      value: Scene Transition
-      objectReference: {fileID: 0}
     - target: {fileID: 9170353456387763876, guid: 3013b6f476dac0b46b653b76149a0fb6,
         type: 3}
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 9170353456387763876, guid: 3013b6f476dac0b46b653b76149a0fb6,
+        type: 3}
+      propertyPath: m_Name
+      value: Scene Transition
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3013b6f476dac0b46b653b76149a0fb6, type: 3}
 --- !u!1 &8730417105107985888 stripped

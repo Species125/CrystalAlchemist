@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
-[CreateAssetMenu(menuName = "Game/Menu/SavePointInfo")]
-public class SavePointInfo : ScriptableObject
+namespace CrystalAlchemist
 {
-    public TeleportStats stats;
+    [CreateAssetMenu(menuName = "Game/Menu/SavePointInfo")]
+    public class SavePointInfo : ScriptableObject
+    {
+        public TeleportStats stats;
+    }
 }

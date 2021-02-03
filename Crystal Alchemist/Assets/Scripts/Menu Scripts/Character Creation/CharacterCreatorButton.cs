@@ -1,18 +1,27 @@
-﻿using UnityEngine.UI;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CharacterCreatorButton : MonoBehaviour
+namespace CrystalAlchemist
 {
-    public CharacterCreatorMenu mainMenu;
-
-    [SerializeField]
-    private SimpleSignal buttonNavigationSignal;
-
-    public virtual void Click()
+    public class CharacterCreatorButton : MonoBehaviour
     {
-        if(this.buttonNavigationSignal != null) this.buttonNavigationSignal.Raise();
-        this.mainMenu.updatePreview();
+        [Required]
+        public GameObject selectedFrame;
+
+        [Required]
+        public Image preview;
+
+        public virtual bool IsSelected()
+        {
+            return false;
+        }
+
+        public virtual void Click()
+        {
+
+        }
+
+        public void SetSelection() => this.selectedFrame.SetActive(IsSelected());
     }
-
-
 }

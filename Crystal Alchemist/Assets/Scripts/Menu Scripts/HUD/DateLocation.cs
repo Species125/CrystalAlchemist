@@ -1,58 +1,92 @@
-﻿using UnityEngine;
-using TMPro;
-using System.Collections;
+﻿using TMPro;
+using UnityEngine;
+using Sirenix.OdinInspector;
+using Photon.Pun;
 
-public class DateLocation : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private TextMeshProUGUI textField;
-
-    [SerializeField]
-    private TextMeshProUGUI timeField;
-
-    [SerializeField]
-    private TimeValue timeValue;
-
-    [SerializeField]
-    private GameObject sun;
-
-    [SerializeField]
-    private GameObject moon;
-
-    [SerializeField]
-    private StringValue locationID;
-
-    private void Start()
+    public class DateLocation : MonoBehaviour
     {
-        SettingsEvents.current.OnLanguangeChanged += updateLocationText;
-        updateLocationText();
-    }
+        [BoxGroup("Location")]
+        [SerializeField]
+        [Required]
+        private TextMeshProUGUI textField;
 
-    private void Update() => UpdateTime();
+        [BoxGroup("Time")]
+        [SerializeField]
+        [Required]
+        private TextMeshProUGUI timeField;
 
-    private void OnDestroy() => SettingsEvents.current.OnLanguangeChanged -= updateLocationText;
+        [BoxGroup("Time")]
+        [SerializeField]
+        [Required]
+        private TimeValue timeValue;
 
+        [BoxGroup("Time")]
+        [SerializeField]
+        [Required]
+        private GameObject sun;
 
-    private void UpdateTime()
-    {
-        int hour = this.timeValue.getHour();
+        [BoxGroup("Time")]
+        [SerializeField]
+        [Required]
+        private GameObject moon;
 
-        this.timeField.text = hour.ToString("00") + ":" + this.timeValue.getMinute().ToString("00");
+        [BoxGroup("Location")]
+        [SerializeField]
+        [Required]
+        private StringValue locationID;
 
-        if (!this.timeValue.night && !sun.activeInHierarchy)
+        [BoxGroup("Online")]
+        [SerializeField]
+        [Required]
+        private GameObject online;
+
+        [BoxGroup("Online")]
+        [SerializeField]
+        [Required]
+        private TextMeshProUGUI roomField;
+
+        private void Start()
         {
-            sun.SetActive(true);
-            moon.SetActive(false);
+            SettingsEvents.current.OnLanguangeChanged += updateLocationText;
+            UpdateOnlineStatus();
+            updateLocationText();
         }
-        else if (this.timeValue.night && !moon.activeInHierarchy)
-        {
-            sun.SetActive(false);
-            moon.SetActive(true);
-        }
-    }
 
-    private void updateLocationText()
-    {
-        this.textField.text = FormatUtil.GetLocalisedText(this.locationID.GetValue(), LocalisationFileType.maps);
+        private void Update() => UpdateTime();
+
+        private void OnDestroy() => SettingsEvents.current.OnLanguangeChanged -= updateLocationText;
+
+        private void UpdateOnlineStatus()
+        {
+            if (PhotonNetwork.OfflineMode) this.online.SetActive(false);
+            else this.online.SetActive(true);
+
+            this.roomField.text = PhotonNetwork.CurrentRoom.Name;
+        }
+
+        private void UpdateTime()
+        {
+            int hour = this.timeValue.GetHour();
+
+            this.timeField.text = hour.ToString("00") + ":" + this.timeValue.GetMinute().ToString("00");
+
+            if (!this.timeValue.night && !sun.activeInHierarchy)
+            {
+                sun.SetActive(true);
+                moon.SetActive(false);
+            }
+            else if (this.timeValue.night && !moon.activeInHierarchy)
+            {
+                sun.SetActive(false);
+                moon.SetActive(true);
+            }
+        }
+
+        private void updateLocationText()
+        {
+            this.textField.text = FormatUtil.GetLocalisedText(this.locationID.GetValue(), LocalisationFileType.maps);
+        }
     }
 }

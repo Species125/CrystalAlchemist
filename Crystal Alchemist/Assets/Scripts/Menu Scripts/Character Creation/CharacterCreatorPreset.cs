@@ -1,14 +1,24 @@
-﻿using UnityEngine;
+﻿
+
 using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class CharacterCreatorPreset : CharacterCreatorButton
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private CharacterPreset preset;
-
-    public override void Click()
+    public class CharacterCreatorPreset : CharacterCreatorButton
     {
-        GameUtil.setPreset(this.preset, this.mainMenu.creatorPreset);
-        base.Click();
+        [Required]
+        [SerializeField]
+        private CharacterCreatorMenu mainMenu;
+
+        [SerializeField]
+        private CharacterPreset preset;
+
+        public override void Click()
+        {
+            GameUtil.SetPreset(this.preset, this.mainMenu.playerPreset);
+            this.mainMenu.UpdatePreview();
+            base.Click();
+        }
     }
 }

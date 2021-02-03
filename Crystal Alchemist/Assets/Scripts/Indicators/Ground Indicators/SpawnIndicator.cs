@@ -1,29 +1,32 @@
-﻿using UnityEngine;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
-public class SpawnIndicator : GroundIndicator
+namespace CrystalAlchemist
 {
-    [BoxGroup("Fading")]
-    [SerializeField]
-    private float fadeIn;
-
-    [BoxGroup("Fading")]
-    [SerializeField]
-    private float fadeOut;
-
-    private SpriteRenderer sprite;
-
-    private void Start()
+    [RequireComponent(typeof(SpriteRenderer))]
+    public class SpawnIndicator : GroundIndicator
     {
-        sprite = this.GetComponent<SpriteRenderer>();
-        sprite.DOFade(sprite.color.a, this.fadeIn);
-    }
+        [BoxGroup("Fading")]
+        [SerializeField]
+        private float fadeIn;
 
-    public void DestroyIt()
-    {
-        sprite.DOFade(0, this.fadeOut);
-        Destroy(this.gameObject, this.fadeOut + 0.3f);
+        [BoxGroup("Fading")]
+        [SerializeField]
+        private float fadeOut;
+
+        private SpriteRenderer sprite;
+
+        private void Start()
+        {
+            sprite = this.GetComponent<SpriteRenderer>();
+            sprite.DOFade(sprite.color.a, this.fadeIn);
+        }
+
+        public void DestroyIt()
+        {
+            sprite.DOFade(0, this.fadeOut);
+            Destroy(this.gameObject, this.fadeOut + 0.3f);
+        }
     }
 }

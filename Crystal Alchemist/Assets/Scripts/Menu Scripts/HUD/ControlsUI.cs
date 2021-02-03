@@ -1,51 +1,54 @@
 ﻿using UnityEngine;
 
-public class ControlsUI : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private CharacterValues values;
-    [SerializeField]
-    private GameObject combat;
-    [SerializeField]
-    private GameObject menu;
-    [SerializeField]
-    private GameObject interaction;
+    public class ControlsUI : MonoBehaviour
+    {
+        [SerializeField]
+        private CharacterValues values;
+        [SerializeField]
+        private GameObject combat;
+        [SerializeField]
+        private GameObject menu;
+        [SerializeField]
+        private GameObject interaction;
 
-    void Update() => showButtons();    
+        void Update() => showButtons();
 
-    private void showButtons()
-    {        
-        if (this.values.currentState == CharacterState.inMenu)
+        private void showButtons()
         {
-            if (!this.menu.activeInHierarchy)
+            if (this.values.currentState == CharacterState.inMenu)
+            {
+                if (!this.menu.activeInHierarchy)
+                {
+                    this.combat.SetActive(false);
+                    this.interaction.SetActive(false);
+                    this.menu.SetActive(true);
+                }
+            }
+            else if (this.values.currentState == CharacterState.inDialog)
             {
                 this.combat.SetActive(false);
                 this.interaction.SetActive(false);
-                this.menu.SetActive(true);
-            }
-        }
-        else if (this.values.currentState == CharacterState.inDialog)
-        {
-            this.combat.SetActive(false);
-            this.interaction.SetActive(false);
-            this.menu.SetActive(false);
-        }
-        else if (this.values.currentState == CharacterState.interact)
-        {
-            if (!this.interaction.activeInHierarchy)
-            {
-                this.combat.SetActive(false);
-                this.interaction.SetActive(true);
                 this.menu.SetActive(false);
             }
-        }
-        else 
-        {
-            if (!this.combat.activeInHierarchy)
+            else if (this.values.currentState == CharacterState.interact)
             {
-                this.combat.SetActive(true);
-                this.interaction.SetActive(false);
-                this.menu.SetActive(false);
+                if (!this.interaction.activeInHierarchy)
+                {
+                    this.combat.SetActive(false);
+                    this.interaction.SetActive(true);
+                    this.menu.SetActive(false);
+                }
+            }
+            else
+            {
+                if (!this.combat.activeInHierarchy)
+                {
+                    this.combat.SetActive(true);
+                    this.interaction.SetActive(false);
+                    this.menu.SetActive(false);
+                }
             }
         }
     }

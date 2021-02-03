@@ -1,27 +1,34 @@
-﻿using UnityEngine;
+﻿
 
-public class ChangeLanguageMenu : OptionsSwitch
+
+
+using UnityEngine;
+
+namespace CrystalAlchemist
 {
-    private void OnEnable() => getFlag();    
-
-    private void getFlag()
+    public class ChangeLanguageMenu : OptionsSwitch
     {
-        if (MasterManager.settings.language == Language.English) this.switchButtons(this.secondButton, this.firstButton);
-        else this.switchButtons(this.firstButton, this.secondButton);
-    }
+        private void OnEnable() => getFlag();
 
-    public void changeLanguage(GameObject gameObject)
-    {
-        changeLanguageWithoutSave(gameObject);
-        SaveSystem.SaveOptions();
-    }
+        private void getFlag()
+        {
+            if (MasterManager.settings.language == Language.English) this.switchButtons(this.secondButton, this.firstButton);
+            else this.switchButtons(this.firstButton, this.secondButton);
+        }
 
-    public void changeLanguageWithoutSave(GameObject gameObject)
-    {
-        if (gameObject.name.ToUpper() == "GER") MasterManager.settings.language = Language.German;
-        else MasterManager.settings.language = Language.English;
+        public void changeLanguage(GameObject gameObject)
+        {
+            changeLanguageWithoutSave(gameObject);
+            SaveSystem.SaveOptions();
+        }
 
-        getFlag();
-        SettingsEvents.current.DoLanguageChange();
+        public void changeLanguageWithoutSave(GameObject gameObject)
+        {
+            if (gameObject.name.ToUpper() == "GER") MasterManager.settings.language = Language.German;
+            else MasterManager.settings.language = Language.English;
+
+            getFlag();
+            SettingsEvents.current.DoLanguageChange();
+        }
     }
 }

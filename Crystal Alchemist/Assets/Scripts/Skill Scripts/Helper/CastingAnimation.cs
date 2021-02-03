@@ -1,30 +1,33 @@
 ﻿using UnityEngine;
 
-public class CastingAnimation : MonoBehaviour
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private Animator anim;
-
-    [SerializeField]
-    private bool matchProgress;
-
-    private float time;
-
-    public void Initialize(float time)
+    public class CastingAnimation : MonoBehaviour
     {
-        this.time = time;
-        if (matchProgress) this.anim.speed = 1 / time;         
-    }
+        [SerializeField]
+        private Animator anim;
 
-    public void DestroyIt()
-    {
-        this.anim.speed = 1f;
-        if (this.anim != null) AnimatorUtil.SetAnimatorParameter(this.anim, "Destroy");
-        else Destroy();
-    }
+        [SerializeField]
+        private bool matchProgress;
 
-    private void Destroy()
-    {
-        Destroy(this.gameObject);
+        private float time;
+
+        public void Initialize(float time)
+        {
+            this.time = time;
+            if (matchProgress) this.anim.speed = 1 / time;
+        }
+
+        public void DestroyIt()
+        {
+            this.anim.speed = 1f;
+            if (this.anim != null) AnimatorUtil.SetAnimatorParameter(this.anim, "Destroy");
+            else Destroy();
+        }
+
+        private void Destroy()
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

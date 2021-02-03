@@ -1,30 +1,36 @@
-﻿using UnityEngine;
+﻿
 
-public class ChangeStatusBarMenu : OptionsSwitch
+
+using UnityEngine;
+
+namespace CrystalAlchemist
 {
-    [SerializeField]
-    private CostType resourceType;
-
-    private void OnEnable() => getLayout();    
-
-    private void getLayout()
+    public class ChangeStatusBarMenu : OptionsSwitch
     {
-        if(this.resourceType == CostType.life) setLayout(MasterManager.settings.healthBar);
-        else if (this.resourceType == CostType.mana) setLayout(MasterManager.settings.manaBar);
-    }
+        [SerializeField]
+        private CostType resourceType;
 
-    private void setLayout(bool value)
-    {
-        if (value) this.switchButtons(this.secondButton, this.firstButton);
-        else this.switchButtons(this.firstButton, this.secondButton);
-    }
+        private void OnEnable() => getLayout();
 
-    public void changeLayout(bool useBar)
-    {
-        if (this.resourceType == CostType.life) MasterManager.settings.healthBar = useBar;
-        else if (this.resourceType == CostType.mana) MasterManager.settings.manaBar = useBar;
+        private void getLayout()
+        {
+            if (this.resourceType == CostType.life) setLayout(MasterManager.settings.healthBar);
+            else if (this.resourceType == CostType.mana) setLayout(MasterManager.settings.manaBar);
+        }
 
-        getLayout();
-        SettingsEvents.current.DoHUDChange();
+        private void setLayout(bool value)
+        {
+            if (value) this.switchButtons(this.secondButton, this.firstButton);
+            else this.switchButtons(this.firstButton, this.secondButton);
+        }
+
+        public void changeLayout(bool useBar)
+        {
+            if (this.resourceType == CostType.life) MasterManager.settings.healthBar = useBar;
+            else if (this.resourceType == CostType.mana) MasterManager.settings.manaBar = useBar;
+
+            getLayout();
+            SettingsEvents.current.DoHUDChange();
+        }
     }
 }
