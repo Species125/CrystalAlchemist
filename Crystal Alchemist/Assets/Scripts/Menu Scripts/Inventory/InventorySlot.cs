@@ -19,7 +19,9 @@ namespace CrystalAlchemist
 
         public void openKeyItem(InventoryMenu menu)
         {
-            ItemSlotInfo info = this.itemUI.getItemStat().inventoryInfo;
+            ItemStats stats = this.itemUI.getItemStat();
+            if (stats == null) return; 
+            ItemSlotInfo info = stats.inventoryInfo;
             if (info == null) return;
             info.raiseKeySignal();
             menu.ExitMenu();

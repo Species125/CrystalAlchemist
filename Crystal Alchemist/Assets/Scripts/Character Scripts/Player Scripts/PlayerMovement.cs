@@ -39,12 +39,14 @@ namespace CrystalAlchemist
 
         private void Start()
         {
+            GameEvents.current.OnMenuOpened += SetToZero;
             GameEvents.current.OnCutScene += SetToZero;
             GameEvents.current.OnLockDirection += SetDirectionLock;
         }
 
         private void OnDestroy()
         {
+            GameEvents.current.OnMenuOpened -= SetToZero;
             GameEvents.current.OnCutScene -= SetToZero;
             GameEvents.current.OnLockDirection -= SetDirectionLock;
         }
@@ -62,6 +64,7 @@ namespace CrystalAlchemist
 
         private void SetToZero()
         {
+            //this.player.myRigidbody.velocity = Vector2.zero;
             this.change = Vector2.zero;
             this.mouseTargetPosition = MasterManager.globalValues.nullVector;
         }

@@ -94,7 +94,12 @@ namespace CrystalAlchemist
                 bool value = (bool)datas[1];
 
                 UpdateStatus(ID, value);
-            }            
+            }  
+            else if(obj.Code == NetworkUtil.READY_CANCEL)
+            {
+                GameEvents.current.DoIngameMessage("Teleport abgebrochen");
+                base.ExitMenu();
+            }
         }
 
         private void UpdateBoxList()
@@ -174,11 +179,7 @@ namespace CrystalAlchemist
             this.ExitMenu();
         }
 
-        public override void ExitMenu()
-        {
-            RPCSetReadyStatus(false);            
-            base.ExitMenu();
-        }
+        public override void ExitMenu() => RPCCancelTeleport();
 
         public void SetReadyWindow()
         {
@@ -196,6 +197,14 @@ namespace CrystalAlchemist
             RaiseEventOptions options = NetworkUtil.TargetAll();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.READY_SET, datas, options, SendOptions.SendUnreliable);
+        }
+
+        private void RPCCancelTeleport()
+        {
+            object[] datas = new object[] { };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
+
+            PhotonNetwork.RaiseEvent(NetworkUtil.READY_CANCEL, datas, options, SendOptions.SendUnreliable);
         }
 
         public override void OnJoinedRoom() => UpdateBoxList();

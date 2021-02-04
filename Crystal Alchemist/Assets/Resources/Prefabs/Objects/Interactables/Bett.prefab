@@ -285,7 +285,7 @@ MonoBehaviour:
     keyItem: {fileID: 0}
     statusEffect: {fileID: 0}
     amount: 1
-  masterOnly: 1
+  masterOnly: 0
   customActionButton: 1
   ID: Schlafen
   showEffectOnEnable: 0
@@ -317,7 +317,8 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 0
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

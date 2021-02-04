@@ -24,6 +24,8 @@ namespace CrystalAlchemist
 
         public virtual void Start()
         {
+            GameEvents.current.DoMenuOpen();
+
             if (MasterManager.globalValues.openedMenues.Count == 0)
             {
                 MasterManager.globalValues.lastState = this.playerValues.currentState;

@@ -22,17 +22,10 @@ namespace CrystalAlchemist
         [SerializeField]
         private Image star;
 
-        [BoxGroup("Crystal Orb Menu")]
-        [Required]
-        [SerializeField]
-        private Selectable quicktravel;
-
-
         public override void Start()
         {
             base.Start();
-            SetStar();
-            quicktravel.interactable = PhotonNetwork.OfflineMode;
+            SetStar();            
         }
 
         public void SetStar()

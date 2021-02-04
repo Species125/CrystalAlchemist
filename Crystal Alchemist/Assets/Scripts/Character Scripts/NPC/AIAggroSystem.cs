@@ -205,7 +205,7 @@ namespace CrystalAlchemist
 
         private void ShowClue(AggroClue clue)
         {
-            if (clue.name == this.activeClue.name) return;
+            if (this.activeClue != null && clue.name == this.activeClue.name) return;
 
             HideClue();
             this.activeClue = Instantiate(clue, this.npc.GetHeadPosition(), Quaternion.identity, this.npc.transform);

@@ -1,7 +1,4 @@
-﻿
-
-
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,8 +30,7 @@ namespace CrystalAlchemist
 
         public void Teleport()
         {
-            this.playerTeleport.SetNextTeleport(this.location);
-            GameEvents.current.DoTeleport();
+            NetworkEvents.current.ShowReadywindow(this.location);
         }
     }
 }

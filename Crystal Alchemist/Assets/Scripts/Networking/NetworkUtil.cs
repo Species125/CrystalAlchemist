@@ -32,11 +32,14 @@ namespace CrystalAlchemist
         public const byte ITEMDROP_MASTER = 31;
 
         public const byte SET_NEXT_TELEPORT = 41;
+
         public const byte READY_SHOW = 42;
         public const byte READY_SET = 43;
-        public const byte JUKEBOX_PLAY = 44;
-        public const byte JUKEBOX_PAUSE = 45;
-        public const byte JUKEBOX_STOP = 46;
+        public const byte READY_CANCEL = 44;
+
+        public const byte JUKEBOX_PLAY = 45;
+        public const byte JUKEBOX_PAUSE = 46;
+        public const byte JUKEBOX_STOP = 47;
 
         public const byte TIME_STARTUP = 51;
         public const byte TIME_CHANGED = 52;

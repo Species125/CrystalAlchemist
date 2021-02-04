@@ -51,6 +51,8 @@ namespace CrystalAlchemist
         public Action OnInterrupt;
         public Action OnTeleport;
         public Action OnTitleScreen;
+        public Action OnMenuOpened;
+        public Action<string> OnIngameMessage;
 
         public Action OnEffectUpdate;
         public Action<int> OnLifeManaUpdate;
@@ -76,6 +78,8 @@ namespace CrystalAlchemist
         public void DoReduce(Costs costs) => this.OnReduce?.Invoke(costs);
         public void DoSubmit() => this.OnSubmit?.Invoke();
         public void DoCancel() => this.OnCancel?.Invoke();
+        public void DoMenuOpen() => this.OnMenuOpened?.Invoke();
+        public void DoIngameMessage(string text) => this.OnIngameMessage?.Invoke(text);
         public void DoPage(int page) => this.OnPage?.Invoke(page);
         public void DoWarning(WarningType type) => this.OnWarning?.Invoke(type);
         public void DoSleep(Vector2 position, Action before, Action after) => this.OnSleep?.Invoke(position, before, after);

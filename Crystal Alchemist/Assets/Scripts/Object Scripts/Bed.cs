@@ -44,18 +44,18 @@ namespace CrystalAlchemist
         private Vector2 position;
         private bool isSleeping;
         private string oldID;
-        private int ID;
+        private int playerID;
 
         public override void Start()
         {
             base.Start();
-            this.blanket.SetActive(false);
+            SetBlanket(false);
             this.oldID = this.translationID;
         }
 
         public override bool PlayerCanInteract()
         {
-            return (base.PlayerCanInteract() && (ID <= 0 || ID == this.player.photonView.ViewID));
+            return (base.PlayerCanInteract() && (playerID <= 0 || playerID == this.player.photonView.ViewID));
         }
 
         public override void DoOnSubmit()
@@ -67,7 +67,7 @@ namespace CrystalAlchemist
                 this.position = this.player.transform.position;
                 Vector2 position = new Vector2(this.transform.position.x, this.transform.position.y + offset);
 
-                GameEvents.current.DoSleep(position, () => this.blanket.SetActive(true), () => StartSleeping());
+                GameEvents.current.DoSleep(position, () => SetBlanket(true), () => StartSleeping());
                 this.translationID = this.wakeUpActionID;
 
                 MusicEvents.current.PauseMusic(this.fadeOut);
@@ -89,7 +89,7 @@ namespace CrystalAlchemist
 
         private void PlayerAwake()
         {
-            this.blanket.SetActive(false);
+            SetBlanket(false);
             this.isSleeping = false;
             MusicEvents.current.RestartMusic(this.fadeIn);
             SetBedInUse(0);
@@ -98,6 +98,15 @@ namespace CrystalAlchemist
         private void SetBedInUse(int ID) => this.photonView.RPC("RpcBedInUse", RpcTarget.All, ID);        
 
         [PunRPC]
-        protected void RpcBedInUse(int ID) => this.ID = ID;        
+        protected void RpcBedInUse(int ID) => this.playerID = ID;
+
+        private void SetBlanket(bool value)
+        {
+            if (!PhotonNetwork.IsConnected) return;
+            this.photonView.RPC("RpcSetBlanket", RpcTarget.All, value);
+        }
+
+        [PunRPC]
+        protected void RpcSetBlanket(bool value) => this.blanket.SetActive(value);
     }
 }

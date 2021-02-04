@@ -2,6 +2,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CrystalAlchemist
 {
@@ -57,7 +58,19 @@ namespace CrystalAlchemist
         [SerializeField]
         private GameObject mana;
 
+        [Required]
+        [BoxGroup("Easy Access")]
+        [SerializeField]
+        private bool isForLoading = false;
+
         public PlayerData data;
+        private Selectable button;
+
+        private void Awake()
+        {
+            this.button = this.GetComponent<Selectable>();
+            if(this.isForLoading) this.button.interactable = false;
+        }
 
         private void OnEnable()
         {
@@ -79,6 +92,8 @@ namespace CrystalAlchemist
 
             if (this.data != null)
             {
+                if (this.isForLoading) this.button.interactable = true;
+
                 string name = data.characterName;
                 string race = data.race;
                 float timePlayed = data.timePlayed;
@@ -110,6 +125,7 @@ namespace CrystalAlchemist
             }
             else
             {
+                if (this.isForLoading) this.button.interactable = false;
                 this.newGame.SetActive(true);
             }
         }
