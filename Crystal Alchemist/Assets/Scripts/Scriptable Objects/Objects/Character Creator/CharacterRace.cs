@@ -8,6 +8,8 @@ namespace CrystalAlchemist
     {
         public Race race;
 
+        public bool isAvailable = true;
+
         public string raceName;
 
         [AssetIcon]

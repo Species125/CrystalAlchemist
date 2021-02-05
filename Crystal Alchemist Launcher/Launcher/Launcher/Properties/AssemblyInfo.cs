@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Launcher")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Crystal Alchemist Launcher")]
+[assembly: AssemblyDescription("For downloading, installing and updating the game Crystal Alchemist")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Launcher")]
+[assembly: AssemblyCompany("Gungnir Games")]
+[assembly: AssemblyProduct("Crystal Alchemist Launcher")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -7,11 +7,6 @@ namespace CrystalAlchemist
     public class ProgressExtension : MonoBehaviour
     {
         [BoxGroup("Required")]
-        [Required]
-        [SerializeField]
-        private PlayerGameProgress playerProgress;
-
-        [BoxGroup("Required")]
         [HideLabel]
         [Space(10)]
         [SerializeField]
@@ -35,11 +30,11 @@ namespace CrystalAlchemist
         [Space(10)]
         private UnityEvent onProgressExists;
 
-        [HorizontalGroup("Updating/Temp")]
+        [BoxGroup("Updating")]
         [SerializeField]
         private bool realTimeUpdate = false;
 
-        [HorizontalGroup("Updating/Temp")]
+        [BoxGroup("Updating")]
         [ShowIf("realTimeUpdate")]
         [SerializeField]
         private float interval = 1f;
@@ -50,31 +45,28 @@ namespace CrystalAlchemist
         [SerializeField]
         private UnityEvent onProgressRemoved;
 
-        
-
         private void Start()
         {
-            if (doNewEventOnStart && !this.progress.ContainsProgress(this.playerProgress)) onProgressNew?.Invoke();
-            if (doExistsEventOnStart && this.progress.ContainsProgress(this.playerProgress)) onProgressExists?.Invoke();
+            if (doNewEventOnStart && !GameEvents.current.HasProgress(this.progress)) onProgressNew?.Invoke();
+            if (doExistsEventOnStart && GameEvents.current.HasProgress(this.progress)) onProgressExists?.Invoke();
 
             if (this.realTimeUpdate) InvokeRepeating("Updating", 0, this.interval);
         }
 
         public void DoProgressEvent()
         {
-            if (!this.progress.ContainsProgress(this.playerProgress)) this.onProgressNew?.Invoke();  
+            if (!GameEvents.current.HasProgress(this.progress)) this.onProgressNew?.Invoke();  
             else onProgressExists?.Invoke();            
         }
 
         public void AddProgress()
         {
-            if (!this.progress.ContainsProgress(this.playerProgress)) this.progress.AddProgress(this.playerProgress);
+            GameEvents.current.DoProgress(this.progress);
         }
 
         private void Updating()
-        {            
-            bool removed = this.playerProgress.Updating(this.progress);
-            if (removed) this.onProgressRemoved?.Invoke();
+        {
+            if (!GameEvents.current.HasProgress(this.progress)) this.onProgressRemoved?.Invoke();
         }
     }
 }

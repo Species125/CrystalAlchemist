@@ -164,7 +164,7 @@ namespace Launcher
                 if (file.Length > 0)
                 {
                     FastZip fastZip = new FastZip();
-                    string fileFilter = "-Crystal Alchemist_Data\\Fehlerprotokoll\\;-log.txt";
+                    string fileFilter = "-log.txt";
                     fastZip.ExtractZip(file[0].FullName, this.targetDir.FullName, fileFilter);
 
                     Thread.Sleep(500);
@@ -172,7 +172,7 @@ namespace Launcher
                     file[0].Delete();
                 }
             }
-            catch 
+            catch (Exception ex)
             { 
                 this.backgroundWorker1.CancelAsync(); 
             }

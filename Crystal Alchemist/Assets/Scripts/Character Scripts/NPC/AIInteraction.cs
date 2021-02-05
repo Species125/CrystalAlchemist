@@ -21,13 +21,13 @@ namespace CrystalAlchemist
         {
             base.Start();
 
-            if (!NetworkUtil.IsMaster()) return;
+            //if (!NetworkUtil.IsMaster()) return;
             this.context.transform.position = this.npc.GetHeadPosition();
         }
 
         public override void DoOnSubmit()
         {
-            if (!NetworkUtil.IsMaster()) return;
+            //if (!NetworkUtil.IsMaster()) return;
             this.onSubmit?.Invoke();
         }
 
@@ -45,7 +45,7 @@ namespace CrystalAlchemist
 
         public override bool PlayerIsLooking()
         {
-            if (!NetworkUtil.IsMaster()) return false;
+            //if (!NetworkUtil.IsMaster()) return false;
 
             if (this.isPlayerInRange
                 && this.npc.values.characterType == CharacterType.Friend

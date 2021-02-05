@@ -4128,3 +4128,16 @@ CrystalAlchemist.AIAggroSystem.RaiseAggroEvent (System.Int32 ID, CrystalAlchemis
 CrystalAlchemist.AIAggroSystem._IncreaseAggro (CrystalAlchemist.Character npc, CrystalAlchemist.Character newTarget, System.Single aggro) (at Assets/Scripts/Character Scripts/NPC/AIAggroSystem.cs:340)
 CrystalAlchemist.AIAggroSystem.OnTriggerStay2D (UnityEngine.Collider2D collision) (at Assets/Scripts/Character Scripts/NPC/AIAggroSystem.cs:255)
 
+Exception 04.02.2021 21:46:22: NullReferenceException: Object reference not set to an instance of an object
+Photon.Pun.DefaultPool.Instantiate (System.String prefabId, UnityEngine.Vector3 position, UnityEngine.Quaternion rotation) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PunClasses.cs:997)
+Photon.Pun.PhotonNetwork.NetworkInstantiate (Photon.Pun.InstantiateParameters parameters, System.Boolean sceneObject, System.Boolean instantiateEvent) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs:2447)
+Photon.Pun.PhotonNetwork.Instantiate (System.String prefabName, UnityEngine.Vector3 position, UnityEngine.Quaternion rotation, System.Byte group, System.Object[] data) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs:2346)
+CrystalAlchemist.NetworkManager.Instantiate () (at Assets/Scripts/Networking/NetworkManager.cs:65)
+CrystalAlchemist.NetworkManager.Start () (at Assets/Scripts/Networking/NetworkManager.cs:51)
+
+Exception 05.02.2021 02:49:08: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CharacterCreatorRaceButton.SetButton (CrystalAlchemist.CharacterRace race, CrystalAlchemist.CharacterCreatorRaceHandler handler) (at Assets/Scripts/Menu Scripts/Character Creation/CharacterCreatorRaceButton.cs:30)
+CrystalAlchemist.CharacterCreatorRaceHandler.CreateButton (CrystalAlchemist.CharacterRace race, System.Int32 i) (at Assets/Scripts/Menu Scripts/Character Creation/CharacterCreatorRaceHandler.cs:41)
+CrystalAlchemist.CharacterCreatorRaceHandler.Awake () (at Assets/Scripts/Menu Scripts/Character Creation/CharacterCreatorRaceHandler.cs:30)
+UnityEngine.EventSystems.EventSystem:Update() (at C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/EventSystem.cs:385)
+

@@ -209,6 +209,7 @@ namespace CrystalAlchemist
 
             HideClue();
             this.activeClue = Instantiate(clue, this.npc.GetHeadPosition(), Quaternion.identity, this.npc.transform);
+            this.activeClue.name = clue.name;
         }
 
         private void HideClue()

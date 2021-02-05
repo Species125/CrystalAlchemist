@@ -45,11 +45,6 @@ namespace CrystalAlchemist
         [ShowIf("hasSelfDestruction")]
         private float duration = 60f;
 
-        [BoxGroup("Progress")]
-        [SerializeField]
-        private PlayerGameProgress playerProgress;
-
-        private ItemStats itemStats;
         private float elapsed;
         private bool showEffectOnDisable = true;
 
@@ -71,15 +66,7 @@ namespace CrystalAlchemist
 
         public void SetItem(ItemDrop drop)
         {
-            this.itemDrop = drop;
-            setItemStats();
-        }
-
-        private void setItemStats()
-        {
-            ItemStats temp = Instantiate(this.itemDrop.stats);
-            temp.name = this.itemDrop.name;
-            this.itemStats = temp;
+            this.itemDrop = drop;            
         }
 
         public void SetBounce(bool value, Vector2 direction)
@@ -90,7 +77,7 @@ namespace CrystalAlchemist
 
         public ItemStats GetStats()
         {
-            return this.itemStats;
+            return this.itemDrop.stats;
         }
 
         public void SetSmoke(bool value) => this.showEffectOnDisable = value;
@@ -99,12 +86,11 @@ namespace CrystalAlchemist
         {
             this.myRigidbody = this.GetComponent<Rigidbody2D>();
             Bounce();
-            setItemStats();
 
             string itemName = this.itemDrop.name;
 
-            if (this.itemDrop.progress.ContainsProgress(this.playerProgress) ||
-               (this.itemStats.isKeyItem() && GameEvents.current.HasKeyItem(itemName)))
+            if (GameEvents.current.HasProgress(this.itemDrop.progress) ||
+               (this.itemDrop.stats.isKeyItem() && GameEvents.current.HasKeyItem(itemName)))
             {
                 this.showEffectOnDisable = false;
                 DestroyIt();
@@ -186,7 +172,7 @@ namespace CrystalAlchemist
 
         public void playSounds()
         {
-            AudioUtil.playSoundEffect(this.gameObject, this.itemStats.getSoundEffect());
+            AudioUtil.playSoundEffect(this.gameObject, this.itemDrop.stats.getSoundEffect());
         }
 
         #region Collect Item Funktionen
@@ -205,8 +191,7 @@ namespace CrystalAlchemist
             if (this.GetComponent<DialogSystem>() != null) this.GetComponent<DialogSystem>().showDialog(player, this);
 
             this.showEffectOnDisable = false;
-            GameEvents.current.DoCollect(this.itemStats);
-            this.itemDrop.progress.AddProgress(this.playerProgress);
+            GameEvents.current.DoCollect(this.itemDrop);
 
             playSounds();
             DestroyIt();

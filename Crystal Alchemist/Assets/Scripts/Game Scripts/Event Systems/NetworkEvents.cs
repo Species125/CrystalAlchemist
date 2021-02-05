@@ -81,8 +81,9 @@ namespace CrystalAlchemist
         public void RaiseDeathEvent()
         {
             object[] datas = new object[] {};
-            RaiseEventOptions options = NetworkUtil.TargetAll();
+            RaiseEventOptions options = NetworkUtil.TargetOther();
 
+            if (MenuEvents.current) MenuEvents.current.OpenDeath();
             PhotonNetwork.RaiseEvent(NetworkUtil.PLAYERS_DEATH, datas, options, SendOptions.SendUnreliable);
         }
 
@@ -118,16 +119,17 @@ namespace CrystalAlchemist
             AI npc = sender.GetComponent<AI>();
             if (npc != null && !NetworkUtil.IsMaster()) return; //only Player and Master-NPC allowed
 
-            RaiseAbilityEvent(ability, sender, target, reduce, sender.transform.position, Quaternion.identity, false);
+            AbilityUtil.InstantiateSkill(ability, sender, target, sender.transform.position, reduce, false, Quaternion.identity);
+                       RaiseAbilityEvent(ability, sender, target, sender.transform.position, reduce, false, Quaternion.identity);
         }
 
-        private void RaiseAbilityEvent(Ability ability, Character sender, Character target, float reduce, Vector2 position, Quaternion rotation, bool standalone)
+        private void RaiseAbilityEvent(Ability ability, Character sender, Character target, Vector2 position, float reduce, bool standalone, Quaternion rotation)
         {
             int characterID = NetworkUtil.GetID(sender);
             int targetID = NetworkUtil.GetID(target); 
 
             object[] datas = new object[] { ability.path, characterID, targetID, reduce, position, rotation, standalone };
-            RaiseEventOptions options = NetworkUtil.TargetAll();
+            RaiseEventOptions options = NetworkUtil.TargetOther();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.SKILL, datas, options, SendOptions.SendUnreliable);
         }

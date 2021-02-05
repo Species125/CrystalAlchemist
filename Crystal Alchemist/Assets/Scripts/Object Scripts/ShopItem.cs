@@ -48,10 +48,9 @@ namespace CrystalAlchemist
             if (this.player.canUseIt(this.costs))
             {
                 this.player.ReduceResource(this.costs);
-                ItemStats loot = itemDrop.stats;
 
-                ShowDialog(DialogTextTrigger.success, loot);
-                if (loot != null) GameEvents.current.DoCollect(loot);
+                ShowDialog(DialogTextTrigger.success, this.itemDrop.stats);
+                if (this.itemDrop != null) GameEvents.current.DoCollect(this.itemDrop);
             }
             else
             {

@@ -84,11 +84,6 @@ namespace CrystalAlchemist
         private EventValue eventValue;
 
         [BoxGroup("Progress")]
-        [SerializeField]
-        [Required]
-        private PlayerGameProgress playerProgress;
-
-        [BoxGroup("Progress")]
         [HideLabel]
         [SerializeField]
         private ProgressValue progress;
@@ -155,13 +150,13 @@ namespace CrystalAlchemist
 
         private void ShowDialogBox(Player player, string text, UnityEvent onClose)
         {
-            if (!this.progress.ContainsProgress(this.playerProgress)
+            if (!GameEvents.current.HasProgress(this.progress)
                 && player.values.currentState != CharacterState.inDialog)
             {
                 this.textValue.SetValue(text);
                 this.eventValue.SetValue(onClose);
                 MenuEvents.current.OpenDialogBox();
-                this.progress.AddProgress(this.playerProgress);
+                GameEvents.current.DoProgress(this.progress);
             }
         }
     }

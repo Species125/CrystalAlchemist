@@ -26,6 +26,7 @@ namespace CrystalAlchemist
             for (int i = 0; i < races.Count; i++)
             {
                 CharacterRace race = races[i];
+
                 CreateButton(race, i);
 
                 if (IsRace(race.race)) this.currentRace = race.race;

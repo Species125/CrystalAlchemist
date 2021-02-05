@@ -39,6 +39,7 @@ namespace CrystalAlchemist
 
         private void Start()
         {
+            if (!NetworkUtil.IsLocal(this.player)) return;
             GameEvents.current.OnMenuOpened += SetToZero;
             GameEvents.current.OnCutScene += SetToZero;
             GameEvents.current.OnLockDirection += SetDirectionLock;
@@ -46,6 +47,7 @@ namespace CrystalAlchemist
 
         private void OnDestroy()
         {
+            if (!NetworkUtil.IsLocal(this.player)) return;
             GameEvents.current.OnMenuOpened -= SetToZero;
             GameEvents.current.OnCutScene -= SetToZero;
             GameEvents.current.OnLockDirection -= SetDirectionLock;

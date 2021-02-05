@@ -37,7 +37,7 @@ MonoBehaviour:
   - trigger:
       triggerType: 3
       mode: 2
-      value: 0
+      value: 0.9
     actions:
     - actionType: 0
       resources:
@@ -45,7 +45,23 @@ MonoBehaviour:
         item: {fileID: 0}
         keyItem: {fileID: 0}
         statusEffect: {fileID: 0}
-        amount: 10
+        amount: 3
+      speed: 0
+      time: 0
+      effects: []
+      StatusEffectType: 0
+  - trigger:
+      triggerType: 4
+      mode: 2
+      value: 0.9
+    actions:
+    - actionType: 0
+      resources:
+      - resourceType: 2
+        item: {fileID: 0}
+        keyItem: {fileID: 0}
+        statusEffect: {fileID: 0}
+        amount: 3
       speed: 0
       time: 0
       effects: []

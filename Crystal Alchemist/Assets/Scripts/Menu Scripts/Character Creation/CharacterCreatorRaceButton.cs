@@ -1,4 +1,4 @@
-
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +8,9 @@ namespace CrystalAlchemist
     {
         [SerializeField]
         private TMP_Text textField;
+
+        [SerializeField]
+        private Selectable selectable;
 
         private Race race;
 
@@ -24,6 +27,7 @@ namespace CrystalAlchemist
             this.textField.text = race.raceName;
             this.preview.sprite = race.icon;
             this.race = race.race;
+            this.selectable.interactable = race.isAvailable;
         }
 
         public override void Click()

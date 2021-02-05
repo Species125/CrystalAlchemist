@@ -1,9 +1,4 @@
-﻿
-
-
-
-
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
@@ -103,14 +98,14 @@ namespace CrystalAlchemist
             }
             else
             {
-                if (state == MiniGameState.win) PlayerWin(this.activeMatch.GetItem().stats);
+                if (state == MiniGameState.win) PlayerWin(this.activeMatch.GetItem());
                 else if (state == MiniGameState.lose) PlayerLose();
             }
         }
 
-        private void PlayerWin(ItemStats stats)
+        private void PlayerWin(ItemDrop drop)
         {
-            GameEvents.current.DoCollect(stats);
+            GameEvents.current.DoCollect(drop);
             ShowTextBox(this.winText);
         }
 

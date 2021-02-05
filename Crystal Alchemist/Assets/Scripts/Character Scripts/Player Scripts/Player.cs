@@ -292,10 +292,13 @@ namespace CrystalAlchemist
             this.values.currentState = state;
         }
 
-        private void CollectIt(ItemStats stats)
-        {
+        private void CollectIt(ItemDrop drop)
+        {            
             //Collectable, Load, MiniGame, Shop und Treasure
-            if (!isLocalPlayer) return; 
+            if (!isLocalPlayer) return;
+
+            ItemStats stats = drop.stats;
+            GameEvents.current.DoProgress(drop.progress);
 
             if (stats.itemType == ItemType.consumable)
             {
@@ -312,7 +315,7 @@ namespace CrystalAlchemist
             else if (stats.itemType == ItemType.outfit)
             {
                 //add outfit to glamour
-            }
+            }            
         }
 
         public override void Regenerate()

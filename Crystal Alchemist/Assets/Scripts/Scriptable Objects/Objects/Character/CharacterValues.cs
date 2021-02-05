@@ -154,8 +154,13 @@ namespace CrystalAlchemist
 
         public bool CanUseAbilities()
         {
-            if (this.currentState != CharacterState.interact
-                && this.CanMove()) return true;
+            if (      this.currentState != CharacterState.interact
+                    &&this.currentState != CharacterState.inDialog
+                    && this.currentState != CharacterState.inMenu
+                    //&& this.currentState != CharacterState.knockedback
+                    && this.currentState != CharacterState.sleeping
+                    && !this.isCharacterStunned()
+                    && IsAlive()) return true;
             return false;
         }
 

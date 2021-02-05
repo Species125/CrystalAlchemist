@@ -167,7 +167,13 @@ namespace CrystalAlchemist
         private void setBarValues()
         {
             this.fillBar.fillAmount = (float)(this.currentValue / this.maxValue);
-            this.textFieldBar.text = this.currentValue.ToString("N1") + " / " + this.maxValue.ToString("N1");
+            this.textFieldBar.text = GetValues(this.currentValue) + " / " + GetValues(this.maxValue);
+        }
+
+        private string GetValues(float value)
+        {
+            if (value > 0) return (value * 4).ToString("N1");
+            return "0";
         }
 
         private void setSizeAndPositionBar(Image image, float value)

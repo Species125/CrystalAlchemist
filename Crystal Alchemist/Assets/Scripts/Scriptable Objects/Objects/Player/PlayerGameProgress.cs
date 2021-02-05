@@ -51,24 +51,6 @@ namespace CrystalAlchemist
             if (!this.addLocation) this.location = "";
         }
 
-        public bool ContainsProgress(PlayerGameProgress playerProgress)
-        {
-            if (this.progressType == ProgressType.none || playerProgress == null) return false;
-
-            SetLocation();
-
-            return playerProgress.Contains(this.location, this.gameProgressID, this.progressType);
-        }
-
-        public void AddProgress(PlayerGameProgress playerProgress)
-        {
-            if (this.progressType == ProgressType.none || playerProgress == null) return;
-
-            SetLocation();
-
-            playerProgress.AddProgress(this.location, this.gameProgressID, this.progressType, this.timespan);
-        }
-
         public bool IsSame(ProgressDetails details)
         {
             if (details.key == this.gameProgressID
@@ -76,6 +58,26 @@ namespace CrystalAlchemist
                 && details.type == this.progressType) return true;
 
             return false;
+        }        
+
+        public string GetLocation()
+        {
+            return this.location;
+        }
+
+        public ProgressType GetProgressType()
+        {
+            return this.progressType;
+        }
+
+        public string GetKey()
+        {
+            return this.gameProgressID;
+        }
+
+        public UTimeSpan GetSpan()
+        {
+            return this.timespan;
         }
     }
 
@@ -127,10 +129,8 @@ namespace CrystalAlchemist
         [SerializeField]
         private List<ProgressDetails> progressList = new List<ProgressDetails>();
 
-        public bool Updating(ProgressValue progressValue = null)
+        public void Updating()
         {
-            bool result = false;
-
             for (int i = 0; i < this.progressList.Count; i++)
             {
                 ProgressDetails progress = this.progressList[i];
@@ -138,12 +138,9 @@ namespace CrystalAlchemist
                 if (progress.type != ProgressType.permanent
                     && DateTime.Now > progress.date.ToDateTime() + progress.timespan.ToTimeSpan())
                 {
-                    if (progressValue != null && progressValue.IsSame(progress)) result = true;
                     this.progressList.RemoveAt(i);
                 }
             }
-
-            return result;
         }
 
         public void Clear()
@@ -151,9 +148,9 @@ namespace CrystalAlchemist
             progressList.Clear();
         }
 
-        public void AddProgress(string location, string key, ProgressType type, UTimeSpan span)
+        public void AddProgress(ProgressValue value)
         {
-            AddProgress(location, key, type, new UDateTime(DateTime.Now), span);
+            AddProgress(value.GetLocation(), value.GetKey(), value.GetProgressType(), new UDateTime(DateTime.Now), value.GetSpan());
         }
 
         public void AddProgress(string location, string key, ProgressType type, UDateTime date, UTimeSpan span)
@@ -169,6 +166,11 @@ namespace CrystalAlchemist
             progress.UpdateInspector();
 
             if (!Contains(location, key, type)) this.progressList.Add(progress); 
+        }
+
+        public bool Contains(ProgressValue value)
+        {
+            return Contains(value.GetLocation(), value.GetKey(), value.GetProgressType());
         }
 
         public bool Contains(string location, string key, ProgressType type)
