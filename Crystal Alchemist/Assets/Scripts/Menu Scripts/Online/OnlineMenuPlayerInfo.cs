@@ -26,7 +26,7 @@ namespace CrystalAlchemist
         public void SetInfos(int ID, bool enableButtons)
         {
             Player player = NetworkUtil.GetPlayer(ID);
-            this.nameField.text = player.characterName;
+            this.nameField.text = player.GetCharacterName();
             this.ID = ID;
 
             if (player.isMaster)

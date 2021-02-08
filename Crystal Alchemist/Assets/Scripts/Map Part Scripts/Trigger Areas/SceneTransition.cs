@@ -21,6 +21,10 @@ namespace CrystalAlchemist
         [SerializeField]
         private PlayerTeleportList teleportList;
 
+        [BoxGroup("Required")]
+        [SerializeField]
+        private bool useReadyWindow = false;
+
         private PhotonView photon;
         private int players;
         private int playerCount;
@@ -56,15 +60,13 @@ namespace CrystalAlchemist
             if (other.isTrigger || !NetworkUtil.IsLocal(player)) return;
 
             SetPlayer(-1);
-        }
+        }        
 
-        public void SetTeleport(TeleportStats stats)
+        public void TransferToScene()
         {
-            this.stats = stats;
-            this.teleportList.SetAnimation(true, true);
+            if(!this.useReadyWindow) SetPlayer(1);
+            else NetworkEvents.current.ShowReadywindow(this.stats);            
         }
-
-        public void TransferToScene() => SetPlayer(1);
 
         private void SetPlayer(int value)
         {
@@ -81,6 +83,12 @@ namespace CrystalAlchemist
 
             this.teleportList.SetNextTeleport(this.stats);
             GameEvents.current.DoTeleport();
+        }
+
+        public void SetTeleport(TeleportStats stats)
+        {
+            this.stats = stats;
+            this.teleportList.SetAnimation(true, true);
         }
 
         /*

@@ -44,12 +44,36 @@ namespace CrystalAlchemist
         [Required]
         public SkillAffections affections;
 
-        public StatusEffect GetStatusEffect()
+        public List<StatusEffect> GetStatusEffects()
         {
+            List<StatusEffect> effects = new List<StatusEffect>();
+
             foreach(CharacterResource resource in this.affectedResources)
             {
-                if (resource.resourceType == CostType.statusEffect) return resource.statusEffect;
+                if (resource.resourceType == CostType.statusEffect) effects.Add(resource.statusEffect);
             }
+            return effects;
+        }
+
+        public StatusEffect GetStatusEffect()
+        {
+            List<StatusEffect> effects = GetStatusEffects();
+            if (effects.Count > 0) return effects[0];
+            return null;
+        }
+
+        public CharacterResource GetResourceForMenu()
+        {
+            foreach (CharacterResource resource in this.affectedResources)
+            {
+                if (resource.resourceType == CostType.life) return resource;
+            }
+
+            foreach (CharacterResource resource in this.affectedResources)
+            {
+                if (resource.resourceType == CostType.mana) return resource;
+            }
+
             return null;
         }
 

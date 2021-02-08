@@ -1,10 +1,11 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
+using Photon.Pun;
 
 namespace CrystalAlchemist
 {
-    public class Cutscene : MonoBehaviour
+    public class Cutscene : NetworkBehaviour
     {
         [SerializeField]
         [TextArea]
@@ -31,6 +32,15 @@ namespace CrystalAlchemist
         [ButtonGroup]
         public void Play() => Invoke("PlayIt", 0.1f);
 
+        public void PlayOnAllClients()
+        {
+            Play();
+            if (this.photonView == null) Debug.LogError("Missing Photonview on Cutscene " + this.gameObject.name);
+            this.photonView.RPC("RpcPlay", RpcTarget.Others);
+        }
+
+        [PunRPC]
+        protected void RpcPlay() => Play();   
 
         private void OnValidate()
         {

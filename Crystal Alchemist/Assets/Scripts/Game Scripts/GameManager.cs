@@ -19,6 +19,11 @@ namespace CrystalAlchemist
         [SerializeField]
         private PlayerInventory inventory;
 
+        private void Awake()
+        {
+            MasterManager.globalValues.openedMenues.Clear();
+        }
+
         private void Start()
         {
             GameEvents.current.OnKeyItem += HasKeyItemAlready; 

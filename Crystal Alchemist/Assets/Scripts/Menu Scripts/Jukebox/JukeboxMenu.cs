@@ -44,14 +44,17 @@ namespace CrystalAlchemist
 
                 MusicTheme theme = Resources.Load<MusicTheme>(path);
                 MusicEvents.current.PlayMusic(theme, this.fadeIn);
+                Debug.Log("Change Theme to " + theme.name);
             }
             else if (obj.Code == NetworkUtil.JUKEBOX_PAUSE)
             {
                 MusicEvents.current.TogglePause();
+                Debug.Log("Paused theme");
             }
             else if (obj.Code == NetworkUtil.JUKEBOX_STOP)
             {
                 MusicEvents.current.StopMusic(this.fadeOut);
+                Debug.Log("Stopped theme");
             }
         }
 

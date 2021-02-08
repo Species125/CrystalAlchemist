@@ -67,7 +67,7 @@ namespace CrystalAlchemist
                 this.values = ScriptableObject.CreateInstance<CharacterValues>();    
                 this.saveGame = null;
                 this.values.Initialize();
-                this.characterName = "New Player";
+                this.stats.SetCharacterName("New Player");
             }
             else
             {
@@ -76,7 +76,7 @@ namespace CrystalAlchemist
                 this.values = this.saveGame.playerValue;
                 this.values.Initialize();
                 this.saveGame.attributes.SetValues();
-                this.characterName = this.saveGame.characterName.GetValue();
+                this.stats.SetCharacterName(this.saveGame.characterName.GetValue());
             }
         }
 

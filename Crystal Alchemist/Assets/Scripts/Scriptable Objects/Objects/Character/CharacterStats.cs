@@ -38,6 +38,8 @@ namespace CrystalAlchemist
         [TabGroup("Start-Values")]
         public bool cannotDie = false;
 
+        private string characterName;
+
         [TabGroup("Start-Values")]
         [OnValueChanged("UpdateStats")]
         [Tooltip("Leben, mit dem der Spieler startet")]
@@ -207,9 +209,14 @@ namespace CrystalAlchemist
             return this.characterType;
         }
 
+        public void SetCharacterName(string characterName)
+        {
+            this.characterName = characterName;
+        }
+
         public string GetCharacterName()
         {
-            return FormatUtil.GetLocalisedText(this.name + "_Name", LocalisationFileType.characters);
+            return FormatUtil.GetLocalisedText(this.characterName + "_Name", LocalisationFileType.characters);
         }
 
         private void UpdateStats()

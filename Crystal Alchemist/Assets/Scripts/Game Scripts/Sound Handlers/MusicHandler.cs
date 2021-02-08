@@ -46,6 +46,7 @@ namespace CrystalAlchemist
 
         private void PlayMusic(MusicTheme music, float fadeIn)
         {
+            Debug.Log("Handler: Play music "+music.name);
             if (!music.IsValid()) return;
             GameObject newGameObject = new GameObject("Music: " + music.name);
             MusicObject musicObject = newGameObject.AddComponent<MusicObject>();
@@ -79,6 +80,7 @@ namespace CrystalAlchemist
 
         private void PauseMusic(float fadeOut)
         {
+            Debug.Log("Handler: Pause music " + this.backgroundMusic);
             if (this.backgroundMusic != null) this.backgroundMusic.Pause(fadeOut);
         }
 
@@ -99,6 +101,7 @@ namespace CrystalAlchemist
 
         private void StopMusic(float fadeOut)
         {
+            Debug.Log("Handler: Stop music " + this.backgroundMusic);
             if (this.backgroundMusic != null) this.backgroundMusic.Stop(fadeOut);
         }
 

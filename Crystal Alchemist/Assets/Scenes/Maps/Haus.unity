@@ -6941,6 +6941,11 @@ PrefabInstance:
       objectReference: {fileID: 912519036}
     - target: {fileID: 7808392554565731848, guid: b4cf804db010d9f478e54b7e81d263f5,
         type: 3}
+      propertyPath: path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808392554565731848, guid: b4cf804db010d9f478e54b7e81d263f5,
+        type: 3}
       propertyPath: price
       value: 99
       objectReference: {fileID: 0}
@@ -6965,6 +6970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currencyNeeded
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808392554565731848, guid: b4cf804db010d9f478e54b7e81d263f5,
+        type: 3}
+      propertyPath: useReadyWindow
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7808392554565731848, guid: b4cf804db010d9f478e54b7e81d263f5,
         type: 3}
@@ -22314,6 +22324,7 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: b365e11c494da9b49ba071fdcf7ca2c1, type: 2}
   dialogBox: {fileID: 0}
   teleportList: {fileID: 11400000, guid: a5383e9eb1591254eadebe1d4ca868c7, type: 2}
+  useReadyWindow: 0
 --- !u!1001 &8223605062821766462
 PrefabInstance:
   m_ObjectHideFlags: 0

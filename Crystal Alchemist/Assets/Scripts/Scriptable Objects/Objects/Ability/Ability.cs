@@ -366,7 +366,7 @@ namespace CrystalAlchemist
             {
                 for (int i = 0; i < activePets.Count; i++)
                 {
-                    if (activePets[i] != null && activePets[i].stats.name == summonSkill.name)
+                    if (activePets[i] != null && activePets[i].GetCharacterName() == summonSkill.GetPetName())
                     {
                         result++;
                     }

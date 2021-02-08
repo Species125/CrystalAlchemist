@@ -78,10 +78,6 @@ namespace CrystalAlchemist
         [ReadOnly]
         public bool IsSummoned = false;
 
-        [BoxGroup("Debug")]
-        [ReadOnly]
-        public string characterName;
-
         #endregion
 
         #region Start Functions (Spawn, Init)
@@ -89,7 +85,6 @@ namespace CrystalAlchemist
         {
             this.values = ScriptableObject.CreateInstance<CharacterValues>(); //create new Values when not already assigned (NPC)
             this.values.Initialize();
-            this.characterName = this.stats.GetCharacterName();
 
             this.spawnPosition = this.transform.position;
             SetComponents();
@@ -117,7 +112,7 @@ namespace CrystalAlchemist
 
         public virtual void ResetValues()
         {
-            this.values.Clear(this.stats);
+            this.values.Clear(this.stats);            
 
             this.SetDefaultDirection();
             this.animator.speed = 1;
@@ -409,6 +404,11 @@ namespace CrystalAlchemist
 
         public virtual void UpdateStatusEffect(StatusEffect effect, int value)
         {
+            if (value <= 0)
+            {
+                value = 1;
+                Debug.LogError("Value of " + effect.GetName() + " is less than 0");
+            }
             //TODO: Dispell with amount (value negativ)
             for (int i = 0; i < value; i++) StatusEffectUtil.AddStatusEffect(effect, this);
         }
@@ -680,7 +680,7 @@ namespace CrystalAlchemist
 
         public string GetCharacterName()
         {
-            return this.characterName;
+            return this.stats.GetCharacterName();
         }
 
         public Vector2 GetGroundPosition()

@@ -25,13 +25,7 @@ namespace CrystalAlchemist
 
         [BoxGroup("Detail-Ansicht")]
         [SerializeField]
-        private TextMeshProUGUI skillDetailsName;
-        [BoxGroup("Detail-Ansicht")]
-        [SerializeField]
-        private TextMeshProUGUI skillDetailsStrength;
-        [BoxGroup("Detail-Ansicht")]
-        [SerializeField]
-        private TextMeshProUGUI skillDetailsCost;
+        private SkillMenuDetails details;
 
         private Ability selectedAbility;
 
@@ -90,50 +84,13 @@ namespace CrystalAlchemist
 
         #region OnClickTrigger
 
-        public void ShowSkillDetails(SkillSlot slot)
-        {
-            showSkillDetails(slot.ability);
-        }
+        public void ShowSkillDetails(SkillSlot slot) => ShowSkillDetails(slot.ability);
+        
 
-        public void ShowSkillDetails(SkillMenuActiveSlots slot)
-        {
-            showSkillDetails(slot.ability);
-        }
+        public void ShowSkillDetails(SkillMenuActiveSlots slot) => ShowSkillDetails(slot.ability);        
 
-        private void showSkillDetails(Ability ability)
-        {
-            if (ability != null)
-            {
-                SkillTargetModule targetModule = ability.skill.GetComponent<SkillTargetModule>();
-                SkillSenderModule senderModule = ability.skill.GetComponent<SkillSenderModule>();
-
-                this.skillDetailsName.text = ability.GetName();
-                float strength = 0;
-
-                if (senderModule != null)
-                {
-                    this.skillDetailsCost.text = Mathf.Abs(senderModule.costs.amount).ToString("N1");
-                }
-
-                if (targetModule != null)
-                {
-                    if (targetModule.affectedResources.Count > 0) strength = Mathf.Abs(targetModule.affectedResources[0].amount);
-                    this.skillDetailsStrength.text = strength + "";
-                }
-            }
-            else
-            {
-                HideSkillDetails();
-            }
-        }
-
-        public void HideSkillDetails()
-        {
-            this.skillDetailsName.text = "";
-            this.skillDetailsStrength.text = "";
-            this.skillDetailsCost.text = "";
-        }
-
+        private void ShowSkillDetails(Ability ability) => this.details.SetDetails(ability);
+        
         public void ShowCategory(string category)
         {
             this.physicalSkills.SetActive(false);

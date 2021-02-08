@@ -94,7 +94,7 @@ namespace CrystalAlchemist
             this.timeBar.SetActive(false);
 
             float DPS = this.damage / this.time;
-            string text = FormatUtil.formatFloatToString(DPS, 1f) + " DPS!";
+            string text = FormatUtil.FormatFloatToString(DPS, 1f) + " DPS!";
             ShowMiniDialog(text, this.resultTime - 1f);
 
             StartCoroutine(invincibleCo());

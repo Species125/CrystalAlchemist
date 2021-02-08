@@ -1,7 +1,4 @@
-﻿
-
-
-using Photon.Pun;
+﻿using Photon.Pun;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -11,21 +8,16 @@ namespace CrystalAlchemist
         [SerializeField]
         private Character summon;
 
-        public override void Initialize()
+        public override void Initialize() => Summoning();        
+
+        public string GetPetName()
         {
-            summoning();
+            return this.summon.stats.GetCharacterName();
         }
 
-        public string getPetName()
-        {
-            return this.summon.GetCharacterName();
-        }
-
-        private void summoning()
+        private void Summoning()
         {
             if (!NetworkUtil.IsMaster()) return;
-
-            //TODO: Spawn
 
             AI ai = this.summon.GetComponent<AI>();
             Breakable breakable = this.summon.GetComponent<Breakable>();

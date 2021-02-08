@@ -172,8 +172,7 @@ namespace CrystalAlchemist
 
         private string GetValues(float value)
         {
-            if (value > 0) return (value * 4).ToString("N1");
-            return "0";
+            return FormatUtil.ConvertToResourceValue(value);
         }
 
         private void setSizeAndPositionBar(Image image, float value)

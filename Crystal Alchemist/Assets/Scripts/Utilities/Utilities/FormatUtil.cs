@@ -1,9 +1,4 @@
 ﻿using System.Collections.Generic;
-
-
-
-
-
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,12 +25,12 @@ namespace CrystalAlchemist
                     Player temp = (Player)obj;
                     result = result.Replace("<player>", temp.GetCharacterName());
                 }
-                else if (obj.GetType().DeclaringType == typeof(Treasure))
+                else if (obj.GetType() == typeof(Treasure))
                 {
                     string temp = GetLocalisedText("Treasure", LocalisationFileType.objects);
                     result = result.Replace("<interactable>", temp);
                 }
-                else if (obj.GetType().DeclaringType == typeof(Door))
+                else if (obj.GetType() == typeof(Door))
                 {
                     string temp = GetLocalisedText("Door", LocalisationFileType.objects);
                     result = result.Replace("<interactable>", temp);
@@ -88,12 +83,24 @@ namespace CrystalAlchemist
             return LocalisationSystem.GetLocalisedValue(key, type);
         }
 
-        public static string formatFloatToString(float value, float schwelle)
+        public static string FormatFloatToString(float value, float schwelle)
         {
             if (Mathf.Abs(value) >= 10) return value.ToString("N0");
             else if (value % 1 == 0) return value.ToString("N0");
 
             return value.ToString("N1");
+        }
+
+        public static string ConvertToResourceValue(float value)
+        {
+            if (value > 0) return (value * 4).ToString("N1");
+            return "0";
+        }
+
+        public static string ConvertToResourceValueMenu(float value)
+        {
+            if (value != 0) return (value * 4).ToString("N0");
+            return "0";
         }
 
         public static string setDurationToString(float value)

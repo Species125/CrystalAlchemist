@@ -79,7 +79,7 @@ namespace CrystalAlchemist
         public void RpcSetPreset(string race, string[] colorgroups, string[] parts, string characterName, PhotonMessageInfo info)
         {
             SerializationUtil.SetPreset(this.preset, race, colorgroups, parts);
-            this.player.characterName = characterName;
+            this.player.stats.SetCharacterName(characterName);
             UpdatePlayerRenderer();
         }
     }

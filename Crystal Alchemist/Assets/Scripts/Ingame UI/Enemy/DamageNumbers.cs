@@ -35,8 +35,8 @@ namespace CrystalAlchemist
 
             if (number != 0)
             {
-                if (number > 0) text = "+" + FormatUtil.formatFloatToString(number, 1f);
-                else text = FormatUtil.formatFloatToString(number, 1f);
+                if (number > 0) text = "+" + FormatUtil.FormatFloatToString(number, 1f);
+                else text = FormatUtil.FormatFloatToString(number, 1f);
             }
 
             Initialize(text, color);

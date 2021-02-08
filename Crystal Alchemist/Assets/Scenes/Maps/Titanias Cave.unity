@@ -6536,6 +6536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ee705935c51d94a9e678ff8e01f46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   notes: Victory Cutscene
   CutSceneValue: {fileID: 11400000, guid: 8c0f8cb7fca735c4a8f01a8329f52c64, type: 2}
   hasDuration: 0
@@ -25053,6 +25054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ee705935c51d94a9e678ff8e01f46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   notes: Cutscene when Titania is defeated
   CutSceneValue: {fileID: 11400000, guid: 8c0f8cb7fca735c4a8f01a8329f52c64, type: 2}
   hasDuration: 1
@@ -25447,6 +25449,16 @@ PrefabInstance:
       propertyPath: actionOnConfirm.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1136470329}
+    - target: {fileID: 5667813256127185038, guid: e9f39d5ceba4a6643b52883e6a3ebe77,
+        type: 3}
+      propertyPath: actionOnConfirm.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOnAllClients
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667813256127185038, guid: e9f39d5ceba4a6643b52883e6a3ebe77,
+        type: 3}
+      propertyPath: actionOnConfirm.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CrystalAlchemist.Cutscene, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8991369037405528509, guid: e9f39d5ceba4a6643b52883e6a3ebe77,
         type: 3}
       propertyPath: path
@@ -26140,6 +26152,7 @@ GameObject:
   - component: {fileID: 1136470327}
   - component: {fileID: 1136470329}
   - component: {fileID: 1136470328}
+  - component: {fileID: 1136470330}
   m_Layer: 0
   m_Name: Transform CutScene
   m_TagString: Untagged
@@ -26187,6 +26200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ee705935c51d94a9e678ff8e01f46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   notes: Titanias Transformation Cutscene
   CutSceneValue: {fileID: 11400000, guid: 8c0f8cb7fca735c4a8f01a8329f52c64, type: 2}
   hasDuration: 1
@@ -26319,6 +26333,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1136470330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136470326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 8
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1164947901
 GameObject:
   m_ObjectHideFlags: 0
@@ -26453,7 +26489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4baa5d00558bc4080dfa50632e9626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerProgress: {fileID: 11400000, guid: b21df342a435de5478a191ad87a9aeaa, type: 2}
   progress:
     progressType: 1
     gameProgressID: Titania Victory
@@ -27420,6 +27455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ee705935c51d94a9e678ff8e01f46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   notes: Camera Cutscene when entering the Dungeon
   CutSceneValue: {fileID: 11400000, guid: 8c0f8cb7fca735c4a8f01a8329f52c64, type: 2}
   hasDuration: 0
@@ -27871,7 +27907,7 @@ PrefabInstance:
     - target: {fileID: 3691230672784358425, guid: 3fdf5e3032830d74ba994cf0ef0775f0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3691230672784358425, guid: 3fdf5e3032830d74ba994cf0ef0775f0,
         type: 3}
@@ -28020,7 +28056,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4baa5d00558bc4080dfa50632e9626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerProgress: {fileID: 11400000, guid: b21df342a435de5478a191ad87a9aeaa, type: 2}
   progress:
     progressType: 0
     gameProgressID: Intro Cutscene

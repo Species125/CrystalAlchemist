@@ -127,6 +127,7 @@ namespace CrystalAlchemist
             //this.activeSkills.RemoveAll(x => x = null);
             //for (int i = 0; i < this.activeSkills.Count; i++) this.activeSkills[i].DeactivateIt();
             this.activeSkills.Clear();
+            this.activePets.Clear();
         }
 
         #region Menu und DialogBox

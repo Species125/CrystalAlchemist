@@ -37,6 +37,17 @@ namespace CrystalAlchemist
         [SerializeField]
         private float delay = 0;
 
+        [BoxGroup("Character Movement")]
+        [SerializeField]
+        private bool teleportWithPartner = false;
+
+        [ShowIf("teleportWithPartner")]
+        [BoxGroup("Character Movement")]
+        [SerializeField]
+        private float maxTeleportDistance = 4f;
+
+
+
 
 
         [BoxGroup("Movement Attributes")]
@@ -217,7 +228,11 @@ namespace CrystalAlchemist
             if (this.backToStart) spawnVector = GetNextPoint(this.npc.GetSpawnPosition(), 0.25f);
 
             if (this.movementPriority == MovementPriority.partner)
+            {
                 chaseVector = CheckTargets(this.npc.partner, this.partnerRadius, target, this.targetRadius);
+                if (this.teleportWithPartner && Vector2.Distance(this.npc.GetGroundPosition(), this.npc.partner.GetGroundPosition()) > this.maxTeleportDistance)
+                    this.npc.transform.position = this.npc.partner.GetGroundPosition();
+            }
             else
                 chaseVector = CheckTargets(target, this.targetRadius, this.npc.partner, this.partnerRadius);
 
