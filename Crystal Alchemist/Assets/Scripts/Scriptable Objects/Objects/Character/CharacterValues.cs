@@ -8,7 +8,6 @@ namespace CrystalAlchemist
     {
         walk,
         interact, //in Reichweite eines interagierbaren Objektes
-        inDialog, //Dialog-Box ist offen
         inMenu, //Pause oder Inventar ist offen
         knockedback, //im Knockback
         idle,
@@ -140,8 +139,7 @@ namespace CrystalAlchemist
 
         public bool CanOpenMenu()
         {
-            return (this.currentState != CharacterState.inDialog
-                    && this.currentState != CharacterState.inMenu
+            return (this.currentState != CharacterState.inMenu
                     && this.currentState != CharacterState.knockedback
                     && IsAlive());
         }
@@ -156,7 +154,6 @@ namespace CrystalAlchemist
         public bool CanUseAbilities()
         {
             if (      this.currentState != CharacterState.interact
-                    &&this.currentState != CharacterState.inDialog
                     && this.currentState != CharacterState.inMenu
                     //&& this.currentState != CharacterState.knockedback
                     && this.currentState != CharacterState.sleeping

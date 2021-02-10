@@ -7,6 +7,6 @@ namespace CrystalAlchemist
         [SerializeField]
         private Collider2D ignoredCollider2D;
 
-        public override void Initialize() => Physics2D.IgnoreCollision(this.skill.sender.boxCollider, this.ignoredCollider2D);
+        public override void Initialize() => Physics2D.IgnoreCollision(this.skill.sender.characterCollider, this.ignoredCollider2D);
     }
 }

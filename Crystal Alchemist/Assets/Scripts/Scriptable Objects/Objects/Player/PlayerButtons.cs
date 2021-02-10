@@ -36,6 +36,15 @@ namespace CrystalAlchemist
             this.currentAbility = null;
         }
 
+        public void ResetAbilities()
+        {
+            foreach (PlayerButton playerButton in this.buttons)
+            {
+                if (playerButton.ability != null && playerButton.ability.state == AbilityState.lockOn) 
+                    playerButton.ability.ResetLockOn();                
+            }
+        }
+
         public void Updating(Player player)
         {
             bool canFight = player.values.CanUseAbilities();

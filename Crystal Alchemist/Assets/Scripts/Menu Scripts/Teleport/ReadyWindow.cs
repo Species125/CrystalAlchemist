@@ -176,10 +176,14 @@ namespace CrystalAlchemist
             this.teleportList.SetNextTeleport(this.stats);
             GameEvents.current.DoTeleport();            
 
-            this.ExitMenu();
+            ExitMenu();
         }
 
-        public override void ExitMenu() => RPCCancelTeleport();
+        public void AbortTeleport()
+        {
+            ExitMenu();
+            RPCCancelTeleport();
+        }
 
         public void SetReadyWindow()
         {

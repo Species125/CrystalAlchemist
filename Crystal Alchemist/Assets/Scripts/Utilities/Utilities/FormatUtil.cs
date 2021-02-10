@@ -99,7 +99,7 @@ namespace CrystalAlchemist
 
         public static string ConvertToResourceValueMenu(float value)
         {
-            if (value != 0) return (value * 4).ToString("N0");
+            if (value != 0) return (value * 4).ToString("N1");
             return "0";
         }
 

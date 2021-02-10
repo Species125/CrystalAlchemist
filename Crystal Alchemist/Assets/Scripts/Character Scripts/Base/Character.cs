@@ -22,7 +22,7 @@ namespace CrystalAlchemist
 
         [Required]
         [BoxGroup("Easy Access")]
-        public Collider2D boxCollider;
+        public Collider2D characterCollider;
 
         [BoxGroup("Easy Access")]
         public RespawnAnimation respawnAnimation;
@@ -106,8 +106,8 @@ namespace CrystalAlchemist
             if (this.myRigidbody == null) this.myRigidbody = this.GetComponent<Rigidbody2D>();
             if (this.skillStartPosition == null) this.skillStartPosition = this.gameObject;
             if (this.animator == null) this.animator = this.GetComponent<Animator>();
-            if (this.boxCollider == null) this.boxCollider = GetComponent<Collider2D>();
-            if (this.boxCollider != null) this.boxCollider.gameObject.tag = this.transform.gameObject.tag;
+            if (this.characterCollider == null) this.characterCollider = GetComponent<Collider2D>();
+            if (this.characterCollider != null) this.characterCollider.gameObject.tag = this.transform.gameObject.tag;
         }
 
         public virtual void ResetValues()
@@ -126,7 +126,7 @@ namespace CrystalAlchemist
             else this.myRigidbody.bodyType = RigidbodyType2D.Dynamic;
 
             if (this.GetComponent<CharacterRenderingHandler>() != null) this.GetComponent<CharacterRenderingHandler>().Reset();
-            if (this.boxCollider != null) this.boxCollider.enabled = true;
+            if (this.characterCollider != null) this.characterCollider.enabled = true;
 
             if (this.stats.hasSelfDestruction) this.selfDestructionElapsed = this.stats.selfDestructionTimer;
         }
@@ -547,7 +547,7 @@ namespace CrystalAlchemist
             this.values.currentState = CharacterState.dead;
 
             if (this.myRigidbody != null && this.myRigidbody.bodyType != RigidbodyType2D.Static) this.myRigidbody.velocity = Vector2.zero;
-            if (this.boxCollider != null) this.boxCollider.enabled = false;
+            if (this.characterCollider != null) this.characterCollider.enabled = false;
             if (this.groundPosition != null) this.groundPosition.SetActive(false);
 
             //Play Death Effect
@@ -721,7 +721,7 @@ namespace CrystalAlchemist
             if (this.GetComponent<AICombat>() != null) this.GetComponent<AICombat>().enabled = value;
             if (this.GetComponent<AIMovement>() != null) this.GetComponent<AIMovement>().enabled = value;
 
-            this.boxCollider.enabled = value;
+            this.characterCollider.enabled = value;
         }
 
         public void startAttackAnimation(string parameter)

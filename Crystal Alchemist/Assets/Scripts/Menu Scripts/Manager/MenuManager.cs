@@ -69,7 +69,7 @@ namespace CrystalAlchemist
 
         public void OpenSavePoint() => OpenScene("Savepoint");
 
-        public void OpenDeath() => OpenScene("Death Screen");
+        public void OpenDeath() => OpenSceneOnce("Death Screen");
 
         public void OpenMiniGame() => OpenScene("Minigame");
 
@@ -82,6 +82,11 @@ namespace CrystalAlchemist
         public void OpenTutorial() => OpenScene("Tutorial");
 
         public void OpenOnlineMenu() => OpenScene("Online Menu");
+
+        private void OpenSceneOnce(string scene)
+        {
+            if (!UnityUtil.SceneExists(scene)) SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        }
 
         private void OpenScene(string scene)
         {

@@ -66,7 +66,8 @@ namespace CrystalAlchemist
 
         private void Updating()
         {
-            if (!GameEvents.current.HasProgress(this.progress)) this.onProgressRemoved?.Invoke();
+            if (!GameEvents.current.HasProgress(this.progress)) 
+                this.onProgressRemoved?.Invoke();
         }
     }
 }

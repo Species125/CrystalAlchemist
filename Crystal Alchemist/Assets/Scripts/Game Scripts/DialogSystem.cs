@@ -151,7 +151,7 @@ namespace CrystalAlchemist
         private void ShowDialogBox(Player player, string text, UnityEvent onClose)
         {
             if (!GameEvents.current.HasProgress(this.progress)
-                && player.values.currentState != CharacterState.inDialog)
+                && player.values.currentState != CharacterState.inMenu)
             {
                 this.textValue.SetValue(text);
                 this.eventValue.SetValue(onClose);

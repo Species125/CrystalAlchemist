@@ -101,13 +101,14 @@ namespace CrystalAlchemist
                 else MasterManager.actionButtonText.SetValue(string.Empty);
 
                 ShowContextClue(true);
-                this.player.values.currentState = CharacterState.interact;
+                GameEvents.current.DoChangeState(CharacterState.interact);
+
                 this.canInteract = true;
             }
             else 
             {
                 ShowContextClue(false);
-                if(this.player.values.CanInteract()) this.player.values.currentState = CharacterState.idle;
+                if(this.player.values.CanInteract()) GameEvents.current.DoChangeState(CharacterState.idle);
                 this.canInteract = false;
             }
         }

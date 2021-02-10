@@ -21,7 +21,6 @@ namespace CrystalAlchemist
         private FloatValue timeLeftValue;
 
         private bool isPressed;
-        private float timer;
         private Player player;
 
         private void Start() => GameEvents.current.OnCancel += DisableAbilities;
@@ -38,7 +37,8 @@ namespace CrystalAlchemist
             this.SetTimeValue(this.timeLeftValue);
 
             this.skillSet.SetSender(this.character);
-            this.buttons.currentAbility = null;
+            ClearCurrentAbility();
+            this.buttons.ResetAbilities();
         }
 
         public override void Updating()
@@ -53,13 +53,6 @@ namespace CrystalAlchemist
             else this.player.values.isAttacking = true;
 
             if (this.isPressed) ButtonHold(this.buttons.currentAbility);
-        }
-
-        public void SelectTargetInput(InputAction.CallbackContext ctx)
-        {
-            if (!NetworkUtil.IsLocal(this.player)) return;
-
-            if (ctx.performed) this.GetTargetingSystem().SetTargetChange(ctx.ReadValue<Vector2>());
         }
 
         public void OnHoldingCallback(InputAction.CallbackContext context)

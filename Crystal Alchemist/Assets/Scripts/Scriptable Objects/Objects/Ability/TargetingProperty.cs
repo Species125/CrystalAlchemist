@@ -49,5 +49,7 @@ namespace CrystalAlchemist
         [HideIf("rangeType", RangeType.none)]
         public float range = 6f;
 
+        [BoxGroup("Zielerfassung")]
+        public SkillAffections affections;
     }
 }

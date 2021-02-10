@@ -639,7 +639,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 919052620}
         m_TargetAssemblyTypeName: CrystalAlchemist.ReadyWindow, Assembly-CSharp
-        m_MethodName: ExitMenu
+        m_MethodName: AbortTeleport
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 9429396}
   selectFirst: 0
-  isInteractable: 1
+  useLocalSelectedColor: 0
   overrideNavigation: 0
   up: []
   down: []
@@ -2059,7 +2059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 9429396}
   selectFirst: 1
-  isInteractable: 1
+  useLocalSelectedColor: 0
   overrideNavigation: 0
   up: []
   down: []

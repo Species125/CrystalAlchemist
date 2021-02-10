@@ -18,9 +18,18 @@ namespace CrystalAlchemist
             inputs.Controls.MouseMovement.performed += MouseMovement;
         }
 
+        private void Start() => GameEvents.current.OnDeviceChanged += OnDeviceChanged;
+
+        private void OnDestroy() => GameEvents.current.OnDeviceChanged -= OnDeviceChanged;
+
         private void OnEnable() => inputs.Enable();
 
         private void OnDisable() => inputs.Disable();
+
+        private void OnDeviceChanged()
+        {
+            if (MasterManager.inputDeviceInfo.type == InputDeviceType.gamepad) Cursor.visible = false;
+        }
 
         private void MouseMovement(InputAction.CallbackContext ctx)
         {

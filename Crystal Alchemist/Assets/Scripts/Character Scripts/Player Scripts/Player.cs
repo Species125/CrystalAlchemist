@@ -71,6 +71,7 @@ namespace CrystalAlchemist
             }
             else
             {
+                this.isLocalPlayer = true;
                 this.gameObject.name = "Player (Local)";
                 this.stats = this.saveGame.stats;
                 this.values = this.saveGame.playerValue;
@@ -259,7 +260,7 @@ namespace CrystalAlchemist
         }
 
         ///////////////////////////////////////////////////////////////
-
+                
         private void SetCutScene()
         {
             if (this.CutSceneValue.GetValue()) this.values.currentState = CharacterState.respawning;
@@ -380,13 +381,13 @@ namespace CrystalAlchemist
             yield return new WaitForSeconds(animDuration + duration);
 
             after?.Invoke(); //Zeit    
-            this.boxCollider.enabled = true;
+            this.characterCollider.enabled = true;
         }
 
         private void EnablePlayer(bool value)
         {
             this.EnableScripts(value); //prevent movement        
-            this.boxCollider.enabled = value; //prevent input
+            this.characterCollider.enabled = value; //prevent input
 
             this.SetDefaultDirection();
         }
@@ -394,7 +395,7 @@ namespace CrystalAlchemist
         private IEnumerator GetUp(float duration, Vector2 position, Action before, Action after)
         {
             this.myRigidbody.velocity = Vector2.zero;
-            this.boxCollider.enabled = false;
+            this.characterCollider.enabled = false;
             before?.Invoke(); //Zeit    
 
             AnimatorUtil.SetAnimatorParameter(this.animator, "WakeUp");

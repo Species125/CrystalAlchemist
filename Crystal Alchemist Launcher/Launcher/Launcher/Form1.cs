@@ -21,7 +21,7 @@ namespace Launcher
         private string zipFilename = "CrystalAlchemist.zip";
         private string subFolder = "Game";
 
-        private string content;
+        private string content = "0.0";
         private string gamePath;
         private string versionPath;
 
@@ -29,56 +29,84 @@ namespace Launcher
         {
             InitializeComponent();
 
+            this.label2.Text = "";
+            this.label1.Text = "";
+            this.versionlabel.Text = "";
+
             this.currentDir = new DirectoryInfo(Directory.GetCurrentDirectory());
 
-            string target = this.currentDir.FullName + "\\"+this.subFolder;
+            string target = this.currentDir.FullName + "\\" + this.subFolder;
             if (!Directory.Exists(target)) Directory.CreateDirectory(target);
             this.targetDir = new DirectoryInfo(target);
 
-            this.versionPath = targetDir.FullName + "\\"+this.versionFileName;
+            this.versionPath = targetDir.FullName + "\\" + this.versionFileName;
+
+            string versionUri = this.uri + this.versionFileName;
+
+            try
+            {
+                using (WebClient myWebClient = new WebClient())
+                {
+                    this.content = myWebClient.DownloadString(versionUri);
+                }
+            }
+            catch { }
 
             CanPlay();
             this.label1.Visible = false;
             this.progressBar1.Visible = false;
 
             bool isUpToDate = IsVersionUpToDate();
-            if (!isUpToDate) this.downloadButton.Visible = true;            
+            if (!isUpToDate) this.downloadButton.Visible = true;
+        }
+
+        private string GetLocalVersion()
+        {
+            FileInfo file = new FileInfo(this.versionPath);
+
+            if (file.Exists)
+            {
+                string text = File.ReadAllText(this.versionPath);
+                this.versionlabel.Text = "Version " + text;
+                return text;
+            }
+            return "";
         }
 
         private bool IsVersionUpToDate()
         {
             try
             {
-                string versionUri = this.uri + this.versionFileName;
-                using (WebClient myWebClient = new WebClient())
+                FileInfo file = new FileInfo(this.versionPath);
+
+                if (file.Exists)
                 {
-                    this.content = myWebClient.DownloadString(versionUri);
+                    this.downloadButton.Text = "UPDATE";
 
-                    FileInfo file = new FileInfo(this.versionPath);
+                    string text = GetLocalVersion();
 
-                    if (file.Exists)
+                    string on = "0." + content.Replace(".", "");
+                    string lo = "0." + text.Replace(".", "");
+
+                    double onlineVersion = double.Parse(on, CultureInfo.InvariantCulture);
+                    double localVersion = double.Parse(lo, CultureInfo.InvariantCulture);
+
+                    if (localVersion >= onlineVersion)
                     {
-                        this.downloadButton.Text = "UPDATE";
-                        string text = File.ReadAllText(this.versionPath);
-
-                        this.versionlabel.Text = "Version "+text;
-
-                        string on = "0." + content.Replace(".", "");
-                        string lo = "0." + text.Replace(".", "");
-
-                        double onlineVersion = double.Parse(on, CultureInfo.InvariantCulture);
-                        double localVersion = double.Parse(lo, CultureInfo.InvariantCulture);
-
-                        if (localVersion >= onlineVersion) return true;                        
+                        return true;
                     }
-                    else
-                    {
-                        this.versionlabel.Text = "";
-                        this.downloadButton.Text = "DOWNLOAD";
-                    }               
                 }
+                else
+                {
+                    this.versionlabel.Text = "";
+                    this.downloadButton.Text = "DOWNLOAD";
+                }
+
             }
             catch { }
+
+            this.label2.Visible = true;
+            this.label2.Text = "New Version: " + content;
 
             return false;
         }
@@ -124,7 +152,11 @@ namespace Launcher
         private void CanPlay()
         {
             this.label1.Visible = false;
-            FileInfo file = new FileInfo(this.targetDir.FullName+"\\"+this.exeFileName);
+            this.label2.Visible = false;
+
+            GetLocalVersion();
+
+            FileInfo file = new FileInfo(this.targetDir.FullName + "\\" + this.exeFileName);
             if (file.Exists) this.gamePath = file.FullName;
             else this.gamePath = "";
 
@@ -173,8 +205,8 @@ namespace Launcher
                 }
             }
             catch (Exception ex)
-            { 
-                this.backgroundWorker1.CancelAsync(); 
+            {
+                this.backgroundWorker1.CancelAsync();
             }
         }
 

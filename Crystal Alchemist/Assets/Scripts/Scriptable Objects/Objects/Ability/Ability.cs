@@ -160,9 +160,14 @@ namespace CrystalAlchemist
         [Tooltip("Folgt der Skill dem Charakter")]
         public bool attachToSender = false;
 
-        [BoxGroup("Behaviors")]
+        [HorizontalGroup("Behaviors/Lock")]
         [Tooltip("Während des Skills schaut der Charakter in die gleiche Richtung")]
         public bool lockDirection = false;
+
+        [HorizontalGroup("Behaviors/Lock")]
+        [ShowIf("lockDirection")]
+        [Tooltip("Während des Skills schaut der Charakter in die gleiche Richtung")]
+        public float lockDuration = 0.15f;
 
         [BoxGroup("Behaviors")]
         [Tooltip("Soll der Skill einer Zeitstörung beeinträchtigt werden?")]

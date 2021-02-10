@@ -12,23 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266771f26e0200047a77d2d39c8b8900, type: 3}
   m_Name: Arkaner Impuls
   m_EditorClassIdentifier: 
-  abilityName: Impuls
-  abilityNameEnglish: Impulse
+  path: Scriptable Objects/Abilities/Skills/Player Skills/Arkaner Impuls
   skill: {fileID: 3816868808247662347, guid: 8a7f78e4a6588ab4289c20b832353307, type: 3}
   useTargetSystem: 0
   targetingProperty: {fileID: 0}
+  useIndicator: 0
+  indicator:
+    indicatorProperty: {fileID: 0}
   hasSkillBookInfo: 1
+  icon: {fileID: 0}
   info: {fileID: 11400000, guid: 8df3bc11ad2f37e49b268733d19d2d3f, type: 2}
   cooldown: 0.075
+  globalCooldown: 0
   hasMaxDuration: 1
   maxDuration: 1
-  rapidFireDelay: 1
+  hasDelay: 0
+  delay: 1
   hasCastTime: 0
   castTime: 0
   showCastbar: 1
+  castAnimation: {fileID: 0}
   hasMaxAmount: 0
   maxAmount: 1
-  requirements: 0
+  requirements: {fileID: 0}
   isRapidFire: 1
   remoteActivation: 0
   deactivateButtonUp: 0
@@ -37,8 +43,12 @@ MonoBehaviour:
   positionOffset: 0.25
   attachToSender: 0
   lockDirection: 1
+  lockDuration: 0.3
   timeDistortion: 1
   cooldownLeft: 0
   holdTimer: 0
   state: 6
   enabled: 1
+  active: 1
+  sender: {fileID: 0}
+  activeAnimation: {fileID: 0}

@@ -48,11 +48,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391cf88577f64ab4bbdc5818b55f6a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   shadowRenderer: {fileID: 1757858671885274868}
   itemSprite: {fileID: 7267644143754551128}
   itemDrop: {fileID: 11400000, guid: c63d40097397b2d438e28eb215afdb4b, type: 2}
   showEffectOnEnable: 0
   bounceAnimation: {fileID: 262629966300816101}
+  hasSelfDestruction: 0
+  duration: 60
 --- !u!61 &7267644143456828499
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -77,7 +80,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.75}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!210 &2596590073767614293
 SortingGroup:
@@ -215,14 +218,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2245478228724246757, guid: 6a16bd4179f071649b716a3d0358d43a,
         type: 3}
-      propertyPath: scaleShadow
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2245478228724246757, guid: 6a16bd4179f071649b716a3d0358d43a,
-        type: 3}
       propertyPath: reference
       value: 
       objectReference: {fileID: 7267644143754551131}
+    - target: {fileID: 2245478228724246757, guid: 6a16bd4179f071649b716a3d0358d43a,
+        type: 3}
+      propertyPath: scaleShadow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -240,6 +248,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -252,16 +265,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
         type: 3}

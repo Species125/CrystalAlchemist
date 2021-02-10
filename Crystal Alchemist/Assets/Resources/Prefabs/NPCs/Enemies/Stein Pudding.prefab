@@ -357,7 +357,7 @@ MonoBehaviour:
   path: 
   myRigidbody: {fileID: 2246077131478480996}
   animator: {fileID: 4695825613378725826}
-  boxCollider: {fileID: 1028641328}
+  characterCollider: {fileID: 1028641328}
   respawnAnimation: {fileID: 0}
   groundPosition: {fileID: 3361775751751460579}
   skillStartPosition: {fileID: 7201104449445602734}
@@ -368,8 +368,13 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 4296eda28d32ab54491ee3379dc99977, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
-  characterName: 
   NPCStats: {fileID: 11400000, guid: 4f2cb5bc19fd27642abfad3e82fb141f, type: 2}
+  onDefeated:
+    m_PersistentCalls:
+      m_Calls: []
+  onTarget:
+    m_PersistentCalls:
+      m_Calls: []
   mainTargetID: 0
   partner: {fileID: 0}
   rangeTriggered: 0
@@ -458,6 +463,8 @@ MonoBehaviour:
   targetRadius: 0.1
   partnerRadius: 0.1
   delay: 0
+  teleportWithPartner: 0
+  maxTeleportDistance: 4
   backToStart: 1
   returnDelay: 0
   isPatrol: 0

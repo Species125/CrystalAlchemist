@@ -17,10 +17,10 @@ namespace CrystalAlchemist
                 float x = this.skill.target.transform.position.x;
                 float y = this.skill.target.transform.position.y;
 
-                if (this.skill.target.boxCollider != null)
+                if (this.skill.target.characterCollider != null)
                 {
-                    x += this.skill.target.boxCollider.offset.x;
-                    y += this.skill.target.boxCollider.offset.y;
+                    x += this.skill.target.characterCollider.offset.x;
+                    y += this.skill.target.characterCollider.offset.y;
                 }
                 this.skill.transform.position = new Vector2(x, y);
             }

@@ -34,7 +34,7 @@ namespace CrystalAlchemist
         public Action<WarningType> OnWarning;
         public Action<float, float, float> OnCameraShake;
         public Action<float> OnCameraStill;
-        public Action OnLockDirection;
+        public Action<float> OnLockDirection;
         public Action<Character, bool> OnRangeTriggered;
 
         public Action<Character, Character, float> OnAggroHit;
@@ -88,7 +88,7 @@ namespace CrystalAlchemist
         public void DoWarning(WarningType type) => this.OnWarning?.Invoke(type);
         public void DoSleep(Vector2 position, Action before, Action after) => this.OnSleep?.Invoke(position, before, after);
         public void DoWakeUp(Vector2 position, Action before, Action after) => this.OnWakeUp?.Invoke(position, before, after);
-        public void DoDirectionLock() => this.OnLockDirection?.Invoke();
+        public void DoDirectionLock(float value) => this.OnLockDirection?.Invoke(value);
         public void DoCutScene() => this.OnCutScene?.Invoke();
         public void DoKill() => this.OnKill?.Invoke();
         public void DoInterrupt() => this.OnInterrupt?.Invoke();

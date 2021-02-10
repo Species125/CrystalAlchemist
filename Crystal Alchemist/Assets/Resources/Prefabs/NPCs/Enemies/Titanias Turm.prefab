@@ -109,19 +109,25 @@ MonoBehaviour:
   path: 
   myRigidbody: {fileID: 2438936824352443031}
   animator: {fileID: 4536096100035205208}
-  boxCollider: {fileID: 4536096100201619651}
+  characterCollider: {fileID: 4536096100201619651}
   respawnAnimation: {fileID: 0}
   groundPosition: {fileID: 8857578205377716971}
   skillStartPosition: {fileID: 1536248267194378282}
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 4536096100877042891}
   activeStatusEffectParent: {fileID: 7092093423516748017}
+  statusEffectVisuals: []
   stats: {fileID: 11400000, guid: 2ecf4e93db9bd0a43a3dda9972716fe8, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
-  characterName: 
   NPCStats: {fileID: 11400000, guid: 2ecf4e93db9bd0a43a3dda9972716fe8, type: 2}
-  targetID: 0
+  onDefeated:
+    m_PersistentCalls:
+      m_Calls: []
+  onTarget:
+    m_PersistentCalls:
+      m_Calls: []
+  mainTargetID: 0
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &55980665602690937
@@ -294,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroStats: {fileID: 11400000, guid: bb622e4c94811f244af5ad122c30d82e, type: 2}
   npc: {fileID: 55980665602690939}
+  debug: 0
   mainTarget: 
   aggrodata: []
 --- !u!58 &3866322097961817499
@@ -549,6 +556,8 @@ MonoBehaviour:
   useGlow: 0
   glowColor: {r: 1, g: 1, b: 1, a: 1}
   invert: 0
+  useTint: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &4536096100807201265
 GameObject:
   m_ObjectHideFlags: 0

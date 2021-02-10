@@ -1,11 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
-
-
-
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace CrystalAlchemist
 {
@@ -23,12 +20,11 @@ namespace CrystalAlchemist
 
         private int index;
         private bool selectAll = false;
-        private bool inputPossible = true;
         private FloatValue timeLeftValue;
         private TargetingProperty properties;
         private Ability ability;
         private float timeLeft = 60f;
-        private Vector2 change;
+        private PlayerInputs inputs;
 
         #region Unity Functions
 
@@ -42,26 +38,37 @@ namespace CrystalAlchemist
             this.timeLeftValue = timeValue;
         }
 
-        public void SetTargetChange(Vector2 change)
+        private void Awake()
         {
-            this.change = change;
-        }
+            if (!NetworkUtil.IsLocal(this.sender.GetComponent<Player>())) return;
+            this.inputs = new PlayerInputs();
 
+            this.inputs.Controls.TargetingNext.performed += SelectNextTarget;
+            this.inputs.Controls.TargetingPrevious.performed += SelectPreviousTarget;
+            this.inputs.Controls.TargetingChange.performed += ChangeTargetingMode;
+            this.inputs.Controls.TargetingScrollwheel.performed += SelectTarget;
+        }
 
         private void OnEnable()
         {
+            if(this.inputs != null) this.inputs.Enable();
+
             ability.SetLockOnState();
             SetColliders();
 
             if (this.properties.hasMaxDuration) this.timeLeft = this.properties.maxDuration;
             if (this.timeLeftValue != null) this.timeLeftValue.SetValue(1f);
+        }
 
-            StartCoroutine(delayCo());
+        private void Start()
+        {
+            this.ability.SetLockOnState();
+
+            ManualTargeting();
         }
 
         private void Update()
         {
-            this.ability.SetLockOnState();
             this.allTargetsInRange.RemoveAll(item => item == null);
             this.allTargetsInRange.RemoveAll(item => item.gameObject.activeInHierarchy == false);
             this.allTargetsInRange.RemoveAll(item => item.values.isInvincible);  //WHY?
@@ -69,16 +76,75 @@ namespace CrystalAlchemist
             RotationUtil.rotateCollider(this.sender, this.viewCollider.gameObject);
 
             if (this.properties.targetingMode == TargetingMode.auto) selectAllNearestTargets();
-            else if (this.properties.targetingMode == TargetingMode.manual) selectTargetManually();
+            else ManualTargeting();
 
             updateIndicator();
             updateTimer();
         }
 
-        private void OnDisable() => this.ability.HideIndicator();
+        private void OnDisable() 
+        {
+            if (this.inputs != null) inputs.Disable();
+
+            this.ability.HideIndicator();
+        }
+
+        private void OnDestroy()
+        {
+            if (this.inputs == null) return; 
+
+            this.inputs.Controls.TargetingNext.performed -= SelectNextTarget;
+            this.inputs.Controls.TargetingPrevious.performed -= SelectPreviousTarget;
+            this.inputs.Controls.TargetingChange.performed -= ChangeTargetingMode;
+            this.inputs.Controls.TargetingScrollwheel.performed -= SelectTarget;
+        }
 
         #endregion
 
+        #region Inputs
+
+        private void ManualTargeting()
+        {
+            if (this.selectAll) selectAllNearestTargets();
+            else SelectNextTarget(0);
+        }
+
+        private void ChangeTargetingMode(InputAction.CallbackContext ctx)
+        {
+            if (this.properties.targetingMode == TargetingMode.auto) return;
+
+            if (this.selectAll) this.selectAll = false;
+            else this.selectAll = true;
+
+            ManualTargeting();
+        }
+
+        private void SelectNextTarget(InputAction.CallbackContext ctx)
+        {
+            if (this.properties.targetingMode == TargetingMode.auto) return;
+
+            SelectNextTarget(1);
+        }
+
+        private void SelectPreviousTarget(InputAction.CallbackContext ctx)
+        {
+            if (this.properties.targetingMode == TargetingMode.auto) return;
+
+            SelectNextTarget(-1);
+        }
+
+        private void SelectTarget(InputAction.CallbackContext ctx)
+        {
+            if (ctx.performed)
+            {
+                int value = 1;
+                if (ctx.ReadValue<Vector2>().y < 0) value = -1;
+                SelectNextTarget(value);
+            }
+        }
+        
+
+        #endregion
 
         #region get set
 
@@ -135,7 +201,7 @@ namespace CrystalAlchemist
             return result;
         }
 
-        private void selectNextTarget(int value)
+        private void SelectNextTarget(int value)
         {
             this.selectedTargets.Clear();
             List<Character> sorted = sortTargets();
@@ -147,29 +213,6 @@ namespace CrystalAlchemist
                 else if (index < 0) this.index = sorted.Count - 1;
 
                 addTarget(sorted[this.index]);
-            }
-        }
-
-        private void selectTargetManually()
-        {
-            if (this.selectAll) selectAllNearestTargets();
-            else selectNextTarget(0);
-
-            if (this.inputPossible && this.change != Vector2.zero)
-            {
-                if (this.change.y != 0) //switch modes
-                {
-                    StartCoroutine(delayCo());
-
-                    if (this.selectAll) this.selectAll = false;
-                    else this.selectAll = true;
-                }
-
-                if (this.change.x != 0) //switch targets
-                {
-                    StartCoroutine(delayCo());
-                    selectNextTarget((int)this.change.x);
-                }
             }
         }
 
@@ -187,7 +230,7 @@ namespace CrystalAlchemist
         public void removeTarget(Collider2D collision)
         {
             Character character = collision.GetComponent<Character>();
-            if (character != null && CollisionUtil.CheckCollision(collision, this.ability.skill, this.sender))
+            if (character != null && CollisionUtil.CheckCollision(collision, this.properties.affections, this.sender))
             {
                 if (this.allTargetsInRange.Contains(character)) this.allTargetsInRange.Remove(character);
                 if (this.selectedTargets.Contains(character)) this.selectedTargets.Remove(character);
@@ -197,7 +240,9 @@ namespace CrystalAlchemist
         public void addTarget(Collider2D collision)
         {
             Character character = collision.GetComponent<Character>();
-            if (character != null && !character.values.isInvincible && CollisionUtil.CheckCollision(collision, this.ability.skill, this.sender))  //WHY?
+            if (character != null 
+                && !character.values.isInvincible 
+                && CollisionUtil.CheckCollision(collision, this.properties.affections, this.sender))  //WHY?
             {
                 if (!this.allTargetsInRange.Contains(character)) this.allTargetsInRange.Add(character);
             }
@@ -241,14 +286,5 @@ namespace CrystalAlchemist
             this.ability.state = AbilityState.onCooldown;
             this.gameObject.SetActive(false);
         }
-
-
-        private IEnumerator delayCo()
-        {
-            this.inputPossible = false;
-            yield return new WaitForSeconds(0.2f);
-            this.inputPossible = true;
-        }
-
     }
 }

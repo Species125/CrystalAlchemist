@@ -48,7 +48,11 @@ namespace CrystalAlchemist
         [SerializeField]
         private List<Image> effects = new List<Image>();
 
-        public void SetDetails(Ability ability)
+        [BoxGroup("Effects")]
+        [SerializeField]
+        private GameObject effectBox;
+
+       public void SetDetails(Ability ability)
         {
             if(ability == null)
             {
@@ -60,7 +64,7 @@ namespace CrystalAlchemist
                 this.targetAmount.text = "0";
                 this.targetingAmount.text = "";
 
-                foreach (Image effect in this.effects) effect.gameObject.SetActive(false);
+                this.effectBox.SetActive(false);
 
                 return;
             }
@@ -100,6 +104,9 @@ namespace CrystalAlchemist
                 textField.text = "0";
 
                 List<StatusEffect> statusEffects = module.GetComponent<SkillTargetModule>().GetStatusEffects();
+
+                if (statusEffects.Count > 0) this.effectBox.SetActive(true);
+                else this.effectBox.SetActive(false);
 
                 for (int i = 0; i < this.effects.Count; i++)
                 {

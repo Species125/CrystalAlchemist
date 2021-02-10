@@ -15,7 +15,7 @@ namespace CrystalAlchemist
             this.mainFrame.SetActive(true);
             if (this.darkFrame != null) this.darkFrame.SetActive(false);
 
-            //Cursor.visible = true;
+            Cursor.visible = true;
         }
 
         public virtual void Update()

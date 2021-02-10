@@ -55,7 +55,9 @@ namespace CrystalAlchemist
         private void Awake()
         {
             if (NetworkUtil.IsMaster()) NetworkEvents.current.SetNextTeleport(this.playerTeleport.GetLatestTeleport());
-            this.textField.gameObject.SetActive(false);
+
+            this.fullText = this.textField.text;
+            this.textField.text = "";
             this.controls.SetActive(false);
             this.restart.SetActive(false);
         }
@@ -74,12 +76,9 @@ namespace CrystalAlchemist
         private void Skip() => this.skip = true;
 
         private void ShowText()
-        {
+        {            
             MusicEvents.current.PlayMusicOnce(this.deathMusic, 0, this.fadeIn);
-            this.textField.gameObject.SetActive(true);
-            this.fullText = this.textField.text;
-
-            StartCoroutine(this.ShowTextCo(this.textDelay));            
+            StartCoroutine(this.ShowTextCo(this.textDelay));
         }
 
         private IEnumerator ShowTextCo(float delay)

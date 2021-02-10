@@ -36,6 +36,7 @@ namespace Launcher
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.versionlabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // PlayButton
@@ -91,12 +92,12 @@ namespace Launcher
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(13, 299);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 26);
+            this.label1.Size = new System.Drawing.Size(156, 26);
             this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
+            this.label1.Text = "Downloading...";
             // 
             // backgroundWorker1
             // 
@@ -109,10 +110,25 @@ namespace Launcher
             this.versionlabel.BackColor = System.Drawing.Color.Transparent;
             this.versionlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.versionlabel.ForeColor = System.Drawing.Color.White;
-            this.versionlabel.Location = new System.Drawing.Point(493, 306);
+            this.versionlabel.Location = new System.Drawing.Point(424, 306);
             this.versionlabel.Name = "versionlabel";
-            this.versionlabel.Size = new System.Drawing.Size(0, 16);
+            this.versionlabel.Size = new System.Drawing.Size(84, 16);
             this.versionlabel.TabIndex = 5;
+            this.versionlabel.Text = "Version 1.0.0";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(258, 306);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 16);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "New Version: 2.0.0.";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form1
             // 
@@ -121,6 +137,7 @@ namespace Launcher
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(599, 391);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.versionlabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.downloadButton);
@@ -130,7 +147,7 @@ namespace Launcher
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Crystal Alchemist Launcher 1.1";
+            this.Text = "Crystal Alchemist Launcher 1.2";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,6 +161,7 @@ namespace Launcher
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label versionlabel;
+        private System.Windows.Forms.Label label2;
     }
 }
 

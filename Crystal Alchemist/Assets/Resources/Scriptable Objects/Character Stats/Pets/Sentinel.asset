@@ -20,7 +20,7 @@ MonoBehaviour:
   startSpeed: 100
   startSpellSpeed: 100
   isMassive: 0
-  isImmuneToAllDebuffs: 0
+  isImmuneToAllDebuffs: 1
   immunityToStatusEffects: []
   hasRespawn: 0
   respawnTime: 0
@@ -37,6 +37,8 @@ MonoBehaviour:
   debuffMinus: 0
   showDamageNumbers: 1
   showAnalyse: 1
+  hasSelfDestruction: 0
+  selfDestructionTimer: 0
   antiKnockback: 0
   cannotBeHitTime: 0.3
   showHitcolor: 1

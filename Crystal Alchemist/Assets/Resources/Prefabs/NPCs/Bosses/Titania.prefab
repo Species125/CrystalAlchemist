@@ -164,7 +164,6 @@ MonoBehaviour:
         m_Calls: []
   textValue: {fileID: 11400000, guid: 0dee858a55e55d64ba1bcbf52a9b3e33, type: 2}
   eventValue: {fileID: 11400000, guid: f6af316cc0916024581413a59b36461b, type: 2}
-  playerProgress: {fileID: 0}
   progress:
     progressType: 2
     gameProgressID: 
@@ -471,7 +470,7 @@ MonoBehaviour:
   path: 
   myRigidbody: {fileID: 3945848509854940437}
   animator: {fileID: 910524742380246583}
-  boxCollider: {fileID: 3020177091971815233}
+  characterCollider: {fileID: 3020177091971815233}
   respawnAnimation: {fileID: 0}
   groundPosition: {fileID: 995233311224769710}
   skillStartPosition: {fileID: 325864630953995024}
@@ -482,7 +481,6 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 55d358f1ae5b28f45b4f5f4f5a55089c, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
-  characterName: 
   NPCStats: {fileID: 11400000, guid: 55d358f1ae5b28f45b4f5f4f5a55089c, type: 2}
   onDefeated:
     m_PersistentCalls:
@@ -522,6 +520,8 @@ MonoBehaviour:
   targetRadius: 3.5
   partnerRadius: 0.1
   delay: 2
+  teleportWithPartner: 0
+  maxTeleportDistance: 4
   backToStart: 0
   returnDelay: 0
   isPatrol: 0

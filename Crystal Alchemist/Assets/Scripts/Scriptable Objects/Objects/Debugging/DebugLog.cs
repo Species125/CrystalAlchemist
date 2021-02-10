@@ -13,6 +13,7 @@ namespace CrystalAlchemist
         private int maxFileSize = 5;
 
         public string lastError;
+        public string path;
 
         public int errorCount;
 
@@ -26,7 +27,7 @@ namespace CrystalAlchemist
                     if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
                     long bytes = this.maxFileSize * 1000000;
-                    string path = Path.Combine(folder, "log.txt");
+                    this.path = Path.Combine(folder, "log.txt");
                     if (File.Exists(path) && new FileInfo(path).Length > bytes) File.Delete(path);
 
                     m_Writer = new StreamWriter(path, true);
@@ -45,6 +46,7 @@ namespace CrystalAlchemist
         public void WriteLog(string logString, string stackTrace, LogType type)
         {
             if (this.m_Writer == null) return;
+
             string date = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
             m_Writer.WriteLine("{0} {1}: {2}\r\n{3}", type, date, logString, stackTrace.Replace("\n", Environment.NewLine));
 

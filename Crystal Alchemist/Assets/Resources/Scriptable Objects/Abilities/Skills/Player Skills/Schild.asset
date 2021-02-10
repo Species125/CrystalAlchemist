@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266771f26e0200047a77d2d39c8b8900, type: 3}
   m_Name: Schild
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/Abilities/Skills/Player Skills/Schild
   skill: {fileID: 975855144787553018, guid: 42f53cb1b0e3a1e4c98ecc587d8dd07e, type: 3}
   useTargetSystem: 0
   targetingProperty: {fileID: 0}
@@ -22,6 +23,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   info: {fileID: 11400000, guid: 4b32a0c93eb66a949b10938fa261e483, type: 2}
   cooldown: 0.3
+  globalCooldown: 0
   hasMaxDuration: 0
   maxDuration: 1
   hasDelay: 0
@@ -41,9 +43,12 @@ MonoBehaviour:
   positionOffset: 0
   attachToSender: 1
   lockDirection: 1
+  lockDuration: 0.3
   timeDistortion: 0
-  cooldownLeft: 0
+  cooldownLeft: 0.3
   holdTimer: 0
-  state: 6
+  state: 1
   enabled: 1
   active: 1
+  sender: {fileID: 0}
+  activeAnimation: {fileID: 0}

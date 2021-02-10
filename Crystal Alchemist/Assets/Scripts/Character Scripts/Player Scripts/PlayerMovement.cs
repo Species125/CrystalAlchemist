@@ -8,9 +8,6 @@ namespace CrystalAlchemist
     public class PlayerMovement : PlayerComponent
     {
         [SerializeField]
-        private float directionLockTime = 0.25f;
-
-        [SerializeField]
         private float mouseInputDelay = 0.2f;
 
         [SerializeField]
@@ -28,7 +25,7 @@ namespace CrystalAlchemist
 
         public void MovePlayer(InputAction.CallbackContext ctx) => SetChange(ctx);
 
-        public void MouseClick(InputAction.CallbackContext ctx) => SetChangeMouseClick(ctx);
+        //public void MouseClick(InputAction.CallbackContext ctx) => SetChangeMouseClick(ctx);
 
         public void MouseMovement(InputAction.CallbackContext ctx) => SetMousePosition(ctx);
 
@@ -37,9 +34,12 @@ namespace CrystalAlchemist
             this.mouseTargetPosition = MasterManager.globalValues.nullVector;
         }
 
-        private void Start()
+        public override void Initialize()
         {
+            base.Initialize();
+
             if (!NetworkUtil.IsLocal(this.player)) return;
+
             GameEvents.current.OnMenuOpened += SetToZero;
             GameEvents.current.OnCutScene += SetToZero;
             GameEvents.current.OnLockDirection += SetDirectionLock;
@@ -48,6 +48,7 @@ namespace CrystalAlchemist
         private void OnDestroy()
         {
             if (!NetworkUtil.IsLocal(this.player)) return;
+
             GameEvents.current.OnMenuOpened -= SetToZero;
             GameEvents.current.OnCutScene -= SetToZero;
             GameEvents.current.OnLockDirection -= SetDirectionLock;
@@ -117,7 +118,7 @@ namespace CrystalAlchemist
         {
             if (!NetworkUtil.IsLocal(this.player)) return;
 
-            MoveToMousePosition(); //Move to mouse position if target is not null
+            //MoveToMousePosition(); //Move to mouse position if target is not null
             UpdateAnimationAndMove(this.change);  //check if is menu and move to direction
             if (this.lockDuration > 0) this.lockDuration -= Time.deltaTime;
         }
@@ -169,10 +170,12 @@ namespace CrystalAlchemist
         private void SetDirection(Vector2 direction)
         {
             if (this.player.values.CanMove() && direction != Vector2.zero && this.lockDuration <= 0)
+            {                
                 this.player.ChangeDirection(direction);
+            }
         }
 
-        private void SetDirectionLock() => this.lockDuration = this.directionLockTime;
+        private void SetDirectionLock(float value) => this.lockDuration = value;
 
         #endregion
     }

@@ -72,6 +72,7 @@ namespace CrystalAlchemist
         private bool attached;
         private float progress;
         private float percentage;
+        private float lockDuration;
 
         #endregion
 
@@ -99,10 +100,11 @@ namespace CrystalAlchemist
             this.target = target;
         }
 
-        public void Initialize(float offset, bool lockDirection, bool isRapidFire, bool affectTimeDistortion, bool attached)
+        public void Initialize(float offset, bool lockDirection, float lockDuration, bool isRapidFire, bool affectTimeDistortion, bool attached)
         {
             this.positionOffset = offset;
             this.lockDirection = lockDirection;
+            this.lockDuration = lockDuration;
             this.isRapidFire = isRapidFire;
             this.canAffectedBytimeDistortion = affectTimeDistortion;
             this.attached = attached;
@@ -143,7 +145,7 @@ namespace CrystalAlchemist
             SkillExtension[] extensions = this.GetComponents<SkillExtension>();
             for (int i = 0; i < extensions.Length; i++) extensions[i].Initialize();
 
-            if (this.lockDirection) GameEvents.current.DoDirectionLock();
+            if (this.lockDirection) GameEvents.current.DoDirectionLock(this.lockDuration);
             this.OnStart?.Invoke();
         }
 
@@ -229,7 +231,7 @@ namespace CrystalAlchemist
             SkillExtension[] extensions = this.GetComponents<SkillExtension>();
             for (int i = 0; i < extensions.Length; i++) extensions[i].Updating();
 
-            if (this.lockDirection && !this.isRapidFire) GameEvents.current.DoDirectionLock();
+            if (this.lockDirection && !this.isRapidFire) GameEvents.current.DoDirectionLock(this.lockDuration);
         }
 
         public float GetDurationLeft()

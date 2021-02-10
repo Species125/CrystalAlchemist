@@ -211,9 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc95b6021e9742949ac943c4452de7e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showCurrencyUI: {fileID: 11400000, guid: 81ab4401a7874e940be4896be7fe05a3, type: 2}
-  hideCurrencyUI: {fileID: 11400000, guid: 7acef12e95dc60b4c8fe3c633938842e, type: 2}
-  hideDelay: 0
 --- !u!114 &7620924185697946292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +227,7 @@ MonoBehaviour:
   - {fileID: 6743640123143772126}
   keyboardUI:
   - {fileID: 587260242054327185}
+  updateOnRuntime: 1
 --- !u!1 &6272507987856992014
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2730904882972724265}
   - component: {fileID: 5635449987790972203}
+  - component: {fileID: 287280790145846565}
   m_Layer: 5
   m_Name: A
   m_TagString: Untagged
@@ -378,3 +377,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &287280790145846565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743640123143772126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a901a3a611c4bb4fa8d19b51a884988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  xbox: {fileID: -2627676819740313877, guid: 7fa652469743e614e810a5371739bd83, type: 3}
+  ps4: {fileID: 3760674464881954987, guid: 7fa652469743e614e810a5371739bd83, type: 3}
+  keyboard: {fileID: 0}
+  images: []
+  spriteRenderer: {fileID: 5635449987790972203}

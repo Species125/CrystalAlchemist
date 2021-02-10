@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-
-
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -58,11 +56,10 @@ namespace CrystalAlchemist
         }
 
         private void setColor(float f)
-        {
+        {            
             Color newcolor = this.map.color;
             newcolor.a = f;
             this.map.color = newcolor;
         }
-
     }
 }

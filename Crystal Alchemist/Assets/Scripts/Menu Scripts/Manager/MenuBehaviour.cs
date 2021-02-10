@@ -30,6 +30,7 @@ namespace CrystalAlchemist
             {
                 MasterManager.globalValues.lastState = this.playerValues.currentState;
                 GameEvents.current.DoChangeState(CharacterState.inMenu);
+
                 if (this.showBlackBackground) GameEvents.current.DoMenuOverlay(true);
 
                 if (this.changeVolume) MusicEvents.current.ChangeVolume(MasterManager.settings.GetMenuVolume());

@@ -4,6 +4,14 @@ namespace CrystalAlchemist
 {
     public static class CollisionUtil
     {
+        public static void AddColliderCopy(Character target, GameObject gameObject)
+        {
+            Collider2D temp = target.characterCollider;
+            if (temp == null) return;
+            Collider2D te = UnityUtil.CopyComponent(temp, gameObject);
+            te.isTrigger = true;
+        }
+
         public static bool checkDistanceTo(Vector2 from, Vector2 to, float startDistance, float distanceNeeded)
         {
             float distance = Vector3.Distance(from, to);
@@ -59,7 +67,12 @@ namespace CrystalAlchemist
 
         public static bool CheckCollision(Collider2D hittedCharacter, Skill skill)
         {
-            return CheckCollision(hittedCharacter, skill, skill.sender);
+            if (skill == null || !skill.GetTriggerActive()) return false;
+
+            SkillTargetModule module = skill.GetComponent<SkillTargetModule>();
+            if (module == null) return false;
+
+            return CheckCollision(hittedCharacter, module.affections, skill.sender, skill);
         }
 
         public static bool CheckCollisionDead(Collider2D hittedCharacter, Skill skill)
@@ -67,26 +80,18 @@ namespace CrystalAlchemist
             return CheckCollisionDead(hittedCharacter, skill, skill.sender);
         }
 
-        public static bool CheckCollision(Collider2D other, Skill skill, Character sender)
+        public static bool CheckCollision(Collider2D other, SkillAffections affections, Character sender, Skill skill = null)
         {
-            if (skill != null && skill.GetTriggerActive())
-            {
-                SkillTargetModule targetModule = skill.GetComponent<SkillTargetModule>();
+            Character hittedCharacter = null;
+            if (!other.isTrigger) hittedCharacter = other.GetComponent<Character>();
 
-                if (targetModule != null)
-                {
-                    Character hittedCharacter = null;
-                    if (!other.isTrigger) hittedCharacter = other.GetComponent<Character>();
+            if (hittedCharacter != null &&
+                affections.IsAffected(sender, other)) return true;
 
-                    if (hittedCharacter != null &&
-                        targetModule.affections.IsAffected(sender, other)) return true;
+            if (skill == null) return false;
 
-                    Skill hittedSkill = AbilityUtil.getSkillByCollision(other.gameObject);
-                    return targetModule.affections.isSkillAffected(skill, hittedSkill);
-                }
-            }
-
-            return false;
+            Skill hittedSkill = AbilityUtil.getSkillByCollision(other.gameObject);
+            return affections.isSkillAffected(skill, hittedSkill);
         }
 
         public static bool CheckCollisionDead(Collider2D other, Skill skill, Character sender)

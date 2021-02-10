@@ -324,6 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5299115600626286525}
   - component: {fileID: 8941540331474922181}
+  - component: {fileID: 3064418419742965294}
   - component: {fileID: 3698945209468308851}
   m_Layer: 5
   m_Name: Cursor
@@ -371,6 +372,19 @@ MonoBehaviour:
   cursor: {fileID: 8687293514119715484}
   cursorSelected: {fileID: 8901352046577023509}
   selectedObject: {fileID: 0}
+--- !u!114 &3064418419742965294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9001193634930676107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 706f1bec406749e4eb263c92f739a786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  child: {fileID: 8687293514119715484}
 --- !u!223 &3698945209468308851
 Canvas:
   m_ObjectHideFlags: 0

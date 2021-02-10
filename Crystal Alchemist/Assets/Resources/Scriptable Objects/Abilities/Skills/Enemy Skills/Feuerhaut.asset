@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266771f26e0200047a77d2d39c8b8900, type: 3}
   m_Name: Feuerhaut
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/Abilities/Skills/Enemy Skills/Feuerhaut
   skill: {fileID: 7648501385148924824, guid: 51f9d7aedc6941b4eb34d1eb4d280123, type: 3}
   useTargetSystem: 0
   targetingProperty: {fileID: 0}
@@ -19,9 +20,10 @@ MonoBehaviour:
   indicator:
     indicatorProperty: {fileID: 0}
   hasSkillBookInfo: 0
-  icon: {fileID: -619142506135632524, guid: cc34ff18d4cdf5d4f94f1523c7d4007d, type: 3}
+  icon: {fileID: -370158666850698802, guid: cc34ff18d4cdf5d4f94f1523c7d4007d, type: 3}
   info: {fileID: 0}
   cooldown: 0
+  globalCooldown: 0
   hasMaxDuration: 0
   maxDuration: 1
   hasDelay: 0
@@ -47,3 +49,5 @@ MonoBehaviour:
   state: 6
   enabled: 1
   active: 1
+  sender: {fileID: 0}
+  activeAnimation: {fileID: 0}
