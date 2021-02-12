@@ -29,6 +29,10 @@ namespace CrystalAlchemist
         [SerializeField]
         private CharacterType characterType = CharacterType.Object;
 
+        [BoxGroup("Pflichtfelder")]
+        [SerializeField]
+        private string characterName;
+
         ////////////////////////////////////////////////////////////////
 
         [TabGroup("Start-Values")]
@@ -37,8 +41,6 @@ namespace CrystalAlchemist
 
         [TabGroup("Start-Values")]
         public bool cannotDie = false;
-
-        private string characterName;
 
         [TabGroup("Start-Values")]
         [OnValueChanged("UpdateStats")]
@@ -216,7 +218,7 @@ namespace CrystalAlchemist
 
         public string GetCharacterName()
         {
-            return FormatUtil.GetLocalisedText(this.characterName + "_Name", LocalisationFileType.characters);
+            return FormatUtil.GetLocalisedText(this.characterName, LocalisationFileType.characters);
         }
 
         private void UpdateStats()

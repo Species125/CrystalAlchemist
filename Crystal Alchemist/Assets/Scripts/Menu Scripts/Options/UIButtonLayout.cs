@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-
-
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -24,19 +22,19 @@ namespace CrystalAlchemist
         private void Start()
         {
             UpdateLayout();
-            if (this.updateOnRuntime) SettingsEvents.current.OnLayoutChanged += UpdateLayout;
+            if (this.updateOnRuntime) GameEvents.current.OnDeviceChanged += UpdateLayout;
         }
 
         //private void OnEnable() => UpdateLayout();
 
         private void OnDestroy()
         {
-            if (this.updateOnRuntime) SettingsEvents.current.OnLayoutChanged -= UpdateLayout;
+            if (this.updateOnRuntime) GameEvents.current.OnDeviceChanged -= UpdateLayout;
         }
 
         private void UpdateLayout()
         {
-            if (MasterManager.settings.layoutType == InputDeviceType.keyboard)
+            if (MasterManager.inputDeviceInfo.type != InputDeviceType.gamepad)
             {
                 setActive(false, this.gamepadUI);
                 setActive(true, this.keyboardUI);

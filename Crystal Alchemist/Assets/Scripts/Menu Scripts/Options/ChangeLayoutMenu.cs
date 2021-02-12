@@ -1,11 +1,10 @@
-﻿
-
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CrystalAlchemist
 {
     public class ChangeLayoutMenu : OptionsSwitch
-    {
+    {     
+        /*
         private void OnEnable() => getLayout();
 
         private void getLayout()
@@ -25,6 +24,6 @@ namespace CrystalAlchemist
 
             getLayout();
             SettingsEvents.current.DoLayoutChange();
-        }
+        }*/
     }
 }

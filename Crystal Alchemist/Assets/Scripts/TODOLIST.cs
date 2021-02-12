@@ -6,13 +6,9 @@ namespace CrystalAlchemist
     {
         //TODO (0.2.7)
         /*        
-        BUGS:
-        - Minor Bug: Stromschlag Orb noch zu lange da 
-        - Minor Bug: Teleport Animation on Client    
-        - Minor Bug: No Player when trying to connect but failed
-
         TODO:
         - Boss Mechanic Rework (RPCs)
+        - Player Color-Parts by Emissions
 
         New Features:
         - Autosave (on collect, progress, scene change)

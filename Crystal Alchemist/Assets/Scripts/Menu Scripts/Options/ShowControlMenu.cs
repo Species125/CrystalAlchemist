@@ -1,10 +1,10 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CrystalAlchemist
 {
     public class ShowControlMenu : MonoBehaviour
     {
+        /*
         [SerializeField]
         private GameObject padControls;
 
@@ -17,11 +17,10 @@ namespace CrystalAlchemist
             else showControlType(true);
         }
 
-
         public void showControlType(bool isGamepad)
         {
             this.padControls.SetActive(isGamepad);
             this.keyboardControls.SetActive(!isGamepad);
-        }
+        }*/
     }
 }

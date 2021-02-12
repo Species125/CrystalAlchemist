@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -40,24 +39,7 @@ namespace CrystalAlchemist
                 else this.gamepadType = GamePadType.xbox;
             }
 
-            UpdateLayout();
             GameEvents.current.DoDeviceChanged();
-        }
-
-        private void UpdateLayout()
-        {
-            if (this.type == InputDeviceType.gamepad
-                && MasterManager.settings.layoutType != InputDeviceType.gamepad)
-            {
-                MasterManager.settings.layoutType = InputDeviceType.gamepad;
-                SettingsEvents.current.DoLayoutChange();
-            }
-            else if (this.type != InputDeviceType.gamepad
-                     && MasterManager.settings.layoutType == InputDeviceType.gamepad)
-            {
-                MasterManager.settings.layoutType = InputDeviceType.keyboard;
-                SettingsEvents.current.DoLayoutChange();
-            }
         }
     }
 }

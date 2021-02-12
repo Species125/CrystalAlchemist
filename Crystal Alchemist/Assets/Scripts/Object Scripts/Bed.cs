@@ -64,27 +64,31 @@ namespace CrystalAlchemist
             {
                 SetBedInUse(this.player.photonView.ViewID);
 
+                this.player.values.currentState = CharacterState.sleeping;
+                this.isSleeping = true;
                 this.position = this.player.transform.position;
                 Vector2 position = new Vector2(this.transform.position.x, this.transform.position.y + offset);
 
-                GameEvents.current.DoSleep(position, () => SetBlanket(true), () => StartSleeping());
+                SetBlanket(true);                
                 this.translationID = this.wakeUpActionID;
 
                 MusicEvents.current.PauseMusic(this.fadeOut);
                 MusicEvents.current.PlayMusicOnce(this.music, 0, 0);
+                GameEvents.current.DoSleep(position, () => StartSleeping());
             }
             else //wake up
             {
-                this.player.myRigidbody.velocity = Vector2.zero;
-                GameEvents.current.DoWakeUp(this.position, () => GameEvents.current.DoTimeReset(), () => PlayerAwake());
+                this.player.myRigidbody.velocity = Vector2.zero;                
                 this.translationID = this.oldID;
+
+                GameEvents.current.DoTimeReset();
+                GameEvents.current.DoWakeUp(this.position, () => PlayerAwake());
             }
         }
 
         private void StartSleeping()
         {
-            GameEvents.current.DoTimeChange(this.newValue);
-            this.isSleeping = true;
+            GameEvents.current.DoTimeChange(this.newValue);            
         }
 
         private void PlayerAwake()
@@ -93,7 +97,7 @@ namespace CrystalAlchemist
             this.isSleeping = false;
             MusicEvents.current.RestartMusic(this.fadeIn);
             SetBedInUse(0);
-        }
+        }        
 
         private void SetBedInUse(int ID) => this.photonView.RPC("RpcBedInUse", RpcTarget.All, ID);        
 

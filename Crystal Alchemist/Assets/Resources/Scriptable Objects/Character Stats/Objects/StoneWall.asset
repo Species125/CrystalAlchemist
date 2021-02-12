@@ -12,33 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bed50160a1f51fb4b89bf02e00ece70d, type: 3}
   m_Name: StoneWall
   m_EditorClassIdentifier: 
-  characterName: Steinwand
-  englischCharacterName: Stonewall
   characterType: 2
+  characterName: Steinwand
+  isInvincible: 0
+  cannotDie: 0
   startLife: 5
   startMana: 0.1
   startSpeed: 0
-  startSpellSpeed: 0
+  startSpellSpeed: 1
   isMassive: 1
   isImmuneToAllDebuffs: 1
   immunityToStatusEffects: []
   hasRespawn: 1
   respawnTime: 9999
-  respawnAnimation: {fileID: 0}
+  respawnChance: 100
   deathAnimation: {fileID: 0}
   maxLife: 5
   maxMana: 0.1
+  canRegenerate: 0
   lifeRegeneration: 0
   manaRegeneration: 0
   regenerationInterval: 0
+  canChangeBuffs: 0
   buffPlus: 0
   debuffMinus: 0
   showDamageNumbers: 0
+  showAnalyse: 1
+  hasSelfDestruction: 0
+  selfDestructionTimer: 0
   antiKnockback: 0
   cannotBeHitTime: 0.3
   showHitcolor: 1
   hitColor: {r: 0.509434, g: 0.270839, b: 0.0744927, a: 1}
   lootTable: {fileID: 0}
   hitSoundEffect: {fileID: 0}
-  characterSpecies: Fels
-  characterGender: 2

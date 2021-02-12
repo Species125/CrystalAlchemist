@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace CrystalAlchemist
@@ -206,7 +207,7 @@ namespace CrystalAlchemist
         public override void EnableScripts(bool value)
         {
             if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().enabled = value;
-            //if (this.GetComponent<PlayerControls>() != null) this.GetComponent<PlayerControls>().enabled = value;
+            if (this.GetComponent<PlayerControls>() != null) this.GetComponent<PlayerControls>().enabled = value;
             if (this.GetComponent<PlayerMovement>() != null) this.GetComponent<PlayerMovement>().enabled = value;
             //if (this.GetComponent<PlayerInput>() != null) this.GetComponent<PlayerInput>().enabled = value;        
         }
@@ -355,59 +356,53 @@ namespace CrystalAlchemist
         /////////////////////////////////////////////////////////////////////////////////
 
 
-        public void GoToSleep(Vector2 position, Action before, Action after)
+        public void GoToSleep(Vector2 position, Action action)
         {
-            StartCoroutine(GoToBed(goToBedDuration, position, before, after));
+            StartCoroutine(GoToBed(goToBedDuration, position, action));
         }
 
-        public void WakeUp(Vector2 position, Action before, Action after)
+        public void WakeUp(Vector2 position, Action action)
         {
-            StartCoroutine(GetUp(goToBedDuration, position, before, after));
+            StartCoroutine(GetUp(goToBedDuration, position, action));
         }
 
-        private IEnumerator GoToBed(float duration, Vector2 position, Action before, Action after)
-        {
-            this.values.currentState = CharacterState.sleeping;
+        private IEnumerator GoToBed(float duration, Vector2 position, Action after)
+        {            
             this.myRigidbody.velocity = Vector2.zero;
             this.transform.position = position;
             yield return new WaitForEndOfFrame(); //Wait for Camera
 
-            EnablePlayer(false); //Disable Movement and Collision
-
-            before?.Invoke(); //Decke
+            EnablePlayer(false); //Disable Movement
 
             AnimatorUtil.SetAnimatorParameter(this.animator, "GoSleep");
             float animDuration = AnimatorUtil.GetAnimationLength(this.animator, "GoSleep");
             yield return new WaitForSeconds(animDuration + duration);
 
-            after?.Invoke(); //Zeit    
-            this.characterCollider.enabled = true;
+            GameEvents.current.DoChangeState(CharacterState.interact);
+
+            after?.Invoke(); //Zeit schnell 
         }
 
         private void EnablePlayer(bool value)
         {
-            this.EnableScripts(value); //prevent movement        
-            this.characterCollider.enabled = value; //prevent input
-
+            this.EnableScripts(value); //prevent movement         
             this.SetDefaultDirection();
         }
 
-        private IEnumerator GetUp(float duration, Vector2 position, Action before, Action after)
+        private IEnumerator GetUp(float duration, Vector2 position, Action action)
         {
-            this.myRigidbody.velocity = Vector2.zero;
-            this.characterCollider.enabled = false;
-            before?.Invoke(); //Zeit    
+            this.myRigidbody.velocity = Vector2.zero;                          
 
             AnimatorUtil.SetAnimatorParameter(this.animator, "WakeUp");
             float animDuration = AnimatorUtil.GetAnimationLength(this.animator, "WakeUp");
             yield return new WaitForSeconds(animDuration + duration);
 
-            after?.Invoke(); //Decke
+            action?.Invoke(); //Zeit normal
 
             EnablePlayer(true);
 
             this.transform.position = position;
-            this.values.currentState = CharacterState.idle;
+            GameEvents.current.DoChangeState(CharacterState.idle);
         }
 
 

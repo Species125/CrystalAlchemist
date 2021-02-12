@@ -17840,3 +17840,255 @@ UnityEngine.InputSystem.InputManager.FireStateChangeNotifications (System.Int32 
 UnityEngine.InputSystem.LowLevel.<>c__DisplayClass10_0:<set_onBeforeUpdate>b__0(NativeInputUpdateType)
 UnityEngineInternal.Input.NativeInputSystem:NotifyBeforeUpdate(NativeInputUpdateType)
 
+Exception 11.02.2021 00:50:06: UnassignedReferenceException: The variable spriteRenderer of DirectionRing has not been assigned.
+You probably need to assign the spriteRenderer variable of the DirectionRing script in the inspector.
+CrystalAlchemist.DirectionRing.Awake () (at Assets/Scripts/Ingame UI/Analyse/DirectionRing.cs:15)
+UnityEngine.GameObject:SetActive(Boolean)
+Photon.Pun.PhotonNetwork:NetworkInstantiate(InstantiateParameters, Boolean, Boolean) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs:2507)
+Photon.Pun.PhotonNetwork:Instantiate(String, Vector3, Quaternion, Byte, Object[]) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs:2346)
+CrystalAlchemist.NetworkManager:Instantiate() (at Assets/Scripts/Networking/NetworkManager.cs:65)
+CrystalAlchemist.NetworkManager:Start() (at Assets/Scripts/Networking/NetworkManager.cs:51)
+
+Exception 12.02.2021 00:30:02: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.TimeHandler.OnEnable () (at Assets/Scripts/Game Scripts/TimeHandler.cs:22)
+
+Exception 12.02.2021 00:30:02: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.NetworkManager.OnEnable () (at Assets/Scripts/Networking/NetworkManager.cs:19)
+
+Exception 12.02.2021 00:30:03: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Player.OnDestroy () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:170)
+
+Exception 12.02.2021 00:30:03: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerMovement.OnDestroy () (at Assets/Scripts/Character Scripts/Player Scripts/PlayerMovement.cs:52)
+
+Exception 12.02.2021 00:30:03: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerAbilities.OnDestroy () (at Assets/Scripts/Character Scripts/Player Scripts/PlayerAbilities.cs:28)
+
+Exception 12.02.2021 00:30:03: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerTeleport.OnDestroy () (at Assets/Scripts/Character Scripts/Player Scripts/PlayerTeleport.cs:26)
+
+Exception 12.02.2021 00:30:03: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerItems.OnDestroy () (at Assets/Scripts/Character Scripts/Player Scripts/PlayerItems.cs:12)
+
+Exception 12.02.2021 00:30:03: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerRendererHandler.OnDestroy () (at Assets/Scripts/Character Scripts/Player Scripts/PlayerRendererHandler.cs:43)
+
+Exception 12.02.2021 00:30:03: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.DirectionRing.OnDestroy () (at Assets/Scripts/Ingame UI/Analyse/DirectionRing.cs:23)
+
+Exception 12.02.2021 00:30:03: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerWarnings.OnDestroy () (at Assets/Scripts/Character Scripts/Player Scripts/PlayerWarnings.cs:74)
+
+Exception 12.02.2021 00:30:07: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.TimeValue.updateTimer () (at Assets/Scripts/Scriptable Objects/Objects/Value/TimeValue.cs:121)
+CrystalAlchemist.TimeValue.SetTime (System.Single seconds) (at Assets/Scripts/Scriptable Objects/Objects/Value/TimeValue.cs:108)
+CrystalAlchemist.TimeHandler.FixedUpdate () (at Assets/Scripts/Game Scripts/TimeHandler.cs:87)
+
+Exception 12.02.2021 00:30:07: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:30:07: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:30:07: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:30:07: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:30:07: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:30:07: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:30:07: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:30:07: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.UIButtonLayout.OnDestroy () (at Assets/Scripts/Menu Scripts/Options/UIButtonLayout.cs:32)
+
+Exception 12.02.2021 00:30:07: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.GamePadUILayout.OnDestroy () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/GamePadUILayout.cs:27)
+
+Exception 12.02.2021 00:30:07: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:31:28: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CursorHandler.OnEnable () (at Assets/Scripts/Game Scripts/CursorHandler.cs:25)
+
+Exception 12.02.2021 00:31:29: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.TimeHandler.OnEnable () (at Assets/Scripts/Game Scripts/TimeHandler.cs:22)
+
+Exception 12.02.2021 00:31:29: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.NetworkManager.OnEnable () (at Assets/Scripts/Networking/NetworkManager.cs:19)
+
+Exception 12.02.2021 00:31:35: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CursorHandler.OnEnable () (at Assets/Scripts/Game Scripts/CursorHandler.cs:25)
+
+Exception 12.02.2021 00:31:36: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.TimeHandler.OnEnable () (at Assets/Scripts/Game Scripts/TimeHandler.cs:22)
+
+Exception 12.02.2021 00:31:36: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.NetworkManager.OnEnable () (at Assets/Scripts/Networking/NetworkManager.cs:19)
+
+Exception 12.02.2021 00:31:38: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Player.OnDestroy () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:171)
+
+Exception 12.02.2021 00:31:38: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerMovement.OnDestroy () (at Assets/Scripts/Character Scripts/Player Scripts/PlayerMovement.cs:52)
+
+Exception 12.02.2021 00:31:38: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerAbilities.OnDestroy () (at Assets/Scripts/Character Scripts/Player Scripts/PlayerAbilities.cs:28)
+
+Exception 12.02.2021 00:31:38: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerTeleport.OnDestroy () (at Assets/Scripts/Character Scripts/Player Scripts/PlayerTeleport.cs:26)
+
+Exception 12.02.2021 00:31:38: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerItems.OnDestroy () (at Assets/Scripts/Character Scripts/Player Scripts/PlayerItems.cs:12)
+
+Exception 12.02.2021 00:31:38: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerRendererHandler.OnDestroy () (at Assets/Scripts/Character Scripts/Player Scripts/PlayerRendererHandler.cs:43)
+
+Exception 12.02.2021 00:31:38: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.DirectionRing.OnDestroy () (at Assets/Scripts/Ingame UI/Analyse/DirectionRing.cs:23)
+
+Exception 12.02.2021 00:31:38: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerWarnings.OnDestroy () (at Assets/Scripts/Character Scripts/Player Scripts/PlayerWarnings.cs:74)
+
+Exception 12.02.2021 00:31:38: ArgumentNullException: Value cannot be null.
+Parameter name: componentOrGameObject
+UnityEditor.PrefabUtility.GetPrefabAssetType (UnityEngine.Object componentOrGameObject) (at <433cbae83977409887e43d50043210d2>:0)
+UnityEditor.GameObjectInspector.CalculatePrefabStatus () (at <433cbae83977409887e43d50043210d2>:0)
+UnityEditor.GameObjectInspector.OnForceReloadInspector () (at <433cbae83977409887e43d50043210d2>:0)
+UnityEngine.GUIUtility:ProcessEvent(Int32, IntPtr, Boolean&)
+
+Exception 12.02.2021 00:31:38: ArgumentNullException: Value cannot be null.
+Parameter name: componentOrGameObject
+UnityEditor.PrefabUtility.GetPrefabAssetType (UnityEngine.Object componentOrGameObject) (at <433cbae83977409887e43d50043210d2>:0)
+UnityEditor.GameObjectInspector.CalculatePrefabStatus () (at <433cbae83977409887e43d50043210d2>:0)
+UnityEditor.GameObjectInspector.OnForceReloadInspector () (at <433cbae83977409887e43d50043210d2>:0)
+UnityEngine.GUIUtility:ProcessEvent(Int32, IntPtr, Boolean&)
+
+Exception 12.02.2021 00:31:39: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.TimeValue.updateTimer () (at Assets/Scripts/Scriptable Objects/Objects/Value/TimeValue.cs:121)
+CrystalAlchemist.TimeValue.SetTime (System.Single seconds) (at Assets/Scripts/Scriptable Objects/Objects/Value/TimeValue.cs:108)
+CrystalAlchemist.TimeHandler.FixedUpdate () (at Assets/Scripts/Game Scripts/TimeHandler.cs:87)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.DayNightCircle.OnDestroy () (at Assets/Scripts/Map Part Scripts/Day and Night/DayNightCircle.cs:25)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.DayNightCircle.OnDestroy () (at Assets/Scripts/Map Part Scripts/Day and Night/DayNightCircle.cs:25)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.DayNightCircle.OnDestroy () (at Assets/Scripts/Map Part Scripts/Day and Night/DayNightCircle.cs:25)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.DayNightCircle.OnDestroy () (at Assets/Scripts/Map Part Scripts/Day and Night/DayNightCircle.cs:25)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.DayNightCircle.OnDestroy () (at Assets/Scripts/Map Part Scripts/Day and Night/DayNightCircle.cs:25)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.UIButtonLayout.OnDestroy () (at Assets/Scripts/Menu Scripts/Options/UIButtonLayout.cs:32)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.GamePadUILayout.OnDestroy () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/GamePadUILayout.cs:27)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Interactable.OnDestroy () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:71)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.UIButtonLayout.OnDestroy () (at Assets/Scripts/Menu Scripts/Options/UIButtonLayout.cs:32)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.HUDCutScene.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/HUDCutScene.cs:20)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.UISize.OnDestroy () (at Assets/Scripts/Menu Scripts/Options/UISize.cs:11)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CombatButtonUI.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/CombatButtonUI.cs:90)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CombatButtonUI.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/CombatButtonUI.cs:90)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.UISize.OnDestroy () (at Assets/Scripts/Menu Scripts/Options/UISize.cs:11)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CombatButtonUI.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/CombatButtonUI.cs:90)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CombatButtonUI.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/CombatButtonUI.cs:90)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CombatButtonUI.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/CombatButtonUI.cs:90)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CombatButtonUI.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/CombatButtonUI.cs:90)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.UITextTranslation.OnDestroy () (at Assets/Scripts/Menu Scripts/Options/UITextTranslation.cs:37)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.UISize.OnDestroy () (at Assets/Scripts/Menu Scripts/Options/UISize.cs:11)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CombatButtonUI.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/CombatButtonUI.cs:90)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.GamePadUILayout.OnDestroy () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/GamePadUILayout.cs:27)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CombatButtonUI.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/CombatButtonUI.cs:90)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.GamePadUILayout.OnDestroy () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/GamePadUILayout.cs:27)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CombatButtonUI.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/CombatButtonUI.cs:90)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.GamePadUILayout.OnDestroy () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/GamePadUILayout.cs:27)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CombatButtonUI.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/CombatButtonUI.cs:90)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.GamePadUILayout.OnDestroy () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/GamePadUILayout.cs:27)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CombatButtonUI.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/CombatButtonUI.cs:90)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.GamePadUILayout.OnDestroy () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/GamePadUILayout.cs:27)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CombatButtonUI.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/CombatButtonUI.cs:90)
+
+Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.GamePadUILayout.OnDestroy () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/GamePadUILayout.cs:27)
+

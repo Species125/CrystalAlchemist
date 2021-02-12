@@ -119,7 +119,7 @@ namespace CrystalAlchemist
         public float musicVolume;
         public float soundVolume;
 
-        public string layout;
+        //public string layout;
         public string language;
 
         public bool useHealthBar;
@@ -133,7 +133,7 @@ namespace CrystalAlchemist
             this.musicVolume = MasterManager.settings.backgroundMusicVolume;
             this.soundVolume = MasterManager.settings.soundEffectVolume;
 
-            this.layout = MasterManager.settings.layoutType.ToString().ToLower();
+            //this.layout = MasterManager.settings.layoutType.ToString().ToLower();
             this.language = MasterManager.settings.language.ToString();
 
             this.useHealthBar = MasterManager.settings.healthBar;

@@ -12,7 +12,6 @@ namespace CrystalAlchemist
         public float backgroundMusicPitch = 1f;
         public float backgroundMusicVolumeMenu = 0.5f;
 
-        public InputDeviceType layoutType = InputDeviceType.gamepad;
         public Language language = Language.German;
         public bool healthBar = false;
         public bool manaBar = false;
