@@ -10,31 +10,44 @@ namespace CrystalAlchemist
     {
         [BoxGroup("Pathfinding")]
         [SerializeField]
+        [Tooltip("Is required to determine the size of the pathfinder grind")]
         [Required]
         private Tilemap tilemap;
 
         [BoxGroup("Pathfinding")]
-        [SerializeField]
-        private LayerMask layerMask;
-
-        [BoxGroup("Pathfinding")]
+        [Min(0)]
+        [Tooltip("The size of a cell of the grid")]
         public float cellSize = 1;
 
-        [BoxGroup("Pathfinding")]
+        [Space(10)]
+        [BoxGroup("Collision")]
         [SerializeField]
-        private float diameter = 0.25f;
+        [Tooltip("Physics Layer to set which nodes are not walkable by the collision (map collision, walls)")]
+        private LayerMask collisionLayerMask;
+
+        [BoxGroup("Collision")]
+        [SerializeField]
+        [Tooltip("The accuarcy of the collision for the not walkable nodes")]
+        [Min(0)]
+        private float collisionRadius = 0.5f;
+
+        [Space(10)]
+        [BoxGroup("Dynamic Obstacles")]
+        [SerializeField]
+        [Tooltip("The physics layer for all objects with a dynamic obstacle node (for enemies or NPCs)")]
+        private LayerMask dynamicLayerMask;
 
         [BoxGroup("Dynamic Obstacles")]
         [SerializeField]
-        private LayerMask dynamicMask;
+        [Tooltip("The accuarcy of the collision for the not walkable nodes")]
+        [Min(0)]
+        private float dynamicRadius = 0.25f;
 
         [BoxGroup("Dynamic Obstacles")]
         [SerializeField]
-        private float radius = 0.25f;
-
-        [BoxGroup("Dynamic Obstacles")]
-        [SerializeField]
-        private float interval = 1;
+        [Tooltip("The interval how often the the dynamic obstacles will be updated")]
+        [Min(0.1f)]
+        private float dynamicInterval = 1;
 
         [HideInInspector]
         public int width;
@@ -50,7 +63,6 @@ namespace CrystalAlchemist
 
         private void Awake() => Initialize();
 
-        [Button]
         public void Initialize()
         {
             if (this.tilemap == null || this.cellSize <= 0) return;
@@ -60,7 +72,7 @@ namespace CrystalAlchemist
 
         private void Start()
         {
-            InvokeRepeating("Updating", 0, this.interval);
+            InvokeRepeating("Updating", 0, this.dynamicInterval);
         }
 
         public void Updating()
@@ -71,13 +83,13 @@ namespace CrystalAlchemist
                 if (!node.isDynamic) continue;
 
                 ContactFilter2D filter = new ContactFilter2D();
-                filter.layerMask = dynamicMask;
+                filter.layerMask = dynamicLayerMask;
                 filter.useLayerMask = true;
                 filter.useTriggers = false;
 
                 List<Collider2D> colls = new List<Collider2D>();
                 Vector2 pos = PathfinderUtil.GetVector(node.GetInt2(), this);
-                int result = Physics2D.OverlapCircle(pos, this.radius, filter, colls); ;
+                int result = Physics2D.OverlapCircle(pos, this.dynamicRadius, filter, colls); ;
 
                 if (result > 0)
                 {
@@ -114,13 +126,13 @@ namespace CrystalAlchemist
                     pathNode.cameFromNodeIndex = -1;
 
                     ContactFilter2D filter = new ContactFilter2D();
-                    filter.layerMask = this.layerMask;
+                    filter.layerMask = this.collisionLayerMask;
                     filter.useLayerMask = true;
                     filter.useTriggers = false;
 
                     List<Collider2D> colls = new List<Collider2D>();
                     Vector2 pos = PathfinderUtil.GetVector(new int2(x, y), this);
-                    int result = Physics2D.OverlapCircle(pos, diameter, filter, colls);
+                    int result = Physics2D.OverlapCircle(pos, collisionRadius, filter, colls);
 
                     if (result > 0)
                     {

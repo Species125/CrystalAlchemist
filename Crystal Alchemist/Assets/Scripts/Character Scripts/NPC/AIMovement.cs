@@ -321,8 +321,7 @@ namespace CrystalAlchemist
                 {
                     Debug.DrawLine(path[i], path[i + 1], Color.red,0.5f);
                 }
-            }
-                
+            }                
         }
 
         private void MoveTroughPaths()
