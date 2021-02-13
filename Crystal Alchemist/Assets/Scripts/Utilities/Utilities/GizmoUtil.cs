@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
-
+using Unity.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace CrystalAlchemist
 {
     public static class GizmoUtil
     {
+        /*
         public static void PathfinderGizmo(PathfindingGrid grid, Color gridColor, Color collisionColor, bool showSphere)
         {
             Gizmos.color = gridColor;
@@ -27,6 +29,14 @@ namespace CrystalAlchemist
                     }
                 }
             }
+        }*/
+
+        public static void ShowGrid(NativeArray<int2> pathNodeArray, float cellsize)
+        {
+            for(int i = 0; i < pathNodeArray.Length; i++)
+            {
+                Gizmos.DrawWireCube(new Vector2(pathNodeArray[i].x, pathNodeArray[i].y), Vector2.one*cellsize);
+            }
         }
 
         public static void ShowWalkingLines(List<Vector2> path)
@@ -35,7 +45,7 @@ namespace CrystalAlchemist
             {
                 for (int i = 0; i < path.Count - 1; i++)
                 {
-                    Debug.DrawLine(path[i], path[i + 1], Color.green);
+                    Debug.DrawLine(path[i], path[i + 1], Color.red,60f);
                 }
             }
         }

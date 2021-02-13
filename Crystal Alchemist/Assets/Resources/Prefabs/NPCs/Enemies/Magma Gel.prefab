@@ -155,7 +155,6 @@ GameObject:
   - component: {fileID: 8932006801697793323}
   - component: {fileID: -8954306522490569902}
   - component: {fileID: 1379375270786425069}
-  - component: {fileID: 7784471432208139405}
   - component: {fileID: 3086287688330738372}
   - component: {fileID: 8043299651862711109}
   - component: {fileID: 4622470235604946850}
@@ -345,20 +344,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   marker: {fileID: 683472866742487509, guid: 9676f77d535802944ac0b0aef93ed606, type: 3}
---- !u!114 &7784471432208139405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7268659838857056123}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b7eba3b76cc8940aa3e8ab12be831a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graphType: 0
-  updateInterval: 0.2
 --- !u!114 &3086287688330738372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfdb26056989d4498fe91a93c82e41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graphType: 0
+  graphIndex: 0
 --- !u!114 &8043299651862711109
 MonoBehaviour:
   m_ObjectHideFlags: 0

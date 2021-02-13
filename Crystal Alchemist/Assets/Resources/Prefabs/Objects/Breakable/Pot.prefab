@@ -184,6 +184,8 @@ MonoBehaviour:
   useGlow: 1
   glowColor: {r: 1, g: 1, b: 1, a: 1}
   invert: 0
+  useTint: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &4792970118293493998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +213,6 @@ GameObject:
   - component: {fileID: 546327852}
   - component: {fileID: 2509453432209138342}
   - component: {fileID: 1525219476823323414}
-  - component: {fileID: 1451873180885627068}
   - component: {fileID: -4958807216402869060}
   m_Layer: 11
   m_Name: Pot
@@ -276,20 +277,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50edb187effa6214081b297a24971a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   myRigidbody: {fileID: 546327852}
   animator: {fileID: 2094131440841753910}
-  boxCollider: {fileID: 4378207659174940502}
+  characterCollider: {fileID: 0}
   respawnAnimation: {fileID: 0}
   groundPosition: {fileID: 5384974017307642391}
   skillStartPosition: {fileID: 643234597281888973}
   headPosition: {fileID: 0}
   activeSkillParent: {fileID: 9010662488490252655}
   activeStatusEffectParent: {fileID: 6899571501455701071}
+  statusEffectVisuals: []
   stats: {fileID: 11400000, guid: 2e707ea95b2c5c342be8d3895175e9f5, type: 2}
   values: {fileID: 0}
   IsSummoned: 0
-  characterName: 
   NPCStats: {fileID: 11400000, guid: 2e707ea95b2c5c342be8d3895175e9f5, type: 2}
+  onDefeated:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &546327852
 Rigidbody2D:
   serializedVersion: 4
@@ -335,20 +340,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterSprite: {fileID: 643234597281888973}
---- !u!114 &1451873180885627068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4378207659174940328}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b7eba3b76cc8940aa3e8ab12be831a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graphType: 0
-  updateInterval: 0.2
 --- !u!114 &-4958807216402869060
 MonoBehaviour:
   m_ObjectHideFlags: 0

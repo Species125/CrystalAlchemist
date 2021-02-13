@@ -1,48 +1,45 @@
-﻿using Sirenix.OdinInspector;
-using System.Collections.Generic;
 using UnityEngine;
+using Unity.Mathematics;
+using System.Collections.Generic;
 
 namespace CrystalAlchemist
 {
+    public struct PathNode
+    {
+        public int x;
+        public int y;
+
+        public int index;
+
+        public int gCost;
+        public int hCost;
+        public int fCost;
+
+        public bool isWalkable;
+        public bool isDynamic;
+        public int cameFromNodeIndex;
+
+        public int owner;
+
+        public int2 GetInt2()
+        {
+            return new int2(x, y);
+        }
+
+        public void CalculateFCost() => fCost = gCost + hCost;
+
+        public bool IsWalkable(int ID = 0)
+        {
+            return (this.isWalkable && (owner == 0 || owner == ID));
+        }
+    }
+
     public class Pathfinding : MonoBehaviour
     {
-        [SerializeField]
-        private List<PathfindingGraph> graphs = new List<PathfindingGraph>();
-
         public static Pathfinding Instance { get; private set; }
 
-        private void OnDrawGizmos()
-        {
-            foreach (PathfindingGraph graph in this.graphs)
-            {
-                graph.ShowDebug();
-            }
-        }
+        public List<PathfinderGraph> graphs = new List<PathfinderGraph>();
 
-        public PathfindingGrid GetGrid(GraphType type)
-        {
-            foreach (PathfindingGraph graph in this.graphs)
-            {
-                if (graph.graphType == type) return graph.GetGrid();
-            }
-
-            return null;
-        }
-
-        [Button]
-        private void InitializeGraphs()
-        {
-            foreach (PathfindingGraph graph in this.graphs)
-            {
-                graph.Initialize();
-            }
-
-            Instance = this;
-        }
-
-        private void Awake()
-        {
-            InitializeGraphs();
-        }
+        private void Awake() => Instance = this;         
     }
 }

@@ -292,7 +292,6 @@ GameObject:
   - component: {fileID: 971109533881019453}
   - component: {fileID: 1198186388}
   - component: {fileID: 8261187841884981235}
-  - component: {fileID: 4372448001566058603}
   - component: {fileID: 5364728680716913914}
   - component: {fileID: 8402843821210413997}
   m_Layer: 11
@@ -475,9 +474,9 @@ MonoBehaviour:
   maxPatrolTime: 5
   followPathPrecision: 0.01
   followPathInCircle: 1
-  usePathfinding: 0
-  accuracy: 0.25
-  updateDelay: 0.5
+  usePathfinding: 1
+  accuracy: 0.025
+  updateDelay: 1
   targetPosition: {x: 0, y: 0, z: 0}
   areaCountdown: 0
 --- !u!114 &8261187841884981235
@@ -492,21 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfdb26056989d4498fe91a93c82e41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graphType: 0
---- !u!114 &4372448001566058603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2246077131478480992}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b7eba3b76cc8940aa3e8ab12be831a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graphType: 0
-  updateInterval: 0.2
+  graphIndex: 0
 --- !u!114 &5364728680716913914
 MonoBehaviour:
   m_ObjectHideFlags: 0

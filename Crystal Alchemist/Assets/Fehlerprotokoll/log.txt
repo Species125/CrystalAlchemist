@@ -18092,3 +18092,355 @@ CrystalAlchemist.CombatButtonUI.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD
 Exception 12.02.2021 00:31:41: NullReferenceException: Object reference not set to an instance of an object
 CrystalAlchemist.GamePadUILayout.OnDestroy () (at Assets/Scripts/Menu Scripts/Cursor and InfoBox/GamePadUILayout.cs:27)
 
+Exception 12.02.2021 15:30:39: UnassignedReferenceException: The variable placeHolder of CameraNetworkTargetGroup has not been assigned.
+You probably need to assign the placeHolder variable of the CameraNetworkTargetGroup script in the inspector.
+CrystalAlchemist.CameraNetworkTargetGroup.AddPlayer (System.Int32 ID) (at Assets/Scripts/Game Scripts/Camera/CameraNetworkTargetGroup.cs:38)
+CrystalAlchemist.GameEvents.DoLocalPlayerSpawned (System.Int32 ID) (at Assets/Scripts/Game Scripts/Event Systems/GameEvents.cs:113)
+CrystalAlchemist.Player.LoadPlayer () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:145)
+CrystalAlchemist.Player.Start () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:102)
+
+Exception 12.02.2021 15:30:48: InvalidOperationException: The Unity.Collections.NativeList`1[Unity.Mathematics.int2] FindPathJob.result is allocated with Temp memory. Temp memory containers cannot be used when scheduling a job, use TempJob instead.
+Unity.Jobs.LowLevel.Unsafe.JobsUtility.Schedule (Unity.Jobs.LowLevel.Unsafe.JobsUtility+JobScheduleParameters& parameters) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.IJobExtensions.Schedule[T] (T jobData, Unity.Jobs.JobHandle dependsOn) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.Pathfinding.FindPath () (at Assets/Scripts/Pathfinding/Pathfinding.cs:56)
+CrystalAlchemist.Pathfinding.Test () (at Assets/Scripts/Pathfinding/Pathfinding.cs:35)
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <9577ac7a62ef43179789031239ba8798>:0)
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <9577ac7a62ef43179789031239ba8798>:0)
+System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) (at <9577ac7a62ef43179789031239ba8798>:0)
+Sirenix.OdinInspector.Editor.Drawers.DefaultMethodDrawer.InvokeButton () (at X:/Repositories/sirenix-development/Sirenix Solution/Sirenix.OdinInspector.Editor/Drawers/Misc Drawers/DefaultMethodDrawer.cs:388)
+UnityEngine.Debug:LogException(Exception)
+Sirenix.OdinInspector.Editor.Drawers.DefaultMethodDrawer:InvokeButton() (at X:/Repositories/sirenix-development/Sirenix Solution/Sirenix.OdinInspector.Editor/Drawers/Misc Drawers/DefaultMethodDrawer.cs:413)
+Sirenix.OdinInspector.Editor.Drawers.DefaultMethodDrawer:DrawNormalButton() (at X:/Repositories/sirenix-development/Sirenix Solution/Sirenix.OdinInspector.Editor/Drawers/Misc Drawers/DefaultMethodDrawer.cs:237)
+Sirenix.OdinInspector.Editor.Drawers.DefaultMethodDrawer:DrawPropertyLayout(GUIContent) (at X:/Repositories/sirenix-development/Sirenix Solution/Sirenix.OdinInspector.Editor/Drawers/Misc Drawers/DefaultMethodDrawer.cs:149)
+Sirenix.OdinInspector.Editor.OdinDrawer:DrawProperty(GUIContent) (at X:/Repositories/sirenix-development/Sirenix Solution/Sirenix.OdinInspector.Editor/Drawers/OdinDrawer.cs:176)
+Sirenix.OdinInspector.Editor.InspectorProperty:Draw(GUIContent) (at X:/Repositories/sirenix-development/Sirenix Solution/Sirenix.OdinInspector.Editor/Core/InspectorProperty.cs:602)
+Sirenix.OdinInspector.Editor.InspectorUtilities:DrawPropertiesInTree(PropertyTree) (at X:/Repositories/sirenix-development/Sirenix Solution/Sirenix.OdinInspector.Editor/Misc/InspectorUtilities.cs:418)
+Sirenix.OdinInspector.Editor.PropertyTree:Draw(Boolean) (at X:/Repositories/sirenix-development/Sirenix Solution/Sirenix.OdinInspector.Editor/Core/PropertyTree.cs:308)
+Sirenix.OdinInspector.Editor.OdinEditor:DrawTree() (at X:/Repositories/sirenix-development/Sirenix Solution/Sirenix.OdinInspector.Editor/Drawers/OdinEditor.cs:93)
+Sirenix.OdinInspector.Editor.OdinEditor:DrawOdinInspector() (at X:/Repositories/sirenix-development/Sirenix Solution/Sirenix.OdinInspector.Editor/Drawers/OdinEditor.cs:215)
+Sirenix.OdinInspector.Editor.OdinEditor:OnInspectorGUI() (at X:/Repositories/sirenix-development/Sirenix Solution/Sirenix.OdinInspector.Editor/Drawers/OdinEditor.cs:85)
+UnityEngine.GUIUtility:ProcessEvent(Int32, IntPtr, Boolean&)
+
+Exception 12.02.2021 15:34:44: UnassignedReferenceException: The variable placeHolder of CameraNetworkTargetGroup has not been assigned.
+You probably need to assign the placeHolder variable of the CameraNetworkTargetGroup script in the inspector.
+CrystalAlchemist.CameraNetworkTargetGroup.AddPlayer (System.Int32 ID) (at Assets/Scripts/Game Scripts/Camera/CameraNetworkTargetGroup.cs:38)
+CrystalAlchemist.GameEvents.DoLocalPlayerSpawned (System.Int32 ID) (at Assets/Scripts/Game Scripts/Event Systems/GameEvents.cs:113)
+CrystalAlchemist.Player.LoadPlayer () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:145)
+CrystalAlchemist.Player.Start () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:102)
+
+Exception 12.02.2021 15:36:24: UnassignedReferenceException: The variable placeHolder of CameraNetworkTargetGroup has not been assigned.
+You probably need to assign the placeHolder variable of the CameraNetworkTargetGroup script in the inspector.
+CrystalAlchemist.CameraNetworkTargetGroup.AddPlayer (System.Int32 ID) (at Assets/Scripts/Game Scripts/Camera/CameraNetworkTargetGroup.cs:38)
+CrystalAlchemist.GameEvents.DoLocalPlayerSpawned (System.Int32 ID) (at Assets/Scripts/Game Scripts/Event Systems/GameEvents.cs:113)
+CrystalAlchemist.Player.LoadPlayer () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:145)
+CrystalAlchemist.Player.Start () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:102)
+
+Exception 12.02.2021 22:58:48: UnassignedReferenceException: The variable placeHolder of CameraNetworkTargetGroup has not been assigned.
+You probably need to assign the placeHolder variable of the CameraNetworkTargetGroup script in the inspector.
+CrystalAlchemist.CameraNetworkTargetGroup.AddPlayer (System.Int32 ID) (at Assets/Scripts/Game Scripts/Camera/CameraNetworkTargetGroup.cs:38)
+CrystalAlchemist.GameEvents.DoLocalPlayerSpawned (System.Int32 ID) (at Assets/Scripts/Game Scripts/Event Systems/GameEvents.cs:113)
+CrystalAlchemist.Player.LoadPlayer () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:145)
+CrystalAlchemist.Player.Start () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:102)
+
+Exception 12.02.2021 22:58:48: InvalidOperationException: CrystalAlchemist.PathNode used in NativeArray<CrystalAlchemist.PathNode> must be unmanaged (contain no managed types) and cannot itself be a native container type.
+Unity.Collections.NativeArray`1[T].IsUnmanagedAndThrow () (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckAllocateArguments (System.Int32 length, Unity.Collections.Allocator allocator, System.Int64 totalSize) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].Allocate (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArray`1[T]& array) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T]..ctor (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArrayOptions options) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker.FindPath (UnityEngine.Vector2 startPosition, UnityEngine.Vector2 targetPosition) (at Assets/Scripts/Pathfinding/PathSeeker.cs:24)
+CrystalAlchemist.AIMovement.UpdatePath () (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:315)
+
+Exception 12.02.2021 22:58:49: InvalidOperationException: CrystalAlchemist.PathNode used in NativeArray<CrystalAlchemist.PathNode> must be unmanaged (contain no managed types) and cannot itself be a native container type.
+Unity.Collections.NativeArray`1[T].IsUnmanagedAndThrow () (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckAllocateArguments (System.Int32 length, Unity.Collections.Allocator allocator, System.Int64 totalSize) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].Allocate (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArray`1[T]& array) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T]..ctor (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArrayOptions options) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker.FindPath (UnityEngine.Vector2 startPosition, UnityEngine.Vector2 targetPosition) (at Assets/Scripts/Pathfinding/PathSeeker.cs:24)
+CrystalAlchemist.AIMovement.UpdatePath () (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:315)
+
+Exception 12.02.2021 22:58:50: InvalidOperationException: CrystalAlchemist.PathNode used in NativeArray<CrystalAlchemist.PathNode> must be unmanaged (contain no managed types) and cannot itself be a native container type.
+Unity.Collections.NativeArray`1[T].IsUnmanagedAndThrow () (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckAllocateArguments (System.Int32 length, Unity.Collections.Allocator allocator, System.Int64 totalSize) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].Allocate (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArray`1[T]& array) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T]..ctor (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArrayOptions options) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker.FindPath (UnityEngine.Vector2 startPosition, UnityEngine.Vector2 targetPosition) (at Assets/Scripts/Pathfinding/PathSeeker.cs:24)
+CrystalAlchemist.AIMovement.UpdatePath () (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:315)
+
+Exception 12.02.2021 22:58:50: InvalidOperationException: CrystalAlchemist.PathNode used in NativeArray<CrystalAlchemist.PathNode> must be unmanaged (contain no managed types) and cannot itself be a native container type.
+Unity.Collections.NativeArray`1[T].IsUnmanagedAndThrow () (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckAllocateArguments (System.Int32 length, Unity.Collections.Allocator allocator, System.Int64 totalSize) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].Allocate (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArray`1[T]& array) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T]..ctor (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArrayOptions options) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker.FindPath (UnityEngine.Vector2 startPosition, UnityEngine.Vector2 targetPosition) (at Assets/Scripts/Pathfinding/PathSeeker.cs:24)
+CrystalAlchemist.AIMovement.UpdatePath () (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:315)
+
+Exception 12.02.2021 22:58:51: InvalidOperationException: CrystalAlchemist.PathNode used in NativeArray<CrystalAlchemist.PathNode> must be unmanaged (contain no managed types) and cannot itself be a native container type.
+Unity.Collections.NativeArray`1[T].IsUnmanagedAndThrow () (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckAllocateArguments (System.Int32 length, Unity.Collections.Allocator allocator, System.Int64 totalSize) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].Allocate (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArray`1[T]& array) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T]..ctor (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArrayOptions options) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker.FindPath (UnityEngine.Vector2 startPosition, UnityEngine.Vector2 targetPosition) (at Assets/Scripts/Pathfinding/PathSeeker.cs:24)
+CrystalAlchemist.AIMovement.UpdatePath () (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:315)
+
+Exception 12.02.2021 22:58:51: InvalidOperationException: CrystalAlchemist.PathNode used in NativeArray<CrystalAlchemist.PathNode> must be unmanaged (contain no managed types) and cannot itself be a native container type.
+Unity.Collections.NativeArray`1[T].IsUnmanagedAndThrow () (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckAllocateArguments (System.Int32 length, Unity.Collections.Allocator allocator, System.Int64 totalSize) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].Allocate (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArray`1[T]& array) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T]..ctor (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArrayOptions options) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker.FindPath (UnityEngine.Vector2 startPosition, UnityEngine.Vector2 targetPosition) (at Assets/Scripts/Pathfinding/PathSeeker.cs:24)
+CrystalAlchemist.AIMovement.UpdatePath () (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:315)
+
+Exception 12.02.2021 22:58:52: InvalidOperationException: CrystalAlchemist.PathNode used in NativeArray<CrystalAlchemist.PathNode> must be unmanaged (contain no managed types) and cannot itself be a native container type.
+Unity.Collections.NativeArray`1[T].IsUnmanagedAndThrow () (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckAllocateArguments (System.Int32 length, Unity.Collections.Allocator allocator, System.Int64 totalSize) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].Allocate (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArray`1[T]& array) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T]..ctor (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArrayOptions options) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker.FindPath (UnityEngine.Vector2 startPosition, UnityEngine.Vector2 targetPosition) (at Assets/Scripts/Pathfinding/PathSeeker.cs:24)
+CrystalAlchemist.AIMovement.UpdatePath () (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:315)
+
+Exception 12.02.2021 22:58:52: InvalidOperationException: CrystalAlchemist.PathNode used in NativeArray<CrystalAlchemist.PathNode> must be unmanaged (contain no managed types) and cannot itself be a native container type.
+Unity.Collections.NativeArray`1[T].IsUnmanagedAndThrow () (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckAllocateArguments (System.Int32 length, Unity.Collections.Allocator allocator, System.Int64 totalSize) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].Allocate (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArray`1[T]& array) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T]..ctor (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArrayOptions options) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker.FindPath (UnityEngine.Vector2 startPosition, UnityEngine.Vector2 targetPosition) (at Assets/Scripts/Pathfinding/PathSeeker.cs:24)
+CrystalAlchemist.AIMovement.UpdatePath () (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:315)
+
+Exception 12.02.2021 22:58:53: InvalidOperationException: CrystalAlchemist.PathNode used in NativeArray<CrystalAlchemist.PathNode> must be unmanaged (contain no managed types) and cannot itself be a native container type.
+Unity.Collections.NativeArray`1[T].IsUnmanagedAndThrow () (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckAllocateArguments (System.Int32 length, Unity.Collections.Allocator allocator, System.Int64 totalSize) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].Allocate (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArray`1[T]& array) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T]..ctor (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArrayOptions options) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker.FindPath (UnityEngine.Vector2 startPosition, UnityEngine.Vector2 targetPosition) (at Assets/Scripts/Pathfinding/PathSeeker.cs:24)
+CrystalAlchemist.AIMovement.UpdatePath () (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:315)
+
+Exception 12.02.2021 22:58:53: InvalidOperationException: CrystalAlchemist.PathNode used in NativeArray<CrystalAlchemist.PathNode> must be unmanaged (contain no managed types) and cannot itself be a native container type.
+Unity.Collections.NativeArray`1[T].IsUnmanagedAndThrow () (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckAllocateArguments (System.Int32 length, Unity.Collections.Allocator allocator, System.Int64 totalSize) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].Allocate (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArray`1[T]& array) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T]..ctor (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArrayOptions options) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker.FindPath (UnityEngine.Vector2 startPosition, UnityEngine.Vector2 targetPosition) (at Assets/Scripts/Pathfinding/PathSeeker.cs:24)
+CrystalAlchemist.AIMovement.UpdatePath () (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:315)
+
+Exception 12.02.2021 22:58:54: InvalidOperationException: CrystalAlchemist.PathNode used in NativeArray<CrystalAlchemist.PathNode> must be unmanaged (contain no managed types) and cannot itself be a native container type.
+Unity.Collections.NativeArray`1[T].IsUnmanagedAndThrow () (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckAllocateArguments (System.Int32 length, Unity.Collections.Allocator allocator, System.Int64 totalSize) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].Allocate (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArray`1[T]& array) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T]..ctor (System.Int32 length, Unity.Collections.Allocator allocator, Unity.Collections.NativeArrayOptions options) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker.FindPath (UnityEngine.Vector2 startPosition, UnityEngine.Vector2 targetPosition) (at Assets/Scripts/Pathfinding/PathSeeker.cs:24)
+CrystalAlchemist.AIMovement.UpdatePath () (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:315)
+
+Exception 12.02.2021 23:01:28: UnassignedReferenceException: The variable placeHolder of CameraNetworkTargetGroup has not been assigned.
+You probably need to assign the placeHolder variable of the CameraNetworkTargetGroup script in the inspector.
+CrystalAlchemist.CameraNetworkTargetGroup.AddPlayer (System.Int32 ID) (at Assets/Scripts/Game Scripts/Camera/CameraNetworkTargetGroup.cs:38)
+CrystalAlchemist.GameEvents.DoLocalPlayerSpawned (System.Int32 ID) (at Assets/Scripts/Game Scripts/Event Systems/GameEvents.cs:113)
+CrystalAlchemist.Player.LoadPlayer () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:145)
+CrystalAlchemist.Player.Start () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:102)
+
+Exception 12.02.2021 23:04:23: UnassignedReferenceException: The variable placeHolder of CameraNetworkTargetGroup has not been assigned.
+You probably need to assign the placeHolder variable of the CameraNetworkTargetGroup script in the inspector.
+CrystalAlchemist.CameraNetworkTargetGroup.AddPlayer (System.Int32 ID) (at Assets/Scripts/Game Scripts/Camera/CameraNetworkTargetGroup.cs:38)
+CrystalAlchemist.GameEvents.DoLocalPlayerSpawned (System.Int32 ID) (at Assets/Scripts/Game Scripts/Event Systems/GameEvents.cs:113)
+CrystalAlchemist.Player.LoadPlayer () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:145)
+CrystalAlchemist.Player.Start () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:102)
+
+Exception 12.02.2021 23:06:31: UnassignedReferenceException: The variable placeHolder of CameraNetworkTargetGroup has not been assigned.
+You probably need to assign the placeHolder variable of the CameraNetworkTargetGroup script in the inspector.
+CrystalAlchemist.CameraNetworkTargetGroup.AddPlayer (System.Int32 ID) (at Assets/Scripts/Game Scripts/Camera/CameraNetworkTargetGroup.cs:38)
+CrystalAlchemist.GameEvents.DoLocalPlayerSpawned (System.Int32 ID) (at Assets/Scripts/Game Scripts/Event Systems/GameEvents.cs:113)
+CrystalAlchemist.Player.LoadPlayer () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:145)
+CrystalAlchemist.Player.Start () (at Assets/Scripts/Character Scripts/Player Scripts/Player.cs:102)
+
+Exception 12.02.2021 23:33:26: IndexOutOfRangeException: Index -30 is out of range of '1008' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementReadAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].get_Item (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:182)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:315)
+
+Exception 12.02.2021 23:33:27: IndexOutOfRangeException: Index -30 is out of range of '1008' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementReadAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].get_Item (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:182)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:315)
+
+Exception 12.02.2021 23:33:27: IndexOutOfRangeException: Index -30 is out of range of '1008' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementReadAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].get_Item (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:182)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:315)
+
+Exception 12.02.2021 23:57:07: IndexOutOfRangeException: Index 4 is out of range of '4' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementWriteAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].set_Item (System.Int32 index, T value) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:114)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:316)
+
+Exception 12.02.2021 23:57:08: IndexOutOfRangeException: Index 4 is out of range of '4' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementWriteAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].set_Item (System.Int32 index, T value) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:114)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:316)
+
+Exception 12.02.2021 23:57:08: IndexOutOfRangeException: Index 4 is out of range of '4' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementWriteAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].set_Item (System.Int32 index, T value) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:114)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:316)
+
+Exception 12.02.2021 23:57:09: IndexOutOfRangeException: Index 4 is out of range of '4' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementWriteAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].set_Item (System.Int32 index, T value) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:114)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:316)
+
+Exception 12.02.2021 23:57:09: IndexOutOfRangeException: Index 4 is out of range of '4' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementWriteAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].set_Item (System.Int32 index, T value) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:114)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:316)
+
+Exception 12.02.2021 23:57:10: IndexOutOfRangeException: Index 4 is out of range of '4' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementWriteAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].set_Item (System.Int32 index, T value) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:114)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:316)
+
+Exception 12.02.2021 23:57:10: IndexOutOfRangeException: Index 4 is out of range of '4' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementWriteAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].set_Item (System.Int32 index, T value) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:114)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:316)
+
+Exception 12.02.2021 23:57:11: IndexOutOfRangeException: Index 4 is out of range of '4' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementWriteAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].set_Item (System.Int32 index, T value) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:114)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:316)
+
+Exception 12.02.2021 23:57:11: IndexOutOfRangeException: Index 4 is out of range of '4' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementWriteAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].set_Item (System.Int32 index, T value) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:114)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:316)
+
+Exception 12.02.2021 23:57:12: IndexOutOfRangeException: Index 4 is out of range of '4' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementWriteAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].set_Item (System.Int32 index, T value) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:114)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:316)
+
+Exception 12.02.2021 23:57:12: IndexOutOfRangeException: Index 4 is out of range of '4' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementWriteAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].set_Item (System.Int32 index, T value) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:114)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:316)
+
+Exception 12.02.2021 23:57:13: IndexOutOfRangeException: Index 4 is out of range of '4' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementWriteAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].set_Item (System.Int32 index, T value) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:114)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:316)
+
+Exception 12.02.2021 23:57:13: IndexOutOfRangeException: Index 4 is out of range of '4' Length.
+Unity.Collections.NativeArray`1[T].FailOutOfRangeError (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].CheckElementWriteAccess (System.Int32 index) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Collections.NativeArray`1[T].set_Item (System.Int32 index, T value) (at <82ec470c913149358ad0c83ad628910c>:0)
+CrystalAlchemist.PathSeeker+FindPathJob.FindPath () (at Assets/Scripts/Pathfinding/PathSeeker.cs:114)
+CrystalAlchemist.PathSeeker+FindPathJob.Execute () (at Assets/Scripts/Pathfinding/PathSeeker.cs:69)
+Unity.Jobs.IJobExtensions+JobStruct`1[T].Execute (T& data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, Unity.Jobs.LowLevel.Unsafe.JobRanges& ranges, System.Int32 jobIndex) (at <82ec470c913149358ad0c83ad628910c>:0)
+Unity.Jobs.JobHandle:ScheduleBatchedJobsAndComplete(JobHandle&)
+Unity.Jobs.JobHandle:Complete()
+CrystalAlchemist.PathSeeker:FindPath(Vector2, Vector2) (at Assets/Scripts/Pathfinding/PathSeeker.cs:41)
+CrystalAlchemist.AIMovement:UpdatePath() (at Assets/Scripts/Character Scripts/NPC/AIMovement.cs:316)
+
