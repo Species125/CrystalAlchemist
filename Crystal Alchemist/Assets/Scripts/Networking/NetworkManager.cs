@@ -5,7 +5,7 @@ using ExitGames.Client.Photon;
 
 namespace CrystalAlchemist
 {
-    public class NetworkManager : MonoBehaviour
+    public class NetworkManager : MonoBehaviourPunCallbacks
     {
         [SerializeField]
         private Player prefab;
@@ -13,14 +13,20 @@ namespace CrystalAlchemist
         [SerializeField]
         private NetworkSettings settings;
 
-        private void OnEnable()
+        private bool returnToTitleScreen = false;
+
+        public override void OnEnable()
         {
+            base.OnEnable();
+            GameEvents.current.OnTitleScreen += ReturnTitleScreen;
             PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
             GameEvents.current.OnPlayerSpawnCompleted += ShowKickMessage;
         }
 
-        private void OnDisable()
+        public override void OnDisable()
         {
+            base.OnDisable();
+            GameEvents.current.OnTitleScreen -= ReturnTitleScreen;
             PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEvent;
             GameEvents.current.OnPlayerSpawnCompleted -= ShowKickMessage;
         }
@@ -71,6 +77,29 @@ namespace CrystalAlchemist
             settings.offlineMode.SetValue(true);
             PhotonNetwork.Disconnect();
             GameEvents.current.DoChangeScene(this.settings.currentScene.GetValue()); //go back to last scene
+        }
+
+        private void ReturnTitleScreen()
+        {
+            this.returnToTitleScreen = true;
+            settings.offlineMode.SetValue(true);
+            GameEvents.current.DoSaveGame();
+            PhotonNetwork.Disconnect();
+        }
+
+        public override void OnDisconnected(Photon.Realtime.DisconnectCause cause)
+        {
+            if(this.returnToTitleScreen) SceneManager.LoadScene(0);
+        }
+
+        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+        {
+            NetworkEvents.current.PlayerEnteredRoom(newPlayer);
+        }
+
+        public override void OnPlayerLeftRoom(Photon.Realtime.Player newPlayer)
+        {
+            NetworkEvents.current.PlayerLeftRoom(newPlayer);
         }
     }
 }

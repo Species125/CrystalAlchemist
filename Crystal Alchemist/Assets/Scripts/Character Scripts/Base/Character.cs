@@ -678,7 +678,7 @@ namespace CrystalAlchemist
             else return GetShootingPosition();
         }
 
-        public string GetCharacterName()
+        public virtual string GetCharacterName()
         {
             return this.stats.GetCharacterName();
         }
@@ -865,8 +865,7 @@ namespace CrystalAlchemist
             }
         }
 
+            #endregion
 
-        #endregion
-
-    }
+        }
 }

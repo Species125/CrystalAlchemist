@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-
-
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -27,27 +25,25 @@ namespace CrystalAlchemist
         private void OnTriggerEnter2D(Collider2D collision)
         {
             Character character = collision.GetComponent<Character>();
-            if (character != null)
-            {
-                character.values.isOnIce = true;
-                character.myRigidbody.velocity = Vector2.zero;
-                character.updateSpeed(this.startSpeed, false);
+            if (!IsCharacter(collision)) return;
 
-                if (!this.characters.Contains(character)) this.characters.Add(character);
-            }
+            character.values.isOnIce = true;
+            character.myRigidbody.velocity = Vector2.zero;
+            character.updateSpeed(this.startSpeed, false);
+
+            if (!this.characters.Contains(character)) this.characters.Add(character);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
             Character character = collision.GetComponent<Character>();
-            if (character != null)
-            {
-                character.values.isOnIce = false;
-                character.myRigidbody.velocity = Vector2.zero;
-                character.updateSpeed(0, false);
+            if (!IsCharacter(collision)) return;
 
-                if (this.characters.Contains(character)) this.characters.Remove(character);
-            }
+            character.values.isOnIce = false;
+            character.myRigidbody.velocity = Vector2.zero;
+            character.updateSpeed(0, false);
+
+            if (this.characters.Contains(character)) this.characters.Remove(character);
         }
     }
 }

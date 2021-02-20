@@ -15,7 +15,8 @@ namespace CrystalAlchemist
         private void Awake()
         {
             inputs = new PlayerInputs();
-            inputs.Controls.MouseMovement.performed += MouseMovement;
+            inputs.UI.Point.performed += MouseMovement;
+            inputs.UI.Click.performed += MouseMovement;
         }
 
         private void Start() => GameEvents.current.OnDeviceChanged += OnDeviceChanged;

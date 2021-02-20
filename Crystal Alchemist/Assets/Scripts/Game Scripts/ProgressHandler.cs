@@ -32,6 +32,7 @@ namespace CrystalAlchemist
         private void AddProgress(ProgressValue value)
         {
             this.playerProgress.AddProgress(value);
+            GameEvents.current.DoSaveGame(false);
         }
 
         private bool HasProgress(ProgressValue value)

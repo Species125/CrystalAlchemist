@@ -97,6 +97,7 @@ namespace CrystalAlchemist
         private void LoadScene()
         {
             if (this.loaded) return;
+            PhotonNetwork.DestroyAll();
             if (NetworkUtil.IsMaster()) PhotonNetwork.LoadLevel(this.scene.GetValue());
             this.loaded = true;
         }

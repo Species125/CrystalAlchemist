@@ -89398,16 +89398,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 296795421}
-  layerMask:
+  cellSize: 1
+  collisionLayerMask:
     serializedVersion: 2
     m_Bits: 81920
-  cellSize: 1
-  diameter: 0.5
-  dynamicMask:
+  collisionRadius: 0.5
+  dynamicLayerMask:
     serializedVersion: 2
     m_Bits: 2048
-  radius: 0.25
-  interval: 1
+  dynamicRadius: 0.25
+  dynamicInterval: 1
   width: 68
   height: 70
   position: {x: -24, y: -16}

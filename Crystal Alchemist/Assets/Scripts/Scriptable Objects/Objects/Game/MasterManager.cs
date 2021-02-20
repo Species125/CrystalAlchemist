@@ -126,6 +126,7 @@ namespace CrystalAlchemist
                 if (drop.name == name) return drop;
             }
 
+            Debug.LogError(name + " not found in Master!");
             return null;
         }
 
@@ -136,6 +137,7 @@ namespace CrystalAlchemist
                 if (group.name == name) return group;
             }
 
+            Debug.LogError(name + " not found in Master!");
             return null;
         }
 
@@ -146,6 +148,7 @@ namespace CrystalAlchemist
                 if (teleport.Exists(teleportName)) return teleport;
             }
 
+            Debug.LogError(teleportName + " not found in Master!");
             return null;
         }
     }

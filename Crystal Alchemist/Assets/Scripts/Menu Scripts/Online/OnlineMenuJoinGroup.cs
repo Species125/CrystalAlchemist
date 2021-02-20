@@ -42,6 +42,14 @@ namespace CrystalAlchemist
         [SerializeField]
         private TextMeshProUGUI errormessage;
 
+        [BoxGroup("Buttons")]
+        [SerializeField]
+        private GameObject menu;
+
+        [BoxGroup("Buttons")]
+        [SerializeField]
+        private CustomCursor cursor;
+
         public RoomInfo info;
         private string roomName;
         private bool isPrivate;
@@ -102,7 +110,11 @@ namespace CrystalAlchemist
                 DisableButton();
                 return;
             }
+
             PhotonNetwork.JoinRoom(this.roomName);
+
+            this.menu.SetActive(false);
+            this.cursor.gameObject.SetActive(false);
         }
 
         public override void OnJoinRoomFailed(short returnCode, string message)

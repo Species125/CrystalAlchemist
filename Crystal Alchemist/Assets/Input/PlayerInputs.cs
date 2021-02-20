@@ -123,14 +123,6 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""MouseMovement"",
-                    ""type"": ""Value"",
-                    ""id"": ""caf983b6-b178-4f0e-ba4d-ef4628235eeb"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Targeting Next"",
                     ""type"": ""Button"",
                     ""id"": ""5c2e0ec6-52cd-4eae-b158-c17862b305aa"",
@@ -502,17 +494,6 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PreviousPage"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""61d7f9cc-0943-4ce0-b81c-e78388ebe527"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MouseMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1119,7 +1100,6 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         m_Controls_RBButton = m_Controls.FindAction("RBButton", throwIfNotFound: true);
         m_Controls_NextPage = m_Controls.FindAction("NextPage", throwIfNotFound: true);
         m_Controls_PreviousPage = m_Controls.FindAction("PreviousPage", throwIfNotFound: true);
-        m_Controls_MouseMovement = m_Controls.FindAction("MouseMovement", throwIfNotFound: true);
         m_Controls_TargetingNext = m_Controls.FindAction("Targeting Next", throwIfNotFound: true);
         m_Controls_TargetingPrevious = m_Controls.FindAction("Targeting Previous", throwIfNotFound: true);
         m_Controls_TargetingChange = m_Controls.FindAction("Targeting Change", throwIfNotFound: true);
@@ -1198,7 +1178,6 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_Controls_RBButton;
     private readonly InputAction m_Controls_NextPage;
     private readonly InputAction m_Controls_PreviousPage;
-    private readonly InputAction m_Controls_MouseMovement;
     private readonly InputAction m_Controls_TargetingNext;
     private readonly InputAction m_Controls_TargetingPrevious;
     private readonly InputAction m_Controls_TargetingChange;
@@ -1220,7 +1199,6 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         public InputAction @RBButton => m_Wrapper.m_Controls_RBButton;
         public InputAction @NextPage => m_Wrapper.m_Controls_NextPage;
         public InputAction @PreviousPage => m_Wrapper.m_Controls_PreviousPage;
-        public InputAction @MouseMovement => m_Wrapper.m_Controls_MouseMovement;
         public InputAction @TargetingNext => m_Wrapper.m_Controls_TargetingNext;
         public InputAction @TargetingPrevious => m_Wrapper.m_Controls_TargetingPrevious;
         public InputAction @TargetingChange => m_Wrapper.m_Controls_TargetingChange;
@@ -1273,9 +1251,6 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @PreviousPage.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPreviousPage;
                 @PreviousPage.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPreviousPage;
                 @PreviousPage.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPreviousPage;
-                @MouseMovement.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMouseMovement;
-                @MouseMovement.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMouseMovement;
-                @MouseMovement.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMouseMovement;
                 @TargetingNext.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnTargetingNext;
                 @TargetingNext.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnTargetingNext;
                 @TargetingNext.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnTargetingNext;
@@ -1331,9 +1306,6 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @PreviousPage.started += instance.OnPreviousPage;
                 @PreviousPage.performed += instance.OnPreviousPage;
                 @PreviousPage.canceled += instance.OnPreviousPage;
-                @MouseMovement.started += instance.OnMouseMovement;
-                @MouseMovement.performed += instance.OnMouseMovement;
-                @MouseMovement.canceled += instance.OnMouseMovement;
                 @TargetingNext.started += instance.OnTargetingNext;
                 @TargetingNext.performed += instance.OnTargetingNext;
                 @TargetingNext.canceled += instance.OnTargetingNext;
@@ -1470,7 +1442,6 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         void OnRBButton(InputAction.CallbackContext context);
         void OnNextPage(InputAction.CallbackContext context);
         void OnPreviousPage(InputAction.CallbackContext context);
-        void OnMouseMovement(InputAction.CallbackContext context);
         void OnTargetingNext(InputAction.CallbackContext context);
         void OnTargetingPrevious(InputAction.CallbackContext context);
         void OnTargetingChange(InputAction.CallbackContext context);

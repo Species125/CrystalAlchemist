@@ -67,7 +67,7 @@ namespace CrystalAlchemist
         public void SetItem(ItemDrop drop)
         {
             this.itemDrop = drop;            
-        }
+        }        
 
         public void SetBounce(bool value, Vector2 direction)
         {
@@ -87,10 +87,7 @@ namespace CrystalAlchemist
             this.myRigidbody = this.GetComponent<Rigidbody2D>();
             Bounce();
 
-            string itemName = this.itemDrop.name;
-
-            if (GameEvents.current.HasProgress(this.itemDrop.progress) ||
-               (this.itemDrop.stats.isKeyItem() && GameEvents.current.HasKeyItem(itemName)))
+            if (this.itemDrop.HasKeyItem())
             {
                 this.showEffectOnDisable = false;
                 DestroyIt();

@@ -105,10 +105,10 @@ namespace CrystalAlchemist
 
                 this.canInteract = true;
             }
-            else 
+            else
             {
                 ShowContextClue(false);
-                if(this.player.values.CanInteract()) GameEvents.current.DoChangeState(CharacterState.idle);
+                if (this.player.values.CanInteract()) GameEvents.current.DoChangeState(CharacterState.idle);
                 this.canInteract = false;
             }
         }
@@ -120,27 +120,27 @@ namespace CrystalAlchemist
 
         public virtual void OnEnter(Collider2D characterCollisionBox)
         {
-            if (!characterCollisionBox.isTrigger)
-            {
-                Player player = characterCollisionBox.GetComponent<Player>();
+            Player player = characterCollisionBox.GetComponent<Player>();
+            if (!NetworkUtil.IsLocal(player) || characterCollisionBox.isTrigger) return;
 
-                if (NetworkUtil.IsLocal(player)
-                && (!this.masterOnly
-                || (this.masterOnly && player.isMaster))
-                && this.player != player)
-                {
-                    this.player = player;
-                    this.isPlayerInRange = true;
-                }
+            if ((!this.masterOnly
+                 || (this.masterOnly && player.isMaster))
+            && this.player != player)
+            {
+                this.player = player;
+                this.isPlayerInRange = true;
             }
         }
 
-        public virtual void OnExit()
+        public virtual void OnExit(Collider2D characterCollisionBox)
         {
+            Player player = characterCollisionBox.GetComponent<Player>();
+            if (!NetworkUtil.IsLocal(player) || characterCollisionBox.isTrigger) return;
+
             if (this.player != null)
             {
                 this.player.values.currentState = CharacterState.idle;
-                this.player = null;                
+                this.player = null;
             }
 
             this.isPlayerInRange = false;
@@ -154,6 +154,7 @@ namespace CrystalAlchemist
             this.isPlayerLookingAtIt = PlayerIsLooking();
 
             return (this.player != null
+                    && this.player.isLocalPlayer
                     && this.isPlayerInRange
                     && this.isPlayerLookingAtIt
                     && this.player.values.CanInteract());
@@ -165,14 +166,10 @@ namespace CrystalAlchemist
             return false;
         }
 
-        //private void OnTriggerStay2D(Collider2D characterCollisionBox) => OnEnterstay(characterCollisionBox);
-
         private void OnTriggerEnter2D(Collider2D characterCollisionBox) => OnEnter(characterCollisionBox);
 
-        private void OnTriggerExit2D(Collider2D characterCollisionBox)
-        {
-            if (!characterCollisionBox.isTrigger) OnExit();
-        }
+        private void OnTriggerExit2D(Collider2D characterCollisionBox) => OnExit(characterCollisionBox);
+        
 
         public void ShowDialog(DialogTextTrigger trigger, ItemStats stats)
         {

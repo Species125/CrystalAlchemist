@@ -58,7 +58,7 @@ namespace CrystalAlchemist
                 if (teleport != null) list.AddTeleport(teleport);
             }
 
-            list.SetNextTeleport(MasterManager.GetTeleportStats(data.startTeleport));
+            list.SetNextTeleport(MasterManager.GetTeleportStats(data.startTeleport), true, true);
             list.SetReturnTeleport(MasterManager.GetTeleportStats(data.lastTeleport));
         }
 

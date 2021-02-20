@@ -126,7 +126,7 @@ namespace CrystalAlchemist
             if (ability == null) return;
 
             if (ability.enabled && ability.state == AbilityState.charged && !ability.isRapidFire) UseAbilityOnTarget(ability, null); //use Skill when charged
-            else if (ability.state == AbilityState.lockOn && ability.isRapidFire) HideTargetingSystem(ability); //hide Targeting System when released
+            else if (ability.useTargetSystem && ability.isRapidFire) HideTargetingSystem(ability); //hide Targeting System when released
 
             UnChargeAbility(ability);
             GlobalCooldownUp(ability);            
@@ -174,16 +174,17 @@ namespace CrystalAlchemist
 
         public override void DeactivateAbility(Ability ability)
         {
-            if (!this.player.isLocalPlayer) return;
+            if (!this.player.isLocalPlayer || !ability.deactivateButtonUp) return;
 
-            this.player.photonView.RPC("RpcDeactivateSkill", RpcTarget.All, ability.path);
+            DeactivateSkill(ability);
+            this.player.photonView.RPC("RpcDeactivateSkill", RpcTarget.Others, ability.path);
         }
 
         [PunRPC]
         protected void RpcDeactivateSkill(string path)
         {
             Ability ability = Resources.Load<Ability>(path);
-            if (ability.deactivateButtonUp) DeactivateSkill(ability);
+            DeactivateSkill(ability);
         }
     }
 }

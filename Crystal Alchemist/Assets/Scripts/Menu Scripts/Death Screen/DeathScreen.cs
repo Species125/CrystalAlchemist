@@ -64,6 +64,8 @@ namespace CrystalAlchemist
 
         private void Start()
         {
+            GameEvents.current.DoSaveGame(false);
+
             this.CutSceneValue.SetValue(true);
             GameEvents.current.DoCutScene();
             MusicEvents.current.StopMusic(this.fadeOut);

@@ -19,7 +19,7 @@ namespace CrystalAlchemist
 
         [BoxGroup("Bett")]
         [SerializeField]
-        private float offset = 0.35f;
+        private PhotonView bedPosition;
 
         [BoxGroup("Bett")]
         [SerializeField]
@@ -62,19 +62,22 @@ namespace CrystalAlchemist
         {
             if (!this.isSleeping) //sleep
             {
+                PhotonNetwork.CurrentRoom.IsOpen = false;
                 SetBedInUse(this.player.photonView.ViewID);
 
                 this.player.values.currentState = CharacterState.sleeping;
                 this.isSleeping = true;
                 this.position = this.player.transform.position;
-                Vector2 position = new Vector2(this.transform.position.x, this.transform.position.y + offset);
+                
+                this.player.SetTransform(this.bedPosition.transform.position, this.bedPosition.ViewID);
 
                 SetBlanket(true);                
                 this.translationID = this.wakeUpActionID;
 
                 MusicEvents.current.PauseMusic(this.fadeOut);
                 MusicEvents.current.PlayMusicOnce(this.music, 0, 0);
-                GameEvents.current.DoSleep(position, () => StartSleeping());
+
+                GameEvents.current.DoSleep(() => StartSleeping());
             }
             else //wake up
             {
@@ -83,6 +86,7 @@ namespace CrystalAlchemist
 
                 GameEvents.current.DoTimeReset();
                 GameEvents.current.DoWakeUp(this.position, () => PlayerAwake());
+                PhotonNetwork.CurrentRoom.IsOpen = true;
             }
         }
 

@@ -20,7 +20,10 @@ namespace CrystalAlchemist
 
                 object value = inputAction.ReadValueAsObject().ToString();
                 if (value.ToString() != "(0.0, 0.0)")
+                {
+                   
                     MasterManager.inputDeviceInfo.SetDevice(lastDevice.displayName, lastControl.name);
+                }
             }
         }
     }

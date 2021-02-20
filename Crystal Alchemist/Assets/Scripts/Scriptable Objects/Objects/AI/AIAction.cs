@@ -377,7 +377,7 @@ namespace CrystalAlchemist
         {
             AICombat combat = npc.GetComponent<AICombat>();
             if (combat == null) return;
-
+            
             combat.HideCastBar();
 
             if (this.activeAbility.IsTargetRequired())

@@ -13,6 +13,8 @@ namespace CrystalAlchemist
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (!IsCharacter(collision)) return;
+
             this.events?.Invoke();
             if (!this.repeatEvents) this.enabled = false;
         }

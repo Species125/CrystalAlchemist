@@ -221,6 +221,11 @@ namespace CrystalAlchemist
             return FormatUtil.GetLocalisedText(this.characterName, LocalisationFileType.characters);
         }
 
+        public string GetPlayerName()
+        {
+            return this.characterName;
+        }
+
         private void UpdateStats()
         {
             if (this.maxLife < this.startLife) this.maxLife = this.startLife;

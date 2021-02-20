@@ -71,8 +71,9 @@ namespace CrystalAlchemist
         private bool isRapidFire;
         private bool attached;
         private float progress;
-        private float percentage;
         private float lockDuration;
+        private bool isActive = true;
+        private float percentage;
 
         #endregion
 
@@ -126,6 +127,7 @@ namespace CrystalAlchemist
 
         private void Start()
         {
+            this.isActive = true;
             //GameEvents.current.OnKill += DestroyIt;
             SetComponents();
 
@@ -197,6 +199,12 @@ namespace CrystalAlchemist
 
         public void Update()
         {
+            if (!this.isActive)
+            {
+                DestroyInactiveSkill();
+                return;
+            }
+
             if (this.animator != null && !this.lockDirection)
                 AnimatorUtil.SetAnimDirection(GetDirection(), this.animator);
 
@@ -231,7 +239,7 @@ namespace CrystalAlchemist
             SkillExtension[] extensions = this.GetComponents<SkillExtension>();
             for (int i = 0; i < extensions.Length; i++) extensions[i].Updating();
 
-            if (this.lockDirection && !this.isRapidFire) GameEvents.current.DoDirectionLock(this.lockDuration);
+            if (this.lockDirection && !this.isRapidFire) GameEvents.current.DoDirectionLock(this.lockDuration);            
         }
 
         public float GetDurationLeft()
@@ -293,6 +301,7 @@ namespace CrystalAlchemist
 
         public void SetTriggerActive(int value)
         {
+            Debug.Log(this.gameObject.name);
             if (value == 0) this.triggerIsActive = false;
             else this.triggerIsActive = true;
         }
@@ -319,15 +328,12 @@ namespace CrystalAlchemist
 
         public void PlaySoundEffect(AudioClip audioClip) => AudioUtil.playSoundEffect(this.gameObject, audioClip);
 
-        public void DestroyIt()
-        {
-            DestroyIt(0f);
-        }
+        public void DestroyIt() => this.isActive = false;        
 
-        public void DestroyIt(float delay)
+        public void DestroyInactiveSkill()
         {
             if (this.sender != null) this.sender.values.activeSkills.Remove(this);
-            Destroy(this.gameObject, delay);
+            Destroy(this.gameObject);
         }
 
 

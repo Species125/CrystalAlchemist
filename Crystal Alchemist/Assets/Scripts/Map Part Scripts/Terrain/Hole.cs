@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CrystalAlchemist
 {
-    public class Hole : MonoBehaviour
+    public class Hole : Terrain
     {
         [HideLabel]
         [SerializeField]
@@ -22,9 +22,10 @@ namespace CrystalAlchemist
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Character character = collision.GetComponent<Character>();
+            if (!IsCharacter(collision)) return;
 
-            if (character != null) StartCoroutine(animationCo(character));
+            Character character = collision.GetComponent<Character>();            
+            StartCoroutine(animationCo(character));
         }
 
         private IEnumerator animationCo(Character character)
@@ -35,7 +36,7 @@ namespace CrystalAlchemist
             yield return new WaitForSeconds(this.duration);
 
             if (character.GetComponent<Player>() != null)
-            {
+            {                
                 character.transform.position = this.position;
                 character.transform.DOScale(1, 0f);
                 character.EnableScripts(true);

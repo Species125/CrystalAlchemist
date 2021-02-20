@@ -29,9 +29,12 @@ namespace CrystalAlchemist
 
         private bool isOpen;
 
-        public override void OnExit()
+        public override void OnExit(Collider2D characterCollisionBox)
         {
-            base.OnExit();
+            Player player = characterCollisionBox.GetComponent<Player>();
+            if (!NetworkUtil.IsLocal(player) || characterCollisionBox.isTrigger) return;
+
+            base.OnExit(characterCollisionBox);
 
             if (this.isOpen && this.doorType == DoorType.normal)
             {

@@ -22,6 +22,7 @@ namespace CrystalAlchemist
 
             if (player.isLocalPlayer)
             {
+                NetworkEvents.current.OnPlayerEntered += OnPlayerEnteredRoom;
                 GameEvents.current.OnPresetChange += UpdatePlayerRenderer;
                 GameEvents.current.OnPresetChangeToOthers += UpdateCharacterPartsOthers;
             }
@@ -40,6 +41,8 @@ namespace CrystalAlchemist
         private void OnDestroy()
         {
             if (!player.isLocalPlayer) return;
+
+            NetworkEvents.current.OnPlayerEntered -= OnPlayerEnteredRoom;
             GameEvents.current.OnPresetChange -= UpdatePlayerRenderer;
             GameEvents.current.OnPresetChangeToOthers -= UpdateCharacterPartsOthers;
         }
@@ -58,29 +61,43 @@ namespace CrystalAlchemist
                 part.SetRenderer(property, colors);                
             }
         }
-
-        public void UpdateCharacterPartsOthers()
+       
+        private void UpdateCharacterPartsOthers()
         {
-            if (this.player.isLocalPlayer) this.SetPresetOnOtherClients();
+            if (this.player.isLocalPlayer) //Set Preset to existing clients
+            {
+                string race = "";
+                string characterName = this.player.GetCharacterName();
+                string[] colorGroups;
+                string[] characterParts;
+
+                SerializationUtil.GetPreset(this.preset, out race, out colorGroups, out characterParts);
+                this.player.photonView.RPC("RpcSetPreset", RpcTarget.Others, race, colorGroups, characterParts, characterName);
+            }
         }
 
-        public void SetPresetOnOtherClients()
+        private void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
         {
-            string race = "";
-            string characterName = this.player.GetCharacterName();
-            string[] colorGroups;
-            string[] characterParts;
+            if (this.player.isLocalPlayer) //Set Preset to new clients
+            {
+                string race = "";
+                string characterName = this.player.GetCharacterName();
+                string[] colorGroups;
+                string[] characterParts;
 
-            SerializationUtil.GetPreset(this.preset, out race, out colorGroups, out characterParts);
-            this.player.photonView.RPC("RpcSetPreset", RpcTarget.OthersBuffered, race, colorGroups, characterParts, characterName);
+                SerializationUtil.GetPreset(this.preset, out race, out colorGroups, out characterParts);
+                this.player.photonView.RPC("RpcSetPreset", newPlayer, race, colorGroups, characterParts, characterName);
+            }
         }
 
         [PunRPC]
-        public void RpcSetPreset(string race, string[] colorgroups, string[] parts, string characterName, PhotonMessageInfo info)
+        protected void RpcSetPreset(string race, string[] colorgroups, string[] parts, string characterName, PhotonMessageInfo info)
         {
             SerializationUtil.SetPreset(this.preset, race, colorgroups, parts);
             this.player.stats.SetCharacterName(characterName);
             UpdatePlayerRenderer();
+
+            Debug.Log("Set Preset " + race + " for " + this.player.gameObject.name);
         }
     }
 }

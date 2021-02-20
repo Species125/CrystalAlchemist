@@ -9,9 +9,9 @@ namespace CrystalAlchemist
         TODO:
         - Boss Mechanic Rework (RPCs)
         - Player Color-Parts by Emissions
-
-        New Features:
-        - Autosave (on collect, progress, scene change)
+        - Trigger Active on Skills
+        - Dummy View 0
+        - Empty Map
 
         Rework:
         - Skill: Wind blade
@@ -94,12 +94,6 @@ namespace CrystalAlchemist
         //- Cutscenes
         //- Quests und Story
         //- Content!
-
-        //-----------------------------------------------------------------------------
-
-        //TODO (1.5)
-        //- Multiplayer!
-        //- Pathfinding!
 
         //-----------------------------------------------------------------------------
 

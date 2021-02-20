@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace CrystalAlchemist
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoBehaviourPunCallbacks
     {
         [SerializeField]
         private FloatValue timePlayed;
@@ -16,42 +16,19 @@ namespace CrystalAlchemist
         [SerializeField]
         private StringValue nextScene;
 
-        [SerializeField]
-        private PlayerInventory inventory;
-
         private void Awake()
         {
             MasterManager.globalValues.openedMenues.Clear();
-        }
 
-        private void Start()
-        {
-            GameEvents.current.OnKeyItem += HasKeyItemAlready; 
             GameEvents.current.OnSceneChanged += ChangeScene;
-            GameEvents.current.OnTitleScreen += ReturnTitleScreen;
             GameEvents.current.OnDeath += CheckDeathOfPlayers;
         }
 
         private void OnDestroy()
         {
-            GameEvents.current.OnKeyItem -= HasKeyItemAlready; 
             GameEvents.current.OnSceneChanged -= ChangeScene;
-            GameEvents.current.OnTitleScreen -= ReturnTitleScreen;
             GameEvents.current.OnDeath -= CheckDeathOfPlayers;
             this.timePlayed.SetValue(this.timePlayed.GetValue() + Time.timeSinceLevelLoad);
-        }
-
-        public bool HasKeyItemAlready(string name)
-        {
-            if (this.inventory == null) return false;
-            foreach (ItemStats elem in this.inventory.keyItems) if (elem != null && name == elem.name) return true;
-            return false;
-        }
-
-        private void ReturnTitleScreen()
-        {
-            PhotonNetwork.Disconnect();
-            SceneManager.LoadScene(0);
         }
 
         private void ChangeScene(string newScene)
@@ -67,6 +44,7 @@ namespace CrystalAlchemist
             if (NetworkUtil.IsMaster()) //Master in online and offline mode
             {
                 this.nextScene.SetValue(targetScene);
+                PhotonNetwork.DestroyAll();
                 PhotonNetwork.LoadLevel("Loading");
             }
             else if (!PhotonNetwork.IsConnected) //Not connected and also no master (startup)

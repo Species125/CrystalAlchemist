@@ -1,11 +1,10 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 using Photon.Pun;
-using System.Collections.Generic;
 
 namespace CrystalAlchemist
 {
-    public class SceneTransition : NetworkBehaviour
+    public class SceneTransition : MonoBehaviour
     {
         [BoxGroup("Required")]
         [Required]
@@ -33,14 +32,27 @@ namespace CrystalAlchemist
         {
             this.photon = this.GetComponent<PhotonView>();
             if (PhotonNetwork.InRoom) this.playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
+
+            if (NetworkUtil.IsLocal()) return;
+
+            NetworkEvents.current.OnPlayerEntered += OnPlayerEnteredRoom;
+            NetworkEvents.current.OnPlayerLeft += OnPlayerLeftRoom;    
         }
 
-        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+        private void OnDestroy()
+        {
+            if (NetworkUtil.IsLocal()) return;
+
+            NetworkEvents.current.OnPlayerEntered -= OnPlayerEnteredRoom;
+            NetworkEvents.current.OnPlayerLeft -= OnPlayerLeftRoom;
+        }
+
+        private void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
         {
             this.playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
         }
 
-        public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+        private void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
         {
             this.playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
         }

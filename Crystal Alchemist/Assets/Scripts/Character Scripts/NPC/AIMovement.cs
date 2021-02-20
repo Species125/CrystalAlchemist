@@ -185,9 +185,11 @@ namespace CrystalAlchemist
                 MoveToPosition(this.targetPosition); //No Pathfinding
             }
 
+            /*
             if (MasterManager.debugSettings.showTargetPosition
                 && this.targetPosition != MasterManager.globalValues.nullVector)
                 Debug.DrawLine(this.npc.GetGroundPosition(), this.targetPosition, Color.blue);
+            */
         }
 
         private void SetReturn()
@@ -315,13 +317,14 @@ namespace CrystalAlchemist
             this.index = 0;
             this.path = this.seeker.FindPath(currentPos, this.targetPosition);            
 
+            /*
             if (MasterManager.debugSettings.showTargetPosition)
             {
                 for (int i = 0; i < path.Count - 1; i++)
                 {
                     Debug.DrawLine(path[i], path[i + 1], Color.red,0.5f);
                 }
-            }                
+            } */               
         }
 
         private void MoveTroughPaths()

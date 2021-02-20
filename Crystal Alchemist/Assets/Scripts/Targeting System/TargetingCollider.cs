@@ -9,17 +9,12 @@ namespace CrystalAlchemist
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            system.addTarget(collision);
-        }
-
-        private void OnTriggerStay2D(Collider2D collision)
-        {
-            system.addTarget(collision);
+            system.AddTarget(collision);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            system.removeTarget(collision);
+            system.RemoveTarget(collision);
         }
     }
 }

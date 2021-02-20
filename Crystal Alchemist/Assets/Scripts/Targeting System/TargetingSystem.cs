@@ -227,7 +227,7 @@ namespace CrystalAlchemist
             }
         }
 
-        public void removeTarget(Collider2D collision)
+        public void RemoveTarget(Collider2D collision)
         {
             Character character = collision.GetComponent<Character>();
             if (character != null && CollisionUtil.CheckCollision(collision, this.properties.affections, this.sender))
@@ -237,7 +237,7 @@ namespace CrystalAlchemist
             }
         }
 
-        public void addTarget(Collider2D collision)
+        public void AddTarget(Collider2D collision)
         {
             Character character = collision.GetComponent<Character>();
             if (character != null 

@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-
-
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -17,11 +15,13 @@ namespace CrystalAlchemist
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (collision.isTrigger) return;
             Step(collision);
         }
 
         private void OnTriggerStay2D(Collider2D collision)
         {
+            if (collision.isTrigger) return;
             Step(collision);
         }
 
@@ -37,7 +37,5 @@ namespace CrystalAlchemist
             if (this.effect != null && distance)
                 this.effects.Add(Instantiate(this.effect, character.GetGroundPosition(), Quaternion.identity));
         }
-
-
     }
 }

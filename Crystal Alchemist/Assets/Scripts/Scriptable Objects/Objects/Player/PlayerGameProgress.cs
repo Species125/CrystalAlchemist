@@ -24,12 +24,12 @@ namespace CrystalAlchemist
         [HideIf("progressType", ProgressType.none)]
         [Required]
         [SerializeField]
-        private string gameProgressID;
+        private string gameProgressID = "";
 
         [BoxGroup("Progress")]
         [ReadOnly]
         [SerializeField]
-        private string location;
+        private string location ="";
 
         [BoxGroup("Progress")]
         [HideIf("progressType", ProgressType.none)]
@@ -170,6 +170,7 @@ namespace CrystalAlchemist
 
         public bool Contains(ProgressValue value)
         {
+            if (value.GetKey() == "") return false;
             return Contains(value.GetLocation(), value.GetKey(), value.GetProgressType());
         }
 

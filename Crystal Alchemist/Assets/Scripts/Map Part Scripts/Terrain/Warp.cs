@@ -10,11 +10,10 @@ namespace CrystalAlchemist
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.isTrigger)
-            {
-                AnimatorUtil.ShowSmoke(this.transform);
-                collision.gameObject.transform.position = position;
-            }
+            if (!IsCharacter(collision)) return;
+
+            AnimatorUtil.ShowSmoke(this.transform);
+            collision.gameObject.transform.position = position;            
         }
     }
 }

@@ -26,6 +26,11 @@ namespace CrystalAlchemist
         [Tooltip("Destroy Collectable Gameobject x seconds after spawn")]
         public float duration = 60f;
 
+        [BoxGroup("Progress")]
+        public bool useProgress = false;
+
+        [BoxGroup("Progress")]
+        [ShowIf("useProgress")]
         [HideLabel]
         public ProgressValue progress;
 
@@ -50,6 +55,18 @@ namespace CrystalAlchemist
             temp.name = this.name;
             temp.Initialize(amount);
             this.stats = temp;
+        }
+
+        public bool HasKeyItem()
+        {
+            return (this.HasProgress() ||
+                   (this.stats.isKeyItem() && GameEvents.current.HasKeyItem(this.name)));
+        }
+
+        private bool HasProgress()
+        {
+            if (!this.useProgress) return false;
+            return GameEvents.current.HasProgress(this.progress);
         }
     }
 }

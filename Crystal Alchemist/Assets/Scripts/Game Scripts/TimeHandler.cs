@@ -5,7 +5,7 @@ using Photon.Realtime;
 
 namespace CrystalAlchemist
 {
-    public class TimeHandler : MonoBehaviourPunCallbacks
+    public class TimeHandler : MonoBehaviour
     {
         [SerializeField]
         private TimeValue timeValue;
@@ -15,17 +15,17 @@ namespace CrystalAlchemist
             this.timeValue.Reset();
         }
 
-        public override void OnEnable()
+        private void OnEnable()
         {
-            base.OnEnable();
+            NetworkEvents.current.OnPlayerEntered += OnPlayerEnteredRoom;
             PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
             GameEvents.current.OnTimeChange += RaiseTimeChangedEvent;
             GameEvents.current.OnTimeReset += RaiseTimeResetEvent;
         }
 
-        public override void OnDisable()
+        private void OnDisable()
         {
-            base.OnDisable();
+            NetworkEvents.current.OnPlayerEntered -= OnPlayerEnteredRoom;
             PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEvent;
             GameEvents.current.OnTimeChange -= RaiseTimeChangedEvent;
             GameEvents.current.OnTimeReset -= RaiseTimeResetEvent;
@@ -56,8 +56,6 @@ namespace CrystalAlchemist
 
         private void RaiseTimeStartEvent()
         {
-            if (!NetworkUtil.IsMaster()) return;
-
             object[] datas = new object[] { this.timeValue.GetHour(), this.timeValue.GetMinute() };
             RaiseEventOptions options = NetworkUtil.TargetAll();
 
@@ -66,8 +64,6 @@ namespace CrystalAlchemist
 
         private void RaiseTimeResetEvent()
         {
-            if (!NetworkUtil.IsMaster()) return;
-
             object[] datas = new object[0];
             RaiseEventOptions options = NetworkUtil.TargetAll();
 
@@ -76,17 +72,18 @@ namespace CrystalAlchemist
 
         private void RaiseTimeChangedEvent(float factor)
         {
-            if (!NetworkUtil.IsMaster()) return;
-
             object[] datas = new object[] { factor };
             RaiseEventOptions options = NetworkUtil.TargetAll();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.TIME_CHANGED, datas, options, SendOptions.SendUnreliable);
         }
 
-        private void FixedUpdate() => this.timeValue.SetTime(Time.fixedDeltaTime);        
+        private void FixedUpdate() => this.timeValue.SetTime(Time.fixedDeltaTime);
 
-        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer) => RaiseTimeStartEvent();
+        private void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+        {
+            RaiseTimeStartEvent();
+        }
      
     }
 }

@@ -51,6 +51,11 @@ namespace CrystalAlchemist
         [SerializeField]
         private MenuDialogBoxInfo dialogBoxInfo;
 
+        [BoxGroup("Misc")]
+        [ReadOnly]
+        [SerializeField]
+        private string slotName;
+
         public void Clear(Action callback)
         {
             Clear();
@@ -86,5 +91,9 @@ namespace CrystalAlchemist
         public void SetCharacterName(string characterName) => this.characterName.SetValue(characterName);
 
         public string GetCharacterName() { return this.characterName.GetValue(); }
+
+        public void SetSlotName(string slotName) => this.slotName = slotName;
+        
+        public void SaveGame() => SaveSystem.Save(this, this.slotName);         
     }
 }

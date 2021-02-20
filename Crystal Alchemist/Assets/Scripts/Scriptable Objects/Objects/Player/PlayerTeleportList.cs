@@ -56,6 +56,13 @@ namespace CrystalAlchemist
             this.ShowSpawnOut = this.latestTeleport.showAnimationOut;
         }
 
+        public void SetNextTeleport(TeleportStats stats, bool ShowIn, bool ShowOut)
+        {
+            this.latestTeleport = stats;
+            this.ShowSpawnIn = ShowIn;
+            this.ShowSpawnOut = ShowOut;
+        }
+
         public void SetAnimation(bool showIn, bool showOut)
         {
             this.ShowSpawnIn = showIn;

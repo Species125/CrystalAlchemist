@@ -86,6 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2653014307205420076}
   - component: {fileID: 2653014307205420077}
+  - component: {fileID: 1448033355223780575}
   m_Layer: 15
   m_Name: Targeting System
   m_TagString: Untagged
@@ -123,7 +124,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circleCollider: {fileID: 1314226416803539015}
   viewCollider: {fileID: 281223681223272493}
-  timeLeftValue: {fileID: 0}
+  selectedTargets: []
+  allTargetsInRange: []
+--- !u!50 &1448033355223780575
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2653014307205420083}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &8970453325848759114
 GameObject:
   m_ObjectHideFlags: 0

@@ -75,7 +75,14 @@ namespace CrystalAlchemist
                 Receivers = ReceiverGroup.Others
             };
         }
-
+        public static RaiseEventOptions TargetOtherBuffered()
+        {
+            return new RaiseEventOptions()
+            {
+                Receivers = ReceiverGroup.Others,
+                CachingOption = EventCaching.AddToRoomCache
+            };
+        }
 
         public static bool IsSolo()
         {

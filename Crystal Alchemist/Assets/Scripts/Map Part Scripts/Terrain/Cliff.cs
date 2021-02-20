@@ -34,6 +34,8 @@ namespace CrystalAlchemist
         {
             if (this.collider != null) this.collider.enabled = false;
 
+            if (!IsCharacter(collision)) return;
+
             Character character = collision.GetComponent<Character>();
             if (character != null && !this.characters.Contains(character))
             {
@@ -44,6 +46,8 @@ namespace CrystalAlchemist
         private void OnTriggerExit2D(Collider2D collision)
         {
             if (this.collider != null) this.collider.enabled = true;
+
+            if (!IsCharacter(collision)) return;
 
             Character character = collision.GetComponent<Character>();
             if (character != null && this.characters.Contains(character))

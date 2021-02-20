@@ -1,7 +1,4 @@
 ﻿using System.Collections;
-
-
-
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -15,12 +12,6 @@ namespace CrystalAlchemist
         private GameObject anyKey;
 
         [SerializeField]
-        private PlayerSaveGame saveGame;
-
-        [SerializeField]
-        private TimeValue timeValue;
-
-        [SerializeField]
         private float delay = 0.3f;
 
         private bool inputPossible = false;
@@ -31,12 +22,7 @@ namespace CrystalAlchemist
             StartCoroutine(this.delayInput());
         }
 
-        private void Start()
-        {
-            SaveSystem.loadOptions();
-            this.timeValue.Clear();
-            this.saveGame.Clear();
-        }
+        private void Start() => SaveSystem.LoadOptions();        
 
         private void Update()
         {

@@ -24,8 +24,7 @@ namespace CrystalAlchemist
         private void Restart()
         {
             CancelInvoke();
-            this.playerTeleport.SetNextTeleport(this.stats);
-            this.playerTeleport.SetAnimation(true, true);
+            this.playerTeleport.SetNextTeleport(this.stats, true, true);
             GameEvents.current.DoTeleport();
         }
     }

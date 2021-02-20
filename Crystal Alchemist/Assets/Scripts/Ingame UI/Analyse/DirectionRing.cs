@@ -15,15 +15,19 @@ namespace CrystalAlchemist
             this.spriteRenderer.enabled = false;
             if (!player.isLocalPlayer) return;
             GameEvents.current.OnPlayerSpawnCompleted += EnableIt;
+            GameEvents.current.OnTeleport += DisableIt;
         }
 
         private void OnDestroy()
         {
             if (!player.isLocalPlayer) return;
             GameEvents.current.OnPlayerSpawnCompleted -= EnableIt;
+            GameEvents.current.OnTeleport -= DisableIt;
         }
 
         private void EnableIt() => spriteRenderer.enabled = true;
+
+        private void DisableIt() => spriteRenderer.enabled = false;
 
         private void LateUpdate()
         {

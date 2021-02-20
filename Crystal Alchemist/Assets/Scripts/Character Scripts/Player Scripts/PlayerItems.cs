@@ -22,7 +22,10 @@ namespace CrystalAlchemist
             return this.inventory.GetAmount(group);
         }
 
-        public void CollectItem(ItemStats item) => this.inventory.collectItem(item);
+        public void CollectItem(ItemStats item)
+        {
+            this.inventory.collectItem(item);            
+        }
 
         public void UpdateInventory(ItemGroup item, int amount) => this.inventory.UpdateInventory(item, amount);
 

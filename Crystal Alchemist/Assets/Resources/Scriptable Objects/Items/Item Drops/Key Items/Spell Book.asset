@@ -12,18 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b164a8ca5fa3494498fb80cfd5b39568, type: 3}
   m_Name: Spell Book
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/Items/Item Drops/Key Items/Spell Book
   stats: {fileID: 11400000, guid: eb86be74943719248a2d667baccd1f2c, type: 2}
   collectable: {fileID: 3656928174399384992, guid: f5187bf68e01a0a4195f09ef28702493,
     type: 3}
   hasSelfDestruction: 0
   duration: 60
+  useProgress: 0
   progress:
     progressType: 2
-    playerProgress: {fileID: 0}
     gameProgressID: 
-    onlyThisArea: 0
+    location: 
+    addLocation: 0
     timespan:
       days: 0
       hours: 0
       minutes: 0
-      seconds: 0

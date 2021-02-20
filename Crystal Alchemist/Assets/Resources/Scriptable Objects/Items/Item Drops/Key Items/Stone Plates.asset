@@ -12,18 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b164a8ca5fa3494498fb80cfd5b39568, type: 3}
   m_Name: Stone Plates
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/Items/Item Drops/Key Items/Stone Plates
   stats: {fileID: 11400000, guid: 3b135d37e7ee4f947943903a6cce28b9, type: 2}
   collectable: {fileID: 3656928174399384992, guid: 40119d95f40b0fd4cacad871981fd20d,
     type: 3}
   hasSelfDestruction: 0
   duration: 60
+  useProgress: 0
   progress:
     progressType: 2
-    playerProgress: {fileID: 0}
     gameProgressID: 
-    onlyThisArea: 0
+    location: 
+    addLocation: 0
     timespan:
       days: 0
       hours: 0
       minutes: 0
-      seconds: 0

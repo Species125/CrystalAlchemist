@@ -57,9 +57,7 @@ namespace CrystalAlchemist
 
         public ItemDrop GetItemDrop()
         {
-            if (this.hasAlternative 
-                && (GameEvents.current.HasKeyItem(this.firstLoot.item.name)
-                 || GameEvents.current.HasProgress(this.firstLoot.item.progress))) this.loot = this.alternativeLoot;
+            if (this.hasAlternative && this.firstLoot.item.HasKeyItem()) this.loot = this.alternativeLoot;
             else this.loot = this.firstLoot;
 
             ItemDrop result = this.loot.item.Instantiate(this.loot.amount);

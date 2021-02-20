@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using Photon.Realtime;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
@@ -18,7 +19,7 @@ namespace CrystalAlchemist
         public float mana;
         }
 
-    public class Player : Character
+    public class Player : Character, IInRoomCallbacks
     {
         [BoxGroup("Player Objects")]
         [SerializeField]
@@ -46,7 +47,7 @@ namespace CrystalAlchemist
 
         [BoxGroup("Debug")]
         [ReadOnly]
-        public bool isMaster;
+        public bool isMaster = false;
 
         ///////////////////////////////////////////////////////////////
 
@@ -54,6 +55,7 @@ namespace CrystalAlchemist
         {
             SetComponents();
             SetScriptableObjects();
+            SetPlayerComponents();
         }
 
         private void SetScriptableObjects()
@@ -61,7 +63,7 @@ namespace CrystalAlchemist
             this.gameObject.name = "Player (Guest)";
 
             if (!NetworkUtil.IsLocal(this.photonView))
-            {
+            {                
                 this.isLocalPlayer = false;
                 this.stats = ScriptableObject.CreateInstance<CharacterStats>();                
                 this.stats.SetCharacterType(CharacterType.Friend);
@@ -78,7 +80,29 @@ namespace CrystalAlchemist
                 this.values = this.saveGame.playerValue;
                 this.values.Initialize();
                 this.saveGame.attributes.SetValues();
-                this.stats.SetCharacterName(this.saveGame.characterName.GetValue());
+                this.stats.SetCharacterName(this.saveGame.characterName.GetValue());                
+            }
+
+            UpdateMasterStatus();
+        }
+
+        private void SetPlayerComponents()
+        {
+            if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Initialize();
+            if (this.GetComponent<PlayerTeleport>() != null) this.GetComponent<PlayerTeleport>().Initialize();
+
+            if (!this.isLocalPlayer)
+            {
+                if (this.GetComponent<PlayerMovement>() != null) Destroy(this.GetComponent<PlayerMovement>());
+                if (this.GetComponent<PlayerControls>() != null) Destroy(this.GetComponent<PlayerControls>());
+                if (this.GetComponent<PlayerItems>() != null) Destroy(this.GetComponent<PlayerItems>());
+                return;
+            }
+            else
+            {
+                if (this.GetComponent<PlayerMovement>() != null) this.GetComponent<PlayerMovement>().Initialize();
+                if (this.GetComponent<PlayerControls>() != null) this.GetComponent<PlayerControls>().Initialize();
+                if (this.GetComponent<PlayerItems>() != null) this.GetComponent<PlayerItems>().Initialize();
             }
         }
 
@@ -112,19 +136,16 @@ namespace CrystalAlchemist
 
             if (!this.isLocalPlayer)
             {
-                if (this.GetComponent<PlayerMovement>() != null) Destroy(this.GetComponent<PlayerMovement>());
-                if (this.GetComponent<PlayerControls>() != null) Destroy(this.GetComponent<PlayerControls>());
-                if (this.GetComponent<PlayerItems>() != null) Destroy(this.GetComponent<PlayerItems>());
-
-                if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Initialize();
-                if (this.GetComponent<PlayerTeleport>() != null) this.GetComponent<PlayerTeleport>().Initialize();
                 GameEvents.current.DoOtherLocalPlayerSpawned(this.photonView.ViewID);
                 return;
             }
-
+            
             this.saveGame.progress.Updating();
 
             SceneManager.LoadScene("UI", LoadSceneMode.Additive);
+
+            NetworkEvents.current.OnPlayerEntered += OnPlayerEntered;
+            NetworkEvents.current.OnPlayerLeft += OnPlayerLeft;
 
             GameEvents.current.OnCollect += this.CollectIt;
             GameEvents.current.OnReduce += this.ReduceResource;
@@ -135,17 +156,10 @@ namespace CrystalAlchemist
             GameEvents.current.OnEnoughCurrency += this.HasEnoughCurrency;
             GameEvents.current.OnLifeManaUpdateLocal += UpdateLifeManaUI;
 
-            if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().Initialize();
-            if (this.GetComponent<PlayerMovement>() != null) this.GetComponent<PlayerMovement>().Initialize();
-            if (this.GetComponent<PlayerControls>() != null) this.GetComponent<PlayerControls>().Initialize();
-            if (this.GetComponent<PlayerItems>() != null) this.GetComponent<PlayerItems>().Initialize();
-            if (this.GetComponent<PlayerTeleport>() != null) this.GetComponent<PlayerTeleport>().Initialize();
-
             GameEvents.current.DoManaLifeUpdate(this.photonView.ViewID);
             GameEvents.current.DoLocalPlayerSpawned(this.photonView.ViewID);
 
             UpdateLifeManaForOthers();
-            SetMasterFlag();
 
             this.saveGame.skillSet.TestInitialize(this);
             this.currentScene.SetValue(this.gameObject.scene.name);
@@ -168,6 +182,10 @@ namespace CrystalAlchemist
             }
 
             base.OnDestroy();
+
+            NetworkEvents.current.OnPlayerEntered -= OnPlayerEntered;
+            NetworkEvents.current.OnPlayerLeft -= OnPlayerLeft;
+
             GameEvents.current.OnCollect -= this.CollectIt;
             GameEvents.current.OnReduce -= this.ReduceResource;
             GameEvents.current.OnStateChanged -= this.SetState;
@@ -209,7 +227,14 @@ namespace CrystalAlchemist
             if (this.GetComponent<PlayerAbilities>() != null) this.GetComponent<PlayerAbilities>().enabled = value;
             if (this.GetComponent<PlayerControls>() != null) this.GetComponent<PlayerControls>().enabled = value;
             if (this.GetComponent<PlayerMovement>() != null) this.GetComponent<PlayerMovement>().enabled = value;
-            //if (this.GetComponent<PlayerInput>() != null) this.GetComponent<PlayerInput>().enabled = value;        
+            //if (this.GetComponent<PlayerInput>() != null) this.GetComponent<PlayerInput>().enabled = value; 
+
+            this.characterCollider.enabled = value;
+        }
+
+        public override string GetCharacterName()
+        {
+            return this.stats.GetPlayerName();
         }
 
         private void deactivateAllSkills()
@@ -307,16 +332,16 @@ namespace CrystalAlchemist
                 foreach (CharacterResource resource in stats.resources) UpdateResource(resource, true);
             }
             else if (stats.itemType == ItemType.item || stats.itemType == ItemType.keyItem)
-            {
+            {                
                 GetComponent<PlayerItems>().CollectItem(stats);
             }
             else if (stats.itemType == ItemType.ability)
             {
-                //add ability to skillset
+                //add ability to skillset and save
             }
             else if (stats.itemType == ItemType.outfit)
             {
-                //add outfit to glamour
+                //add outfit to glamour and save
             }            
         }
 
@@ -355,10 +380,26 @@ namespace CrystalAlchemist
 
         /////////////////////////////////////////////////////////////////////////////////
 
-
-        public void GoToSleep(Vector2 position, Action action)
+        public void SetTransform(Vector2 position, int ID = 0)
         {
-            StartCoroutine(GoToBed(goToBedDuration, position, action));
+            RpcSetTransform(position, ID);
+            this.photonView.RPC("RpcSetTransform", RpcTarget.Others, position, ID);
+        }
+
+        [PunRPC]
+        protected void RpcSetTransform(Vector2 position, int ID)
+        {
+            this.transform.position = position;
+            GameObject parentGameObject = NetworkUtil.GetGameObject(ID);
+            Transform parent = null;
+            if (parentGameObject) parent = parentGameObject.transform;
+
+            this.transform.SetParent(parent);
+        }
+
+        public void GoToSleep(Action action)
+        {
+            StartCoroutine(GoToBed(goToBedDuration, action));
         }
 
         public void WakeUp(Vector2 position, Action action)
@@ -366,10 +407,9 @@ namespace CrystalAlchemist
             StartCoroutine(GetUp(goToBedDuration, position, action));
         }
 
-        private IEnumerator GoToBed(float duration, Vector2 position, Action after)
+        private IEnumerator GoToBed(float duration, Action after)
         {            
             this.myRigidbody.velocity = Vector2.zero;
-            this.transform.position = position;
             yield return new WaitForEndOfFrame(); //Wait for Camera
 
             EnablePlayer(false); //Disable Movement
@@ -399,9 +439,9 @@ namespace CrystalAlchemist
 
             action?.Invoke(); //Zeit normal
 
+            SetTransform(position);
             EnablePlayer(true);
-
-            this.transform.position = position;
+            
             GameEvents.current.DoChangeState(CharacterState.idle);
         }
 
@@ -452,6 +492,11 @@ namespace CrystalAlchemist
             }
         }
 
+        private void UpdateMasterStatus()
+        {
+            this.isMaster = this.photonView.Owner.IsMasterClient;
+        }
+
         public override void UpdateLifeManaForOthers()
         {
             if (!this.isLocalPlayer) return;
@@ -498,30 +543,19 @@ namespace CrystalAlchemist
         }
 
 
-        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+        private void OnPlayerEntered(Photon.Realtime.Player newPlayer)
         {
-            this.photonView.RPC("RpcSetPlayerPosition", RpcTarget.Others, (Vector2)this.transform.position);            
+            if (!this.isLocalPlayer) return;
+
+            this.photonView.RPC("RpcSetPlayerPosition", newPlayer, (Vector2)this.transform.position); //Set my position to new players     
         }
 
         [PunRPC]
         protected void RpcSetPlayerPosition(Vector2 position) => this.transform.position = position;        
 
-        private void SetMasterFlag()
+        private void OnPlayerLeft(Photon.Realtime.Player newPlayer)
         {
-            if (!this.isLocalPlayer) return;
-            this.isMaster = NetworkUtil.IsMaster();
-            this.photonView.RPC("RpcSetMasterFlag", RpcTarget.OthersBuffered, this.isMaster);
-        }
-
-        public override void OnPlayerLeftRoom(Photon.Realtime.Player newPlayer)
-        {            
-            SetMasterFlag();
-        }
-
-        [PunRPC]
-        protected void RpcSetMasterFlag(bool value)
-        {
-            this.isMaster = value;
+            UpdateMasterStatus();
         }
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266771f26e0200047a77d2d39c8b8900, type: 3}
   m_Name: Flammenwerfer
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/Abilities/Skills/Player Skills/Flammenwerfer
   skill: {fileID: 3816868808247662347, guid: ee56b7a33e3364848b47f8da94c5908a, type: 3}
   useTargetSystem: 0
   targetingProperty: {fileID: 0}
@@ -22,6 +23,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   info: {fileID: 11400000, guid: 9068f1db7934a6d41a1d9f68adb95fe2, type: 2}
   cooldown: 0.075
+  globalCooldown: 0
   hasMaxDuration: 0
   maxDuration: 1
   hasDelay: 0
@@ -29,9 +31,10 @@ MonoBehaviour:
   hasCastTime: 0
   castTime: 0
   showCastbar: 1
+  castAnimation: {fileID: 0}
   hasMaxAmount: 0
   maxAmount: 1
-  requirements: 0
+  requirements: {fileID: 0}
   isRapidFire: 1
   remoteActivation: 0
   deactivateButtonUp: 0
@@ -40,8 +43,12 @@ MonoBehaviour:
   positionOffset: 0.75
   attachToSender: 0
   lockDirection: 1
+  lockDuration: 0.2
   timeDistortion: 1
   cooldownLeft: 0
   holdTimer: 0
   state: 6
   enabled: 1
+  active: 1
+  sender: {fileID: 0}
+  activeAnimation: {fileID: 0}

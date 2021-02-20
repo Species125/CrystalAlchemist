@@ -12,13 +12,14 @@ namespace CrystalAlchemist
         private void Initialize()
         {
             current = this;
-            SaveSystem.loadOptions();
+            SaveSystem.LoadOptions();
         }
 
         public Action OnSubmit;
         public Action OnCancel;
         public Action OnPresetChange;
         public Action OnPresetChangeToOthers;
+        public Action<bool> OnSaveGame;
 
         public Action<bool> OnCurrencyChanged;
         public Action<ItemDrop> OnCollect;
@@ -29,13 +30,14 @@ namespace CrystalAlchemist
         public Action<CharacterState> OnStateChanged;
         public Action<bool> OnMenuOverlay;
         public Action<StatusEffect> OnEffectAdded;
-        public Action<Vector2, Action> OnSleep;
+        public Action<Action> OnSleep;
         public Action<Vector2, Action> OnWakeUp;
         public Action<WarningType> OnWarning;
         public Action<float, float, float> OnCameraShake;
         public Action<float> OnCameraStill;
         public Action<float> OnLockDirection;
         public Action<Character, bool> OnRangeTriggered;
+        public Action<TeleportStats> OnSetTeleportStat;
 
         public Action<Character, Character, float> OnAggroHit;
         public Action<Character, Character, float> OnAggroIncrease;
@@ -71,6 +73,7 @@ namespace CrystalAlchemist
         public Action<float> OnTimeChange;
         public Action OnTimeReset;
 
+        public void DoSaveGame(bool buffered = true) => this.OnSaveGame?.Invoke(buffered);
         public void DoPresetChange() => this.OnPresetChange?.Invoke();
         public void DoPresetChangeToOthers() => this.OnPresetChangeToOthers?.Invoke();
         public void DoEffectAdded(StatusEffect effect) => this.OnEffectAdded?.Invoke(effect);
@@ -86,7 +89,7 @@ namespace CrystalAlchemist
         public void DoIngameMessage(string text) => this.OnIngameMessage?.Invoke(text);
         public void DoPage(int page) => this.OnPage?.Invoke(page);
         public void DoWarning(WarningType type) => this.OnWarning?.Invoke(type);
-        public void DoSleep(Vector2 position, Action action) => this.OnSleep?.Invoke(position, action);
+        public void DoSleep(Action action) => this.OnSleep?.Invoke(action);
         public void DoWakeUp(Vector2 position, Action action) => this.OnWakeUp?.Invoke(position, action);
         public void DoDirectionLock(float value) => this.OnLockDirection?.Invoke(value);
         public void DoCutScene() => this.OnCutScene?.Invoke();
@@ -95,6 +98,7 @@ namespace CrystalAlchemist
         public void DoTitleScreen() => this.OnTitleScreen?.Invoke();
         public void DoNightChange() => this.OnNightChange?.Invoke();
         public void DoRangeTrigger(Character character, bool value) => this.OnRangeTriggered?.Invoke(character, value);
+        public void DoTeleportStat(TeleportStats stats) => this.OnSetTeleportStat?.Invoke(stats);
 
         public void DoAggroHit(Character character, Character target, float value) => this.OnAggroHit?.Invoke(character, target, value);
         public void DoAggroIncrease(Character character, Character target, float value) => this.OnAggroIncrease?.Invoke(character, target, value);

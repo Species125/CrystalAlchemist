@@ -3,6 +3,7 @@ using UnityEngine;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 using System.Collections.Generic;
+using System;
 
 namespace CrystalAlchemist
 {
@@ -11,6 +12,13 @@ namespace CrystalAlchemist
         public static NetworkEvents current;
 
         private void Awake() => current = this;
+
+        public Action<Photon.Realtime.Player> OnPlayerEntered;
+        public Action<Photon.Realtime.Player> OnPlayerLeft;
+
+        public void PlayerEnteredRoom(Photon.Realtime.Player newPlayer) => this.OnPlayerEntered?.Invoke(newPlayer);
+        public void PlayerLeftRoom(Photon.Realtime.Player newPlayer) => this.OnPlayerLeft?.Invoke(newPlayer);
+
 
         private void OnEnable()
         {

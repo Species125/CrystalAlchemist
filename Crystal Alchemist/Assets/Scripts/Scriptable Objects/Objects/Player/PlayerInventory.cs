@@ -50,11 +50,13 @@ namespace CrystalAlchemist
                 ItemStats keyItem = Instantiate(item);
                 keyItem.name = item.name;
                 this.keyItems.Add(keyItem);
+                GameEvents.current.DoSaveGame();
             }
             else if (!item.isKeyItem())
             {
                 //add Inventory Item or change its amount
                 collectItem(item.itemGroup, item.getTotalAmount());
+                GameEvents.current.DoSaveGame(true);
             }
 
             if (item.itemGroup != null) item.itemGroup.raiseCollectSignal();

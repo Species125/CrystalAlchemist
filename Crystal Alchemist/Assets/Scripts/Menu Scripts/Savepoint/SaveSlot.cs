@@ -88,7 +88,7 @@ namespace CrystalAlchemist
                 child.gameObject.SetActive(false);
             }
 
-            this.data = SaveSystem.loadPlayer(this.gameObject.name);
+            this.data = SaveSystem.LoadPlayer(this.gameObject.name);
 
             if (this.data != null)
             {

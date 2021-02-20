@@ -2,6 +2,9 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
 namespace CrystalAlchemist
 {
@@ -21,6 +24,7 @@ namespace CrystalAlchemist
             MusicEvents.current.OnMusicRestart += RestartMusic;
             MusicEvents.current.OnMusicStopped += StopMusic;
             MusicEvents.current.OnPauseToggle += TogglePause;
+            PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
         }
 
         private void OnDestroy()
@@ -34,6 +38,31 @@ namespace CrystalAlchemist
             MusicEvents.current.OnMusicRestart -= RestartMusic;
             MusicEvents.current.OnMusicStopped -= StopMusic;
             MusicEvents.current.OnPauseToggle -= TogglePause;
+            PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEvent;
+        }
+
+        private void NetworkingEvent(EventData obj)
+        {
+            if (obj.Code == NetworkUtil.JUKEBOX_PLAY)
+            {
+                object[] datas = (object[])obj.CustomData;
+                string path = (string)datas[0];
+                float fade = (float)datas[1];
+
+                MusicTheme theme = Resources.Load<MusicTheme>(path);
+                PlayMusic(theme, fade);
+            }
+            else if (obj.Code == NetworkUtil.JUKEBOX_PAUSE)
+            {
+                TogglePause();
+            }
+            else if (obj.Code == NetworkUtil.JUKEBOX_STOP)
+            {
+                object[] datas = (object[])obj.CustomData;
+                float fade = (float)datas[0];
+
+                StopMusic(fade);
+            }
         }
 
         private void TogglePause()
@@ -46,7 +75,6 @@ namespace CrystalAlchemist
 
         private void PlayMusic(MusicTheme music, float fadeIn)
         {
-            Debug.Log("Handler: Play music "+music.name);
             if (!music.IsValid()) return;
             GameObject newGameObject = new GameObject("Music: " + music.name);
             MusicObject musicObject = newGameObject.AddComponent<MusicObject>();
@@ -80,7 +108,6 @@ namespace CrystalAlchemist
 
         private void PauseMusic(float fadeOut)
         {
-            Debug.Log("Handler: Pause music " + this.backgroundMusic);
             if (this.backgroundMusic != null) this.backgroundMusic.Pause(fadeOut);
         }
 
@@ -101,7 +128,6 @@ namespace CrystalAlchemist
 
         private void StopMusic(float fadeOut)
         {
-            Debug.Log("Handler: Stop music " + this.backgroundMusic);
             if (this.backgroundMusic != null) this.backgroundMusic.Stop(fadeOut);
         }
 

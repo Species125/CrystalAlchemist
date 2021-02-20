@@ -173,7 +173,7 @@ namespace CrystalAlchemist
 
         private void DoTeleport()
         {
-            this.teleportList.SetNextTeleport(this.stats);
+            this.teleportList.SetNextTeleport(this.stats, true, true);
             GameEvents.current.DoTeleport();            
 
             ExitMenu();

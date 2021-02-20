@@ -136,10 +136,17 @@ namespace CrystalAlchemist
 
         public virtual void ShowTargetingSystem(Ability ability)
         {
-            if (this.targetingSystem != null && !this.targetingSystem.gameObject.activeInHierarchy)
+            if (this.targetingSystem != null)
             {
-                this.targetingSystem.setParameters(ability);
-                this.targetingSystem.gameObject.SetActive(true);
+                if (!this.targetingSystem.gameObject.activeInHierarchy)
+                {
+                    this.targetingSystem.setParameters(ability);
+                    this.targetingSystem.gameObject.SetActive(true);
+                }
+                else if(this.targetingSystem.gameObject.activeInHierarchy && ability.isRapidFire)
+                {
+                    ability.SetLockOnState();
+                }
             }
         }
 

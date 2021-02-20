@@ -33,7 +33,7 @@ namespace CrystalAlchemist
             stream.Dispose();
         }
 
-        public static PlayerData loadPlayer(string name)
+        public static PlayerData LoadPlayer(string name)
         {
             if (name != null)
             {
@@ -58,7 +58,24 @@ namespace CrystalAlchemist
             return null;
         }
 
-        public static void loadOptions()
+        public static void DeletePlayerData(string name)
+        {
+            if (name != null)
+            {
+                string path = Application.persistentDataPath + "/" + name + "." + MasterManager.globalValues.saveGameFiletype;
+                string backup = Application.persistentDataPath + "/" + name + ".backup";
+
+                if (File.Exists(path))
+                {
+                    if (File.Exists(backup)) File.Delete(backup);
+
+                    File.Copy(path, backup);
+                    File.Delete(path);
+                }
+            }
+        }
+
+        public static void LoadOptions()
         {            
             string path = Application.persistentDataPath + "/options." + MasterManager.globalValues.saveGameFiletype;
 

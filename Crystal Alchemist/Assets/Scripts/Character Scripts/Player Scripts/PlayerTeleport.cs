@@ -1,8 +1,6 @@
-﻿using Photon.Pun;
-using Sirenix.OdinInspector;
-using System.Collections;
+﻿using System.Collections;
+using Photon.Pun;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace CrystalAlchemist
 {
@@ -15,24 +13,52 @@ namespace CrystalAlchemist
         {
             base.Initialize();
 
-            GameEvents.current.OnTeleport += SwitchScene;
+            NetworkEvents.current.OnPlayerEntered += OnPlayerEnteredRoom;
+
+            if (!this.player.isLocalPlayer) return;
+
+            GameEvents.current.OnTeleport += SpawnOut;
             GameEvents.current.OnHasReturn += HasReturn;
-            this.teleportList.Initialize();
-            StartCoroutine(MaterializePlayer());
+            GameEvents.current.OnSetTeleportStat += SetNextTeleport;
+
+            this.teleportList.Initialize();            
+        }
+
+        private void Start()
+        {
+            if (!this.player.isLocalPlayer) return;
+            SpawnIn();
         }
 
         private void OnDestroy()
         {
-            GameEvents.current.OnTeleport -= SwitchScene;
+            NetworkEvents.current.OnPlayerEntered -= OnPlayerEnteredRoom;
+
+            if (!this.player.isLocalPlayer) return;
+
+            GameEvents.current.OnTeleport -= SpawnOut;
             GameEvents.current.OnHasReturn -= HasReturn;
+            GameEvents.current.OnSetTeleportStat -= SetNextTeleport;
         }
 
-        public void SwitchScene() => StartCoroutine(DematerializePlayer());        
+        private void SetNextTeleport(TeleportStats stats) => this.teleportList.SetNextTeleport(stats);
+
+        private void SpawnIn()
+        {
+            StartCoroutine(MaterializePlayer());
+            this.player.photonView.RPC("RpcSpawnIn", RpcTarget.Others);
+        }
+
+        private void SpawnOut()
+        {
+            StartCoroutine(DematerializePlayer());
+            this.player.photonView.RPC("RpcSpawnOut", RpcTarget.Others);
+        }                    
 
         private void SetPosition(Vector2 position)
         {
             this.player.transform.position = position;
-            this.player.ChangeDirection(this.player.values.direction);
+            this.player.ChangeDirection(this.player.values.direction);            
         }
 
         private IEnumerator DematerializePlayer()
@@ -45,7 +71,6 @@ namespace CrystalAlchemist
                 this.player.SetDefaultDirection();
                 RespawnAnimation respawnObject = Instantiate(this.player.respawnAnimation, this.player.GetShootingPosition(), Quaternion.identity);
                 respawnObject.Reverse(this.player);  //reverse
-                //SpawnTeleportEffect(true);
                 yield return new WaitForSeconds(respawnObject.getAnimationLength());
             }
             else
@@ -59,59 +84,71 @@ namespace CrystalAlchemist
         }
 
         private IEnumerator MaterializePlayer()
-        {
+        { 
             this.player.SetCharacterSprites(false);
             this.player.SpawnOut(); //Disable Player
 
-            if (this.teleportList.GetLatestTeleport() == null)
+            yield return new WaitForSeconds(0.3f); //Delay to get Teleport from Master
+
+            TeleportStats stats = this.teleportList.GetLatestTeleport();
+
+            if (stats == null)
             {
                 this.player.SetCharacterSprites(true);
                 this.player.SpawnIn();
                 yield break;
             }
-
-            Vector2 position = this.teleportList.GetLatestTeleport().position;
-            bool animation = this.teleportList.GetShowSpawnIn();
-
+            
+            Vector2 position = stats.position;
             SetPosition(position);
+
+            bool animation = this.teleportList.GetShowSpawnIn();            
 
             if (this.player.respawnAnimation != null && animation)
             {
+                this.player.characterCollider.enabled = true;
                 this.player.SetDefaultDirection();
                 yield return new WaitForSeconds(2f);
                 RespawnAnimation respawnObject = Instantiate(this.player.respawnAnimation, new Vector2(position.x, position.y + 0.5f), Quaternion.identity);
-                respawnObject.Initialize(this.player);
-                //SpawnTeleportEffect(false);
+                respawnObject.Initialize(this.player);                
             }
             else
             {
                 this.player.SetCharacterSprites(true);
                 this.player.SpawnIn();
             }
-        }
-
-        public void SpawnTeleportEffect(bool reverse)
-        {
-            string prefabPath = this.player.respawnAnimation.path;
-            int targetID = this.player.photonView.ViewID;
-
-            this.player.photonView.RPC("RpcSpawnTeleportEffect", RpcTarget.Others, prefabPath, targetID, reverse);
-        }
-
-        [PunRPC]
-        public void RpcSpawnTeleportEffect(string prefabPath, int targetID, bool reverse, PhotonMessageInfo info)
-        {
-            Player player = NetworkUtil.GetPlayer(targetID);
-            RespawnAnimation animation = Resources.Load<RespawnAnimation>(prefabPath);
-            RespawnAnimation temp = Instantiate(animation, player.GetShootingPosition(), Quaternion.identity);
-
-            if (reverse) temp.Reverse(player);
-            else temp.Initialize(player);
-        }
+        }        
 
         public bool HasReturn()
         {
             return this.teleportList.HasReturn();
+        }
+
+        private void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+        {
+            TeleportStats stats = this.teleportList.GetLatestTeleport();
+
+            if (NetworkUtil.IsMaster() && stats != null) this.player.photonView.RPC("RpcSetTeleportStat", newPlayer, stats.path);
+        }
+
+        [PunRPC]
+        protected void RpcSetTeleportStat(string path)
+        {
+            Debug.Log("Set Teleport for " + this.gameObject.name + " to " + path);
+            TeleportStats stats = Resources.Load<TeleportStats>(path);
+            GameEvents.current.DoTeleportStat(stats);
+        }
+
+        [PunRPC]
+        public void RpcSpawnIn(PhotonMessageInfo info)
+        {
+            StartCoroutine(MaterializePlayer());
+        }
+
+        [PunRPC]
+        public void RpcSpawnOut(PhotonMessageInfo info)
+        {
+            StartCoroutine(DematerializePlayer());
         }
     }
 }
