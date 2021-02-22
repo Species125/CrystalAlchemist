@@ -282,7 +282,6 @@ GameObject:
   - component: {fileID: 1938021464261085658}
   - component: {fileID: 4322055140194454571}
   - component: {fileID: 7016091898417923367}
-  - component: {fileID: 3574329011111965237}
   - component: {fileID: 9189459050286663773}
   - component: {fileID: 9221035579785777317}
   - component: {fileID: 7654634504909604730}
@@ -346,7 +345,7 @@ MonoBehaviour:
   path: 
   myRigidbody: {fileID: 4322055140194454582}
   animator: {fileID: 2652810396879462137}
-  characterCollider: {fileID: 3574329011111965237}
+  characterCollider: {fileID: 0}
   respawnAnimation: {fileID: 0}
   groundPosition: {fileID: 8079844414878688528}
   skillStartPosition: {fileID: 6261774556482826731}
@@ -418,32 +417,6 @@ MonoBehaviour:
   ghost: {fileID: 634257569416937404, guid: f11b09210e7962848bddb256727f4657, type: 3}
   delay: 0.3
   destroyAfter: 0.6
---- !u!61 &3574329011111965237
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4322055140194454578}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &9189459050286663773
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -47,11 +47,6 @@ namespace CrystalAlchemist
             ShowCategory("physical");
         }
 
-        private void test()
-        {
-
-        }
-
         private Ability GetAbility()
         {
             return this.selectedAbility;
@@ -110,6 +105,12 @@ namespace CrystalAlchemist
             this.selectedAbility = ability;
             if (ability != null) this.cursor.setSelectedGameObject(ability.info.icon);
             else this.cursor.setSelectedGameObject(null);
+        }
+
+        public override void ExitMenu()
+        {
+            GameEvents.current.DoSaveGame(false);
+            base.ExitMenu();
         }
 
         #endregion

@@ -98,25 +98,17 @@ namespace CrystalAlchemist
 
         private void OnEnable()
         {
+            NetworkEvents.current.OnPlayerSpawned += this.OnStart;
             PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
-        }
-
-        private void Start()
-        {
-            GameEvents.current.OnPlayerSpawned += this.OnStart;
         }
 
         private void OnDisable()
         {
+            NetworkEvents.current.OnPlayerSpawned -= this.OnStart;
             PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEvent;
         }
 
-        private void OnDestroy()
-        {
-            GameEvents.current.OnPlayerSpawned -= this.OnStart;
-        }
-
-        private void OnStart(int ID)
+        private void OnStart(PhotonView view)
         {
             if (!NetworkUtil.IsMaster()) return;
             InvokeRepeating("Updating", 0f, this.updateTime);
@@ -221,7 +213,7 @@ namespace CrystalAlchemist
         {
             if (!NetworkUtil.IsMaster() || gameObject == null) return;
 
-            int ID = gameObject.GetPhotonView().ViewID;
+            int ID = NetworkUtil.GetID(gameObject);
 
             object[] datas = new object[] { ID, isInit };
             RaiseEventOptions options = NetworkUtil.TargetAll();
@@ -233,7 +225,7 @@ namespace CrystalAlchemist
         {
             if (!NetworkUtil.IsMaster() || gameObject == null) return;
 
-            int ID = gameObject.GetPhotonView().ViewID;
+            int ID = NetworkUtil.GetID(gameObject);
 
             object[] datas = new object[] { ID, isInit };
             RaiseEventOptions options = NetworkUtil.TargetAll();

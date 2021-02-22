@@ -55,7 +55,7 @@ namespace CrystalAlchemist
 
         private void Start()
         {
-            this.ID = this.npc.photonView.ViewID;
+            this.ID = NetworkUtil.GetID(this.npc);
             this.npc.aggroList.Clear();
             this.needed = this.aggroStats.aggroNeededToTarget / 100f;
 

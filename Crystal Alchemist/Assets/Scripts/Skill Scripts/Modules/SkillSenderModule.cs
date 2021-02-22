@@ -1,6 +1,4 @@
-﻿
-
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -30,27 +28,7 @@ namespace CrystalAlchemist
         [Tooltip("Soll die Geschwindigkeit auch die Animation beeinflussen?")]
         public bool affectAnimation = true;
 
-        [Space(10)]
-        [BoxGroup("Sender Attribute")]
-        [Tooltip("True = nach vorne, False = Knockback")]
-        [SerializeField]
-        private bool forward = false;
-
-        [BoxGroup("Sender Attribute")]
-        [MinValue(0)]
-        [Tooltip("Stärke des Knockbacks")]
-        [SerializeField]
-        private float selfThrust = 0;
-
-        [BoxGroup("Sender Attribute")]
-        [MinValue(0)]
-        [Tooltip("Dauer des Knockbacks")]
-        [HideIf("selfThrust", 0f)]
-        [SerializeField]
-        private float selfThrustTime = 0;
-
         private float elapsed;
-
 
         public override void Initialize()
         {
@@ -59,9 +37,7 @@ namespace CrystalAlchemist
                 if (this.skill.sender.values.currentState != CharacterState.dead
                     && this.skill.sender.values.currentState != CharacterState.respawning)
                 {
-                    updateResourceSender();
-                    setSelfTrust();
-
+                    updateResourceSender();  
                     this.elapsed = this.intervallSender;
                 }
 
@@ -93,7 +69,6 @@ namespace CrystalAlchemist
         {
             if (this.skill.sender != null)
             {
-                //if (this.stateType != StateType.none) this.skill.sender.values.currentState = CharacterState.idle;
                 if (this.speedDuringDuration != 0) this.skill.sender.updateSpeed(0);
             }
         }
@@ -101,17 +76,6 @@ namespace CrystalAlchemist
         private void updateResourceSender()
         {
             if (this.skill.sender != null) this.skill.sender.ReduceResource(this.costs);
-        }
-
-        private void setSelfTrust()
-        {
-            if (this.selfThrust > 0)
-            {
-                int trustdirection = -1; //knockback
-                if (forward) trustdirection = 1; //dash
-
-                this.skill.sender.KnockBack(selfThrustTime, selfThrust, (this.skill.GetDirection() * trustdirection));
-            }
-        }
+        }        
     }
 }

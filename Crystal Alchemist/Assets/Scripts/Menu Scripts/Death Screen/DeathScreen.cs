@@ -56,6 +56,7 @@ namespace CrystalAlchemist
         {
             if (NetworkUtil.IsMaster()) NetworkEvents.current.SetNextTeleport(this.playerTeleport.GetLatestTeleport());
 
+            MenuEvents.current.DoCloseMenu();
             this.fullText = this.textField.text;
             this.textField.text = "";
             this.controls.SetActive(false);

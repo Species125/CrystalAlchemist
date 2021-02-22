@@ -110,7 +110,7 @@ namespace CrystalAlchemist
         }
 
         public static Player GetLocalPlayer()
-        {
+        {            
             return (Player)PhotonNetwork.LocalPlayer.TagObject;
         }
 

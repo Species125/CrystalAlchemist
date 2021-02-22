@@ -38,6 +38,7 @@ namespace CrystalAlchemist
         {
             this.saveGame.SaveGame();
             this.saveIt = false;
+            Debug.Log("Saved");
         }
 
         private void OnDestroy()

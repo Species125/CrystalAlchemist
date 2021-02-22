@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
 namespace CrystalAlchemist
 {
-    public class PlayerListUI : MonoBehaviourPunCallbacks
+    public class PlayerListUI : MonoBehaviour
     {
         [SerializeField]
         private PlayerListUIChild template;
@@ -17,8 +16,10 @@ namespace CrystalAlchemist
 
         private void Start()
         {
+            NetworkEvents.current.OnPlayerSpawned += OnPlayerEnteredRoom;
+            NetworkEvents.current.OnPlayerLeft += OnPlayerLeftRoom;
+
             this.template.gameObject.SetActive(false);
-            GameEvents.current.OnOtherPlayerSpawned += AddNewInfos;
 
             foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
             {
@@ -32,7 +33,8 @@ namespace CrystalAlchemist
 
         private void OnDestroy()
         {
-            GameEvents.current.OnOtherPlayerSpawned -= AddNewInfos;
+            NetworkEvents.current.OnPlayerSpawned -= OnPlayerEnteredRoom;
+            NetworkEvents.current.OnPlayerLeft -= OnPlayerLeftRoom;
         }
 
         private void AddNewInfos(int ID)
@@ -66,10 +68,15 @@ namespace CrystalAlchemist
             this.children.Add(newChild);
         }
 
-        public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+        private void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
         {
             Player p = (Player)otherPlayer.TagObject;
             RemoveInfos(p.photonView.ViewID);
+        }
+
+        private void OnPlayerEnteredRoom(PhotonView view)
+        {            
+            AddNewInfos(view.ViewID);
         }
     }
 }

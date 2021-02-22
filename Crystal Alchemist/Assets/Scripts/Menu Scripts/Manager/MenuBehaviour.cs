@@ -24,6 +24,7 @@ namespace CrystalAlchemist
 
         public virtual void Start()
         {
+            MenuEvents.current.OnCloseMenu += ExitMenu;
             GameEvents.current.DoMenuOpen();
 
             if (MasterManager.globalValues.openedMenues.Count == 0)
@@ -45,6 +46,7 @@ namespace CrystalAlchemist
 
         public virtual void OnDestroy()
         {
+            MenuEvents.current.OnCloseMenu -= ExitMenu;
             MasterManager.globalValues.openedMenues.Remove(this.gameObject);
 
             if (MasterManager.globalValues.openedMenues.Count <= 0)
@@ -63,7 +65,7 @@ namespace CrystalAlchemist
         }
 
         public virtual void ExitMenu()
-        {
+        {            
             SceneManager.UnloadSceneAsync(this.gameObject.scene);
         }
     }

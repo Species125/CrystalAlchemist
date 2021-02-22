@@ -1,7 +1,4 @@
 ﻿using AssetIcons;
-
-
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -9,7 +6,7 @@ namespace CrystalAlchemist
     [CreateAssetMenu(menuName = "Game/Player/Teleport Stats")]
     public class TeleportStats : NetworkScriptableObject
     {
-        public string teleportName = "";
+        public string teleportID = "";
         public string scene;
         public Vector2 position;
         public bool showAnimationIn = false;
@@ -20,23 +17,24 @@ namespace CrystalAlchemist
 
         public void Clear()
         {
-            this.teleportName = "";
+            this.teleportID = "";
             this.scene = null;
             this.position = Vector2.zero;
             this.showAnimationIn = true;
             this.showAnimationOut = false;
         }
 
-        public bool Exists(string name)
+        public bool Exists(string scene, string ID)
         {
-            return this.teleportName == name;
+            if (scene == null || ID == null || this.teleportID == null || this.scene == null) return false;
+            return this.teleportID == ID && scene == this.scene;
         }
 
-        public void SetValue(string teleportName, string targetScene, Vector2 position, bool showIn, bool showOut, Sprite icon)
+        public void SetValue(string teleportID, string targetScene, Vector2 position, bool showIn, bool showOut, Sprite icon)
         {
             if (targetScene != null && targetScene != "")
             {
-                this.teleportName = teleportName;
+                this.teleportID = teleportID;
                 this.scene = targetScene;
                 this.position = position;
                 this.showAnimationIn = showIn;
@@ -46,14 +44,24 @@ namespace CrystalAlchemist
             else Clear();
         }
 
+        public string GetFullID()
+        {
+            return this.scene + "_" + this.teleportID;
+        }
+
+        public string[] GetStatData()
+        {
+            return new string[] { this.scene, this.teleportID };
+        }
+
         public void SetStats(TeleportStats stats)
         {
-            SetValue(stats.teleportName, stats.scene, stats.position, stats.showAnimationIn, this.showAnimationOut, stats.icon);
+            SetValue(stats.teleportID, stats.scene, stats.position, stats.showAnimationIn, this.showAnimationOut, stats.icon);
         }
 
         public string GetTeleportName()
         {
-            return FormatUtil.GetLocalisedText(this.teleportName, LocalisationFileType.maps);
+            return FormatUtil.GetLocalisedText(GetFullID(), LocalisationFileType.maps);
         }
     }
 }

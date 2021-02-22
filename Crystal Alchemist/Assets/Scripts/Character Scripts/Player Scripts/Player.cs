@@ -5,20 +5,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace CrystalAlchemist
 {
-    [System.Serializable]
-    public class TestPlayer
-        {
-        public string name = "";
-        public CharacterPreset preset;
-        public float life;
-        public float mana;
-        }
-
     public class Player : Character, IInRoomCallbacks
     {
         [BoxGroup("Player Objects")]
@@ -52,10 +42,10 @@ namespace CrystalAlchemist
         ///////////////////////////////////////////////////////////////
 
         public override void Awake()
-        {
+        {            
             SetComponents();
             SetScriptableObjects();
-            SetPlayerComponents();
+            SetPlayerComponents();            
         }
 
         private void SetScriptableObjects()
@@ -128,17 +118,13 @@ namespace CrystalAlchemist
             this.ChangeDirection(this.values.direction);
             this.animator.speed = 1;
             this.updateTimeDistortion(0);
+
+            NetworkEvents.current.PlayerSpawnCompleted(this.photonView);
         }
 
         private void LoadPlayer()
-        {
-            this.photonView.Owner.TagObject = this;
-
-            if (!this.isLocalPlayer)
-            {
-                GameEvents.current.DoOtherLocalPlayerSpawned(this.photonView.ViewID);
-                return;
-            }
+        {           
+            if (!this.isLocalPlayer) return;            
             
             this.saveGame.progress.Updating();
 
@@ -157,7 +143,6 @@ namespace CrystalAlchemist
             GameEvents.current.OnLifeManaUpdateLocal += UpdateLifeManaUI;
 
             GameEvents.current.DoManaLifeUpdate(this.photonView.ViewID);
-            GameEvents.current.DoLocalPlayerSpawned(this.photonView.ViewID);
 
             UpdateLifeManaForOthers();
 
@@ -218,8 +203,7 @@ namespace CrystalAlchemist
         public override void SpawnIn()
         {
             base.SpawnIn();
-            AddStatusEffectVisuals();
-            if (this.isLocalPlayer) GameEvents.current.DoPlayerSpawnCompleted();
+            AddStatusEffectVisuals();            
         }        
 
         public override void EnableScripts(bool value)
@@ -309,7 +293,7 @@ namespace CrystalAlchemist
         {
             if (!this.isLocalPlayer) return; //no damage to guest
 
-            GameEvents.current.DoCancel();
+            MenuEvents.current.DoCloseMenu();
             base.GotHit(skill, percentage, knockback);
         }
 
@@ -412,20 +396,19 @@ namespace CrystalAlchemist
             this.myRigidbody.velocity = Vector2.zero;
             yield return new WaitForEndOfFrame(); //Wait for Camera
 
-            EnablePlayer(false); //Disable Movement
+            EnablePlayer(false); //Disable Movement            
 
             AnimatorUtil.SetAnimatorParameter(this.animator, "GoSleep");
             float animDuration = AnimatorUtil.GetAnimationLength(this.animator, "GoSleep");
             yield return new WaitForSeconds(animDuration + duration);
-
-            GameEvents.current.DoChangeState(CharacterState.interact);
 
             after?.Invoke(); //Zeit schnell 
         }
 
         private void EnablePlayer(bool value)
         {
-            this.EnableScripts(value); //prevent movement         
+            this.EnableScripts(value); //prevent movement   
+            this.characterCollider.enabled = true; 
             this.SetDefaultDirection();
         }
 
@@ -440,9 +423,7 @@ namespace CrystalAlchemist
             action?.Invoke(); //Zeit normal
 
             SetTransform(position);
-            EnablePlayer(true);
-            
-            GameEvents.current.DoChangeState(CharacterState.idle);
+            EnablePlayer(true);          
         }
 
 

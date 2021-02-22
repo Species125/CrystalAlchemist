@@ -168,7 +168,9 @@ namespace CrystalAlchemist
         /// <returns></returns>
         public bool CanInteract()
         {
-            return (!this.isAttacking && CanMove());
+            return (!this.isAttacking 
+                    && CanOpenMenu()
+                    && !this.isCharacterStunned());
         }
 
 

@@ -52,13 +52,16 @@ namespace CrystalAlchemist
         private static void LoadTeleportList(PlayerData data, PlayerTeleportList list)
         {
             if (data.teleportPoints == null) return;
-            foreach (string name in data.teleportPoints)
+            foreach (string[] name in data.teleportPoints)
             {
                 TeleportStats teleport = MasterManager.GetTeleportStats(name);
                 if (teleport != null) list.AddTeleport(teleport);
             }
 
-            list.SetNextTeleport(MasterManager.GetTeleportStats(data.startTeleport), true, true);
+            TeleportStats startTeleport = MasterManager.GetTeleportStats(data.startTeleport);
+            if (startTeleport == null) startTeleport = MasterManager.defaultTeleport;
+
+            list.SetNextTeleport(startTeleport, true, true);
             list.SetReturnTeleport(MasterManager.GetTeleportStats(data.lastTeleport));
         }
 

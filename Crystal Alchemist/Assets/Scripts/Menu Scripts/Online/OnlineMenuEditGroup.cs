@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace CrystalAlchemist
 {
-    public class OnlineMenuEditGroup : MonoBehaviourPunCallbacks
+    public class OnlineMenuEditGroup : MonoBehaviour
     {
         [BoxGroup("UI Room")]
         [SerializeField]
@@ -53,19 +53,19 @@ namespace CrystalAlchemist
         private bool isMaster = false;
         private List<OnlineMenuPlayerInfo> infos = new List<OnlineMenuPlayerInfo>();
 
-        public override void OnEnable()
+        private void OnEnable()
         {
-            base.OnEnable();
-
             this.isMaster = NetworkUtil.IsMaster();            
             OnToggleChanged();
         }       
 
         private void Start()
         {
+            NetworkEvents.current.OnPlayerSpawned += OnPlayerEnteredRoom;
+            NetworkEvents.current.OnPlayerLeft += OnPlayerLeftRoom;
+
             GetRoomInfos();
             this.template.gameObject.SetActive(false);
-            GameEvents.current.OnOtherPlayerSpawned += AddNewInfos;
 
             foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
             {
@@ -79,14 +79,19 @@ namespace CrystalAlchemist
 
         private void OnDestroy()
         {
-            GameEvents.current.OnOtherPlayerSpawned -= AddNewInfos;
+            NetworkEvents.current.OnPlayerSpawned -= OnPlayerEnteredRoom;
+            NetworkEvents.current.OnPlayerLeft -= OnPlayerLeftRoom;
         }
 
-
-        public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+        private void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
         {
             Player p = (Player)otherPlayer.TagObject;
             RemoveInfos(p.photonView.ViewID);
+        }
+
+        private void OnPlayerEnteredRoom(PhotonView view)
+        {
+            AddNewInfos(view.ViewID);
         }
 
         private void DisableButton()

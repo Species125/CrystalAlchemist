@@ -11,7 +11,6 @@ namespace CrystalAlchemist
 
         private CharacterPreset backup;
 
-
         public override void Start()
         {
             base.Start();
@@ -30,6 +29,12 @@ namespace CrystalAlchemist
         {
             GameUtil.SetPreset(this.backup, this.playerPreset);
             UpdatePreview();
+        }
+
+        public override void ExitMenu()
+        {
+            GameEvents.current.DoSaveGame(false);
+            base.ExitMenu();
         }
 
         public void UpdatePreview() => GameEvents.current.DoPresetChange();

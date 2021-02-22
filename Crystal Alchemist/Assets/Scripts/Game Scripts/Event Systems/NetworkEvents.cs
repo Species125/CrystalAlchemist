@@ -15,9 +15,11 @@ namespace CrystalAlchemist
 
         public Action<Photon.Realtime.Player> OnPlayerEntered;
         public Action<Photon.Realtime.Player> OnPlayerLeft;
+        public Action<PhotonView> OnPlayerSpawned;
 
         public void PlayerEnteredRoom(Photon.Realtime.Player newPlayer) => this.OnPlayerEntered?.Invoke(newPlayer);
         public void PlayerLeftRoom(Photon.Realtime.Player newPlayer) => this.OnPlayerLeft?.Invoke(newPlayer);
+        public void PlayerSpawnCompleted(PhotonView view) => this.OnPlayerSpawned?.Invoke(view);
 
 
         private void OnEnable()

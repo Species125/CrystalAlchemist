@@ -25,9 +25,9 @@ namespace CrystalAlchemist
         public string[] characterParts;
         public List<string[]> progress = new List<string[]>();
 
-        public List<string> teleportPoints = new List<string>();
-        public string startTeleport;
-        public string lastTeleport;
+        public List<string[]> teleportPoints = new List<string[]>();
+        public string[] startTeleport;
+        public string[] lastTeleport;
 
         public float timePlayed;
 
@@ -90,26 +90,27 @@ namespace CrystalAlchemist
         {
             this.teleportPoints.Clear();
 
-            foreach (TeleportStats stat in list.GetStats()) this.teleportPoints.Add(stat.teleportName);
+            foreach (TeleportStats stat in list.GetStats()) this.teleportPoints.Add(stat.GetStatData());
         }
 
         private void SetStartTeleport(TeleportStats stats)
         {
             if (stats == null) return;
-            this.startTeleport = stats.teleportName;
+            this.startTeleport = stats.GetStatData();
         }
 
         private void SetLastTeleport(TeleportStats stats)
         {
             if (stats == null) return;
-            this.lastTeleport = stats.teleportName;
+            this.lastTeleport = stats.GetStatData();
         }
 
         public string GetStartTeleportName()
         {
             TeleportStats stats = MasterManager.GetTeleportStats(this.startTeleport);
-            if (stats != null) return stats.GetTeleportName();
-            return "???";
+            if (stats == null) stats = MasterManager.defaultTeleport;
+
+            return stats.GetTeleportName();
         }
     }
 
@@ -119,7 +120,6 @@ namespace CrystalAlchemist
         public float musicVolume;
         public float soundVolume;
 
-        //public string layout;
         public string language;
 
         public bool useHealthBar;

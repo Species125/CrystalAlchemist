@@ -29,6 +29,7 @@ namespace CrystalAlchemist
         public static GameObject itemCollectGlitter { get { return Instance._itemCollectGlitter; } }
         public static GameObject itemDisappearSmoke { get { return Instance._itemDisappearSmoke; } }
         public static InputDeviceInfo inputDeviceInfo { get { return Instance._inputDeviceInfo; } }
+        public static TeleportStats defaultTeleport { get { return Instance._defaultTeleport; } }
 
         [BoxGroup("Interaction")]
         [SerializeField]
@@ -92,6 +93,9 @@ namespace CrystalAlchemist
 
         [BoxGroup("Loading")]
         [SerializeField]
+        private TeleportStats _defaultTeleport;
+        [BoxGroup("Loading")]
+        [SerializeField]
         private List<ItemDrop> _itemDrops = new List<ItemDrop>();
         [BoxGroup("Loading")]
         [SerializeField]
@@ -141,14 +145,15 @@ namespace CrystalAlchemist
             return null;
         }
 
-        public static TeleportStats GetTeleportStats(string teleportName)
+        public static TeleportStats GetTeleportStats(string[] data)
         {
+            if (data.Length != 2) return null;
+
             foreach (TeleportStats teleport in teleportpoints)
             {
-                if (teleport.Exists(teleportName)) return teleport;
+                if (teleport.Exists(data[0], data[1])) return teleport;
             }
 
-            Debug.LogError(teleportName + " not found in Master!");
             return null;
         }
     }

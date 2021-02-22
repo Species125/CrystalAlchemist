@@ -469,7 +469,8 @@ namespace CrystalAlchemist
             if (!ignore && this.values.cantBeHit) return;
 
             Vector2 position = skill.transform.position;
-            int ID = sender.photonView.ViewID;
+            int ID = NetworkUtil.GetID(sender);
+
             string[] resources = targetModule.GetAffectedResourcesArray(this);
             float thrust = targetModule.thrust;
             float duration = targetModule.knockbackTime;

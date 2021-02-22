@@ -16,15 +16,13 @@ namespace CrystalAlchemist
 
         private void Start()
         {
-            GameEvents.current.OnPlayerSpawned += AddPlayer;
             this.groups = this.GetComponents<CinemachineTargetGroup>();
+            AddPlayer();
         }
 
-        private void OnDestroy() => GameEvents.current.OnPlayerSpawned -= AddPlayer;
-
-        private void AddPlayer(int ID)
+        private void AddPlayer()
         {
-            GameObject player = NetworkUtil.GetGameObject(ID);
+            GameObject player = NetworkUtil.GetLocalPlayer().gameObject;
 
             for (int i = 0; i < groups.Length; i++)
             {

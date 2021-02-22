@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2676114091999809723}
   - component: {fileID: 3313979781807750948}
   - component: {fileID: 3479607655743142279}
+  - component: {fileID: 2459881694516179965}
   m_Layer: 13
   m_Name: Speer
   m_TagString: Skill
@@ -52,9 +53,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   spriteRenderer: {fileID: 5387825760302318934}
   myRigidbody: {fileID: 2211265516280113145}
   animator: {fileID: 936580078306894737}
+  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -187,15 +190,12 @@ MonoBehaviour:
     resourceType: 0
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 1
   intervallSender: 0
   speedDuringCasting: 0
   speedDuringDuration: 0
   affectAnimation: 0
-  forward: 1
-  selfThrust: 4
-  selfThrustTime: 0.2
-  stateType: 1
 --- !u!114 &2676114091999809723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,8 +213,9 @@ MonoBehaviour:
   - resourceType: 1
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: -1.5
-  statusEffects: []
+  modifiers: []
   thrust: 4
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}
@@ -231,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
+  snapRotationInDegrees: 0
 --- !u!114 &3479607655743142279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +249,24 @@ MonoBehaviour:
   animationTriggerName: spear
   useColor: 0
   targetColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &2459881694516179965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661548303189921719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdebd154a506234d85ef301888ca8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  attributes:
+  - type: 0
+    forward: 1
+    thrust: 6
+    duration: 0.3
 --- !u!1 &1288681395139722514
 GameObject:
   m_ObjectHideFlags: 0

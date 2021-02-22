@@ -29,6 +29,7 @@ namespace CrystalAlchemist
         public Action OnAttributeUpdate;
         public Action<Action> OnPostProcessingFade;
         public Action OnFadeOut;
+        public Action OnCloseMenu;
 
         public void OpenMenuDialogBox() => this.OnMenuDialogBox?.Invoke();
         public void OpenDialogBox() => this.OnDialogBox?.Invoke();
@@ -50,5 +51,6 @@ namespace CrystalAlchemist
         public void UpdateAttributes() => this.OnAttributeUpdate?.Invoke();
         public void DoPostProcessingFade(Action OnAfterFadeCompleted) => this.OnPostProcessingFade?.Invoke(OnAfterFadeCompleted);
         public void DoFadeOut() => this.OnFadeOut?.Invoke();
+        public void DoCloseMenu() => this.OnCloseMenu?.Invoke();
     }
 }

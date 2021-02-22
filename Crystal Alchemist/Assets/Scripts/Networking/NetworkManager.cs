@@ -20,7 +20,7 @@ namespace CrystalAlchemist
             base.OnEnable();
             GameEvents.current.OnTitleScreen += ReturnTitleScreen;
             PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
-            GameEvents.current.OnPlayerSpawnCompleted += ShowKickMessage;
+            NetworkEvents.current.OnPlayerSpawned += ShowKickMessage;
         }
 
         public override void OnDisable()
@@ -28,7 +28,7 @@ namespace CrystalAlchemist
             base.OnDisable();
             GameEvents.current.OnTitleScreen -= ReturnTitleScreen;
             PhotonNetwork.NetworkingClient.EventReceived -= NetworkingEvent;
-            GameEvents.current.OnPlayerSpawnCompleted -= ShowKickMessage;
+            NetworkEvents.current.OnPlayerSpawned -= ShowKickMessage;
         }
 
         private void NetworkingEvent(EventData obj)
@@ -57,7 +57,7 @@ namespace CrystalAlchemist
             if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom) Instantiate();
         }      
         
-        private void ShowKickMessage()
+        private void ShowKickMessage(PhotonView view)
         {
             if (this.settings.gotKicked.GetValue())
             {
@@ -69,6 +69,8 @@ namespace CrystalAlchemist
         private void Instantiate()
         {
             GameObject player = PhotonNetwork.Instantiate(this.prefab.path, Vector2.zero, Quaternion.identity, 0);
+            PhotonNetwork.LocalPlayer.TagObject = player.GetComponent<Player>();
+
             player.GetComponent<Player>().uniqueID = PhotonNetwork.LocalPlayer.UserId;
         }
 
@@ -83,7 +85,7 @@ namespace CrystalAlchemist
         {
             this.returnToTitleScreen = true;
             settings.offlineMode.SetValue(true);
-            GameEvents.current.DoSaveGame();
+            GameEvents.current.DoSaveGame(false);
             PhotonNetwork.Disconnect();
         }
 

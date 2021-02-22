@@ -118,8 +118,7 @@ namespace CrystalAlchemist
 
             for (int i = 0; i < this.list.Count; i++)
             {
-                if (list[i].scene == stat.scene
-                    && list[i].Exists(stat.teleportName)) return true;
+                if (list[i].Exists(stat.scene, stat.teleportID)) return true;
             }
 
             return false;

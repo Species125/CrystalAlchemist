@@ -55,5 +55,11 @@ namespace CrystalAlchemist
             string text = FormatUtil.formatString(pointsLeft, this.attributePointsMax) + " / " + FormatUtil.formatString(this.attributePointsMax, this.attributePointsMax);
             this.pointsField.text = text;
         }
+
+        public override void ExitMenu()
+        {
+            GameEvents.current.DoSaveGame(false);
+            base.ExitMenu();
+        }
     }
 }

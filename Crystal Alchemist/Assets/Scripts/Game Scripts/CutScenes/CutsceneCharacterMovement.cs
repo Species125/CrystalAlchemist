@@ -1,5 +1,4 @@
-﻿
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -14,13 +13,9 @@ namespace CrystalAlchemist
 
         private Rigidbody2D myRigidbody;
 
-        private void Start() => GameEvents.current.OnPlayerSpawned += AddPlayer;
-
-        private void OnDestroy() => GameEvents.current.OnPlayerSpawned -= AddPlayer;
-
-        private void AddPlayer(int ID)
+        private void Start()
         {
-            GameObject gameObject = NetworkUtil.GetGameObject(ID);
+            GameObject gameObject = NetworkUtil.GetLocalPlayer().gameObject;
             this.myRigidbody = gameObject.GetComponent<Rigidbody2D>();
         }
 
