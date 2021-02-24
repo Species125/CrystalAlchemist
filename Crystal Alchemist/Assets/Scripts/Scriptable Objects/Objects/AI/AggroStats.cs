@@ -11,19 +11,15 @@ namespace CrystalAlchemist
 
         [BoxGroup("Aggro Attributes")]
         [Range(0, 100)]
-        public float aggroIncreaseFactor = 25;
+        public int aggroIncreaseFactor = 25;
 
         [BoxGroup("Aggro Attributes")]
         [Range(0, 100)]
-        public float aggroOnHitIncreaseFactor = 25;
+        public int aggroOnHitIncreaseFactor = 25;
 
         [BoxGroup("Aggro Attributes")]
         [Range(-100, 0)]
-        public float aggroDecreaseFactor = -25;
-
-        [BoxGroup("Aggro Attributes")]
-        [Range(0, 100)]
-        public float aggroNeededToTarget = 100;
+        public int aggroDecreaseFactor = -25;
 
         [BoxGroup("Aggro Attributes")]
         public float targetChangeDelay = 0f;

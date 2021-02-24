@@ -34,7 +34,7 @@ namespace CrystalAlchemist
         public Animator animator;
 
         [BoxGroup("Easy Access")]
-        public SkillCollider skillCollider;
+        public Collider2D skillCollider;
 
         [BoxGroup("Actions")]
         [SerializeField]
@@ -61,7 +61,6 @@ namespace CrystalAlchemist
         private float delayTimeLeft;
         private float timeDistortion = 1;
         private bool triggerIsActive = true;
-        private float positionOffset;
         private bool lockDirection;
         private bool canAffectedBytimeDistortion;
         private bool hasDelay;
@@ -74,23 +73,7 @@ namespace CrystalAlchemist
         private float lockDuration;
         private bool isActive = true;
         private float percentage;
-
         #endregion
-
-        [Button]
-        private void AddCharacters()
-        {
-            this.sender = FindObjectOfType<AI>();
-            this.target = FindObjectOfType<Player>();
-            this.gameObject.SetActive(false);
-        }
-
-
-        [Button]
-        private void OverrideDelay()
-        {
-            this.AfterDelay?.Invoke();
-        }
 
         #region Start Funktionen (Init, set Basics, Update Sender, set Position
 
@@ -101,9 +84,8 @@ namespace CrystalAlchemist
             this.target = target;
         }
 
-        public void Initialize(float offset, bool lockDirection, float lockDuration, bool isRapidFire, bool affectTimeDistortion, bool attached)
+        public void Initialize(bool lockDirection, float lockDuration, bool isRapidFire, bool affectTimeDistortion, bool attached)
         {
-            this.positionOffset = offset;
             this.lockDirection = lockDirection;
             this.lockDuration = lockDuration;
             this.isRapidFire = isRapidFire;
@@ -166,14 +148,15 @@ namespace CrystalAlchemist
         public void SetVectors()
         {
             this.transform.position = this.sender.GetShootingPosition();
-            if (this.GetComponent<SkillPositionZModule>() != null) this.GetComponent<SkillPositionZModule>().Initialize();
+            if (this.GetComponent<SkillPositionModule>() != null) this.GetComponent<SkillPositionModule>().Initialize();
 
             SetDirection(RotationUtil.SetStartDirection(this));
 
-            if (this.GetComponent<SkillRotationModule>() != null) this.GetComponent<SkillRotationModule>().Initialize();
-            this.transform.position += ((Vector3)GetDirection() * this.positionOffset);
+            if (this.GetComponent<SkillRotationModule>() != null) this.GetComponent<SkillRotationModule>().Initialize();            
 
             if (this.GetComponent<SkillBlendTreeModule>() != null) this.GetComponent<SkillBlendTreeModule>().Initialize();
+
+            if (this.GetComponent<SkillPositionModule>() != null) this.GetComponent<SkillPositionModule>().LateInitialize();
         }
 
         public Vector2 GetDirection()
@@ -183,8 +166,8 @@ namespace CrystalAlchemist
 
         public Vector2 GetPosition()
         {
-            if (this.skillCollider == null) return this.transform.position;
-            else return this.skillCollider.GetPosition();
+            if (this.skillCollider != null) return skillCollider.transform.position;
+            return this.transform.position;
         }
 
         public void SetDirection(Vector2 direction)

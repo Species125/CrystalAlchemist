@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 5261843100729261818}
   - component: {fileID: 515671639}
   - component: {fileID: 2914089536350670384}
+  - component: {fileID: 689840207434789817}
   m_Layer: 13
   m_Name: Bombe
   m_TagString: Skill
@@ -126,9 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   spriteRenderer: {fileID: 0}
   myRigidbody: {fileID: 515671639}
   animator: {fileID: 5261843100729261818}
+  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -156,15 +159,12 @@ MonoBehaviour:
     resourceType: 3
     item: {fileID: 11400000, guid: 3991eb87a0f4e124aa48bb10ccd02658, type: 2}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 1
   intervallSender: 0
   speedDuringCasting: 0
   speedDuringDuration: 0
   affectAnimation: 1
-  forward: 0
-  selfThrust: 0
-  selfThrustTime: 0
-  stateType: 0
 --- !u!114 &6534770195723807936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,8 +182,9 @@ MonoBehaviour:
   - resourceType: 1
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: -3
-  statusEffects: []
+  modifiers: []
   thrust: 2
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: da035de99605b0842a426a0b73be8c21, type: 2}
@@ -297,6 +298,23 @@ MonoBehaviour:
   strength: 2
   duration: 0.5
   speed: 5
+--- !u!114 &689840207434789817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500810980607646640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85781c900207fc428972075be537857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  type: 0
+  positionHeight: 0
+  skillCollider: {fileID: 0}
+  positionOffset: 1
 --- !u!1 &5399660761438353439
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,8 +413,6 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 913c5b8c80375084d837afa00e46dfbf, type: 2}
   spriteRenderer: {fileID: 0}
   useGlow: 1
-  selectColor: {r: 1, g: 0.8431373, b: 0.25490198, a: 1}
-  precision: 0
   glowColor: {r: 4, g: 1.8196079, b: 0, a: 1}
   invert: 0
 --- !u!1 &7405776490008673448
@@ -497,7 +513,5 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 1197dbf3c5278f947a95a75a9843c3c8, type: 2}
   spriteRenderer: {fileID: 0}
   useGlow: 1
-  selectColor: {r: 1, g: 0.8431373, b: 0.25490198, a: 1}
-  precision: 0.3
   glowColor: {r: 2.9960785, g: 1.3333334, b: 0.047058824, a: 1}
   invert: 0

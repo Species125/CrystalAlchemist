@@ -364,9 +364,6 @@ MonoBehaviour:
   speedDuringCasting: 0
   speedDuringDuration: 0
   affectAnimation: 1
-  forward: 0
-  selfThrust: 0
-  selfThrustTime: 0
 --- !u!114 &1161617724197733977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +388,6 @@ MonoBehaviour:
     keyItem: {fileID: 0}
     statusEffect: {fileID: 11400000, guid: 56c3a03a9c810be4a8960260c51efbb5, type: 2}
     amount: 1
-  statusEffects: []
   modifiers: []
   thrust: 2
   knockbackTime: 0.2
@@ -411,7 +407,8 @@ MonoBehaviour:
   skill: {fileID: 0}
   type: 3
   positionHeight: 0
-  colliderHeightOffset: -0.5
+  skillCollider: {fileID: 0}
+  positionOffset: 1
 --- !u!114 &6683749249998826823
 MonoBehaviour:
   m_ObjectHideFlags: 0

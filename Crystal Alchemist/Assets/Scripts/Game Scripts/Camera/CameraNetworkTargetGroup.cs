@@ -22,7 +22,8 @@ namespace CrystalAlchemist
 
         private void AddPlayer()
         {
-            GameObject player = NetworkUtil.GetLocalPlayer().gameObject;
+            Player player = NetworkUtil.GetLocalPlayer();
+            if (player == null) return;
 
             for (int i = 0; i < groups.Length; i++)
             {
@@ -36,7 +37,7 @@ namespace CrystalAlchemist
                     if (target.target == placeHolder.transform)
                     {
                         group.RemoveMember(placeHolder.transform);
-                        group.AddMember(player.transform, 1f, 0f);
+                        group.AddMember(player.gameObject.transform, 1f, 0f);
                         break;
                     }
                 }

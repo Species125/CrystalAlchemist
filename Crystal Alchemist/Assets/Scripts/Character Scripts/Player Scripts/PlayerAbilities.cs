@@ -23,9 +23,17 @@ namespace CrystalAlchemist
         private bool isPressed;
         private Player player;
 
-        private void Start() => GameEvents.current.OnCancel += DisableAbilities;
+        private void Start() 
+        {
+            MenuEvents.current.OnCloseMenu += ClearCurrentAbility;
+            MenuEvents.current.OnCloseMenu += DisableAbilities;
+        }
 
-        private void OnDestroy() => GameEvents.current.OnCancel -= DisableAbilities;
+        private void OnDestroy()
+        {
+            MenuEvents.current.OnCloseMenu -= ClearCurrentAbility;
+            MenuEvents.current.OnCloseMenu -= DisableAbilities;
+        }
 
         public override void Initialize()
         {

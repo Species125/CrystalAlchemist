@@ -9,12 +9,12 @@ namespace CrystalAlchemist
         private List<AI> protectingNPCs = new List<AI>();
 
         [SerializeField]
-        [Range(0, 120)]
-        private float aggroIncreaseFactor = 25;
+        [Range(0, 100)]
+        private int aggroIncreaseFactor = 25;
 
         [SerializeField]
-        [Range(-120, 0)]
-        private float aggroDecreaseFactor = -25f;
+        [Range(-100, 0)]
+        private int aggroDecreaseFactor = -25;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -37,8 +37,8 @@ namespace CrystalAlchemist
                 {
                     if (enemy != null && enemy.gameObject.activeInHierarchy)
                     {
-                        if (!decrease) GameEvents.current.DoAggroIncrease(enemy, character, this.aggroIncreaseFactor);
-                        else GameEvents.current.DoAggroDecrease(enemy, character, this.aggroDecreaseFactor);
+                        if (!decrease) enemy._IncreaseAggro(character, this.aggroIncreaseFactor);
+                        else enemy._DecreaseAggro(character, this.aggroDecreaseFactor);
                     }
                 }
             }

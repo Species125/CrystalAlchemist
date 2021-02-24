@@ -18,11 +18,12 @@ MonoBehaviour:
   cannotDie: 0
   startLife: 25
   startMana: 1
-  startSpeed: 30
+  startSpeed: 10
   startSpellSpeed: 100
   isMassive: 0
   isImmuneToAllDebuffs: 0
-  immunityToStatusEffects: []
+  immunityToStatusEffects:
+  - {fileID: 11400000, guid: 646b7065db6bd07488bb7379d6e930a2, type: 2}
   hasRespawn: 0
   respawnTime: 120
   respawnChance: 100

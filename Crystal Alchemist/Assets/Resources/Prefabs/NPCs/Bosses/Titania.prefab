@@ -423,7 +423,6 @@ GameObject:
   - component: {fileID: -2033235849666499790}
   - component: {fileID: 1770962052738937737}
   - component: {fileID: 4308959334589917793}
-  - component: {fileID: 4885153958641905025}
   - component: {fileID: 910524742380246583}
   - component: {fileID: 2713841778097141298}
   - component: {fileID: -2793748050859840958}
@@ -497,10 +496,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  aggroStats: {fileID: 11400000, guid: 46e049ec2b630ec40aec487f31843b9f, type: 2}
+  mainTargetID: 0
+  aggro: []
+  needed: 1
   onTarget:
     m_PersistentCalls:
       m_Calls: []
-  mainTargetID: 0
+  alertPartners: []
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &3945848509854940424
@@ -588,7 +591,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.125}
+  m_Offset: {x: 0, y: 0.375}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -599,7 +602,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.75}
+  m_Size: {x: 1, y: 1.25}
   m_EdgeRadius: 0
 --- !u!114 &-2033235849666499790
 MonoBehaviour:
@@ -639,21 +642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfdb26056989d4498fe91a93c82e41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graphType: 0
---- !u!114 &4885153958641905025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3945848509854940433}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b7eba3b76cc8940aa3e8ab12be831a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graphType: 0
-  updateInterval: 0.2
+  graphIndex: 0
+  diagonalMovement: 0
 --- !u!95 &910524742380246583
 Animator:
   serializedVersion: 3
@@ -685,11 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f80b21aee0d2f47a0e58afdc49b328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aggroStats: {fileID: 11400000, guid: 46e049ec2b630ec40aec487f31843b9f, type: 2}
   npc: {fileID: 143027468618068661}
-  debug: 0
-  mainTarget: 
-  aggrodata: []
 --- !u!114 &-2793748050859840958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,15 +897,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a16bd4179f071649b716a3d0358d43a, type: 3}
---- !u!4 &46382055281560040 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
-    type: 3}
-  m_PrefabInstance: {fileID: 8565819056070435978}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &995233311224769710 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8867623264313772068, guid: 6a16bd4179f071649b716a3d0358d43a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8565819056070435978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &46382055281560040 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8537469436013784418, guid: 6a16bd4179f071649b716a3d0358d43a,
     type: 3}
   m_PrefabInstance: {fileID: 8565819056070435978}
   m_PrefabAsset: {fileID: 0}

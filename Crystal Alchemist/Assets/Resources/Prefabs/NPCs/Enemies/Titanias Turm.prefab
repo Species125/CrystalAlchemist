@@ -124,10 +124,14 @@ MonoBehaviour:
   onDefeated:
     m_PersistentCalls:
       m_Calls: []
+  aggroStats: {fileID: 11400000, guid: bb622e4c94811f244af5ad122c30d82e, type: 2}
+  mainTargetID: 0
+  aggro: []
+  needed: 1
   onTarget:
     m_PersistentCalls:
       m_Calls: []
-  mainTargetID: 0
+  alertPartners: []
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &55980665602690937
@@ -159,7 +163,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.185}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -170,7 +174,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.65}
+  m_Size: {x: 0.875, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &-2857999511042139106
 MonoBehaviour:
@@ -298,11 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f80b21aee0d2f47a0e58afdc49b328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aggroStats: {fileID: 11400000, guid: bb622e4c94811f244af5ad122c30d82e, type: 2}
   npc: {fileID: 55980665602690939}
-  debug: 0
-  mainTarget: 
-  aggrodata: []
 --- !u!58 &3866322097961817499
 CircleCollider2D:
   m_ObjectHideFlags: 0

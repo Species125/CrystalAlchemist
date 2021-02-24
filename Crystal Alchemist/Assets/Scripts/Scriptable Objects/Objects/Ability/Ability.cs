@@ -153,10 +153,6 @@ namespace CrystalAlchemist
         public bool shareDamage = false;
 
         [BoxGroup("Behaviors")]
-        [Tooltip("Positions-Offset, damit es nicht im Character anfängt")]
-        public float positionOffset = 1f;
-
-        [BoxGroup("Behaviors")]
         [Tooltip("Folgt der Skill dem Charakter")]
         public bool attachToSender = false;
 

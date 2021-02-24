@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4641515620175098231}
   - component: {fileID: 6451897881035893118}
   - component: {fileID: 297092243189575376}
+  - component: {fileID: -1092325203181777679}
   m_Layer: 13
   m_Name: Shot
   m_TagString: Skill
@@ -89,7 +90,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 189122765788227639}
   myRigidbody: {fileID: 3912877756296141094}
   animator: {fileID: 5853850326603271721}
-  skillCollider: {fileID: 6219680248385853088}
+  skillCollider: {fileID: 1803074669687505092}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -193,6 +194,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
   effect: {fileID: 906471282273262046, guid: 521b076ad01abaa48bb7d4acf66c083e, type: 3}
+--- !u!114 &-1092325203181777679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511520353593083073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85781c900207fc428972075be537857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  type: 0
+  positionHeight: 0
+  skillCollider: {fileID: 0}
+  positionOffset: 0.5
 --- !u!1 &5124404407448343764
 GameObject:
   m_ObjectHideFlags: 0

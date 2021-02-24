@@ -337,9 +337,6 @@ MonoBehaviour:
   speedDuringCasting: 0
   speedDuringDuration: 0
   affectAnimation: 1
-  forward: 0
-  selfThrust: 0
-  selfThrustTime: 0
 --- !u!114 &6866986401814778853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +365,8 @@ MonoBehaviour:
   skill: {fileID: 0}
   type: 3
   positionHeight: 0
-  colliderHeightOffset: -0.5
+  skillCollider: {fileID: 0}
+  positionOffset: 0.75
 --- !u!114 &7353042941051542758
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -508,7 +508,7 @@ namespace CrystalAlchemist
 
                     if (this.values.life > 0 && elem.resourceType == CostType.life && elem.amount < 0)
                     {
-                        GameEvents.current.DoAggroHit(this, sender, elem.amount);
+                        if (this.GetComponent<AI>() != null) this.GetComponent<AI>()._IncreaseAggroOnHit(sender, elem.amount);
 
                         //Charakter-Treffer (Schaden) animieren
                         AudioUtil.playSoundEffect(this.gameObject, this.stats.hitSoundEffect);

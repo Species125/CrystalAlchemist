@@ -73,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   spriteRenderer: {fileID: 1495712679004980976}
   myRigidbody: {fileID: 3342286359297243341}
   animator: {fileID: 5144022535530275040}
@@ -104,8 +105,9 @@ MonoBehaviour:
   - resourceType: 1
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: -1
-  statusEffects: []
+  modifiers: []
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}
@@ -169,7 +171,8 @@ MonoBehaviour:
   skill: {fileID: 0}
   type: 3
   positionHeight: 0
-  colliderHeightOffset: -0.5
+  skillCollider: {fileID: 0}
+  positionOffset: 0.75
 --- !u!114 &4045291766486451841
 MonoBehaviour:
   m_ObjectHideFlags: 0

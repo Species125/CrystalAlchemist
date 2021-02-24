@@ -115,10 +115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   spriteRenderer: {fileID: 0}
   myRigidbody: {fileID: 1942275408024995949}
   animator: {fileID: 0}
-  shadow: {fileID: 0}
+  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -145,15 +146,13 @@ MonoBehaviour:
   costs:
     resourceType: 2
     item: {fileID: 0}
+    keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 1
   intervallSender: 0
   speedDuringCasting: 0
   speedDuringDuration: 0
   affectAnimation: 1
-  forward: 0
-  selfThrust: 0
-  selfThrustTime: 0
-  stateType: 0
 --- !u!114 &1040386303507051939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +220,8 @@ MonoBehaviour:
   skill: {fileID: 0}
   type: 1
   positionHeight: -0.5
-  colliderHeightOffset: 0
+  skillCollider: {fileID: 0}
+  positionOffset: 0.75
 --- !u!1 &4125269139331881354
 GameObject:
   m_ObjectHideFlags: 0

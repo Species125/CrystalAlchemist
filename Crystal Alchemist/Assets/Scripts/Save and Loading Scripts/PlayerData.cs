@@ -58,6 +58,7 @@ namespace CrystalAlchemist
 
         private void SetInventory(PlayerInventory inventory)
         {
+            inventory.Initialize();
             this.keyItems.Clear();
             this.inventoryItems.Clear();
 

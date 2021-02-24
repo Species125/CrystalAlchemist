@@ -39,11 +39,6 @@ namespace CrystalAlchemist
         public Action<Character, bool> OnRangeTriggered;
         public Action<TeleportStats> OnSetTeleportStat;
 
-        public Action<Character, Character, float> OnAggroHit;
-        public Action<Character, Character, float> OnAggroIncrease;
-        public Action<Character, Character, float> OnAggroDecrease;
-        public Action<Character> OnAggroClear;
-
         public Func<ProgressValue, bool> OnProgressExists;
         public Func<string, bool> OnKeyItem;
         public Func<ItemGroup, int> OnItemAmount;
@@ -97,11 +92,6 @@ namespace CrystalAlchemist
         public void DoNightChange() => this.OnNightChange?.Invoke();
         public void DoRangeTrigger(Character character, bool value) => this.OnRangeTriggered?.Invoke(character, value);
         public void DoTeleportStat(TeleportStats stats) => this.OnSetTeleportStat?.Invoke(stats);
-
-        public void DoAggroHit(Character character, Character target, float value) => this.OnAggroHit?.Invoke(character, target, value);
-        public void DoAggroIncrease(Character character, Character target, float value) => this.OnAggroIncrease?.Invoke(character, target, value);
-        public void DoAggroDecrease(Character character, Character target, float value) => this.OnAggroDecrease?.Invoke(character, target, value);
-        public void DoAggroClear(Character character) => this.OnAggroClear(character);
 
         public void DoCameraShake(float strength, float duration, float speed) => this.OnCameraShake?.Invoke(strength, duration, speed);
         public void DoCameraStill(float speed) => this.OnCameraStill?.Invoke(speed);

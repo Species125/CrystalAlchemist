@@ -56,14 +56,14 @@ namespace CrystalAlchemist
         [SerializeField]
         private string slotName;
 
-        public void Clear(Action callback)
+        public void Clear(Action callback, string slotName)
         {
             Clear();
+            this.slotName = slotName;
             callback?.Invoke();
         }
 
-        [Button]
-        public void Clear()
+        private void Clear()
         {
             this.playerPreset.Clear();
             this.time.Clear();
@@ -91,8 +91,6 @@ namespace CrystalAlchemist
         public void SetCharacterName(string characterName) => this.characterName.SetValue(characterName);
 
         public string GetCharacterName() { return this.characterName.GetValue(); }
-
-        public void SetSlotName(string slotName) => this.slotName = slotName;
         
         public void SaveGame() => SaveSystem.Save(this, this.slotName);         
     }

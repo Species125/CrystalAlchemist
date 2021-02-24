@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 965314693086916177}
   - component: {fileID: 1969711209088018432}
   - component: {fileID: 7524939251811781075}
+  - component: {fileID: 1245824455113498530}
   m_Layer: 13
   m_Name: Laser
   m_TagString: Skill
@@ -165,9 +166,6 @@ MonoBehaviour:
   speedDuringCasting: 0
   speedDuringDuration: -25
   affectAnimation: 1
-  forward: 0
-  selfThrust: 0
-  selfThrustTime: 0
 --- !u!114 &862621948294645814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +239,23 @@ MonoBehaviour:
   maxDistanceBetween: 0.25
   delay: 0
   autoDestroyAfter: 0
+--- !u!114 &1245824455113498530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969711209088018434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85781c900207fc428972075be537857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  type: 0
+  positionHeight: 0
+  skillCollider: {fileID: 0}
+  positionOffset: 1
 --- !u!1 &3924551678506968723
 GameObject:
   m_ObjectHideFlags: 0

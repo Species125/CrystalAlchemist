@@ -10,7 +10,7 @@ namespace CrystalAlchemist
         public override void Initialize()
         {
             base.Initialize();
-            Instantiate(this.effect, this.transform.position, Quaternion.identity);
+            Instantiate(this.effect, this.transform.position, this.transform.rotation, this.skill.sender.transform);            
         }
     }
 }

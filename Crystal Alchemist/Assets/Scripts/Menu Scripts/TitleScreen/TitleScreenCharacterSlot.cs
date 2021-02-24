@@ -176,24 +176,22 @@ namespace CrystalAlchemist
 
         private void StartNewGame()
         {
-            PrepareSaveGame();
-            this.saveGame.teleportList.SetNextTeleport(this.startTeleport, true, true);
-
-            GameEvents.current.DoChangeScene(this.saveGame.teleportList.GetLatestTeleport().scene);
+            PrepareSaveGame(()=>
+            {
+                this.saveGame.teleportList.SetNextTeleport(this.startTeleport, true, true);
+                GameEvents.current.DoChangeScene(this.saveGame.teleportList.GetLatestTeleport().scene);
+            });            
         }
 
         private void LoadGame()
         {
-            PrepareSaveGame();
-
-            LoadSystem.loadPlayerData(this.saveGame, this.data, AfterLoad);        
+            PrepareSaveGame(()=> LoadSystem.loadPlayerData(this.saveGame, this.data, AfterLoad));                   
         }
 
-        private void PrepareSaveGame()
+        private void PrepareSaveGame(Action action)
         {
             this.timeValue.Clear();
-            this.saveGame.Clear();
-            this.saveGame.SetSlotName(this.slotName);
+            this.saveGame.Clear(action, this.slotName);
         }
 
         private void AfterLoad()

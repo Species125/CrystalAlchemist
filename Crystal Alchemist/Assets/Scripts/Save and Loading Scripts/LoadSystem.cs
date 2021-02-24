@@ -69,6 +69,7 @@ namespace CrystalAlchemist
         {
             playerValue.life = data.health;
             playerValue.mana = data.mana;
+            if (playerValue.mana < 0) playerValue.mana = 0;
 
             attributes.SetPoints(attributeType.lifeExpander, data.maxHealth);
             attributes.SetPoints(attributeType.lifeRegen, data.healthRegen);

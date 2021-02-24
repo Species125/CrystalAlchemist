@@ -54,7 +54,7 @@ namespace CrystalAlchemist
             if (target != null) activeSkill.target = target;
 
             activeSkill.name = ability.skill.name;
-            activeSkill.Initialize(ability.positionOffset, ability.lockDirection, ability.lockDuration, ability.isRapidFire, ability.timeDistortion, ability.attachToSender);
+            activeSkill.Initialize(ability.lockDirection, ability.lockDuration, ability.isRapidFire, ability.timeDistortion, ability.attachToSender);
             activeSkill.SetMaxDuration(ability.hasMaxDuration, ability.maxDuration);
             activeSkill.SetStandAlone(standAlone);
             activeSkill.SetDelay(ability.hasDelay, ability.delay);            

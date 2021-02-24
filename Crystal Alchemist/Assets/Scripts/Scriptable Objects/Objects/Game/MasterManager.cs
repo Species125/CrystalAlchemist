@@ -147,7 +147,7 @@ namespace CrystalAlchemist
 
         public static TeleportStats GetTeleportStats(string[] data)
         {
-            if (data.Length != 2) return null;
+            if (data == null || data.Length != 2) return null;
 
             foreach (TeleportStats teleport in teleportpoints)
             {

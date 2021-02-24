@@ -14,6 +14,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: Scriptable Objects/AI/King Blob AI/King Blob Combat
   actions:
+  - type: 2
+    position: {x: 0, y: 0}
+    translationID: 
+    duration: 5
+    nextPhase: {fileID: 0}
+    animations: 
+    isTrigger: 0
+    ability: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
+    value: 0
+    signal: {fileID: 0}
+    wait: 0
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
+  - type: 3
+    position: {x: 0, y: 0}
+    translationID: 
+    duration: 0
+    nextPhase: {fileID: 0}
+    animations: 
+    isTrigger: 0
+    ability: {fileID: 11400000, guid: 41dd8be871728784c80e2cbc548066d4, type: 2}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides:
+    - type: 0
+      value: 0
+      time: 1
+      amount: 0
+      keepCast: 0
+      delay: 0
+    - type: 4
+      value: 0
+      time: 0
+      amount: 4
+      keepCast: 0
+      delay: 0
+    value: 0
+    signal: {fileID: 0}
+    wait: 2
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
   - type: 3
     position: {x: 0, y: 0}
     translationID: 
@@ -21,7 +71,7 @@ MonoBehaviour:
     nextPhase: {fileID: 0}
     animations: 
     isTrigger: 0
-    ability: {fileID: 11400000, guid: f631ee9d8dcb5b54d8213a31408ae740, type: 2}
+    ability: {fileID: 11400000, guid: 061f34eb842e941498e3e36a2bd8b8e6, type: 2}
     targetMode: 0
     multiDelay: 0
     multiCast: 0
@@ -35,12 +85,12 @@ MonoBehaviour:
     - type: 4
       value: 0
       time: 0
-      amount: 5
-      keepCast: 0
+      amount: 40
+      keepCast: 1
       delay: 0
     value: 0
     signal: {fileID: 0}
-    wait: 2.5
+    wait: 2
     mode: 0
     fadeIn: 0
     fadeOut: 0
@@ -59,16 +109,10 @@ MonoBehaviour:
     overrides:
     - type: 0
       value: 0
-      time: 3
+      time: 2
       amount: 0
       keepCast: 0
       delay: 0
-    - type: 4
-      value: 0
-      time: 0
-      amount: 2
-      keepCast: 0
-      delay: 1
     value: 0
     signal: {fileID: 0}
     wait: 0

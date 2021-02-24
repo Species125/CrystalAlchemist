@@ -41,7 +41,7 @@ namespace CrystalAlchemist
             this.npc.values.characterType = CharacterType.Friend;
         }
 
-        public void ClearAggro() => GameEvents.current.DoAggroClear(this.npc);
+        public void ClearAggro() => this.npc.ClearAggro();
 
         public override bool PlayerIsLooking()
         {

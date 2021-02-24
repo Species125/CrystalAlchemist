@@ -10,17 +10,20 @@ namespace CrystalAlchemist
         - Boss Mechanic Rework (RPCs)
         - Player Color-Parts by Emissions
         - Trigger Active on Skills
-        - Dummy View 0
         - Empty Map
 
-        Rework:
-        - Skill: Wind blade
-        - Skill: Fireball
-        - Skill: Ice Shard
-        - Skill: Frost Needle
-        - Skill: Stonewall
+        - Enemy Alarm
+        - Enemy Skill: Stampfer
+        - Flammen Objekt (Statuseffekt, Flammenwerfer, etc)
+        
+        Share Damage script
+        Attach to sender
+        lock direction
+        time distortion
 
         New Content:
+        - New Skill: Frostnova
+        - New Skill: Ehjafjalla
         - New Skill: Tornado
         - New Skill: Geode
         - New Skill: Protect

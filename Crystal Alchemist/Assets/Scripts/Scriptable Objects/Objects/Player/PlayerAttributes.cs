@@ -1,4 +1,5 @@
 ﻿using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -128,9 +129,9 @@ namespace CrystalAlchemist
 
                 playerValues.debuffMinus = -this.percentageValues[this.debuffMinus];
             }
-            catch
+            catch (Exception ex)
             {
-
+                Debug.Log(ex.ToString());
             }
 
             GameEvents.current.DoManaLifeUpdateLocal();

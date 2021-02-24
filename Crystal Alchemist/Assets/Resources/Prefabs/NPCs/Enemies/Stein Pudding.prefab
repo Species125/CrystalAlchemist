@@ -255,11 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f80b21aee0d2f47a0e58afdc49b328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aggroStats: {fileID: 11400000, guid: 74151ff649b937b418adb75846e519d1, type: 2}
   npc: {fileID: 4482648712296496520}
-  debug: 0
-  mainTarget: 
-  aggrodata: []
 --- !u!58 &699278166353142346
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -293,7 +289,6 @@ GameObject:
   - component: {fileID: 971109533881019453}
   - component: {fileID: 1198186388}
   - component: {fileID: 8261187841884981235}
-  - component: {fileID: 4372448001566058603}
   - component: {fileID: 1303251095467679536}
   - component: {fileID: 8046961103477308248}
   m_Layer: 11
@@ -372,10 +367,14 @@ MonoBehaviour:
   onDefeated:
     m_PersistentCalls:
       m_Calls: []
+  aggroStats: {fileID: 11400000, guid: 74151ff649b937b418adb75846e519d1, type: 2}
+  mainTargetID: 0
+  aggro: []
+  needed: 1
   onTarget:
     m_PersistentCalls:
       m_Calls: []
-  mainTargetID: 0
+  alertPartners: []
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &4482648712296496522
@@ -493,21 +492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfdb26056989d4498fe91a93c82e41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graphType: 0
---- !u!114 &4372448001566058603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2246077131478480992}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b7eba3b76cc8940aa3e8ab12be831a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graphType: 0
-  updateInterval: 0.2
+  graphIndex: 0
+  diagonalMovement: 0
 --- !u!114 &1303251095467679536
 MonoBehaviour:
   m_ObjectHideFlags: 0

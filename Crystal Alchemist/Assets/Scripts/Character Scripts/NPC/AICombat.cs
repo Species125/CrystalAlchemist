@@ -80,9 +80,7 @@ namespace CrystalAlchemist
 
         public override List<Character> GetTargetsFromTargeting()
         {
-            List<Character> result = new List<Character>();
-            foreach (KeyValuePair<int, float[]> aggro in this.npc.aggroList) result.Add(NetworkUtil.GetCharacter(aggro.Key));
-            return result;
+            return this.npc.GetTargets();
         }
 
         public override void ShowTargetingSystem(Ability ability)
