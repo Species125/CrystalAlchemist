@@ -7,6 +7,6 @@ namespace CrystalAlchemist
         public override void Initialize()
         {
             CollisionUtil.AddColliderCopy(this.skill.sender, this.gameObject);         
-        }
+        }       
     }
 }

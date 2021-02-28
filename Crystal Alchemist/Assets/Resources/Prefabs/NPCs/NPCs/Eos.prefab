@@ -360,10 +360,13 @@ MonoBehaviour:
   onDefeated:
     m_PersistentCalls:
       m_Calls: []
+  aggroStats: {fileID: 0}
+  mainTargetID: 0
+  aggro: []
   onTarget:
     m_PersistentCalls:
       m_Calls: []
-  mainTargetID: 0
+  alertPartners: []
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &4322055140194454571
@@ -396,7 +399,7 @@ MonoBehaviour:
   maxPatrolTime: 5
   followPathPrecision: 0.01
   followPathInCircle: 0
-  usePathfinding: 1
+  usePathfinding: 0
   accuracy: 0.25
   updateDelay: 0.5
   targetPosition: {x: 0, y: 0, z: 0}
@@ -431,7 +434,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 0}
   startPhase: {fileID: 0}
-  startImmediately: 1
   activePhase: {fileID: 0}
 --- !u!114 &9221035579785777317
 MonoBehaviour:

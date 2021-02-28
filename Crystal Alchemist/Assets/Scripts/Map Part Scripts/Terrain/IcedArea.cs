@@ -29,7 +29,7 @@ namespace CrystalAlchemist
 
             character.values.isOnIce = true;
             character.myRigidbody.velocity = Vector2.zero;
-            character.updateSpeed(this.startSpeed, false);
+            character.UpdateSpeedPercent(this.startSpeed, false);
 
             if (!this.characters.Contains(character)) this.characters.Add(character);
         }
@@ -41,7 +41,7 @@ namespace CrystalAlchemist
 
             character.values.isOnIce = false;
             character.myRigidbody.velocity = Vector2.zero;
-            character.updateSpeed(0, false);
+            character.UpdateSpeedPercent(0, false);
 
             if (this.characters.Contains(character)) this.characters.Remove(character);
         }

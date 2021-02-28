@@ -1,5 +1,4 @@
-﻿
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -7,28 +6,29 @@ namespace CrystalAlchemist
     public class SkillAnimationModule : SkillModule
     {
         [SerializeField]
-        private string animationTriggerName = "";
-
-        [SerializeField]
-        private bool useColor = false;
-
-        [ShowIf("useColor")]
-        [SerializeField]
+        [InfoBox("Dont forget to revert your events in your animations")]
         [ColorUsage(true, true)]
         private Color targetColor;
 
+        private bool changedColor = false;
 
-        private CastingAnimation activeCastingAnimation;
+        public void TriggerAnimation(string trigger) => this.skill.sender.TriggerAnimation(trigger);        
 
-        public override void Initialize()
+        public void SetAnimationToTrue(string name) => this.skill.sender.SetAnimationToBool(name, true);        
+
+        public void SetAnimationToFalse(string name) => this.skill.sender.SetAnimationToBool(name, false);
+
+        public void SetSpeedPercent(int percent) => this.skill.sender.UpdateSpeedPercent(percent);
+
+        public void ChangeTint()
         {
-            this.skill.sender.startAttackAnimation(this.animationTriggerName);
-            if (this.useColor) this.skill.sender.ChangeColor(this.targetColor);
+            this.skill.sender.ChangeColor(this.targetColor);
+            this.changedColor = true;
         }
 
         private void OnDestroy()
         {
-            if (this.useColor) this.skill.sender.RemoveColor(this.targetColor);
+            if (this.changedColor) this.skill.sender.RemoveColor(this.targetColor);
         }
     }
 }

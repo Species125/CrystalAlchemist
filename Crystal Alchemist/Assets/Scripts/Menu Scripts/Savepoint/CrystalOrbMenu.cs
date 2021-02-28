@@ -30,7 +30,7 @@ namespace CrystalAlchemist
         public void SetStar()
         {
             if (teleportList.HasReturn()
-                && teleportList.GetReturnTeleport().Exists(savePointInfo.stats.scene, savePointInfo.stats.name)) star.gameObject.SetActive(true);
+                && teleportList.GetReturnTeleport().Exists(savePointInfo.stats.scene, savePointInfo.stats.teleportID)) star.gameObject.SetActive(true);
             else star.gameObject.SetActive(false);
         }
 

@@ -11,9 +11,8 @@ namespace CrystalAlchemist
         - Player Color-Parts by Emissions
         - Trigger Active on Skills
         - Empty Map
+        - Phase Sync on Player Enter
 
-        - Enemy Alarm
-        - Enemy Skill: Stampfer
         - Flammen Objekt (Statuseffekt, Flammenwerfer, etc)
         
         Share Damage script

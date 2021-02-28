@@ -67,7 +67,7 @@ namespace CrystalAlchemist
 
         public void OpenCharacterEditor() => OpenScene("Character Creation");
 
-        public void OpenSavePoint() => OpenScene("Savepoint");
+        public void OpenSavePoint() => OpenScene("Quicktravel");
 
         public void OpenDeath() => OpenSceneOnce("Death Screen");
 
@@ -85,7 +85,7 @@ namespace CrystalAlchemist
 
         private void OpenSceneOnce(string scene)
         {
-            if (!UnityUtil.SceneExists(scene)) SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
         }
 
         private void OpenScene(string scene)

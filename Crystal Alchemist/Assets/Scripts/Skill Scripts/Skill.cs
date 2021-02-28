@@ -31,10 +31,8 @@ namespace CrystalAlchemist
         public Rigidbody2D myRigidbody;
 
         [BoxGroup("Easy Access")]
+        [InfoBox("Use Trigger 'Explode' when skill duration is over")]
         public Animator animator;
-
-        [BoxGroup("Easy Access")]
-        public Collider2D skillCollider;
 
         [BoxGroup("Actions")]
         [SerializeField]
@@ -129,7 +127,8 @@ namespace CrystalAlchemist
             SkillExtension[] extensions = this.GetComponents<SkillExtension>();
             for (int i = 0; i < extensions.Length; i++) extensions[i].Initialize();
 
-            if (this.lockDirection) GameEvents.current.DoDirectionLock(this.lockDuration);
+            if (this.lockDirection && this.sender.GetComponent<PlayerMovement>()!= null)
+                this.sender.GetComponent<PlayerMovement>().SetDirectionLock(this.lockDuration);
             this.OnStart?.Invoke();
         }
 
@@ -164,11 +163,6 @@ namespace CrystalAlchemist
             return this.direction.normalized;
         }
 
-        public Vector2 GetPosition()
-        {
-            if (this.skillCollider != null) return skillCollider.transform.position;
-            return this.transform.position;
-        }
 
         public void SetDirection(Vector2 direction)
         {
@@ -222,7 +216,8 @@ namespace CrystalAlchemist
             SkillExtension[] extensions = this.GetComponents<SkillExtension>();
             for (int i = 0; i < extensions.Length; i++) extensions[i].Updating();
 
-            if (this.lockDirection && !this.isRapidFire) GameEvents.current.DoDirectionLock(this.lockDuration);            
+            if (this.lockDirection && !this.isRapidFire && this.sender.GetComponent<PlayerMovement>() != null)
+                this.sender.GetComponent<PlayerMovement>().SetDirectionLock(this.lockDuration);
         }
 
         public float GetDurationLeft()
@@ -265,7 +260,7 @@ namespace CrystalAlchemist
 
         #endregion
 
-        public bool isAttachedToSender()
+        public bool IsAttachedToSender()
         {
             return this.attached;
         }
@@ -306,7 +301,7 @@ namespace CrystalAlchemist
                 SetTriggerActive(1);
                 DestroyIt();
             }
-            else AnimatorUtil.SetAnimatorParameter(this.animator, "Explode", true);
+            else AnimatorUtil.SetAnimatorParameter(this.animator, "Explode");
         }
 
         public void PlaySoundEffect(AudioClip audioClip) => AudioUtil.playSoundEffect(this.gameObject, audioClip);

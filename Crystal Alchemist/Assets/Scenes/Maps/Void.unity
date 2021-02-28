@@ -497,7 +497,7 @@ MonoBehaviour:
   deactivate: 0
   objectsInArea: {fileID: 0}
   stringValue: {fileID: 11400000, guid: b6bb37e9b35dfc941a13ffb844247e19, type: 2}
-  localisationID: Void
+  localisationID: Void_Void
 --- !u!114 &299324003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299323999}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ddc843b70b30a468eaa9b80f2d88d0, type: 3}
   m_Name: 
@@ -2420,6 +2420,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -8543379145089725134, guid: bc51b7a0aa215354aa1d47ec375bfa21,
         type: 3}
+    - target: {fileID: 1770248722973075226, guid: 3fdf5e3032830d74ba994cf0ef0775f0,
+        type: 3}
+      propertyPath: canJoin
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2158095821032776455, guid: 3fdf5e3032830d74ba994cf0ef0775f0,
         type: 3}
       propertyPath: m_Sprite

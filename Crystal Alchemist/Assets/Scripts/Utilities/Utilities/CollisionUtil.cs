@@ -4,12 +4,13 @@ namespace CrystalAlchemist
 {
     public static class CollisionUtil
     {
-        public static void AddColliderCopy(Character target, GameObject gameObject)
+        public static Collider2D AddColliderCopy(Character target, GameObject gameObject)
         {
             Collider2D temp = target.characterCollider;
-            if (temp == null) return;
+            if (temp == null) return null;
             Collider2D te = UnityUtil.CopyComponent(temp, gameObject);
             te.isTrigger = true;
+            return te;
         }
 
         public static bool checkDistanceTo(Vector2 from, Vector2 to, float startDistance, float distanceNeeded)

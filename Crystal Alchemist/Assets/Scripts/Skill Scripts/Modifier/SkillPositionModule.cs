@@ -39,15 +39,15 @@ namespace CrystalAlchemist
                 case PositionType.ground: this.transform.position = this.skill.sender.GetGroundPosition(); break;
                 case PositionType.center: this.transform.position = this.skill.sender.GetShootingPosition(); break;
                 case PositionType.custom: this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + positionHeight); break;
-            }
+            }            
         }
 
         public void LateInitialize()
         {
-            Vector3 direction = (Vector3)this.skill.GetDirection();
-            this.transform.position += (direction * positionOffset);
             if (this.skillCollider != null) this.skillCollider.transform.position = this.skill.sender.GetGroundPosition();
 
-        }
+            Vector3 direction = (Vector3)this.skill.GetDirection();
+            this.transform.position += (direction * positionOffset);            
+        }        
     }
 }

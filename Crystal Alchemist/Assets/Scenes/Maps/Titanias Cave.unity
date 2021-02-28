@@ -6314,7 +6314,7 @@ MonoBehaviour:
   deactivate: 0
   objectsInArea: {fileID: 0}
   stringValue: {fileID: 11400000, guid: b6bb37e9b35dfc941a13ffb844247e19, type: 2}
-  localisationID: Titania
+  localisationID: "Titanias Cave_Titanias H\xF6hle"
 --- !u!1001 &307947191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25161,6 +25161,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1531230990}
+        m_TargetAssemblyTypeName: CrystalAlchemist.NetworkLevel, Assembly-CSharp
+        m_MethodName: CanJoinGroup
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1001 &970640708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25288,6 +25300,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: God Mode
+      objectReference: {fileID: 0}
+    - target: {fileID: 1005327347346205939, guid: be598d298d244f64b847c95e0608323b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1005327347346205948, guid: be598d298d244f64b847c95e0608323b,
         type: 3}
@@ -26250,6 +26267,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: CutsceneCharacterMovement, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1531230990}
+        m_TargetAssemblyTypeName: CrystalAlchemist.NetworkLevel, Assembly-CSharp
+        m_MethodName: CanJoinGroup
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -27843,6 +27872,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1770248722973075226, guid: 3fdf5e3032830d74ba994cf0ef0775f0,
+        type: 3}
+      propertyPath: canJoin
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2384505304817865874, guid: 3fdf5e3032830d74ba994cf0ef0775f0,
         type: 3}
       propertyPath: m_IsActive
@@ -27970,6 +28004,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fdf5e3032830d74ba994cf0ef0775f0, type: 3}
+--- !u!114 &1531230990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1770248722973075226, guid: 3fdf5e3032830d74ba994cf0ef0775f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1531230989}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88f0252a3a526c4d8212c85ad40ace0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1547179112
 GameObject:
   m_ObjectHideFlags: 0
@@ -39156,6 +39202,11 @@ PrefabInstance:
       propertyPath: onProgressNew.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1380512472}
+    - target: {fileID: 4325830830131375520, guid: 5015d3e4c9e9da349908e3a87c8b31a7,
+        type: 3}
+      propertyPath: m_Name
+      value: "Titanias Cave_Titanias H\xF6hle"
+      objectReference: {fileID: 0}
     - target: {fileID: 6425678085794187514, guid: 5015d3e4c9e9da349908e3a87c8b31a7,
         type: 3}
       propertyPath: m_Name

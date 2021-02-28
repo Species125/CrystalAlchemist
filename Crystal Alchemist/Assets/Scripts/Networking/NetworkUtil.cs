@@ -1,6 +1,7 @@
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CrystalAlchemist
 {
@@ -9,7 +10,8 @@ namespace CrystalAlchemist
         //Photon-Views on Mechanics and Characters
         //Network-Behaviour on all instantiations (path)
 
-        public const byte PLAYER_JOINED = 2;        
+        public const byte PLAYER_JOINED = 2;
+        public const byte SCENE_CHANGE = 5;        
 
         public const byte AGGRO_ON_HIT = 10;
         public const byte AGGRO_INCREASE = 11;
@@ -159,6 +161,17 @@ namespace CrystalAlchemist
                 PhotonNetwork.CurrentRoom.IsOpen = value;
             }
         }
+
+        public static void LoadLevel(string scene)
+        {
+            if (IsMaster())
+            {
+                //PhotonNetwork.LoadLevel(scene);
+                NetworkEvents.current.RaiseSceneChangeEvent(scene);
+            }
+        }
+
+        public static void LoadConnect() => SceneManager.LoadScene("Loading");        
 
         public static void CreateRoom(string roomName, byte maxPlayers = 1, bool isOpen = false, bool privat = false, string password = "")
         {

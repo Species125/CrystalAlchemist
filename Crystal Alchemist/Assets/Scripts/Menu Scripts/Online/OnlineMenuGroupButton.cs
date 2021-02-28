@@ -10,6 +10,9 @@ namespace CrystalAlchemist
     public class OnlineMenuGroupButton : MonoBehaviourPunCallbacks
     {
         [SerializeField]
+        private Selectable selectable;
+
+        [SerializeField]
         private TextMeshProUGUI masterField;
 
         [SerializeField]
@@ -18,10 +21,14 @@ namespace CrystalAlchemist
         [SerializeField]
         private Image lockImage;
 
+        [SerializeField]
+        private Image combatImage;
+
         private int maxPlayers;
         private int playerCount;
         private string roomName;
         private bool isPrivate;
+        private bool canJoin;
         public RoomInfo info;
 
         public void SetButton(RoomInfo info)
@@ -36,7 +43,15 @@ namespace CrystalAlchemist
             this.playerField.text = this.playerCount + "/" + maxPlayers;
             
             this.isPrivate = Convert.ToBoolean(this.info.CustomProperties["Private"]);
+            this.canJoin = info.IsOpen;
+
+            this.combatImage.gameObject.SetActive(!this.canJoin);
             this.lockImage.gameObject.SetActive(this.isPrivate);
+        }
+
+        public void SetInteractable(bool freeSlots)
+        {
+            this.selectable.interactable = freeSlots && this.canJoin;
         }
     }
 }

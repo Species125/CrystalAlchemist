@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 8675766369740622298}
   - component: {fileID: 7817998858656526167}
   - component: {fileID: 5219678606332422380}
-  - component: {fileID: 3693980903657387680}
   - component: {fileID: 3741579703708068224}
   m_Layer: 13
   m_Name: Schild
@@ -52,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   spriteRenderer: {fileID: 564329192152756961}
   myRigidbody: {fileID: 8557586700020975895}
   animator: {fileID: 6086066880683234547}
@@ -174,15 +174,12 @@ MonoBehaviour:
     resourceType: 0
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 1
   intervallSender: 0
   speedDuringCasting: 0
   speedDuringDuration: -50
   affectAnimation: 0
-  forward: 0
-  selfThrust: 0
-  selfThrustTime: 0
-  stateType: 2
 --- !u!114 &7817998858656526167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,19 +208,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
   ignoredCollider2D: {fileID: 6821413945222853649}
---- !u!114 &3693980903657387680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6086066880683234544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b713dd2c97c4fa245bfccb8d16fcd85c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skill: {fileID: 0}
 --- !u!114 &3741579703708068224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +223,8 @@ MonoBehaviour:
   skill: {fileID: 0}
   type: 2
   positionHeight: 0.35
-  colliderHeightOffset: 0
+  skillCollider: {fileID: 0}
+  positionOffset: 0
 --- !u!1 &8110846557276872138
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5246980305061559774}
   - component: {fileID: 6821413945222853649}
-  - component: {fileID: 3082277638975285726}
+  - component: {fileID: 6376298901112801937}
   m_Layer: 13
   m_Name: collision
   m_TagString: Skill
@@ -266,7 +251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8110846557276872138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3013391392474220838}
@@ -285,7 +270,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.375}
+  m_Offset: {x: 0, y: -0.875}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -296,9 +281,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.25}
+  m_Size: {x: 1.5, y: 0.75}
   m_EdgeRadius: 0
---- !u!114 &3082277638975285726
+--- !u!114 &6376298901112801937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,7 +292,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8110846557276872138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 447332f77bd7a8848bedd2b53d4e93a9, type: 3}
+  m_Script: {fileID: 11500000, guid: b713dd2c97c4fa245bfccb8d16fcd85c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 975855144787553018}

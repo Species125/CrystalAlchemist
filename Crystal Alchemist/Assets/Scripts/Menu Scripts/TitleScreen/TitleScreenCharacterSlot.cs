@@ -179,7 +179,7 @@ namespace CrystalAlchemist
             PrepareSaveGame(()=>
             {
                 this.saveGame.teleportList.SetNextTeleport(this.startTeleport, true, true);
-                GameEvents.current.DoChangeScene(this.saveGame.teleportList.GetLatestTeleport().scene);
+                AfterLoad();
             });            
         }
 

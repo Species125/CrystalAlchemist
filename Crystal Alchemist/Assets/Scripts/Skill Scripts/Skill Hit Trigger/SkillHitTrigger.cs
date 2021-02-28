@@ -1,16 +1,15 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CrystalAlchemist
 {
     public class SkillHitTrigger : MonoBehaviour
     {
-        [InfoBox("Set this manually if Skill is not in the same gameobject", InfoMessageType.Warning)]
+        [HideInInspector]
         public Skill skill;
 
-        private void Awake()
+        public virtual void Awake()
         {
-            if (this.skill == null) this.skill = this.GetComponent<Skill>();
+            if (this.skill == null) this.skill = this.GetComponentInParent<Skill>();
         }
 
         private void Start() => Initialize();

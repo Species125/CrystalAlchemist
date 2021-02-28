@@ -15,12 +15,6 @@ namespace CrystalAlchemist
         [InfoBox("Muss der Photonview hinzugefügt werden")]
         private AIPhase startPhase;
 
-        [BoxGroup("AI")]
-        [SerializeField]
-        [ShowIf("startPhase")]
-        [Tooltip("False, wenn Animator Event verwendet wird")]
-        private bool startImmediately = true;
-
         [BoxGroup("Debug")]
         [ReadOnly]
         [SerializeField]
@@ -44,7 +38,7 @@ namespace CrystalAlchemist
 
         private void OnEnable()
         {
-            if (!this.isInit && this.startPhase != null && this.startImmediately) StartPhase();
+            if (!this.isInit && this.startPhase != null) StartPhase();
         }
 
         public override void Updating()
@@ -106,13 +100,16 @@ namespace CrystalAlchemist
             if (path.Replace(" ","").Length <= 1) return;
             AIPhase phase = Resources.Load<AIPhase>(path);
 
-            if (phase != null)
-            {
-                //this.isActive = true;
-                DestroyActivePhase();
-                this.activePhase = Instantiate(phase);
-                this.activePhase.Initialize(this.npc);
-            }
+            SetPhase(phase);
+        }
+
+        private void SetPhase(AIPhase phase)
+        {
+            if (phase == null) return;
+
+            DestroyActivePhase();
+            this.activePhase = Instantiate(phase);
+            this.activePhase.Initialize(this.npc);
         }
 
         public void EndPhase()

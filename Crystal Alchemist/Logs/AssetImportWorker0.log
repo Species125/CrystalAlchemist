@@ -15,11 +15,11 @@ E:/Github/Crystal Alchemist
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50959
+49966
 Successfully changed project path to: E:/Github/Crystal Alchemist
 E:/Github/Crystal Alchemist
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 134.34 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 143.68 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.2f1 (068178b99f32)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/UnitySubsystems
@@ -36,1025 +36,205 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56020
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56328
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002680 seconds.
+Registered in 0.002370 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 165.23 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 117.29 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.786 seconds
+- Completed reload, in  3.231 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.020569 seconds.
+Registered in 0.015305 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 177.20 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 121.41 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  6.414 seconds
+- Completed reload, in  4.587 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Refreshing native plugins compatible for Editor in 8.58 ms, found 1 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 1.41 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4621 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4620 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 197.2 MB.
 System memory in use after: 197.4 MB.
 
-Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 5118.
-Total: 52.358764 ms (FindLiveObjects: 2.238459 ms CreateObjectMapping: 2.073449 ms MarkObjects: 47.917832 ms  DeleteObjects: 0.119954 ms)
+Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 5117.
+Total: 26.908322 ms (FindLiveObjects: 0.435053 ms CreateObjectMapping: 0.259510 ms MarkObjects: 26.133887 ms  DeleteObjects: 0.076068 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Resources/Scriptable Objects/AI/King Blob AI/King Blob Combat.asset
-  artifactKey: Guid(b62894fec5e3a46448d1a0cb2e09d40e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/AI/King Blob AI/King Blob Combat.asset using Guid(b62894fec5e3a46448d1a0cb2e09d40e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e675cd52a4e4f6e203157e78181af6d') in 0.189093 seconds
-  Import took 0.408184 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.745793 seconds.
-  path: Assets/Resources/Scriptable Objects/AI/King Blob AI/King Blob Combat.asset
-  artifactKey: Guid(b62894fec5e3a46448d1a0cb2e09d40e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Scriptable Objects/AI/King Blob AI/King Blob Combat.asset using Guid(b62894fec5e3a46448d1a0cb2e09d40e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e675cd52a4e4f6e203157e78181af6d') in 0.029817 seconds
-  Import took 0.040729 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 25.440314 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Schild.prefab
-  artifactKey: Guid(42f53cb1b0e3a1e4c98ecc587d8dd07e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Schild.prefab using Guid(42f53cb1b0e3a1e4c98ecc587d8dd07e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6823eb94ba205f1ff13351c7ddb4b7b') in 0.275955 seconds
-  Import took 0.298344 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.070686 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Schild.prefab
-  artifactKey: Guid(42f53cb1b0e3a1e4c98ecc587d8dd07e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Schild.prefab using Guid(42f53cb1b0e3a1e4c98ecc587d8dd07e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6823eb94ba205f1ff13351c7ddb4b7b') in 0.020903 seconds
-  Import took 0.031657 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 20.033047 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Windklinge.prefab
-  artifactKey: Guid(1ec46b73256de2144b876b73c3a20147) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Windklinge.prefab using Guid(1ec46b73256de2144b876b73c3a20147) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6a1fcd5e886d010a8f332c380421fd3') in 0.036639 seconds
-  Import took 0.047582 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.090326 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Windklinge.prefab
-  artifactKey: Guid(1ec46b73256de2144b876b73c3a20147) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Windklinge.prefab using Guid(1ec46b73256de2144b876b73c3a20147) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6a1fcd5e886d010a8f332c380421fd3') in 0.022517 seconds
-  Import took 0.034236 seconds .
+  path: Assets/Resources/Prefabs/Game/Required.prefab
+  artifactKey: Guid(3fdf5e3032830d74ba994cf0ef0775f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Game/Required.prefab using Guid(3fdf5e3032830d74ba994cf0ef0775f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d2e046b0d3a0ae631142e74315918e1') in 0.537118 seconds
+  Import took 0.785682 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.014942 seconds.
+Registered in 0.015884 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 2.64 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 1.85 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  6.071 seconds
+- Completed reload, in  3.628 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 3.41 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 1.43 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 203.9 MB.
-System memory in use after: 204.4 MB.
+Unloading 4473 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 197.2 MB.
+System memory in use after: 197.6 MB.
 
-Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 7843.
-Total: 47.910225 ms (FindLiveObjects: 1.266246 ms CreateObjectMapping: 1.355773 ms MarkObjects: 45.170592 ms  DeleteObjects: 0.114980 ms)
+Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 6370.
+Total: 27.738931 ms (FindLiveObjects: 0.511121 ms CreateObjectMapping: 0.276187 ms MarkObjects: 26.885794 ms  DeleteObjects: 0.062318 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.016063 seconds.
+Registered in 0.015178 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.95 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 1.45 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  5.029 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 4.16 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 204.0 MB.
-System memory in use after: 204.5 MB.
-
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 7847.
-Total: 50.111235 ms (FindLiveObjects: 1.064080 ms CreateObjectMapping: 3.228226 ms MarkObjects: 45.718577 ms  DeleteObjects: 0.093330 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.016009 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 2.96 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  5.109 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 2.86 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 204.1 MB.
-System memory in use after: 204.6 MB.
-
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 7851.
-Total: 45.992716 ms (FindLiveObjects: 0.777068 ms CreateObjectMapping: 1.285264 ms MarkObjects: 43.842028 ms  DeleteObjects: 0.083383 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 714.212292 seconds.
-  path: Assets/Scenes/Maps/Dorf.unity
-  artifactKey: Guid(fe21039cf5db2094cbbb1431ff925b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Maps/Dorf.unity using Guid(fe21039cf5db2094cbbb1431ff925b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2d05c6009772f955c225aece1dd1635') in 0.032926 seconds
-  Import took 0.059995 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.017154 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.54 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.621 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 4.75 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 204.1 MB.
-System memory in use after: 204.6 MB.
-
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 7855.
-Total: 58.623583 ms (FindLiveObjects: 1.807210 ms CreateObjectMapping: 1.748403 ms MarkObjects: 54.933680 ms  DeleteObjects: 0.128439 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.014763 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.49 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.560 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.47 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 203.9 MB.
-System memory in use after: 204.4 MB.
-
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 7859.
-Total: 27.006626 ms (FindLiveObjects: 0.572854 ms CreateObjectMapping: 0.323583 ms MarkObjects: 26.051090 ms  DeleteObjects: 0.057051 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.016162 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 3.67 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  5.169 seconds
+- Completed reload, in  3.759 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Refreshing native plugins compatible for Editor in 1.57 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 204.2 MB.
-System memory in use after: 204.6 MB.
+Unloading 4473 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 196.7 MB.
+System memory in use after: 197.2 MB.
 
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 7863.
-Total: 31.347207 ms (FindLiveObjects: 0.630198 ms CreateObjectMapping: 0.342308 ms MarkObjects: 30.305362 ms  DeleteObjects: 0.066706 ms)
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 6374.
+Total: 29.308866 ms (FindLiveObjects: 0.529553 ms CreateObjectMapping: 0.276187 ms MarkObjects: 28.444904 ms  DeleteObjects: 0.056174 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 378.053651 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Schild.prefab
-  artifactKey: Guid(42f53cb1b0e3a1e4c98ecc587d8dd07e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Schild.prefab using Guid(42f53cb1b0e3a1e4c98ecc587d8dd07e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9fd10aa7c30f1b8bd121e5e61f54c522') in 0.215343 seconds
-  Import took 0.226215 seconds .
+  Time since last request: 419.370942 seconds.
+  path: Assets/Resources/Prefabs/Game/Player/Player Alchemist Online.prefab
+  artifactKey: Guid(beecbe18451d18a4aa203ee85290faff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Game/Player/Player Alchemist Online.prefab using Guid(beecbe18451d18a4aa203ee85290faff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd798718406c21912f0f2e2cf5a1f9ff0') in 0.505540 seconds
+  Import took 0.532314 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.041338 seconds.
+  path: Assets/Resources/Prefabs/Game/Player/Player Alchemist Online.prefab
+  artifactKey: Guid(beecbe18451d18a4aa203ee85290faff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Game/Player/Player Alchemist Online.prefab using Guid(beecbe18451d18a4aa203ee85290faff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd798718406c21912f0f2e2cf5a1f9ff0') in 0.064813 seconds
+  Import took 0.100136 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.015160 seconds.
+Registered in 0.016794 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 2.07 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 2.01 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  4.259 seconds
+- Completed reload, in  4.564 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.59 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 1.54 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 204.3 MB.
-System memory in use after: 204.8 MB.
+Unloading 4473 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 203.7 MB.
+System memory in use after: 204.2 MB.
 
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 7903.
-Total: 28.828172 ms (FindLiveObjects: 0.648044 ms CreateObjectMapping: 0.448218 ms MarkObjects: 27.670177 ms  DeleteObjects: 0.057929 ms)
+Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 6423.
+Total: 27.537935 ms (FindLiveObjects: 0.537160 ms CreateObjectMapping: 0.272969 ms MarkObjects: 26.673681 ms  DeleteObjects: 0.051785 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.014804 seconds.
+Registered in 0.015493 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.72 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.013 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.69 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 204.3 MB.
-System memory in use after: 204.8 MB.
-
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 7907.
-Total: 31.781674 ms (FindLiveObjects: 1.043600 ms CreateObjectMapping: 1.284971 ms MarkObjects: 29.379668 ms  DeleteObjects: 0.069632 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.812790 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 3.44 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.108 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.51 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 204.3 MB.
-System memory in use after: 204.8 MB.
-
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 7911.
-Total: 27.846890 ms (FindLiveObjects: 0.618787 ms CreateObjectMapping: 0.344063 ms MarkObjects: 26.804167 ms  DeleteObjects: 0.076361 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 712.824100 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Teleport.prefab
-  artifactKey: Guid(28d171700ce5ac84fb3390e7c6068744) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Teleport.prefab using Guid(28d171700ce5ac84fb3390e7c6068744) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4dea60d42f3a1aff7d5b70e712324816') in 0.402780 seconds
-  Import took 0.428981 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000336 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Hitzeblitz.prefab
-  artifactKey: Guid(d9d5c19e4e61ad142865732f1f61048b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Hitzeblitz.prefab using Guid(d9d5c19e4e61ad142865732f1f61048b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2bfc46f8d23d1090b60bd40291824c2b') in 0.208200 seconds
-  Import took 0.229922 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000309 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Beschwörung Eos.prefab
-  artifactKey: Guid(062ebf34934818544859af78b674eb19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Beschwörung Eos.prefab using Guid(062ebf34934818544859af78b674eb19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6dc3663285918f54a713d97e28db5547') in 0.177858 seconds
-  Import took 0.199566 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000328 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Schwert.prefab
-  artifactKey: Guid(08ac142b84c3a2547ab5aed3862039d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Schwert.prefab using Guid(08ac142b84c3a2547ab5aed3862039d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8136052ac3f6bd32b9531c2ff391f767') in 0.023947 seconds
-  Import took 0.039733 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000327 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Temporäre Stasis.prefab
-  artifactKey: Guid(3d7ade5656d74284380cd8f7d60fd1f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Temporäre Stasis.prefab using Guid(3d7ade5656d74284380cd8f7d60fd1f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a44c76f36ec6390ce091461e9117452a') in 0.309787 seconds
-  Import took 0.340985 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000362 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Windklinge.prefab
-  artifactKey: Guid(1ec46b73256de2144b876b73c3a20147) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Windklinge.prefab using Guid(1ec46b73256de2144b876b73c3a20147) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dee047c62906963d08309c4829c170aa') in 0.058266 seconds
-  Import took 0.101867 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000368 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Wiederbelebung.prefab
-  artifactKey: Guid(5134220468224ee4bba40bf0206e4766) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Wiederbelebung.prefab using Guid(5134220468224ee4bba40bf0206e4766) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30a903c1eb05773167e5e385ba1aca32') in 0.072077 seconds
-  Import took 0.126937 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000268 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Bombe.prefab
-  artifactKey: Guid(79742653ec493d246bcdef0cbf88e31b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Bombe.prefab using Guid(79742653ec493d246bcdef0cbf88e31b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfd06aef7342946b0f471fe32b383c00') in 0.098708 seconds
-  Import took 0.120833 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000630 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Lebenselixier.prefab
-  artifactKey: Guid(f00196e007dd1804990d23436f5ab617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Lebenselixier.prefab using Guid(f00196e007dd1804990d23436f5ab617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8be8b386f4024d7665449a17003603f6') in 0.013103 seconds
-  Import took 0.044539 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000294 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Arkaner Impuls.prefab
-  artifactKey: Guid(8a7f78e4a6588ab4289c20b832353307) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Arkaner Impuls.prefab using Guid(8a7f78e4a6588ab4289c20b832353307) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc2e1ede223cc698c07f6563cd889a3b') in 0.087778 seconds
-  Import took 0.109540 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000273 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Manaelixier.prefab
-  artifactKey: Guid(7693768a878661948aefd9181f7a2d01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Manaelixier.prefab using Guid(7693768a878661948aefd9181f7a2d01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9304f0c69f60e724b34f03a87c2bc86') in 0.018840 seconds
-  Import took 0.036920 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000312 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Frostspitze.prefab
-  artifactKey: Guid(6a591ac65c4a2fb4a866e9cadce0ebe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Frostspitze.prefab using Guid(6a591ac65c4a2fb4a866e9cadce0ebe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc31d4bf0410cc0be1474d069e1ddbbe') in 0.073050 seconds
-  Import took 0.110400 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000330 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Laser.prefab
-  artifactKey: Guid(d6d1154f9bb87ae4fa94b5c2fe7a7c09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Laser.prefab using Guid(d6d1154f9bb87ae4fa94b5c2fe7a7c09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2458175e3b042d366e2c5eac7fe2632') in 0.086193 seconds
-  Import took 0.098371 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000268 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Beschwörung Sentinel.prefab
-  artifactKey: Guid(af79dc6e8669ea341b020d34b9391b34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Beschwörung Sentinel.prefab using Guid(af79dc6e8669ea341b020d34b9391b34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d11c149c64a5ae303cd125dac570a32') in 0.172765 seconds
-  Import took 0.207325 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000343 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Donnerschlag.prefab
-  artifactKey: Guid(05bc84479b081af4ca7844c3cd88c425) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Donnerschlag.prefab using Guid(05bc84479b081af4ca7844c3cd88c425) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9dbc2b2b83de0b0d01a1442e452dd956') in 0.057806 seconds
-  Import took 0.085762 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000355 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Stromschlag.prefab
-  artifactKey: Guid(8d38c6d44fc7878428ee4d926eeff611) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Stromschlag.prefab using Guid(8d38c6d44fc7878428ee4d926eeff611) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '413a70e055029abe6505d5d82859c39f') in 0.077092 seconds
-  Import took 0.099222 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000399 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Flammenwerfer.prefab
-  artifactKey: Guid(ee56b7a33e3364848b47f8da94c5908a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Flammenwerfer.prefab using Guid(ee56b7a33e3364848b47f8da94c5908a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63d0fb0a3632c711652e69712bca74ad') in 0.108693 seconds
-  Import took 0.129963 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000277 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Boomerang.prefab
-  artifactKey: Guid(2f0554ae42ef20e4e976d37f34aad3e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Boomerang.prefab using Guid(2f0554ae42ef20e4e976d37f34aad3e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0aab74ebdeaacc236709ca292ff185d0') in 0.046922 seconds
-  Import took 0.076335 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.018042 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.39 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.222 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.79 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 204.5 MB.
-System memory in use after: 205.0 MB.
-
-Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 7952.
-Total: 33.700354 ms (FindLiveObjects: 0.673791 ms CreateObjectMapping: 0.432127 ms MarkObjects: 32.487063 ms  DeleteObjects: 0.104740 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 273.003412 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Teleport.prefab
-  artifactKey: Guid(28d171700ce5ac84fb3390e7c6068744) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Teleport.prefab using Guid(28d171700ce5ac84fb3390e7c6068744) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2894e08baf6c8250887dee7961c96f1c') in 0.122678 seconds
-  Import took 0.172581 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000265 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Hitzeblitz.prefab
-  artifactKey: Guid(d9d5c19e4e61ad142865732f1f61048b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Hitzeblitz.prefab using Guid(d9d5c19e4e61ad142865732f1f61048b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8e1f522b3609debd56c04eb9b014cae') in 0.252772 seconds
-  Import took 0.276010 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000282 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Gegengift.prefab
-  artifactKey: Guid(56f5ab55d0651f847a53e3a0d8305f08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Gegengift.prefab using Guid(56f5ab55d0651f847a53e3a0d8305f08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63cf50b78aabc92150564622b7b45357') in 0.014951 seconds
-  Import took 0.032221 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000306 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Schild.prefab
-  artifactKey: Guid(42f53cb1b0e3a1e4c98ecc587d8dd07e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Schild.prefab using Guid(42f53cb1b0e3a1e4c98ecc587d8dd07e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27827e0cfc9997c6c0a87065af743725') in 0.106645 seconds
-  Import took 0.128171 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000263 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Windklinge.prefab
-  artifactKey: Guid(1ec46b73256de2144b876b73c3a20147) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Windklinge.prefab using Guid(1ec46b73256de2144b876b73c3a20147) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90e40720d93f4014f1748e88eda4eb13') in 0.030530 seconds
-  Import took 0.059694 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000261 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Beschwörung Eos.prefab
-  artifactKey: Guid(062ebf34934818544859af78b674eb19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Beschwörung Eos.prefab using Guid(062ebf34934818544859af78b674eb19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e6887ffb19f1e551f78a3252472ee95') in 0.029927 seconds
-  Import took 0.059580 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000266 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Schwert.prefab
-  artifactKey: Guid(08ac142b84c3a2547ab5aed3862039d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Schwert.prefab using Guid(08ac142b84c3a2547ab5aed3862039d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59ffea810370f794239bb1146be5ee48') in 0.008309 seconds
-  Import took 0.029864 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000315 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Temporäre Stasis.prefab
-  artifactKey: Guid(3d7ade5656d74284380cd8f7d60fd1f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Temporäre Stasis.prefab using Guid(3d7ade5656d74284380cd8f7d60fd1f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f9f8f6806ae621926e1daac6c288218') in 0.065005 seconds
-  Import took 0.083858 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000321 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Wiederbelebung.prefab
-  artifactKey: Guid(5134220468224ee4bba40bf0206e4766) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Wiederbelebung.prefab using Guid(5134220468224ee4bba40bf0206e4766) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c251267acc9338d6e46f076964da7e3') in 0.011820 seconds
-  Import took 0.034096 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000290 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Bombe.prefab
-  artifactKey: Guid(79742653ec493d246bcdef0cbf88e31b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Bombe.prefab using Guid(79742653ec493d246bcdef0cbf88e31b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3bd11334ce4f35f3db572791eca5a437') in 0.032910 seconds
-  Import took 0.054575 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000713 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Dash.prefab
-  artifactKey: Guid(689f7820c63a03148aa81b962ee64ad6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Dash.prefab using Guid(689f7820c63a03148aa81b962ee64ad6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '862a1d50cb2fdf02cb19cf7751201e0c') in 0.055204 seconds
-  Import took 0.070457 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000403 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Lebenselixier.prefab
-  artifactKey: Guid(f00196e007dd1804990d23436f5ab617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Lebenselixier.prefab using Guid(f00196e007dd1804990d23436f5ab617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a541f108e29738342f022d3241e2e8a') in 0.011890 seconds
-  Import took 0.037489 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000311 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Arkaner Impuls.prefab
-  artifactKey: Guid(8a7f78e4a6588ab4289c20b832353307) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Arkaner Impuls.prefab using Guid(8a7f78e4a6588ab4289c20b832353307) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73d4e786532e4be007c315ec1330814c') in 0.033458 seconds
-  Import took 0.045774 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000280 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Manaelixier.prefab
-  artifactKey: Guid(7693768a878661948aefd9181f7a2d01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Manaelixier.prefab using Guid(7693768a878661948aefd9181f7a2d01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd285131c45a32ea4772f9c65b840f065') in 0.011620 seconds
-  Import took 0.035783 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000479 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Frostspitze.prefab
-  artifactKey: Guid(6a591ac65c4a2fb4a866e9cadce0ebe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Frostspitze.prefab using Guid(6a591ac65c4a2fb4a866e9cadce0ebe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a14c3c84c683c305bb8b961545621ad6') in 0.018580 seconds
-  Import took 0.033067 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000260 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Laser.prefab
-  artifactKey: Guid(d6d1154f9bb87ae4fa94b5c2fe7a7c09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Laser.prefab using Guid(d6d1154f9bb87ae4fa94b5c2fe7a7c09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b01beaf2a3e2e333f6a7b888c43e8778') in 0.032770 seconds
-  Import took 0.045156 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000257 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Beschwörung Sentinel.prefab
-  artifactKey: Guid(af79dc6e8669ea341b020d34b9391b34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Beschwörung Sentinel.prefab using Guid(af79dc6e8669ea341b020d34b9391b34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca193d85b179eeb27d1a404528edc4e3') in 0.038643 seconds
-  Import took 0.054519 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000254 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Donnerschlag.prefab
-  artifactKey: Guid(05bc84479b081af4ca7844c3cd88c425) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Donnerschlag.prefab using Guid(05bc84479b081af4ca7844c3cd88c425) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed87b47805d7c9fa6520a29a8c2ba78d') in 0.038657 seconds
-  Import took 0.062523 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000258 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Stromschlag.prefab
-  artifactKey: Guid(8d38c6d44fc7878428ee4d926eeff611) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Stromschlag.prefab using Guid(8d38c6d44fc7878428ee4d926eeff611) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fac63ef399474ae3f1f7fd8aa7ea4a5c') in 0.024568 seconds
-  Import took 0.054986 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000323 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Giftpfeil.prefab
-  artifactKey: Guid(478564dcd28512a4a88aeeac6dcd1b25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Giftpfeil.prefab using Guid(478564dcd28512a4a88aeeac6dcd1b25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25fc9f2cc1f3d33272e49bbc7ca0e64d') in 0.113167 seconds
-  Import took 0.139865 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000595 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Flammenwerfer.prefab
-  artifactKey: Guid(ee56b7a33e3364848b47f8da94c5908a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Flammenwerfer.prefab using Guid(ee56b7a33e3364848b47f8da94c5908a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '697c01b40a91795d87ef6a38617f6c3b') in 0.032435 seconds
-  Import took 0.055308 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000276 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Analysis Zauber.prefab
-  artifactKey: Guid(bddbde069b87bf945a2ba62d587c3c99) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Analysis Zauber.prefab using Guid(bddbde069b87bf945a2ba62d587c3c99) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd154c08e4d36856dfc199f2004019424') in 0.047311 seconds
-  Import took 0.060154 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000353 seconds.
-  path: Assets/Resources/Prefabs/Skills/Player Skills/Boomerang.prefab
-  artifactKey: Guid(2f0554ae42ef20e4e976d37f34aad3e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Player Skills/Boomerang.prefab using Guid(2f0554ae42ef20e4e976d37f34aad3e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1114533aac0cde763a6972db29880e4') in 0.028844 seconds
-  Import took 0.042411 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.709906 seconds.
-  path: Assets/Resources/Prefabs/Skills/Old Skills/Eissplitter.prefab
-  artifactKey: Guid(1069657a2cf5c7248891f906a405a860) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Old Skills/Eissplitter.prefab using Guid(1069657a2cf5c7248891f906a405a860) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fafe548905575af636dcc211fdeed4b0') in 0.063328 seconds
-  Import took 0.074628 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.466409 seconds.
-  path: Assets/Resources/Prefabs/Skills/Old Skills/Feuerball.prefab
-  artifactKey: Guid(6383752caca7be74ea6d1e0d459f14df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Old Skills/Feuerball.prefab using Guid(6383752caca7be74ea6d1e0d459f14df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccbe92d08d33f36b22726cf0cac05ca8') in 0.036979 seconds
-  Import took 0.067889 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.292245 seconds.
-  path: Assets/Resources/Prefabs/Skills/Old Skills/Speer.prefab
-  artifactKey: Guid(8191971a062876046ab19f93a98c3268) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Old Skills/Speer.prefab using Guid(8191971a062876046ab19f93a98c3268) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'feaed3b88d9d13b37dd34be01f3d6ec3') in 0.072473 seconds
-  Import took 0.099215 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.010541 seconds.
-  path: Assets/Resources/Prefabs/Skills/Old Skills/Speer.prefab
-  artifactKey: Guid(8191971a062876046ab19f93a98c3268) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Old Skills/Speer.prefab using Guid(8191971a062876046ab19f93a98c3268) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'feaed3b88d9d13b37dd34be01f3d6ec3') in 0.033615 seconds
-  Import took 0.048253 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.211979 seconds.
-  path: Assets/Resources/Prefabs/Skills/Old Skills/Steinwand.prefab
-  artifactKey: Guid(00d71e733b0c7114a806e954775ad101) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Old Skills/Steinwand.prefab using Guid(00d71e733b0c7114a806e954775ad101) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02e76cc9cc3921b19d2cc8315ddcaf1a') in 0.038475 seconds
-  Import took 0.060895 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.079208 seconds.
-  path: Assets/Resources/Prefabs/Skills/Enemy Skills/Explosion.prefab
-  artifactKey: Guid(5606597b2db4c724b853aec8699a49e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Enemy Skills/Explosion.prefab using Guid(5606597b2db4c724b853aec8699a49e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3bb8dc8f28c916a3cc1231ba6925e47') in 0.064146 seconds
-  Import took 0.086251 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.281297 seconds.
-  path: Assets/Resources/Prefabs/Skills/Enemy Skills/Feuer Haut.prefab
-  artifactKey: Guid(51f9d7aedc6941b4eb34d1eb4d280123) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Enemy Skills/Feuer Haut.prefab using Guid(51f9d7aedc6941b4eb34d1eb4d280123) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c25dc4ac41d90a51a04a0c92c4411883') in 0.022380 seconds
-  Import took 0.050507 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.002142 seconds.
-  path: Assets/Resources/Prefabs/Skills/Enemy Skills/Feuer Haut.prefab
-  artifactKey: Guid(51f9d7aedc6941b4eb34d1eb4d280123) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Enemy Skills/Feuer Haut.prefab using Guid(51f9d7aedc6941b4eb34d1eb4d280123) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c25dc4ac41d90a51a04a0c92c4411883') in 0.011781 seconds
-  Import took 0.022584 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.250004 seconds.
-  path: Assets/Resources/Prefabs/Skills/Enemy Skills/Gift Haut.prefab
-  artifactKey: Guid(65b268bfda2fa0e4bb41978a974d71d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Enemy Skills/Gift Haut.prefab using Guid(65b268bfda2fa0e4bb41978a974d71d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6add99cba16d461d98bccd4cc36d644') in 0.010245 seconds
-  Import took 0.034989 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.012200 seconds.
-  path: Assets/Resources/Prefabs/Skills/Enemy Skills/Gift Haut.prefab
-  artifactKey: Guid(65b268bfda2fa0e4bb41978a974d71d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Enemy Skills/Gift Haut.prefab using Guid(65b268bfda2fa0e4bb41978a974d71d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6add99cba16d461d98bccd4cc36d644') in 0.011257 seconds
-  Import took 0.023158 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.212958 seconds.
-  path: Assets/Resources/Prefabs/Skills/Enemy Skills/Nitro.prefab
-  artifactKey: Guid(2c86898fd46cc7c42b10e7708ba73ec4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Enemy Skills/Nitro.prefab using Guid(2c86898fd46cc7c42b10e7708ba73ec4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b5c276c604594425db774af5c102a4d') in 0.038837 seconds
-  Import took 0.077188 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.002601 seconds.
-  path: Assets/Resources/Prefabs/Skills/Enemy Skills/Nitro.prefab
-  artifactKey: Guid(2c86898fd46cc7c42b10e7708ba73ec4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Enemy Skills/Nitro.prefab using Guid(2c86898fd46cc7c42b10e7708ba73ec4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b5c276c604594425db774af5c102a4d') in 0.022536 seconds
-  Import took 0.033979 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.236993 seconds.
-  path: Assets/Resources/Prefabs/Skills/Enemy Skills/Pulse.prefab
-  artifactKey: Guid(3c796de5a8e605544b3dc6a49a9c39cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Enemy Skills/Pulse.prefab using Guid(3c796de5a8e605544b3dc6a49a9c39cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b20e19147e7658496fa4222a538f3d1') in 0.047201 seconds
-  Import took 0.063832 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.001937 seconds.
-  path: Assets/Resources/Prefabs/Skills/Enemy Skills/Pulse.prefab
-  artifactKey: Guid(3c796de5a8e605544b3dc6a49a9c39cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Enemy Skills/Pulse.prefab using Guid(3c796de5a8e605544b3dc6a49a9c39cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b20e19147e7658496fa4222a538f3d1') in 0.023792 seconds
-  Import took 0.036085 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.357694 seconds.
-  path: Assets/Resources/Prefabs/Skills/Enemy Skills/Shot.prefab
-  artifactKey: Guid(ebbcacfde9010dc489df5125a980db67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Enemy Skills/Shot.prefab using Guid(ebbcacfde9010dc489df5125a980db67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bfb914f8c1606b1f64959c5fd486957') in 0.062306 seconds
-  Import took 0.086519 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.390041 seconds.
-  path: Assets/Resources/Prefabs/Skills/Enemy Skills/Stein Haut.prefab
-  artifactKey: Guid(6aa1f0e0a909a75429a20edfc3e0dbf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Enemy Skills/Stein Haut.prefab using Guid(6aa1f0e0a909a75429a20edfc3e0dbf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88ca1d24789595c3aad27502f6307e83') in 0.008321 seconds
-  Import took 0.028199 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.021285 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.43 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.615 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.76 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 205.0 MB.
-System memory in use after: 205.5 MB.
-
-Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 7992.
-Total: 58.858810 ms (FindLiveObjects: 2.373627 ms CreateObjectMapping: 1.713295 ms MarkObjects: 54.495409 ms  DeleteObjects: 0.265947 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.014634 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.58 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.931 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.48 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 205.0 MB.
-System memory in use after: 205.5 MB.
-
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 7996.
-Total: 34.946998 ms (FindLiveObjects: 0.623468 ms CreateObjectMapping: 0.324168 ms MarkObjects: 33.909834 ms  DeleteObjects: 0.087479 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.014653 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 3.48 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  5.619 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.92 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 205.0 MB.
-System memory in use after: 205.5 MB.
-
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 8000.
-Total: 40.376234 ms (FindLiveObjects: 0.657114 ms CreateObjectMapping: 0.342015 ms MarkObjects: 39.301914 ms  DeleteObjects: 0.072558 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015315 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.58 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  5.116 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.60 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 205.1 MB.
-System memory in use after: 205.6 MB.
-
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 8004.
-Total: 32.689522 ms (FindLiveObjects: 1.232308 ms CreateObjectMapping: 1.508788 ms MarkObjects: 29.549652 ms  DeleteObjects: 0.387949 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 563.250039 seconds.
-  path: Assets/Resources/Prefabs/Skills/Enemy Skills/Shot.prefab
-  artifactKey: Guid(ebbcacfde9010dc489df5125a980db67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Enemy Skills/Shot.prefab using Guid(ebbcacfde9010dc489df5125a980db67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd677d5ace8f8a3c5af601023222f1bc') in 0.232936 seconds
-  Import took 0.250839 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 9.741172 seconds.
-  path: Assets/Resources/Prefabs/Skills/Old Skills/Feuerball.prefab
-  artifactKey: Guid(6383752caca7be74ea6d1e0d459f14df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Old Skills/Feuerball.prefab using Guid(6383752caca7be74ea6d1e0d459f14df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ad921566b082aa8e8f9f49651aa6689') in 0.047446 seconds
-  Import took 0.085057 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.044947 seconds.
-  path: Assets/Resources/Prefabs/Skills/Old Skills/Feuerball.prefab
-  artifactKey: Guid(6383752caca7be74ea6d1e0d459f14df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Old Skills/Feuerball.prefab using Guid(6383752caca7be74ea6d1e0d459f14df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ad921566b082aa8e8f9f49651aa6689') in 0.028787 seconds
-  Import took 0.041378 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.539706 seconds.
-  path: Assets/Resources/Prefabs/Skills/Old Skills/Eissplitter.prefab
-  artifactKey: Guid(1069657a2cf5c7248891f906a405a860) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Old Skills/Eissplitter.prefab using Guid(1069657a2cf5c7248891f906a405a860) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a49c777e8cb34343643b40cd8acbff2e') in 0.028305 seconds
-  Import took 0.049741 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.017945 seconds.
-  path: Assets/Resources/Prefabs/Skills/Old Skills/Eissplitter.prefab
-  artifactKey: Guid(1069657a2cf5c7248891f906a405a860) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Old Skills/Eissplitter.prefab using Guid(1069657a2cf5c7248891f906a405a860) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a49c777e8cb34343643b40cd8acbff2e') in 0.026488 seconds
-  Import took 0.038679 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.811832 seconds.
-  path: Assets/Resources/Prefabs/Skills/Enemy Skills/Feuer Haut.prefab
-  artifactKey: Guid(51f9d7aedc6941b4eb34d1eb4d280123) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Enemy Skills/Feuer Haut.prefab using Guid(51f9d7aedc6941b4eb34d1eb4d280123) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0439069384c4f7302a2c9767314b7e03') in 0.010738 seconds
-  Import took 0.029776 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 19.364725 seconds.
-  path: Assets/Resources/Prefabs/Skills/Enemy Skills/Pulse.prefab
-  artifactKey: Guid(3c796de5a8e605544b3dc6a49a9c39cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Skills/Enemy Skills/Pulse.prefab using Guid(3c796de5a8e605544b3dc6a49a9c39cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64edfca686b7c1526f86aec4f9fc553a') in 0.021052 seconds
-  Import took 0.051373 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015190 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.48 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.713 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.53 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 205.1 MB.
-System memory in use after: 205.6 MB.
-
-Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 8044.
-Total: 28.041449 ms (FindLiveObjects: 0.627272 ms CreateObjectMapping: 0.335286 ms MarkObjects: 27.018036 ms  DeleteObjects: 0.059099 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015007 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 3.50 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  4.639 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Refreshing native plugins compatible for Editor in 1.47 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 205.3 MB.
-System memory in use after: 205.8 MB.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  4.489 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.62 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4473 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 203.2 MB.
+System memory in use after: 203.7 MB.
 
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 8048.
-Total: 28.896341 ms (FindLiveObjects: 0.644533 ms CreateObjectMapping: 0.329435 ms MarkObjects: 27.864736 ms  DeleteObjects: 0.053248 ms)
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 6427.
+Total: 27.830506 ms (FindLiveObjects: 0.556177 ms CreateObjectMapping: 0.281161 ms MarkObjects: 26.949575 ms  DeleteObjects: 0.041545 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 403.410161 seconds.
+  path: Assets/Resources/Prefabs/Game/Required/GameManager.prefab
+  artifactKey: Guid(cdb6eb2ade7f68a4bb60c7ff4b62f386) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Game/Required/GameManager.prefab using Guid(cdb6eb2ade7f68a4bb60c7ff4b62f386) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74e2106d1800dd9cb582ddfcf6289a89') in 0.136851 seconds
+  Import took 0.166282 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.693200 seconds.
+  path: Assets/Resources/Prefabs/Game/Required/GameManager.prefab
+  artifactKey: Guid(cdb6eb2ade7f68a4bb60c7ff4b62f386) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Game/Required/GameManager.prefab using Guid(cdb6eb2ade7f68a4bb60c7ff4b62f386) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4161ab5af34e585ac290ecc6f5fb4fdc') in 0.036772 seconds
+  Import took 0.087422 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.065786 seconds.
+  path: Assets/Resources/Prefabs/Game/Required/GameManager.prefab
+  artifactKey: Guid(cdb6eb2ade7f68a4bb60c7ff4b62f386) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Game/Required/GameManager.prefab using Guid(cdb6eb2ade7f68a4bb60c7ff4b62f386) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4161ab5af34e585ac290ecc6f5fb4fdc') in 0.020218 seconds
+  Import took 0.030613 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 146.938692 seconds.
+  path: Assets/Scenes/Maps/Titanias Cave.unity
+  artifactKey: Guid(589c8f3b3241469418600e0187a9299e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Maps/Titanias Cave.unity using Guid(589c8f3b3241469418600e0187a9299e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe32a0f2e68a45a1a5643f5691a263c0') in 0.015638 seconds
+  Import took 0.039977 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.014717 seconds.
+Registered in 0.018093 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
@@ -1064,90 +244,93 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.995 seconds
+- Completed reload, in  4.624 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 3.37 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 1.45 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 205.3 MB.
-System memory in use after: 205.8 MB.
+Unloading 4473 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 204.9 MB.
+System memory in use after: 205.4 MB.
 
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 8052.
-Total: 53.076733 ms (FindLiveObjects: 3.077845 ms CreateObjectMapping: 0.959047 ms MarkObjects: 48.962602 ms  DeleteObjects: 0.074020 ms)
+Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 6431.
+Total: 26.497846 ms (FindLiveObjects: 0.532771 ms CreateObjectMapping: 0.275894 ms MarkObjects: 25.632714 ms  DeleteObjects: 0.053248 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 53.079956 seconds.
+  path: Assets/Scenes/Title Screen/Title Screen.unity
+  artifactKey: Guid(ff05ecebd3b26564db5fa873a8131afc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Title Screen/Title Screen.unity using Guid(ff05ecebd3b26564db5fa873a8131afc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b28c7b841edd4a8baaa93b39a376b8e') in 0.062732 seconds
+  Import took 0.089753 seconds .
+
+========================================================================
+Received Prepare
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 306.59 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 34 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 116.9 MB.
+System memory in use after: 117.3 MB.
+
+Unloading 33 unused Assets to reduce memory usage. Loaded Objects now: 6431.
+Total: 29.846318 ms (FindLiveObjects: 1.046526 ms CreateObjectMapping: 0.291401 ms MarkObjects: 28.437297 ms  DeleteObjects: 0.068169 ms)
+
+========================================================================
+Received Prepare
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 250.98 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 34 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 116.8 MB.
+System memory in use after: 117.3 MB.
+
+Unloading 33 unused Assets to reduce memory usage. Loaded Objects now: 6431.
+Total: 39.059373 ms (FindLiveObjects: 0.966947 ms CreateObjectMapping: 0.298715 ms MarkObjects: 37.740757 ms  DeleteObjects: 0.049737 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.022241 seconds.
+Registered in 0.743979 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 3.61 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 2.78 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  5.225 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 2.61 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 206.3 MB.
-System memory in use after: 206.8 MB.
-
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 8056.
-Total: 46.758374 ms (FindLiveObjects: 1.596851 ms CreateObjectMapping: 0.725283 ms MarkObjects: 44.337936 ms  DeleteObjects: 0.094793 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.015091 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.42 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.757 seconds
+- Completed reload, in 13.160 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Refreshing native plugins compatible for Editor in 1.62 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 205.3 MB.
-System memory in use after: 205.8 MB.
+Unloading 4473 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 204.6 MB.
+System memory in use after: 205.1 MB.
 
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 8060.
-Total: 41.431537 ms (FindLiveObjects: 0.904336 ms CreateObjectMapping: 0.519606 ms MarkObjects: 39.684597 ms  DeleteObjects: 0.316854 ms)
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 6435.
+Total: 48.361077 ms (FindLiveObjects: 0.844359 ms CreateObjectMapping: 0.688419 ms MarkObjects: 46.774173 ms  DeleteObjects: 0.050907 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1765.769965 seconds.
+  path: Assets/Scenes/Maps/Titanias Cave.unity
+  artifactKey: Guid(589c8f3b3241469418600e0187a9299e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Maps/Titanias Cave.unity using Guid(589c8f3b3241469418600e0187a9299e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9492e107dad4d65cbca9081caf8bfc5c') in 0.060721 seconds
+  Import took 0.119243 seconds .
 
 ========================================================================
 Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.014966 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.56 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.527 seconds
-Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.47 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 102.75 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4474 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 205.2 MB.
-System memory in use after: 205.7 MB.
+Unloading 34 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 117.1 MB.
+System memory in use after: 117.6 MB.
 
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 8064.
-Total: 28.793649 ms (FindLiveObjects: 0.623468 ms CreateObjectMapping: 0.321828 ms MarkObjects: 27.782816 ms  DeleteObjects: 0.062903 ms)
+Unloading 33 unused Assets to reduce memory usage. Loaded Objects now: 6435.
+Total: 29.950181 ms (FindLiveObjects: 0.529846 ms CreateObjectMapping: 0.273554 ms MarkObjects: 29.075394 ms  DeleteObjects: 0.068462 ms)
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

@@ -45,7 +45,9 @@ namespace CrystalAlchemist
         {            
             SetComponents();
             SetScriptableObjects();
-            SetPlayerComponents();            
+            SetPlayerComponents();
+
+            this.photonView.Owner.TagObject = this;
         }
 
         private void SetScriptableObjects()
@@ -243,7 +245,7 @@ namespace CrystalAlchemist
                 this.values.currentState = CharacterState.dead;
                 this.myRigidbody.bodyType = RigidbodyType2D.Kinematic; //Static causes Room to empty
 
-                GameEvents.current.DoDeath();
+                if (this.isLocalPlayer) NetworkEvents.current.RaiseDeathEvent();
             }
         }
 
@@ -339,10 +341,6 @@ namespace CrystalAlchemist
         {
             base.UpdateLife(value, showingDamageNumber);
             UpdateLifeManaUI(value);
-
-            NumberColor color = NumberColor.red;
-            if (value > 0) color = NumberColor.green;
-            this.photonView.RPC("RpcShowDamageNumber", RpcTarget.Others, value, (byte)color);
         }
 
         public override void UpdateMana(float value, bool showingDamageNumber)

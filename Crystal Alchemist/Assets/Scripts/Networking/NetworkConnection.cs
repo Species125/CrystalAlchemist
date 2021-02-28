@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using Sirenix.OdinInspector;
+using System.Collections;
 
 namespace CrystalAlchemist
 {
@@ -18,9 +19,6 @@ namespace CrystalAlchemist
         [SerializeField]
         private PlayerSaveGame saveGame;
 
-        [BoxGroup("Network")]
-        [SerializeField]
-        private StringValue scene;
 
         [BoxGroup("Network")]
         [SerializeField]
@@ -67,8 +65,8 @@ namespace CrystalAlchemist
                 return;
             }
 
-            if (PhotonNetwork.InRoom) //just load level
-            {
+            if(PhotonNetwork.InRoom)
+            {           
                 LoadScene();
                 return;
             }
@@ -84,12 +82,12 @@ namespace CrystalAlchemist
         {
             PhotonNetwork.SendRate = this.settings.sendRate;
             PhotonNetwork.SerializationRate = this.settings.serializationRate;
-            PhotonNetwork.AutomaticallySyncScene = this.settings;
+            PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.NickName = this.settings.nickname;
             PhotonNetwork.GameVersion = this.settings.version;
             PhotonNetwork.ConnectUsingSettings();
 
-            AddText("Connecting to server...");
+            AddText("Connecting to Server...");
             SetProgress(0);
             this.loadingInfo.SetActive(true);
         }
@@ -97,8 +95,8 @@ namespace CrystalAlchemist
         private void LoadScene()
         {
             if (this.loaded) return;
-            PhotonNetwork.DestroyAll();
-            if (NetworkUtil.IsMaster()) PhotonNetwork.LoadLevel(this.scene.GetValue());
+            NetworkUtil.LoadLevel(this.settings.currentScene.GetValue());
+
             this.loaded = true;
         }
 

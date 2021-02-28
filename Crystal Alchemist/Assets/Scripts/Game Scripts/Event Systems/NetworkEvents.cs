@@ -4,6 +4,7 @@ using Photon.Realtime;
 using ExitGames.Client.Photon;
 using System.Collections.Generic;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace CrystalAlchemist
 {
@@ -38,10 +39,25 @@ namespace CrystalAlchemist
         
         private void NetworkingEvent(EventData obj)
         {
-            if (obj.Code == NetworkUtil.PLAYERS_DEATH)
+            if (obj.Code == NetworkUtil.PLAYERS_DEATH) GameEvents.current.DoDeath();
+            else if (obj.Code == NetworkUtil.SCENE_CHANGE)
             {
-                if (MenuEvents.current) MenuEvents.current.OpenDeath();                
+                object[] datas = (object[])obj.CustomData;
+                string scene = (string)datas[0];
+
+                //PhotonNetwork.IsMessageQueueRunning = false;
+                SceneManager.LoadScene(scene);                
             }
+        }
+
+        public void RaiseSceneChangeEvent(string scene)
+        {
+            if (!NetworkUtil.IsMaster()) return;
+
+            object[] datas = new object[] { scene };
+            RaiseEventOptions options = NetworkUtil.TargetAll();
+
+            PhotonNetwork.RaiseEvent(NetworkUtil.SCENE_CHANGE, datas, options, SendOptions.SendUnreliable);
         }
 
         private void NetworkingEventSkillItems(EventData obj)
@@ -91,9 +107,8 @@ namespace CrystalAlchemist
         public void RaiseDeathEvent()
         {
             object[] datas = new object[] {};
-            RaiseEventOptions options = NetworkUtil.TargetOther();
+            RaiseEventOptions options = NetworkUtil.TargetAll();
 
-            if (MenuEvents.current) MenuEvents.current.OpenDeath();
             PhotonNetwork.RaiseEvent(NetworkUtil.PLAYERS_DEATH, datas, options, SendOptions.SendUnreliable);
         }
 
@@ -107,10 +122,6 @@ namespace CrystalAlchemist
 
 
         #endregion
-
-
-
-
 
         #region Skills
 

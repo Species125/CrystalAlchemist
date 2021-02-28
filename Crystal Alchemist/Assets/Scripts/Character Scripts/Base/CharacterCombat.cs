@@ -59,7 +59,7 @@ namespace CrystalAlchemist
 
         public void UnChargeAbility(Ability ability)
         {
-            ability.ResetCharge(); //reset charge when not full  
+            ability.ResetCharge(); //reset charge when not full             
             HideCastBar(); //Hide Castbar
             ability.HideCastingAnimation(); //Hide Animation and stuff
             DeactivateAbility(ability); //deactivate Skill when button up, Player only            
@@ -71,12 +71,12 @@ namespace CrystalAlchemist
         {
             SkillSenderModule senderModule = ability.skill.GetComponent<SkillSenderModule>();
             if (senderModule != null)
-                character.updateSpeed(senderModule.speedDuringCasting, senderModule.affectAnimation);
+                character.UpdateSpeedPercent(senderModule.speedDuringCasting, senderModule.affectAnimation);
         }
 
         private void resetSpeedAfterCasting()
         {
-            character.updateSpeed(0); //Set Speed to normal
+            character.UpdateSpeedPercent(0); //Set Speed to normal
         }
 
         public virtual void ClearCurrentAbility()

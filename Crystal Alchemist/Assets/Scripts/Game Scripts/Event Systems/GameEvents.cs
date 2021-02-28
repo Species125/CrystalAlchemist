@@ -1,5 +1,8 @@
 ﻿using System;
 using UnityEngine;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
+using Photon.Pun;
 
 namespace CrystalAlchemist
 {
@@ -35,7 +38,6 @@ namespace CrystalAlchemist
         public Action<WarningType> OnWarning;
         public Action<float, float, float> OnCameraShake;
         public Action<float> OnCameraStill;
-        public Action<float> OnLockDirection;
         public Action<Character, bool> OnRangeTriggered;
         public Action<TeleportStats> OnSetTeleportStat;
 
@@ -52,6 +54,7 @@ namespace CrystalAlchemist
         public Action OnTeleport;
         public Action OnTitleScreen;
         public Action OnMenuOpened;
+        public Action OnMenuClosed;
         public Action<string> OnIngameMessage;
 
         public Action OnEffectUpdate;
@@ -79,12 +82,12 @@ namespace CrystalAlchemist
         public void DoSubmit() => this.OnSubmit?.Invoke();
         public void DoCancel() => this.OnCancel?.Invoke();
         public void DoMenuOpen() => this.OnMenuOpened?.Invoke();
+        public void DoMenuClose() => this.OnMenuClosed?.Invoke();
         public void DoIngameMessage(string text) => this.OnIngameMessage?.Invoke(text);
         public void DoPage(int page) => this.OnPage?.Invoke(page);
         public void DoWarning(WarningType type) => this.OnWarning?.Invoke(type);
         public void DoSleep(Action action) => this.OnSleep?.Invoke(action);
         public void DoWakeUp(Vector2 position, Action action) => this.OnWakeUp?.Invoke(position, action);
-        public void DoDirectionLock(float value) => this.OnLockDirection?.Invoke(value);
         public void DoCutScene() => this.OnCutScene?.Invoke();
         public void DoKill() => this.OnKill?.Invoke();
         public void DoInterrupt() => this.OnInterrupt?.Invoke();
@@ -107,6 +110,17 @@ namespace CrystalAlchemist
         public void DoTimeChange(float value) => this.OnTimeChange?.Invoke(value);
         public void DoTimeReset() => this.OnTimeReset?.Invoke();
 
+        public void LoadLevel(string scene)
+        {
+            if (NetworkUtil.IsMaster())
+            {
+                //PhotonNetwork.LoadLevel(scene);
+                object[] datas = new object[] { scene };
+                RaiseEventOptions options = NetworkUtil.TargetAll();
+
+                PhotonNetwork.RaiseEvent(NetworkUtil.SCENE_CHANGE, datas, options, SendOptions.SendUnreliable);
+            }
+        }
 
         public bool HasReturn()
         {

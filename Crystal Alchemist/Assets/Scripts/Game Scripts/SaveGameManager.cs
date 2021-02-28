@@ -26,7 +26,7 @@ namespace CrystalAlchemist
         private void Start()
         {
             GameEvents.current.DoSaveGame(false);
-            InvokeRepeating("Updating", this.saveDelay, (this.saveInterval));
+            InvokeRepeating("Updating", this.saveDelay, this.saveInterval);
         }
 
         private void Updating()
@@ -49,7 +49,7 @@ namespace CrystalAlchemist
 
         private void SaveGame(bool value)
         {
-            if(value) this.saveIt = true;
+            if (value) this.saveIt = true;
             else SaveDirectly();
         }
 

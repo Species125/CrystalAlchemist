@@ -39,7 +39,7 @@ namespace CrystalAlchemist
         [BoxGroup("Debug")]
         [SerializeField]
         [ReadOnly]
-        private bool canJoin = true;
+        private bool freeSlots = true;
 
         private void Start()
         {
@@ -69,14 +69,14 @@ namespace CrystalAlchemist
 
         private void UpdateJoinPossible()
         {
-            this.canJoin = this.playerCount < this.maxPlayerCount.GetValue();
+            this.freeSlots = this.playerCount < this.maxPlayerCount.GetValue();
 
-            this.errorMessage.SetActive(!this.canJoin);
+            this.errorMessage.SetActive(!this.freeSlots);
+            this.createButton.interactable = this.freeSlots;
 
-            this.createButton.interactable = this.canJoin;
             foreach (OnlineMenuGroupButton button in this.groupList)
             {
-                button.GetComponent<Button>().interactable = this.canJoin;
+                button.SetInteractable(freeSlots);
             }
         }
 

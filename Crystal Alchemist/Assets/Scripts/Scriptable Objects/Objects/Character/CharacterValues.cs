@@ -111,14 +111,17 @@ namespace CrystalAlchemist
             this.mana = stats.startMana;
             this.buffs.Clear();
             this.debuffs.Clear();
-            this.speed = (stats.startSpeed / 100) * this.speedFactor;
-            this.timeDistortion = 1;
 
+            ResetSpeed(stats);
+            this.timeDistortion = 1;
+            
             this.cantBeHit = false;
             this.isOnIce = false;
 
             if (stats.lootTable != null) this.itemDrop = stats.lootTable.GetItemDrop();
         }
+
+        public void ResetSpeed(CharacterStats stats) => this.speed = (stats.startSpeed / 100) * this.speedFactor;
 
         public void Initialize()
         {

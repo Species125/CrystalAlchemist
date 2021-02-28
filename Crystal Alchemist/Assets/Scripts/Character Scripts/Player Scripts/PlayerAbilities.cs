@@ -1,6 +1,7 @@
 ﻿using Photon.Pun;
 using Sirenix.OdinInspector;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,14 +26,14 @@ namespace CrystalAlchemist
 
         private void Start() 
         {
-            MenuEvents.current.OnCloseMenu += ClearCurrentAbility;
-            MenuEvents.current.OnCloseMenu += DisableAbilities;
+            if (!NetworkUtil.IsLocal(this.player)) return;
+            GameEvents.current.OnMenuClosed += OnMenuClosed;
         }
 
         private void OnDestroy()
         {
-            MenuEvents.current.OnCloseMenu -= ClearCurrentAbility;
-            MenuEvents.current.OnCloseMenu -= DisableAbilities;
+            if (!NetworkUtil.IsLocal(this.player)) return;
+            GameEvents.current.OnMenuClosed -= OnMenuClosed;
         }
 
         public override void Initialize()
@@ -128,13 +129,28 @@ namespace CrystalAlchemist
             }
         }
 
+        private void OnMenuClosed()
+        {
+            Ability ability = this.buttons.currentAbility;
+            if (ability == null) return; 
+
+            HideTargetingSystem(ability);
+            UnChargeAbility(ability);
+            GlobalCooldownUp(ability);
+
+            ability.SetStartParameters();
+            ClearCurrentAbility();
+
+            StartCoroutine(DelayCo());
+        }
+
         private void ButtonUp(Ability ability)
         {
             if (!NetworkUtil.IsLocal(this.player)) return;
             if (ability == null) return;
 
             if (ability.enabled && ability.state == AbilityState.charged && !ability.isRapidFire) UseAbilityOnTarget(ability, null); //use Skill when charged
-            else if (ability.useTargetSystem && ability.isRapidFire) HideTargetingSystem(ability); //hide Targeting System when released
+            if (ability.useTargetSystem && ability.isRapidFire) HideTargetingSystem(ability); //hide Targeting System when released
 
             UnChargeAbility(ability);
             GlobalCooldownUp(ability);            
@@ -172,13 +188,12 @@ namespace CrystalAlchemist
             //if (this.player.values.CanOpenMenu()) this.player.values.currentState = CharacterState.idle;
         }
 
-        private void DisableAbilities()
+        private IEnumerator DelayCo()
         {
             this.skillSet.EnableAbility(false);
-            Invoke("EnableAbilities", this.skillSet.deactiveDelay);
+            yield return new WaitForSeconds(this.skillSet.deactiveDelay);
+            this.skillSet.EnableAbility(true);
         }
-
-        private void EnableAbilities() => this.skillSet.EnableAbility(true);    
 
         public override void DeactivateAbility(Ability ability)
         {

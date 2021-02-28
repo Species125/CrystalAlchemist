@@ -8,7 +8,7 @@ namespace CrystalAlchemist
         {
             for (int i = 0; i < this.values.activeSkills.Count; i++)
             {
-                if (this.values.activeSkills[i].isAttachedToSender()) this.values.activeSkills[i].DeactivateIt();
+                if (this.values.activeSkills[i].IsAttachedToSender()) this.values.activeSkills[i].DeactivateIt();
             }
 
             RemoveAllStatusEffects();

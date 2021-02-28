@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System.Collections;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -17,14 +18,16 @@ namespace CrystalAlchemist
 
         private void Start()
         {
-            this.stats = Resources.Load<TeleportStats>(this.path.GetValue());
-            Invoke("Restart", 1f);
+            StartCoroutine(DelayCo());
         }
 
-        private void Restart()
+        private IEnumerator DelayCo()
         {
-            CancelInvoke();
+            this.stats = Resources.Load<TeleportStats>(this.path.GetValue());
             this.playerTeleport.SetNextTeleport(this.stats, true, true);
+
+            yield return new WaitForSeconds(2f);
+
             GameEvents.current.DoTeleport();
         }
     }

@@ -9,7 +9,9 @@ namespace CrystalAlchemist
         public enum Type
         {
             knockback,
-            invincible
+            invincible,
+            speedOnDurationValue,
+            speedOnDurationPercent
         }
 
         [System.Serializable]
@@ -31,6 +33,12 @@ namespace CrystalAlchemist
             [Tooltip("Dauer des Knockbacks")]
             [HideIf("thrust", 0f)]
             public float duration = 0;
+
+            [ShowIf("type", Type.speedOnDurationValue)]
+            [MinValue(-100)]
+            [MaxValue(100)]
+            [Tooltip("Bewegungseschwindigkeit während des Skills")]
+            public float value = 0;
         }
 
 
@@ -44,6 +52,7 @@ namespace CrystalAlchemist
             {
                 if (attribute.type == Type.invincible) this.skill.sender.values.isInvincible = true;
                 else if (attribute.type == Type.knockback) Thrust(attribute.forward, attribute.thrust, attribute.duration);
+                else if (attribute.type == Type.speedOnDurationValue) this.skill.sender.UpdateSpeedValue(attribute.value);
             }
         }
 
@@ -63,6 +72,7 @@ namespace CrystalAlchemist
             foreach (SenderAttributes attribute in this.attributes)
             {
                 if (attribute.type == Type.invincible) this.skill.sender.values.isInvincible = false;
+                else if (attribute.type == Type.speedOnDurationValue) this.skill.sender.UpdateSpeedPercent(0);
             }
         }
     }

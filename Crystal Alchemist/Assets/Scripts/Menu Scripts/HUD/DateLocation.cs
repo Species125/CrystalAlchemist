@@ -2,6 +2,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Photon.Pun;
+using System;
 
 namespace CrystalAlchemist
 {
@@ -40,7 +41,22 @@ namespace CrystalAlchemist
         [BoxGroup("Online")]
         [SerializeField]
         [Required]
-        private GameObject online;
+        private GameObject onlineStatus;
+
+        [BoxGroup("Online")]
+        [SerializeField]
+        [Required]
+        private GameObject privateRoom;
+
+        [BoxGroup("Online")]
+        [SerializeField]
+        [Required]
+        private GameObject savehouse;
+
+        [BoxGroup("Online")]
+        [SerializeField]
+        [Required]
+        private GameObject inCombat;
 
         [BoxGroup("Online")]
         [SerializeField]
@@ -60,10 +76,15 @@ namespace CrystalAlchemist
 
         private void UpdateOnlineStatus()
         {
-            if (PhotonNetwork.OfflineMode) this.online.SetActive(false);
-            else this.online.SetActive(true);
+            this.onlineStatus.SetActive(!PhotonNetwork.OfflineMode);
 
-            this.roomField.text = PhotonNetwork.CurrentRoom.Name;
+            Photon.Realtime.Room room = PhotonNetwork.CurrentRoom;
+
+            this.savehouse.SetActive(room.IsOpen);
+            this.inCombat.SetActive(!room.IsOpen);
+            this.privateRoom.SetActive(Convert.ToBoolean(room.CustomProperties["Private"]));
+
+            this.roomField.text = room.Name;
         }
 
         private void UpdateTime()

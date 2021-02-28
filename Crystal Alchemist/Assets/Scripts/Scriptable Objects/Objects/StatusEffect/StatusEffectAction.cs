@@ -46,7 +46,7 @@ namespace CrystalAlchemist
             switch (this.actionType)
             {
                 case StatusEffectActionType.changeResource: changeResource(character); break;
-                case StatusEffectActionType.speed: character.updateSpeed(this.speed); break;
+                case StatusEffectActionType.speed: character.UpdateSpeedPercent(this.speed); break;
                 case StatusEffectActionType.time: character.updateTimeDistortion(this.time); break;
                 case StatusEffectActionType.module: effect.doModule(); break;
                 case StatusEffectActionType.immortal: if (character != null) character.setCannotDie(true); break;
@@ -80,7 +80,7 @@ namespace CrystalAlchemist
 
         public void ResetAction(Character character)
         {
-            if (this.actionType == StatusEffectActionType.speed) character.updateSpeed(0);
+            if (this.actionType == StatusEffectActionType.speed) character.UpdateSpeedPercent(0);
             else if (this.actionType == StatusEffectActionType.time) character.updateTimeDistortion(0);
             else if (this.actionType == StatusEffectActionType.immortal) character.setCannotDie(false);
         }

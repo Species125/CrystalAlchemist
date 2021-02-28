@@ -26,35 +26,10 @@ namespace CrystalAlchemist
 
         private PhotonView photon;
         private int players;
-        private int playerCount;
 
         private void Start()
         {
-            this.photon = this.GetComponent<PhotonView>();
-            if (PhotonNetwork.InRoom) this.playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
-
-            if (NetworkUtil.IsLocal()) return;
-
-            NetworkEvents.current.OnPlayerEntered += OnPlayerEnteredRoom;
-            NetworkEvents.current.OnPlayerLeft += OnPlayerLeftRoom;    
-        }
-
-        private void OnDestroy()
-        {
-            if (NetworkUtil.IsLocal()) return;
-
-            NetworkEvents.current.OnPlayerEntered -= OnPlayerEnteredRoom;
-            NetworkEvents.current.OnPlayerLeft -= OnPlayerLeftRoom;
-        }
-
-        private void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
-        {
-            this.playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
-        }
-
-        private void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
-        {
-            this.playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
+            this.photon = this.GetComponent<PhotonView>(); 
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -91,7 +66,7 @@ namespace CrystalAlchemist
         {
             this.players += value;
 
-            if (this.players < this.playerCount) return;
+            if (this.players < PhotonNetwork.CurrentRoom.PlayerCount) return;
 
             this.teleportList.SetNextTeleport(this.stats);
             GameEvents.current.DoTeleport();

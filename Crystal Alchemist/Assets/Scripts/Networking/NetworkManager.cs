@@ -68,8 +68,7 @@ namespace CrystalAlchemist
 
         private void Instantiate()
         {
-            GameObject player = PhotonNetwork.Instantiate(this.prefab.path, Vector2.zero, Quaternion.identity, 0);
-            PhotonNetwork.LocalPlayer.TagObject = player.GetComponent<Player>();
+            GameObject player = PhotonNetwork.Instantiate(this.prefab.path, Vector2.zero, Quaternion.identity, 0);            
 
             player.GetComponent<Player>().uniqueID = PhotonNetwork.LocalPlayer.UserId;
         }

@@ -42,7 +42,6 @@ namespace CrystalAlchemist
 
             GameEvents.current.OnMenuOpened += SetToZero;
             GameEvents.current.OnCutScene += SetToZero;
-            GameEvents.current.OnLockDirection += SetDirectionLock;
         }
 
         private void OnDestroy()
@@ -51,7 +50,6 @@ namespace CrystalAlchemist
 
             GameEvents.current.OnMenuOpened -= SetToZero;
             GameEvents.current.OnCutScene -= SetToZero;
-            GameEvents.current.OnLockDirection -= SetDirectionLock;
         }
 
         private void SetChange(InputAction.CallbackContext ctx)
@@ -175,7 +173,7 @@ namespace CrystalAlchemist
             }
         }
 
-        private void SetDirectionLock(float value) => this.lockDuration = value;
+        public void SetDirectionLock(float value) => this.lockDuration = value;
 
         #endregion
     }

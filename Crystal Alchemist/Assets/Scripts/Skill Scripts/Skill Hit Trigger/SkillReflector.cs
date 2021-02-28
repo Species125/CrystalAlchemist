@@ -1,7 +1,4 @@
-﻿
-
-
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CrystalAlchemist
 {
@@ -9,25 +6,22 @@ namespace CrystalAlchemist
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.GetComponent<SkillCollider>() != null)
+            Skill hittedSkill = collision.GetComponentInParent<Skill>();
+
+            if (hittedSkill != null && CanBeReflected(hittedSkill))
             {
-                Skill skill = collision.GetComponent<SkillCollider>().skill;
+                hittedSkill.sender = this.skill.sender;
 
-                if (skill != null && isReflected(skill))
+                if (hittedSkill.myRigidbody != null)
                 {
-                    skill.sender = this.skill.sender;
-
-                    if (skill.myRigidbody != null)
-                    {
-                        skill.SetDirection(Vector2.Reflect(skill.GetDirection(), this.skill.GetDirection()));
-                        skill.GetComponent<SkillProjectile>().setVelocity();
-                        skill.transform.rotation = RotationUtil.getRotation(skill.GetDirection());
-                    }
+                    hittedSkill.SetDirection(Vector2.Reflect(hittedSkill.GetDirection(), this.skill.GetDirection()));
+                    hittedSkill.GetComponent<SkillProjectile>().setVelocity();
+                    hittedSkill.transform.rotation = RotationUtil.getRotation(hittedSkill.GetDirection());
                 }
             }
         }
 
-        private bool isReflected(Skill skill)
+        private bool CanBeReflected(Skill skill)
         {
             if (skill.GetComponent<SkillProjectileHit>() != null
                 && skill.GetComponent<SkillProjectileHit>().canBeReflected) return true;

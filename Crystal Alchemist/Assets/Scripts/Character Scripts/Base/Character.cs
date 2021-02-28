@@ -3,6 +3,7 @@ using Photon.Pun;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -83,6 +84,7 @@ namespace CrystalAlchemist
         #region Start Functions (Spawn, Init)
         public virtual void Awake()
         {
+
             this.values = ScriptableObject.CreateInstance<CharacterValues>(); //create new Values when not already assigned (NPC)
             this.values.Initialize();
 
@@ -163,6 +165,7 @@ namespace CrystalAlchemist
 
         public virtual void OnDestroy()
         {
+           
         }
 
         #endregion
@@ -291,12 +294,7 @@ namespace CrystalAlchemist
 
         #region Update Resources
 
-        public void updateSpeed(int addSpeed)
-        {
-            updateSpeed(addSpeed, true);
-        }
-
-        public void updateSpeed(int addSpeed, bool affectAnimation)
+        public void UpdateSpeedPercent(int addSpeed, bool affectAnimation = true)
         {
             float startSpeedInPercent = this.stats.startSpeed / 100;
             float addNewSpeed = startSpeedInPercent * ((float)addSpeed / 100);
@@ -306,6 +304,13 @@ namespace CrystalAlchemist
             if (affectAnimation && this.stats.startSpeed > 0)
                 this.animator.speed = this.values.speed / (this.stats.startSpeed * this.values.speedFactor / 100);
         }
+
+        public void UpdateSpeedValue(float newSpeed)
+        {
+            this.values.speed = (newSpeed / 100) * this.values.speedFactor;
+        }
+
+        public void ResetSpeed() => this.values.ResetSpeed(this.stats);        
 
         public void updateSpellSpeed(float addSpellSpeed)
         {
@@ -440,9 +445,7 @@ namespace CrystalAlchemist
             return false;
         }
 
-        private void showDamageNumber(float value) => ShowDamageNumber(value, NumberColor.yellow);
-
-        private void ShowDamageNumber(float value, NumberColor color)
+        private void ShowDamageNumber(float value, NumberColor color = NumberColor.yellow)
         {
             if (this.stats.showDamageNumbers) RpcShowDamageNumber(value, (byte)color);  
         }
@@ -496,7 +499,7 @@ namespace CrystalAlchemist
         {
             if (this.values.isInvincible)
             {
-                showDamageNumber(0);
+                ShowDamageNumber(0);
                 SetCannotHit(false);
             }
             else
@@ -541,7 +544,7 @@ namespace CrystalAlchemist
         {
             for (int i = 0; i < this.values.activeSkills.Count; i++)
             {
-                if (this.values.activeSkills[i].isAttachedToSender()) this.values.activeSkills[i].DeactivateIt();
+                if (this.values.activeSkills[i].IsAttachedToSender()) this.values.activeSkills[i].DeactivateIt();
             }
 
             RemoveAllStatusEffects();
@@ -725,9 +728,22 @@ namespace CrystalAlchemist
             this.characterCollider.enabled = value;
         }
 
-        public void startAttackAnimation(string parameter)
+        public void TriggerAnimation(string parameter)
         {
             AnimatorUtil.SetAnimatorParameter(this.animator, parameter);
+        }
+
+        public void SetAnimationToBool(string parameter, bool value)
+        {
+            AnimatorUtil.SetAnimatorParameter(this.animator, parameter, value);
+        }
+
+        public void SetAttachedSkillTriggers(int value)
+        {
+            foreach(Skill skill in this.values.activeSkills)
+            {
+                if (skill.IsAttachedToSender()) skill.SetTriggerActive(value);
+            }
         }
 
         #endregion

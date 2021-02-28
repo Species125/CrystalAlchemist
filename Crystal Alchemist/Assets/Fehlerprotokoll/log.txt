@@ -444,3 +444,240 @@ CrystalAlchemist.AIPhase:Updating(AI) (at Assets/Scripts/Scriptable Objects/Obje
 CrystalAlchemist.AICombat:Updating() (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:56)
 CrystalAlchemist.AI:Update() (at Assets/Scripts/Character Scripts/NPC/AI.cs:184)
 
+Exception 24.02.2021 20:38:28: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.SkillColliderOffset.GetPosition () (at Assets/Scripts/Skill Scripts/Helper/SkillColliderOffset.cs:29)
+CrystalAlchemist.Skill.GetPosition () (at Assets/Scripts/Skill Scripts/Skill.cs:170)
+CrystalAlchemist.RotationUtil.SetStartDirection (CrystalAlchemist.Skill skill) (at Assets/Scripts/Utilities/Utilities/RotationUtil.cs:48)
+CrystalAlchemist.Skill.SetVectors () (at Assets/Scripts/Skill Scripts/Skill.cs:150)
+CrystalAlchemist.Skill.Start () (at Assets/Scripts/Skill Scripts/Skill.cs:115)
+
+Exception 24.02.2021 20:38:30: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.SkillColliderOffset.GetPosition () (at Assets/Scripts/Skill Scripts/Helper/SkillColliderOffset.cs:29)
+CrystalAlchemist.Skill.GetPosition () (at Assets/Scripts/Skill Scripts/Skill.cs:170)
+CrystalAlchemist.RotationUtil.SetStartDirection (CrystalAlchemist.Skill skill) (at Assets/Scripts/Utilities/Utilities/RotationUtil.cs:48)
+CrystalAlchemist.Skill.SetVectors () (at Assets/Scripts/Skill Scripts/Skill.cs:150)
+CrystalAlchemist.Skill.Start () (at Assets/Scripts/Skill Scripts/Skill.cs:115)
+UnityEngine.GUIUtility:ProcessEvent(Int32, IntPtr, Boolean&)
+
+Exception 24.02.2021 20:38:32: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.SkillColliderOffset.GetPosition () (at Assets/Scripts/Skill Scripts/Helper/SkillColliderOffset.cs:29)
+CrystalAlchemist.Skill.GetPosition () (at Assets/Scripts/Skill Scripts/Skill.cs:170)
+CrystalAlchemist.RotationUtil.SetStartDirection (CrystalAlchemist.Skill skill) (at Assets/Scripts/Utilities/Utilities/RotationUtil.cs:48)
+CrystalAlchemist.Skill.SetVectors () (at Assets/Scripts/Skill Scripts/Skill.cs:150)
+CrystalAlchemist.Skill.Start () (at Assets/Scripts/Skill Scripts/Skill.cs:115)
+UnityEngine.GUIUtility:ProcessEvent(Int32, IntPtr, Boolean&)
+
+Exception 24.02.2021 20:38:34: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.SkillColliderOffset.GetPosition () (at Assets/Scripts/Skill Scripts/Helper/SkillColliderOffset.cs:29)
+CrystalAlchemist.Skill.GetPosition () (at Assets/Scripts/Skill Scripts/Skill.cs:170)
+CrystalAlchemist.RotationUtil.SetStartDirection (CrystalAlchemist.Skill skill) (at Assets/Scripts/Utilities/Utilities/RotationUtil.cs:48)
+CrystalAlchemist.Skill.SetVectors () (at Assets/Scripts/Skill Scripts/Skill.cs:150)
+CrystalAlchemist.Skill.Start () (at Assets/Scripts/Skill Scripts/Skill.cs:115)
+UnityEngine.GUIUtility:ProcessEvent(Int32, IntPtr, Boolean&)
+
+Exception 24.02.2021 20:38:44: MissingReferenceException: The object of type 'LineIndicator' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+CrystalAlchemist.IndicatorObject.ClearIndicator () (at Assets/Scripts/Indicators/IndicatorObject.cs:83)
+CrystalAlchemist.Ability.HideIndicator () (at Assets/Scripts/Scriptable Objects/Objects/Ability/Ability.cs:289)
+CrystalAlchemist.CharacterCombat.UnChargeAbility (CrystalAlchemist.Ability ability) (at Assets/Scripts/Character Scripts/Base/CharacterCombat.cs:67)
+CrystalAlchemist.AIAction.DisableSkill (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIAction.cs:409)
+CrystalAlchemist.AIAction.Disable (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIAction.cs:263)
+CrystalAlchemist.AIPhase.ResetActions (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIPhase.cs:151)
+CrystalAlchemist.AICombat.DestroyActivePhase () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:76)
+CrystalAlchemist.AICombat.RpcEndPhase (Photon.Pun.PhotonMessageInfo info) (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:128)
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <9577ac7a62ef43179789031239ba8798>:0)
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <9577ac7a62ef43179789031239ba8798>:0)
+System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) (at <9577ac7a62ef43179789031239ba8798>:0)
+Photon.Pun.PhotonNetwork.ExecuteRpc (ExitGames.Client.Photon.Hashtable rpcData, Photon.Realtime.Player sender) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs:493)
+Photon.Pun.PhotonNetwork.RPC (Photon.Pun.PhotonView view, System.String methodName, Photon.Pun.RpcTarget target, Photon.Realtime.Player player, System.Boolean encrypt, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs:1135)
+Photon.Pun.PhotonNetwork.RPC (Photon.Pun.PhotonView view, System.String methodName, Photon.Pun.RpcTarget target, System.Boolean encrypt, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs:2797)
+Photon.Pun.PhotonView.RPC (System.String methodName, Photon.Pun.RpcTarget target, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonView.cs:411)
+CrystalAlchemist.AICombat.EndPhase () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:121)
+CrystalAlchemist.AICombat.OnDisable () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:63)
+
+Exception 24.02.2021 20:38:44: MissingReferenceException: The object of type 'LineIndicator' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+CrystalAlchemist.IndicatorObject.ClearIndicator () (at Assets/Scripts/Indicators/IndicatorObject.cs:83)
+CrystalAlchemist.Ability.HideIndicator () (at Assets/Scripts/Scriptable Objects/Objects/Ability/Ability.cs:289)
+CrystalAlchemist.CharacterCombat.UnChargeAbility (CrystalAlchemist.Ability ability) (at Assets/Scripts/Character Scripts/Base/CharacterCombat.cs:67)
+CrystalAlchemist.AIAction.DisableSkill (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIAction.cs:409)
+CrystalAlchemist.AIAction.Disable (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIAction.cs:263)
+CrystalAlchemist.AIPhase.ResetActions (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIPhase.cs:151)
+CrystalAlchemist.AICombat.DestroyActivePhase () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:76)
+CrystalAlchemist.AICombat.RpcEndPhase (Photon.Pun.PhotonMessageInfo info) (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:128)
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <9577ac7a62ef43179789031239ba8798>:0)
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <9577ac7a62ef43179789031239ba8798>:0)
+System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) (at <9577ac7a62ef43179789031239ba8798>:0)
+Photon.Pun.PhotonNetwork.ExecuteRpc (ExitGames.Client.Photon.Hashtable rpcData, Photon.Realtime.Player sender) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs:493)
+Photon.Pun.PhotonNetwork.RPC (Photon.Pun.PhotonView view, System.String methodName, Photon.Pun.RpcTarget target, Photon.Realtime.Player player, System.Boolean encrypt, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs:1135)
+Photon.Pun.PhotonNetwork.RPC (Photon.Pun.PhotonView view, System.String methodName, Photon.Pun.RpcTarget target, System.Boolean encrypt, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs:2797)
+Photon.Pun.PhotonView.RPC (System.String methodName, Photon.Pun.RpcTarget target, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonView.cs:411)
+CrystalAlchemist.AICombat.EndPhase () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:121)
+CrystalAlchemist.AICombat.OnDestroy () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:68)
+
+Exception 24.02.2021 20:47:33: MissingReferenceException: The object of type 'LineIndicator' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+CrystalAlchemist.IndicatorObject.ClearIndicator () (at Assets/Scripts/Indicators/IndicatorObject.cs:83)
+CrystalAlchemist.Ability.HideIndicator () (at Assets/Scripts/Scriptable Objects/Objects/Ability/Ability.cs:289)
+CrystalAlchemist.CharacterCombat.UnChargeAbility (CrystalAlchemist.Ability ability) (at Assets/Scripts/Character Scripts/Base/CharacterCombat.cs:67)
+CrystalAlchemist.AIAction.DisableSkill (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIAction.cs:409)
+CrystalAlchemist.AIAction.Disable (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIAction.cs:263)
+CrystalAlchemist.AIPhase.ResetActions (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIPhase.cs:151)
+CrystalAlchemist.AICombat.DestroyActivePhase () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:76)
+CrystalAlchemist.AICombat.RpcEndPhase (Photon.Pun.PhotonMessageInfo info) (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:128)
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <9577ac7a62ef43179789031239ba8798>:0)
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <9577ac7a62ef43179789031239ba8798>:0)
+System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) (at <9577ac7a62ef43179789031239ba8798>:0)
+Photon.Pun.PhotonNetwork.ExecuteRpc (ExitGames.Client.Photon.Hashtable rpcData, Photon.Realtime.Player sender) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs:493)
+Photon.Pun.PhotonNetwork.RPC (Photon.Pun.PhotonView view, System.String methodName, Photon.Pun.RpcTarget target, Photon.Realtime.Player player, System.Boolean encrypt, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs:1135)
+Photon.Pun.PhotonNetwork.RPC (Photon.Pun.PhotonView view, System.String methodName, Photon.Pun.RpcTarget target, System.Boolean encrypt, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs:2797)
+Photon.Pun.PhotonView.RPC (System.String methodName, Photon.Pun.RpcTarget target, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonView.cs:411)
+CrystalAlchemist.AICombat.EndPhase () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:121)
+CrystalAlchemist.AICombat.OnDisable () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:63)
+
+Exception 24.02.2021 20:47:33: MissingReferenceException: The object of type 'LineIndicator' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+CrystalAlchemist.IndicatorObject.ClearIndicator () (at Assets/Scripts/Indicators/IndicatorObject.cs:83)
+CrystalAlchemist.Ability.HideIndicator () (at Assets/Scripts/Scriptable Objects/Objects/Ability/Ability.cs:289)
+CrystalAlchemist.CharacterCombat.UnChargeAbility (CrystalAlchemist.Ability ability) (at Assets/Scripts/Character Scripts/Base/CharacterCombat.cs:67)
+CrystalAlchemist.AIAction.DisableSkill (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIAction.cs:409)
+CrystalAlchemist.AIAction.Disable (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIAction.cs:263)
+CrystalAlchemist.AIPhase.ResetActions (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIPhase.cs:151)
+CrystalAlchemist.AICombat.DestroyActivePhase () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:76)
+CrystalAlchemist.AICombat.RpcEndPhase (Photon.Pun.PhotonMessageInfo info) (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:128)
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <9577ac7a62ef43179789031239ba8798>:0)
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <9577ac7a62ef43179789031239ba8798>:0)
+System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) (at <9577ac7a62ef43179789031239ba8798>:0)
+Photon.Pun.PhotonNetwork.ExecuteRpc (ExitGames.Client.Photon.Hashtable rpcData, Photon.Realtime.Player sender) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs:493)
+Photon.Pun.PhotonNetwork.RPC (Photon.Pun.PhotonView view, System.String methodName, Photon.Pun.RpcTarget target, Photon.Realtime.Player player, System.Boolean encrypt, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs:1135)
+Photon.Pun.PhotonNetwork.RPC (Photon.Pun.PhotonView view, System.String methodName, Photon.Pun.RpcTarget target, System.Boolean encrypt, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs:2797)
+Photon.Pun.PhotonView.RPC (System.String methodName, Photon.Pun.RpcTarget target, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonView.cs:411)
+CrystalAlchemist.AICombat.EndPhase () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:121)
+CrystalAlchemist.AICombat.OnDestroy () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:68)
+
+Exception 24.02.2021 21:05:12: MissingReferenceException: The object of type 'LineIndicator' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+CrystalAlchemist.IndicatorObject.ClearIndicator () (at Assets/Scripts/Indicators/IndicatorObject.cs:83)
+CrystalAlchemist.Ability.HideIndicator () (at Assets/Scripts/Scriptable Objects/Objects/Ability/Ability.cs:289)
+CrystalAlchemist.CharacterCombat.UnChargeAbility (CrystalAlchemist.Ability ability) (at Assets/Scripts/Character Scripts/Base/CharacterCombat.cs:67)
+CrystalAlchemist.AIAction.DisableSkill (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIAction.cs:409)
+CrystalAlchemist.AIAction.Disable (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIAction.cs:263)
+CrystalAlchemist.AIPhase.ResetActions (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIPhase.cs:151)
+CrystalAlchemist.AICombat.DestroyActivePhase () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:76)
+CrystalAlchemist.AICombat.RpcEndPhase (Photon.Pun.PhotonMessageInfo info) (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:128)
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <9577ac7a62ef43179789031239ba8798>:0)
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <9577ac7a62ef43179789031239ba8798>:0)
+System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) (at <9577ac7a62ef43179789031239ba8798>:0)
+Photon.Pun.PhotonNetwork.ExecuteRpc (ExitGames.Client.Photon.Hashtable rpcData, Photon.Realtime.Player sender) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs:493)
+Photon.Pun.PhotonNetwork.RPC (Photon.Pun.PhotonView view, System.String methodName, Photon.Pun.RpcTarget target, Photon.Realtime.Player player, System.Boolean encrypt, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs:1135)
+Photon.Pun.PhotonNetwork.RPC (Photon.Pun.PhotonView view, System.String methodName, Photon.Pun.RpcTarget target, System.Boolean encrypt, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs:2797)
+Photon.Pun.PhotonView.RPC (System.String methodName, Photon.Pun.RpcTarget target, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonView.cs:411)
+CrystalAlchemist.AICombat.EndPhase () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:121)
+CrystalAlchemist.AICombat.OnDisable () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:63)
+
+Exception 24.02.2021 21:05:12: MissingReferenceException: The object of type 'LineIndicator' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+CrystalAlchemist.IndicatorObject.ClearIndicator () (at Assets/Scripts/Indicators/IndicatorObject.cs:83)
+CrystalAlchemist.Ability.HideIndicator () (at Assets/Scripts/Scriptable Objects/Objects/Ability/Ability.cs:289)
+CrystalAlchemist.CharacterCombat.UnChargeAbility (CrystalAlchemist.Ability ability) (at Assets/Scripts/Character Scripts/Base/CharacterCombat.cs:67)
+CrystalAlchemist.AIAction.DisableSkill (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIAction.cs:409)
+CrystalAlchemist.AIAction.Disable (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIAction.cs:263)
+CrystalAlchemist.AIPhase.ResetActions (CrystalAlchemist.AI npc) (at Assets/Scripts/Scriptable Objects/Objects/AI/AIPhase.cs:151)
+CrystalAlchemist.AICombat.DestroyActivePhase () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:76)
+CrystalAlchemist.AICombat.RpcEndPhase (Photon.Pun.PhotonMessageInfo info) (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:128)
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <9577ac7a62ef43179789031239ba8798>:0)
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <9577ac7a62ef43179789031239ba8798>:0)
+System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) (at <9577ac7a62ef43179789031239ba8798>:0)
+Photon.Pun.PhotonNetwork.ExecuteRpc (ExitGames.Client.Photon.Hashtable rpcData, Photon.Realtime.Player sender) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs:493)
+Photon.Pun.PhotonNetwork.RPC (Photon.Pun.PhotonView view, System.String methodName, Photon.Pun.RpcTarget target, Photon.Realtime.Player player, System.Boolean encrypt, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs:1135)
+Photon.Pun.PhotonNetwork.RPC (Photon.Pun.PhotonView view, System.String methodName, Photon.Pun.RpcTarget target, System.Boolean encrypt, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs:2797)
+Photon.Pun.PhotonView.RPC (System.String methodName, Photon.Pun.RpcTarget target, System.Object[] parameters) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonView.cs:411)
+CrystalAlchemist.AICombat.EndPhase () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:121)
+CrystalAlchemist.AICombat.OnDestroy () (at Assets/Scripts/Character Scripts/NPC/AICombat.cs:68)
+
+Exception 26.02.2021 22:44:36: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerListUI.OnPlayerLeftRoom (Photon.Realtime.Player otherPlayer) (at Assets/Scripts/Menu Scripts/HUD/PlayerListUI.cs:74)
+CrystalAlchemist.NetworkEvents.PlayerLeftRoom (Photon.Realtime.Player newPlayer) (at Assets/Scripts/Game Scripts/Event Systems/NetworkEvents.cs:21)
+CrystalAlchemist.NetworkManager.OnPlayerLeftRoom (Photon.Realtime.Player newPlayer) (at Assets/Scripts/Networking/NetworkManager.cs:104)
+Photon.Realtime.InRoomCallbacksContainer.OnPlayerLeftRoom (Photon.Realtime.Player otherPlayer) (at Assets/Plugins/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:3848)
+Photon.Realtime.LoadBalancingClient.OnEvent (ExitGames.Client.Photon.EventData photonEvent) (at Assets/Plugins/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:2931)
+ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (ExitGames.Client.Photon.StreamBuffer stream) (at <55bb4164382346dfa5f9113093df0b12>:0)
+ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () (at <55bb4164382346dfa5f9113093df0b12>:0)
+ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () (at <55bb4164382346dfa5f9113093df0b12>:0)
+Photon.Pun.PhotonHandler.Dispatch () (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:205)
+Photon.Pun.PhotonHandler.FixedUpdate () (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:139)
+
+Exception 26.02.2021 22:45:25: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerListUI.OnPlayerLeftRoom (Photon.Realtime.Player otherPlayer) (at Assets/Scripts/Menu Scripts/HUD/PlayerListUI.cs:74)
+CrystalAlchemist.NetworkEvents.PlayerLeftRoom (Photon.Realtime.Player newPlayer) (at Assets/Scripts/Game Scripts/Event Systems/NetworkEvents.cs:21)
+CrystalAlchemist.NetworkManager.OnPlayerLeftRoom (Photon.Realtime.Player newPlayer) (at Assets/Scripts/Networking/NetworkManager.cs:104)
+Photon.Realtime.InRoomCallbacksContainer.OnPlayerLeftRoom (Photon.Realtime.Player otherPlayer) (at Assets/Plugins/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:3848)
+Photon.Realtime.LoadBalancingClient.OnEvent (ExitGames.Client.Photon.EventData photonEvent) (at Assets/Plugins/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:2931)
+ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (ExitGames.Client.Photon.StreamBuffer stream) (at <55bb4164382346dfa5f9113093df0b12>:0)
+ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () (at <55bb4164382346dfa5f9113093df0b12>:0)
+ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () (at <55bb4164382346dfa5f9113093df0b12>:0)
+Photon.Pun.PhotonHandler.Dispatch () (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:205)
+Photon.Pun.PhotonHandler.FixedUpdate () (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:139)
+
+Exception 26.02.2021 22:46:33: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerListUI.OnPlayerLeftRoom (Photon.Realtime.Player otherPlayer) (at Assets/Scripts/Menu Scripts/HUD/PlayerListUI.cs:74)
+CrystalAlchemist.NetworkEvents.PlayerLeftRoom (Photon.Realtime.Player newPlayer) (at Assets/Scripts/Game Scripts/Event Systems/NetworkEvents.cs:21)
+CrystalAlchemist.NetworkManager.OnPlayerLeftRoom (Photon.Realtime.Player newPlayer) (at Assets/Scripts/Networking/NetworkManager.cs:104)
+Photon.Realtime.InRoomCallbacksContainer.OnPlayerLeftRoom (Photon.Realtime.Player otherPlayer) (at Assets/Plugins/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:3848)
+Photon.Realtime.LoadBalancingClient.OnEvent (ExitGames.Client.Photon.EventData photonEvent) (at Assets/Plugins/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:2931)
+ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (ExitGames.Client.Photon.StreamBuffer stream) (at <55bb4164382346dfa5f9113093df0b12>:0)
+ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () (at <55bb4164382346dfa5f9113093df0b12>:0)
+ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () (at <55bb4164382346dfa5f9113093df0b12>:0)
+Photon.Pun.PhotonHandler.Dispatch () (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:205)
+Photon.Pun.PhotonHandler.FixedUpdate () (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:139)
+
+Exception 27.02.2021 00:38:48: MissingReferenceException: The object of type 'Player' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+UnityEngine.Component.GetComponent[T] () (at <82ec470c913149358ad0c83ad628910c>:0)
+Photon.Pun.PhotonView.Get (UnityEngine.Component component) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonView.cs:489)
+Photon.Pun.MonoBehaviourPun.get_photonView () (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PunClasses.cs:197)
+CrystalAlchemist.PlayerListUI.OnPlayerLeftRoom (Photon.Realtime.Player otherPlayer) (at Assets/Scripts/Menu Scripts/HUD/PlayerListUI.cs:74)
+CrystalAlchemist.NetworkEvents.PlayerLeftRoom (Photon.Realtime.Player newPlayer) (at Assets/Scripts/Game Scripts/Event Systems/NetworkEvents.cs:21)
+CrystalAlchemist.NetworkManager.OnPlayerLeftRoom (Photon.Realtime.Player newPlayer) (at Assets/Scripts/Networking/NetworkManager.cs:103)
+Photon.Realtime.InRoomCallbacksContainer.OnPlayerLeftRoom (Photon.Realtime.Player otherPlayer) (at Assets/Plugins/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:3848)
+Photon.Realtime.LoadBalancingClient.OnEvent (ExitGames.Client.Photon.EventData photonEvent) (at Assets/Plugins/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:2931)
+ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (ExitGames.Client.Photon.StreamBuffer stream) (at <55bb4164382346dfa5f9113093df0b12>:0)
+ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () (at <55bb4164382346dfa5f9113093df0b12>:0)
+ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () (at <55bb4164382346dfa5f9113093df0b12>:0)
+Photon.Pun.PhotonHandler.Dispatch () (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:205)
+Photon.Pun.PhotonHandler.FixedUpdate () (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:139)
+
+Exception 27.02.2021 01:01:14: MissingReferenceException: The object of type 'Player' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+UnityEngine.Component.GetComponent[T] () (at <82ec470c913149358ad0c83ad628910c>:0)
+Photon.Pun.PhotonView.Get (UnityEngine.Component component) (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonView.cs:489)
+Photon.Pun.MonoBehaviourPun.get_photonView () (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PunClasses.cs:197)
+CrystalAlchemist.PlayerListUI.OnPlayerLeftRoom (Photon.Realtime.Player otherPlayer) (at Assets/Scripts/Menu Scripts/HUD/PlayerListUI.cs:74)
+CrystalAlchemist.NetworkEvents.PlayerLeftRoom (Photon.Realtime.Player newPlayer) (at Assets/Scripts/Game Scripts/Event Systems/NetworkEvents.cs:21)
+CrystalAlchemist.NetworkManager.OnPlayerLeftRoom (Photon.Realtime.Player newPlayer) (at Assets/Scripts/Networking/NetworkManager.cs:103)
+Photon.Realtime.InRoomCallbacksContainer.OnPlayerLeftRoom (Photon.Realtime.Player otherPlayer) (at Assets/Plugins/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:3848)
+Photon.Realtime.LoadBalancingClient.OnEvent (ExitGames.Client.Photon.EventData photonEvent) (at Assets/Plugins/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:2931)
+ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (ExitGames.Client.Photon.StreamBuffer stream) (at <55bb4164382346dfa5f9113093df0b12>:0)
+ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () (at <55bb4164382346dfa5f9113093df0b12>:0)
+ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () (at <55bb4164382346dfa5f9113093df0b12>:0)
+Photon.Pun.PhotonHandler.Dispatch () (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:205)
+Photon.Pun.PhotonHandler.FixedUpdate () (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:139)
+
+Exception 27.02.2021 23:57:05: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.OnlineMenuGroupButton.SetInteractable (System.Boolean freeSlots) (at Assets/Scripts/Menu Scripts/Online/OnlineMenuGroupButton.cs:54)
+CrystalAlchemist.OnlineMenuGroupList.UpdateJoinPossible () (at Assets/Scripts/Menu Scripts/Online/OnlineMenuGroupList.cs:79)
+CrystalAlchemist.OnlineMenuGroupList.OnRoomListUpdate (System.Collections.Generic.List`1[T] roomList) (at Assets/Scripts/Menu Scripts/Online/OnlineMenuGroupList.cs:67)
+Photon.Realtime.LobbyCallbacksContainer.OnRoomListUpdate (System.Collections.Generic.List`1[T] roomList) (at Assets/Plugins/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:3925)
+Photon.Realtime.LoadBalancingClient.OnEvent (ExitGames.Client.Photon.EventData photonEvent) (at Assets/Plugins/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:2865)
+ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (ExitGames.Client.Photon.StreamBuffer stream) (at <55bb4164382346dfa5f9113093df0b12>:0)
+ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () (at <55bb4164382346dfa5f9113093df0b12>:0)
+ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () (at <55bb4164382346dfa5f9113093df0b12>:0)
+Photon.Pun.PhotonHandler.Dispatch () (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:205)
+Photon.Pun.PhotonHandler.FixedUpdate () (at Assets/Plugins/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:139)
+

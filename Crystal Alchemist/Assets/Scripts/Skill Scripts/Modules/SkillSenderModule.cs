@@ -21,7 +21,7 @@ namespace CrystalAlchemist
 
         [BoxGroup("Sender Attribute")]
         [Tooltip("Bewegungsgeschwindigkeit während des Angriffs")]
-        [Range(-100, 0)]
+        [Range(-100, 100)]
         public int speedDuringDuration = 0;
 
         [BoxGroup("Sender Attribute")]
@@ -37,11 +37,11 @@ namespace CrystalAlchemist
                 if (this.skill.sender.values.currentState != CharacterState.dead
                     && this.skill.sender.values.currentState != CharacterState.respawning)
                 {
-                    updateResourceSender();  
+                    UpdateResourceSender();  
                     this.elapsed = this.intervallSender;
                 }
 
-                if (this.speedDuringDuration != 0) this.skill.sender.updateSpeed(this.speedDuringDuration, this.affectAnimation);
+                if (this.speedDuringDuration != 0) this.skill.sender.UpdateSpeedPercent(this.speedDuringDuration, this.affectAnimation);
             }
         }
 
@@ -58,7 +58,7 @@ namespace CrystalAlchemist
                         else
                         {
                             this.elapsed = this.intervallSender;
-                            this.updateResourceSender();
+                            this.UpdateResourceSender();
                         }
                     }
                 }
@@ -69,11 +69,11 @@ namespace CrystalAlchemist
         {
             if (this.skill.sender != null)
             {
-                if (this.speedDuringDuration != 0) this.skill.sender.updateSpeed(0);
+                if (this.speedDuringDuration != 0) this.skill.sender.UpdateSpeedPercent(0);
             }
         }
 
-        private void updateResourceSender()
+        private void UpdateResourceSender()
         {
             if (this.skill.sender != null) this.skill.sender.ReduceResource(this.costs);
         }        

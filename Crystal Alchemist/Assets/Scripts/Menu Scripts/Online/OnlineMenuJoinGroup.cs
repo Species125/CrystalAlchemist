@@ -111,8 +111,11 @@ namespace CrystalAlchemist
                 return;
             }
 
-            PhotonNetwork.JoinRoom(this.roomName);
+            PhotonNetwork.JoinRoom(this.roomName);            
+        }
 
+        public override void OnJoinedRoom()
+        {
             this.menu.SetActive(false);
             this.cursor.gameObject.SetActive(false);
         }

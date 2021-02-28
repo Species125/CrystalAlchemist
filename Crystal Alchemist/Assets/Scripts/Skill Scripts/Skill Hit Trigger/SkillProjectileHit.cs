@@ -1,13 +1,11 @@
-﻿
-
-
-
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace CrystalAlchemist
 {
     public class SkillProjectileHit : SkillHitTrigger
     {
+        [InfoBox("Use Trigger 'Hit' when hit something")]
         public bool canBeReflected = false;
 
         private void OnTriggerEnter2D(Collider2D hittedCharacter)
@@ -27,7 +25,7 @@ namespace CrystalAlchemist
                 hittedCharacter.gameObject != this.skill.sender.gameObject //not self
                 && (CollisionUtil.CheckCollision(hittedCharacter, this.skill) //Character
                     || (hittedCharacter.GetComponent<Character>() == null && !hittedCharacter.isTrigger)) //Wall
-                && !isReflected(hittedCharacter))
+                && !IsReflectedBySkill(hittedCharacter))
             {
                 AbilityUtil.SetEffectOnHit(this.skill, this.transform.position);
                 AnimatorUtil.SetAnimatorParameter(this.skill.animator, "Hit");
@@ -35,13 +33,9 @@ namespace CrystalAlchemist
             }
         }
 
-        private bool isReflected(Collider2D hittedCharacter)
+        private bool IsReflectedBySkill(Collider2D collision)
         {
-            if (hittedCharacter.GetComponent<SkillCollider>() != null
-                && hittedCharacter.GetComponent<SkillCollider>().skill.GetComponent<SkillReflector>() != null
-                && this.canBeReflected) return true;
-
-            return false;
+            return this.canBeReflected && collision.GetComponentInParent<SkillReflector>() != null;
         }
     }
 }

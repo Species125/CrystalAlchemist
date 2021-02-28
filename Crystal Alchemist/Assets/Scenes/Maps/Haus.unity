@@ -6388,10 +6388,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1448332028}
     m_Modifications:
-    - target: {fileID: -7715411309496128954, guid: 40119d95f40b0fd4cacad871981fd20d,
+    - target: {fileID: 3656928174399384992, guid: 40119d95f40b0fd4cacad871981fd20d,
         type: 3}
-      propertyPath: sceneId
-      value: 3663637412
+      propertyPath: path
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3656928174399384993, guid: 40119d95f40b0fd4cacad871981fd20d,
         type: 3}
@@ -6452,6 +6452,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stone Plates
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524501899693095832, guid: 40119d95f40b0fd4cacad871981fd20d,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40119d95f40b0fd4cacad871981fd20d, type: 3}
@@ -8585,6 +8590,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_MaskInteraction
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770248722973075226, guid: 3fdf5e3032830d74ba994cf0ef0775f0,
+        type: 3}
+      propertyPath: canJoin
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1872984968936598828, guid: 3fdf5e3032830d74ba994cf0ef0775f0,
         type: 3}
@@ -22173,7 +22183,7 @@ MonoBehaviour:
   deactivate: 0
   objectsInArea: {fileID: 0}
   stringValue: {fileID: 11400000, guid: b6bb37e9b35dfc941a13ffb844247e19, type: 2}
-  localisationID: Haus
+  localisationID: Haus_Haus
 --- !u!1001 &7329349455632877342
 PrefabInstance:
   m_ObjectHideFlags: 0

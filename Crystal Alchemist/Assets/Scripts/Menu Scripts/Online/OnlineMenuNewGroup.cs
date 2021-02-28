@@ -90,14 +90,12 @@ namespace CrystalAlchemist
         public void Confirm()
         {             
             NetworkUtil.CreateRoom(this.roomName.GetValue(), this.maxPlayer.GetValue(), true, this.toggle.isOn, this.password.GetValue());
-
-            this.menu.SetActive(false);
-            this.cursor.gameObject.SetActive(false);
         }
 
         public override void OnCreatedRoom()
         {
-            
+            this.menu.SetActive(false);
+            this.cursor.gameObject.SetActive(false);
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)

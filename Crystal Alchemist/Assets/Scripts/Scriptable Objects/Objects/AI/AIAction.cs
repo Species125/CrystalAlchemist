@@ -13,7 +13,8 @@ namespace CrystalAlchemist
             castbar,
             cooldown,
             indicator,
-            repeat
+            repeat,
+            duration
         }
 
         [System.Serializable]
@@ -319,6 +320,10 @@ namespace CrystalAlchemist
                     this._amount = _override.amount;
                     this._keepCast = _override.keepCast;
                     this._delay = _override.delay;
+                }
+                else if (_override.type == AbilityOverrideType.duration)
+                {
+                    this.activeAbility.maxDuration = _override.time;
                 }
             }
 

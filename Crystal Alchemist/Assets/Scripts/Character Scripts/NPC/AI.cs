@@ -24,11 +24,7 @@ namespace CrystalAlchemist
         [ReadOnly]
         [SerializeField]
         private List<string> aggro = new List<string>();
-
-        [BoxGroup("Pflichtfelder")]
-        [ReadOnly]
-        [SerializeField]
-        private float needed = 1;
+        
 
         [BoxGroup("Events")]
         [SerializeField]
@@ -46,6 +42,7 @@ namespace CrystalAlchemist
         [ReadOnly]
         public bool rangeTriggered;
 
+        private float needed = 1;
         private bool isSleeping = true;
         private AggroClue activeClue;
         private Dictionary<int, float[]> aggroList = new Dictionary<int, float[]>();
@@ -296,7 +293,7 @@ namespace CrystalAlchemist
         public void _IncreaseAggroOnHit(Character newTarget, float damage)
         {
             if (aggroStats) _IncreaseAggroOnHit(newTarget, damage, this.aggroStats.aggroOnHitIncreaseFactor, this.aggroStats.firstHitMaxAggro);
-            else _IncreaseAggroOnHit(newTarget, damage);
+            else _IncreaseAggroOnHit(newTarget, damage, 1);
         }
 
         public void _IncreaseAggro(Character newTarget)
@@ -347,13 +344,12 @@ namespace CrystalAlchemist
 
         private void IncreaseAggroOnHit(int targetID, float damage, int factor, bool firstHit = false)
         {
-            float aggro = factor * damage / 100f;
-            if (firstHit) aggro = this.needed;
+            float aggro = factor * damage;
+            if (firstHit) aggro = this.needed*100f;
 
             if (targetID > 0)
             {
-                if (!this.aggroList.ContainsKey(targetID)) this.AddToAggroList(targetID, 0);                 
-                this.UpdateAggro(targetID, aggro);
+                if (!this.aggroList.ContainsKey(targetID)) this.AddToAggroList(targetID, 0, aggro);                 
 
                 if (!this.HasMainTarget()) this.ShowClue(MasterManager.markTarget);
             }
@@ -363,7 +359,7 @@ namespace CrystalAlchemist
         {
             if (targetID > 0)
             {
-                if (!this.aggroList.ContainsKey(targetID)) this.AddToAggroList(targetID, aggroIncrease);
+                if (!this.aggroList.ContainsKey(targetID)) this.AddToAggroList(targetID, aggroIncrease, aggroIncrease);
                 else ChangeAggroFactor(targetID, (int)aggroIncrease);
 
                 if (!this.HasMainTarget()) this.ShowClue(MasterManager.markTarget);
@@ -389,7 +385,7 @@ namespace CrystalAlchemist
             if (this.activeClue != null) this.activeClue.Hide();
         }
 
-        private void AddToAggroList(int character, float factor = 0, int startValue = 0)
+        private void AddToAggroList(int character, float factor = 0, float startValue = 0)
         {
             float start = (float)startValue / 100f;
             float fac = (float)factor / 100f;

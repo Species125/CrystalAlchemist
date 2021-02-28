@@ -227,24 +227,19 @@ namespace CrystalAlchemist
 
         public void Initialize()
         {
-            setStartParameters();
+            SetStartParameters();
         }
 
         public void Updating()
         {
-            updateCooldown();
-        }
-
-        private void updateCooldown()
-        {
             if (this.state == AbilityState.onCooldown)
             {
                 if (this.cooldownLeft > 0) this.cooldownLeft -= Time.deltaTime;
-                else setStartParameters();
+                else SetStartParameters();
             }
         }
 
-        public void setStartParameters()
+        public void SetStartParameters()
         {
             if (!this.hasCastTime) this.castTime = 0;
 

@@ -8,6 +8,12 @@ namespace CrystalAlchemist
 {
     public class OnlineMenu : MenuBehaviour
     {
+        private enum OnlineState
+        {
+            goOnline,
+            leave
+        }
+
         [BoxGroup("Online Menu")]
         [SerializeField]
         private NetworkSettings settings;
@@ -20,6 +26,8 @@ namespace CrystalAlchemist
         [SerializeField]
         private Selectable leave;
 
+        private OnlineState state;
+
         public override void Start()
         {
             base.Start();
@@ -31,15 +39,23 @@ namespace CrystalAlchemist
         public void JoinOrCreateGroup()
         {
             settings.offlineMode.SetValue(false);
-            PhotonNetwork.LeaveRoom();            
+            this.state = OnlineState.goOnline;
+            PhotonNetwork.LeaveRoom();                                  
+        }
+
+        public override void OnLeftRoom()
+        {
+            if (this.state == OnlineState.goOnline)
+            {                
+                NetworkUtil.LoadConnect();
+            }
             ExitMenu();
-            SceneManager.LoadScene("Loading");
         }
 
         public void LeaveGroup()
         {
             settings.offlineMode.SetValue(true);
-            PhotonNetwork.Disconnect();
+            this.state = OnlineState.leave;            
             ExitMenu();
             GameEvents.current.DoChangeScene(this.settings.currentScene.GetValue()); //go back to last scene            
         }        

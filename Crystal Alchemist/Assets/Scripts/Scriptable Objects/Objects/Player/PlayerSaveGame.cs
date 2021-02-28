@@ -41,7 +41,7 @@ namespace CrystalAlchemist
 
         [BoxGroup("Misc")]
         [SerializeField]
-        private StringValue nextScene;
+        private StringValue currentScene;
 
         [BoxGroup("Misc")]
         [SerializeField]
@@ -75,7 +75,7 @@ namespace CrystalAlchemist
             this.skillSet.Clear();
             this.attributes.Clear();
             this.progress.Clear();
-            this.nextScene.SetValue("");
+            this.currentScene.SetValue("");
             this.teleportPath.SetValue("");
             this.dialogBoxInfo.Clear();
             this.teleportList.Clear();

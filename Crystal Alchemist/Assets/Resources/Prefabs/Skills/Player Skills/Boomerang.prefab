@@ -77,7 +77,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1495712679004980976}
   myRigidbody: {fileID: 3342286359297243341}
   animator: {fileID: 5144022535530275040}
-  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -169,9 +168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
-  type: 3
+  type: 0
   positionHeight: 0
-  skillCollider: {fileID: 0}
+  skillCollider: {fileID: 6184954882989843985}
   positionOffset: 0.75
 --- !u!114 &4045291766486451841
 MonoBehaviour:
@@ -378,7 +377,6 @@ GameObject:
   - component: {fileID: 4017375866082164950}
   - component: {fileID: 3387214931352689131}
   - component: {fileID: 6184954882989843985}
-  - component: {fileID: 6095768163681619095}
   m_Layer: 13
   m_Name: shadow
   m_TagString: Untagged
@@ -486,17 +484,3 @@ PolygonCollider2D:
       - {x: 0.31338978, y: -0.24689722}
       - {x: 0.30718422, y: 0.19548535}
       - {x: 0.18617725, y: 0.3133899}
---- !u!114 &6095768163681619095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8920764398535549051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb7c1bd38a2a9de47a7ea21879a59e5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skill: {fileID: 980826649107003252}
-  mode: 1

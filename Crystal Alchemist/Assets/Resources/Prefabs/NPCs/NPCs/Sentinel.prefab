@@ -201,11 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f80b21aee0d2f47a0e58afdc49b328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aggroStats: {fileID: 11400000, guid: 74151ff649b937b418adb75846e519d1, type: 2}
   npc: {fileID: 5280788646405828722}
-  debug: 0
-  mainTarget: 
-  aggrodata: []
 --- !u!58 &7862652019329232228
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -388,10 +384,13 @@ MonoBehaviour:
   onDefeated:
     m_PersistentCalls:
       m_Calls: []
+  aggroStats: {fileID: 0}
+  mainTargetID: 0
+  aggro: []
   onTarget:
     m_PersistentCalls:
       m_Calls: []
-  mainTargetID: 0
+  alertPartners: []
   partner: {fileID: 0}
   rangeTriggered: 0
 --- !u!114 &7518508113067193731
@@ -424,7 +423,7 @@ MonoBehaviour:
   maxPatrolTime: 5
   followPathPrecision: 0.01
   followPathInCircle: 0
-  usePathfinding: 1
+  usePathfinding: 0
   accuracy: 0.25
   updateDelay: 0.5
   targetPosition: {x: 0, y: 0, z: 0}
@@ -443,7 +442,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 0}
   startPhase: {fileID: 11400000, guid: 9e6241ad94a039b4eb88295fc09c3c29, type: 2}
-  startImmediately: 1
   activePhase: {fileID: 0}
 --- !u!114 &1077067671459461634
 MonoBehaviour:

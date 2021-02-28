@@ -53,6 +53,7 @@ namespace CrystalAlchemist
             {
                 GameEvents.current.DoChangeState(MasterManager.globalValues.lastState);
                 GameEvents.current.DoMenuOverlay(false);
+                GameEvents.current.DoMenuClose();
 
                 if (this.changeVolume) MusicEvents.current.ChangeVolume(MasterManager.settings.backgroundMusicVolume);
             }
@@ -65,7 +66,7 @@ namespace CrystalAlchemist
         }
 
         public virtual void ExitMenu()
-        {            
+        {
             SceneManager.UnloadSceneAsync(this.gameObject.scene);
         }
     }
