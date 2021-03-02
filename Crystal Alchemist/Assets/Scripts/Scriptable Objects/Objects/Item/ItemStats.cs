@@ -14,11 +14,24 @@ namespace CrystalAlchemist
         ability
     }
 
+    public enum ItemRarity
+    {
+        common,
+        uncommon,
+        rare,
+        epic,
+        legendary,
+        unique
+    }
+
     [CreateAssetMenu(menuName = "Game/Items/Item Stats")]
     public class ItemStats : ScriptableObject
     {
         [BoxGroup("Attributes")]
         public ItemType itemType;
+
+        [BoxGroup("Attributes")]
+        public ItemRarity rarity = ItemRarity.common;
 
         [BoxGroup("Attributes")]
         [ShowIf("itemType", ItemType.consumable)]
@@ -120,6 +133,19 @@ namespace CrystalAlchemist
         public string getName()
         {
             return this.info.getName();
+        }
+
+        public Color GetRarity()
+        {
+            switch (this.rarity)
+            {
+                case ItemRarity.uncommon: return MasterManager.globalValues.uncommon;
+                case ItemRarity.epic: return MasterManager.globalValues.epic;
+                case ItemRarity.rare: return MasterManager.globalValues.rare;
+                case ItemRarity.legendary: return MasterManager.globalValues.legendary;
+                case ItemRarity.unique: return MasterManager.globalValues.unique;
+                default: return MasterManager.globalValues.common;
+            }
         }
 
         public string getDescription()

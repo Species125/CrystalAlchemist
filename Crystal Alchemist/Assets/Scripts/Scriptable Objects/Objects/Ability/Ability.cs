@@ -331,7 +331,7 @@ namespace CrystalAlchemist
 
         public bool HasEnoughResourceAndAmount()
         {
-            bool enoughResource = this.isResourceEnough();
+            bool enoughResource = this.IsResourceEnough();
             bool notToMany = true;
             bool granted = true;
 
@@ -378,14 +378,14 @@ namespace CrystalAlchemist
             return false;
         }
 
-        private bool isResourceEnough()
+        private bool IsResourceEnough()
         {
             if (this.sender == null) return false;
 
             SkillSenderModule senderModule = this.skill.GetComponent<SkillSenderModule>();
             if (senderModule != null)
             {
-                return this.sender.canUseIt(senderModule.costs);
+                return this.sender.CanUseSkill(senderModule.costs);
             }
             else return true;
         }

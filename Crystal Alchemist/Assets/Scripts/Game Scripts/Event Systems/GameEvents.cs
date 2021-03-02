@@ -23,6 +23,7 @@ namespace CrystalAlchemist
         public Action OnPresetChange;
         public Action OnPresetChangeToOthers;
         public Action<bool> OnSaveGame;
+        public Action OnRoomStatusChange;
 
         public Action<bool> OnCurrencyChanged;
         public Action<ItemDrop> OnCollect;
@@ -69,6 +70,7 @@ namespace CrystalAlchemist
         public Action<float> OnTimeChange;
         public Action OnTimeReset;
 
+        public void DoRoomStatusChange() => this.OnRoomStatusChange?.Invoke();
         public void DoSaveGame(bool buffered = true) => this.OnSaveGame?.Invoke(buffered);
         public void DoPresetChange() => this.OnPresetChange?.Invoke();
         public void DoPresetChangeToOthers() => this.OnPresetChangeToOthers?.Invoke();

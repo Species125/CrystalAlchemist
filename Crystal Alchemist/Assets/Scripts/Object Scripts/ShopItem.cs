@@ -45,7 +45,7 @@ namespace CrystalAlchemist
 
         public override void DoOnSubmit()
         {
-            if (this.player.canUseIt(this.costs))
+            if (this.player.CanUseInteraction(this.costs))
             {
                 this.player.ReduceResource(this.costs);
 

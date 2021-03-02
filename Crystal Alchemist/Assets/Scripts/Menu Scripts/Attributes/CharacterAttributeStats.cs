@@ -37,6 +37,8 @@ namespace CrystalAlchemist
             if (points > 0 && points == value) value--;
             else if (value - points > pointsLeft) value = points + pointsLeft;
 
+            if (value < 0) value = 0;
+
             this.mainMenu.attributes.SetPoints(this.type, value);
             this.mainMenu.attributes.SetValues();
             updateUI();

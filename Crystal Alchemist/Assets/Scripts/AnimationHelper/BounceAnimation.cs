@@ -11,9 +11,6 @@ namespace CrystalAlchemist
         private float gravity;
         private int bounces;
         private bool alreadyBouncing = false;
-        //private Animator anim;
-
-        //private void Start() => this.anim = this.GetComponent<Animator>();
 
         [Button]
         public void BounceItem()
@@ -22,11 +19,9 @@ namespace CrystalAlchemist
             Bounce();
         }
 
-
         public void Bounce()
         {
             if (alreadyBouncing) return;
-            //this.anim.enabled = false;
 
             this.yValue = 0;
             this.ySpeed = 0.1f;
@@ -53,7 +48,6 @@ namespace CrystalAlchemist
                 this.transform.localPosition = new Vector2(0, 1) * yValue;
                 yield return new WaitForFixedUpdate();
             }
-            //this.anim.enabled = true;
             this.transform.localPosition = Vector2.zero;
         }
 

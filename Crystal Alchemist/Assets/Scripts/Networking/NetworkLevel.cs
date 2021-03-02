@@ -8,7 +8,7 @@ namespace CrystalAlchemist
         [SerializeField]
         private bool canJoin = false;
 
-        private void Awake()
+        private void Start()
         {
             CanJoinGroup(this.canJoin);
         }
@@ -16,6 +16,7 @@ namespace CrystalAlchemist
         public void CanJoinGroup(bool value)
         {
             if (NetworkUtil.IsMaster()) PhotonNetwork.CurrentRoom.IsOpen = value;
+            GameEvents.current.DoRoomStatusChange();
         }
     }
 }

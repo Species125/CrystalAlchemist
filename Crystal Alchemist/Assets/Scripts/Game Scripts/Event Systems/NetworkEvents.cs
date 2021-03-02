@@ -477,14 +477,6 @@ namespace CrystalAlchemist
             InstantiateItemNetwork(drop, position, bounce, Vector2.zero);
         }
 
-        public void InstantiateTreasureItem(ItemDrop drop, Vector2 position, bool bounce, Vector2 playerPosition)
-        {
-            //Drop Item for Treasure
-            Vector2 direction = position - playerPosition;
-
-            InstantiateItemLocal(drop, position, bounce, direction);
-        }
-
         public void InstantiateItemNetwork(ItemDrop drop, Vector2 position, bool bounce, Vector2 direction)
         {
             InstantiateItemNetworkEvent(drop.path, position, bounce, direction);
@@ -509,7 +501,7 @@ namespace CrystalAlchemist
             PhotonNetwork.RaiseEvent(NetworkUtil.ITEMDROP_MASTER, datas, options, SendOptions.SendUnreliable);
         }*/
 
-        private void InstantiateItemLocal(ItemDrop drop, Vector2 position, bool bounce, Vector2 direction)
+        public void InstantiateItemLocal(ItemDrop drop, Vector2 position, bool bounce, Vector2 direction)
         {
             Collectable temp = Instantiate(drop.collectable, position, Quaternion.identity);
             temp.SetBounce(bounce, direction);

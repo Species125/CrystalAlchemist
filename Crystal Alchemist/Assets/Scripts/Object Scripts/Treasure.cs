@@ -10,6 +10,16 @@ namespace CrystalAlchemist
         lootbox
     }
 
+    public enum BounceDirection
+    {
+        player,
+        up,
+        down,
+        left,
+        right,
+        position
+    }
+
     public class Treasure : Rewardable
     {
         #region Attribute   
@@ -26,6 +36,14 @@ namespace CrystalAlchemist
         [BoxGroup("Treasure Options")]
         [SerializeField]
         private TreasureType treasureType = TreasureType.normal;
+
+        [BoxGroup("Treasure Options")]
+        [SerializeField]
+        private BounceDirection bounceDirection = BounceDirection.player;
+
+        [BoxGroup("Treasure Options")]
+        [SerializeField]
+        private Vector2 itemSpawnPosition;
 
         [BoxGroup("Treasure Options")]
         [SerializeField]
@@ -65,7 +83,6 @@ namespace CrystalAlchemist
         private float fadeNew = 0.5f;
 
         private Vector2 playerPosition;
-
         #endregion
 
         private bool canLoot = true;
@@ -109,7 +126,7 @@ namespace CrystalAlchemist
         {
             if (!canLoot) return;
 
-            if (this.player.canUseIt(this.costs))
+            if (this.player.CanUseInteraction(this.costs))
             {
                 this.playerPosition = this.player.GetGroundPosition();
                 this.player.ReduceResource(this.costs);
@@ -151,10 +168,23 @@ namespace CrystalAlchemist
         }
 
         public void ShowTreasureItem()
-        {           
-
+        {
             if (this.itemDrop != null)
-                NetworkEvents.current.InstantiateTreasureItem(this.itemDrop, this.transform.position, true, this.playerPosition);             
+            {
+                Vector2 position = this.transform.position;
+                Vector2 direction = position - this.playerPosition;
+
+                switch (this.bounceDirection)
+                {
+                    case BounceDirection.down: direction = Vector2.down; break;
+                    case BounceDirection.up: direction = Vector2.up; break;
+                    case BounceDirection.left: direction = Vector2.left; break;
+                    case BounceDirection.right: direction = Vector2.right; break;
+                    case BounceDirection.position: direction = Vector2.zero; position = this.itemSpawnPosition; break;
+                }
+
+                NetworkEvents.current.InstantiateItemLocal(this.itemDrop, position, true, direction);   
+            }
 
             if (this.treasureType == TreasureType.lootbox)
             {

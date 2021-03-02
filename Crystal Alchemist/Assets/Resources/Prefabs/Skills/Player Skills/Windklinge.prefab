@@ -374,7 +374,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   myRigidbody: {fileID: 4631301895737113989}
   animator: {fileID: 6324184591856260553}
-  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -460,7 +459,7 @@ MonoBehaviour:
     item: {fileID: 0}
     keyItem: {fileID: 0}
     statusEffect: {fileID: 0}
-    amount: -1
+    amount: -1.5
   modifiers: []
   thrust: 4
   knockbackTime: 0.2
@@ -478,8 +477,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
-  animationTriggerName: sword
-  useColor: 0
   targetColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &6324184591856260553
 Animator:

@@ -45,6 +45,10 @@ namespace CrystalAlchemist
         [ShowIf("hasSelfDestruction")]
         private float duration = 60f;
 
+        [BoxGroup("Pflichtfeld")]
+        [SerializeField]
+        private float delay = 1f;
+
         private float elapsed;
         private bool showEffectOnDisable = true;
 
@@ -53,8 +57,8 @@ namespace CrystalAlchemist
         private float blinkSpeed = 0.1f;
 
         private Rigidbody2D myRigidbody;
-        private bool canMoveBounce = false;
         private Vector2 direction;
+        private bool canCollect = false;
 
         [AssetIcon]
         private Sprite GetSprite()
@@ -85,7 +89,7 @@ namespace CrystalAlchemist
         private void Start()
         {
             this.myRigidbody = this.GetComponent<Rigidbody2D>();
-            Bounce();
+            Bounce(true);
 
             if (this.itemDrop.HasKeyItem())
             {
@@ -133,18 +137,28 @@ namespace CrystalAlchemist
         public override void OnEnable()
         {
             base.OnEnable();
-            Bounce();
+            Bounce();            
         }
 
-        private void Bounce()
+        private void ChangeCollectState()
         {
-            if (this.showEffectOnEnable && this.bounceAnimation != null)
+            this.canCollect = true;
+        }
+
+        private void Bounce(bool onStart = false)
+        {
+            if (this.showEffectOnEnable && this.bounceAnimation != null && this.myRigidbody != null)
             {
+                Invoke("ChangeCollectState", this.delay);
                 this.bounceAnimation.Bounce();
 
                 Vector2 targetPosition = (Vector2)this.transform.position + (this.direction * 1.5f);
-                this.GetComponent<Rigidbody2D>().DOMove(targetPosition, 1.75f);
+                this.myRigidbody.DOMove(targetPosition, 1.75f);
             }
+            else
+            {
+                if (onStart) ChangeCollectState();
+            }            
         }
 
         [Button]
@@ -174,9 +188,13 @@ namespace CrystalAlchemist
 
         #region Collect Item Funktionen
 
-        public void OnTriggerEnter2D(Collider2D character)
+        private void OnTriggerEnter2D(Collider2D character) => CollectEnter(character);
+
+        private void OnTriggerStay2D(Collider2D character) => CollectEnter(character);
+
+        private void CollectEnter(Collider2D character)
         {
-            if (!character.isTrigger) 
+            if (!character.isTrigger && this.canCollect)
             {
                 Player player = character.GetComponent<Player>();
                 if (player != null && player.isLocalPlayer) CollectIt(player);

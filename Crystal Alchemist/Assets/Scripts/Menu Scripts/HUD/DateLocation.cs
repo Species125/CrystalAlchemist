@@ -65,14 +65,19 @@ namespace CrystalAlchemist
 
         private void Start()
         {
-            SettingsEvents.current.OnLanguangeChanged += updateLocationText;
+            SettingsEvents.current.OnLanguangeChanged += UpdateLocationText;
+            GameEvents.current.OnRoomStatusChange += UpdateOnlineStatus;
             UpdateOnlineStatus();
-            updateLocationText();
+            UpdateLocationText();
         }
 
         private void Update() => UpdateTime();
 
-        private void OnDestroy() => SettingsEvents.current.OnLanguangeChanged -= updateLocationText;
+        private void OnDestroy()
+        {
+            SettingsEvents.current.OnLanguangeChanged -= UpdateLocationText;
+            GameEvents.current.OnRoomStatusChange -= UpdateOnlineStatus;
+        }
 
         private void UpdateOnlineStatus()
         {
@@ -105,7 +110,7 @@ namespace CrystalAlchemist
             }
         }
 
-        private void updateLocationText()
+        private void UpdateLocationText()
         {
             this.textField.text = FormatUtil.GetLocalisedText(this.locationID.GetValue(), LocalisationFileType.maps);
         }

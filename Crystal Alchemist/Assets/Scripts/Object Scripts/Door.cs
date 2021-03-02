@@ -51,7 +51,7 @@ namespace CrystalAlchemist
                 {
                     if (this.doorType == DoorType.normal)
                     {
-                        if (this.player.canUseIt(this.costs))
+                        if (this.player.CanUseInteraction(this.costs))
                         {
                             //Tür offen!
                             this.player.ReduceResource(this.costs);

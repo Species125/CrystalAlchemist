@@ -712,10 +712,16 @@ namespace CrystalAlchemist
             return true; //Override by Player and used by Ability
         }
 
-        public bool canUseIt(Costs price)
+        public bool CanUseInteraction(Costs price)
         {
-            //Door, Shop, Treasure, Abilities
+            //Door, Shop, Treasure
             if (this.values.CanMove() && HasEnoughCurrency(price)) return true;
+            return false;
+        }
+
+        public bool CanUseSkill(Costs price)
+        {
+            if (this.values.CanUseAbilities() && HasEnoughCurrency(price)) return true;
             return false;
         }
 

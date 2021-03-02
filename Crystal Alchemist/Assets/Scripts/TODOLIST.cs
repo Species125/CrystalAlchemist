@@ -11,9 +11,12 @@ namespace CrystalAlchemist
         - Player Color-Parts by Emissions
         - Trigger Active on Skills
         - Empty Map
-        - Phase Sync on Player Enter
 
         - Flammen Objekt (Statuseffekt, Flammenwerfer, etc)
+        - Projektile überarbeiten (offset), bigger colliders
+        - Crafting (Skills, Outfits, Attribute Points, etc)
+        - Housing
+        - Multiloot
         
         Share Damage script
         Attach to sender

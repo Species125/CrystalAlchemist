@@ -15,8 +15,9 @@ namespace CrystalAlchemist
 
         private void Start()
         {
-            GameObject gameObject = NetworkUtil.GetLocalPlayer().gameObject;
-            this.myRigidbody = gameObject.GetComponent<Rigidbody2D>();
+            Player player = NetworkUtil.GetLocalPlayer();
+            if (player == null) return;
+            this.myRigidbody = player.gameObject.GetComponent<Rigidbody2D>();
         }
 
         public void Play()
