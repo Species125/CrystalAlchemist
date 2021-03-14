@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 8534472210655833774}
   - component: {fileID: 6063059781987790246}
   - component: {fileID: 7877254647852432545}
+  - component: {fileID: -2809926009643182325}
+  - component: {fileID: 2501684135181451878}
   m_Layer: 13
   m_Name: Stromschlag
   m_TagString: Skill
@@ -93,7 +95,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6508292816955024436}
   myRigidbody: {fileID: 0}
   animator: {fileID: 0}
-  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -104,6 +105,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 0, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!114 &2029259155831185462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,9 +131,6 @@ MonoBehaviour:
   speedDuringCasting: 0
   speedDuringDuration: 0
   affectAnimation: 1
-  forward: 0
-  selfThrust: 0
-  selfThrustTime: 0
 --- !u!114 &1786086293429796885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +151,7 @@ MonoBehaviour:
     statusEffect: {fileID: 0}
     amount: -0.5
   modifiers: []
+  shareDamage: 0
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}
@@ -183,7 +185,7 @@ MonoBehaviour:
   skill: {fileID: 0}
   type: 3
   positionHeight: 1.5
-  colliderHeightOffset: 0
+  positionOffset: 0
 --- !u!210 &7877254647852432545
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -195,6 +197,39 @@ SortingGroup:
   m_SortingLayerID: -1702512615
   m_SortingLayer: 2
   m_SortingOrder: 1
+--- !u!114 &-2809926009643182325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680506914304237522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e50e67d27afcf84baa9de1b78813445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  timeDistortable: 0
+--- !u!114 &2501684135181451878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680506914304237522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdebd154a506234d85ef301888ca8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  attributes:
+  - type: 4
+    forward: 0
+    thrust: 0
+    duration: 0
+    value: 0
 --- !u!1 &6508292816955024442
 GameObject:
   m_ObjectHideFlags: 0

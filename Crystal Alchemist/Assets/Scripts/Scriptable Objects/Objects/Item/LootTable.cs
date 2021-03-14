@@ -1,5 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -57,7 +58,7 @@ namespace CrystalAlchemist
 
         public ItemDrop GetItemDrop()
         {
-            if (this.hasAlternative && this.firstLoot.item.HasKeyItem()) this.loot = this.alternativeLoot;
+            if (this.hasAlternative && this.firstLoot.item.HasItemAlready()) this.loot = this.alternativeLoot;
             else this.loot = this.firstLoot;
 
             ItemDrop result = this.loot.item.Instantiate(this.loot.amount);
@@ -68,21 +69,67 @@ namespace CrystalAlchemist
     [CreateAssetMenu(menuName = "Game/Items/Loot Table")]
     public class LootTable : ScriptableObject
     {
+        public enum LootType
+        {
+            single,
+            multi,
+            all
+        }
+
         [SerializeField]
         private List<LootTableEntry> entries = new List<LootTableEntry>();
 
-        public ItemDrop GetItemDrop()
+        [BoxGroup("Options")]
+        [SerializeField]
+        private LootType type;
+
+        [BoxGroup("Options")]
+        [SerializeField]
+        [Min(1)]
+        [Tooltip("additional amount of loot")]
+        [ShowIf("type", LootType.multi)]
+        private int additionalLoot = 1;
+
+        public List<ItemDrop> GetItemDrops()
         {
             int randomNumber = Random.Range(1, 100);
-            List<Reward> possibleRewards = new List<Reward>();
+            List<ItemDrop> possibleRewards = new List<ItemDrop>();
 
             foreach (LootTableEntry entry in this.entries)
             {
-                if (entry.dropRate > randomNumber || !entry.hasDropRate) possibleRewards.Add(entry.reward);
+                if (entry.dropRate > randomNumber || !entry.hasDropRate) possibleRewards.Add(entry.reward.GetItemDrop());
             }
 
-            if (possibleRewards.Count > 0) return possibleRewards[Random.Range(0, possibleRewards.Count)].GetItemDrop();
-            else return null;
+            if (this.type == LootType.all) return possibleRewards;
+
+            return GetItemDropsLimited(possibleRewards);
+        }
+
+        private List<ItemDrop> GetItemDropsLimited(List<ItemDrop> possibleRewards)
+        {
+            List<ItemDrop> rewards = new List<ItemDrop>();
+            possibleRewards.OrderBy(x => x.stats.rarity).ThenBy(x => x.GetNumber());
+
+            if (possibleRewards.Count > 0)
+            {
+                rewards.Add(possibleRewards[0]); //Get Highest Rarity garanteed
+
+                if (this.type == LootType.single) return rewards;
+
+                int maxLoot = Random.Range(0, this.additionalLoot); //How many additional loot?
+                int i = 0;
+
+                while (i < maxLoot)
+                {
+                    int index = Random.Range(0, possibleRewards.Count);
+                    ItemDrop drop = possibleRewards[index];
+
+                    rewards.Add(drop);
+                    i++;
+                }
+            }
+
+            return rewards;
         }
     }
 }

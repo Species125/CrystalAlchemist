@@ -12,7 +12,7 @@ namespace CrystalAlchemist
 
         [BoxGroup]
         [SerializeField]
-        private ItemGroup item;
+        private InventoryItem item;
 
         [BoxGroup]
         [SerializeField]

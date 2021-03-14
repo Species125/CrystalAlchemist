@@ -466,18 +466,16 @@ namespace CrystalAlchemist
 
         #region Items
 
-        public void InstantiateItem(ItemDrop drop, Vector2 position)
-        {
-            InstantiateItem(drop, position, false);
-        }
-
-        public void InstantiateItem(ItemDrop drop, Vector2 position, bool bounce)
+        public void InstantiateItem(ItemDrop drop, Vector2 position, bool bounce = false)
         {
             //Drop Item on Kill
-            InstantiateItemNetwork(drop, position, bounce, Vector2.zero);
+            Vector2 direction = UnityUtil.RandomVector(Vector2.zero, 0.25f);
+            position = UnityUtil.RandomVector(position, 0.25f);
+
+            InstantiateItem(drop, position, bounce, direction);
         }
 
-        public void InstantiateItemNetwork(ItemDrop drop, Vector2 position, bool bounce, Vector2 direction)
+        public void InstantiateItem(ItemDrop drop, Vector2 position, bool bounce, Vector2 direction)
         {
             InstantiateItemNetworkEvent(drop.path, position, bounce, direction);
         }
@@ -490,18 +488,15 @@ namespace CrystalAlchemist
             PhotonNetwork.RaiseEvent(NetworkUtil.ITEMDROP, datas, options, SendOptions.SendUnreliable);
         }
 
-        /*
-        public void InstantiateItemMaster(object[] datas)
+        public void InstantiateTreasureItem(ItemDrop drop, Vector2 position, bool bounce, Vector2 direction)
         {
-            RaiseEventOptions options = new RaiseEventOptions()
-            {
-                Receivers = ReceiverGroup.All
-            };
+            direction = UnityUtil.RandomVector(direction, 0.25f);
+            position = UnityUtil.RandomVector(position, 0.25f);
 
-            PhotonNetwork.RaiseEvent(NetworkUtil.ITEMDROP_MASTER, datas, options, SendOptions.SendUnreliable);
-        }*/
+            InstantiateItemLocal(drop, position, bounce, direction);
+        }
 
-        public void InstantiateItemLocal(ItemDrop drop, Vector2 position, bool bounce, Vector2 direction)
+        private void InstantiateItemLocal(ItemDrop drop, Vector2 position, bool bounce, Vector2 direction)
         {
             Collectable temp = Instantiate(drop.collectable, position, Quaternion.identity);
             temp.SetBounce(bounce, direction);

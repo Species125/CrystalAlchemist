@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2329490064039763128}
   - component: {fileID: 4057020238127454048}
   - component: {fileID: 8871098035158512558}
+  - component: {fileID: 6264645012179210800}
   m_Layer: 13
   m_Name: Analysis Zauber
   m_TagString: Skill
@@ -49,7 +50,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   myRigidbody: {fileID: 0}
   animator: {fileID: 0}
-  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -60,6 +60,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 0, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!114 &4057020238127454048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,8 +82,8 @@ MonoBehaviour:
     keyItem: {fileID: 0}
     statusEffect: {fileID: 11400000, guid: 8f541562bfc667a428366e48851fef05, type: 2}
     amount: 1
-  statusEffects: []
   modifiers: []
+  shareDamage: 0
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: dd168bb8d1990c347ab8482d6d72d84c, type: 2}
@@ -98,3 +101,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill: {fileID: 2329490064039763128}
   invincibleTimer: 0
+--- !u!114 &6264645012179210800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2277580816030834969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e50e67d27afcf84baa9de1b78813445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  timeDistortable: 0

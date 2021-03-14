@@ -114,13 +114,13 @@ namespace CrystalAlchemist
                     SkillMenuActiveSlots activeSlot = button.gameObject.GetComponent<SkillMenuActiveSlots>();
                     CharacterAttributeStats attributesStat = button.gameObject.GetComponent<CharacterAttributeStats>();
 
-                    if (itemUI != null && itemUI.getItemGroup() != null)
+                    if (itemUI != null && itemUI.GetInventoryItem() != null)
                     {
-                        this.infoBox.Show(itemUI.getItemGroup());
+                        this.infoBox.Show(itemUI.GetInventoryItem());
                     }
-                    else if (itemUI != null && itemUI.getItemStat() != null)
+                    else if (itemUI != null && itemUI.GetItemStat() != null)
                     {
-                        this.infoBox.Show(itemUI.getItemStat());
+                        this.infoBox.Show(itemUI.GetItemStat());
                     }
                     else if (skillSlot != null && skillSlot.ability != null)
                     {

@@ -5,16 +5,6 @@ namespace CrystalAlchemist
 {
     public static class AbilityUtil
     {
-        public static Ability InstantiateAbility(Ability ability)
-        {
-            Ability newAbility = Object.Instantiate(ability);
-            newAbility.Initialize();
-            newAbility.name = ability.name;
-            newAbility.SetSender(ability.GetSender());
-
-            return newAbility;
-        }
-
         public static Ability InstantiateAbility(Ability ability, Character sender)
         {
             Ability newAbility = Object.Instantiate(ability);
@@ -54,16 +44,15 @@ namespace CrystalAlchemist
             if (target != null) activeSkill.target = target;
 
             activeSkill.name = ability.skill.name;
-            activeSkill.Initialize(ability.lockDirection, ability.lockDuration, ability.isRapidFire, ability.timeDistortion, ability.attachToSender);
+            activeSkill.isRapidFire = ability.isRapidFire;
             activeSkill.SetMaxDuration(ability.hasMaxDuration, ability.maxDuration);
             activeSkill.SetStandAlone(standAlone);
             activeSkill.SetDelay(ability.hasDelay, ability.delay);            
 
-            ReduceCostAndDamage(ability, activeSkill, reduce, ability.shareDamage);
+            ReduceCostAndDamage(activeSkill, reduce);
 
             if (sender != null)
-            {
-                if (ability.attachToSender) activeSkill.transform.parent = sender.activeSkillParent.transform;
+            {                
                 activeSkill.sender = sender;
                 sender.values.activeSkills.Add(activeSkill);
             }
@@ -73,12 +62,12 @@ namespace CrystalAlchemist
 
 
 
-        public static void ReduceCostAndDamage(Ability ability, Skill activeSkill, float reduce, bool shareDamage)
+        public static void ReduceCostAndDamage(Skill activeSkill, float reduce)
         {
             SkillTargetModule targetModule = activeSkill.GetComponent<SkillTargetModule>();
             SkillSenderModule sendermodule = activeSkill.GetComponent<SkillSenderModule>();
 
-            if (targetModule != null && shareDamage)
+            if (targetModule != null && targetModule.shareDamage)
             {
                 List<CharacterResource> temp = new List<CharacterResource>();
 

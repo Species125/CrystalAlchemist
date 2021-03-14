@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Face Gear
   m_EditorClassIdentifier: 
   note: Brillen und Co
+  type: 02000000
   canRemove: 1
-  properties:
-  - {fileID: 11400000, guid: 1d383dbb03493c147afa34b301aa8227, type: 2}
-  - {fileID: 11400000, guid: 4dc51bcdae4282946a69df8b61a4f03a, type: 2}
+  outfits:
+  - isDefault: 1
+    property: {fileID: 11400000, guid: 1d383dbb03493c147afa34b301aa8227, type: 2}
+  - isDefault: 1
+    property: {fileID: 11400000, guid: 4dc51bcdae4282946a69df8b61a4f03a, type: 2}

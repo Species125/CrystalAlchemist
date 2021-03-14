@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1866628593189516363}
-  - component: {fileID: 8613971535191392423}
   - component: {fileID: 4604414626340877765}
   m_Layer: 13
   m_Name: Collider
@@ -32,57 +31,6 @@ Transform:
   m_Father: {fileID: 2537374611990174651}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8613971535191392423
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969786539046508152}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 0, g: 0.254717, b: 0.044298414, a: 0}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!70 &4604414626340877765
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -253,7 +201,8 @@ GameObject:
   - component: {fileID: 4588277751585783558}
   - component: {fileID: 6866986401814778853}
   - component: {fileID: 7657995963615701156}
-  - component: {fileID: 2254349419383292315}
+  - component: {fileID: 4367680869680742189}
+  - component: {fileID: 9171885275904473682}
   m_Layer: 13
   m_Name: Arkaner Impuls
   m_TagString: Skill
@@ -336,6 +285,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 0, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!114 &6919527800721261145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,6 +351,7 @@ MonoBehaviour:
     statusEffect: {fileID: 0}
     amount: -1
   modifiers: []
+  shareDamage: 0
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}
@@ -466,9 +419,8 @@ MonoBehaviour:
   skill: {fileID: 0}
   type: 0
   positionHeight: 0
-  skillCollider: {fileID: 0}
   positionOffset: 1
---- !u!114 &2254349419383292315
+--- !u!114 &4367680869680742189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -477,11 +429,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 6814274785137477229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6a4d538c86cab24aab8c4ca2b366503, type: 3}
+  m_Script: {fileID: 11500000, guid: 4198b057e60445749808a436d5119bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
   effect: {fileID: 906471282273262046, guid: c5a1c1e4b21a36241b2dbceb0eca3302, type: 3}
+  mode: 0
+  rotationType: 1
+  attachToSender: 1
+  delay: 0
+  hasMaxDistance: 0
+  maxDistanceBetween: 1
+  autoDestroy: 0
+  autoDestroyAfter: 0
+--- !u!114 &9171885275904473682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6814274785137477229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdebd154a506234d85ef301888ca8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  attributes:
+  - type: 5
+    forward: 0
+    thrust: 0
+    duration: 0.2
+    value: 0
 --- !u!1001 &4484190714160488513
 PrefabInstance:
   m_ObjectHideFlags: 0

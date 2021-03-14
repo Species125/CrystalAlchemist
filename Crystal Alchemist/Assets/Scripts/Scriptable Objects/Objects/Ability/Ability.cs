@@ -131,43 +131,22 @@ namespace CrystalAlchemist
         [SerializeField]
         public SkillRequirement requirements;
 
-        [BoxGroup("Booleans")]
+        [BoxGroup("Controls")]
         [SerializeField]
         public bool isRapidFire = false;
 
-        [BoxGroup("Booleans")]
+        [BoxGroup("Controls")]
         [SerializeField]
         public bool remoteActivation = false;
 
-        [BoxGroup("Booleans")]
+        [BoxGroup("Controls")]
         [SerializeField]
         public bool deactivateButtonUp = false;
 
-        [BoxGroup("Booleans")]
+        [BoxGroup("Controls")]
         [SerializeField]
         [HideIf("castTime", 0f)]
         public bool keepCast = false;
-
-        [BoxGroup("Behaviors")]
-        [SerializeField]
-        public bool shareDamage = false;
-
-        [BoxGroup("Behaviors")]
-        [Tooltip("Folgt der Skill dem Charakter")]
-        public bool attachToSender = false;
-
-        [HorizontalGroup("Behaviors/Lock")]
-        [Tooltip("Während des Skills schaut der Charakter in die gleiche Richtung")]
-        public bool lockDirection = false;
-
-        [HorizontalGroup("Behaviors/Lock")]
-        [ShowIf("lockDirection")]
-        [Tooltip("Während des Skills schaut der Charakter in die gleiche Richtung")]
-        public float lockDuration = 0.15f;
-
-        [BoxGroup("Behaviors")]
-        [Tooltip("Soll der Skill einer Zeitstörung beeinträchtigt werden?")]
-        public bool timeDistortion = true;
 
         [BoxGroup("Debug")]
         [ReadOnly]
@@ -200,6 +179,13 @@ namespace CrystalAlchemist
         {
             if (this.hasSkillBookInfo && this.info != null) return this.info.icon;
             return this.icon;
+        }
+
+        public Ability Instantiate()
+        {
+            Ability clone = Instantiate(this);
+            clone.name = this.name;
+            return clone;
         }
 
         private void OnCastTimeChange()

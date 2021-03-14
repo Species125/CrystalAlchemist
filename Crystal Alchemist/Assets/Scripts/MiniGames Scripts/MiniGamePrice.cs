@@ -39,7 +39,7 @@ namespace CrystalAlchemist
                 this.image.enabled = true;
 
                 int amount = 0;
-                if (GameEvents.current.HasKeyItem(price.keyItem.name)) amount = 1;
+                if (price.keyItem.HasItemAlready()) amount = 1;
 
                 this.image.sprite = price.keyItem.stats.info.getSprite();
                 this.textField.text = "1 / " + amount;

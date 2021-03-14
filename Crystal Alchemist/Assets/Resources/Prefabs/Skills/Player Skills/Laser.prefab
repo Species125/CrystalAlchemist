@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 1969711209088018432}
   - component: {fileID: 7524939251811781075}
   - component: {fileID: 1245824455113498530}
+  - component: {fileID: -7789144752210929721}
+  - component: {fileID: -8560597945220678802}
   m_Layer: 13
   m_Name: Laser
   m_TagString: Skill
@@ -142,6 +144,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 0, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!114 &9035295312565223651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +190,7 @@ MonoBehaviour:
     statusEffect: {fileID: 0}
     amount: -2
   modifiers: []
+  shareDamage: 0
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}
@@ -234,9 +240,12 @@ MonoBehaviour:
   skill: {fileID: 0}
   effect: {fileID: 11400000, guid: 2c75b34599ffd2b419ab695b65005cdb, type: 2}
   mode: 2
+  rotationType: 0
+  attachToSender: 0
+  delay: 0
   hasMaxDistance: 1
   maxDistanceBetween: 0.25
-  delay: 0
+  autoDestroy: 0
   autoDestroyAfter: 0
 --- !u!114 &1245824455113498530
 MonoBehaviour:
@@ -253,8 +262,40 @@ MonoBehaviour:
   skill: {fileID: 0}
   type: 0
   positionHeight: 0
-  skillCollider: {fileID: 0}
   positionOffset: 1
+--- !u!114 &-7789144752210929721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969711209088018434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e50e67d27afcf84baa9de1b78813445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  timeDistortable: 0
+--- !u!114 &-8560597945220678802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969711209088018434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdebd154a506234d85ef301888ca8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  attributes:
+  - type: 4
+    forward: 0
+    thrust: 0
+    duration: 0
+    value: 0
 --- !u!1 &3924551678506968723
 GameObject:
   m_ObjectHideFlags: 0

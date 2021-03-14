@@ -14,11 +14,6 @@ namespace CrystalAlchemist
         [SerializeField]
         private SpriteRenderer childSprite;
 
-        [BoxGroup("Loot")]
-        [SerializeField]
-        [HideLabel]
-        private Reward reward;
-
         [SerializeField]
         [BoxGroup("Mandatory")]
         [Required]
@@ -31,26 +26,24 @@ namespace CrystalAlchemist
         private new void Start()
         {
             base.Start();
-            this.setLoot();
+            this.SetLoot();
             this.shopPrice.Initialize(this.costs);
 
-            this.childSprite.sprite = this.itemDrop.stats.getSprite();
-            if (this.itemDrop == null) Destroy(this.gameObject);
-        }
-
-        private void setLoot()
-        {
-            this.itemDrop = this.reward.GetItemDrop();
-        }
+            if (this.itemDrops.Count <= 0) Destroy(this.gameObject);
+            else this.childSprite.sprite = this.itemDrops[0].stats.getSprite();
+            
+        }                
 
         public override void DoOnSubmit()
         {
+            if (this.itemDrops.Count <= 0) return;
+
             if (this.player.CanUseInteraction(this.costs))
             {
                 this.player.ReduceResource(this.costs);
+                ShowDialog(DialogTextTrigger.success, this.itemDrops[0].stats);
 
-                ShowDialog(DialogTextTrigger.success, this.itemDrop.stats);
-                if (this.itemDrop != null) GameEvents.current.DoCollect(this.itemDrop);
+                foreach(ItemDrop drop in this.itemDrops) GameEvents.current.DoCollect(drop);
             }
             else
             {

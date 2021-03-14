@@ -17,9 +17,19 @@ namespace CrystalAlchemist
                 saveGame.timePlayed.SetValue(data.timePlayed);
                 saveGame.SetCharacterName(data.characterName);
 
-                loadInventory(data.keyItems, data.inventoryItems, saveGame.inventory);
-                loadPlayerSkills(data, saveGame.buttons, saveGame.skillSet);
+                //LoadRecipes(data.recipes, saveGame.RecipesList);
+                LoadSkillSet(data.skillset, saveGame.skillSet);
+
+                LoadItems(data.treasureItems, saveGame.inventory);
+                LoadItems(data.keyItems, saveGame.inventory);
+                LoadItems(data.currencies, saveGame.inventory);
+                LoadItems(data.inventoryItems, saveGame.inventory);
+                LoadItems(data.craftingItems, saveGame.inventory);
+                LoadItems(data.housingItems, saveGame.inventory);
+
+                LoadPlayerSkills(data, saveGame.buttons, saveGame.skillSet);
                 LoadProgress(data, saveGame.progress);
+                LoadOutfits(data.outfits, saveGame.outfits);
 
                 LoadTeleportList(data, saveGame.teleportList);
 
@@ -81,10 +91,8 @@ namespace CrystalAlchemist
             attributes.SetValues();
         }
 
-        public static void loadPlayerSkills(PlayerData data, PlayerButtons buttons, PlayerSkillset skillSet)
+        public static void LoadPlayerSkills(PlayerData data, PlayerButtons buttons, PlayerSkillset skillSet)
         {
-            skillSet.Initialize();
-
             if (data != null && data.abilities.Count > 0)
             {
                 foreach (string[] elem in data.abilities)
@@ -106,39 +114,58 @@ namespace CrystalAlchemist
             }
         }
 
-        private static void loadInventory(List<string> keyItems, List<string[]> inventoryItems, PlayerInventory inventory)
+        private static void LoadSkillSet(List<string> abilites, PlayerSkillset skillset)
         {
-            if (keyItems != null)
+            if (abilites != null)
             {
-                foreach (string keyItem in keyItems)
+                foreach (string abilityName in abilites)
                 {
-                    ItemDrop master = MasterManager.getItemDrop(keyItem);
+                    Ability master = MasterManager.GetAbility(abilityName);
                     if (master == null)
                     {
-                        Debug.Log(keyItem + " is missing in master");
+                        Debug.Log(master + " is missing in master");
                         continue;
                     }
 
-                    ItemDrop drop = master.Instantiate(1);
-                    inventory.collectItem(drop.stats);
-                    UnityEngine.Object.Destroy(drop);
+                    skillset.AddAbility(master);
                 }
             }
+        }
 
-            if (inventoryItems != null)
+        private static void LoadOutfits(List<string[]> outfits, PlayerOutfits playerOutfits)
+        {
+            if (outfits != null)
             {
-                foreach (string[] item in inventoryItems)
+                foreach (string[] outfitdata in outfits)
                 {
-                    ItemGroup master = MasterManager.getItemGroup(item[0]);
+                    CharacterCreatorProperty master = MasterManager.GetOutfit(outfitdata);
+                    if (master == null)
+                    {
+                        Debug.Log(master + " is missing in master");
+                        continue;
+                    }
+
+                    playerOutfits.AddGear(master);
+                }
+            }
+        }
+
+        private static void LoadItems(List<string[]> items, PlayerInventory inventory)
+        {
+            if (items != null)  //Key Items
+            {
+                foreach (string[] item in items)
+                {
+                    InventoryItem master = MasterManager.GetItemGroup(item[0]);
 
                     if (master == null)
                     {
                         Debug.Log(item[0] + " is missing in master");
                         continue;
                     }
-                    inventory.collectItem(master, Convert.ToInt32(item[1]));
+                    inventory.CollectItem(master, Convert.ToInt32(item[1]), inventory.GetInventory(master.inventoryType));
                 }
             }
-        }
+        }        
     }
 }

@@ -71,10 +71,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   spriteRenderer: {fileID: 0}
   myRigidbody: {fileID: 1142126658515756286}
   animator: {fileID: 1226416482089918756}
-  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -180,8 +180,8 @@ MonoBehaviour:
   - resourceType: 1
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: -1
-  statusEffects: []
   modifiers: []
   thrust: 0
   knockbackTime: 0.2
@@ -367,10 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 913c5b8c80375084d837afa00e46dfbf, type: 2}
   spriteRenderer: {fileID: 0}
-  overrideShader: 0
   useGlow: 1
-  selectColor: {r: 1, g: 0.8078432, b: 0, a: 1}
-  precision: 0.3
   glowColor: {r: 4, g: 2.4627452, b: 0, a: 1}
   invert: 0
 --- !u!1 &6814024518553098126

@@ -1,5 +1,4 @@
-﻿
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,23 +12,22 @@ namespace CrystalAlchemist
         [SerializeField]
         private TextMeshProUGUI amount;
 
-        [SerializeField]
-        private bool preferInventoryIcon = true;
+        public bool preferInventoryIcon = true;
 
-        private ItemGroup itemGroup;
+        private InventoryItem itemGroup;
         private ItemStats itemStat;
 
-        public ItemGroup getItemGroup()
+        public InventoryItem GetInventoryItem()
         {
             return this.itemGroup;
         }
 
-        public ItemStats getItemStat()
+        public ItemStats GetItemStat()
         {
             return this.itemStat;
         }
 
-        public void setItem(ItemGroup item)
+        public virtual void SetItem(InventoryItem item)
         {
             this.itemGroup = item;
 
@@ -51,7 +49,7 @@ namespace CrystalAlchemist
             }
         }
 
-        public void SetItem(ItemStats item)
+        public virtual void SetItem(ItemStats item)
         {
             this.itemStat = item;
 
@@ -63,7 +61,7 @@ namespace CrystalAlchemist
             {
                 this.image.gameObject.SetActive(true);
 
-                if (!item.isKeyItem() && item.amount > 1) this.amount.text = "x" + item.amount;
+                if (item.inventoryItem.inventoryType == InventoryType.item && item.amount > 1) this.amount.text = "x" + item.amount;
                 else if (this.amount != null) this.amount.text = "";
 
                 if (this.preferInventoryIcon) this.image.sprite = item.getSprite();

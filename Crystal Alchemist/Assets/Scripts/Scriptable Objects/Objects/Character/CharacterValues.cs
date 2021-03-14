@@ -84,7 +84,7 @@ namespace CrystalAlchemist
         public List<Skill> activeSkills = new List<Skill>();
         [BoxGroup("Debug")]
         [ReadOnly]
-        public ItemDrop itemDrop;
+        public List<ItemDrop> itemDrops = new List<ItemDrop>();
         [BoxGroup("Debug")]
         [ReadOnly]
         public float speedFactor = 5;
@@ -118,7 +118,7 @@ namespace CrystalAlchemist
             this.cantBeHit = false;
             this.isOnIce = false;
 
-            if (stats.lootTable != null) this.itemDrop = stats.lootTable.GetItemDrop();
+            if (stats.lootTable != null) this.itemDrops = stats.lootTable.GetItemDrops();
         }
 
         public void ResetSpeed(CharacterStats stats) => this.speed = (stats.startSpeed / 100) * this.speedFactor;
@@ -225,6 +225,8 @@ namespace CrystalAlchemist
 
             return false;
         }
+
+
 
         #endregion
     }

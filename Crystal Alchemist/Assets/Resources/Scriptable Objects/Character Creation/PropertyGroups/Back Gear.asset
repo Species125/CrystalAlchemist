@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Back Gear
   m_EditorClassIdentifier: 
   note: "R\xFCckenteile wie z.B. Fl\xFCgel"
+  type: 08000000
   canRemove: 1
-  properties:
-  - {fileID: 11400000, guid: 2496a731bc0be8c4aad8ac3c69bebb54, type: 2}
-  - {fileID: 11400000, guid: 40fb3458ed7bc664bb0c8de64ddc4c31, type: 2}
-  - {fileID: 11400000, guid: 5f9f5dc3b16fc2645a04900c679d5cc5, type: 2}
+  outfits:
+  - isDefault: 1
+    property: {fileID: 11400000, guid: 2496a731bc0be8c4aad8ac3c69bebb54, type: 2}
+  - isDefault: 1
+    property: {fileID: 11400000, guid: 40fb3458ed7bc664bb0c8de64ddc4c31, type: 2}
+  - isDefault: 1
+    property: {fileID: 11400000, guid: 5f9f5dc3b16fc2645a04900c679d5cc5, type: 2}

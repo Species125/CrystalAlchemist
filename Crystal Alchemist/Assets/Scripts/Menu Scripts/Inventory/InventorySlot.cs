@@ -1,40 +1,23 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace CrystalAlchemist
 {
-    public class InventorySlot : MonoBehaviour
+    public class InventorySlot : ItemUI
     {
         [SerializeField]
-        private ItemUI itemUI;
+        private Image background;
 
         [SerializeField]
-        private int ID = 0;
+        [Min(0)]
+        private float transparency = 0.3f;
 
-        public int Initialize()
+        public override void SetItem(InventoryItem item)
         {
-            if (this.ID <= 0) this.ID = this.gameObject.transform.GetSiblingIndex() + 1;
-            return this.ID;
-        }
+            base.SetItem(item);
 
-        public void openKeyItem(InventoryMenu menu)
-        {
-            ItemStats stats = this.itemUI.getItemStat();
-            if (stats == null) return; 
-            ItemSlotInfo info = stats.inventoryInfo;
-            if (info == null) return;
-            info.raiseKeySignal();
-            menu.ExitMenu();
-        }
-
-        public void setItemToSlot(ItemGroup item)
-        {
-            this.itemUI.setItem(item);
-        }
-
-        public void setItemToSlot(ItemStats item)
-        {
-            this.itemUI.SetItem(item);
+            Color color = GameUtil.GetRarity(item.rarity);
+            this.background.color = new Color(color.r, color.g, color.b, this.transparency);
         }
     }
 }

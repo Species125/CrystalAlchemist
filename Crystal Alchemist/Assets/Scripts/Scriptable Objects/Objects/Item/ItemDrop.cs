@@ -1,7 +1,4 @@
 ﻿using AssetIcons;
-
-
-
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -34,6 +31,8 @@ namespace CrystalAlchemist
         [HideLabel]
         public ProgressValue progress;
 
+        private int number;
+
         [AssetIcon]
         private Sprite GetSprite()
         {
@@ -46,21 +45,33 @@ namespace CrystalAlchemist
             ItemDrop clone = Instantiate(this);
             clone.name = this.name;
             clone.Initialize(amount); //Set correct stats name for unique items
+
             return clone;
         }
 
-        public void Initialize(int amount)
+        private void Initialize(int amount)
         {
             ItemStats temp = Instantiate(this.stats);
             temp.name = this.name;
             temp.Initialize(amount);
             this.stats = temp;
+            this.number = Random.Range(0, 999);
         }
 
-        public bool HasKeyItem()
+        public int GetNumber()
         {
-            return (this.HasProgress() ||
-                   (this.stats.isKeyItem() && GameEvents.current.HasKeyItem(this.name)));
+            return this.number;
+        }
+
+        public bool HasItemAlready()
+        {
+            return (this.HasProgress() 
+                    ||
+                   (  (this.stats.itemType == ItemType.inventory && GameEvents.current.HasItemAlready(this.stats.inventoryItem))
+                   || (this.stats.itemType == ItemType.ability && GameEvents.current.HasItemAlready(this.stats.ability))
+                   || (this.stats.itemType == ItemType.outfit && GameEvents.current.HasItemAlready(this.stats.outfit))
+                   )
+                   );
         }
 
         private bool HasProgress()

@@ -28,6 +28,9 @@ namespace CrystalAlchemist
         [BoxGroup("Ziel Attribute")]
         public List<ResourceModifier> modifiers = new List<ResourceModifier>();
 
+        [BoxGroup("Ziel Attribute")]
+        public bool shareDamage = false;
+
         [Space(10)]
         [BoxGroup("Ziel Attribute")]
         [MinValue(0)]

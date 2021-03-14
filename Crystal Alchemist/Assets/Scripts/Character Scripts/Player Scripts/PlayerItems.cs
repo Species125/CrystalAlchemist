@@ -17,19 +17,10 @@ namespace CrystalAlchemist
             this.inventory.Initialize(); //remove null objects    
         }
 
-        public int GetAmount(ItemGroup group)
+        public int GetAmount(InventoryItem group)
         {
             return this.inventory.GetAmount(group);
         }
-
-        public void CollectItem(ItemStats item)
-        {
-            this.inventory.collectItem(item);            
-        }
-
-        public void UpdateInventory(ItemGroup item, int amount) => this.inventory.UpdateInventory(item, amount);
-
-
 
         public PlayerInventory GetInventory()
         {
@@ -39,7 +30,7 @@ namespace CrystalAlchemist
         public int GetAmount(Costs price)
         {
             if (price.resourceType == CostType.item && price.item != null) return this.GetAmount(price.item);
-            else if (price.resourceType == CostType.keyItem && price.keyItem != null && GameEvents.current.HasKeyItem(price.keyItem.name)) return 1;
+            else if (price.resourceType == CostType.keyItem && price.keyItem != null && price.keyItem.HasItemAlready()) return 1;
             return 0;
         }
     }

@@ -166,7 +166,6 @@ MonoBehaviour:
   skill: {fileID: 0}
   type: 0
   positionHeight: 0
-  skillCollider: {fileID: 152738269668406305}
   positionOffset: 0.5
 --- !u!114 &3772284571761737148
 MonoBehaviour:
@@ -239,9 +238,12 @@ MonoBehaviour:
   skill: {fileID: 0}
   effect: {fileID: 634257569416937404, guid: f11b09210e7962848bddb256727f4657, type: 3}
   mode: 1
+  rotationType: 0
+  attachToSender: 0
+  delay: 0.1
   hasMaxDistance: 0
   maxDistanceBetween: 1
-  delay: 0.1
+  autoDestroy: 0
   autoDestroyAfter: 0.6
 --- !u!1 &6622626158085490062
 GameObject:
@@ -389,7 +391,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4190799551226123811}
-  - component: {fileID: 157402643467407502}
   - component: {fileID: 152738269668406305}
   - component: {fileID: 4177264768934889194}
   m_Layer: 13
@@ -413,57 +414,6 @@ Transform:
   m_Father: {fileID: 2760690574085642328}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &157402643467407502
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8507274686393064075}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 0, g: 0.07655342, b: 0.2830189, a: 0.39215687}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!60 &152738269668406305
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -489,12 +439,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.22309852, y: 0.21313775}
-      - {x: -0.4028827, y: 0.031636614}
-      - {x: -0.22509813, y: -0.15561807}
-      - {x: 0.22109875, y: -0.16010791}
-      - {x: 0.41284338, y: 0.03310828}
-      - {x: 0.21313772, y: 0.2206083}
+    - - {x: -0.25062436, y: 0.4170329}
+      - {x: -0.5197785, y: 0.04054296}
+      - {x: -0.25874084, y: -0.3472795}
+      - {x: 0.25612396, y: -0.34716722}
+      - {x: 0.50459623, y: 0.041264087}
+      - {x: 0.25289726, y: 0.42042556}
 --- !u!58 &4177264768934889194
 CircleCollider2D:
   m_ObjectHideFlags: 0

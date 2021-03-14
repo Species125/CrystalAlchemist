@@ -22,7 +22,7 @@ MonoBehaviour:
         item: {fileID: 0}
         amount: 1
     hasDropRate: 1
-    dropRate: 20
+    dropRate: 25
   - reward:
       firstLoot:
         item: {fileID: 11400000, guid: 047bb92f1d813f34dbcc0e7f24f1d8e3, type: 2}
@@ -32,7 +32,7 @@ MonoBehaviour:
         item: {fileID: 0}
         amount: 1
     hasDropRate: 1
-    dropRate: 30
+    dropRate: 25
   - reward:
       firstLoot:
         item: {fileID: 11400000, guid: 9baa0e94203127d44bf22b1fa5e41be5, type: 2}
@@ -42,10 +42,20 @@ MonoBehaviour:
         item: {fileID: 0}
         amount: 1
     hasDropRate: 1
-    dropRate: 40
+    dropRate: 50
   - reward:
       firstLoot:
         item: {fileID: 11400000, guid: f81fc42a5a8de0f48b3e4dfaa15c8cc0, type: 2}
+        amount: 1
+      hasAlternative: 0
+      alternativeLoot:
+        item: {fileID: 0}
+        amount: 1
+    hasDropRate: 1
+    dropRate: 50
+  - reward:
+      firstLoot:
+        item: {fileID: 11400000, guid: 6ec232145c3cc68419e5253409e7e294, type: 2}
         amount: 1
       hasAlternative: 0
       alternativeLoot:
@@ -72,7 +82,7 @@ MonoBehaviour:
         item: {fileID: 0}
         amount: 1
     hasDropRate: 1
-    dropRate: 60
+    dropRate: 75
   - reward:
       firstLoot:
         item: {fileID: 11400000, guid: 25a375ff2bb68ab499ec24dc29506192, type: 2}
@@ -82,4 +92,16 @@ MonoBehaviour:
         item: {fileID: 0}
         amount: 1
     hasDropRate: 1
-    dropRate: 60
+    dropRate: 75
+  - reward:
+      firstLoot:
+        item: {fileID: 11400000, guid: 7bce5475bb97f8f4697d00cf937526fc, type: 2}
+        amount: 1
+      hasAlternative: 0
+      alternativeLoot:
+        item: {fileID: 0}
+        amount: 1
+    hasDropRate: 0
+    dropRate: 100
+  type: 1
+  additionalLoot: 4

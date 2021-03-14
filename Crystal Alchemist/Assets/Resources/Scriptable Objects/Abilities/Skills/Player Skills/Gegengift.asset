@@ -12,33 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266771f26e0200047a77d2d39c8b8900, type: 3}
   m_Name: Gegengift
   m_EditorClassIdentifier: 
-  abilityName: Gegengift
-  abilityNameEnglish: Antidot
+  path: Scriptable Objects/Abilities/Skills/Player Skills/Gegengift
   skill: {fileID: 958098431524863669, guid: 56f5ab55d0651f847a53e3a0d8305f08, type: 3}
   useTargetSystem: 0
   targetingProperty: {fileID: 0}
+  useIndicator: 0
+  indicator:
+    indicatorProperty: {fileID: 0}
   hasSkillBookInfo: 1
+  icon: {fileID: 0}
   info: {fileID: 11400000, guid: 9b6c1e9f270f3c947985e180f2dd7672, type: 2}
   cooldown: 3
+  globalCooldown: 0
   hasMaxDuration: 0
   maxDuration: 1
-  rapidFireDelay: 1
+  hasDelay: 0
+  delay: 1
   hasCastTime: 0
   castTime: 0
   showCastbar: 1
+  castAnimation: {fileID: 0}
   hasMaxAmount: 1
   maxAmount: 1
-  requirements: 0
+  requirements: {fileID: 0}
   isRapidFire: 0
   remoteActivation: 0
   deactivateButtonUp: 0
   keepCast: 0
-  shareDamage: 0
-  positionOffset: 1
-  attachToSender: 1
-  lockDirection: 0
-  timeDistortion: 1
   cooldownLeft: 0
   holdTimer: 0
   state: 6
   enabled: 1
+  active: 1
+  sender: {fileID: 0}
+  activeAnimation: {fileID: 0}

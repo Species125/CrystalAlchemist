@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Lower Gear
   m_EditorClassIdentifier: 
   note: Hosen und Schuhe
+  type: 0d000000
   canRemove: 1
-  properties:
-  - {fileID: 11400000, guid: afbfba43959e960488db8c58840cd089, type: 2}
-  - {fileID: 11400000, guid: 4b1c40ab34c87bf44b2d09af7be52bb7, type: 2}
-  - {fileID: 11400000, guid: 81debca7501c722488a8cd1d5f072d56, type: 2}
-  - {fileID: 11400000, guid: 69ebe7ec6ea8a314882650df85ef0f4b, type: 2}
+  outfits:
+  - isDefault: 1
+    property: {fileID: 11400000, guid: afbfba43959e960488db8c58840cd089, type: 2}
+  - isDefault: 1
+    property: {fileID: 11400000, guid: 4b1c40ab34c87bf44b2d09af7be52bb7, type: 2}
+  - isDefault: 1
+    property: {fileID: 11400000, guid: 81debca7501c722488a8cd1d5f072d56, type: 2}
+  - isDefault: 1
+    property: {fileID: 11400000, guid: 69ebe7ec6ea8a314882650df85ef0f4b, type: 2}

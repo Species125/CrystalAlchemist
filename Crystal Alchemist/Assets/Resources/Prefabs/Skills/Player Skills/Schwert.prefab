@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 2452030230981208128}
   - component: {fileID: 1293588450421558207}
   - component: {fileID: 6423164893705659178}
+  - component: {fileID: -5384656227278105483}
+  - component: {fileID: 3704005612650845202}
   m_Layer: 13
   m_Name: Schwert
   m_TagString: Skill
@@ -147,7 +149,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5387825760302318934}
   myRigidbody: {fileID: 2211265516280113145}
   animator: {fileID: 6939719257136123582}
-  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -158,6 +159,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 0, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!114 &932218811717101138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,14 +192,12 @@ MonoBehaviour:
     resourceType: 0
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 1
   intervallSender: 0
   speedDuringCasting: 0
   speedDuringDuration: -100
   affectAnimation: 0
-  forward: 0
-  selfThrust: 0
-  selfThrustTime: 0
 --- !u!114 &2452030230981208128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,9 +215,10 @@ MonoBehaviour:
   - resourceType: 1
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: -1
-  statusEffects: []
   modifiers: []
+  shareDamage: 0
   thrust: 2
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}
@@ -246,9 +249,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
-  animationTriggerName: sword
-  useColor: 0
   targetColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &-5384656227278105483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661548303189921719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e50e67d27afcf84baa9de1b78813445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  timeDistortable: 0
+--- !u!114 &3704005612650845202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661548303189921719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdebd154a506234d85ef301888ca8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  attributes:
+  - type: 4
+    forward: 0
+    thrust: 0
+    duration: 0
+    value: 0
 --- !u!1 &1288681395139722514
 GameObject:
   m_ObjectHideFlags: 0

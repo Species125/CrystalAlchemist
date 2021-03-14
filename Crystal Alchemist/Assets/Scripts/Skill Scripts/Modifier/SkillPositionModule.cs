@@ -24,10 +24,6 @@ namespace CrystalAlchemist
         [SerializeField]
         private float positionHeight = 0f;
 
-        [BoxGroup("Position Z")]
-        [SerializeField]
-        private Collider2D skillCollider;
-
         [BoxGroup("Position Offset")]
         [SerializeField]
         private float positionOffset = 0f;
@@ -44,7 +40,7 @@ namespace CrystalAlchemist
 
         public void LateInitialize()
         {
-            if (this.skillCollider != null) this.skillCollider.transform.position = this.skill.sender.GetGroundPosition();
+            //if (this.skillCollider != null) this.skillCollider.transform.position = this.skill.sender.GetGroundPosition();
 
             Vector3 direction = (Vector3)this.skill.GetDirection();
             this.transform.position += (direction * positionOffset);            

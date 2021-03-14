@@ -11,7 +11,9 @@ namespace CrystalAlchemist
             knockback,
             invincible,
             speedOnDurationValue,
-            speedOnDurationPercent
+            speedOnDurationPercent,
+            attachToSender,
+            lockDirection
         }
 
         [System.Serializable]
@@ -28,10 +30,11 @@ namespace CrystalAlchemist
             [Tooltip("Stärke des Knockbacks")]
             public float thrust = 0;
 
-            [ShowIf("type", Type.knockback)]
+            [HideIf("type", Type.invincible)]
+            [HideIf("type", Type.speedOnDurationValue)]
+            [HideIf("type", Type.attachToSender)]
             [MinValue(0)]
-            [Tooltip("Dauer des Knockbacks")]
-            [HideIf("thrust", 0f)]
+            [Tooltip("Dauer")]
             public float duration = 0;
 
             [ShowIf("type", Type.speedOnDurationValue)]
@@ -41,10 +44,8 @@ namespace CrystalAlchemist
             public float value = 0;
         }
 
-
         [SerializeField]
         private List<SenderAttributes> attributes = new List<SenderAttributes>();
-
 
         public override void Initialize()
         {
@@ -53,7 +54,16 @@ namespace CrystalAlchemist
                 if (attribute.type == Type.invincible) this.skill.sender.values.isInvincible = true;
                 else if (attribute.type == Type.knockback) Thrust(attribute.forward, attribute.thrust, attribute.duration);
                 else if (attribute.type == Type.speedOnDurationValue) this.skill.sender.UpdateSpeedValue(attribute.value);
+                else if (attribute.type == Type.attachToSender) Attach();
+                else if (attribute.type == Type.lockDirection) this.skill.SetDirectionLock(attribute.duration);
             }
+        }
+
+        private void Attach()
+        {
+            if (this.skill.sender == null) return;
+            this.skill.isAttached = true;
+            this.skill.transform.parent = this.skill.sender.activeSkillParent.transform;
         }
 
         private void Thrust(bool forward, float thrust, float duration)

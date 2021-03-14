@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
-using System.Collections;
 
 namespace CrystalAlchemist
 {
@@ -36,32 +35,72 @@ namespace CrystalAlchemist
         [SerializeField]
         private float speed = 0.5f;
 
+        private string dropName;
+        private int amount = 1;
+        private string itemName;
+        private float elapsed;
+        private bool isFading;
+
         public void SetElement(ItemDrop drop)
         {
             this.child.DOLocalMoveX(this.offset, 0);
 
+            this.dropName = drop.name;
+            this.itemName = drop.stats.getName();
             this.icon.sprite = drop.stats.getSprite();
-            this.textField.text = drop.stats.getName();
-            Color color = drop.stats.GetRarity();
+
+            UpdateAmount();
+
+            Color color = GameUtil.GetRarity(drop.stats.rarity);
             this.background.color = new Color(color.r, color.g, color.b, this.transparency);                     
+        }
+
+        public bool HasDrop(ItemDrop drop)
+        {
+            return this.dropName == drop.name;            
+        }
+
+        public void UpdateElement()
+        {
+            this.amount++;
+            UpdateAmount();            
+        }
+
+        private void UpdateAmount()
+        {
+            DOTween.Kill(this.background);
+            DOTween.Kill(this.icon);
+            DOTween.Kill(this.textField);
+
+            this.background.DOFade(this.transparency, 0);
+            this.icon.DOFade(1, 0);
+            this.textField.DOFade(1, 0);
+
+            this.isFading = false;
+            this.elapsed = this.duration + this.fadeDuration;
+
+            this.textField.text = this.itemName;
+            if (this.amount > 1) this.textField.text = this.itemName + " x" + this.amount;
         }
 
         private void Start()
         {
-            StartCoroutine(FadeCo());
+            this.child.DOLocalMoveX(0, this.speed);
+            this.elapsed = this.duration + this.fadeDuration + this.speed;
         }
 
-        private IEnumerator FadeCo()
+        private void FixedUpdate()
         {
-            this.child.DOLocalMoveX(0, this.speed);
+            this.elapsed -= Time.fixedDeltaTime;
 
-            yield return new WaitForSeconds(this.duration+this.speed);
-
-            this.background.DOFade(0, this.fadeDuration);
-            this.icon.DOFade(0, this.fadeDuration);
-            this.textField.DOFade(0, this.fadeDuration);
-
-            Destroy(this.gameObject, this.fadeDuration+0.1f);
+            if(elapsed <= this.fadeDuration && !this.isFading)
+            {
+                this.background.DOFade(0, this.fadeDuration);
+                this.icon.DOFade(0, this.fadeDuration);
+                this.textField.DOFade(0, this.fadeDuration);
+                this.isFading = true;
+            }
+            else if (elapsed < 0) Destroy(this.gameObject);
         }
     }
 }

@@ -14,20 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 0
   life: 1
-  mana: 1
+  mana: 2.000001
   spellspeed: 1
   speed: 5
   maxLife: 1
-  maxMana: 1
+  maxMana: 3
   lifeRegen: 0
   manaRegen: 0
   buffPlus: 0
   debuffMinus: 0
   currentState: 4
-  cantBeHit: 1
+  cantBeHit: 0
   cannotDie: 0
   isInvincible: 0
-  direction: {x: -0.96420544, y: -0.2651564}
+  direction: {x: -0.9173796, y: -0.39801332}
   lockAnimation: 0
   timeDistortion: 1
   steps: 0
@@ -37,6 +37,6 @@ MonoBehaviour:
   debuffs: []
   activePets: []
   activeSkills: []
-  itemDrop: {fileID: 0}
+  itemDrops: []
   speedFactor: 5
   effectColor: {r: 1, g: 1, b: 1, a: 1}

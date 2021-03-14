@@ -1,6 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 using Photon.Pun;
+using System.Collections.Generic;
 
 namespace CrystalAlchemist
 {
@@ -48,22 +49,7 @@ namespace CrystalAlchemist
         [BoxGroup("Treasure Options")]
         [SerializeField]
         [Tooltip("Spawn Items for all players?")]
-        private bool isShared = false;
-
-        [BoxGroup("Loot")]
-        [SerializeField]
-        private bool useLootTable = false;
-
-        [BoxGroup("Loot")]
-        [HideIf("useLootTable")]
-        [SerializeField]
-        [HideLabel]
-        private Reward reward;
-
-        [BoxGroup("Loot")]
-        [ShowIf("useLootTable")]
-        [SerializeField]
-        private LootTable lootTable;
+        private bool isShared = false;       
 
         [SerializeField]
         [BoxGroup("Mandatory")]
@@ -92,7 +78,7 @@ namespace CrystalAlchemist
         public override void Start()
         {
             base.Start();
-            this.setLoot();
+            this.SetLoot();
             this.shopPrice.Initialize(this.costs);
 
             ClearTreasure();
@@ -101,15 +87,11 @@ namespace CrystalAlchemist
             analyse.SetTarget(this.gameObject);
         }
 
-        private void setLoot()
-        {
-            if (this.useLootTable) this.itemDrop = this.lootTable.GetItemDrop();
-            else this.itemDrop = this.reward.GetItemDrop();
-        }
+        
 
         private void ClearTreasure()
         {
-            if (this.itemDrop == null
+            if (this.itemDrops.Count <= 0
                 && this.treasureType == TreasureType.normal)
             {
                 SetEnabled(false);
@@ -163,13 +145,13 @@ namespace CrystalAlchemist
 
         public void PlayTreasureMusic()
         {
-            if (this.treasureMusic != null && this.itemDrop != null)
+            if (this.treasureMusic != null && this.itemDrops.Count > 0)
                 MusicEvents.current.PlayMusicAndResume(this.treasureMusic, true, this.fadeOld, this.fadeNew);
         }
 
         public void ShowTreasureItem()
         {
-            if (this.itemDrop != null)
+            if (this.itemDrops.Count > 0)
             {
                 Vector2 position = this.transform.position;
                 Vector2 direction = position - this.playerPosition;
@@ -183,28 +165,32 @@ namespace CrystalAlchemist
                     case BounceDirection.position: direction = Vector2.zero; position = this.itemSpawnPosition; break;
                 }
 
-                NetworkEvents.current.InstantiateItemLocal(this.itemDrop, position, true, direction);   
+                foreach(ItemDrop drop in this.itemDrops)
+                {
+                    NetworkEvents.current.InstantiateTreasureItem(drop, position, true, direction);
+                }
             }
 
             if (this.treasureType == TreasureType.lootbox)
             {
                 AnimatorUtil.SetAnimatorParameter(this.anim, "isOpened", false);
-                this.setLoot();
+                this.SetLoot();
             }
         }
 
         private void SharedSubmit()
         {
-            string path = "";
-            if (this.itemDrop != null) path = this.itemDrop.path;
-            this.photonView.RPC("RpcSetAnimation", RpcTarget.Others, path);
+            List<string> paths = new List<string>();
+            foreach(ItemDrop drop in this.itemDrops) paths.Add(drop.path);            
+
+            this.photonView.RPC("RpcSetAnimation", RpcTarget.Others, paths.ToArray());
         }
 
         [PunRPC]
-        protected void RpcSetAnimation(string path)
+        protected void RpcSetAnimation(string[] paths)
         {
-            if (path != "") this.itemDrop = null;
-            else this.itemDrop = Resources.Load<ItemDrop>(path);
+            this.itemDrops.Clear();
+            foreach(string path in paths) this.itemDrops.Add(Resources.Load<ItemDrop>(path));
 
             AnimatorUtil.SetAnimatorParameter(this.anim, "isOpened", true);
         }

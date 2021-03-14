@@ -47,7 +47,8 @@ namespace CrystalAlchemist
 
         [BoxGroup("Pflichtfeld")]
         [SerializeField]
-        private float delay = 1f;
+        [Required]
+        private FloatValue collectDelay;
 
         private float elapsed;
         private bool showEffectOnDisable = true;
@@ -91,7 +92,7 @@ namespace CrystalAlchemist
             this.myRigidbody = this.GetComponent<Rigidbody2D>();
             Bounce(true);
 
-            if (this.itemDrop.HasKeyItem())
+            if (this.itemDrop.HasItemAlready())
             {
                 this.showEffectOnDisable = false;
                 DestroyIt();
@@ -149,7 +150,7 @@ namespace CrystalAlchemist
         {
             if (this.showEffectOnEnable && this.bounceAnimation != null && this.myRigidbody != null)
             {
-                Invoke("ChangeCollectState", this.delay);
+                Invoke("ChangeCollectState", this.collectDelay.GetValue());
                 this.bounceAnimation.Bounce();
 
                 Vector2 targetPosition = (Vector2)this.transform.position + (this.direction * 1.5f);

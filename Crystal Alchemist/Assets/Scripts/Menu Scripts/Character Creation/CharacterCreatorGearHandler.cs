@@ -22,9 +22,9 @@ namespace CrystalAlchemist
 
         private void Awake()
         {
-            for (int i = 0; i < this.group.properties.Count; i++)
+            for (int i = 0; i < this.group.GetProperties().Count; i++)
             {
-                CharacterCreatorProperty property = this.group.properties[i];
+                CharacterCreatorProperty property = this.group.GetProperties()[i];
                 CreateButton(property, i);
                 if (FindGear(property)) SetCurrentGear(property);
             }

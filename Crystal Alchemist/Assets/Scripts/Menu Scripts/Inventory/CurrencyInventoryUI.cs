@@ -12,7 +12,7 @@ namespace CrystalAlchemist
         private TextMeshProUGUI amountField;
 
         [SerializeField]
-        private ItemGroup item;
+        private InventoryItem item;
 
         private void OnEnable()
         {

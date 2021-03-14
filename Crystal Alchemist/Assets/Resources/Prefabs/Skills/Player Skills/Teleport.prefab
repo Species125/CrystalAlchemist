@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2383572904453914523}
   - component: {fileID: 3928851992748964709}
   - component: {fileID: 3758539739716528196}
+  - component: {fileID: 2122382985018818360}
   m_Layer: 13
   m_Name: Teleport
   m_TagString: Skill
@@ -49,7 +50,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   myRigidbody: {fileID: 0}
   animator: {fileID: 0}
-  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -60,6 +60,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 0, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!114 &3928851992748964709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,9 +86,6 @@ MonoBehaviour:
   speedDuringCasting: -100
   speedDuringDuration: 0
   affectAnimation: 0
-  forward: 0
-  selfThrust: 0
-  selfThrustTime: 0
 --- !u!114 &3758539739716528196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,3 +101,17 @@ MonoBehaviour:
   skill: {fileID: 0}
   summon: {fileID: 4905078019140139194, guid: 78650ad757a3408418fe2f7aff495cb5, type: 3}
   teleports: {fileID: 11400000, guid: a5383e9eb1591254eadebe1d4ca868c7, type: 2}
+--- !u!114 &2122382985018818360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892130185635481934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e50e67d27afcf84baa9de1b78813445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  timeDistortable: 0

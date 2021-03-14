@@ -1,60 +1,32 @@
-﻿using Sirenix.OdinInspector;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace CrystalAlchemist
 {
     public class InventoryMenu : MenuBehaviour
     {
-        [BoxGroup("Tabs")]
         [SerializeField]
-        private GameObject top;
+        private List<GameObject> tabs = new List<GameObject>();
 
-        [BoxGroup("Tabs")]
-        [SerializeField]
-        private GameObject bottom;
-
-        [SerializeField]
-        private List<InventoryPage> pages = new List<InventoryPage>();
-
-        public override void Start()
+        private void Awake()
         {
-            base.Start();
-            foreach (InventoryPage page in this.pages) page.LoadPage();
-            ShowTopPage(true);
-            MenuEvents.current.OnInventory += ExitMenu;
-        }
-
-        public override void OnDestroy()
-        {
-            base.OnDestroy();
-            MenuEvents.current.OnInventory -= ExitMenu;
+            CloseTabs(tabs[0]);
         }
 
         public override void Cancel()
         {
-            if (!this.top.activeInHierarchy) ShowTopPage(true);
-            else base.Cancel();
+            CloseTabs(tabs[0]);
+            base.Cancel();
         }
 
-        public void switchCategory()
+        public void CloseTabs(GameObject openTab)
         {
-            if (!this.top.activeInHierarchy) ShowTopPage(true);
-            else ShowTopPage(false);
-        }
+            foreach(GameObject tab in this.tabs)
+            {
+                tab.SetActive(false);
+            }
 
-        private void ShowTopPage(bool top)
-        {
-            if (top)
-            {
-                this.top.SetActive(true);
-                this.bottom.SetActive(false);
-            }
-            else
-            {
-                this.top.SetActive(false);
-                this.bottom.SetActive(true);
-            }
+            openTab.SetActive(true);
         }
 
         public void OpenMap()

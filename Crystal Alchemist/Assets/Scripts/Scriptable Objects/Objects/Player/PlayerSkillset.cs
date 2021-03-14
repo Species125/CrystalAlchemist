@@ -12,27 +12,13 @@ namespace CrystalAlchemist
 
         public float deactiveDelay = 0.3f;
 
-        public void Clear()
-        {
-            Initialize();
-        }
+        public void Clear() => this.abilities.Clear();       
 
-        [Button]
-        public void Initialize()
+        public bool Exists(Ability ability)
         {
-            this.abilities.Clear();
-            foreach (Ability ability in MasterManager.abilities) AddAbility(ability);
-        }
-
-        public void TestInitialize(Character sender)
-        {
-            this.abilities.RemoveAll(item => item == null);
-
-            if (this.abilities.Count <= 0)
-            {
-                Initialize();
-                SetSender(sender);
-            }
+            foreach (Ability elem in this.abilities)
+                if (elem != null && ability.name == elem.name) return true;
+            return false;
         }
 
         public void SetSender(Character sender)
@@ -72,15 +58,31 @@ namespace CrystalAlchemist
         }
 
         [Button]
-        private void AddAbility(Ability ability)
+        public void AddAbility(Ability ability, Character character = null)
         {
-            Ability newAbility = AbilityUtil.InstantiateAbility(ability);
+            foreach(Ability existingAbility in this.abilities)
+            {
+                if (existingAbility.name == ability.name) return;
+            }
+
+            Ability newAbility = AbilityUtil.InstantiateAbility(ability, character);
             this.abilities.Add(newAbility);
+            GameEvents.current.DoSaveGame(false);
         }
 
         public void EnableAbility(bool value)
         {
             foreach (Ability ability in this.abilities) ability.active = value;
+        }
+
+        public List<string> GetSkillSet()
+        {
+            List<string> skillset = new List<string>();
+            foreach (Ability ability in this.abilities)
+            {
+                skillset.Add(ability.name);
+            }
+            return skillset;
         }
     }
 }

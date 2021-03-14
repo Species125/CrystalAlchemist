@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 3985939456034709136}
   - component: {fileID: 3946483602041766719}
   - component: {fileID: 6308066740312309571}
+  - component: {fileID: -5757356812155324050}
+  - component: {fileID: -421625454152546216}
   m_Layer: 13
   m_Name: Lebenselixier
   m_TagString: Skill
@@ -120,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b0fe0bd6fafd469a317b4c6cea209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
   spriteRenderer: {fileID: 0}
   myRigidbody: {fileID: 0}
   animator: {fileID: 0}
@@ -133,6 +136,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 0, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!114 &831464589411682057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,15 +156,12 @@ MonoBehaviour:
     resourceType: 3
     item: {fileID: 11400000, guid: de729c525a57d0445af77a9a9e4a5af1, type: 2}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 1
   intervallSender: 0
   speedDuringCasting: 0
   speedDuringDuration: 0
   affectAnimation: 1
-  forward: 0
-  selfThrust: 0
-  selfThrustTime: 0
-  stateType: 0
 --- !u!114 &3985939456034709136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,8 +179,10 @@ MonoBehaviour:
   - resourceType: 1
     item: {fileID: 0}
     keyItem: {fileID: 0}
+    statusEffect: {fileID: 0}
     amount: 2
-  statusEffects: []
+  modifiers: []
+  shareDamage: 0
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: dd168bb8d1990c347ab8482d6d72d84c, type: 2}
@@ -208,9 +213,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
-  animationTriggerName: 
-  useColor: 1
   targetColor: {r: 0.7372549, g: 2.9960785, b: 0.6745098, a: 1}
+--- !u!114 &-5757356812155324050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2277580816030834969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e50e67d27afcf84baa9de1b78813445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  timeDistortable: 0
+--- !u!114 &-421625454152546216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2277580816030834969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdebd154a506234d85ef301888ca8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  attributes:
+  - type: 4
+    forward: 0
+    thrust: 0
+    duration: 0
+    value: 0
 --- !u!1001 &7981406291649803579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -218,6 +254,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7078582995585776847}
     m_Modifications:
+    - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -235,6 +276,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -246,16 +292,6 @@ PrefabInstance:
     - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2083207974102423161, guid: 42a4137c3904df94aa0b798edf1c5d6b,
@@ -285,13 +321,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
-      propertyPath: m_Color.r
-      value: 0.4669811
+      propertyPath: m_Color.b
+      value: 0.51532525
       objectReference: {fileID: 0}
     - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}
-      propertyPath: m_Color.b
-      value: 0.51532525
+      propertyPath: m_Color.r
+      value: 0.4669811
       objectReference: {fileID: 0}
     - target: {fileID: 5950900640928362244, guid: 42a4137c3904df94aa0b798edf1c5d6b,
         type: 3}

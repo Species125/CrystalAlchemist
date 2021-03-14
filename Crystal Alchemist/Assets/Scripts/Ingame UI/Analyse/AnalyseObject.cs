@@ -1,8 +1,4 @@
-﻿
-
-
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace CrystalAlchemist
@@ -31,16 +27,19 @@ namespace CrystalAlchemist
         {
             if (this.treasureChest != null)
             {
+                ItemDrop drop = GameUtil.GetHighestDrop(treasureChest.itemDrops);
                 //Show Object Information
-                if (treasureChest.itemDrop != null) Activate(treasureChest.itemDrop.stats);
+                if (drop != null) Activate(drop.stats);
                 else Deactivate();
             }
             else if (this.breakable != null)
             {
+                ItemDrop drop = GameUtil.GetHighestDrop(this.breakable.values.itemDrops);
+
                 //Show Object Information
-                if (this.breakable.values.itemDrop != null
+                if (drop != null
                     && this.breakable.values.currentState != CharacterState.dead
-                    && this.breakable.values.currentState != CharacterState.respawning) Activate(this.breakable.values.itemDrop.stats);
+                    && this.breakable.values.currentState != CharacterState.respawning) Activate(drop.stats);
                 else Deactivate();
             }
         }

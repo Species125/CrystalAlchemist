@@ -43,8 +43,9 @@ namespace CrystalAlchemist
         public Action<TeleportStats> OnSetTeleportStat;
 
         public Func<ProgressValue, bool> OnProgressExists;
-        public Func<string, bool> OnKeyItem;
-        public Func<ItemGroup, int> OnItemAmount;
+        public Func<ScriptableObject, bool> OnKeyItemExists;
+
+        public Func<InventoryItem, int> OnItemAmount;
         public Func<Costs, bool> OnEnoughCurrency;
         public Func<bool> OnHasReturn;
 
@@ -130,9 +131,9 @@ namespace CrystalAlchemist
             return false;
         }
 
-        public bool HasKeyItem(string name)
+        public bool HasItemAlready(ScriptableObject scriptableObject)
         {
-            if (this.OnKeyItem != null) return this.OnKeyItem.Invoke(name);
+            if (this.OnKeyItemExists != null) return this.OnKeyItemExists.Invoke(scriptableObject);
             return false;
         }
 
@@ -142,7 +143,7 @@ namespace CrystalAlchemist
             return false;
         }
 
-        public int GetItemAmount(ItemGroup item)
+        public int GetItemAmount(InventoryItem item)
         {
             if (this.OnItemAmount != null) return this.OnItemAmount.Invoke(item);
             return 0;

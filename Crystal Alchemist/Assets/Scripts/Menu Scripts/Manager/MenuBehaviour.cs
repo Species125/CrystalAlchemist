@@ -30,6 +30,8 @@ namespace CrystalAlchemist
             if (MasterManager.globalValues.openedMenues.Count == 0)
             {
                 MasterManager.globalValues.lastState = this.playerValues.currentState;
+                if (!this.playerValues.CanOpenMenu()) MasterManager.globalValues.lastState = CharacterState.idle;
+
                 GameEvents.current.DoChangeState(CharacterState.inMenu);
 
                 if (this.showBlackBackground) GameEvents.current.DoMenuOverlay(true);

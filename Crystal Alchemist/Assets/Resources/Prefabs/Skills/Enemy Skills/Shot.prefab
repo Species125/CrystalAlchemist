@@ -17,8 +17,8 @@ GameObject:
   - component: {fileID: 8902859412272811735}
   - component: {fileID: 4641515620175098231}
   - component: {fileID: 6451897881035893118}
-  - component: {fileID: 297092243189575376}
   - component: {fileID: -1092325203181777679}
+  - component: {fileID: 4164446629611751136}
   m_Layer: 13
   m_Name: Shot
   m_TagString: Skill
@@ -179,20 +179,6 @@ MonoBehaviour:
   skill: {fileID: 0}
   mode: 0
   snapRotationInDegrees: 0
---- !u!114 &297092243189575376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511520353593083073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6a4d538c86cab24aab8c4ca2b366503, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skill: {fileID: 0}
-  effect: {fileID: 906471282273262046, guid: 521b076ad01abaa48bb7d4acf66c083e, type: 3}
 --- !u!114 &-1092325203181777679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,8 +194,29 @@ MonoBehaviour:
   skill: {fileID: 0}
   type: 0
   positionHeight: 0
-  skillCollider: {fileID: 1803074669687505092}
   positionOffset: 0.5
+--- !u!114 &4164446629611751136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511520353593083073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4198b057e60445749808a436d5119bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  effect: {fileID: 906471282273262046, guid: 521b076ad01abaa48bb7d4acf66c083e, type: 3}
+  mode: 0
+  rotationType: 0
+  attachToSender: 1
+  delay: 0
+  hasMaxDistance: 0
+  maxDistanceBetween: 1
+  autoDestroy: 0
+  autoDestroyAfter: 0
 --- !u!1 &5124404407448343764
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6021116714921555687}
   - component: {fileID: 4459175407930688011}
-  - component: {fileID: 1803074669687505092}
+  - component: {fileID: 1826679064932169918}
   m_Layer: 13
   m_Name: shadow
   m_TagString: Untagged
@@ -293,8 +300,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1803074669687505092
-BoxCollider2D:
+--- !u!60 &1826679064932169918
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -309,16 +316,20 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.3125}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.3}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.2813406, y: 0.24342197}
+      - {x: -0.47962096, y: 0.061893508}
+      - {x: -0.48133197, y: -0.04483527}
+      - {x: 0.2772637, y: -0.23972732}
+      - {x: 0.5211035, y: -0.0015044808}
 --- !u!1 &5853850326603271718
 GameObject:
   m_ObjectHideFlags: 0

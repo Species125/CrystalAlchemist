@@ -71,7 +71,7 @@ namespace CrystalAlchemist
         {
             this.allTargetsInRange.RemoveAll(item => item == null);
             this.allTargetsInRange.RemoveAll(item => item.gameObject.activeInHierarchy == false);
-            this.allTargetsInRange.RemoveAll(item => item.values.isInvincible);  //WHY?
+            this.allTargetsInRange.RemoveAll(item => GameUtil.IsInvincibleNPC(item));  //WHY?
 
             RotationUtil.rotateCollider(this.sender, this.viewCollider.gameObject);
 
@@ -197,7 +197,7 @@ namespace CrystalAlchemist
         {
             List<Character> result = this.allTargetsInRange.ToArray().OrderBy(o => (Vector3.Distance(o.transform.position, this.sender.transform.position))).ToList<Character>();
             result.RemoveAll(item => item.gameObject.activeInHierarchy == false);
-            result.RemoveAll(item => item.values.isInvincible);  //WHY?
+            result.RemoveAll(item => GameUtil.IsInvincibleNPC(item));  //WHY?
             return result;
         }
 
@@ -241,7 +241,7 @@ namespace CrystalAlchemist
         {
             Character character = collision.GetComponent<Character>();
             if (character != null 
-                && !character.values.isInvincible 
+                && !GameUtil.IsInvincibleNPC(character)
                 && CollisionUtil.CheckCollision(collision, this.properties.affections, this.sender))  //WHY?
             {
                 if (!this.allTargetsInRange.Contains(character)) this.allTargetsInRange.Add(character);

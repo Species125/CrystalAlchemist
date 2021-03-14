@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 6866986401814778853}
   - component: {fileID: 7657995963615701156}
   - component: {fileID: 7353042941051542758}
+  - component: {fileID: 5727468903612301488}
   m_Layer: 13
   m_Name: Flammenwerfer
   m_TagString: Skill
@@ -256,6 +257,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 0, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!114 &6919527800721261145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +314,7 @@ MonoBehaviour:
     statusEffect: {fileID: 11400000, guid: 646b7065db6bd07488bb7379d6e930a2, type: 2}
     amount: 1
   modifiers: []
+  shareDamage: 0
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}
@@ -364,7 +369,6 @@ MonoBehaviour:
   skill: {fileID: 0}
   type: 0
   positionHeight: 0
-  skillCollider: {fileID: 2898965448982412241}
   positionOffset: 0.75
 --- !u!114 &7353042941051542758
 MonoBehaviour:
@@ -380,6 +384,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
   canBeReflected: 1
+--- !u!114 &5727468903612301488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6814274785137477229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdebd154a506234d85ef301888ca8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  attributes:
+  - type: 5
+    forward: 0
+    thrust: 0
+    duration: 0.2
+    value: 0
 --- !u!1 &7790507635526815855
 GameObject:
   m_ObjectHideFlags: 0

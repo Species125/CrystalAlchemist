@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266771f26e0200047a77d2d39c8b8900, type: 3}
   m_Name: Donnerschlag
   m_EditorClassIdentifier: 
-  abilityName: Donnerschlag
-  abilityNameEnglish: Thunderstrike
+  path: Scriptable Objects/Abilities/Skills/Player Skills/Donnerschlag
   skill: {fileID: 3642085611436221261, guid: 05bc84479b081af4ca7844c3cd88c425, type: 3}
   useTargetSystem: 1
   targetingProperty: {fileID: 11400000, guid: 7d83a6ac077621d41b106031ac2b4bf1, type: 2}
@@ -22,26 +21,29 @@ MonoBehaviour:
     indicatorProperty: {fileID: 11400000, guid: 1a1339f8b51eb3648a9e6bf2101a7bcd,
       type: 2}
   hasSkillBookInfo: 1
+  icon: {fileID: 0}
   info: {fileID: 11400000, guid: b46f76826a8147d46a39bfc47019274f, type: 2}
   cooldown: 3
+  globalCooldown: 0
   hasMaxDuration: 0
   maxDuration: 1
+  hasDelay: 0
+  delay: 1
   hasCastTime: 0
   castTime: 0
   showCastbar: 1
+  castAnimation: {fileID: 0}
   hasMaxAmount: 1
   maxAmount: 1
-  requirements: 0
+  requirements: {fileID: 0}
   isRapidFire: 0
   remoteActivation: 0
   deactivateButtonUp: 0
   keepCast: 0
-  shareDamage: 1
-  positionOffset: 0
-  attachToSender: 0
-  lockDirection: 0
-  timeDistortion: 1
   cooldownLeft: 0
   holdTimer: 0
   state: 4
   enabled: 1
+  active: 1
+  sender: {fileID: 0}
+  activeAnimation: {fileID: 0}

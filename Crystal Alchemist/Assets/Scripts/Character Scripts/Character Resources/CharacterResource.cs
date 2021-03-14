@@ -20,7 +20,7 @@ namespace CrystalAlchemist
         public CostType resourceType = CostType.none;
 
         [ShowIf("resourceType", CostType.item)]
-        public ItemGroup item;
+        public InventoryItem item;
 
         [ShowIf("resourceType", CostType.keyItem)]
         public ItemDrop keyItem;
@@ -63,7 +63,7 @@ namespace CrystalAlchemist
             this.resourceType = costType;
             this.amount = amount;
 
-            if (this.resourceType == CostType.item) this.item = Resources.Load<ItemGroup>(path);
+            if (this.resourceType == CostType.item) this.item = Resources.Load<InventoryItem>(path);
             else if (this.resourceType == CostType.keyItem) this.keyItem = Resources.Load<ItemDrop>(path);
             else if (this.resourceType == CostType.statusEffect) this.statusEffect = Resources.Load<StatusEffect>(path);
         }

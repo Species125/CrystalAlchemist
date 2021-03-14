@@ -20,7 +20,7 @@ namespace CrystalAlchemist
 
         bool showInInventory;
         bool createNewGroup;
-        ItemGroup group;
+        InventoryItem group;
         AudioClip soundEffect;
         AudioClip uiSoundEffect;
         bool canConsume = true;
@@ -61,13 +61,13 @@ namespace CrystalAlchemist
             this.soundEffect = (AudioClip) EditorGUILayout.ObjectField("Sound Effect", this.soundEffect,
                 typeof(AudioClip), allowSceneObjects: true);
 
-            if (this.type == ItemType.keyItem)
+            if (this.type == ItemType.inventory) //key item
             {
                 SetInventoryInfo();
                 this.group = null;
             }
 
-            if (this.type == ItemType.item)
+            if (this.type == ItemType.inventory)
             {
                 //Items only
                 EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
@@ -78,12 +78,12 @@ namespace CrystalAlchemist
 
                 if (this.createNewGroup) SetNewItemGroup();
                 else
-                    this.group = (ItemGroup) EditorGUILayout.ObjectField("Item Group", this.group, typeof(ItemGroup),
+                    this.group = (InventoryItem) EditorGUILayout.ObjectField("Item Group", this.group, typeof(InventoryItem),
                         allowSceneObjects: true);
             }
 
-            if (this.type == ItemType.keyItem) this.folderindex = 3;
-            else if (this.type == ItemType.item) this.folderindex = 2;
+            if (this.type == ItemType.inventory) this.folderindex = 3;//key item
+            else if (this.type == ItemType.inventory) this.folderindex = 2;
             else this.folderindex = 0;
 
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
@@ -98,7 +98,7 @@ namespace CrystalAlchemist
         private void SetInventoryInfo()
         {
             this.inventorySlot = EditorGUILayout.IntField("Inventory Slot Index", this.inventorySlot);
-            if (this.type == ItemType.keyItem)
+            if (this.type == ItemType.inventory)//key item
                 this.signal = (SimpleSignal) EditorGUILayout.ObjectField("Key Item Signal", this.signal,
                     typeof(SimpleSignal), allowSceneObjects: true);
             this.showInInventory = true;
@@ -139,27 +139,21 @@ namespace CrystalAlchemist
 
         private void CreateItem()
         {
-            ItemGroup itemGroup = this.group;
-            ItemSlotInfo slotInfo = null;
+            InventoryItem itemGroup = this.group;
 
             ItemInfo info = CreateInstance<ItemInfo>();
             info.SetInfo(this.itemSprite);
             string infoPath = parent + "Item Infos/Item Stat Info/" + this.itemName + " Info.asset";
             CreateAsset(info, infoPath);
 
-            if (this.type == ItemType.keyItem || this.type == ItemType.item)
+            if (this.type == ItemType.inventory)
             {
                 if (this.showInInventory)
                 {
                     string slotName = this.itemName;
-                    if (this.type == ItemType.item) slotName = this.itemGroupName;
-                    ItemSlotInfo itemSlotInfo = CreateInstance<ItemSlotInfo>();
-                    itemSlotInfo.SetSlot(this.inventorySlot, this.signal);
+                    if (this.type == ItemType.inventory) slotName = this.itemGroupName;
                     string itemSlotPath = parent + "Item Slot Infos/" + this.folders[this.folderindex] + "/" +
                                           slotName + ".asset";
-                    CreateAsset(itemSlotInfo, itemSlotPath);
-
-                    slotInfo = itemSlotInfo;
                 }
 
                 if (this.createNewGroup)
@@ -170,10 +164,9 @@ namespace CrystalAlchemist
                                            " Group Info.asset";
                     CreateAsset(groupinfo, groupinfoPath);
 
-                    ItemGroup group = CreateInstance<ItemGroup>();
+                    InventoryItem group = CreateInstance<InventoryItem>();
                     group.SetGroup(this.maxValue, this.canConsume, this.updateUI, this.soundEffect, this.itemShopPrice);
                     group.info = groupinfo;
-                    group.inventoryInfo = slotInfo;
                     string groupPath = parent + "Item Groups/" + this.folders[this.folderindex] + "/" +
                                        this.itemGroupName + ".asset";
                     CreateAsset(group, groupPath);
@@ -183,9 +176,8 @@ namespace CrystalAlchemist
             }
 
             ItemStats stats = CreateInstance<ItemStats>();
-            stats.SetStats(this.itemValue, this.type, this.soundEffect, info);
-            if (this.type == ItemType.item) stats.itemGroup = itemGroup;
-            else if (this.type == ItemType.keyItem) stats.inventoryInfo = slotInfo;
+            //stats.SetStats(this.itemValue, this.type, this.soundEffect, info);
+            if (this.type == ItemType.inventory) stats.inventoryItem = itemGroup;
             string statsPath = parent + "Item Stats/" + this.folders[this.folderindex] + "/" + this.itemName + ".asset";
             CreateAsset(stats, statsPath);
 

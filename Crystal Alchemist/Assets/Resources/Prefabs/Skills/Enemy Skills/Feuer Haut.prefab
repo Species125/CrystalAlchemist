@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4244255912294953290}
   - component: {fileID: 543241152754914391}
   - component: {fileID: 5674465737862353786}
+  - component: {fileID: -4989625625345767282}
+  - component: {fileID: 51955329603431516}
   m_Layer: 13
   m_Name: Feuer Haut
   m_TagString: Attack
@@ -50,7 +52,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   myRigidbody: {fileID: 0}
   animator: {fileID: 0}
-  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -61,6 +62,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 0, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!114 &4244255912294953290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,8 +89,8 @@ MonoBehaviour:
     keyItem: {fileID: 0}
     statusEffect: {fileID: 11400000, guid: 646b7065db6bd07488bb7379d6e930a2, type: 2}
     amount: 1
-  statusEffects: []
   modifiers: []
+  shareDamage: 0
   thrust: 2
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: 69c7063b2f9f1d741b2d138ef9b3962f, type: 2}
@@ -116,3 +120,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
+--- !u!114 &-4989625625345767282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224756837918827975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdebd154a506234d85ef301888ca8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  attributes:
+  - type: 4
+    forward: 0
+    thrust: 0
+    duration: 0
+    value: 0
+--- !u!114 &51955329603431516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224756837918827975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e50e67d27afcf84baa9de1b78813445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  timeDistortable: 0

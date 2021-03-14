@@ -423,7 +423,7 @@ namespace CrystalAlchemist
 
             if (target == null
                 || !target.gameObject.activeInHierarchy
-                || target.values.isInvincible  //WHY?
+                || GameUtil.IsInvincibleNPC(target)  //ignore invincible NPCs
                 || target.values.currentState == CharacterState.dead
                 || target.values.currentState == CharacterState.respawning) return false;
 

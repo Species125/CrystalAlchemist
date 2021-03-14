@@ -53,15 +53,17 @@ namespace CrystalAlchemist
 
             this.statusEffectBar.setCharacter(this.npc.values);
 
-            if (this.npc.values.itemDrop != null
+            ItemDrop drop = GameUtil.GetHighestDrop(this.npc.values.itemDrops);
+
+            if (drop != null
                 && this.npc.values.currentState != CharacterState.dead
                 && this.npc.values.currentState != CharacterState.respawning)
             {
                 if (ImageitemPreview != null) this.ImageitemPreview.gameObject.SetActive(true);
-                if (ImageitemPreview != null) this.ImageitemPreview.sprite = this.npc.values.itemDrop.stats.getSprite(); //TODONEW
+                if (ImageitemPreview != null) this.ImageitemPreview.sprite = drop.stats.getSprite(); //TODONEW
 
                 if (ImageitemPreviewOLD != null) this.ImageitemPreviewOLD.gameObject.SetActive(true);
-                if (ImageitemPreviewOLD != null) this.ImageitemPreviewOLD.sprite = this.npc.values.itemDrop.stats.getSprite(); //TODONEW
+                if (ImageitemPreviewOLD != null) this.ImageitemPreviewOLD.sprite = drop.stats.getSprite(); //TODONEW
             }
         }
     }

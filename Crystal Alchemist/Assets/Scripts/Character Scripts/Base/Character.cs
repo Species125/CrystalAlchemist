@@ -84,7 +84,6 @@ namespace CrystalAlchemist
         #region Start Functions (Spawn, Init)
         public virtual void Awake()
         {
-
             this.values = ScriptableObject.CreateInstance<CharacterValues>(); //create new Values when not already assigned (NPC)
             this.values.Initialize();
 
@@ -114,13 +113,13 @@ namespace CrystalAlchemist
 
         public virtual void ResetValues()
         {
-            this.values.Clear(this.stats);            
+            this.values.Clear(this.stats);
 
             this.SetDefaultDirection();
             this.animator.speed = 1;
             this.animator.enabled = true;
             this.updateTimeDistortion(0);
-            this.updateSpellSpeed(0);            
+            this.updateSpellSpeed(0);
             this.SetCharacterSprites(true);
             this.activeDeathAnimation = null;
 
@@ -138,7 +137,7 @@ namespace CrystalAlchemist
             this.ResetValues();
             this.values.currentState = CharacterState.idle;
 
-            UpdateResource(new CharacterResource(CostType.life, 0.25f),true);
+            UpdateResource(new CharacterResource(CostType.life, 0.25f), true);
             UpdateResource(new CharacterResource(CostType.mana, 0.25f), true);
 
             AnimatorUtil.SetAnimatorParameter(this.animator, "Dead", false);
@@ -165,7 +164,7 @@ namespace CrystalAlchemist
 
         public virtual void OnDestroy()
         {
-           
+
         }
 
         #endregion
@@ -245,14 +244,18 @@ namespace CrystalAlchemist
 
         public void DropItem() //Only on Master
         {
-            if (this.values.itemDrop != null && NetworkUtil.IsMaster())
-                NetworkEvents.current.InstantiateItem(this.values.itemDrop, this.transform.position, false);
-        }
+            if (!NetworkUtil.IsMaster()) return;
 
-        public void DropItem(GameObject position) //Only on Master
+            foreach (ItemDrop drop in this.values.itemDrops)
+                    NetworkEvents.current.InstantiateItem(drop, this.transform.position, true);                
+        }        
+
+        public void DropItem(GameObject gameObject) //Only on Master
         {
-            if (this.values.itemDrop != null && NetworkUtil.IsMaster())
-                NetworkEvents.current.InstantiateItem(this.values.itemDrop, position.transform.position, true);
+            if (!NetworkUtil.IsMaster()) return;
+
+            foreach (ItemDrop drop in this.values.itemDrops)
+                NetworkEvents.current.InstantiateItem(drop, gameObject.transform.position, true);
         }
 
         #endregion
@@ -310,7 +313,7 @@ namespace CrystalAlchemist
             this.values.speed = (newSpeed / 100) * this.values.speedFactor;
         }
 
-        public void ResetSpeed() => this.values.ResetSpeed(this.stats);        
+        public void ResetSpeed() => this.values.ResetSpeed(this.stats);
 
         public void updateSpellSpeed(float addSpellSpeed)
         {
@@ -385,7 +388,7 @@ namespace CrystalAlchemist
 
             if (this.values.life > 0
                 && this.values.currentState != CharacterState.dead
-                && showingDamageNumber) ShowDamageNumber(value, color);           
+                && showingDamageNumber) ShowDamageNumber(value, color);
 
             UpdateLifeManaForOthers();
         }
@@ -397,7 +400,7 @@ namespace CrystalAlchemist
             UpdateLifeManaForOthers();
         }
 
-        public virtual void UpdateItem(ItemGroup item, int value)
+        public virtual void UpdateItem(InventoryItem item, int value)
         {
 
         }
@@ -447,7 +450,7 @@ namespace CrystalAlchemist
 
         private void ShowDamageNumber(float value, NumberColor color = NumberColor.yellow)
         {
-            if (this.stats.showDamageNumbers) RpcShowDamageNumber(value, (byte)color);  
+            if (this.stats.showDamageNumbers) RpcShowDamageNumber(value, (byte)color);
         }
 
         [PunRPC]
@@ -463,13 +466,13 @@ namespace CrystalAlchemist
 
         public virtual void GotHit(Skill skill, float percentage, bool knockback)
         {
-            SkillTargetModule targetModule = skill.GetComponent<SkillTargetModule>();            
+            SkillTargetModule targetModule = skill.GetComponent<SkillTargetModule>();
             Character sender = skill.sender;
 
             if (targetModule == null || this.values.currentState == CharacterState.dead) return;
 
             bool ignore = targetModule.affections.CanIgnoreInvinvibility();
-            if (!ignore && this.values.cantBeHit) return;
+            if (!ignore && (this.values.cantBeHit || this.values.isInvincible)) return;
 
             Vector2 position = skill.transform.position;
             int ID = NetworkUtil.GetID(sender);
@@ -496,14 +499,7 @@ namespace CrystalAlchemist
 
         private void GetDamage(Character sender, List<CharacterResource> resources, Vector2 position,
                                float percentage, bool knockback, float thrust, float duration)
-        {
-            if (this.values.isInvincible)
-            {
-                ShowDamageNumber(0);
-                SetCannotHit(false);
-            }
-            else
-            {
+        {            
                 foreach (CharacterResource elem in resources)
                 {
                     elem.amount *= percentage / 100;
@@ -524,21 +520,20 @@ namespace CrystalAlchemist
                     //Rückstoß ermitteln
                     float knockbackTrust = thrust - (this.stats.antiKnockback / 100 * thrust);
                     knockBack(duration, knockbackTrust, position);
-                }
-            }
+                }            
         }
 
         [Button]
         public void KillIt() => this.KillIt(true);
 
-        public void KillIt(bool showAnimation) => this.photonView.RPC("RpcKillCharacterMaster", RpcTarget.MasterClient, showAnimation);        
+        public void KillIt(bool showAnimation) => this.photonView.RPC("RpcKillCharacterMaster", RpcTarget.MasterClient, showAnimation);
 
         [PunRPC]
-        protected void RpcKillCharacterMaster(bool value) => this.photonView.RPC("RpcKillCharacter", RpcTarget.All, value);        
+        protected void RpcKillCharacterMaster(bool value) => this.photonView.RPC("RpcKillCharacter", RpcTarget.All, value);
 
         [PunRPC]
         protected void RpcKillCharacter(bool value) => KillCharacter(value);
-        
+
 
         public virtual void KillCharacter(bool animate)
         {
@@ -570,7 +565,7 @@ namespace CrystalAlchemist
         }
 
         public virtual void DestroyItWithoutDrop()
-        {            
+        {
             if (this.stats.hasRespawn) this.gameObject.SetActive(false);
             else Destroy(this.gameObject);
         }
@@ -579,9 +574,7 @@ namespace CrystalAlchemist
 
         #region Knockback and Invincibility   
 
-        public void SetCannotHit() => SetCannotHit(this.stats.cannotBeHitTime, true);
-
-        private void SetCannotHit(bool showHitColor) => SetCannotHit(this.stats.cannotBeHitTime, showHitColor);
+        private void SetCannotHit(bool showHitColor = true) => SetCannotHit(this.stats.cannotBeHitTime, showHitColor);
 
         public void SetCannotHit(float delay, bool showHitcolor)
         {
@@ -746,7 +739,7 @@ namespace CrystalAlchemist
 
         public void SetAttachedSkillTriggers(int value)
         {
-            foreach(Skill skill in this.values.activeSkills)
+            foreach (Skill skill in this.values.activeSkills)
             {
                 if (skill.IsAttachedToSender()) skill.SetTriggerActive(value);
             }
@@ -824,7 +817,7 @@ namespace CrystalAlchemist
             if (effect.changeColor) this.RemoveColor(effect.statusEffectColor);
             if (effect.invertColor) this.InvertColor(false);
             if (visual != null)
-            {                
+            {
                 this.statusEffectVisuals.Remove(visual);
                 Destroy(visual.gameObject);
             }
@@ -840,7 +833,7 @@ namespace CrystalAlchemist
         {
             for (int i = 0; i < this.statusEffectVisuals.Count; i++)
             {
-                if (this.statusEffectVisuals[i] != null && this.statusEffectVisuals[i].name == effect.GetVisualsName()) 
+                if (this.statusEffectVisuals[i] != null && this.statusEffectVisuals[i].name == effect.GetVisualsName())
                     return this.statusEffectVisuals[i];
             }
 
@@ -888,7 +881,7 @@ namespace CrystalAlchemist
             }
         }
 
-            #endregion
+        #endregion
 
-        }
+    }
 }

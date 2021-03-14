@@ -31,6 +31,13 @@ namespace CrystalAlchemist
             parent.transform.DOMove(screen, 0);
         }
 
+        public static Vector2 RandomVector(Vector2 position, float radius=0.1f)
+        {
+            float x = UnityEngine.Random.Range(-radius, radius);
+            float y = UnityEngine.Random.Range(-radius, radius);
+            return position + new Vector2(x, y);
+        }
+
         public static T GetComponentAll<T>(GameObject gameObject)
         {
             if (gameObject.GetComponentInChildren<T>() != null) return gameObject.GetComponentInChildren<T>();

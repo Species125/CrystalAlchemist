@@ -61,7 +61,7 @@ namespace CrystalAlchemist
             }
         }
 
-        private void setInfo(ItemGroup item)
+        private void setInfo(InventoryItem item)
         {
             this.additionalInfo.SetActive(false);
 
@@ -114,7 +114,7 @@ namespace CrystalAlchemist
             setInfo(item);
         }
 
-        public void Show(ItemGroup item)
+        public void Show(InventoryItem item)
         {
             this.gameObject.SetActive(true);
             setInfo(item);

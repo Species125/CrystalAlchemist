@@ -20,7 +20,7 @@ namespace CrystalAlchemist
         private void Awake()
         {
             GameEvents.current.OnSaveGame += SaveGame;
-            GameEvents.current.OnKeyItem += HasKeyItemAlready;
+            GameEvents.current.OnKeyItemExists += HasKeyItemAlready;
         }
 
         private void Start()
@@ -44,7 +44,7 @@ namespace CrystalAlchemist
         private void OnDestroy()
         {
             GameEvents.current.OnSaveGame -= SaveGame;
-            GameEvents.current.OnKeyItem -= HasKeyItemAlready;
+            GameEvents.current.OnKeyItemExists -= HasKeyItemAlready;
         }
 
         private void SaveGame(bool value)
@@ -53,10 +53,30 @@ namespace CrystalAlchemist
             else SaveDirectly();
         }
 
-        private bool HasKeyItemAlready(string name)
+        private bool HasKeyItemAlready(ScriptableObject scriptableObject)
         {
-            if (this.saveGame.inventory == null) return false;
-            foreach (ItemStats elem in this.saveGame.inventory.keyItems) if (elem != null && name == elem.name) return true;
+            if (scriptableObject.GetType() == typeof(InventoryItem))
+            {
+                if (this.saveGame.inventory == null) return false;
+
+                InventoryItem inventoryItem = (InventoryItem)scriptableObject;
+                return this.saveGame.inventory.KeyItemExists(inventoryItem);
+            }
+            else if(scriptableObject.GetType() == typeof(Ability))
+            {
+                if (this.saveGame.skillSet == null) return false;
+
+                Ability ability = (Ability)scriptableObject;
+                return this.saveGame.skillSet.Exists(ability);
+            }
+            else if (scriptableObject.GetType() == typeof(CharacterCreatorProperty))
+            {
+                if (this.saveGame.outfits == null) return false;
+
+                CharacterCreatorProperty property = (CharacterCreatorProperty)scriptableObject;
+                return this.saveGame.outfits.GearExists(property);
+            }
+
             return false;
         }
     }

@@ -15,9 +15,17 @@ namespace CrystalAlchemist
         public int buffplus;
         public int debuffminus;
 
-        public List<string> keyItems = new List<string>();
+        public List<string[]> keyItems = new List<string[]>();
+        public List<string[]> treasureItems = new List<string[]>();
+
+        public List<string[]> currencies = new List<string[]>();
+        public List<string[]> housingItems = new List<string[]>();
         public List<string[]> inventoryItems = new List<string[]>();
+        public List<string[]> craftingItems = new List<string[]>();
+
         public List<string[]> abilities = new List<string[]>();
+        public List<string> skillset = new List<string>();
+        public List<string[]> outfits = new List<string[]>();
 
         public string characterName;
         public string race;
@@ -47,6 +55,13 @@ namespace CrystalAlchemist
             SetPreset(saveGame.playerPreset);
 
             this.abilities = saveGame.buttons.saveButtonConfig();
+
+            this.skillset.Clear();
+            this.skillset = saveGame.skillSet.GetSkillSet();
+
+            this.outfits.Clear();
+            this.outfits = saveGame.outfits.GetOutfits();
+
             this.timePlayed = saveGame.timePlayed.GetValue();
             this.characterName = saveGame.GetCharacterName();
 
@@ -59,22 +74,13 @@ namespace CrystalAlchemist
         private void SetInventory(PlayerInventory inventory)
         {
             inventory.Initialize();
-            this.keyItems.Clear();
-            this.inventoryItems.Clear();
 
-            foreach (ItemGroup item in inventory.inventoryItems)
-            {
-                string[] temp = new string[2];
-                temp[0] = item.name;
-                temp[1] = item.GetAmount() + "";
-                this.inventoryItems.Add(temp);
-            }
-
-            foreach (ItemStats item in inventory.keyItems)
-            {
-                string temp = item.name;
-                this.keyItems.Add(temp);
-            }
+            this.treasureItems = inventory.GetItemsList(InventoryType.treasure);
+            this.keyItems = inventory.GetItemsList(InventoryType.artifacts);
+            this.inventoryItems = inventory.GetItemsList(InventoryType.item);
+            this.craftingItems = inventory.GetItemsList(InventoryType.crafting);
+            this.currencies = inventory.GetItemsList(InventoryType.currency);
+            this.housingItems = inventory.GetItemsList(InventoryType.housing);
         }
 
         private void SetPreset(CharacterPreset preset)

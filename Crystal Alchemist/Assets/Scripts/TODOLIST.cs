@@ -12,16 +12,17 @@ namespace CrystalAlchemist
         - Trigger Active on Skills
         - Empty Map
 
-        - Flammen Objekt (Statuseffekt, Flammenwerfer, etc)
-        - Projektile überarbeiten (offset), bigger colliders
-        - Crafting (Skills, Outfits, Attribute Points, etc)
-        - Housing
-        - Multiloot
-        
-        Share Damage script
-        Attach to sender
-        lock direction
-        time distortion
+
+        1. Sound Effekte austauschen
+        2. Crafting and Shop Rework 
+        4. Inventory Rework
+
+        7. New Skills
+        8. New Races
+        9. New Gear
+
+        10. Housing
+        11. New Animations
 
         New Content:
         - New Skill: Frostnova
@@ -41,9 +42,6 @@ namespace CrystalAlchemist
         - In Menu
         - Casting
         */
-
-        //CHANGES: PLAYERABILITIES Indicator (removed this.player)
-        //CHANGES: AGGROSYSTEM NewTarget is Guest
 
         //-----------------------------------------------------------------------------
 
@@ -83,14 +81,8 @@ namespace CrystalAlchemist
         //TODO: Glasses (HUD)
         //TODO: Tutorial und Tutorial Log
         //TODO: Quests and Quest Log
-        //TODO: Scene Transition mit Text and Player Count
-
-        //SKILLS: Mobiler Savepoint 
-
-        //CONTENT: Collectable Skills
-        //CONTENT: Collectable Skins
-        //CONTENT: Collectable Races (DNA)
-
+         //       6. Loot Table Extra Requirements
+          //      0. Collectable Races
         //TODO: Jahreszeiten
 
         //-----------------------------------------------------------------------------
@@ -99,6 +91,7 @@ namespace CrystalAlchemist
         //- Cutscenes
         //- Quests und Story
         //- Content!
+        //- Housing
 
         //-----------------------------------------------------------------------------
 

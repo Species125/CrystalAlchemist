@@ -74,7 +74,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7870716597532973478}
   myRigidbody: {fileID: 1142126658515756286}
   animator: {fileID: 4511489238996175341}
-  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -85,6 +84,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 0, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!114 &5075768522131947620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,8 +141,8 @@ MonoBehaviour:
     keyItem: {fileID: 0}
     statusEffect: {fileID: 11400000, guid: 7be25678a228822498387918f046e072, type: 2}
     amount: 1
-  statusEffects: []
   modifiers: []
+  shareDamage: 0
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}

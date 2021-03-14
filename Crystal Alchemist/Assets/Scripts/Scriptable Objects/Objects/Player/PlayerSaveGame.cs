@@ -28,6 +28,8 @@ namespace CrystalAlchemist
         public PlayerAttributes attributes;
         [BoxGroup("Player")]
         public PlayerGameProgress progress;
+        [BoxGroup("Player")]
+        public PlayerOutfits outfits;
 
         [BoxGroup("Teleport")]
         public PlayerTeleportList teleportList;
@@ -52,7 +54,6 @@ namespace CrystalAlchemist
         private MenuDialogBoxInfo dialogBoxInfo;
 
         [BoxGroup("Misc")]
-        [ReadOnly]
         [SerializeField]
         private string slotName;
 
@@ -79,6 +80,7 @@ namespace CrystalAlchemist
             this.teleportPath.SetValue("");
             this.dialogBoxInfo.Clear();
             this.teleportList.Clear();
+            this.outfits.Clear();
 
             GameUtil.SetPreset(this.defaultPreset, this.playerPreset);
 

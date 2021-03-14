@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Head Gear
   m_EditorClassIdentifier: 
   note: Kopfschmuck
+  type: 0000000006000000
   canRemove: 1
-  properties:
-  - {fileID: 11400000, guid: 5a433d81dd8d67b428cbc0742668e02f, type: 2}
-  - {fileID: 11400000, guid: c1af3e06c91be3447b30fb5d8752398d, type: 2}
-  - {fileID: 11400000, guid: 730a69041bc2cec4dab822f69406b127, type: 2}
+  outfits:
+  - isDefault: 1
+    property: {fileID: 11400000, guid: 5a433d81dd8d67b428cbc0742668e02f, type: 2}
+  - isDefault: 1
+    property: {fileID: 11400000, guid: c1af3e06c91be3447b30fb5d8752398d, type: 2}
+  - isDefault: 1
+    property: {fileID: 11400000, guid: 730a69041bc2cec4dab822f69406b127, type: 2}

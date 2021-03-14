@@ -6,6 +6,12 @@ namespace CrystalAlchemist
 {
     public class SkillEffectModule : SkillModule
     {
+        public enum RotationType
+        {
+            identity,
+            rotate
+        }
+
         public enum Mode
         {
             OnStart,
@@ -13,24 +19,44 @@ namespace CrystalAlchemist
             OnHit
         }
 
+        [BoxGroup("Options")]
         [SerializeField]
         private Object effect;
 
+        [BoxGroup("Options")]
         [SerializeField]
         private Mode mode;
 
+        [BoxGroup("Options")]
         [SerializeField]
-        private bool hasMaxDistance = false;
+        private RotationType rotationType;
 
-        [ShowIf("hasMaxDistance")]
+        [BoxGroup("Options")]
         [SerializeField]
-        private float maxDistanceBetween = 1f;
+        private bool attachToSender = false;
 
+        [BoxGroup("Options")]
         [ShowIf("mode", Mode.OnUpdate)]
         [SerializeField]
         private float delay;
 
+        [BoxGroup("Distances between Effects")]
         [SerializeField]
+        private bool hasMaxDistance = false;
+
+        [BoxGroup("Distances between Effects")]
+        [ShowIf("hasMaxDistance")]
+        [SerializeField]
+        private float maxDistanceBetween = 1f;
+        
+        [BoxGroup("Destroy")]
+        [SerializeField]
+        private bool autoDestroy = false;
+
+        [BoxGroup("Destroy")]
+        [SerializeField]
+        [ShowIf("autoDestroy")]
+        [MinValue(0.1f)]
         private float autoDestroyAfter;
 
         private List<GameObject> hitPoints = new List<GameObject>();
@@ -77,13 +103,18 @@ namespace CrystalAlchemist
                 {
                     if (this.effect.GetType() == typeof(GameObject))
                     {
-                        GameObject gameObject = Instantiate(this.effect, this.transform.position, Quaternion.identity) as GameObject;
+                        Quaternion rotation = this.transform.rotation;
+                        if (this.rotationType == RotationType.identity) rotation = Quaternion.identity;
+                        
+                        GameObject gameObject = Instantiate(this.effect, this.transform.position, rotation) as GameObject;
+                        if (this.attachToSender) gameObject.transform.SetParent(this.skill.sender.transform);
+
                         AddToList(gameObject);
                     }
                     if (this.effect.GetType() == typeof(Ability))
                     {
                         Ability ability = Instantiate(this.effect) as Ability;
-                        //Skill skill = ability.InstantiateSkill
+
                         Skill skill = AbilityUtil.InstantiateEffectSkill(ability, position, this.skill.sender);
                         skill.transform.SetParent(this.transform);
                         Destroy(ability);
@@ -96,7 +127,7 @@ namespace CrystalAlchemist
         private void AddToList(GameObject gameObject)
         {
             hitPoints.Add(gameObject);
-            if (this.autoDestroyAfter > 0) Destroy(gameObject, this.autoDestroyAfter);
+            if (this.autoDestroy) Destroy(gameObject, this.autoDestroyAfter);
         }
     }
 }

@@ -8,10 +8,9 @@ namespace CrystalAlchemist
     public enum ItemType
     {
         consumable,
-        item,
-        keyItem,
+        inventory,       
         outfit,
-        ability
+        ability        
     }
 
     public enum ItemRarity
@@ -38,23 +37,23 @@ namespace CrystalAlchemist
         public List<CharacterResource> resources = new List<CharacterResource>();
 
         [BoxGroup("Attributes")]
-        [ShowIf("itemType", ItemType.item)]
         [SerializeField]
+        [ShowIf("itemType", ItemType.inventory)]
         private int value = 1;
 
         [BoxGroup("Inventory")]
         [SerializeField]
-        [ShowIf("itemType", ItemType.item)]
-        [Tooltip("Needed if an item have to be grouped. Normal items only!")]
+        [ShowIf("itemType", ItemType.inventory)]
         [Required]
-        public ItemGroup itemGroup;
+        public InventoryItem inventoryItem;
 
-        [BoxGroup("Inventory")]
-        [SerializeField]
-        [Required]
-        [ShowIf("itemType", ItemType.keyItem)]
-        [Tooltip("Needed to show the item in the inventory. Only for key items!")]
-        public ItemSlotInfo inventoryInfo;
+        [BoxGroup("Attributes")]
+        [ShowIf("itemType", ItemType.ability)]
+        public Ability ability;
+
+        [BoxGroup("Attributes")]
+        [ShowIf("itemType", ItemType.outfit)]
+        public CharacterCreatorProperty outfit;
 
         [BoxGroup("Inventory")]
         [Tooltip("Info is need to load names, icons and discriptions")]
@@ -76,41 +75,17 @@ namespace CrystalAlchemist
             return this.info;
         }
 
-        public void SetStats(int value, ItemType type, AudioClip soundEffect, ItemInfo info)
+        public void SetStats(int value, InventoryType type, AudioClip soundEffect, ItemInfo info)
         {
             this.value = value;
-            this.itemType = type;
+            this.inventoryItem.inventoryType = type;
             this.collectSoundEffect = soundEffect;
             this.info = info;
-        }
-
-        public bool isKeyItem()
-        {
-            return this.itemType == ItemType.keyItem;
-        }
-
-        public bool isID(int ID)
-        {
-            if (this.itemGroup != null) return this.itemGroup.isID(ID);
-            else if (this.inventoryInfo != null) return this.inventoryInfo.isID(ID);
-            return false;
         }
 
         public void Initialize(int amount)
         {
             this.amount = amount;
-        }
-
-        public string getItemGroup()
-        {
-            if (this.itemGroup != null) return this.itemGroup.getName();
-            else return "";
-        }
-
-        public int getMaxAmount()
-        {
-            if (this.itemGroup != null) return this.itemGroup.maxAmount;
-            return 0;
         }
 
         [AssetIcon]
@@ -120,7 +95,7 @@ namespace CrystalAlchemist
             return null;
         }
 
-        public int getTotalAmount()
+        public int GetTotalAmount()
         {
             return this.value * this.amount;
         }
@@ -133,19 +108,6 @@ namespace CrystalAlchemist
         public string getName()
         {
             return this.info.getName();
-        }
-
-        public Color GetRarity()
-        {
-            switch (this.rarity)
-            {
-                case ItemRarity.uncommon: return MasterManager.globalValues.uncommon;
-                case ItemRarity.epic: return MasterManager.globalValues.epic;
-                case ItemRarity.rare: return MasterManager.globalValues.rare;
-                case ItemRarity.legendary: return MasterManager.globalValues.legendary;
-                case ItemRarity.unique: return MasterManager.globalValues.unique;
-                default: return MasterManager.globalValues.common;
-            }
         }
 
         public string getDescription()

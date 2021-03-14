@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 7817998858656526167}
   - component: {fileID: 5219678606332422380}
   - component: {fileID: 3741579703708068224}
+  - component: {fileID: 8561765462217230577}
+  - component: {fileID: 4210659049389364606}
   m_Layer: 13
   m_Name: Schild
   m_TagString: Skill
@@ -65,6 +67,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 0, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!212 &564329192152756961
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -223,8 +228,45 @@ MonoBehaviour:
   skill: {fileID: 0}
   type: 2
   positionHeight: 0.35
-  skillCollider: {fileID: 0}
   positionOffset: 0
+--- !u!114 &8561765462217230577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6086066880683234544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e50e67d27afcf84baa9de1b78813445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  timeDistortable: 0
+--- !u!114 &4210659049389364606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6086066880683234544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdebd154a506234d85ef301888ca8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  attributes:
+  - type: 4
+    forward: 0
+    thrust: 0
+    duration: 0
+    value: 0
+  - type: 5
+    forward: 0
+    thrust: 0
+    duration: 0.3
+    value: 0
 --- !u!1 &8110846557276872138
 GameObject:
   m_ObjectHideFlags: 0

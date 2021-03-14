@@ -52,6 +52,12 @@ namespace CrystalAlchemist
         private Vector2 direction = Vector2.right;
         [BoxGroup("Debug")]
         public bool standAlone = true;
+        [BoxGroup("Debug")]
+        public bool isRapidFire = false;
+        [BoxGroup("Debug")]
+        public bool isAttached = false;
+        [BoxGroup("Debug")]
+        public bool canAffectedBytimeDistortion = false;
 
         ////////////////////////////////////////////////////////////////
 
@@ -60,36 +66,31 @@ namespace CrystalAlchemist
         private float timeDistortion = 1;
         private bool triggerIsActive = true;
         private bool lockDirection;
-        private bool canAffectedBytimeDistortion;
+        private float lockDuration;        
         private bool hasDelay;
         private float delay;
         private bool hasDuration;
         private float maxDuration;
-        private bool isRapidFire;
         private bool attached;
         private float progress;
-        private float lockDuration;
         private bool isActive = true;
         private float percentage;
         #endregion
 
         #region Start Funktionen (Init, set Basics, Update Sender, set Position
 
+        public void SetDirectionLock(float duration)
+        {
+            this.lockDirection = true;
+            this.lockDuration = duration;
+        }
+
         public void InitializeStandAlone(Character sender, Character target, Quaternion rotation)
         {
             this.transform.rotation = rotation;
             this.sender = sender;
             this.target = target;
-        }
-
-        public void Initialize(bool lockDirection, float lockDuration, bool isRapidFire, bool affectTimeDistortion, bool attached)
-        {
-            this.lockDirection = lockDirection;
-            this.lockDuration = lockDuration;
-            this.isRapidFire = isRapidFire;
-            this.canAffectedBytimeDistortion = affectTimeDistortion;
-            this.attached = attached;
-        }
+        }        
 
         public void SetMaxDuration(bool hasDuration, float maxDuration)
         {

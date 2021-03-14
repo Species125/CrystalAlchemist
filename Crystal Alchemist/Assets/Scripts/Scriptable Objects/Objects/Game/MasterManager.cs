@@ -1,4 +1,5 @@
 ﻿using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace CrystalAlchemist
     [CreateAssetMenu(menuName = "Game/Settings/Global Game Objects")]
     public class MasterManager : SingletonScriptableObject<MasterManager>
     {
+
         public static AggroArrow aggroArrow { get { return Instance._aggroArrow; } }
         public static DamageNumbers damageNumber { get { return Instance._damageNumber; } }
         public static ContextClue contextClue { get { return Instance._contextClue; } }
@@ -18,9 +20,9 @@ namespace CrystalAlchemist
         public static GameSettings settings { get { return Instance._gameSettings; } }
         public static DebugSettings debugSettings { get { return Instance._debugSettings; } }
         public static GlobalValues globalValues { get { return Instance._globalValues; } }
-        public static List<ItemDrop> itemDrops { get { return Instance._itemDrops; } }
-        public static List<ItemGroup> itemGroups { get { return Instance._itemGroups; } }
+        public static List<InventoryItem> inventoryItems { get { return Instance._inventoryItems; } }
         public static List<Ability> abilities { get { return Instance._abilities; } }
+        public static List<CharacterCreatorProperty> outfits { get { return Instance._outfits; } }
         public static List<TeleportStats> teleportpoints { get { return Instance._teleportPoints; } }
         public static TargetingSystem targetingSystem { get { return Instance._targetingSystem; } }
         public static TimeValue timeValue { get { return Instance._timeValue; } }
@@ -96,47 +98,69 @@ namespace CrystalAlchemist
         private TeleportStats _defaultTeleport;
         [BoxGroup("Loading")]
         [SerializeField]
-        private List<ItemDrop> _itemDrops = new List<ItemDrop>();
-        [BoxGroup("Loading")]
-        [SerializeField]
-        private List<ItemGroup> _itemGroups = new List<ItemGroup>();
+        private List<InventoryItem> _inventoryItems = new List<InventoryItem>();
         [BoxGroup("Loading")]
         [SerializeField]
         private List<Ability> _abilities = new List<Ability>();
         [BoxGroup("Loading")]
         [SerializeField]
+        private List<CharacterCreatorProperty> _outfits = new List<CharacterCreatorProperty>();
+        [BoxGroup("Loading")]
+        [SerializeField]
         private List<TeleportStats> _teleportPoints = new List<TeleportStats>();
 
+        [BoxGroup("Loading Config")]
+        [SerializeField]
+        private List<string> itemPaths = new List<string>();
 
         [Button]
         public void LoadAll()
         {
-            this._itemDrops.Clear();
-            this._itemGroups.Clear();
+            this._inventoryItems.Clear();
             this._abilities.Clear();
             this._teleportPoints.Clear();
 
-            this._itemDrops.AddRange(Resources.LoadAll<ItemDrop>("Scriptable Objects/Items/Item Drops/Key Items/"));
-            this._itemGroups.AddRange(Resources.LoadAll<ItemGroup>("Scriptable Objects/Items/Item Groups/Inventory Items/"));
-            this._itemGroups.AddRange(Resources.LoadAll<ItemGroup>("Scriptable Objects/Items/Item Groups/Currencies/"));
+            foreach(string path in itemPaths)
+            {
+                this._inventoryItems.AddRange(Resources.LoadAll<InventoryItem>("Scriptable Objects/Items/Inventory Items/"+path+"/"));
+            }            
+
             this._abilities.AddRange(Resources.LoadAll<Ability>("Scriptable Objects/Abilities/Skills/Player Skills/"));
             this._teleportPoints.AddRange(Resources.LoadAll<TeleportStats>("Scriptable Objects/TeleportPoints/"));
         }
 
-        public static ItemDrop getItemDrop(string name)
+        public static Ability GetAbility(string name)
         {
-            foreach (ItemDrop drop in itemDrops)
+            foreach (Ability ability in abilities)
             {
-                if (drop.name == name) return drop;
+                if (ability.name == name) return ability;
             }
 
             Debug.LogError(name + " not found in Master!");
             return null;
         }
 
-        public static ItemGroup getItemGroup(string name)
+        public static CharacterCreatorProperty GetOutfit(string[] data)
         {
-            foreach (ItemGroup group in itemGroups)
+            string bodyPart = data[0];
+            string name = data[1];
+            BodyPart result;
+
+            bool value = Enum.TryParse<BodyPart>(bodyPart, out result);
+            if (!value) return null;
+
+            foreach (CharacterCreatorProperty outfit in outfits)
+            {
+                if (result == outfit.type && outfit.name == name) return outfit;
+            }
+
+            Debug.LogError(name + " not found in Master!");
+            return null;
+        }
+
+        public static InventoryItem GetItemGroup(string name)
+        {
+            foreach (InventoryItem group in inventoryItems)
             {
                 if (group.name == name) return group;
             }

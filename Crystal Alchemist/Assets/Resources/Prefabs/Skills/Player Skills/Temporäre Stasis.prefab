@@ -170,6 +170,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 9014079209903171959}
   m_maskType: 0
+  _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
 --- !u!114 &3873323168966697526
@@ -219,6 +220,7 @@ GameObject:
   - component: {fileID: 907840878756441047}
   - component: {fileID: 8873387076501772117}
   - component: {fileID: 3005446792446110026}
+  - component: {fileID: -8227891673974404941}
   m_Layer: 13
   m_Name: "Tempor\xE4re Stasis"
   m_TagString: Skill
@@ -300,7 +302,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   myRigidbody: {fileID: 0}
   animator: {fileID: 0}
-  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -311,6 +312,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 0, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!114 &5758942587671381034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,9 +338,6 @@ MonoBehaviour:
   speedDuringCasting: -50
   speedDuringDuration: 0
   affectAnimation: 1
-  forward: 0
-  selfThrust: 0
-  selfThrustTime: 0
 --- !u!114 &7710473471238643698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,6 +385,7 @@ MonoBehaviour:
     statusEffect: {fileID: 11400000, guid: 8ff68d8de3f11394db952a1b07fa3224, type: 2}
     amount: 0
   modifiers: []
+  shareDamage: 0
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}
@@ -435,6 +437,20 @@ PolygonCollider2D:
       - {x: 5.2121964, y: 1.95101}
       - {x: 4.414379, y: 2.709877}
       - {x: 3.5, y: 3.25}
+--- !u!114 &-8227891673974404941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4199971107470901726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e50e67d27afcf84baa9de1b78813445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  timeDistortable: 0
 --- !u!1 &4862701479617002115
 GameObject:
   m_ObjectHideFlags: 0

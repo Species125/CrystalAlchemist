@@ -9,7 +9,7 @@ namespace CrystalAlchemist
         private PlayerInventory playerItems;
 
         [SerializeField]
-        private ItemGroup item;
+        private InventoryItem item;
 
         [SerializeField]
         private TextMeshProUGUI textField;

@@ -32,7 +32,9 @@ namespace CrystalAlchemist
             this.photon = this.GetComponent<PhotonView>(); 
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other) => OnEnter(other);      
+
+        private void OnEnter(Collider2D other)
         {
             Player player = other.GetComponent<Player>();
             if (other.isTrigger || !NetworkUtil.IsLocal(player)) return;

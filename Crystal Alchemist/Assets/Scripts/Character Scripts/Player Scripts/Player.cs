@@ -29,7 +29,7 @@ namespace CrystalAlchemist
 
         [BoxGroup("Debug")]
         [ReadOnly]
-        public bool isLocalPlayer = true;        
+        public bool isLocalPlayer = true;
 
         [BoxGroup("Debug")]
         [ReadOnly]
@@ -42,7 +42,7 @@ namespace CrystalAlchemist
         ///////////////////////////////////////////////////////////////
 
         public override void Awake()
-        {            
+        {
             SetComponents();
             SetScriptableObjects();
             SetPlayerComponents();
@@ -55,11 +55,11 @@ namespace CrystalAlchemist
             this.gameObject.name = "Player (Guest)";
 
             if (!NetworkUtil.IsLocal(this.photonView))
-            {                
+            {
                 this.isLocalPlayer = false;
-                this.stats = ScriptableObject.CreateInstance<CharacterStats>();                
+                this.stats = ScriptableObject.CreateInstance<CharacterStats>();
                 this.stats.SetCharacterType(CharacterType.Friend);
-                this.values = ScriptableObject.CreateInstance<CharacterValues>();    
+                this.values = ScriptableObject.CreateInstance<CharacterValues>();
                 this.saveGame = null;
                 this.values.Initialize();
                 this.stats.SetCharacterName("New Player");
@@ -72,7 +72,7 @@ namespace CrystalAlchemist
                 this.values = this.saveGame.playerValue;
                 this.values.Initialize();
                 this.saveGame.attributes.SetValues();
-                this.stats.SetCharacterName(this.saveGame.characterName.GetValue());                
+                this.stats.SetCharacterName(this.saveGame.characterName.GetValue());
             }
 
             UpdateMasterStatus();
@@ -125,9 +125,9 @@ namespace CrystalAlchemist
         }
 
         private void LoadPlayer()
-        {           
-            if (!this.isLocalPlayer) return;            
-            
+        {
+            if (!this.isLocalPlayer) return;
+
             this.saveGame.progress.Updating();
 
             SceneManager.LoadScene("UI", LoadSceneMode.Additive);
@@ -148,7 +148,6 @@ namespace CrystalAlchemist
 
             UpdateLifeManaForOthers();
 
-            this.saveGame.skillSet.TestInitialize(this);
             this.currentScene.SetValue(this.gameObject.scene.name);
         }
 
@@ -205,8 +204,8 @@ namespace CrystalAlchemist
         public override void SpawnIn()
         {
             base.SpawnIn();
-            AddStatusEffectVisuals();            
-        }        
+            AddStatusEffectVisuals();
+        }
 
         public override void EnableScripts(bool value)
         {
@@ -256,7 +255,7 @@ namespace CrystalAlchemist
             if (price.resourceType == CostType.none) return true;
             else if (price.resourceType == CostType.life && this.values.life - price.amount >= 0) return true;
             else if (price.resourceType == CostType.mana && this.values.mana - price.amount >= 0) return true;
-            else if (price.resourceType == CostType.keyItem && price.keyItem != null && GameEvents.current.HasKeyItem(price.keyItem.name)) return true;
+            else if (price.resourceType == CostType.keyItem && price.keyItem != null && price.keyItem.HasItemAlready()) return true;
             else if (price.resourceType == CostType.item && price.item != null && GameEvents.current.GetItemAmount(price.item) - price.amount >= 0) return true;
 
             return false;
@@ -272,7 +271,7 @@ namespace CrystalAlchemist
         }
 
         ///////////////////////////////////////////////////////////////
-                
+
         private void SetCutScene()
         {
             if (this.CutSceneValue.GetValue()) this.values.currentState = CharacterState.respawning;
@@ -306,7 +305,7 @@ namespace CrystalAlchemist
         }
 
         private void CollectIt(ItemDrop drop)
-        {            
+        {
             //Collectable, Load, MiniGame, Shop und Treasure
             if (!isLocalPlayer) return;
 
@@ -317,18 +316,18 @@ namespace CrystalAlchemist
             {
                 foreach (CharacterResource resource in stats.resources) UpdateResource(resource, true);
             }
-            else if (stats.itemType == ItemType.item || stats.itemType == ItemType.keyItem)
-            {                
-                GetComponent<PlayerItems>().CollectItem(stats);
-            }
             else if (stats.itemType == ItemType.ability)
             {
-                //add ability to skillset and save
+                this.saveGame.skillSet.AddAbility(stats.ability, this);
             }
             else if (stats.itemType == ItemType.outfit)
             {
-                //add outfit to glamour and save
-            }            
+                this.saveGame.outfits.AddGear(stats.outfit);
+            }
+            else if (stats.itemType == ItemType.inventory)
+            {
+                this.saveGame.inventory.CollectItem(stats);
+            }
         }
 
         public override void Regenerate()
@@ -349,16 +348,15 @@ namespace CrystalAlchemist
             UpdateLifeManaUI(value);
         }
 
-        public override void UpdateItem(ItemGroup item, int value)
+        public override void UpdateItem(InventoryItem item, int value)
         {
-            if(this.GetComponent<PlayerItems>() != null) this.GetComponent<PlayerItems>().UpdateInventory(item, value);
+            this.saveGame.inventory.UpdateInventory(item, value);
         }
 
         public override void UpdateKeyItem(ItemDrop keyItem)
         {
-            if (this.GetComponent<PlayerItems>() != null) this.GetComponent<PlayerItems>().CollectItem(keyItem.stats);
+            this.saveGame.inventory.CollectItem(keyItem.stats);
         }
-
 
         /////////////////////////////////////////////////////////////////////////////////
 
@@ -390,7 +388,7 @@ namespace CrystalAlchemist
         }
 
         private IEnumerator GoToBed(float duration, Action after)
-        {            
+        {
             this.myRigidbody.velocity = Vector2.zero;
             yield return new WaitForEndOfFrame(); //Wait for Camera
 
@@ -406,13 +404,13 @@ namespace CrystalAlchemist
         private void EnablePlayer(bool value)
         {
             this.EnableScripts(value); //prevent movement   
-            this.characterCollider.enabled = true; 
+            this.characterCollider.enabled = true;
             this.SetDefaultDirection();
         }
 
         private IEnumerator GetUp(float duration, Vector2 position, Action action)
         {
-            this.myRigidbody.velocity = Vector2.zero;                          
+            this.myRigidbody.velocity = Vector2.zero;
 
             AnimatorUtil.SetAnimatorParameter(this.animator, "WakeUp");
             float animDuration = AnimatorUtil.GetAnimationLength(this.animator, "WakeUp");
@@ -421,7 +419,7 @@ namespace CrystalAlchemist
             action?.Invoke(); //Zeit normal
 
             SetTransform(position);
-            EnablePlayer(true);          
+            EnablePlayer(true);
         }
 
 
@@ -482,7 +480,7 @@ namespace CrystalAlchemist
             this.photonView.RPC("RpcUpdateLifeMana", RpcTarget.Others, this.values.life, this.values.mana, this.values.maxLife, this.values.maxMana);
             this.photonView.RPC("RpcShowDataOnClient", RpcTarget.Others);
         }
-        
+
         [PunRPC]
         protected void RpcShowDataOnClient(PhotonMessageInfo info)
         {
@@ -494,7 +492,7 @@ namespace CrystalAlchemist
 
         public void AddStatusEffectVisualOthers(StatusEffect effect)
         {
-            if (!this.isLocalPlayer) return;            
+            if (!this.isLocalPlayer) return;
             this.photonView.RPC("RpcAddStatusEffectVisualOthers", RpcTarget.Others, effect.path);
             this.photonView.RPC("RpcShowDataOnClient", RpcTarget.Others);
         }
@@ -530,7 +528,7 @@ namespace CrystalAlchemist
         }
 
         [PunRPC]
-        protected void RpcSetPlayerPosition(Vector2 position) => this.transform.position = position;        
+        protected void RpcSetPlayerPosition(Vector2 position) => this.transform.position = position;
 
         private void OnPlayerLeft(Photon.Realtime.Player newPlayer)
         {

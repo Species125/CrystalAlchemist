@@ -41,11 +41,11 @@ namespace CrystalAlchemist
                     ItemStats temp = (ItemStats)obj;
                     result = result.Replace("<item name>", temp.getName());
                     result = result.Replace("<item amount>", temp.amount + "");
-                    result = result.Replace("<item value>", temp.getTotalAmount() + "");
+                    result = result.Replace("<item value>", temp.GetTotalAmount() + "");
                 }
-                else if (obj.GetType() == typeof(ItemGroup))
+                else if (obj.GetType() == typeof(InventoryItem))
                 {
-                    ItemGroup temp = (ItemGroup)obj;
+                    InventoryItem temp = (InventoryItem)obj;
                     result = result.Replace("<item name>", temp.getName());
                     result = result.Replace("<item amount>", temp.GetAmount() + "");
                 }

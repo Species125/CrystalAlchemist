@@ -41,6 +41,7 @@ namespace CrystalAlchemist
                 character.transform.DOScale(1, 0f);
                 character.EnableScripts(true);
                 character.UpdateResource(cost.resourceType, -cost.amount);
+                character.SetCannotHit(1f, false);
             }
             else
             {
