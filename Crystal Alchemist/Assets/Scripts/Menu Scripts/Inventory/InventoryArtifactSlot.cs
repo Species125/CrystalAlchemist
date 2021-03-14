@@ -7,9 +7,6 @@ namespace CrystalAlchemist
         [SerializeField]
         private InventoryItem item;
 
-        //TODO: Active Tab
-        //TODO: Custom Cursor Info Box Testen
-
         private void Start()
         {
             if (GameEvents.current.HasItemAlready(item)) SetItem(item);            

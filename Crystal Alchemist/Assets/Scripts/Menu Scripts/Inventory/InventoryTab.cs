@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -25,7 +26,9 @@ namespace CrystalAlchemist
             List<InventoryItem> inv = inventory.GetInventory(inventoryType);
             if (inv == null) return;
 
-            foreach (InventoryItem item in inv)
+            List<InventoryItem> sorted = inv.OrderByDescending(x => (int)(x.rarity)).ThenBy(x => x.name).ToList();
+
+            foreach (InventoryItem item in sorted)
             {
                 InventorySlot slot = Instantiate(this.template, this.content);
                 slot.SetItem(item);

@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36470793f9e5daf4aad0f2299129f3b7, type: 3}
   m_Name: Time Shards
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/Items/Inventory Items/Inventory Items/Time Shards
+  inventoryType: 0
   maxAmount: 99
+  canConsume: 1
   info: {fileID: 11400000, guid: e67b4d98773dd0a4a96a64bc238bdc54, type: 2}
-  inventoryInfo: {fileID: 11400000, guid: 89bc9d40b45d9394cb40a0e8c47e6938, type: 2}
-  collectSignal: {fileID: 0}
+  updateCurrencyUI: 0
+  raiseSoundEffect: {fileID: 0}
+  rarity: 2
+  shopPrice: {fileID: 0}
+  amount: 0
+  keyItemSignal: {fileID: 0}
