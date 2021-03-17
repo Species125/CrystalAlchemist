@@ -175,6 +175,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 1, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!114 &1221465375546470431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +193,7 @@ MonoBehaviour:
   skill: {fileID: 0}
   affectedResources: []
   modifiers: []
+  shareDamage: 0
   thrust: 6
   knockbackTime: 1
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}

@@ -28,14 +28,14 @@ namespace CrystalAlchemist
             GameEvents.current.OnCollect -= ShowItems;
         }
 
-        private void ShowItems(ItemDrop drop)
+        private void ShowItems(ItemDrop drop, int amount)
         {
             this.elements.RemoveAll(x => x == null);
             if (drop.stats.itemType == ItemType.consumable) return;
 
             ItemHUDElement exists = GetElement(drop);
-            if (exists == null) CreateNewHUDElement(drop);
-            else exists.UpdateElement();            
+            if (exists == null) CreateNewHUDElement(drop, amount);
+            else exists.UpdateElement(amount);            
         }
 
         private ItemHUDElement GetElement(ItemDrop drop)
@@ -47,10 +47,10 @@ namespace CrystalAlchemist
             return null;
         }
 
-        private void CreateNewHUDElement(ItemDrop drop)
+        private void CreateNewHUDElement(ItemDrop drop, int amount)
         {
             ItemHUDElement element = Instantiate(this.template, this.content);
-            element.SetElement(drop);
+            element.SetElement(drop, amount);
             element.gameObject.SetActive(true);
             this.elements.Add(element);
         }

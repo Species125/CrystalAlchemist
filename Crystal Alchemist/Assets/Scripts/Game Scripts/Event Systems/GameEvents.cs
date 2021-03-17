@@ -26,7 +26,7 @@ namespace CrystalAlchemist
         public Action OnRoomStatusChange;
 
         public Action<bool> OnCurrencyChanged;
-        public Action<ItemDrop> OnCollect;
+        public Action<ItemDrop,int> OnCollect;
         public Action<ProgressValue> OnProgress;
         
         public Action<Costs> OnReduce;
@@ -79,7 +79,7 @@ namespace CrystalAlchemist
         public void DoChangeState(CharacterState state) => this.OnStateChanged?.Invoke(state);
         public void DoMenuOverlay(bool value) => this.OnMenuOverlay?.Invoke(value);
         public void DoCurrencyChange(bool show) => this.OnCurrencyChanged?.Invoke(show);
-        public void DoCollect(ItemDrop drop) => this.OnCollect?.Invoke(drop);
+        public void DoCollect(ItemDrop drop, int amount = 1) => this.OnCollect?.Invoke(drop, amount);
         public void DoProgress(ProgressValue value) => this.OnProgress?.Invoke(value);
         public void DoReduce(Costs costs) => this.OnReduce?.Invoke(costs);
         public void DoSubmit() => this.OnSubmit?.Invoke();

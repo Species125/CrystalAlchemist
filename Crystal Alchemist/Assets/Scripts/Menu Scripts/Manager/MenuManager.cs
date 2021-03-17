@@ -32,7 +32,6 @@ namespace CrystalAlchemist
             MenuEvents.current.OnOnlineMenu += OpenOnlineMenu;
             MenuEvents.current.OnTutorial += OpenTutorial;
             MenuEvents.current.OnShop += OpenShop;
-            MenuEvents.current.OnCrafting += OpenCrafting;
             PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
         }
 
@@ -55,7 +54,6 @@ namespace CrystalAlchemist
             MenuEvents.current.OnOnlineMenu -= OpenOnlineMenu;
             MenuEvents.current.OnTutorial -= OpenTutorial;
             MenuEvents.current.OnShop -= OpenShop;
-            MenuEvents.current.OnCrafting -= OpenCrafting;
             PhotonNetwork.NetworkingClient.EventReceived += NetworkingEvent;
         }
 
@@ -87,9 +85,7 @@ namespace CrystalAlchemist
 
         public void OpenOnlineMenu() => OpenScene("Online Menu");
 
-        public void OpenShop() => OpenScene("Shop");
-
-        public void OpenCrafting() => OpenScene("Crafting");
+        public void OpenShop() => OpenScene("Shop Menu");
 
         private void OpenSceneOnce(string scene)
         {

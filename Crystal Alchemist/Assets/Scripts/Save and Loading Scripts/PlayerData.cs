@@ -73,7 +73,7 @@ namespace CrystalAlchemist
 
         private void SetInventory(PlayerInventory inventory)
         {
-            inventory.Initialize();
+            inventory.RemoveNulls();
 
             this.treasureItems = inventory.GetItemsList(InventoryType.treasure);
             this.keyItems = inventory.GetItemsList(InventoryType.artifacts);

@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36470793f9e5daf4aad0f2299129f3b7, type: 3}
   m_Name: Anti Potions
   m_EditorClassIdentifier: 
-  path: Scriptable Objects/Items/Item Groups/Inventory Items/Anti Potions
+  path: Scriptable Objects/Items/Inventory Items/Inventory Items/Anti Potions
+  inventoryType: 0
   maxAmount: 99
   canConsume: 1
   info: {fileID: 11400000, guid: 1592830cb4456954cb64b01726e58e1a, type: 2}
   updateCurrencyUI: 0
   raiseSoundEffect: {fileID: 0}
   rarity: 1
+  canBeSold: 1
+  shopValue: 5
   shopPrice: {fileID: 0}
   amount: 0
+  keyItemSignal: {fileID: 0}

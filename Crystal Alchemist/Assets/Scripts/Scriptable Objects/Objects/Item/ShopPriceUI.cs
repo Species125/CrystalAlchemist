@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CrystalAlchemist
 {
-    [CreateAssetMenu(menuName = "Game/Items/Shop Price")]
+    [CreateAssetMenu(menuName = "Game/Shop/Shop Price")]
     public class ShopPriceUI : ScriptableObject
     {
         [BoxGroup("Shop Price")]

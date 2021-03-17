@@ -20,7 +20,7 @@ namespace CrystalAlchemist
         [SerializeField]
         private GameObject cursorSelected;
 
-        private Vector2 cursorScale;
+        private Vector2 cursorScale = Vector2.one;
         private Vector2 cursorSize;
         private float offset = 16;
         private int distance = 400;

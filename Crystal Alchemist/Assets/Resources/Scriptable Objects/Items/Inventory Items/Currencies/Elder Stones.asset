@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36470793f9e5daf4aad0f2299129f3b7, type: 3}
   m_Name: Elder Stones
   m_EditorClassIdentifier: 
-  path: Scriptable Objects/Items/Item Groups/Currencies/Elder Stones
+  path: Scriptable Objects/Items/Inventory Items/Currencies/Elder Stones
   inventoryType: 2
   maxAmount: 8
   canConsume: 0
@@ -20,6 +20,8 @@ MonoBehaviour:
   updateCurrencyUI: 0
   raiseSoundEffect: {fileID: 0}
   rarity: 3
+  canBeSold: 0
+  shopValue: 1
   shopPrice: {fileID: 0}
   amount: 0
   keyItemSignal: {fileID: 0}

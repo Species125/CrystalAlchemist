@@ -36,12 +36,12 @@ namespace CrystalAlchemist
         private float speed = 0.5f;
 
         private string dropName;
-        private int amount = 1;
+        private int amount = 0;
         private string itemName;
         private float elapsed;
         private bool isFading;
 
-        public void SetElement(ItemDrop drop)
+        public void SetElement(ItemDrop drop, int amount)
         {
             this.child.DOLocalMoveX(this.offset, 0);
 
@@ -49,7 +49,7 @@ namespace CrystalAlchemist
             this.itemName = drop.stats.getName();
             this.icon.sprite = drop.stats.getSprite();
 
-            UpdateAmount();
+            UpdateElement(amount);
 
             Color color = GameUtil.GetRarity(drop.stats.rarity);
             this.background.color = new Color(color.r, color.g, color.b, this.transparency);                     
@@ -60,9 +60,9 @@ namespace CrystalAlchemist
             return this.dropName == drop.name;            
         }
 
-        public void UpdateElement()
+        public void UpdateElement(int amount)
         {
-            this.amount++;
+            this.amount+=amount;
             UpdateAmount();            
         }
 

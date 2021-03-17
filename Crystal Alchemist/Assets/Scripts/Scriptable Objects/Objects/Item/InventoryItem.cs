@@ -46,6 +46,14 @@ namespace CrystalAlchemist
         public ItemRarity rarity = ItemRarity.common;
 
         [BoxGroup("Shop Price")]
+        public bool canBeSold = true;
+
+        [ShowIf("canBeSold")]
+        [BoxGroup("Shop Price")]
+        [Min(1)]
+        public int shopValue = 1;
+
+        [BoxGroup("Shop Price")]
         public ShopPriceUI shopPrice;
 
         [BoxGroup("Debug")]
@@ -100,6 +108,11 @@ namespace CrystalAlchemist
         {
             this.amount += amount;
             if (this.amount > this.maxAmount) this.amount = this.maxAmount;
+            if (this.amount < 0)
+            {
+                this.amount = 0;
+                Destroy(this);
+            }
         }
 
         public void RaiseCollectSignal()

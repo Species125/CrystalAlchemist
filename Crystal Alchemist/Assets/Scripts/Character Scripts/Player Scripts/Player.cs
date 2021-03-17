@@ -304,12 +304,14 @@ namespace CrystalAlchemist
             this.values.currentState = state;
         }
 
-        private void CollectIt(ItemDrop drop)
+        private void CollectIt(ItemDrop drop, int amount)
         {
             //Collectable, Load, MiniGame, Shop und Treasure
             if (!isLocalPlayer) return;
 
-            ItemStats stats = drop.stats;
+            ItemStats stats = Instantiate(drop.stats);
+            stats.amount *= amount;
+
             GameEvents.current.DoProgress(drop.progress);
 
             if (stats.itemType == ItemType.consumable)
@@ -328,6 +330,8 @@ namespace CrystalAlchemist
             {
                 this.saveGame.inventory.CollectItem(stats);
             }
+
+            Destroy(stats);
         }
 
         public override void Regenerate()

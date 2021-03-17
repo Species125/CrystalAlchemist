@@ -20,7 +20,7 @@ namespace CrystalAlchemist
 
         private void OnDestroy() => GameEvents.current.OnCollect -= DestroyItems;
 
-        private void DestroyItems(ItemDrop drop)
+        private void DestroyItems(ItemDrop drop, int amount)
         {
             if (this.collectAll) return;
             counter++;

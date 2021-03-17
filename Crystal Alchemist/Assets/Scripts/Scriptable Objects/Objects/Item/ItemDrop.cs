@@ -34,7 +34,7 @@ namespace CrystalAlchemist
         private int number;
 
         [AssetIcon]
-        private Sprite GetSprite()
+        public Sprite GetSprite()
         {
             if (this.stats != null) return stats.getSprite();
             return null;

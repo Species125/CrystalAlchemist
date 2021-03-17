@@ -68,10 +68,9 @@ namespace CrystalAlchemist
         [SerializeField]
         private AudioClip collectSoundEffect;
 
-
         public ItemInfo getInfo()
         {
-            //if (this.itemGroup != null) return this.itemGroup.info;
+            //if (this.InventoryItem != null) return this.InventoryItem.info;
             return this.info;
         }
 

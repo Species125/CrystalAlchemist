@@ -14,12 +14,12 @@ namespace CrystalAlchemist
 
         public bool preferInventoryIcon = true;
 
-        private InventoryItem itemGroup;
+        private InventoryItem InventoryItem;
         private ItemStats itemStat;
 
         public InventoryItem GetInventoryItem()
         {
-            return this.itemGroup;
+            return this.InventoryItem;
         }
 
         public ItemStats GetItemStat()
@@ -29,7 +29,7 @@ namespace CrystalAlchemist
 
         public virtual void SetItem(InventoryItem item)
         {
-            this.itemGroup = item;
+            this.InventoryItem = item;
 
             if (item == null)
             {
@@ -39,8 +39,11 @@ namespace CrystalAlchemist
             {
                 this.image.gameObject.SetActive(true);
 
-                if (item.canConsume && item.GetAmount() > 1) this.amount.text = "x" + item.GetAmount();
-                else if (this.amount != null) this.amount.text = "";
+                if (this.amount != null)
+                {
+                    if (item.canConsume && item.GetAmount() > 1) this.amount.text = "x" + item.GetAmount();
+                    else this.amount.text = "";
+                }
 
                 if (this.preferInventoryIcon) this.image.sprite = item.info.getSprite();
                 else this.image.sprite = item.info.getSprite();
@@ -61,8 +64,11 @@ namespace CrystalAlchemist
             {
                 this.image.gameObject.SetActive(true);
 
-                if (item.inventoryItem.inventoryType == InventoryType.item && item.amount > 1) this.amount.text = "x" + item.amount;
-                else if (this.amount != null) this.amount.text = "";
+                if (this.amount != null)
+                {
+                    if (item.inventoryItem.inventoryType == InventoryType.item && item.amount > 1) this.amount.text = "x" + item.amount;
+                    else this.amount.text = "";
+                }
 
                 if (this.preferInventoryIcon) this.image.sprite = item.getSprite();
                 else this.image.sprite = item.getSprite();

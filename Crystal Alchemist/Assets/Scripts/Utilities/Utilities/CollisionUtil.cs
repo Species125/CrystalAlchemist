@@ -133,12 +133,7 @@ namespace CrystalAlchemist
             return false;
         }
 
-        public static bool checkIfGameObjectIsViewed(Character character, GameObject gameObject)
-        {
-            return checkIfGameObjectIsViewed(character, gameObject, 1f);
-        }
-
-        public static bool checkIfGameObjectIsViewed(Character character, GameObject gameObject, float distance)
+        public static bool checkIfGameObjectIsViewed(Character character, GameObject gameObject, float distance = 3f)
         {
             float width = 0.2f;
             float offset = 0.1f;

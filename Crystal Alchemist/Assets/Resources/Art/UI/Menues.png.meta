@@ -412,7 +412,7 @@ TextureImporter:
     second: in combat
   - first:
       213: 8648132425536936263
-    second: Inventory Exit Top
+    second: Pause Small
   - first:
       213: 4390297790708840172
     second: IsDead
@@ -466,13 +466,13 @@ TextureImporter:
     second: Inventory Items Background
   - first:
       213: 8088239544178063259
-    second: Inventory Items
+    second: Shop Window Gold
   - first:
       213: -3972279374629293920
-    second: Inventory Items
+    second: Shop Window Gold
   - first:
       213: 3734266733769801195
-    second: Inventory Items
+    second: Shop Window Gold
   - first:
       213: -4834492642064478133
     second: Inventory Menues
@@ -503,6 +503,33 @@ TextureImporter:
   - first:
       213: -4807294700674433014
     second: Inventory Frame Gold
+  - first:
+      213: -4757550843615032563
+    second: Shop Window Gold Small
+  - first:
+      213: 1133333253207781877
+    second: Arrow up
+  - first:
+      213: -7583618470843890604
+    second: SimpleRoundBox Filled
+  - first:
+      213: -5227820340394230335
+    second: Shop Tab
+  - first:
+      213: -7651046865288200608
+    second: Shop Header
+  - first:
+      213: 4062237780564865071
+    second: Shop Icon Buy
+  - first:
+      213: 170889276099761086
+    second: Shop Icon Sell
+  - first:
+      213: 4969917487765131069
+    second: Inventory Menu Skills
+  - first:
+      213: 5473913363809408773
+    second: Inventory Menu Outfits
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1201,27 +1228,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Inventory Area
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 48
-        width: 64
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 32, y: 8, z: 29, w: 23}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41b841fcb9fcbbc43af637dbb191f385
-      internalID: -1762706973069148186
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Inventory Exit
       rect:
         serializedVersion: 2
@@ -1259,27 +1265,6 @@ TextureImporter:
       bones: []
       spriteID: f38488f627127e84e8fe98da92efa398
       internalID: -3375335244853906341
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Inventory Chest
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 48
-        width: 112
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 78, y: 21, z: 33, w: 45}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 85e0d5249c199244896c920f75f94423
-      internalID: -7214927587910693124
       vertices: []
       indices: 
       edges: []
@@ -1666,8 +1651,8 @@ TextureImporter:
       name: Attribute Exit
       rect:
         serializedVersion: 2
-        x: 405
-        y: 103
+        x: 293
+        y: 55
         width: 22
         height: 22
       alignment: 0
@@ -3157,8 +3142,8 @@ TextureImporter:
       name: Empty
       rect:
         serializedVersion: 2
-        x: 273
-        y: 71
+        x: 307
+        y: 116
         width: 8
         height: 8
       alignment: 0
@@ -3322,27 +3307,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Inventory Exit Top
-      rect:
-        serializedVersion: 2
-        x: 272
-        y: 64
-        width: 16
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7499aaa0f96540870800000000000000
-      internalID: 8648132425536936263
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: IsDead
       rect:
         serializedVersion: 2
@@ -3451,7 +3415,7 @@ TextureImporter:
       name: Page Weapons 2
       rect:
         serializedVersion: 2
-        x: 464
+        x: 320
         y: 34
         width: 64
         height: 94
@@ -3472,7 +3436,7 @@ TextureImporter:
       name: Page Items 2
       rect:
         serializedVersion: 2
-        x: 528
+        x: 384
         y: 34
         width: 64
         height: 94
@@ -3514,7 +3478,7 @@ TextureImporter:
       name: SkillBook Heart
       rect:
         serializedVersion: 2
-        x: 434
+        x: 297
         y: 120
         width: 6
         height: 6
@@ -3535,7 +3499,7 @@ TextureImporter:
       name: SkillBook Mana
       rect:
         serializedVersion: 2
-        x: 441
+        x: 290
         y: 120
         width: 6
         height: 6
@@ -3556,7 +3520,7 @@ TextureImporter:
       name: SkillBook Item
       rect:
         serializedVersion: 2
-        x: 434
+        x: 290
         y: 113
         width: 6
         height: 6
@@ -3577,7 +3541,7 @@ TextureImporter:
       name: SkillBook Target
       rect:
         serializedVersion: 2
-        x: 441
+        x: 297
         y: 113
         width: 6
         height: 6
@@ -3640,7 +3604,7 @@ TextureImporter:
       name: Item HUD Bar
       rect:
         serializedVersion: 2
-        x: 432
+        x: 288
         y: 96
         width: 32
         height: 16
@@ -3947,6 +3911,237 @@ TextureImporter:
       bones: []
       spriteID: a00ceab90fe094db0800000000000000
       internalID: -4807294700674433014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Small
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 272
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 5, z: 5, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7499aaa0f96540870800000000000000
+      internalID: 8648132425536936263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop Window Gold
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 272
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 6, z: 6, w: 6}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bed38e23fc7c2d330800000000000000
+      internalID: 3734266733769801195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop Window Gold Small
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 5, z: 5, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0b477dd6b8c9fdb0800000000000000
+      internalID: -4757550843615032563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrow up
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 272
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f17691d6986abf00800000000000000
+      internalID: 1133333253207781877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SimpleRoundBox Filled
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 1, z: 1, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45442453e2391c690800000000000000
+      internalID: -7583618470843890604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop Tab
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 256
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 2, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cd7d3d391d0377b0800000000000000
+      internalID: -5227820340394230335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop Header
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 272
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 13, y: 6, z: 13, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06e71aab96502d590800000000000000
+      internalID: -7651046865288200608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop Icon Buy
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f207dbf1db7ff5830800000000000000
+      internalID: 4062237780564865071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop Icon Sell
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb399d524ee1f5200800000000000000
+      internalID: 170889276099761086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory Menu Skills
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3f0e359f91b8f440800000000000000
+      internalID: 4969917487765131069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory Menu Outfits
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5079f1dc33f37fb40800000000000000
+      internalID: 5473913363809408773
       vertices: []
       indices: 
       edges: []

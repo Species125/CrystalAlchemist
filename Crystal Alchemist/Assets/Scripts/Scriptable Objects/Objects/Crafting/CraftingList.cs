@@ -3,12 +3,9 @@ using UnityEngine;
 
 namespace CrystalAlchemist
 {
-    [CreateAssetMenu(menuName = "Game/Items/Crafting List")]
+    [CreateAssetMenu(menuName = "Game/Shop/Crafting List")]
     public class CraftingList : ScriptableObject
     {
-        //CRAFTS:
-        //list of items to craft
-
         [SerializeField]
         private List<CraftingRecipe> recipes = new List<CraftingRecipe>();
     }

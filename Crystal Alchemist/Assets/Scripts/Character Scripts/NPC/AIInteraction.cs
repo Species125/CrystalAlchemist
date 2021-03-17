@@ -9,11 +9,17 @@ namespace CrystalAlchemist
         [BoxGroup("NPC")]
         [SerializeField]
         [Required]
-        private AI npc;
+        private BasicCharacter npc;
 
         [BoxGroup("NPC")]
         [SerializeField]
         private UnityEvent onSubmit;
+
+        [BoxGroup("NPC")]
+        [SerializeField]
+        private UnityEvent onMenuClosed;
+        
+        private bool interacted = false;
 
         private void Awake() => this.SetSmoke(false);
 
@@ -23,32 +29,51 @@ namespace CrystalAlchemist
 
             //if (!NetworkUtil.IsMaster()) return;
             this.context.transform.position = this.npc.GetHeadPosition();
+            GameEvents.current.OnMenuClosed += DoOnMenuClose;
+        }
+
+        private void OnDestroy()
+        {
+            GameEvents.current.OnMenuClosed -= DoOnMenuClose;
+        }
+
+        public void DoOnMenuClose()
+        {
+            if (this.interacted)
+            {
+                this.onMenuClosed?.Invoke();
+                this.interacted = false;
+            }
         }
 
         public override void DoOnSubmit()
         {
             //if (!NetworkUtil.IsMaster()) return;
             this.onSubmit?.Invoke();
+            this.interacted = true;
         }
 
         public void TurnHostile()
         {
-            this.npc.values.characterType = CharacterType.Enemy;
+            this.npc.SetCharacterType(CharacterType.Enemy);
         }
 
         public void TurnFriendly()
         {
-            this.npc.values.characterType = CharacterType.Friend;
+            this.npc.SetCharacterType(CharacterType.Friend);
         }
 
-        public void ClearAggro() => this.npc.ClearAggro();
+        public void ClearAggro() 
+        {
+            if (this.npc.GetComponent<AI>() != null) this.npc.GetComponent<AI>().ClearAggro();
+        }
 
         public override bool PlayerIsLooking()
         {
             //if (!NetworkUtil.IsMaster()) return false;
 
             if (this.isPlayerInRange
-                && this.npc.values.characterType == CharacterType.Friend
+                && this.npc.GetCharacterType() == CharacterType.Friend
                 && CollisionUtil.checkIfGameObjectIsViewed(this.player, this.npc.gameObject)) return true;
             return false;
         }

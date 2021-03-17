@@ -22,13 +22,13 @@ namespace CrystalAlchemist
             return target.GetComponent<Player>() == null && target.values.isInvincible;
         }
 
-        public static InventoryItem GetInventoryItem(InventoryItem itemGroup, List<InventoryItem> inventory)
+        public static InventoryItem GetInventoryItem(InventoryItem InventoryItem, List<InventoryItem> inventory)
         {
-            if (itemGroup != null && inventory != null)
+            if (InventoryItem != null && inventory != null)
             {
                 foreach (InventoryItem group in inventory)
                 {
-                    if (group != null && group.name == itemGroup.name) return group;
+                    if (group != null && group.name == InventoryItem.name) return group;
                 }
             }
             return null;

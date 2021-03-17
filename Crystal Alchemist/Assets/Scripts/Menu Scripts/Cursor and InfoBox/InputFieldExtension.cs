@@ -1,15 +1,20 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace CrystalAlchemist
 {
     [RequireComponent(typeof(TMP_InputField))]
-    public class InputFieldExtension : MonoBehaviour
+    public class InputFieldExtension : MonoBehaviour, ISelectHandler
     {
         private TMP_InputField inputField;
 
         [SerializeField]
         private ButtonExtension button;
+
+        [SerializeField]
+        private UnityEvent OnSelected;
 
         private void Start()
         {
@@ -33,6 +38,11 @@ namespace CrystalAlchemist
             {
                 this.inputField.interactable = true;
             }
+        }
+
+        public void OnSelect(BaseEventData eventData)
+        {
+            this.OnSelected?.Invoke();
         }
     }
 }

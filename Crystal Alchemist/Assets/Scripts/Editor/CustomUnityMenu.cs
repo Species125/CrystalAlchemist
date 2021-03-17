@@ -25,10 +25,10 @@ namespace CrystalAlchemist
             EditorGUIUtility.PingObject(sheet);
         }
 
-        [MenuItem("Alchemist Menu/Menues/Map")]
+        [MenuItem("Alchemist Menu/Menues/Crafting")]
         public static void OpenMap()
         {
-            MenuEvents.current.OpenMap();
+            MenuEvents.current.OpenShop();
         }
 
         [MenuItem("Alchemist Menu/Cheats/MenuDialogBox -> YES!")]

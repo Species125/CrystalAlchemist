@@ -158,7 +158,7 @@ namespace CrystalAlchemist
             return null;
         }
 
-        public static InventoryItem GetItemGroup(string name)
+        public static InventoryItem GetInventoryItem(string name)
         {
             foreach (InventoryItem group in inventoryItems)
             {

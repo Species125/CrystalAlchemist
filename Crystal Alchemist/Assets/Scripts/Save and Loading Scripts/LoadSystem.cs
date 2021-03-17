@@ -156,7 +156,7 @@ namespace CrystalAlchemist
             {
                 foreach (string[] item in items)
                 {
-                    InventoryItem master = MasterManager.GetItemGroup(item[0]);
+                    InventoryItem master = MasterManager.GetInventoryItem(item[0]);
 
                     if (master == null)
                     {

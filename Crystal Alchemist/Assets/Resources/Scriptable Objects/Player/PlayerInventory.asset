@@ -12,22 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84b709bb4aba3d42bcd446b7631ed8c, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  artifacts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  treasures: []
-  inventoryItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  currencies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  craftingItems: []
-  housingItems: []
+  categories:
+  - inventoryType: 1
+    icon: {fileID: -4834492642064478133, guid: ecfa44f3b97014343ac7726b7e4b73ef, type: 3}
+    inventory: []
+  - inventoryType: 0
+    icon: {fileID: 8918755612519829392, guid: ecfa44f3b97014343ac7726b7e4b73ef, type: 3}
+    inventory: []
+  - inventoryType: 4
+    icon: {fileID: 3112005859355501345, guid: ecfa44f3b97014343ac7726b7e4b73ef, type: 3}
+    inventory: []
+  - inventoryType: 3
+    icon: {fileID: -5288349155508375430, guid: ecfa44f3b97014343ac7726b7e4b73ef, type: 3}
+    inventory: []
+  - inventoryType: 2
+    icon: {fileID: -1315242911226326260, guid: ecfa44f3b97014343ac7726b7e4b73ef, type: 3}
+    inventory: []
+  - inventoryType: 5
+    icon: {fileID: -8064481576934857747, guid: ecfa44f3b97014343ac7726b7e4b73ef, type: 3}
+    inventory: []

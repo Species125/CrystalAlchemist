@@ -12,10 +12,7 @@ namespace CrystalAlchemist
         - Trigger Active on Skills
         - Empty Map
 
-
         1. Sound Effekte austauschen
-        2. Crafting and Shop Rework 
-        4. Inventory Rework
 
         7. New Skills
         8. New Races

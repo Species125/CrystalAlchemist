@@ -14,7 +14,7 @@ namespace CrystalAlchemist
         public override void Initialize()
         {
             base.Initialize();
-            this.inventory.Initialize(); //remove null objects    
+            this.inventory.RemoveNulls(); //remove null objects    
         }
 
         public int GetAmount(InventoryItem group)

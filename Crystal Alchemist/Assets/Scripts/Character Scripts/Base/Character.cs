@@ -3,27 +3,14 @@ using Photon.Pun;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace CrystalAlchemist
 {
     [RequireComponent(typeof(PhotonView))]
-    public class Character : NetworkBehaviour, IPunObservable
+    public class Character : BasicCharacter, IPunObservable
     {
-        #region Basic Attributes
-
-        [Required]
-        [BoxGroup("Easy Access")]
-        public Rigidbody2D myRigidbody;
-
-        [Required]
-        [BoxGroup("Easy Access")]
-        public Animator animator;
-
-        [Required]
-        [BoxGroup("Easy Access")]
-        public Collider2D characterCollider;
+        #region Basic Attributes        
 
         [BoxGroup("Easy Access")]
         public RespawnAnimation respawnAnimation;
@@ -38,11 +25,6 @@ namespace CrystalAlchemist
         [SerializeField]
         [Tooltip("Position des Skills")]
         private GameObject skillStartPosition;
-
-        [BoxGroup("Position")]
-        [SerializeField]
-        [Tooltip("Position von Sprechblasen")]
-        private GameObject headPosition;
 
         [BoxGroup("Parent")]
         [Required]
@@ -669,7 +651,7 @@ namespace CrystalAlchemist
             return this.transform.position;
         }
 
-        public Vector2 GetHeadPosition()
+        public override Vector2 GetHeadPosition()
         {
             if (this.headPosition != null) return this.headPosition.transform.position;
             else return GetShootingPosition();
@@ -684,6 +666,11 @@ namespace CrystalAlchemist
         {
             if (this.groundPosition != null) return this.groundPosition.transform.position;
             return this.transform.position;
+        }
+
+        public override void SetCharacterType(CharacterType type)
+        {
+            this.values.characterType = type;
         }
 
         public Vector2 GetSpawnPosition()
@@ -841,12 +828,6 @@ namespace CrystalAlchemist
         }
 
         #endregion
-
-        public void ShowMiniDialog(string text, float duration)
-        {
-            MiniDialogBox dialogBox = Instantiate(MasterManager.miniDialogBox, this.transform);
-            dialogBox.setDialogBox(text, duration, GetHeadPosition());
-        }
 
         public void RemoveAllStatusEffects()
         {

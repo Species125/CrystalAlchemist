@@ -1,6 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -36,6 +37,9 @@ namespace CrystalAlchemist
         [ShowIf("overrideNavigation", true)]
         [SerializeField]
         private List<Selectable> right = new List<Selectable>();
+
+        [SerializeField]
+        private UnityEvent OnSelectEvent;
 
         private bool isInit = true;
         private Selectable selectable;
@@ -105,7 +109,11 @@ namespace CrystalAlchemist
 
         public void OnSelect(BaseEventData eventData) => SetCursor();
 
-        public void SetCursor() => this.cursor.Select(!this.isInit, this.selectable);
+        public void SetCursor()
+        {
+            this.cursor.Select(!this.isInit, this.selectable);
+            this.OnSelectEvent?.Invoke();
+        }
 
         public void ReSelect()
         {

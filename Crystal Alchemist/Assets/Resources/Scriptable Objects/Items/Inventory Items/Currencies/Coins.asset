@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36470793f9e5daf4aad0f2299129f3b7, type: 3}
   m_Name: Coins
   m_EditorClassIdentifier: 
-  path: Scriptable Objects/Items/Item Groups/Currencies/Coins
+  path: Scriptable Objects/Items/Inventory Items/Currencies/Coins
   inventoryType: 2
   maxAmount: 99
   canConsume: 1
@@ -20,6 +20,8 @@ MonoBehaviour:
   updateCurrencyUI: 1
   raiseSoundEffect: {fileID: 0}
   rarity: 2
+  canBeSold: 1
+  shopValue: 10
   shopPrice: {fileID: 11400000, guid: 47ca1523009ba294cbd2a1d3de511002, type: 2}
   amount: 0
   keyItemSignal: {fileID: 0}

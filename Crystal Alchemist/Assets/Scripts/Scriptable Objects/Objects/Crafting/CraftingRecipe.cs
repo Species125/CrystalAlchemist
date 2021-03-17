@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using AssetIcons;
 
 namespace CrystalAlchemist
 {
-    [CreateAssetMenu(menuName = "Game/Items/Crafting Recipe")]
+    [CreateAssetMenu(menuName = "Game/Shop/Crafting Recipe")]
     public class CraftingRecipe : ScriptableObject
     {
         [SerializeField]
@@ -15,20 +16,34 @@ namespace CrystalAlchemist
         [SerializeField]
         private List<Costs> materials = new List<Costs>();
 
-        public void CraftIt(Player player)
+        [AssetIcon]
+        public Sprite GetSprite() => this.drop?.GetSprite();        
+
+        public void CraftIt(PlayerInventory inventory, int amount)
         {
-            foreach (Costs cost in this.materials) player.ReduceResource(cost);
-            GameEvents.current.DoCollect(this.drop);
+            foreach (Costs cost in this.materials) inventory.UpdateInventory(cost.item, -(int)(cost.amount*amount));
+            GameEvents.current.DoCollect(this.drop, amount);
         }
 
-        private bool CanCraftIt(Player player)
+        public bool CanCraftIt(PlayerInventory inventory, int amount)
         {
             foreach (Costs cost in this.materials) 
             {
-                if (!player.HasEnoughCurrency(cost)) return false;
+                if (cost.resourceType != CostType.item || cost.item == null) continue;
+                if (inventory.GetAmount(cost.item) < (cost.amount * amount)) return false;
             }
 
             return true;
+        }
+
+        public ItemDrop GetDrop()
+        {
+            return this.drop;
+        }
+
+        public List<Costs> GetMaterials()
+        {
+            return this.materials;
         }
     }
 }

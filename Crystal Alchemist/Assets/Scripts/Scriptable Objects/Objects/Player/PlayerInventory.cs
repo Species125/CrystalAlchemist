@@ -4,40 +4,41 @@ using UnityEngine;
 
 namespace CrystalAlchemist
 {
+    [System.Serializable]
+    public class InventoryCategory
+    {
+        public InventoryType inventoryType;        
+        public Sprite icon;
+        public List<InventoryItem> inventory = new List<InventoryItem>();
+
+        public void Clear() => this.inventory.Clear();        
+
+        public void RemoveNulls() => inventory.RemoveAll(x => x == null);
+
+        public bool HaveSoldableItems()
+        {
+            foreach(InventoryItem item in this.inventory)
+            {
+                if (item.canBeSold) return true;
+            }
+            return false;
+        }
+    }
+
     [CreateAssetMenu(menuName = "Game/Player/Player Inventory")]
     public class PlayerInventory : ScriptableObject
     {
-        public List<InventoryItem> artifacts = new List<InventoryItem>();
-
-        public List<InventoryItem> treasures = new List<InventoryItem>();
-
-        public List<InventoryItem> inventoryItems = new List<InventoryItem>();
-
-        public List<InventoryItem> currencies = new List<InventoryItem>();
-
-        public List<InventoryItem> craftingItems = new List<InventoryItem>();
-
-        public List<InventoryItem> housingItems = new List<InventoryItem>();
+        public List<InventoryCategory> categories = new List<InventoryCategory>();
 
         public void Clear()
         {
-            this.treasures.Clear();
-            this.artifacts.Clear();
-            this.currencies.Clear();
-            this.craftingItems.Clear();
-            this.housingItems.Clear();
-            this.inventoryItems.Clear();
-            Initialize();
+            foreach (InventoryCategory category in this.categories) category.Clear();
+            RemoveNulls();
         }
 
-        public void Initialize()
+        public void RemoveNulls()
         {
-            this.treasures.RemoveAll(item => item == null);
-            this.artifacts.RemoveAll(item => item == null);
-            this.inventoryItems.RemoveAll(item => item == null);
-            this.craftingItems.RemoveAll(item => item == null);
-            this.currencies.RemoveAll(item => item == null);
-            this.housingItems.RemoveAll(item => item == null);
+            foreach (InventoryCategory category in this.categories) category.RemoveNulls();
         }
 
         public bool KeyItemExists(InventoryItem item)
@@ -72,11 +73,13 @@ namespace CrystalAlchemist
             if (inventory == null) return;
 
             InventoryItem found = GameUtil.GetInventoryItem(group, inventory);
-            if (found == null) AddItemGroup(group, amount, inventory); //add new Itemgroup
-            else found.UpdateAmount(amount); //set amount of itemgroup
+            if (found == null) AddInventoryItem(group, amount, inventory); //add new InventoryItem
+            else found.UpdateAmount(amount); //set amount of InventoryItem
+
+            RemoveNulls();
         }
 
-        private void AddItemGroup(InventoryItem group, int amount, List<InventoryItem> inventory)
+        private void AddInventoryItem(InventoryItem group, int amount, List<InventoryItem> inventory)
         {
             if (inventory == null) return;
 
@@ -84,52 +87,61 @@ namespace CrystalAlchemist
             newGroup.name = group.name;
             newGroup.UpdateAmount(amount);
             inventory.Add(newGroup);
+
+            RemoveNulls();
         }
 
-        public void UpdateInventory(InventoryItem itemGroup, int value)
+        public void UpdateInventory(InventoryItem InventoryItem, int value)
         {
-            foreach (InventoryItem group in this.inventoryItems)
+            foreach (InventoryItem group in GetInventory(InventoryItem.inventoryType))
             {
-                if (group != null && group.name == itemGroup.name)
+                if (group != null && group.name == InventoryItem.name)
                 {
                     group.UpdateAmount(value);
                     break;
                 }
             }
 
-            itemGroup.RaiseCollectSignal();
+            RemoveNulls();
+
+            InventoryItem.RaiseCollectSignal();
         }
 
         public List<InventoryItem> GetInventory(InventoryType type)
         {
-            switch (type)
+            foreach(InventoryCategory category in this.categories)
             {
-                case InventoryType.item: return this.inventoryItems;
-                case InventoryType.crafting: return this.craftingItems;
-                case InventoryType.housing: return this.housingItems;
-                case InventoryType.currency: return this.currencies;
-                case InventoryType.treasure: return this.treasures;
-                case InventoryType.artifacts: return this.artifacts;
+                if (category.inventoryType == type) return category.inventory;
             }
 
             return null;
         }
 
-        public int GetAmount(InventoryItem itemGroup)
+        public int GetAmount(InventoryItem InventoryItem)
+        {
+            return GetAmount(InventoryItem, out int n);
+        }
+
+        public int GetAmount(InventoryItem InventoryItem, out int maxAmount)
         {
             int amount = 0;
+            maxAmount = 0;
 
-            InventoryItem found = GameUtil.GetInventoryItem(itemGroup, GetInventory(itemGroup.inventoryType));
-            if (found != null) amount = found.GetAmount();            
+            InventoryItem found = GameUtil.GetInventoryItem(InventoryItem, GetInventory(InventoryItem.inventoryType));
+            if (found != null)
+            {
+                amount = found.GetAmount();
+                maxAmount = found.maxAmount;
+            }
 
             return amount;
         }
 
-        public string GetAmountString(InventoryItem itemGroup)
+        public string GetAmountString(InventoryItem InventoryItem)
         {
-            InventoryItem found = GameUtil.GetInventoryItem(itemGroup, GetInventory(itemGroup.inventoryType));
+            InventoryItem found = GameUtil.GetInventoryItem(InventoryItem, GetInventory(InventoryItem.inventoryType));
             if (found != null) return found.GetAmountString();
-            else return FormatUtil.formatString(0, itemGroup.maxAmount);
+            else return FormatUtil.formatString(0, InventoryItem.maxAmount);
         }
 
         public List<string[]> GetItemsList(InventoryType type)

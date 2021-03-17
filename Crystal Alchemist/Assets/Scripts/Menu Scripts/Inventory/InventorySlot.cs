@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace CrystalAlchemist
@@ -13,6 +15,14 @@ namespace CrystalAlchemist
         private float transparency = 0.3f;
 
         public override void SetItem(InventoryItem item)
+        {
+            base.SetItem(item);
+
+            Color color = GameUtil.GetRarity(item.rarity);
+            this.background.color = new Color(color.r, color.g, color.b, this.transparency);
+        }
+
+        public override void SetItem(ItemStats item)
         {
             base.SetItem(item);
 
