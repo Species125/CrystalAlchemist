@@ -94,19 +94,19 @@ namespace CrystalAlchemist
                     {
                         //right
                         RectTransform panelRectTransform = (RectTransform)this.infoBox.transform;
-                        panelRectTransform.anchorMin = new Vector2(1, 0.5f);
-                        panelRectTransform.anchorMax = new Vector2(1, 0.5f);
+                        panelRectTransform.anchorMin = new Vector2(1, 0);
+                        panelRectTransform.anchorMax = new Vector2(1, 0);
                         panelRectTransform.pivot = new Vector2(0.5f, 0.5f);
-                        panelRectTransform.position = new Vector3(Screen.width - (this.cursorScale.x * this.distance), (Screen.height / 2) + 40, 0);
+                        panelRectTransform.anchoredPosition = new Vector3(-175, 275);
                     }
                     else
                     {
                         //left
                         RectTransform panelRectTransform = (RectTransform)this.infoBox.transform;
-                        panelRectTransform.anchorMin = new Vector2(0, 0.5f);
-                        panelRectTransform.anchorMax = new Vector2(0, 0.5f);
+                        panelRectTransform.anchorMin = new Vector2(0, 0);
+                        panelRectTransform.anchorMax = new Vector2(0, 0);
                         panelRectTransform.pivot = new Vector2(0.5f, 0.5f);
-                        panelRectTransform.position = new Vector3((this.cursorScale.x * this.distance), (Screen.height / 2) + 40, 0);
+                        panelRectTransform.anchoredPosition = new Vector3(175,275);
                     }
 
                     ItemUI itemUI = button.gameObject.GetComponent<ItemUI>();
@@ -121,6 +121,10 @@ namespace CrystalAlchemist
                     else if (itemUI != null && itemUI.GetItemStat() != null)
                     {
                         this.infoBox.Show(itemUI.GetItemStat());
+                    }
+                    else if (itemUI != null && itemUI.GetItemDrop() != null)
+                    {
+                        this.infoBox.Show(itemUI.GetItemDrop());
                     }
                     else if (skillSlot != null && skillSlot.ability != null)
                     {

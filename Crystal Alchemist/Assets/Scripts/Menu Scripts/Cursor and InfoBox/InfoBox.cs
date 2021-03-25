@@ -60,10 +60,10 @@ namespace CrystalAlchemist
         {
             this.additionalInfo.SetActive(false);
 
-            this.previewImage.sprite = item.info.getSprite();
+            this.previewImage.sprite = item.icon;
 
-            this.nameField.text = item.getName();
-            this.descriptionField.text = item.info.getDescription();
+            this.nameField.text = item.GetName();
+            this.descriptionField.text = item.GetDescription();
         }
 
 
@@ -71,10 +71,20 @@ namespace CrystalAlchemist
         {
             this.additionalInfo.SetActive(false);
 
-            this.previewImage.sprite = item.getSprite();
+            this.previewImage.sprite = item.icon;
 
-            this.nameField.text = item.getName();
-            this.descriptionField.text = item.getDescription();
+            this.nameField.text = item.GetName();
+            this.descriptionField.text = item.GetDescription();
+        }
+
+        private void setInfo(ItemDrop item)
+        {
+            this.additionalInfo.SetActive(false);
+
+            this.previewImage.sprite = item.GetSprite();
+
+            this.nameField.text = item.GetName();
+            this.descriptionField.text = item.GetDescription();
         }
 
         private void setInfo(CharacterAttributeStats stats)
@@ -110,6 +120,12 @@ namespace CrystalAlchemist
         }
 
         public void Show(InventoryItem item)
+        {
+            this.gameObject.SetActive(true);
+            setInfo(item);
+        }
+
+        public void Show(ItemDrop item)
         {
             this.gameObject.SetActive(true);
             setInfo(item);

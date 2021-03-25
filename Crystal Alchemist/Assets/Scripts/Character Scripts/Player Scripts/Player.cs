@@ -255,7 +255,6 @@ namespace CrystalAlchemist
             if (price.resourceType == CostType.none) return true;
             else if (price.resourceType == CostType.life && this.values.life - price.amount >= 0) return true;
             else if (price.resourceType == CostType.mana && this.values.mana - price.amount >= 0) return true;
-            else if (price.resourceType == CostType.keyItem && price.keyItem != null && price.keyItem.HasItemAlready()) return true;
             else if (price.resourceType == CostType.item && price.item != null && GameEvents.current.GetItemAmount(price.item) - price.amount >= 0) return true;
 
             return false;
@@ -309,29 +308,32 @@ namespace CrystalAlchemist
             //Collectable, Load, MiniGame, Shop und Treasure
             if (!isLocalPlayer) return;
 
-            ItemStats stats = Instantiate(drop.stats);
-            stats.amount *= amount;
+            foreach (ItemStats value in drop.items)
+            {
+                ItemStats stats = Instantiate(value);
+                stats.amount *= amount;
 
-            GameEvents.current.DoProgress(drop.progress);
+                GameEvents.current.DoProgress(drop.progress);
 
-            if (stats.itemType == ItemType.consumable)
-            {
-                foreach (CharacterResource resource in stats.resources) UpdateResource(resource, true);
-            }
-            else if (stats.itemType == ItemType.ability)
-            {
-                this.saveGame.skillSet.AddAbility(stats.ability, this);
-            }
-            else if (stats.itemType == ItemType.outfit)
-            {
-                this.saveGame.outfits.AddGear(stats.outfit);
-            }
-            else if (stats.itemType == ItemType.inventory)
-            {
-                this.saveGame.inventory.CollectItem(stats);
-            }
+                if (stats.itemType == ItemType.consumable)
+                {
+                    foreach (CharacterResource resource in stats.resources) UpdateResource(resource, true);
+                }
+                else if (stats.itemType == ItemType.ability)
+                {
+                    this.saveGame.skillSet.AddAbility(stats.ability, this);
+                }
+                else if (stats.itemType == ItemType.outfit)
+                {
+                    this.saveGame.outfits.AddGear(stats.outfit);
+                }
+                else if (stats.itemType == ItemType.inventory)
+                {
+                    this.saveGame.inventory.CollectItem(stats);
+                }
 
-            Destroy(stats);
+                Destroy(stats);
+            }
         }
 
         public override void Regenerate()
@@ -355,11 +357,6 @@ namespace CrystalAlchemist
         public override void UpdateItem(InventoryItem item, int value)
         {
             this.saveGame.inventory.UpdateInventory(item, value);
-        }
-
-        public override void UpdateKeyItem(ItemDrop keyItem)
-        {
-            this.saveGame.inventory.CollectItem(keyItem.stats);
         }
 
         /////////////////////////////////////////////////////////////////////////////////

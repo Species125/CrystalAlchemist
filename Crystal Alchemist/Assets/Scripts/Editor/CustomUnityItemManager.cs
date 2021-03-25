@@ -6,33 +6,48 @@ namespace CrystalAlchemist
 {
     public class CustomUnityItemManager : EditorWindow
     {
-        string[] options;
-        int folderindex;
-        string[] folders = {"Consumables", "Currencies", "Inventory Items", "Key Items"};
-        string parent = "Assets/Resources/Scriptable Objects/Items/";
-        string itemName = "";
-        int index = 0;
-        int itemValue = 1;
-        int inventorySlot;
-        SimpleSignal signal;
-        Sprite itemSprite;
-        ItemType type;
 
-        bool showInInventory;
+        int folderindex;
+        string[] folders = { "Consumables", "Outfits", "Abilities", "Inventory Items", "Currencies", "Housing Items", "Crafting Items", "Key Items" };
+        string parent = "Assets/Resources/Scriptable Objects/Items/";
+
+        SimpleSignal signal;
+
         bool createNewGroup;
-        InventoryItem group;
-        AudioClip soundEffect;
+
+        InventoryItem inventoryItem;
+        Ability ability;
+        CharacterCreatorProperty outfit;
+
         AudioClip uiSoundEffect;
-        bool canConsume = true;
+        bool canBeSold = true;
         bool updateUI = false;
         int maxValue = 9999;
+        int shopValue = 1;
 
         string itemGroupName = "";
         Sprite itemGroupSprite;
         ShopPriceUI itemShopPrice;
 
-        bool isItem = false;
+        string[] rarities;
 
+        string[] itemtypes;
+        string itemName = "";
+        int itemTypeIndex = 0;
+        int itemValue = 1;
+        Sprite itemSprite;
+        ItemType itemType;
+        int itemRarityIndex;
+        ItemRarity itemRarity;
+
+        bool isKeyItem = false;
+        int inventoryTypeIndex;
+        string[] inventoryTypes;
+        InventoryType inventoryType;
+        int inventoryRarityIndex;
+        ItemRarity inventoryRarity;
+
+        bool same = true;
 
         //TODO: Check if Name already exists
 
@@ -41,49 +56,58 @@ namespace CrystalAlchemist
         public static void ItemWizard()
         {
             CustomUnityItemManager window =
-                (CustomUnityItemManager) GetWindow(typeof(CustomUnityItemManager), true, "Item Creation");
+                (CustomUnityItemManager)GetWindow(typeof(CustomUnityItemManager), true, "Item Creation");
         }
 
         private void OnGUI()
         {
-            this.options = Enum.GetNames(typeof(CostType));
-
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
             GUILayout.Space(10);
             GUILayout.Label("Item Stats", EditorStyles.boldLabel);
             this.itemName = EditorGUILayout.TextField("Item Name", this.itemName);
-            this.itemSprite =
-                (Sprite) EditorGUILayout.ObjectField("Sprite", this.itemSprite, typeof(Sprite),
-                    allowSceneObjects: true);
-            this.itemValue = EditorGUILayout.IntField("Item Value", this.itemValue);
-            this.index = EditorGUILayout.Popup("Item Type", index, options);
-            this.type = (ItemType) this.index;
-            this.soundEffect = (AudioClip) EditorGUILayout.ObjectField("Sound Effect", this.soundEffect,
-                typeof(AudioClip), allowSceneObjects: true);
+            this.itemValue = EditorGUILayout.IntField(new GUIContent("Item Value", "The Value of the item"), this.itemValue);
 
-            if (this.type == ItemType.inventory) //key item
-            {
-                SetInventoryInfo();
-                this.group = null;
-            }
+            this.itemtypes = Enum.GetNames(typeof(ItemType));
+            this.itemTypeIndex = EditorGUILayout.Popup("Item Type", this.itemTypeIndex, this.itemtypes);
+            this.itemType = (ItemType)this.itemTypeIndex;
 
-            if (this.type == ItemType.inventory)
+            this.rarities = Enum.GetNames(typeof(ItemRarity));
+            this.itemRarityIndex = EditorGUILayout.Popup("Item Rarity", this.itemRarityIndex, this.rarities);
+            this.itemRarity = (ItemRarity)this.itemRarityIndex;
+
+            //this.soundEffect = (AudioClip)EditorGUILayout.ObjectField("Sound Effect", this.soundEffect,
+            //    typeof(AudioClip), allowSceneObjects: true);
+
+            if (this.itemType == ItemType.inventory)
             {
                 //Items only
                 EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
                 GUILayout.Space(10);
-                GUILayout.Label("Item Group", EditorStyles.boldLabel);
+                GUILayout.Label("Inventory Item", EditorStyles.boldLabel);
 
-                this.createNewGroup = EditorGUILayout.Toggle("Make new group", this.createNewGroup);
+                this.itemSprite =
+                                (Sprite)EditorGUILayout.ObjectField("Sprite", this.itemSprite, typeof(Sprite),
+                                    allowSceneObjects: true);
 
-                if (this.createNewGroup) SetNewItemGroup();
+                this.createNewGroup = EditorGUILayout.Toggle(new GUIContent("New Inventory Item", "Create new Inventory Item"), this.createNewGroup);
+
+                if (this.createNewGroup) SetNewInventoryItem();
                 else
-                    this.group = (InventoryItem) EditorGUILayout.ObjectField("Item Group", this.group, typeof(InventoryItem),
+                    this.inventoryItem = (InventoryItem)EditorGUILayout.ObjectField("Inventory Item", this.inventoryItem, typeof(InventoryItem),
                         allowSceneObjects: true);
             }
-
-            if (this.type == ItemType.inventory) this.folderindex = 3;//key item
-            else if (this.type == ItemType.inventory) this.folderindex = 2;
+            else if (this.itemType == ItemType.outfit)
+            {
+                this.folderindex = 1;
+                this.outfit = (CharacterCreatorProperty)EditorGUILayout.ObjectField("Outfit", this.outfit, typeof(CharacterCreatorProperty),
+                        allowSceneObjects: true);
+            }
+            else if (this.itemType == ItemType.ability)
+            {
+                this.folderindex = 2;
+                this.ability = (Ability)EditorGUILayout.ObjectField("Ability", this.ability, typeof(Ability),
+                        allowSceneObjects: true);
+            }
             else this.folderindex = 0;
 
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
@@ -92,94 +116,106 @@ namespace CrystalAlchemist
 
             bool create = GUILayout.Button("Create Item");
 
-            if (create) CreateItem();
+            if (create)
+            {
+                CreateItem();
+            }
         }
 
-        private void SetInventoryInfo()
-        {
-            this.inventorySlot = EditorGUILayout.IntField("Inventory Slot Index", this.inventorySlot);
-            if (this.type == ItemType.inventory)//key item
-                this.signal = (SimpleSignal) EditorGUILayout.ObjectField("Key Item Signal", this.signal,
-                    typeof(SimpleSignal), allowSceneObjects: true);
-            this.showInInventory = true;
-        }
-
-        private void SetNewItemGroup()
+        private void SetNewInventoryItem()
         {
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
             GUILayout.Space(10);
-            GUILayout.Label("Item Group Info", EditorStyles.boldLabel);
-            //Item Group Info
-            this.itemGroupName = EditorGUILayout.TextField("Item Group Name", this.itemGroupName);
-            this.itemGroupSprite = (Sprite) EditorGUILayout.ObjectField("Item Group Sprite", this.itemGroupSprite,
-                typeof(Sprite), allowSceneObjects: true);
+            GUILayout.Label("Inventory Item Info", EditorStyles.boldLabel);
+
+            this.same = EditorGUILayout.Toggle(new GUIContent("Use Stat Values", "Create Inventory Item based on Stat"), this.same);
+
+            this.inventoryTypes = Enum.GetNames(typeof(InventoryType));
+            this.inventoryTypeIndex = EditorGUILayout.Popup("Inventory Type", this.inventoryTypeIndex, this.inventoryTypes);
+            this.inventoryType = (InventoryType)this.inventoryTypeIndex;
+
+            if (!this.same)
+            {
+                //Item Group Info
+                this.itemGroupName = EditorGUILayout.TextField("Inventory Item Name", this.itemGroupName);
+                this.itemGroupSprite = (Sprite)EditorGUILayout.ObjectField("Inventory Item Sprite", this.itemGroupSprite,
+                    typeof(Sprite), allowSceneObjects: true);
+
+                this.inventoryRarityIndex = EditorGUILayout.Popup("Inventory Rarity", this.inventoryRarityIndex, this.rarities);
+                this.inventoryRarity = (ItemRarity)this.inventoryRarityIndex;
+            }
+            else
+            {
+                this.itemGroupName = this.itemName + "s";
+                this.itemGroupSprite = this.itemSprite;
+                this.inventoryRarity = this.itemRarity;
+            }
+
+            this.isKeyItem = false;
+
+            if (inventoryType == InventoryType.item) this.folderindex = 3;
+            else if (inventoryType == InventoryType.currency) this.folderindex = 4;
+            else if (inventoryType == InventoryType.housing) this.folderindex = 2;
+            else if (inventoryType == InventoryType.crafting) this.folderindex = 6;
+            else
+            {
+                this.isKeyItem = true;
+                this.folderindex = 7;
+            }
 
             GUILayout.Space(10);
-            GUILayout.Label("Item Group Attributes", EditorStyles.boldLabel);
+            GUILayout.Label("Inventory Item Attributes", EditorStyles.boldLabel);
             //New Group
-            this.maxValue = EditorGUILayout.IntField("Max Amount", this.maxValue);
-            this.canConsume = EditorGUILayout.Toggle("Can Consume", this.canConsume);
 
-            this.updateUI = EditorGUILayout.Toggle("Update Currency UI", this.updateUI);
-            if (this.updateUI)
-                this.uiSoundEffect = (AudioClip) EditorGUILayout.ObjectField("UI Sound Effect", this.uiSoundEffect,
-                    typeof(AudioClip), allowSceneObjects: true);
-            else this.uiSoundEffect = null;
-            if (this.canConsume)
-                this.itemShopPrice = (ShopPriceUI) EditorGUILayout.ObjectField("Shop Price UI", this.itemShopPrice,
+            if (!this.isKeyItem)
+            {
+                this.maxValue = EditorGUILayout.IntField("Max Amount", this.maxValue);
+                this.canBeSold = EditorGUILayout.Toggle("Can used in Shop", this.canBeSold);
+
+                if (this.inventoryType == InventoryType.currency)
+                {
+                    this.updateUI = EditorGUILayout.Toggle("Update Currency UI", this.updateUI);
+                    if (this.updateUI)
+                        this.uiSoundEffect = (AudioClip)EditorGUILayout.ObjectField("UI Sound Effect", this.uiSoundEffect,
+                            typeof(AudioClip), allowSceneObjects: true);
+                    else this.uiSoundEffect = null;
+                }
+            }
+            else
+            {
+                this.maxValue = 1;
+                this.canBeSold = false;
+                this.updateUI = false;
+                this.uiSoundEffect = null;
+            }
+
+            if (this.canBeSold)
+            {
+                this.itemShopPrice = (ShopPriceUI)EditorGUILayout.ObjectField("Shop Price UI", this.itemShopPrice,
                     typeof(ShopPriceUI), allowSceneObjects: true);
-            else this.itemShopPrice = null;
 
-            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-            GUILayout.Space(10);
-            GUILayout.Label("Inventory Stats", EditorStyles.boldLabel);
-            this.showInInventory = EditorGUILayout.Toggle("Show Item in Inventory", this.showInInventory);
-            if (this.showInInventory) SetInventoryInfo();
+                this.shopValue = EditorGUILayout.IntField("Shop Value", this.shopValue);
+            }
+            else
+            {
+                this.itemShopPrice = null;
+                this.shopValue = 1;
+            }
+
+            if (this.inventoryType == InventoryType.artifacts)
+            {
+                this.signal = (SimpleSignal)EditorGUILayout.ObjectField("Signal", this.signal, typeof(SimpleSignal),
+                        allowSceneObjects: true);
+            }
         }
 
         private void CreateItem()
         {
-            InventoryItem itemGroup = this.group;
+            InventoryItem inventoryItem = this.inventoryItem;
 
-            ItemInfo info = CreateInstance<ItemInfo>();
-            info.SetInfo(this.itemSprite);
-            string infoPath = parent + "Item Infos/Item Stat Info/" + this.itemName + " Info.asset";
-            CreateAsset(info, infoPath);
+            if (this.itemType == ItemType.inventory && this.createNewGroup) inventoryItem = CreateInventoryItem();
 
-            if (this.type == ItemType.inventory)
-            {
-                if (this.showInInventory)
-                {
-                    string slotName = this.itemName;
-                    if (this.type == ItemType.inventory) slotName = this.itemGroupName;
-                    string itemSlotPath = parent + "Item Slot Infos/" + this.folders[this.folderindex] + "/" +
-                                          slotName + ".asset";
-                }
-
-                if (this.createNewGroup)
-                {
-                    ItemInfo groupinfo = CreateInstance<ItemInfo>();
-                    groupinfo.SetInfo(this.itemGroupSprite);
-                    string groupinfoPath = parent + "Item Infos/Item Group Info/" + this.itemGroupName +
-                                           " Group Info.asset";
-                    CreateAsset(groupinfo, groupinfoPath);
-
-                    InventoryItem group = CreateInstance<InventoryItem>();
-                    group.SetGroup(this.maxValue, this.canConsume, this.updateUI, this.soundEffect, this.itemShopPrice);
-                    group.info = groupinfo;
-                    string groupPath = parent + "Item Groups/" + this.folders[this.folderindex] + "/" +
-                                       this.itemGroupName + ".asset";
-                    CreateAsset(group, groupPath);
-
-                    itemGroup = group;
-                }
-            }
-
-            ItemStats stats = CreateInstance<ItemStats>();
-            //stats.SetStats(this.itemValue, this.type, this.soundEffect, info);
-            if (this.type == ItemType.inventory) stats.inventoryItem = itemGroup;
-            string statsPath = parent + "Item Stats/" + this.folders[this.folderindex] + "/" + this.itemName + ".asset";
-            CreateAsset(stats, statsPath);
+            ItemStats stats = CreateStats(inventoryItem);
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
@@ -188,12 +224,41 @@ namespace CrystalAlchemist
             this.Close();
         }
 
-        private void CreateAsset(UnityEngine.Object obj, string strPath)
+        private InventoryItem CreateInventoryItem()
         {
-            string path = strPath;
-            //string[] results = AssetDatabase.FindAssets(path);
-            //if (results.Length > 0) path = path.Replace(".asset", " "+results.Length+".asset");
-            AssetDatabase.CreateAsset(obj, path);
+            InventoryItem group = CreateInstance<InventoryItem>();
+            group.SetGroup(this.maxValue, this.canBeSold, this.updateUI, this.uiSoundEffect, this.itemShopPrice, this.shopValue, this.inventoryRarity, this.inventoryType, this.itemGroupSprite);
+
+            CreateAsset(group, "Inventory Items", this.itemGroupName);
+            return group;
+        }
+
+        private ItemStats CreateStats(InventoryItem inventoryItem)
+        {
+            ItemStats stats = CreateInstance<ItemStats>();
+            stats.SetStats(this.itemValue, this.itemType, this.itemRarity, this.itemSprite, inventoryItem, this.ability, this.outfit);
+           
+            CreateAsset(stats, "Item Stats", this.itemName);
+            return stats;
+        }
+
+
+        private void CreateAsset(UnityEngine.Object obj, string mainFolder, string fileName)
+        {
+            string folder = this.parent + mainFolder + "/" + this.folders[this.folderindex];
+            string path = folder + "/" + fileName + ".asset";
+
+            try
+            {             
+                bool validFolder = AssetDatabase.IsValidFolder(folder);
+                if (!validFolder) AssetDatabase.CreateFolder(this.parent + mainFolder, this.folders[this.folderindex]);
+
+                AssetDatabase.CreateAsset(obj, path);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Problem creating " + path +" -> " + ex.ToString());
+            }
         }
     }
 }

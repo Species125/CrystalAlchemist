@@ -22,12 +22,12 @@ namespace CrystalAlchemist
             this.background.color = new Color(color.r, color.g, color.b, this.transparency);
         }
 
-        public override void SetItem(ItemStats item)
+        public override void SetItem(ItemDrop item)
         {
             base.SetItem(item);
 
             Color color = GameUtil.GetRarity(item.rarity);
             this.background.color = new Color(color.r, color.g, color.b, this.transparency);
-        }
+        }        
     }
 }

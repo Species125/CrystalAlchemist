@@ -60,6 +60,8 @@ namespace CrystalAlchemist
         [Button]
         public void AddAbility(Ability ability, Character character = null)
         {
+            if (ability == null) return;
+
             foreach(Ability existingAbility in this.abilities)
             {
                 if (existingAbility.name == ability.name) return;

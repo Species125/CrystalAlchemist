@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b164a8ca5fa3494498fb80cfd5b39568, type: 3}
+  m_Name: Earth Elemental
+  m_EditorClassIdentifier: 
+  path: Scriptable Objects/Items/Item Drops/Crafting Items/Earth Elemental
+  icon: {fileID: 6244358684371955587, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
+  collectable: {fileID: 5093969795789574484, guid: b70b2a9d9e95d0646b9683caac80488f,
+    type: 3}
+  rarity: 3
+  items:
+  - {fileID: 11400000, guid: 751c45d2f74de584698a7684913d52ca, type: 2}
+  hasSelfDestruction: 1
+  duration: 60
+  useProgress: 0
+  progress:
+    progressType: 2
+    gameProgressID: 
+    location: 
+    addLocation: 0
+    timespan:
+      days: 0
+      hours: 0
+      minutes: 0
+  collectSoundEffect: {fileID: 0}

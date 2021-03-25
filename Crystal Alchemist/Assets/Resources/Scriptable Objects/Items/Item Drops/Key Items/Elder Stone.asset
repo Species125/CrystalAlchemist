@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Elder Stone
   m_EditorClassIdentifier: 
   path: Scriptable Objects/Items/Item Drops/Key Items/Elder Stone
-  stats: {fileID: 11400000, guid: 5ed512954d83f1b4bb2fc8c256936c7b, type: 2}
+  icon: {fileID: 2513675393388920829, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
   collectable: {fileID: 330836146565999746, guid: cb7920f833afcc8449a49b8e6a5c1c21,
     type: 3}
+  rarity: 4
+  items:
+  - {fileID: 11400000, guid: 5ed512954d83f1b4bb2fc8c256936c7b, type: 2}
   hasSelfDestruction: 0
   duration: 60
   useProgress: 0
@@ -28,3 +31,4 @@ MonoBehaviour:
       days: 0
       hours: 0
       minutes: 0
+  collectSoundEffect: {fileID: 0}

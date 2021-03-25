@@ -10,7 +10,6 @@ namespace CrystalAlchemist
         life,
         mana,
         item,
-        keyItem,
         statusEffect
     }
 
@@ -22,9 +21,6 @@ namespace CrystalAlchemist
         [ShowIf("resourceType", CostType.item)]
         public InventoryItem item;
 
-        [ShowIf("resourceType", CostType.keyItem)]
-        public ItemDrop keyItem;
-
         [ShowIf("resourceType", CostType.statusEffect)]
         public StatusEffect statusEffect;
     }
@@ -33,7 +29,6 @@ namespace CrystalAlchemist
     public class CharacterResource : BaseResource
     {
         [HideIf("resourceType", CostType.none)]
-        [HideIf("resourceType", CostType.keyItem)]
         public float amount = 1;
 
         public CharacterResource(CostType costType, float amount)
@@ -47,7 +42,6 @@ namespace CrystalAlchemist
             this.resourceType = resource.resourceType;
             this.amount = amount;
             this.item = resource.item;
-            this.keyItem = resource.keyItem;
             this.statusEffect = resource.statusEffect;
         }
 
@@ -64,7 +58,6 @@ namespace CrystalAlchemist
             this.amount = amount;
 
             if (this.resourceType == CostType.item) this.item = Resources.Load<InventoryItem>(path);
-            else if (this.resourceType == CostType.keyItem) this.keyItem = Resources.Load<ItemDrop>(path);
             else if (this.resourceType == CostType.statusEffect) this.statusEffect = Resources.Load<StatusEffect>(path);
         }
 
@@ -73,7 +66,6 @@ namespace CrystalAlchemist
             string path = "";
 
             if (this.resourceType == CostType.item) path = this.item.path;
-            if (this.resourceType == CostType.keyItem) path = this.keyItem.path;
             if (this.resourceType == CostType.statusEffect) path = this.statusEffect.path;
 
             return resourceType.ToString() + ":" + amount + ":" + path;
@@ -84,7 +76,6 @@ namespace CrystalAlchemist
     public class Costs : BaseResource
     {
         [HideIf("resourceType", CostType.none)]
-        [HideIf("resourceType", CostType.keyItem)]
         [MinValue(0)]
         public float amount = 1;
 

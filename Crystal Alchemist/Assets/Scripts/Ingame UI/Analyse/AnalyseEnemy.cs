@@ -60,10 +60,10 @@ namespace CrystalAlchemist
                 && this.npc.values.currentState != CharacterState.respawning)
             {
                 if (ImageitemPreview != null) this.ImageitemPreview.gameObject.SetActive(true);
-                if (ImageitemPreview != null) this.ImageitemPreview.sprite = drop.stats.getSprite(); //TODONEW
+                if (ImageitemPreview != null) this.ImageitemPreview.sprite = drop.GetSprite();
 
                 if (ImageitemPreviewOLD != null) this.ImageitemPreviewOLD.gameObject.SetActive(true);
-                if (ImageitemPreviewOLD != null) this.ImageitemPreviewOLD.sprite = drop.stats.getSprite(); //TODONEW
+                if (ImageitemPreviewOLD != null) this.ImageitemPreviewOLD.sprite = drop.GetSprite();
             }
         }
     }

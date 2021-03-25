@@ -11,7 +11,7 @@ namespace CrystalAlchemist
 
             foreach (ItemDrop drop in itemDrops)
             {
-                if (current == null || current.stats.rarity < drop.stats.rarity) current = drop;
+                if (current == null || current.rarity < drop.rarity) current = drop;
             }
 
             return current;

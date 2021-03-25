@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Map
   m_EditorClassIdentifier: 
   path: Scriptable Objects/Items/Item Drops/Key Items/Map
-  stats: {fileID: 11400000, guid: 1aeb00549b1ae52478652164d88ab28b, type: 2}
+  icon: {fileID: -1268934700509582651, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
   collectable: {fileID: 3656928174399384992, guid: 724f82adc005cd149976dfd7a3334e10,
     type: 3}
+  rarity: 5
+  items:
+  - {fileID: 11400000, guid: 1aeb00549b1ae52478652164d88ab28b, type: 2}
   hasSelfDestruction: 0
   duration: 60
   useProgress: 0
@@ -28,3 +31,4 @@ MonoBehaviour:
       days: 0
       hours: 0
       minutes: 0
+  collectSoundEffect: {fileID: 0}

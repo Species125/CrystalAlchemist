@@ -12,7 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b164a8ca5fa3494498fb80cfd5b39568, type: 3}
   m_Name: Time Shard
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 35726623dab1f764d8724619f2232395, type: 2}
+  path: Scriptable Objects/Items/Item Drops/Inventory Items/Time Shard
+  icon: {fileID: 4639506938558671751, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
   collectable: {fileID: 6577156445127767014, guid: 9eed5a7d4c3ca4f49b552c626d2d4ee7,
     type: 3}
-  icon: {fileID: -126482093299932471, guid: e86ccf897272d444f99d929f4a7151e9, type: 3}
+  rarity: 2
+  items:
+  - {fileID: 11400000, guid: 35726623dab1f764d8724619f2232395, type: 2}
+  - {fileID: 11400000, guid: fd53098ccc89e4043b9d041df16a1fb3, type: 2}
+  hasSelfDestruction: 1
+  duration: 60
+  useProgress: 0
+  progress:
+    progressType: 2
+    gameProgressID: 
+    location: 
+    addLocation: 0
+    timespan:
+      days: 0
+      hours: 0
+      minutes: 0
+  collectSoundEffect: {fileID: 0}

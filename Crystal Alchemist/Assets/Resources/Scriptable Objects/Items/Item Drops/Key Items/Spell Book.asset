@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Spell Book
   m_EditorClassIdentifier: 
   path: Scriptable Objects/Items/Item Drops/Key Items/Spell Book
-  stats: {fileID: 11400000, guid: eb86be74943719248a2d667baccd1f2c, type: 2}
+  icon: {fileID: -6561599510129129131, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
   collectable: {fileID: 3656928174399384992, guid: f5187bf68e01a0a4195f09ef28702493,
     type: 3}
+  rarity: 5
+  items:
+  - {fileID: 11400000, guid: eb86be74943719248a2d667baccd1f2c, type: 2}
   hasSelfDestruction: 0
   duration: 60
   useProgress: 0
@@ -28,3 +31,4 @@ MonoBehaviour:
       days: 0
       hours: 0
       minutes: 0
+  collectSoundEffect: {fileID: 0}

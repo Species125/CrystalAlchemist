@@ -20,6 +20,11 @@ namespace CrystalAlchemist
         [BoxGroup("Attributes")]
         public InventoryType inventoryType;
 
+        [AssetIcon]
+        [Required]
+        [BoxGroup("Attributes")]
+        public Sprite icon;
+
         [BoxGroup("Inventory")]
         [OnValueChanged("MaxValueChanged")]
         [Min(1)]
@@ -28,12 +33,6 @@ namespace CrystalAlchemist
         [BoxGroup("Inventory")]
         [Tooltip("True, if the value can be changed by the player or shop")]
         public bool canConsume = true;
-
-        [BoxGroup("Inventory")]
-        [Tooltip("Info is need to load names, icons and discriptions")]
-        [SerializeField]
-        [Required]
-        public ItemInfo info;
 
         [BoxGroup("Inventory")]
         [SerializeField]
@@ -45,10 +44,7 @@ namespace CrystalAlchemist
         [BoxGroup("Inventory")]
         public ItemRarity rarity = ItemRarity.common;
 
-        [BoxGroup("Shop Price")]
-        public bool canBeSold = true;
-
-        [ShowIf("canBeSold")]
+        [ShowIf("canConsume")]
         [BoxGroup("Shop Price")]
         [Min(1)]
         public int shopValue = 1;
@@ -65,13 +61,6 @@ namespace CrystalAlchemist
         [SerializeField]
         private SimpleSignal keyItemSignal;
 
-        [AssetIcon]
-        public Sprite GetSprite()
-        {
-            if (this.info != null) return this.info.getSprite();
-            return null;
-        }
-
         private void MaxValueChanged() 
         {
             if (this.inventoryType == InventoryType.artifacts || this.inventoryType == InventoryType.treasure)
@@ -79,18 +68,29 @@ namespace CrystalAlchemist
         }
 
 
-        public void SetGroup(int maxValue, bool canConsume, bool updateUI, AudioClip soundEffect, ShopPriceUI shop)
+        public void SetGroup(int maxValue, bool canConsume, bool updateUI,
+                             AudioClip soundEffect, ShopPriceUI shop, int shopValue,
+                             ItemRarity rarity, InventoryType type, Sprite icon)
         {
             this.maxAmount = maxValue;
             this.canConsume = canConsume;
             this.updateCurrencyUI = updateUI;
             this.raiseSoundEffect = soundEffect;
             this.shopPrice = shop;
+            this.shopValue = shopValue;
+            this.rarity = rarity;
+            this.inventoryType = type;
+            this.icon = icon;
         }
 
-        public string getName()
+        public string GetDescription()
         {
-            return this.info.getName();
+            return FormatUtil.GetLocalisedText(this.name + "_Description", LocalisationFileType.items);
+        }
+
+        public string GetName()
+        {
+            return FormatUtil.GetLocalisedText(this.name + "_Name", LocalisationFileType.items);
         }
 
         public int GetAmount()
@@ -106,6 +106,8 @@ namespace CrystalAlchemist
         [Button]
         public void UpdateAmount(int amount)
         {
+            if (!canConsume) return;
+
             this.amount += amount;
             if (this.amount > this.maxAmount) this.amount = this.maxAmount;
             if (this.amount < 0)

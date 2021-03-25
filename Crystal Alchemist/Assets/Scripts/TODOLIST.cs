@@ -11,8 +11,15 @@ namespace CrystalAlchemist
         - Player Color-Parts by Emissions
         - Trigger Active on Skills
         - Empty Map
+        - Shadow Tree
+        - Housing Furniture
+        - Items and Recipes
 
+        0. Ability + Inventory Item
         1. Sound Effekte austauschen
+        2. Shadow Trees
+        3. Furniture (Haus)
+        4. Items and Recipes
 
         7. New Skills
         8. New Races

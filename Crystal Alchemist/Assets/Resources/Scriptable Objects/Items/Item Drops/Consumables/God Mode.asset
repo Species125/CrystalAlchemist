@@ -13,18 +13,22 @@ MonoBehaviour:
   m_Name: God Mode
   m_EditorClassIdentifier: 
   path: Scriptable Objects/Items/Item Drops/Consumables/God Mode
-  stats: {fileID: 11400000, guid: eae11eea3e43e6043923e47d94432f1e, type: 2}
+  icon: {fileID: -202138323784372957, guid: 5fa7e3e155925484a9ab62bce2032cb0, type: 3}
   collectable: {fileID: 1005327347346205950, guid: be598d298d244f64b847c95e0608323b,
     type: 3}
+  rarity: 0
+  items:
+  - {fileID: 11400000, guid: eae11eea3e43e6043923e47d94432f1e, type: 2}
   hasSelfDestruction: 0
   duration: 60
+  useProgress: 0
   progress:
     progressType: 2
-    playerProgress: {fileID: 0}
     gameProgressID: 
-    onlyThisArea: 0
+    location: 
+    addLocation: 0
     timespan:
       days: 0
       hours: 0
       minutes: 0
-      seconds: 0
+  collectSoundEffect: {fileID: 0}

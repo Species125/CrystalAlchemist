@@ -108,7 +108,7 @@ namespace CrystalAlchemist
         private List<ItemDrop> GetItemDropsLimited(List<ItemDrop> possibleRewards)
         {
             List<ItemDrop> rewards = new List<ItemDrop>();
-            possibleRewards.OrderBy(x => x.stats.rarity).ThenBy(x => x.GetNumber());
+            possibleRewards.OrderBy(x => x.rarity).ThenBy(x => x.GetNumber());
 
             if (possibleRewards.Count > 0)
             {

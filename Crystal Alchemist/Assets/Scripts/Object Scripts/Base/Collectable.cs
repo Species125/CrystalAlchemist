@@ -80,9 +80,9 @@ namespace CrystalAlchemist
             this.direction = direction;
         }
 
-        public ItemStats GetStats()
+        public ItemDrop GetDrop()
         {
-            return this.itemDrop.stats;
+            return this.itemDrop;
         }
 
         public void SetSmoke(bool value) => this.showEffectOnDisable = value;
@@ -182,9 +182,9 @@ namespace CrystalAlchemist
 
         #endregion
 
-        public void playSounds()
+        public void PlaySounds()
         {
-            AudioUtil.playSoundEffect(this.gameObject, this.itemDrop.stats.getSoundEffect());
+            AudioUtil.playSoundEffect(this.gameObject, this.itemDrop.collectSoundEffect);
         }
 
         #region Collect Item Funktionen
@@ -209,7 +209,7 @@ namespace CrystalAlchemist
             this.showEffectOnDisable = false;
             GameEvents.current.DoCollect(this.itemDrop);
 
-            playSounds();
+            PlaySounds();
             DestroyIt();
             Instantiate(MasterManager.itemCollectGlitter, this.transform.position, Quaternion.identity);
         }

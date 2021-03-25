@@ -94,6 +94,7 @@ namespace CrystalAlchemist
         private Dictionary<string, string> GetDictionaryValues(string attributeID, LocalisationFileType type)
         {
             TextAsset file = Resources.Load<TextAsset>("Data/Localisation/" + type.ToString());
+
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
 
             string[] lines = file.text.Split(lineSeperator);

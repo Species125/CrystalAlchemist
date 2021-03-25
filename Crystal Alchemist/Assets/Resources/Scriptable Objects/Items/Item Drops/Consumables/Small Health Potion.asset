@@ -12,7 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b164a8ca5fa3494498fb80cfd5b39568, type: 3}
   m_Name: Small Health Potion
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 2037ff8bbb06cd340a16ae0cae820955, type: 2}
+  path: Scriptable Objects/Items/Item Drops/Consumables/Small Health Potion
+  icon: {fileID: -5115724647623679475, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
   collectable: {fileID: 8525589707579411224, guid: 4f1623ac219c06a40aa2cbe59058c6b2,
     type: 3}
-  icon: {fileID: -5115724647623679475, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
+  rarity: 0
+  items:
+  - {fileID: 11400000, guid: 2037ff8bbb06cd340a16ae0cae820955, type: 2}
+  hasSelfDestruction: 1
+  duration: 60
+  useProgress: 0
+  progress:
+    progressType: 2
+    gameProgressID: 
+    location: 
+    addLocation: 0
+    timespan:
+      days: 0
+      hours: 0
+      minutes: 0
+  collectSoundEffect: {fileID: 0}

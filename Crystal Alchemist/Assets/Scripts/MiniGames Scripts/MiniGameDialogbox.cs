@@ -1,10 +1,4 @@
-﻿
-
-
-
-
-
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -73,8 +67,8 @@ namespace CrystalAlchemist
             int difficulty = this.slider.GetValue();
             MiniGameMatch match = this.info.matches.GetMatch(difficulty);
 
-            this.itemUI.SetItem(match.GetItem().stats);
-            this.winUI.SetItem(match.GetItem().stats);
+            this.itemUI.SetItem(match.GetItem());
+            this.winUI.SetItem(match.GetItem());
 
             bool canStart = this.priceUI.CheckPrice(this.inventory, match.price);
             this.startButton.interactable = canStart;

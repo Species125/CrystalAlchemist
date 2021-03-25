@@ -12,7 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b164a8ca5fa3494498fb80cfd5b39568, type: 3}
   m_Name: Bomb
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: d57de9d1907bdf04aae4abed236c713e, type: 2}
+  path: Scriptable Objects/Items/Item Drops/Inventory Items/Bomb
+  icon: {fileID: 990350725216757741, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
   collectable: {fileID: 7267644143456828498, guid: eff514630d133a14fa019ee8341f1420,
     type: 3}
-  icon: {fileID: 990350725216757741, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
+  rarity: 0
+  items:
+  - {fileID: 11400000, guid: d57de9d1907bdf04aae4abed236c713e, type: 2}
+  - {fileID: 11400000, guid: bae5711dac1097a4abb175e6704794e2, type: 2}
+  hasSelfDestruction: 1
+  duration: 60
+  useProgress: 0
+  progress:
+    progressType: 2
+    gameProgressID: 
+    location: 
+    addLocation: 0
+    timespan:
+      days: 0
+      hours: 0
+      minutes: 0
+  collectSoundEffect: {fileID: 0}

@@ -171,9 +171,9 @@ namespace CrystalAlchemist
         private void OnTriggerExit2D(Collider2D characterCollisionBox) => OnExit(characterCollisionBox);
         
 
-        public void ShowDialog(DialogTextTrigger trigger, ItemStats stats)
+        public void ShowDialog(DialogTextTrigger trigger, ItemDrop drop)
         {
-            if (this.GetComponent<DialogSystem>() != null) this.GetComponent<DialogSystem>().showDialog(this.player, this, trigger, stats);
+            if (this.GetComponent<DialogSystem>() != null) this.GetComponent<DialogSystem>().showDialog(this.player, this, trigger, drop);
         }
 
         public void ShowDialog(DialogTextTrigger trigger)

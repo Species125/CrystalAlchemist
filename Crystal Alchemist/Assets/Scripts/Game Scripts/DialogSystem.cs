@@ -103,7 +103,7 @@ namespace CrystalAlchemist
 
         public void showDialog(Player player, Collectable collectable)
         {
-            showDialog(player, null, DialogTextTrigger.none, collectable.GetStats());
+            showDialog(player, null, DialogTextTrigger.none, collectable.GetDrop());
         }
 
         public void showDialog(Player player, Interactable interactable)
@@ -117,18 +117,18 @@ namespace CrystalAlchemist
             showDialog(player, interactable, null);
         }
 
-        public void showDialog(Player player, Interactable interactable, ItemStats loot)
+        public void showDialog(Player player, Interactable interactable, ItemDrop loot)
         {
             show(player, interactable, loot);
         }
 
-        public void showDialog(Player player, Interactable interactable, DialogTextTrigger trigger, ItemStats loot)
+        public void showDialog(Player player, Interactable interactable, DialogTextTrigger trigger, ItemDrop loot)
         {
             SetDialogTrigger(trigger);
             show(player, interactable, loot);
         }
 
-        private void show(Player player, Interactable interactable, ItemStats loot)
+        private void show(Player player, Interactable interactable, ItemDrop loot)
         {
             foreach (DialogText text in this.texts)
             {

@@ -14,12 +14,13 @@ namespace CrystalAlchemist
 
         public bool preferInventoryIcon = true;
 
-        private InventoryItem InventoryItem;
+        private InventoryItem inventoryItem;
         private ItemStats itemStat;
+        private ItemDrop itemDrop;
 
         public InventoryItem GetInventoryItem()
         {
-            return this.InventoryItem;
+            return this.inventoryItem;
         }
 
         public ItemStats GetItemStat()
@@ -27,9 +28,33 @@ namespace CrystalAlchemist
             return this.itemStat;
         }
 
+        public ItemDrop GetItemDrop()
+        {
+            return this.itemDrop;
+        }
+
+        public virtual void SetItem(ItemDrop item)
+        {
+            this.itemDrop = item;
+
+            if (item == null)
+            {
+                this.image.gameObject.SetActive(false);
+            }
+            else
+            {
+                this.image.gameObject.SetActive(true);
+
+                if (this.amount != null) this.amount.text = "";                
+
+                this.image.sprite = item.GetSprite();
+                this.image.color = new Color(1f, 1f, 1f, 1f);
+            }
+        }
+
         public virtual void SetItem(InventoryItem item)
         {
-            this.InventoryItem = item;
+            this.inventoryItem = item;
 
             if (item == null)
             {
@@ -45,36 +70,9 @@ namespace CrystalAlchemist
                     else this.amount.text = "";
                 }
 
-                if (this.preferInventoryIcon) this.image.sprite = item.info.getSprite();
-                else this.image.sprite = item.info.getSprite();
-
+                this.image.sprite = item.icon;
                 this.image.color = new Color(1f, 1f, 1f, 1f);
             }
-        }
-
-        public virtual void SetItem(ItemStats item)
-        {
-            this.itemStat = item;
-
-            if (item == null)
-            {
-                this.image.gameObject.SetActive(false);
-            }
-            else
-            {
-                this.image.gameObject.SetActive(true);
-
-                if (this.amount != null)
-                {
-                    if (item.inventoryItem.inventoryType == InventoryType.item && item.amount > 1) this.amount.text = "x" + item.amount;
-                    else this.amount.text = "";
-                }
-
-                if (this.preferInventoryIcon) this.image.sprite = item.getSprite();
-                else this.image.sprite = item.getSprite();
-
-                this.image.color = new Color(1f, 1f, 1f, 1f);
-            }
-        }
+        }        
     }
 }

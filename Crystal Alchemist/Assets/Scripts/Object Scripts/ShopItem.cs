@@ -30,7 +30,7 @@ namespace CrystalAlchemist
             this.shopPrice.Initialize(this.costs);
 
             if (this.itemDrops.Count <= 0) Destroy(this.gameObject);
-            else this.childSprite.sprite = this.itemDrops[0].stats.getSprite();
+            else this.childSprite.sprite = this.itemDrops[0].GetSprite();
             
         }                
 
@@ -41,7 +41,7 @@ namespace CrystalAlchemist
             if (this.player.CanUseInteraction(this.costs))
             {
                 this.player.ReduceResource(this.costs);
-                ShowDialog(DialogTextTrigger.success, this.itemDrops[0].stats);
+                ShowDialog(DialogTextTrigger.success, this.itemDrops[0]);
 
                 foreach(ItemDrop drop in this.itemDrops) GameEvents.current.DoCollect(drop);
             }

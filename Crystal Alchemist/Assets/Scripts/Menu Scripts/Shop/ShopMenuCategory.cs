@@ -42,7 +42,7 @@ namespace CrystalAlchemist
 
             foreach (InventoryItem item in items)
             {
-                if (!item.canBeSold) continue;
+                if (!item.canConsume) continue;
 
                 ShopMenuItem newItem = Instantiate(this.template, content);
                 newItem.SetMenuItem(item, this);

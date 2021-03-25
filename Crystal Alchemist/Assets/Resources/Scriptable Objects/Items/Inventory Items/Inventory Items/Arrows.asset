@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36470793f9e5daf4aad0f2299129f3b7, type: 3}
   m_Name: Arrows
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/Items/Inventory Items/Inventory Items/Arrows
+  inventoryType: 0
+  icon: {fileID: 954569753121102513, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
   maxAmount: 99
-  info: {fileID: 11400000, guid: e180c9b09a1a19648b01a5d9d38f47a1, type: 2}
-  inventoryInfo: {fileID: 11400000, guid: fe5008eaf1749144aa52dddb6acb388c, type: 2}
-  collectSignal: {fileID: 0}
+  canConsume: 1
+  updateCurrencyUI: 0
+  raiseSoundEffect: {fileID: 0}
+  rarity: 0
+  shopValue: 1
+  shopPrice: {fileID: 0}
+  amount: 0
+  keyItemSignal: {fileID: 0}

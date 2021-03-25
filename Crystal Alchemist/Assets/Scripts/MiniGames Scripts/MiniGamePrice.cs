@@ -25,20 +25,9 @@ namespace CrystalAlchemist
 
                 int inventoryAmount = inventory.GetAmount(price.item);
 
-                this.image.sprite = price.item.info.getSprite();
+                this.image.sprite = price.item.icon;
                 this.textField.text = price.amount + " / " + inventoryAmount;
                 this.textLabel.text = FormatUtil.GetLocalisedText("Kosten", LocalisationFileType.menues);
-            }
-            else if (price.keyItem != null && price.resourceType == CostType.keyItem)
-            {
-                this.image.enabled = true;
-
-                int amount = 0;
-                if (price.keyItem.HasItemAlready()) amount = 1;
-
-                this.image.sprite = price.keyItem.stats.info.getSprite();
-                this.textField.text = "1 / " + amount;
-                this.textLabel.text = FormatUtil.GetLocalisedText("Benötigt", LocalisationFileType.menues);
             }
             else if (price.resourceType == CostType.none)
             {

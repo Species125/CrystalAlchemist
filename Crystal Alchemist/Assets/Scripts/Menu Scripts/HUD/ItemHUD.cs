@@ -31,14 +31,18 @@ namespace CrystalAlchemist
         private void ShowItems(ItemDrop drop, int amount)
         {
             this.elements.RemoveAll(x => x == null);
-            if (drop.stats.itemType == ItemType.consumable) return;
 
-            ItemHUDElement exists = GetElement(drop);
-            if (exists == null) CreateNewHUDElement(drop, amount);
-            else exists.UpdateElement(amount);            
+            foreach (ItemStats stats in drop.items)
+            {
+                if (stats.itemType == ItemType.consumable) continue;
+
+                ItemHUDElement exists = GetElement(stats);
+                if (exists == null) CreateNewHUDElement(stats, amount);
+                else exists.UpdateElement(amount);
+            }
         }
 
-        private ItemHUDElement GetElement(ItemDrop drop)
+        private ItemHUDElement GetElement(ItemStats drop)
         {
             foreach(ItemHUDElement elem in this.elements)
             {
@@ -47,7 +51,7 @@ namespace CrystalAlchemist
             return null;
         }
 
-        private void CreateNewHUDElement(ItemDrop drop, int amount)
+        private void CreateNewHUDElement(ItemStats drop, int amount)
         {
             ItemHUDElement element = Instantiate(this.template, this.content);
             element.SetElement(drop, amount);

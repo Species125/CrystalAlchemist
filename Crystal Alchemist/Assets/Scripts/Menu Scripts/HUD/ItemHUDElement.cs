@@ -41,21 +41,21 @@ namespace CrystalAlchemist
         private float elapsed;
         private bool isFading;
 
-        public void SetElement(ItemDrop drop, int amount)
+        public void SetElement(ItemStats drop, int amount)
         {
             this.child.DOLocalMoveX(this.offset, 0);
 
             this.dropName = drop.name;
-            this.itemName = drop.stats.getName();
-            this.icon.sprite = drop.stats.getSprite();
+            this.itemName = drop.GetName();
+            this.icon.sprite = drop.GetSprite();
 
             UpdateElement(amount);
 
-            Color color = GameUtil.GetRarity(drop.stats.rarity);
+            Color color = GameUtil.GetRarity(drop.rarity);
             this.background.color = new Color(color.r, color.g, color.b, this.transparency);                     
         }
 
-        public bool HasDrop(ItemDrop drop)
+        public bool HasDrop(ItemStats drop)
         {
             return this.dropName == drop.name;            
         }

@@ -355,7 +355,6 @@ namespace CrystalAlchemist
             if (resourceType == CostType.life) UpdateLife(amount, showingDamageNumber);
             else if (resourceType == CostType.mana) UpdateMana(amount, showingDamageNumber);
             else if (resourceType == CostType.item) UpdateItem(resource.item, (int)amount);
-            else if (resourceType == CostType.keyItem) UpdateKeyItem(resource.keyItem);
             else if (resourceType == CostType.statusEffect) UpdateStatusEffect(resource.statusEffect, (int)amount);
 
             CheckDeath();
@@ -387,10 +386,6 @@ namespace CrystalAlchemist
 
         }
 
-        public virtual void UpdateKeyItem(ItemDrop keyItem)
-        {
-
-        }
 
         public virtual void UpdateStatusEffect(StatusEffect effect, int value)
         {

@@ -30,7 +30,6 @@ namespace CrystalAlchemist
         public int GetAmount(Costs price)
         {
             if (price.resourceType == CostType.item && price.item != null) return this.GetAmount(price.item);
-            else if (price.resourceType == CostType.keyItem && price.keyItem != null && price.keyItem.HasItemAlready()) return 1;
             return 0;
         }
     }

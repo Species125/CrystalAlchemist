@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36470793f9e5daf4aad0f2299129f3b7, type: 3}
   m_Name: Bombs
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/Items/Inventory Items/Inventory Items/Bombs
+  inventoryType: 0
+  icon: {fileID: 6237616872074479341, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
   maxAmount: 99
-  info: {fileID: 11400000, guid: bdfc2e103bea5374c839d40dec76f19a, type: 2}
-  inventoryInfo: {fileID: 11400000, guid: e64cf125ad0e8d04e8d69627ada0076c, type: 2}
-  collectSignal: {fileID: 0}
+  canConsume: 1
+  updateCurrencyUI: 0
+  raiseSoundEffect: {fileID: 0}
+  rarity: 0
+  shopValue: 1
+  shopPrice: {fileID: 0}
+  amount: 0
+  keyItemSignal: {fileID: 0}

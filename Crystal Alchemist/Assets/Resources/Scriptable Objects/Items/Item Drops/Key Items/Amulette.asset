@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Amulette
   m_EditorClassIdentifier: 
   path: Scriptable Objects/Items/Item Drops/Key Items/Amulette
-  stats: {fileID: 11400000, guid: f5f1d8fb7036306438726fe584720f82, type: 2}
+  icon: {fileID: -7573354855677281409, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
   collectable: {fileID: 1064158129859950885, guid: dedfd425059439248897a8d1b693c5a1,
     type: 3}
+  rarity: 5
+  items:
+  - {fileID: 11400000, guid: f5f1d8fb7036306438726fe584720f82, type: 2}
   hasSelfDestruction: 0
   duration: 60
   useProgress: 0
@@ -28,3 +31,4 @@ MonoBehaviour:
       days: 0
       hours: 0
       minutes: 0
+  collectSoundEffect: {fileID: 0}

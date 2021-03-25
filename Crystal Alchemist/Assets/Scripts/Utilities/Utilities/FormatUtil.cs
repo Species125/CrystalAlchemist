@@ -39,14 +39,14 @@ namespace CrystalAlchemist
                 else if (obj.GetType() == typeof(ItemStats))
                 {
                     ItemStats temp = (ItemStats)obj;
-                    result = result.Replace("<item name>", temp.getName());
+                    result = result.Replace("<item name>", temp.GetName());
                     result = result.Replace("<item amount>", temp.amount + "");
                     result = result.Replace("<item value>", temp.GetTotalAmount() + "");
                 }
                 else if (obj.GetType() == typeof(InventoryItem))
                 {
                     InventoryItem temp = (InventoryItem)obj;
-                    result = result.Replace("<item name>", temp.getName());
+                    result = result.Replace("<item name>", temp.GetName());
                     result = result.Replace("<item amount>", temp.GetAmount() + "");
                 }
                 else if (obj.GetType() == typeof(Costs))
@@ -56,12 +56,8 @@ namespace CrystalAlchemist
 
                     if (temp.resourceType == CostType.item && temp.item != null)
                     {
-                        result = result.Replace("<price item name>", temp.item.getName());
+                        result = result.Replace("<price item name>", temp.item.GetName());
                         result = result.Replace("<price item amount>", temp.item.GetAmount() + "");
-                    }
-                    else if (temp.resourceType == CostType.keyItem && temp.keyItem != null)
-                    {
-                        result = result.Replace("<price item name>", temp.keyItem.stats.getName());
                     }
                 }
             }

@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Stone Plates
   m_EditorClassIdentifier: 
   path: Scriptable Objects/Items/Item Drops/Key Items/Stone Plates
-  stats: {fileID: 11400000, guid: 3b135d37e7ee4f947943903a6cce28b9, type: 2}
+  icon: {fileID: 7137830792427537804, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
   collectable: {fileID: 3656928174399384992, guid: 40119d95f40b0fd4cacad871981fd20d,
     type: 3}
+  rarity: 5
+  items:
+  - {fileID: 11400000, guid: 3b135d37e7ee4f947943903a6cce28b9, type: 2}
   hasSelfDestruction: 0
   duration: 60
   useProgress: 0
@@ -28,3 +31,4 @@ MonoBehaviour:
       days: 0
       hours: 0
       minutes: 0
+  collectSoundEffect: {fileID: 0}

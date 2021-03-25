@@ -12,7 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b164a8ca5fa3494498fb80cfd5b39568, type: 3}
   m_Name: Red Crystal
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 714cb08f2e25503469dbebb79ab51c84, type: 2}
+  path: Scriptable Objects/Items/Item Drops/Currencies/Red Crystal
+  icon: {fileID: -2631275646437312949, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
   collectable: {fileID: 7715491483693814758, guid: ff61f4065ad8e734d83ed008fddeb967,
     type: 3}
-  icon: {fileID: -2631275646437312949, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
+  rarity: 0
+  items:
+  - {fileID: 11400000, guid: 714cb08f2e25503469dbebb79ab51c84, type: 2}
+  hasSelfDestruction: 1
+  duration: 60
+  useProgress: 0
+  progress:
+    progressType: 2
+    gameProgressID: 
+    location: 
+    addLocation: 0
+    timespan:
+      days: 0
+      hours: 0
+      minutes: 0
+  collectSoundEffect: {fileID: 0}

@@ -29,14 +29,28 @@ namespace CrystalAlchemist
 
         private bool selectable = true;
 
-        public void OnSelect(BaseEventData data)
+        private void Awake()
         {
-            if (MasterManager.inputDeviceInfo.type == InputDeviceType.mouse) return;
+            if (this.scrollBar == null)
+            {
+                ScrollRect scrollRect = this.GetComponentInParent(typeof(ScrollRect)) as ScrollRect;
+
+                if (scrollRect == null) return;
+
+                if (this.type == ScrollBarType.horizontal) this.scrollBar = scrollRect.horizontalScrollbar;
+                else this.scrollBar = scrollRect.verticalScrollbar;
+            }
+        }
+
+        public void OnSelect(BaseEventData data)
+        {            
             SetOnSelect();
         }
 
-        private void SetOnSelect()
+        public void SetOnSelect()
         {
+            if (MasterManager.inputDeviceInfo.type == InputDeviceType.mouse) return;
+
             int value = this.gameObject.transform.GetSiblingIndex();
 
             if (type == ScrollBarType.horizontal) SetHorizontal(value);

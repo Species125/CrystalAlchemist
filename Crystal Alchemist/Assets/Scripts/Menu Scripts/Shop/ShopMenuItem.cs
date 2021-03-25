@@ -41,7 +41,7 @@ namespace CrystalAlchemist
             this.type = ShopType.buy;
             this.category = category;
             this.recipe = recipe;
-            this.slot.SetItem(recipe.GetDrop().stats);
+            this.slot.SetItem(recipe.GetDrop());
 
             UpdateAmount(this.amount);
         }
@@ -79,8 +79,8 @@ namespace CrystalAlchemist
 
             if (this.type == ShopType.buy)
             {
-                int playerAmount = this.inventory.GetAmount(this.recipe.GetDrop().stats.inventoryItem);
-                int maxAmount = this.recipe.GetDrop().stats.inventoryItem.maxAmount;
+                int playerAmount = this.recipe.GetDrop().GetAmount(this.inventory);
+                int maxAmount = this.recipe.GetDrop().GetMaxAmount();
 
                 if (this.amount + playerAmount > maxAmount) this.amount = maxAmount - playerAmount;
                 if (this.amount < 1) this.amount = 1;
@@ -99,13 +99,13 @@ namespace CrystalAlchemist
             }
 
             this.inputField.text = this.amount + "";
-            this.category.UpdatePrice(this.type, this.amount, this.recipe, this.currency.stats.inventoryItem, this.item);
+            this.category.UpdatePrice(this.type, this.amount, this.recipe, this.currency.items[0].inventoryItem, this.item);
         }
 
         public void OnSelected()
         {
             UpdateSelection();
-            this.category.UpdatePrice(this.type, this.amount, this.recipe, this.currency.stats.inventoryItem, this.item);
+            this.category.UpdatePrice(this.type, this.amount, this.recipe, this.currency.items[0].inventoryItem, this.item);
         }
 
         private void UpdateSelection()

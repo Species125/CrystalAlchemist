@@ -19,7 +19,7 @@ namespace CrystalAlchemist
         {
             foreach(InventoryItem item in this.inventory)
             {
-                if (item.canBeSold) return true;
+                if (item.canConsume) return true;
             }
             return false;
         }
@@ -117,21 +117,24 @@ namespace CrystalAlchemist
             return null;
         }
 
-        public int GetAmount(InventoryItem InventoryItem)
+        public int GetAmount(InventoryItem inventoryItem)
         {
-            return GetAmount(InventoryItem, out int n);
+            return GetAmount(inventoryItem, out int n);
         }
 
-        public int GetAmount(InventoryItem InventoryItem, out int maxAmount)
+        public int GetAmount(InventoryItem inventoryItem, out int maxAmount)
         {
             int amount = 0;
-            maxAmount = 0;
+            maxAmount = 1;
 
-            InventoryItem found = GameUtil.GetInventoryItem(InventoryItem, GetInventory(InventoryItem.inventoryType));
-            if (found != null)
+            if (inventoryItem != null)
             {
-                amount = found.GetAmount();
-                maxAmount = found.maxAmount;
+                InventoryItem found = GameUtil.GetInventoryItem(inventoryItem, GetInventory(inventoryItem.inventoryType));
+                if (found != null)
+                {
+                    amount = found.GetAmount();
+                    maxAmount = found.maxAmount;
+                }
             }
 
             return amount;

@@ -497,7 +497,7 @@ namespace CrystalAlchemist
         }
 
         private void InstantiateItemLocal(ItemDrop drop, Vector2 position, bool bounce, Vector2 direction)
-        {
+        {            
             Collectable temp = Instantiate(drop.collectable, position, Quaternion.identity);
             temp.SetBounce(bounce, direction);
             temp.name = drop.name;

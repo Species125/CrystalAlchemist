@@ -29,7 +29,7 @@ namespace CrystalAlchemist
             {
                 ItemDrop drop = GameUtil.GetHighestDrop(treasureChest.itemDrops);
                 //Show Object Information
-                if (drop != null) Activate(drop.stats);
+                if (drop != null) Activate(drop);
                 else Deactivate();
             }
             else if (this.breakable != null)
@@ -39,16 +39,16 @@ namespace CrystalAlchemist
                 //Show Object Information
                 if (drop != null
                     && this.breakable.values.currentState != CharacterState.dead
-                    && this.breakable.values.currentState != CharacterState.respawning) Activate(drop.stats);
+                    && this.breakable.values.currentState != CharacterState.respawning) Activate(drop);
                 else Deactivate();
             }
         }
 
-        private void Activate(ItemStats stats)
+        private void Activate(ItemDrop drop)
         {
             this.parent.SetActive(true);
-            if (ImageObjectitemPreview != null) this.ImageObjectitemPreview.sprite = stats.getSprite();
-            if (ImageObjectitemPreviewOLD != null) this.ImageObjectitemPreviewOLD.sprite = stats.getSprite();
+            if (ImageObjectitemPreview != null) this.ImageObjectitemPreview.sprite = drop.GetSprite();
+            if (ImageObjectitemPreviewOLD != null) this.ImageObjectitemPreviewOLD.sprite = drop.GetSprite();
         }
 
         private void Deactivate() => this.parent.SetActive(false); //Wenn Truhe geöffnet wurde oder Gegner tot ist    

@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Titanias Treasure
   m_EditorClassIdentifier: 
   path: Scriptable Objects/Items/Item Drops/Key Items/Titanias Treasure
-  stats: {fileID: 11400000, guid: cca5405231b587442a8fe2d954009f92, type: 2}
+  icon: {fileID: -2020858360796475523, guid: da2b8cd3ab5195945ab9099a1134a852, type: 3}
   collectable: {fileID: 1263678201002953952, guid: b5920abe6703372499f3575b506e6c6d,
     type: 3}
+  rarity: 5
+  items:
+  - {fileID: 11400000, guid: cca5405231b587442a8fe2d954009f92, type: 2}
   hasSelfDestruction: 0
   duration: 60
   useProgress: 0
@@ -28,3 +31,4 @@ MonoBehaviour:
       days: 0
       hours: 0
       minutes: 0
+  collectSoundEffect: {fileID: 0}
