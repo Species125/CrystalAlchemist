@@ -1,5 +1,6 @@
 ﻿using AssetIcons;
 using DG.Tweening;
+using Photon.Pun;
 using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
@@ -22,13 +23,7 @@ namespace CrystalAlchemist
         [Required]
         [BoxGroup("Pflichtfeld")]
         [SerializeField]
-        private ItemDrop itemDrop;
-
-        [Required]
-        [BoxGroup("Pflichtfeld")]
-        [SerializeField]
-        [Tooltip("Use it for manuel effect")]
-        private bool showEffectOnEnable = false;
+        private ItemDrop itemDrop;        
 
         [Required]
         [BoxGroup("Pflichtfeld")]
@@ -51,21 +46,14 @@ namespace CrystalAlchemist
         private FloatValue collectDelay;
 
         private float elapsed;
-        private bool showEffectOnDisable = true;
-
         private float blinkDelay;
         private float blinkElapsed;
         private float blinkSpeed = 0.1f;
 
         private Rigidbody2D myRigidbody;
-        private Vector2 direction;
+        private Vector2 direction = Vector2.zero;
         private bool canCollect = false;
-
-        [AssetIcon]
-        private Sprite GetSprite()
-        {
-            return this.GetComponent<SpriteRenderer>().sprite;
-        }
+        private bool isCollected = false;
 
         #region Start Funktionen
 
@@ -74,9 +62,8 @@ namespace CrystalAlchemist
             this.itemDrop = drop;            
         }        
 
-        public void SetBounce(bool value, Vector2 direction)
+        public void SetBounce(Vector2 direction)
         {
-            this.showEffectOnEnable = value;
             this.direction = direction;
         }
 
@@ -85,18 +72,12 @@ namespace CrystalAlchemist
             return this.itemDrop;
         }
 
-        public void SetSmoke(bool value) => this.showEffectOnDisable = value;
-
         private void Start()
         {
             this.myRigidbody = this.GetComponent<Rigidbody2D>();
             Bounce(true);
 
-            if (this.itemDrop.HasItemAlready())
-            {
-                this.showEffectOnDisable = false;
-                DestroyIt();
-            }
+            if (this.itemDrop.HasItemAlready()) DestroyIt();           
 
             if (this.hasSelfDestruction) this.elapsed = this.duration;
         }
@@ -138,7 +119,13 @@ namespace CrystalAlchemist
         public override void OnEnable()
         {
             base.OnEnable();
-            Bounce();            
+            Bounce();
+        }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+            if (!this.isCollected && GameManager.current.loadingCompleted) AnimatorUtil.ShowSmoke(this.transform);            
         }
 
         private void ChangeCollectState()
@@ -148,7 +135,7 @@ namespace CrystalAlchemist
 
         private void Bounce(bool onStart = false)
         {
-            if (this.showEffectOnEnable && this.bounceAnimation != null && this.myRigidbody != null)
+            if (GameManager.current.loadingCompleted && this.bounceAnimation != null && this.myRigidbody != null)
             {
                 Invoke("ChangeCollectState", this.collectDelay.GetValue());
                 this.bounceAnimation.Bounce();
@@ -159,7 +146,7 @@ namespace CrystalAlchemist
             else
             {
                 if (onStart) ChangeCollectState();
-            }            
+            }              
         }
 
         [Button]
@@ -172,12 +159,6 @@ namespace CrystalAlchemist
         {
             this.duration = duration;
             this.hasSelfDestruction = hasSelfDestruction;
-        }
-
-        public override void OnDisable()
-        {
-            base.OnDisable();
-            if (this.showEffectOnDisable) AnimatorUtil.ShowSmoke(this.transform);
         }
 
         #endregion
@@ -206,7 +187,7 @@ namespace CrystalAlchemist
         {
             if (this.GetComponent<DialogSystem>() != null) this.GetComponent<DialogSystem>().showDialog(player, this);
 
-            this.showEffectOnDisable = false;
+            this.isCollected = true;
             GameEvents.current.DoCollect(this.itemDrop);
 
             PlaySounds();

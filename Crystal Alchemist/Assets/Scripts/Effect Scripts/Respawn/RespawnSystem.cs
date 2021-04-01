@@ -94,7 +94,7 @@ namespace CrystalAlchemist
         private List<RespawnTimer> respawnObjects = new List<RespawnTimer>();
 
         private bool isActive = false;
-        private bool isInit = true;
+
 
         private void OnEnable()
         {
@@ -142,8 +142,6 @@ namespace CrystalAlchemist
                 SetRespawnObjects(); //Add inactive characters to list
                 UpdateRespawnObjects(); //update timer of listed characters
                 if (this.isActive) SpawnObjects(); //spawn characters    
-
-                if (this.isInit) this.isInit = false;
             }
         }
 
@@ -183,7 +181,7 @@ namespace CrystalAlchemist
             {
                 if (this.respawnObjects[i].spawnIt)
                 {
-                    ShowGameObjectEvent(this.respawnObjects[i].gameObject, this.isInit);
+                    ShowGameObjectEvent(this.respawnObjects[i].gameObject);
                     this.respawnObjects[i] = null;
                 }
             }
@@ -195,7 +193,7 @@ namespace CrystalAlchemist
             for (int i = 0; i < this.transform.childCount; i++)
             {
                 if (MustDespawn(this.transform.GetChild(i).gameObject))
-                    HideGameObjectEvent(this.transform.GetChild(i).gameObject, this.isInit);
+                    HideGameObjectEvent(this.transform.GetChild(i).gameObject);
             }
         }
 
@@ -209,28 +207,14 @@ namespace CrystalAlchemist
         }
 
 
-        public void HideGameObjectEvent(GameObject gameObject, bool isInit)
+        public void HideGameObjectEvent(GameObject gameObject)
         {
-            if (!NetworkUtil.IsMaster() || gameObject == null) return;
-
-            int ID = NetworkUtil.GetID(gameObject);
-
-            object[] datas = new object[] { ID, isInit };
-            RaiseEventOptions options = NetworkUtil.TargetAll();
-
-            PhotonNetwork.RaiseEvent(NetworkUtil.HIDE_CHARACTER, datas, options, SendOptions.SendUnreliable);
+            NetworkUtil.NetworkEvent(gameObject, NetworkUtil.HIDE_CHARACTER, NetworkUtil.TargetAll());
         }
 
-        public void ShowGameObjectEvent(GameObject gameObject, bool isInit)
+        public void ShowGameObjectEvent(GameObject gameObject)
         {
-            if (!NetworkUtil.IsMaster() || gameObject == null) return;
-
-            int ID = NetworkUtil.GetID(gameObject);
-
-            object[] datas = new object[] { ID, isInit };
-            RaiseEventOptions options = NetworkUtil.TargetAll();
-
-            PhotonNetwork.RaiseEvent(NetworkUtil.SHOW_CHARACTER, datas, options, SendOptions.SendUnreliable);
+            NetworkUtil.NetworkEvent(gameObject, NetworkUtil.SHOW_CHARACTER, NetworkUtil.TargetAll());
         }
 
         private void NetworkingEvent(EventData obj)
@@ -239,23 +223,25 @@ namespace CrystalAlchemist
             {
                 object[] datas = (object[])obj.CustomData;
                 int ID = (int)datas[0];
-                bool isInit = (bool)datas[1];
+                string objectName = (string)datas[1];
+                Vector2 position = (Vector2)datas[2];
 
-                GameObject gameObject = NetworkUtil.GetGameObject(ID);
-                if (gameObject != null) HideGameObject(gameObject, isInit);
+                GameObject gameObject = GetGameObject(ID, objectName, position);
+                if (gameObject != null) HideGameObject(gameObject);
             }
             else if (obj.Code == NetworkUtil.SHOW_CHARACTER)
             {
                 object[] datas = (object[])obj.CustomData;
                 int ID = (int)datas[0];
-                bool isInit = (bool)datas[1];
+                string objectName = (string)datas[1];
+                Vector2 position = (Vector2)datas[2];
 
-                GameObject gameObject = NetworkUtil.GetGameObject(ID);
-                if (gameObject != null) ShowGameObject(gameObject, isInit);
+                GameObject gameObject = GetGameObject(ID, objectName, position);
+                if (gameObject != null) ShowGameObject(gameObject);
             }
         }
 
-        private void HideGameObject(GameObject gameObject, bool isInit)
+        private void HideGameObject(GameObject gameObject)
         {
             Character character = gameObject.GetComponent<Character>();
 
@@ -266,32 +252,22 @@ namespace CrystalAlchemist
                     RespawnAnimation respawnObject = Instantiate(character.respawnAnimation, character.GetSpawnPosition(), Quaternion.identity);
                     respawnObject.Reverse(character);
                     character.SetCharacterSprites(true);
-
-                    StartCoroutine(InactiveCo(respawnObject.getAnimationLength(), character.gameObject));
-                    StartCoroutine(InactiveCo(respawnObject.getAnimationLength(), respawnObject.gameObject));
                 }
                 else
                 {
-                    if (!isInit) character.PlayDespawnAnimation();
+                    if (GameManager.current.loadingCompleted) character.PlayDespawnAnimation();
                     character.SpawnOut();
-                    StartCoroutine(InactiveCo(character.GetDespawnLength(), character.gameObject));
                 }
 
                 character.values.currentState = CharacterState.respawning;
             }
             else
             {
-                SetGameObjectActive(gameObject, false, isInit);
+                gameObject.SetActive(false);
             }
         }
 
-        private IEnumerator InactiveCo(float seconds, GameObject gameObject)
-        {
-            yield return new WaitForSeconds(seconds);
-            gameObject.SetActive(false);
-        }
-
-        private void ShowGameObject(GameObject gameObject, bool isInit)
+        private void ShowGameObject(GameObject gameObject)
         {
             Character character = gameObject.GetComponent<Character>();
 
@@ -311,28 +287,29 @@ namespace CrystalAlchemist
                 {
                     //spawn character immediately
                     character.SetCharacterSprites(true);
-                    if (!isInit) character.PlayRespawnAnimation();
+                    if(GameManager.current.loadingCompleted) character.PlayRespawnAnimation();
                     character.SpawnIn();
                 }
             }
             else
             {
-                SetGameObjectActive(gameObject, true, isInit);
+                gameObject.SetActive(true);
             }
         }
 
-        private void SetGameObjectActive(GameObject gameObject, bool value, bool isInit)
+        private GameObject GetGameObject(int ID, string objectName, Vector2 position)
         {
-            //Prevent Effect on Initialize
-            if (gameObject.GetComponent<Collectable>() != null)
-            {
-                gameObject.GetComponent<Collectable>().SetBounce(!isInit, Vector2.zero);
-                gameObject.GetComponent<Collectable>().SetSmoke(!isInit);
-            }
-            else if (gameObject.GetComponent<Interactable>() != null)
-                gameObject.GetComponent<Interactable>().SetSmoke(!isInit);
+            GameObject networkGameObject = NetworkUtil.GetGameObject(ID);
+            if (networkGameObject != null) return networkGameObject;
 
-            gameObject.SetActive(value);
+            for (int i = 0; i < this.transform.childCount; i++)
+            {
+                if (this.transform.GetChild(i).gameObject.name == objectName 
+                    && (Vector2)this.transform.GetChild(i).gameObject.transform.position == position) 
+                    return this.transform.GetChild(i).gameObject;
+            }
+
+            return null;
         }
     }
 }

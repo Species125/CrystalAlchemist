@@ -16,7 +16,7 @@ namespace CrystalAlchemist
         private InventorySlot slot;
 
         [SerializeField]
-        private TMP_InputField inputField;
+        private TMP_Text inputField;
 
         [SerializeField]
         private PlayerInventory inventory;

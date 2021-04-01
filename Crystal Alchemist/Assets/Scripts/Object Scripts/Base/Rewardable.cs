@@ -27,6 +27,7 @@ namespace CrystalAlchemist
         public void SetLoot()
         {
             this.itemDrops.Clear();
+
             if (this.useLootTable) this.itemDrops = this.lootTable.GetItemDrops();
             else this.itemDrops.Add(this.reward.GetItemDrop());
         }

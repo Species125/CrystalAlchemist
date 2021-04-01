@@ -57,10 +57,6 @@ namespace CrystalAlchemist
         [ReadOnly]
         public CharacterValues values;
 
-        [BoxGroup("Debug")]
-        [ReadOnly]
-        public bool IsSummoned = false;
-
         #endregion
 
         #region Start Functions (Spawn, Init)
@@ -76,12 +72,19 @@ namespace CrystalAlchemist
         public override void OnEnable()
         {
             base.OnEnable();
+
             this.transform.position = this.spawnPosition;
-            ResetValues();
+            ResetValues();           
+        }
+        
+        public virtual void OnDestroy()
+        {
+
         }
 
         public virtual void Start()
         {
+            
         }
 
         public virtual void SetComponents()
@@ -132,7 +135,6 @@ namespace CrystalAlchemist
 
         public void InitializeAddSpawn(bool hasMaxDuration, float maxDuration)
         {
-            this.IsSummoned = true;
             this.stats = Instantiate(this.stats);
             this.stats.hasRespawn = false;
             this.transform.SetParent(null);
@@ -144,10 +146,7 @@ namespace CrystalAlchemist
             }
         }
 
-        public virtual void OnDestroy()
-        {
 
-        }
 
         #endregion
 
@@ -229,15 +228,15 @@ namespace CrystalAlchemist
             if (!NetworkUtil.IsMaster()) return;
 
             foreach (ItemDrop drop in this.values.itemDrops)
-                    NetworkEvents.current.InstantiateItem(drop, this.transform.position, true);                
-        }        
+                NetworkEvents.current.InstantiateItem(drop, this.transform.position);
+        }
 
         public void DropItem(GameObject gameObject) //Only on Master
         {
             if (!NetworkUtil.IsMaster()) return;
 
             foreach (ItemDrop drop in this.values.itemDrops)
-                NetworkEvents.current.InstantiateItem(drop, gameObject.transform.position, true);
+                NetworkEvents.current.InstantiateItem(drop, gameObject.transform.position);
         }
 
         #endregion
@@ -476,28 +475,28 @@ namespace CrystalAlchemist
 
         private void GetDamage(Character sender, List<CharacterResource> resources, Vector2 position,
                                float percentage, bool knockback, float thrust, float duration)
-        {            
-                foreach (CharacterResource elem in resources)
+        {
+            foreach (CharacterResource elem in resources)
+            {
+                elem.amount *= percentage / 100;
+                UpdateResource(elem);
+
+                if (this.values.life > 0 && elem.resourceType == CostType.life && elem.amount < 0)
                 {
-                    elem.amount *= percentage / 100;
-                    UpdateResource(elem);
+                    if (this.GetComponent<AI>() != null) this.GetComponent<AI>()._IncreaseAggroOnHit(sender, elem.amount);
 
-                    if (this.values.life > 0 && elem.resourceType == CostType.life && elem.amount < 0)
-                    {
-                        if (this.GetComponent<AI>() != null) this.GetComponent<AI>()._IncreaseAggroOnHit(sender, elem.amount);
-
-                        //Charakter-Treffer (Schaden) animieren
-                        AudioUtil.playSoundEffect(this.gameObject, this.stats.hitSoundEffect);
-                        SetCannotHit();
-                    }
+                    //Charakter-Treffer (Schaden) animieren
+                    AudioUtil.playSoundEffect(this.gameObject, this.stats.hitSoundEffect);
+                    SetCannotHit();
                 }
+            }
 
-                if (this.values.life > 0 && knockback)
-                {
-                    //Rückstoß ermitteln
-                    float knockbackTrust = thrust - (this.stats.antiKnockback / 100 * thrust);
-                    knockBack(duration, knockbackTrust, position);
-                }            
+            if (this.values.life > 0 && knockback)
+            {
+                //Rückstoß ermitteln
+                float knockbackTrust = thrust - (this.stats.antiKnockback / 100 * thrust);
+                knockBack(duration, knockbackTrust, position);
+            }
         }
 
         [Button]
@@ -757,7 +756,10 @@ namespace CrystalAlchemist
         public void PlayDespawnAnimation()
         {
             AnimatorUtil.SetAnimatorParameter(this.animator, "Despawn");
+            Invoke("SetInactive", GetDespawnLength());
         }
+
+        private void SetInactive() => this.gameObject.SetActive(false);
 
         public float GetDespawnLength()
         {

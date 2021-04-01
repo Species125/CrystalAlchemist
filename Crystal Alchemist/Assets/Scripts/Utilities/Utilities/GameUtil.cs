@@ -65,7 +65,7 @@ namespace CrystalAlchemist
                 case ItemRarity.unique: return MasterManager.globalValues.unique;
                 default: return MasterManager.globalValues.common;
             }
-        }
+        }        
     }
 }
 

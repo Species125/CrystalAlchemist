@@ -93,11 +93,10 @@ namespace CrystalAlchemist
 
                 string path = (string)datas[0];
                 Vector2 position = (Vector2)datas[1];
-                bool bounce = (bool)datas[2];
-                Vector2 direction = (Vector2)datas[3];
+                Vector2 direction = (Vector2)datas[2];
 
                 ItemDrop drop = Resources.Load<ItemDrop>(path);
-                InstantiateItemLocal(drop, position, bounce, direction);
+                InstantiateItemLocal(drop, position, direction);
             }
         }
 
@@ -466,40 +465,40 @@ namespace CrystalAlchemist
 
         #region Items
 
-        public void InstantiateItem(ItemDrop drop, Vector2 position, bool bounce = false)
+        public void InstantiateItem(ItemDrop drop, Vector2 position)
         {
             //Drop Item on Kill
             Vector2 direction = UnityUtil.RandomVector(Vector2.zero, 0.25f);
             position = UnityUtil.RandomVector(position, 0.25f);
 
-            InstantiateItem(drop, position, bounce, direction);
+            InstantiateItem(drop, position, direction);
         }
 
-        public void InstantiateItem(ItemDrop drop, Vector2 position, bool bounce, Vector2 direction)
+        public void InstantiateItem(ItemDrop drop, Vector2 position, Vector2 direction)
         {
-            InstantiateItemNetworkEvent(drop.path, position, bounce, direction);
+            InstantiateItemNetworkEvent(drop.path, position, direction);
         }
 
-        private void InstantiateItemNetworkEvent(string path, Vector2 position, bool bounce, Vector2 direction)
+        private void InstantiateItemNetworkEvent(string path, Vector2 position, Vector2 direction)
         {            
-            object[] datas = new object[] { path, position, bounce, direction };
+            object[] datas = new object[] { path, position, direction };
             RaiseEventOptions options = NetworkUtil.TargetAll();
 
             PhotonNetwork.RaiseEvent(NetworkUtil.ITEMDROP, datas, options, SendOptions.SendUnreliable);
         }
 
-        public void InstantiateTreasureItem(ItemDrop drop, Vector2 position, bool bounce, Vector2 direction)
+        public void InstantiateTreasureItem(ItemDrop drop, Vector2 position, Vector2 direction)
         {
             direction = UnityUtil.RandomVector(direction, 0.25f);
             position = UnityUtil.RandomVector(position, 0.25f);
 
-            InstantiateItemLocal(drop, position, bounce, direction);
+            InstantiateItemLocal(drop, position, direction);
         }
 
-        private void InstantiateItemLocal(ItemDrop drop, Vector2 position, bool bounce, Vector2 direction)
+        private void InstantiateItemLocal(ItemDrop drop, Vector2 position, Vector2 direction)
         {            
             Collectable temp = Instantiate(drop.collectable, position, Quaternion.identity);
-            temp.SetBounce(bounce, direction);
+            temp.SetBounce(direction);
             temp.name = drop.name;
             temp.SetItem(drop);
             temp.SetSelfDestruction(drop.duration, drop.hasSelfDestruction);

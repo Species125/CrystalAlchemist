@@ -11,24 +11,16 @@ namespace CrystalAlchemist
         - Player Color-Parts by Emissions
         - Trigger Active on Skills
         - Empty Map
-        - Shadow Tree
-        - Housing Furniture
-        - Items and Recipes
 
-        0. Ability + Inventory Item
         1. Sound Effekte austauschen
-        2. Shadow Trees
-        3. Furniture (Haus)
-        4. Items and Recipes
+        4. New Title screen
+        
+        PATCH!
 
         7. New Skills
         8. New Races
         9. New Gear
 
-        10. Housing
-        11. New Animations
-
-        New Content:
         - New Skill: Frostnova
         - New Skill: Ehjafjalla
         - New Skill: Tornado
@@ -38,9 +30,14 @@ namespace CrystalAlchemist
         - New Skill: Heal-Area  
         - New Skill: Mana-Song
         - New Skill: Aggro
-        - New Animation: Player in Menu
         - New Race: Catgirl
         - New Customization: Scales for Lamia and Drahn
+
+        PATCH!
+
+        9. Random Dungeon
+        10. Housing + Furniture (Haus)
+        11. New Animations
 
         New Animations:
         - In Menu
@@ -85,8 +82,8 @@ namespace CrystalAlchemist
         //TODO: Glasses (HUD)
         //TODO: Tutorial und Tutorial Log
         //TODO: Quests and Quest Log
-         //       6. Loot Table Extra Requirements
-          //      0. Collectable Races
+        //       6. Loot Table Extra Requirements
+        //      0. Collectable Races
         //TODO: Jahreszeiten
 
         //-----------------------------------------------------------------------------

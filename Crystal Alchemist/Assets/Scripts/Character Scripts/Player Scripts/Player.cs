@@ -112,9 +112,7 @@ namespace CrystalAlchemist
         }
 
         public override void Start()
-        {
-            base.Start();
-
+        {          
             LoadPlayer();
 
             this.ChangeDirection(this.values.direction);
@@ -122,6 +120,8 @@ namespace CrystalAlchemist
             this.updateTimeDistortion(0);
 
             NetworkEvents.current.PlayerSpawnCompleted(this.photonView);
+
+            base.Start();
         }
 
         private void LoadPlayer()

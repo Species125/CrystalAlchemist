@@ -16,13 +16,22 @@ namespace CrystalAlchemist
         [SerializeField]
         private StringValue currentScene;
 
+        public static GameManager current;
+
+        public bool loadingCompleted = false;
+
         private void Awake()
         {
+            current = this;
             MasterManager.globalValues.openedMenues.Clear();
 
             GameEvents.current.OnSceneChanged += ChangeScene;
             GameEvents.current.OnDeath += CheckDeathOfPlayers;
         }
+
+        private void Start() => Invoke("LateStart", 1f);
+
+        private void LateStart() => loadingCompleted = true;
 
         private void OnDestroy()
         {

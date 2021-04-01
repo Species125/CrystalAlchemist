@@ -1,61 +1,57 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace CrystalAlchemist
 {
-    [RequireComponent(typeof(Collider2D))]
     public class SecretArea : MonoBehaviour
     {
+        [DetailedInfoBox("For fading hidden Map Areas","Add this to the Trigger2D, Tilemap is required", InfoMessageType.Info)]
+        [SerializeField]
+        [Required]
         private Tilemap map;
+
         [SerializeField]
         private float delay = .0025f;
+
         [SerializeField]
         private AudioClip secretSoundEffect;
 
-        void Start()
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            this.map = GetComponent<Tilemap>();
-        }
-
-        void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (!collision.isTrigger)
-            {
-                if (!NetworkUtil.IsLocal(collision.GetComponent<Player>())) return;
-                AudioUtil.playSoundEffect(this.secretSoundEffect, MasterManager.settings.backgroundMusicVolume);
-                StartCoroutine(FadeOut());
-            }
+            if (collision.isTrigger) return;
+            if (!NetworkUtil.IsLocal(collision.GetComponent<Player>())) return;
+            AudioUtil.playSoundEffect(this.secretSoundEffect, MasterManager.settings.backgroundMusicVolume);
+            StartCoroutine(FadeOut());
         }
 
         IEnumerator FadeIn()
         {
             for (float f = .05f; f <= 1.1; f += .05f)
             {
-                setColor(f);
+                SetColor(f);
                 yield return new WaitForSeconds(this.delay);
             }
         }
 
-        void OnTriggerExit2D(Collider2D collision)
+        private void OnTriggerExit2D(Collider2D collision)
         {
-            if (!collision.isTrigger)
-            {
-                if (!NetworkUtil.IsLocal(collision.GetComponent<Player>())) return;
-                StartCoroutine(FadeIn());
-            }
+            if (collision.isTrigger) return;
+            if (!NetworkUtil.IsLocal(collision.GetComponent<Player>())) return;
+            StartCoroutine(FadeIn());
         }
 
         IEnumerator FadeOut()
         {
             for (float f = 1f; f >= -.05f; f -= .05f)
             {
-                setColor(f);
+                SetColor(f);
                 yield return new WaitForSeconds(this.delay);
             }
         }
 
-        private void setColor(float f)
+        private void SetColor(float f)
         {            
             Color newcolor = this.map.color;
             newcolor.a = f;

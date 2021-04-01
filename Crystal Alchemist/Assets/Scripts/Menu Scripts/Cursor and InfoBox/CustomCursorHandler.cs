@@ -17,7 +17,7 @@ namespace CrystalAlchemist
 
         private void OnDestroy() => GameEvents.current.OnDeviceChanged -= OnDeviceChanged;
         
-        private void OnDeviceChanged() => this.child.SetActive(MasterManager.inputDeviceInfo.type == InputDeviceType.gamepad);
+        private void OnDeviceChanged() => this.child.SetActive(MasterManager.inputDeviceInfo.type != InputDeviceType.mouse);
        
     }
 }

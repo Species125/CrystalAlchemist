@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e0ab837478e584e9ccad0adeafdd3b, type: 3}
+  m_Name: Tree Loot
+  m_EditorClassIdentifier: 
+  entries:
+  - reward:
+      firstLoot:
+        item: {fileID: 11400000, guid: 1895219d61137a34d9c84dfae6315f33, type: 2}
+        amount: 1
+      hasAlternative: 0
+      alternativeLoot:
+        item: {fileID: 0}
+        amount: 1
+    hasDropRate: 1
+    dropRate: 25
+  - reward:
+      firstLoot:
+        item: {fileID: 11400000, guid: 5c44bf3ca6db0ff4582560579147b4e7, type: 2}
+        amount: 1
+      hasAlternative: 0
+      alternativeLoot:
+        item: {fileID: 0}
+        amount: 1
+    hasDropRate: 1
+    dropRate: 25
+  - reward:
+      firstLoot:
+        item: {fileID: 11400000, guid: 75643492b780fef49a94a2f623497ce5, type: 2}
+        amount: 1
+      hasAlternative: 0
+      alternativeLoot:
+        item: {fileID: 0}
+        amount: 1
+    hasDropRate: 1
+    dropRate: 25
+  type: 1
+  additionalLoot: 2

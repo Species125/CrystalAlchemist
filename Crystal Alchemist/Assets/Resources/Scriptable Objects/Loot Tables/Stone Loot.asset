@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e0ab837478e584e9ccad0adeafdd3b, type: 3}
+  m_Name: Stone Loot
+  m_EditorClassIdentifier: 
+  entries:
+  - reward:
+      firstLoot:
+        item: {fileID: 11400000, guid: d63159f7814001141867caa650ad1efd, type: 2}
+        amount: 1
+      hasAlternative: 0
+      alternativeLoot:
+        item: {fileID: 0}
+        amount: 1
+    hasDropRate: 1
+    dropRate: 50
+  - reward:
+      firstLoot:
+        item: {fileID: 11400000, guid: 92ef6a175b955cf47accd04d77e09b97, type: 2}
+        amount: 1
+      hasAlternative: 0
+      alternativeLoot:
+        item: {fileID: 0}
+        amount: 1
+    hasDropRate: 1
+    dropRate: 25
+  - reward:
+      firstLoot:
+        item: {fileID: 11400000, guid: 028ba135784d14a49a0609ebac5a7fea, type: 2}
+        amount: 1
+      hasAlternative: 0
+      alternativeLoot:
+        item: {fileID: 0}
+        amount: 1
+    hasDropRate: 1
+    dropRate: 10
+  - reward:
+      firstLoot:
+        item: {fileID: 11400000, guid: 99f350e44e5c0de49ad5b50e93f1102b, type: 2}
+        amount: 1
+      hasAlternative: 0
+      alternativeLoot:
+        item: {fileID: 0}
+        amount: 1
+    hasDropRate: 1
+    dropRate: 10
+  type: 1
+  additionalLoot: 3

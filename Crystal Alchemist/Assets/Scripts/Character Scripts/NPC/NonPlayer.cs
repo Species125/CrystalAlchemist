@@ -23,13 +23,11 @@ namespace CrystalAlchemist
         public override void Start()
         {
             //GameEvents.current.OnKill += DestroyItWithoutDrop;
-            if (this.IsSummoned)
+            if (GameManager.current.loadingCompleted)
             {
                 SetCharacterSprites(false);
                 SpawnOut();
-            }
-
-            base.Start();
+            }            
 
             if (this.stats.showAnalyse)
             {
@@ -37,12 +35,14 @@ namespace CrystalAlchemist
                 analyse.SetTarget(this.gameObject);
             }
 
-            if (this.IsSummoned)
+            if (GameManager.current.loadingCompleted)
             {
                 SetCharacterSprites(true);
                 PlayRespawnAnimation();
                 SpawnIn();
             }
+
+            base.Start();
         }
 
         public override void OnDestroy()

@@ -1,3 +1,4 @@
+using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -124,7 +125,8 @@ namespace CrystalAlchemist
 
         public static int GetID(GameObject gameObject)
         {
-            return gameObject.GetPhotonView().ViewID; //ERROR
+            if(gameObject && gameObject.GetPhotonView()) return gameObject.GetPhotonView().ViewID;
+            return -1;
         }
 
         public static Character GetCharacter(int ID)
@@ -152,6 +154,8 @@ namespace CrystalAlchemist
 
             return view.gameObject;
         }
+
+
 
         public static void SetRoomStatus(bool value)
         {
@@ -186,6 +190,30 @@ namespace CrystalAlchemist
             options.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable { { "Private", privat }, {"Password", password } };
 
             PhotonNetwork.CreateRoom(roomName, options, TypedLobby.Default);
+        }
+
+        public static void NetworkEvent(GameObject gameObject, byte eventCode, RaiseEventOptions options)
+        {
+            if (!IsMaster() || gameObject == null) return;
+
+            int ID = GetID(gameObject);
+            string objectName = gameObject.name;
+            Vector2 position = gameObject.transform.position;
+           
+            object[] datas = new object[] { ID, objectName, position };
+
+            PhotonNetwork.RaiseEvent(eventCode, datas, options, SendOptions.SendUnreliable);
+        }
+
+        public static bool IsNetworkBehaviour(GameObject a, GameObject b)
+        {
+            NetworkBehaviour networkBehaviourA = a.GetComponent<NetworkBehaviour>();
+            NetworkBehaviour networkBehaviourB = b.GetComponent<NetworkBehaviour>();
+
+            if (networkBehaviourA != null && networkBehaviourB != null 
+                && networkBehaviourA.stringID == networkBehaviourB.stringID) return true;
+
+            return false;
         }
     }
 }

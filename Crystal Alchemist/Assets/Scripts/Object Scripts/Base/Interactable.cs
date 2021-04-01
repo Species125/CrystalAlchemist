@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Photon.Pun;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -23,12 +24,6 @@ namespace CrystalAlchemist
         [SerializeField]
         private string ID;
 
-        [BoxGroup("Effects")]
-        [SerializeField]
-        private bool showEffectOnEnable = false;
-
-        private bool showEffectOnDisable = true;
-
         [HideInInspector]
         public bool isPlayerInRange = false;
         [HideInInspector]
@@ -45,7 +40,7 @@ namespace CrystalAlchemist
         #region Start Funktionen (init, ContextClue, Item set bzw. Lootregeln)
 
         public virtual void Start()
-        {
+        {            
             GameEvents.current.OnSubmit += OnSubmit;
             this.context = Instantiate(MasterManager.contextClue, this.transform.position, Quaternion.identity, this.transform);
         }
@@ -73,21 +68,19 @@ namespace CrystalAlchemist
         public override void OnEnable()
         {
             base.OnEnable();
-            if (this.showEffectOnEnable) AnimatorUtil.ShowSmoke(this.transform);
+            if (GameManager.current.loadingCompleted) AnimatorUtil.ShowSmoke(this.transform);
         }
+
+        public void BaseOnDisable() => base.OnDisable();
 
         public override void OnDisable()
         {
-            base.OnDisable();
-            if (this.showEffectOnDisable) AnimatorUtil.ShowSmoke(this.transform);
+            BaseOnDisable();
+
+            if (GameManager.current.loadingCompleted) AnimatorUtil.ShowSmoke(this.transform);
             ShowContextClue(false);
         }
 
-        public void SetSmoke(bool value)
-        {
-            this.showEffectOnEnable = value;
-            this.showEffectOnDisable = value;
-        }
 
         #endregion
 

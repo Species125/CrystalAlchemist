@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace CrystalAlchemist
 {
     public class ProtectedArea : MonoBehaviour
     {
+        [DetailedInfoBox("For hiding items when collected amount of x", "Set bouncing true for item", InfoMessageType.Info)]
         [SerializeField]
         private List<AI> protectingNPCs = new List<AI>();
 
@@ -16,18 +18,14 @@ namespace CrystalAlchemist
         [Range(-100, 0)]
         private int aggroDecreaseFactor = -25;
 
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            setAggro(collision, false);
-        }
+        private void OnTriggerEnter2D(Collider2D collision) => SetAggro(collision, false);
 
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            setAggro(collision, true);
-        }
+        private void OnTriggerExit2D(Collider2D collision) => SetAggro(collision, true);        
 
-        private void setAggro(Collider2D collision, bool decrease)
+        private void SetAggro(Collider2D collision, bool decrease)
         {
+            if (collision.isTrigger) return;
+
             this.protectingNPCs.RemoveAll(x => x == null);
             Character character = collision.GetComponent<Character>();
 

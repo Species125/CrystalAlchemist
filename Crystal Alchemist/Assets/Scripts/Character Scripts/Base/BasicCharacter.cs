@@ -41,7 +41,6 @@ namespace CrystalAlchemist
 
         }
 
-
         public void ShowMiniDialog(string textID)
         {
             string text = FormatUtil.GetLocalisedText(textID, LocalisationFileType.dialogs);

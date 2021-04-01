@@ -45,9 +45,9 @@ namespace CrystalAlchemist
         private float countdown = 0;
 
         public override void Start()
-        {
-            base.Start();
+        {            
             this.timeBar.SetActive(false);
+            base.Start();
         }
 
         public override void Update()

@@ -113,12 +113,18 @@ namespace CrystalAlchemist
 
         public string GetDescription()
         {
-            return FormatUtil.GetLocalisedText(this.name + "_Description", LocalisationFileType.items);
+            return FormatUtil.GetLocalisedText(this.name + "_Description", GetLocalisationType());
         }
 
         public string GetName()
         {
-            return FormatUtil.GetLocalisedText(this.name + "_Name", LocalisationFileType.items);
+            return FormatUtil.GetLocalisedText(this.name + "_Name", GetLocalisationType());
+        }
+
+        public LocalisationFileType GetLocalisationType()
+        {
+            if (this.itemType == ItemType.ability) return LocalisationFileType.skills;
+            return LocalisationFileType.items;
         }
     }
 }

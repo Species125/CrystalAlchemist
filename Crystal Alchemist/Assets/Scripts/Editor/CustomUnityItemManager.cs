@@ -146,7 +146,7 @@ namespace CrystalAlchemist
             }
             else
             {
-                this.itemGroupName = this.itemName + "s";
+                this.itemGroupName = this.itemName;
                 this.itemGroupSprite = this.itemSprite;
                 this.inventoryRarity = this.itemRarity;
             }

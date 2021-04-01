@@ -16395,3 +16395,25 @@ CrystalAlchemist.HUDCutScene.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/HU
 Exception 25.03.2021 01:32:19: NullReferenceException: Object reference not set to an instance of an object
 CrystalAlchemist.ItemHUD.OnDestroy () (at Assets/Scripts/Menu Scripts/HUD/ItemHUD.cs:28)
 
+Exception 26.03.2021 15:55:10: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.Treasure.SharedSubmit () (at Assets/Scripts/Object Scripts/Treasure.cs:187)
+CrystalAlchemist.Treasure.DoOnSubmit () (at Assets/Scripts/Object Scripts/Treasure.cs:117)
+CrystalAlchemist.Interactable.OnSubmit () (at Assets/Scripts/Object Scripts/Base/Interactable.cs:61)
+CrystalAlchemist.GameEvents.DoSubmit () (at Assets/Scripts/Game Scripts/Event Systems/GameEvents.cs:85)
+CrystalAlchemist.PlayerControls.Submit (UnityEngine.InputSystem.InputAction+CallbackContext context) (at Assets/Scripts/Character Scripts/Player Scripts/PlayerControls.cs:20)
+UnityEngine.Events.InvokableCall`1[T1].Invoke (T1 args0) (at <42a5878ce129403083acccf18e43363f>:0)
+UnityEngine.Events.UnityEvent`1[T0].Invoke (T0 arg0) (at <42a5878ce129403083acccf18e43363f>:0)
+UnityEngine.InputSystem.Utilities.DelegateHelpers.InvokeCallbacksSafe[TValue] (UnityEngine.InputSystem.Utilities.InlinedArray`1[System.Action`1[TValue]]& callbacks, TValue argument, System.String callbackName, System.Object context) (at Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Utilities/DelegateHelpers.cs:51)
+UnityEngine.InputSystem.LowLevel.<>c__DisplayClass7_0:<set_onUpdate>b__0(NativeInputUpdateType, NativeInputEventBuffer*)
+UnityEngineInternal.Input.NativeInputSystem:NotifyUpdate(NativeInputUpdateType, IntPtr)
+
+Exception 01.04.2021 21:43:12: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerSkillset.GetSkillSet () (at Assets/Scripts/Scriptable Objects/Objects/Player/PlayerSkillset.cs:85)
+CrystalAlchemist.PlayerData..ctor (CrystalAlchemist.PlayerSaveGame saveGame) (at Assets/Scripts/Save and Loading Scripts/PlayerData.cs:60)
+CrystalAlchemist.SaveSystem.Save (CrystalAlchemist.PlayerSaveGame saveGame, System.String slot) (at Assets/Scripts/Save and Loading Scripts/SaveSystem.cs:16)
+CrystalAlchemist.PlayerSaveGame.SaveGame () (at Assets/Scripts/Scriptable Objects/Objects/Player/PlayerSaveGame.cs:97)
+CrystalAlchemist.SaveGameManager.SaveDirectly () (at Assets/Scripts/Game Scripts/SaveGameManager.cs:39)
+CrystalAlchemist.SaveGameManager.SaveGame (System.Boolean value) (at Assets/Scripts/Game Scripts/SaveGameManager.cs:53)
+CrystalAlchemist.GameEvents.DoSaveGame (System.Boolean buffered) (at Assets/Scripts/Game Scripts/Event Systems/GameEvents.cs:75)
+CrystalAlchemist.SaveGameManager.Start () (at Assets/Scripts/Game Scripts/SaveGameManager.cs:28)
+

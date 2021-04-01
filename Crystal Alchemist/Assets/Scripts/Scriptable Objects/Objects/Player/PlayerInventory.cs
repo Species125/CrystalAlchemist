@@ -58,18 +58,16 @@ namespace CrystalAlchemist
         [Button]
         public void CollectItem(ItemStats item)
         {
-            List<InventoryItem> inventory = GetInventory(item.inventoryItem.inventoryType);
-            if (inventory == null) return;
-
             //add Inventory Item or change its amount
-            CollectItem(item.inventoryItem, item.GetTotalAmount(), inventory);
+            CollectItem(item.inventoryItem, item.GetTotalAmount());
             GameEvents.current.DoSaveGame();
 
             if (item.inventoryItem != null) item.inventoryItem.RaiseCollectSignal();
         }
 
-        public void CollectItem(InventoryItem group, int amount, List<InventoryItem> inventory)
+        public void CollectItem(InventoryItem group, int amount)
         {
+            List<InventoryItem> inventory = GetInventory(group.inventoryType);
             if (inventory == null) return;
 
             InventoryItem found = GameUtil.GetInventoryItem(group, inventory);

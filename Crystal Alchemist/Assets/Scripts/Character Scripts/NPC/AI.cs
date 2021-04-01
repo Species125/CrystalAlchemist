@@ -128,9 +128,7 @@ namespace CrystalAlchemist
         }
 
         public override void Start()
-        {
-            base.Start();
-
+        {          
             //if (!NetworkUtil.IsMaster()) return;
 
             GameEvents.current.OnRangeTriggered += SetRangeTriggered;
@@ -138,6 +136,8 @@ namespace CrystalAlchemist
             this.GetComponent<AICombat>().Initialize();
             AIComponent[] components = this.GetComponents<AIComponent>();
             for (int i = 0; i < components.Length; i++) components[i].Initialize();
+
+            base.Start();
         }
 
         public override void OnDestroy()

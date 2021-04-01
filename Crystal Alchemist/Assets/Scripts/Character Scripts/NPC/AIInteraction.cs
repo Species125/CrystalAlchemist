@@ -21,8 +21,6 @@ namespace CrystalAlchemist
         
         private bool interacted = false;
 
-        private void Awake() => this.SetSmoke(false);
-
         public override void Start()
         {
             base.Start();
@@ -30,6 +28,17 @@ namespace CrystalAlchemist
             //if (!NetworkUtil.IsMaster()) return;
             this.context.transform.position = this.npc.GetHeadPosition();
             GameEvents.current.OnMenuClosed += DoOnMenuClose;
+        }
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
+        }
+
+        public override void OnDisable()
+        {
+            base.BaseOnDisable();
+            ShowContextClue(false);
         }
 
         private void OnDestroy()

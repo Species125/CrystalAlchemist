@@ -215,9 +215,9 @@ MonoBehaviour:
   costs:
     resourceType: 0
     item: {fileID: 0}
-    keyItem: {fileID: 0}
     statusEffect: {fileID: 0}
     amount: 1
+  masterOnly: 0
   customActionButton: 1
   ID: "\xD6ffnen"
   showEffectOnEnable: 0
@@ -225,10 +225,6 @@ MonoBehaviour:
   isPlayerLookingAtIt: 0
   player: {fileID: 0}
   context: {fileID: 0}
-  itemDrop: {fileID: 0}
-  anim: {fileID: 2468332955695537039}
-  treasureMusic: {fileID: 8300000, guid: dea78b2c12b2f0f4286524cf75188749, type: 3}
-  treasureType: 1
   useLootTable: 0
   reward:
     firstLoot:
@@ -239,6 +235,15 @@ MonoBehaviour:
       item: {fileID: 0}
       amount: 1
   lootTable: {fileID: 11400000, guid: 23236d0d0ea4bdc47b89bb602b44e9c3, type: 2}
+  itemDrops: []
+  anim: {fileID: 2468332955695537039}
+  treasureMusic: {fileID: 8300000, guid: dea78b2c12b2f0f4286524cf75188749, type: 3}
+  bounceDirection: 0
+  spawnArea: {fileID: 0}
+  itemSpawnPosition: {x: 0, y: 0}
+  isShared: 0
+  canReset: 0
+  resetInterval: 30
   shopPrice: {fileID: 3316803349473695357}
   soundEffect: {fileID: 8300000, guid: 4f7be5fca72aed945b5adc95e382a719, type: 3}
   fadeOld: 0.5
@@ -325,14 +330,13 @@ MonoBehaviour:
   eventValue: {fileID: 11400000, guid: f6af316cc0916024581413a59b36461b, type: 2}
   progress:
     progressType: 2
-    playerProgress: {fileID: 0}
     gameProgressID: 
-    onlyThisArea: 0
+    location: 
+    addLocation: 0
     timespan:
       days: 0
       hours: 0
       minutes: 0
-      seconds: 0
 --- !u!114 &4009619424976468428
 MonoBehaviour:
   m_ObjectHideFlags: 0

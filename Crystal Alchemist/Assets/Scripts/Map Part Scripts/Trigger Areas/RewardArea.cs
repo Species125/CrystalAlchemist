@@ -5,7 +5,7 @@ namespace CrystalAlchemist
 {
     public class RewardArea : MonoBehaviour
     {
-        [InfoBox("Maybe set bouncing to true for items", InfoMessageType.Info)]
+        [DetailedInfoBox("For hiding items when collected amount of x", "Set bouncing true for item", InfoMessageType.Info)]
         [SerializeField]
         private bool collectAll;
 

@@ -163,7 +163,7 @@ namespace CrystalAlchemist
                         Debug.Log(item[0] + " is missing in master");
                         continue;
                     }
-                    inventory.CollectItem(master, Convert.ToInt32(item[1]), inventory.GetInventory(master.inventoryType));
+                    inventory.CollectItem(master, Convert.ToInt32(item[1]));
                 }
             }
         }        

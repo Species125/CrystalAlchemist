@@ -45,7 +45,11 @@ namespace CrystalAlchemist
 
         public void DestroyIt()
         {
-            if (this.character != null && !this.isReverse) this.character.SpawnIn();
+            if (this.character != null)
+            {
+                if (this.isReverse) this.character.gameObject.SetActive(false);
+                else this.character.SpawnIn();
+            }
             Destroy(this.gameObject, 0.1f);
         }
     }

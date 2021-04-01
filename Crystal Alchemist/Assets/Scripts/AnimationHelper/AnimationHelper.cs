@@ -21,6 +21,16 @@ namespace CrystalAlchemist
             else Destroy(this.mainObject);
         }
 
+        public void SetActive()
+        {
+            this.mainObject.SetActive(true);
+        }
+
+        public void SetNotActive()
+        {
+            this.mainObject.SetActive(false);
+        }
+
         public void EnableTreasure()
         {
             if (this.mainObject.GetComponent<Treasure>() != null)
