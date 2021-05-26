@@ -5,18 +5,22 @@ using UnityEngine.Tilemaps;
 
 namespace CrystalAlchemist
 {
+    [RequireComponent(typeof(Tilemap))]
     public class SecretArea : MonoBehaviour
     {
-        [DetailedInfoBox("For fading hidden Map Areas","Add this to the Trigger2D, Tilemap is required", InfoMessageType.Info)]
-        [SerializeField]
-        [Required]
-        private Tilemap map;
-
+        [DetailedInfoBox("For fading hidden Map Areas","Add this to the Trigger2D, Tilemap is required", InfoMessageType.Info)]       
         [SerializeField]
         private float delay = .0025f;
 
         [SerializeField]
         private AudioClip secretSoundEffect;
+
+        private Tilemap map;
+
+        private void Awake()
+        {
+            this.map = this.GetComponent<Tilemap>();
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

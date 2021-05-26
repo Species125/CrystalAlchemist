@@ -156,14 +156,17 @@ namespace CrystalAlchemist
             {
                 foreach (string[] item in items)
                 {
-                    InventoryItem master = MasterManager.GetInventoryItem(item[0]);
+                    string[] array = item;
+                    if (item.GetType() != typeof(string[])) array = new string[] { item.ToString(), "1" };
+
+                    InventoryItem master = MasterManager.GetInventoryItem(array[0]);
 
                     if (master == null)
                     {
-                        Debug.Log(item[0] + " is missing in master");
+                        Debug.Log(array[0] + " is missing in master");
                         continue;
                     }
-                    inventory.CollectItem(master, Convert.ToInt32(item[1]));
+                    inventory.CollectItem(master, Convert.ToInt32(array[1]));
                 }
             }
         }        
