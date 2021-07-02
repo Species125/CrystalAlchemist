@@ -85,7 +85,7 @@ namespace CrystalAlchemist
 
         private bool HitTrigger(Character character)
         {
-            if (character.values.cantBeHit) this.hitCounter++;
+            //if (character.values.cantBeHit) this.hitCounter++;
             if (this.hitCounter >= this.value) return true;
             return false;
         }

@@ -56,8 +56,8 @@ namespace CrystalAlchemist
             if (type == ScrollBarType.horizontal) SetHorizontal(value);
             else SetVertical(value);
 
-            cursor.SetTransform((RectTransform)this.transform);
-            cursor.UpdatePosition();            
+            //cursor.SetTransform((RectTransform)this.transform);
+            cursor.UpdateRect();            
         }
 
         private int GetCount()

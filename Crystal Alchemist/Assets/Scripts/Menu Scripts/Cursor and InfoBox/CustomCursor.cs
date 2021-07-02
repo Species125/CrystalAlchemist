@@ -69,9 +69,17 @@ namespace CrystalAlchemist
 
         public void SetTransform(RectTransform rect) => this.rect = rect;
 
+        public void UpdateRect()
+        {
+            Selectable selectable = this.selectedObject;
+            this.rect = (RectTransform)selectable.transform;
+
+            UpdatePosition();
+        }
+
         public void UpdatePosition()
         {
-            if (rect == null) return;
+            if (this.rect == null) return;
             Vector2 size = new Vector2(rect.rect.width, rect.rect.height);
             Vector2 scale = rect.lossyScale;
 

@@ -58,7 +58,7 @@ namespace CrystalAlchemist
             if (targetRequired && this.skill.target == null) LineRenderUtil.Renderempty(this.laserSprite);
             else LineRenderUtil.RenderLine(this.skill.sender, this.skill.target, this.skill.GetDirection(), this.distance, this.laserSprite, this.position, out hitted, out hitPoint);
 
-            if (hitted != null && this.skill.GetTriggerActive())
+            if (hitted != null)
             {
                 if (CollisionUtil.CheckCollision(hitted, this.skill)) this.skill.hitIt(hitted);
                 AbilityUtil.SetEffectOnHit(this.skill, hitPoint);

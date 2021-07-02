@@ -18,6 +18,11 @@ namespace CrystalAlchemist
         [SerializeField]
         private AudioClip secretSoundEffect;
 
+        private void Awake()
+        {
+            if (this.map == null) this.map = this.GetComponent<Tilemap>();
+        }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.isTrigger) return;

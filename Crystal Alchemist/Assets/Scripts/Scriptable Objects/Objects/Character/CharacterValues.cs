@@ -50,12 +50,14 @@ namespace CrystalAlchemist
 
         [BoxGroup("States")]
         public CharacterState currentState;
+        //[BoxGroup("States")]
+        //public bool cantBeHit; //delay
         [BoxGroup("States")]
-        public bool cantBeHit; //delay
-        [BoxGroup("States")]
-        public bool cannotDie = false;
+        public bool cannotDie = false; //no death
         [BoxGroup("States")]
         public bool isInvincible = false; //event
+        [BoxGroup("States")]
+        public bool isOnIce = false; //slippery
 
         [BoxGroup("States")]
         public Vector2 direction;
@@ -65,8 +67,6 @@ namespace CrystalAlchemist
         public float timeDistortion = 1;
         [BoxGroup("States")]
         public float steps = 0;
-        [BoxGroup("States")]
-        public bool isOnIce = false;
         [BoxGroup("States")]
         public bool isAttacking = false;
 
@@ -115,7 +115,7 @@ namespace CrystalAlchemist
             ResetSpeed(stats);
             this.timeDistortion = 1;
             
-            this.cantBeHit = false;
+            //this.cantBeHit = false;
             this.isOnIce = false;
 
             if (stats.lootTable != null) this.itemDrops = stats.lootTable.GetItemDrops();

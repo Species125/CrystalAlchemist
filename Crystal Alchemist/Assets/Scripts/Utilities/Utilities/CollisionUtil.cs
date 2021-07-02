@@ -68,7 +68,7 @@ namespace CrystalAlchemist
 
         public static bool CheckCollision(Collider2D hittedCharacter, Skill skill)
         {
-            if (skill == null || !skill.GetTriggerActive()) return false;
+            if (skill == null) return false;
 
             SkillTargetModule module = skill.GetComponent<SkillTargetModule>();
             if (module == null) return false;
@@ -97,24 +97,20 @@ namespace CrystalAlchemist
 
         public static bool CheckCollisionDead(Collider2D other, Skill skill, Character sender)
         {
-            if (skill != null && skill.GetTriggerActive())
-            {
-                SkillTargetModule targetModule = skill.GetComponent<SkillTargetModule>();
+            if (skill == null) return false;
 
-                if (targetModule != null)
-                {
-                    Character hittedCharacter = null;
-                    if (!other.isTrigger) hittedCharacter = other.GetComponent<Character>();
+            SkillTargetModule targetModule = skill.GetComponent<SkillTargetModule>();
 
-                    if (hittedCharacter != null &&
-                        targetModule.affections.IsDeadAffected(sender, other)) return true;
+            if (targetModule == null) return false;
 
-                    Skill hittedSkill = AbilityUtil.getSkillByCollision(other.gameObject);
-                    return targetModule.affections.isSkillAffected(skill, hittedSkill);
-                }
-            }
+            Character hittedCharacter = null;
+            if (!other.isTrigger) hittedCharacter = other.GetComponent<Character>();
 
-            return false;
+            if (hittedCharacter != null &&
+                targetModule.affections.IsDeadAffected(sender, other)) return true;
+
+            Skill hittedSkill = AbilityUtil.getSkillByCollision(other.gameObject);
+            return targetModule.affections.isSkillAffected(skill, hittedSkill);
         }
 
         public static bool checkIfGameObjectIsViewed(Character character, GameObject target, int range)

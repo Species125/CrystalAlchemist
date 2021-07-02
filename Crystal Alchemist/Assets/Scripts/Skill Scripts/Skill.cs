@@ -64,7 +64,6 @@ namespace CrystalAlchemist
         private float durationTimeLeft;
         private float delayTimeLeft;
         private float timeDistortion = 1;
-        private bool triggerIsActive = true;
         private bool lockDirection;
         private float lockDuration;        
         private bool hasDelay;
@@ -278,18 +277,6 @@ namespace CrystalAlchemist
             AnimatorUtil.SetAnimatorParameter(this.animator, trigger);
         }
 
-        public void SetTriggerActive(int value)
-        {
-            Debug.Log(this.gameObject.name);
-            if (value == 0) this.triggerIsActive = false;
-            else this.triggerIsActive = true;
-        }
-
-        public bool GetTriggerActive()
-        {
-            return this.triggerIsActive;
-        }
-
         public void resetRotation()
         {
             this.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -299,7 +286,6 @@ namespace CrystalAlchemist
         {
             if (this.animator == null || !AnimatorUtil.HasParameter(this.animator, "Explode"))
             {
-                SetTriggerActive(1);
                 DestroyIt();
             }
             else AnimatorUtil.SetAnimatorParameter(this.animator, "Explode");
@@ -328,7 +314,7 @@ namespace CrystalAlchemist
                 this.timeDistortion = 1 + (distortion / 100);
 
                 if (this.animator != null) this.animator.speed = this.timeDistortion;
-                if (this.triggerIsActive && this.GetComponent<SkillProjectile>() != null) this.GetComponent<SkillProjectile>().setVelocity();
+                if (this.GetComponent<SkillProjectile>() != null) this.GetComponent<SkillProjectile>().setVelocity();
             }
         }
 

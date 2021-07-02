@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e0ab837478e584e9ccad0adeafdd3b, type: 3}
+  m_Name: Magma Loot
+  m_EditorClassIdentifier: 
+  entries:
+  - reward:
+      firstLoot:
+        item: {fileID: 11400000, guid: bd182525862f21f4483ac3aeef51ccae, type: 2}
+        amount: 1
+      hasAlternative: 0
+      alternativeLoot:
+        item: {fileID: 0}
+        amount: 1
+    hasDropRate: 1
+    dropRate: 25
+  type: 0
+  additionalLoot: 1

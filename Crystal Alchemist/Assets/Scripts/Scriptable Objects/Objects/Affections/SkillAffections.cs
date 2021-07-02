@@ -18,11 +18,6 @@ namespace CrystalAlchemist
         [SerializeField]
         private bool skills = false;
 
-        [BoxGroup("Wirkungsbereich")]
-        [Tooltip("Unverwundbarkeit ignorieren (z.B. für Heals)?")]
-        [SerializeField]
-        private bool ignoreInvincibility = false;
-
         protected override bool IsAffected(Character sender, Character target)
         {
             return checkMatrix(sender, target, other, same, neutral, self);
@@ -32,11 +27,6 @@ namespace CrystalAlchemist
         {
             if (hittedSkill != null && this.skills && hittedSkill != origin) return true;
             return false;
-        }
-
-        public bool CanIgnoreInvinvibility()
-        {
-            return this.ignoreInvincibility;
         }
     }
 }

@@ -41,7 +41,6 @@ namespace CrystalAlchemist
         private bool isVisible;
         private float selfDestructionElapsed;
         private float regenTimeElapsed;
-        private float manaTime;
         private DeathAnimation activeDeathAnimation;
         private Vector3 spawnPosition;
 
@@ -179,7 +178,8 @@ namespace CrystalAlchemist
             if (this.values.life <= 0
                 && !this.values.cannotDie //Item
                 && !this.values.isInvincible //Event
-                && !this.values.cantBeHit) //after Hit
+                //&& !this.values.cantBeHit
+                ) //after Hit
                 KillIt();
         }
 
@@ -361,6 +361,8 @@ namespace CrystalAlchemist
 
         public virtual void UpdateLife(float value, bool showingDamageNumber)
         {
+            if (value < 0 && this.values.isInvincible) return;
+
             this.values.life = GameUtil.setResource(this.values.life, this.values.maxLife, value);
 
             NumberColor color = NumberColor.red;
@@ -375,6 +377,8 @@ namespace CrystalAlchemist
 
         public virtual void UpdateMana(float value, bool showingDamageNumber)
         {
+            if (value < 0 && this.values.isInvincible) return;
+
             this.values.mana = GameUtil.setResource(this.values.mana, this.values.maxMana, value);
             if (showingDamageNumber && value > 0) ShowDamageNumber(value, NumberColor.blue);
             UpdateLifeManaForOthers();
@@ -382,12 +386,14 @@ namespace CrystalAlchemist
 
         public virtual void UpdateItem(InventoryItem item, int value)
         {
-
+            
         }
 
 
         public virtual void UpdateStatusEffect(StatusEffect effect, int value)
         {
+            if (effect.statusEffectType == StatusEffectType.debuff && this.values.isInvincible) return;
+
             if (value <= 0)
             {
                 value = 1;
@@ -445,10 +451,7 @@ namespace CrystalAlchemist
             SkillTargetModule targetModule = skill.GetComponent<SkillTargetModule>();
             Character sender = skill.sender;
 
-            if (targetModule == null || this.values.currentState == CharacterState.dead) return;
-
-            bool ignore = targetModule.affections.CanIgnoreInvinvibility();
-            if (!ignore && (this.values.cantBeHit || this.values.isInvincible)) return;
+            if (targetModule == null || this.values.currentState == CharacterState.dead) return;            
 
             Vector2 position = skill.transform.position;
             int ID = NetworkUtil.GetID(sender);
@@ -593,11 +596,11 @@ namespace CrystalAlchemist
 
         private IEnumerator hitCo(float duration, bool showColor)
         {
-            this.values.cantBeHit = true;
+            //this.values.cantBeHit = true;
             if (this.stats.showHitcolor && showColor) this.ChangeColor(this.stats.hitColor);
             yield return new WaitForSeconds(duration);
             if (showColor) this.RemoveColor(this.stats.hitColor);
-            this.values.cantBeHit = false;
+            //this.values.cantBeHit = false;
         }
 
         private IEnumerator knockCo(float knockTime)
@@ -718,14 +721,6 @@ namespace CrystalAlchemist
             AnimatorUtil.SetAnimatorParameter(this.animator, parameter, value);
         }
 
-        public void SetAttachedSkillTriggers(int value)
-        {
-            foreach (Skill skill in this.values.activeSkills)
-            {
-                if (skill.IsAttachedToSender()) skill.SetTriggerActive(value);
-            }
-        }
-
         #endregion
 
         #region Respawn
@@ -844,7 +839,7 @@ namespace CrystalAlchemist
                 stream.SendNext(this.values.direction);
                 stream.SendNext(this.myRigidbody.velocity);
                 stream.SendNext(this.isVisible);
-                stream.SendNext(this.values.cantBeHit);
+                //stream.SendNext(this.values.cantBeHit);
                 stream.SendNext(this.values.isInvincible);
                 stream.SendNext(this.values.cannotDie);
             }
@@ -853,7 +848,7 @@ namespace CrystalAlchemist
                 this.values.direction = (Vector2)stream.ReceiveNext();
                 this.myRigidbody.velocity = (Vector2)stream.ReceiveNext();
                 this.isVisible = (bool)stream.ReceiveNext();
-                this.values.cantBeHit = (bool)stream.ReceiveNext();
+                //this.values.cantBeHit = (bool)stream.ReceiveNext();
                 this.values.isInvincible = (bool)stream.ReceiveNext();
                 this.values.cannotDie = (bool)stream.ReceiveNext();
             }

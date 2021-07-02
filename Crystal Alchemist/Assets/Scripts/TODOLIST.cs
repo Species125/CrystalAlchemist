@@ -7,13 +7,38 @@ namespace CrystalAlchemist
         //TODO (0.2.7)
         /*        
         TODO:
-        - Boss Mechanic Rework (RPCs)
         - Player Color-Parts by Emissions
-        - Trigger Active on Skills
-        - Empty Map
 
+        CHANGES:
+        1. Removed TriggerActive
+        2. Removed Cant Hit
+        3. Changed Invincible
+
+        IDEAS:
+        1. StatusEffect Attack Modifier
+
+        REPLACEMENTS:
         1. Sound Effekte austauschen
-        4. New Title screen
+        2. New Title screen
+
+        REWORKS:
+        1. REMOVED - Trigger Active?
+        2. CHANGED - Animator Override Controllers
+        3. NOPE - Unity Timeline
+
+        CONTENT: 
+        1. Elemental Items
+
+        FEEDBACK:
+        1. DialogBox Rework
+        2. Bigger House
+        3. Better UI
+        4. Bugfixes
+        5. Default Map        
+
+        NETWORKING:        
+        1. Boss Mechanics Rework 
+        2. AI and Aggro Revision (Master controlled?)
         
         PATCH!
 
@@ -21,15 +46,14 @@ namespace CrystalAlchemist
         8. New Races
         9. New Gear
 
-        - New Skill: Frostnova
-        - New Skill: Ehjafjalla
-        - New Skill: Tornado
-        - New Skill: Geode
-        - New Skill: Protect
-        - New Skill: Revive
-        - New Skill: Heal-Area  
-        - New Skill: Mana-Song
-        - New Skill: Aggro
+        - New Skill: Frostnova (AoE)
+        - New Skill: Meteor (AoE)
+        - New Skill: Tornado (Pull)
+        - New Skill: Geode (AoE, Aggro)
+        - New Skill: Protect (Shield)
+        - New Skill: Heal-Area (Healing)
+        - New Skill: Mana-Song (Transfer Mana)
+        - New Skill: Provoke (Aggro)
         - New Race: Catgirl
         - New Customization: Scales for Lamia and Drahn
 

@@ -160,9 +160,11 @@ namespace CrystalAlchemist
 
         public static InventoryItem GetInventoryItem(string name)
         {
+            if (name == null) return null;
+
             foreach (InventoryItem group in inventoryItems)
             {
-                if (group.name == name) return group;
+                if (group != null && group.name == name) return group;
             }
 
             Debug.LogError(name + " not found in Master!");
