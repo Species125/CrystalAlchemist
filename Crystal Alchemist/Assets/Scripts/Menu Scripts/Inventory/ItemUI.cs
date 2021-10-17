@@ -33,6 +33,14 @@ namespace CrystalAlchemist
             return this.itemDrop;
         }
 
+        public void EmptyItem()
+        {
+            this.itemDrop = null;
+            this.inventoryItem = null;
+            this.image.gameObject.SetActive(false);
+            this.amount.text = "";
+        }
+
         public virtual void SetItem(ItemDrop item)
         {
             this.itemDrop = item;

@@ -9,7 +9,8 @@ namespace CrystalAlchemist
 
         private void Start()
         {
-            if (GameEvents.current.HasItemAlready(item)) SetItem(item);            
+            if (GameEvents.current.HasItemAlready(item)) SetItem(item);
+            else EmptyItem();
         }
 
         public void OnClick()

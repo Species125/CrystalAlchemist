@@ -16417,7 +16417,7 @@ CrystalAlchemist.SaveGameManager.SaveGame (System.Boolean value) (at Assets/Scri
 CrystalAlchemist.GameEvents.DoSaveGame (System.Boolean buffered) (at Assets/Scripts/Game Scripts/Event Systems/GameEvents.cs:75)
 CrystalAlchemist.SaveGameManager.Start () (at Assets/Scripts/Game Scripts/SaveGameManager.cs:28)
 
-Exception 02.07.2021 15:23:27: UnassignedReferenceException: The variable map of SecretArea has not been assigned.
+Exception 26.05.2021 02:12:55: UnassignedReferenceException: The variable map of SecretArea has not been assigned.
 You probably need to assign the map variable of the SecretArea script in the inspector.
 UnityEngine.Tilemaps.Tilemap.get_color () (at <bce5e9cf72a64554937d40e2ce78291e>:0)
 CrystalAlchemist.SecretArea.SetColor (System.Single f) (at Assets/Scripts/Map Part Scripts/Trigger Areas/SecretArea.cs:56)
@@ -16426,7 +16426,7 @@ UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumer
 UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
 CrystalAlchemist.SecretArea:OnTriggerEnter2D(Collider2D) (at Assets/Scripts/Map Part Scripts/Trigger Areas/SecretArea.cs:26)
 
-Exception 02.07.2021 15:23:31: UnassignedReferenceException: The variable map of SecretArea has not been assigned.
+Exception 26.05.2021 02:13:00: UnassignedReferenceException: The variable map of SecretArea has not been assigned.
 You probably need to assign the map variable of the SecretArea script in the inspector.
 UnityEngine.Tilemaps.Tilemap.get_color () (at <bce5e9cf72a64554937d40e2ce78291e>:0)
 CrystalAlchemist.SecretArea.SetColor (System.Single f) (at Assets/Scripts/Map Part Scripts/Trigger Areas/SecretArea.cs:56)
@@ -16434,4 +16434,32 @@ CrystalAlchemist.SecretArea+<FadeIn>d__4.MoveNext () (at Assets/Scripts/Map Part
 UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <ef667cdc82bf4a4e911d1ddea9ff581d>:0)
 UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
 CrystalAlchemist.SecretArea:OnTriggerExit2D(Collider2D) (at Assets/Scripts/Map Part Scripts/Trigger Areas/SecretArea.cs:42)
+
+Exception 26.05.2021 02:14:21: UnassignedReferenceException: The variable map of SecretArea has not been assigned.
+You probably need to assign the map variable of the SecretArea script in the inspector.
+UnityEngine.Tilemaps.Tilemap.get_color () (at <bce5e9cf72a64554937d40e2ce78291e>:0)
+CrystalAlchemist.SecretArea.SetColor (System.Single f) (at Assets/Scripts/Map Part Scripts/Trigger Areas/SecretArea.cs:56)
+CrystalAlchemist.SecretArea+<FadeOut>d__6.MoveNext () (at Assets/Scripts/Map Part Scripts/Trigger Areas/SecretArea.cs:49)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <ef667cdc82bf4a4e911d1ddea9ff581d>:0)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+CrystalAlchemist.SecretArea:OnTriggerEnter2D(Collider2D) (at Assets/Scripts/Map Part Scripts/Trigger Areas/SecretArea.cs:26)
+
+Exception 26.05.2021 02:14:23: UnassignedReferenceException: The variable map of SecretArea has not been assigned.
+You probably need to assign the map variable of the SecretArea script in the inspector.
+UnityEngine.Tilemaps.Tilemap.get_color () (at <bce5e9cf72a64554937d40e2ce78291e>:0)
+CrystalAlchemist.SecretArea.SetColor (System.Single f) (at Assets/Scripts/Map Part Scripts/Trigger Areas/SecretArea.cs:56)
+CrystalAlchemist.SecretArea+<FadeIn>d__4.MoveNext () (at Assets/Scripts/Map Part Scripts/Trigger Areas/SecretArea.cs:33)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <ef667cdc82bf4a4e911d1ddea9ff581d>:0)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+CrystalAlchemist.SecretArea:OnTriggerExit2D(Collider2D) (at Assets/Scripts/Map Part Scripts/Trigger Areas/SecretArea.cs:42)
+
+Exception 26.05.2021 02:20:43: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.PlayerSkillset.GetSkillSet () (at Assets/Scripts/Scriptable Objects/Objects/Player/PlayerSkillset.cs:85)
+CrystalAlchemist.PlayerData..ctor (CrystalAlchemist.PlayerSaveGame saveGame) (at Assets/Scripts/Save and Loading Scripts/PlayerData.cs:60)
+CrystalAlchemist.SaveSystem.Save (CrystalAlchemist.PlayerSaveGame saveGame, System.String slot) (at Assets/Scripts/Save and Loading Scripts/SaveSystem.cs:16)
+CrystalAlchemist.PlayerSaveGame.SaveGame () (at Assets/Scripts/Scriptable Objects/Objects/Player/PlayerSaveGame.cs:97)
+CrystalAlchemist.SaveGameManager.SaveDirectly () (at Assets/Scripts/Game Scripts/SaveGameManager.cs:39)
+CrystalAlchemist.SaveGameManager.SaveGame (System.Boolean value) (at Assets/Scripts/Game Scripts/SaveGameManager.cs:53)
+CrystalAlchemist.GameEvents.DoSaveGame (System.Boolean buffered) (at Assets/Scripts/Game Scripts/Event Systems/GameEvents.cs:75)
+CrystalAlchemist.SaveGameManager.Start () (at Assets/Scripts/Game Scripts/SaveGameManager.cs:28)
 
