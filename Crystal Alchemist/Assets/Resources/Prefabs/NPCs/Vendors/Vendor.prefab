@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 386793178775679601}
   - component: {fileID: 5728446290425974274}
   - component: {fileID: 3757200359928633017}
+  - component: {fileID: 2520098291654359890}
   m_Layer: 11
   m_Name: Vendor
   m_TagString: Untagged
@@ -219,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 
+  stringID: 
   myRigidbody: {fileID: 1906571960777644069}
   animator: {fileID: 208003799013606394}
   characterCollider: {fileID: 386793178775679601}
@@ -300,6 +302,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   marker: {fileID: 683472866742487509, guid: 024fa040ade579943876b28fce0f092c, type: 3}
+--- !u!114 &2520098291654359890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906571960777644065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2411745928882375070
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,16 +470,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 
+  stringID: 
   costs:
     resourceType: 0
     item: {fileID: 0}
-    keyItem: {fileID: 0}
     statusEffect: {fileID: 0}
     amount: 1
   masterOnly: 0
   customActionButton: 1
   ID: Reden
-  showEffectOnEnable: 0
   isPlayerInRange: 0
   isPlayerLookingAtIt: 0
   player: {fileID: 0}

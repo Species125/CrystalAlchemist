@@ -491,9 +491,14 @@ namespace CrystalAlchemist
                 {
                     if (this.GetComponent<AI>() != null) this.GetComponent<AI>()._IncreaseAggroOnHit(sender, elem.amount);
 
-                    //Charakter-Treffer (Schaden) animieren
-                    AudioUtil.playSoundEffect(this.gameObject, this.stats.hitSoundEffect);
-                    SetCannotHit();
+                    if (!this.values.isInvincible)
+                    {
+                        //Charakter-Treffer (Schaden) animieren
+                        //TODO: Aggro Modifier
+
+                        AudioUtil.playSoundEffect(this.gameObject, this.stats.hitSoundEffect);
+                        SetCannotHit();
+                    }
                 }
             }
 
@@ -782,7 +787,11 @@ namespace CrystalAlchemist
 
         public void PlayRespawnAnimation()
         {
+            SetCharacterSprites(true);
             AnimatorUtil.SetAnimatorParameter(this.animator, "Respawn");
+            
+            float delay = AnimatorUtil.GetAnimationLength(this.animator, "Respawn");
+            Invoke("SpawnIn", delay);            
         }
 
         #endregion

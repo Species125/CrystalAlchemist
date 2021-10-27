@@ -294,6 +294,7 @@ namespace CrystalAlchemist
             this._amount = 1;
 
             this.activeAbility = Object.Instantiate(this.ability);
+            this.activeAbility.name = this.activeAbility.name.Replace("(Clone)", " "+this.activeAbility.GetInstanceID());
 
             foreach(AbilityOverride _override in this.overrides)
             {

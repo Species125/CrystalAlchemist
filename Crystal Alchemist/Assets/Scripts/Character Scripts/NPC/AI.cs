@@ -23,7 +23,7 @@ namespace CrystalAlchemist
         [BoxGroup("Pflichtfelder")]
         [ReadOnly]
         [SerializeField]
-        private List<string> aggro = new List<string>();
+        private List<string> aggroStringList = new List<string>();
         
 
         [BoxGroup("Events")]
@@ -67,70 +67,10 @@ namespace CrystalAlchemist
             this.aggroList.Clear();            
         }
 
-        #region Animation, StateMachine
-
-        public int GetMainTargetID()
-        {
-            return this.mainTargetID;
-        }
-
-        public void SetMainTargetID(int ID)
-        {
-            if (this.mainTargetID != ID)
-            {
-                this.mainTargetID = ID;
-
-                if (!this.aggroList.ContainsKey(ID)) this.AddToAggroList(ID, 100, 100);
-                else this.UpdateAggro(ID, 1);
-
-                this.onTarget?.Invoke();
-                foreach (AI npc in this.alertPartners) npc.SetMainTargetID(ID);
-            }
-        }
-
-        public void ClearMainTarget()
-        {
-            if (this.mainTargetID != 0) this.mainTargetID = 0;
-        }
-        
-        public bool HasMainTarget()
-        {
-            return this.mainTargetID > 0;
-        }       
-        
-        public void InitializeAddSpawn(int target, bool hasMaxDuration, float maxDuration)
-        {
-            this.InitializeAddSpawn(hasMaxDuration, maxDuration);
-            this.mainTargetID = target;
-        }
-
-        public Character GetTarget()
-        {
-            return NetworkUtil.GetCharacter(this.mainTargetID);
-        }
-
-        public Character GetTarget(int index)
-        {
-            return NetworkUtil.GetCharacter(this.aggroList.ElementAt(index).Key);
-        }
-
-        public List<Character> GetTargets()
-        {
-            List<Character> targets = new List<Character>();
-
-            foreach(KeyValuePair<int,float[]> elem in this.aggroList)
-            {
-                Character character = NetworkUtil.GetCharacter(elem.Key);
-                if (character != null) targets.Add(character);
-            }
-
-            return targets;
-        }
+        #region Animation, StateMachine        
 
         public override void Start()
         {          
-            //if (!NetworkUtil.IsMaster()) return;
-
             GameEvents.current.OnRangeTriggered += SetRangeTriggered;
 
             this.GetComponent<AICombat>().Initialize();
@@ -142,7 +82,6 @@ namespace CrystalAlchemist
 
         public override void OnDestroy()
         {
-            //if (!NetworkUtil.IsMaster()) return;
             base.OnDestroy();
             GameEvents.current.OnRangeTriggered -= SetRangeTriggered;
         }
@@ -154,18 +93,12 @@ namespace CrystalAlchemist
 
         public override void Update()
         {
-            base.Update();
+            base.Update();            
 
-            GenerateAggro();
+            WriteInspectorAggro();
 
-            this.aggro.Clear();
-
-            foreach(KeyValuePair<int, float[]> keypair in this.aggroList)
-            {
-                this.aggro.Add(keypair.Key + " -> Amount: " + keypair.Value[0] + " Factor: " + keypair.Value[1]);
-            }
-
-            //if (!NetworkUtil.IsMaster()) return;
+            if (!NetworkUtil.IsMaster()) return;
+            CalculateAggroTable();
 
             if (this.HasMainTarget() && this.isSleeping)
             {
@@ -183,62 +116,11 @@ namespace CrystalAlchemist
             for (int i = 0; i < components.Length; i++) components[i].Updating();
         }
 
-        public override void Regenerate()
-        {
-            if (!NetworkUtil.IsMaster()) return;
-            RegenerateLifeMana();
-        }
-
-        public void changeState(CharacterState newState)
-        {
-            //if (!NetworkUtil.IsMaster()) return;
-
-            if (this.values.currentState != newState) this.values.currentState = newState;
-        }
-
-        public void MoveCharacters(Vector2 position, float duration)
-        {
-            if (!NetworkUtil.IsMaster()) return;
-
-            this.myRigidbody.DOMove(position, duration);
-        }
-
         #endregion
-
-
-        public void SetMaxAggro()
-        {
-            //if (!NetworkUtil.IsMaster()) return;
-
-            foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
-            {
-                Player player = (Player)p.TagObject;
-                SetMainTargetID(player.photonView.ViewID);
-            }
-        }
-
-        public void ClearAggro() => this.aggroList.Clear();
-
-        public override void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        {
-            base.OnPhotonSerializeView(stream, info);
-
-            if (stream.IsWriting)
-            {
-                stream.SendNext(this.aggroList);
-                stream.SendNext(this.mainTargetID);
-            }
-            else
-            {
-                this.aggroList = (Dictionary<int,float[]>)stream.ReceiveNext();
-                this.mainTargetID = (int)stream.ReceiveNext();
-            }
-        }
-
 
         #region Aggro
 
-        private void GenerateAggro()
+        private void CalculateAggroTable()
         {
             List<int> charactersToRemove = new List<int>();
 
@@ -311,19 +193,19 @@ namespace CrystalAlchemist
         public void _IncreaseAggroOnHit(Character newTarget, float damage, int factor, bool firstHit = false)
         {
             if (!IsValidTarget(newTarget)) return;
-            this.photonView.RPC("RpcIncreaseAggroOnHit", RpcTarget.All, NetworkUtil.GetID(newTarget), damage, factor, firstHit);
+            this.photonView.RPC("RpcIncreaseAggroOnHit", RpcTarget.MasterClient, NetworkUtil.GetID(newTarget), damage, factor, firstHit);
         }
 
         public void _IncreaseAggro(Character newTarget, int factor)
         {
             if (!IsValidTarget(newTarget)) return;
-            this.photonView.RPC("RpcIncreaseAggro", RpcTarget.All, NetworkUtil.GetID(newTarget), factor);
+            this.photonView.RPC("RpcIncreaseAggro", RpcTarget.MasterClient, NetworkUtil.GetID(newTarget), factor);
         }
 
         public void _DecreaseAggro(Character newTarget, int factor)
         {
             if (!IsValidTarget(newTarget)) return;
-            this.photonView.RPC("RpcDecreaseAggro", RpcTarget.All, NetworkUtil.GetID(newTarget), factor);
+            this.photonView.RPC("RpcDecreaseAggro", RpcTarget.MasterClient, NetworkUtil.GetID(newTarget), factor);
         }
 
         [PunRPC]
@@ -441,5 +323,117 @@ namespace CrystalAlchemist
         }
 
         #endregion
+
+
+        #region Extern
+
+        public int GetMainTargetID()
+        {
+            return this.mainTargetID;
+        }
+
+        public void SetMainTargetID(int ID)
+        {
+            if (this.mainTargetID != ID)
+            {
+                this.mainTargetID = ID;
+
+                if (!this.aggroList.ContainsKey(ID)) this.AddToAggroList(ID, 100, 100);
+                else this.UpdateAggro(ID, 1);
+
+                this.onTarget?.Invoke();
+                foreach (AI npc in this.alertPartners) npc.SetMainTargetID(ID);
+            }
+        }
+
+        public void ClearMainTarget()
+        {
+            if (this.mainTargetID != 0) this.mainTargetID = 0;
+        }
+
+        public bool HasMainTarget()
+        {
+            return this.mainTargetID > 0;
+        }
+
+        public void InitializeAddSpawn(int target, bool hasMaxDuration, float maxDuration)
+        {
+            this.InitializeAddSpawn(hasMaxDuration, maxDuration);
+            this.mainTargetID = target;
+        }
+
+        public Character GetTarget()
+        {
+            return NetworkUtil.GetCharacter(this.mainTargetID);
+        }
+
+        public Character GetTarget(int index)
+        {
+            return NetworkUtil.GetCharacter(this.aggroList.ElementAt(index).Key);
+        }
+
+        public List<Character> GetTargets()
+        {
+            List<Character> targets = new List<Character>();
+
+            foreach (KeyValuePair<int, float[]> elem in this.aggroList)
+            {
+                Character character = NetworkUtil.GetCharacter(elem.Key);
+                if (character != null) targets.Add(character);
+            }
+
+            return targets;
+        }
+
+        public override void Regenerate()
+        {
+            if (!NetworkUtil.IsMaster()) return;
+            RegenerateLifeMana();
+        }
+
+        public void MoveCharacters(Vector2 position, float duration)
+        {
+            if (!NetworkUtil.IsMaster()) return;
+            this.myRigidbody.DOMove(position, duration);
+        }
+
+        public void AddPlayersAsTargets()
+        {
+            foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
+            {
+                Player player = (Player)p.TagObject;
+                SetMainTargetID(player.photonView.ViewID);
+            }
+        }
+
+        public void ClearAggro() => this.aggroList.Clear();
+
+        #endregion
+
+        private void WriteInspectorAggro()
+        {
+            this.aggroStringList.Clear();
+
+            foreach (KeyValuePair<int, float[]> keypair in this.aggroList)
+            {
+                this.aggroStringList.Add(keypair.Key + " -> Amount: " + keypair.Value[0] + " Factor: " + keypair.Value[1]);
+            }
+        }
+
+        public override void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            base.OnPhotonSerializeView(stream, info);
+
+            if (stream.IsWriting)
+            {
+                stream.SendNext(this.aggroList);
+                stream.SendNext(this.mainTargetID);
+            }
+            else
+            {
+                this.aggroList = (Dictionary<int, float[]>)stream.ReceiveNext();
+                this.mainTargetID = (int)stream.ReceiveNext();
+            }
+        }
     }
 }

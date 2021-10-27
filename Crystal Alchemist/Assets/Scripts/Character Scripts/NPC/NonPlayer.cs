@@ -37,9 +37,9 @@ namespace CrystalAlchemist
 
             if (GameManager.current.loadingCompleted)
             {
-                SetCharacterSprites(true);
+                //SetCharacterSprites(true);
                 PlayRespawnAnimation();
-                SpawnIn();
+                //SpawnIn();
             }
 
             base.Start();

@@ -9,7 +9,7 @@ namespace CrystalAlchemist
         [BoxGroup("NPC")]
         [SerializeField]
         [Required]
-        private Character npc;
+        private BasicCharacter npc;
 
         [BoxGroup("NPC")]
         [SerializeField]

@@ -60,6 +60,15 @@ namespace CrystalAlchemist
         private float returnDelay = 3f;
 
 
+        [BoxGroup("MaxDistance")]
+        [SerializeField]
+        private bool HasMaxDistance = false;
+
+        [ShowIf("HasMaxDistance")]
+        [BoxGroup("MaxDistance")]
+        [SerializeField]
+        private float maxDistance = 1f;
+
 
         [BoxGroup("Patrol")]
         [SerializeField]
@@ -177,6 +186,8 @@ namespace CrystalAlchemist
 
             if (!this.wait)
             {
+                SetReturnAfterMaxDistance();
+
                 if (this.hasMaxTime && this.areaCountdown > 0) this.areaCountdown -= Time.fixedDeltaTime;
 
                 UpdateTargetPosition();
@@ -190,6 +201,20 @@ namespace CrystalAlchemist
                 && this.targetPosition != MasterManager.globalValues.nullVector)
                 Debug.DrawLine(this.npc.GetGroundPosition(), this.targetPosition, Color.blue);
             */
+        }
+
+        private void SetReturnAfterMaxDistance()
+        {
+            if (!this.HasMaxDistance) return;
+
+            Vector2 position = this.npc.GetSpawnPosition();
+            if (this.isPatrol) position = this.patrolPath[currentPoint].position;
+
+            if (Vector2.Distance(this.npc.GetGroundPosition(), position) > this.maxDistance)
+            {
+                this.npc.ClearMainTarget();
+                this.npc.ClearAggro();
+            }
         }
 
         private void SetReturn()

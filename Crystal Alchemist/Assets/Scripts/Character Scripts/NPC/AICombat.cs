@@ -15,6 +15,9 @@ namespace CrystalAlchemist
         [InfoBox("Muss der Photonview hinzugefügt werden")]
         private AIPhase startPhase;
 
+        [SerializeField]
+        private bool startImmediately = true;
+
         [BoxGroup("Debug")]
         [ReadOnly]
         [SerializeField]
@@ -86,13 +89,13 @@ namespace CrystalAlchemist
             base.Initialize();
 
             this.npc = this.character.GetComponent<AI>();
-            StartPhase();
+            if (this.startImmediately) StartPhase();
             isInit = false;
         }
 
         private void OnEnable()
         {
-            if (!this.isInit && this.startPhase != null) StartPhase();
+            if (!this.isInit && this.startPhase != null && this.startImmediately) StartPhase();
         }
 
         public void StartPhase(AIPhase phase)
@@ -119,7 +122,7 @@ namespace CrystalAlchemist
             if (phase == null) return;
 
             DestroyActivePhase();
-            this.activePhase = phase;
+            this.activePhase = Instantiate(phase);
             this.activePhase.Initialize(); //Initialize Events
         }
 
@@ -149,8 +152,11 @@ namespace CrystalAlchemist
 
         private void UpdatingActions()
         {
-            if (this.currentAction != null) this.currentAction.Updating(this.npc);
-            if (this.currentDialog != null) this.currentDialog.Updating(this.npc);
+            if (this.currentAction != null) 
+                this.currentAction.Updating(this.npc);
+
+            if (this.currentDialog != null) 
+                this.currentDialog.Updating(this.npc);
         }
 
         private void UpdateingEvent()
@@ -294,12 +300,6 @@ namespace CrystalAlchemist
         #endregion
 
 
-
-
-
-
-
-
         #region Targeting
 
         public override List<Character> GetTargetsFromTargeting()
@@ -346,19 +346,10 @@ namespace CrystalAlchemist
             if (this.activePhase != null) ClearPhase();
         }
 
-        private void CancelAction()
-        {
-            if (this.currentAction != null) this.currentAction.Disable(this.npc);
-            if (this.currentDialog != null) this.currentDialog.Disable(this.npc);
-
-            this.currentAction = null;
-            this.currentDialog = null;
-        }
-
         public void ClearPhase()
         {
             CancelAction();
-            
+
             this.loops = 0;
             this.index = 0;
 
@@ -366,7 +357,16 @@ namespace CrystalAlchemist
             this.eventIndex = 0;
             this.eventActions.Clear();
 
-            this.activePhase = null;
+            Destroy(this.activePhase);
+        }
+
+        private void CancelAction()
+        {
+            if (this.currentAction != null) this.currentAction.Disable(this.npc);
+            if (this.currentDialog != null) this.currentDialog.Disable(this.npc);
+
+            this.currentAction = null;
+            this.currentDialog = null;
         }
 
         #endregion

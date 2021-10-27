@@ -10,30 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bed50160a1f51fb4b89bf02e00ece70d, type: 3}
-  m_Name: PlayerStats
+  m_Name: _Test Blob
   m_EditorClassIdentifier: 
-  characterType: 0
-  characterName: Gungnir
+  characterType: 1
+  characterName: Blob
   isInvincible: 0
-  cannotDie: 0
-  startLife: 1
+  cannotDie: 1
+  startLife: 10
   startMana: 1
-  startSpeed: 125
+  startSpeed: 40
   startSpellSpeed: 100
-  isMassive: 0
+  isMassive: 1
   isImmuneToAllDebuffs: 0
-  immunityToStatusEffects: []
+  immunityToStatusEffects:
+  - {fileID: 11400000, guid: 56c3a03a9c810be4a8960260c51efbb5, type: 2}
   hasRespawn: 1
-  respawnTime: 0
+  respawnTime: 60
   respawnChance: 100
-  deathAnimation: {fileID: 0}
-  maxLife: 1
+  deathAnimation: {fileID: 8912312725720200054, guid: 97eb044421b412d479b7008552d1ea56,
+    type: 3}
+  maxLife: 10
   maxMana: 1
   canRegenerate: 1
-  lifeRegeneration: 0
+  lifeRegeneration: 1
   manaRegeneration: 0
-  regenerationInterval: 3
-  canChangeBuffs: 1
+  regenerationInterval: 1
+  canChangeBuffs: 0
   buffPlus: 0
   debuffMinus: 0
   showDamageNumbers: 1
@@ -41,8 +43,8 @@ MonoBehaviour:
   hasSelfDestruction: 0
   selfDestructionTimer: 0
   antiKnockback: 0
-  cannotBeHitTime: 0.5
+  cannotBeHitTime: 0.3
   showHitcolor: 1
-  hitColor: {r: 2, g: 0.27358496, b: 0.27358496, a: 1}
-  lootTable: {fileID: 0}
-  hitSoundEffect: {fileID: 8300000, guid: 27ac131e0a552ec4e80c1947b53d31a9, type: 3}
+  hitColor: {r: 0.6313726, g: 0, b: 0, a: 1}
+  lootTable: {fileID: 11400000, guid: 79f63201952e16a4b9a583e907e3f5af, type: 2}
+  hitSoundEffect: {fileID: 8300000, guid: 8626eccd88e6ac64dbad21210560d315, type: 3}

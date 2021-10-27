@@ -1,6 +1,4 @@
-﻿
-
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace CrystalAlchemist

@@ -337,6 +337,7 @@ namespace CrystalAlchemist
             character.transform.SetParent(parent.transform);
 
             character.InitializeAddSpawn(overrideDuration, duration);
+            character.gameObject.name = character.gameObject.name.Replace("(Clone)", " "+character.gameObject.GetInstanceID());
         }
 
         public void RaiseBossAISpawnEvent(AI character, Character target, GameObject parent, 

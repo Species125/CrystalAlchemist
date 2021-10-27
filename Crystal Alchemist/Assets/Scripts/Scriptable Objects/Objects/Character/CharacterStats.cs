@@ -62,9 +62,6 @@ namespace CrystalAlchemist
         [MinValue(1)]
         public float startSpellSpeed = 100;
 
-        [TabGroup("Start-Values")]
-        public bool isMassive = false;
-
         [Space(10)]
         [TabGroup("Start-Values")]
         [Tooltip("Immunität von Statuseffekten")]
@@ -164,7 +161,12 @@ namespace CrystalAlchemist
         public float selfDestructionTimer;
 
         [BoxGroup("Schaden")]
+        [Tooltip("Movement und Knockback?")]
+        public bool isMassive = false;
+
+        [BoxGroup("Schaden")]
         [Tooltip("Wie stark (-) oder schwach (+) kann das Objekt zurück gestoßen werden?")]
+        [Range(-100, 100)]
         public float antiKnockback = 0;
 
         [BoxGroup("Schaden")]

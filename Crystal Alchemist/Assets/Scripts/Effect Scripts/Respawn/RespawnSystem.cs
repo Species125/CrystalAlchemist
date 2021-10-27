@@ -286,9 +286,12 @@ namespace CrystalAlchemist
                 else
                 {
                     //spawn character immediately
-                    character.SetCharacterSprites(true);
-                    if(GameManager.current.loadingCompleted) character.PlayRespawnAnimation();
-                    character.SpawnIn();
+                    //character.SetCharacterSprites(true);
+
+                    if (GameManager.current.loadingCompleted) 
+                        character.PlayRespawnAnimation();
+
+                    //character.SpawnIn();
                 }
             }
             else

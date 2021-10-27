@@ -79,8 +79,10 @@ namespace CrystalAlchemist
 
         public List<string> GetSkillSet()
         {
+            if (this.abilities == null) return new List<string>();
+
             List<string> skillset = new List<string>();
-            foreach (Ability ability in this.abilities)
+            foreach (Ability ability in this.abilities) //exception when abilities is empty
             {
                 skillset.Add(ability.name);
             }
