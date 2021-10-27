@@ -1,19 +1,15 @@
 ﻿using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
-using Photon.Realtime;
-using ExitGames.Client.Photon;
 
 namespace CrystalAlchemist
 {
-    public class AIAggroSystem : MonoBehaviour
+    public class AIAggroTrigger : MonoBehaviour
     {
         #region attributes
 
         [SerializeField]
         [BoxGroup("Required")]
+        [InfoBox("A trigger collider is required")]
         [Required]
         private AI npc;
 

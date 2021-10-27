@@ -23,7 +23,8 @@ namespace CrystalAlchemist
         [SerializeField]
         private List<Character> targets = new List<Character>();
 
-        private List<BossMechanicProperty> properties = new List<BossMechanicProperty>();
+        [SerializeField]
+        private List<BossMechanicBase> properties = new List<BossMechanicBase>();
 
         [Button]
         private void AddCharacters()
@@ -34,21 +35,28 @@ namespace CrystalAlchemist
             this.gameObject.SetActive(false);
         }
 
+        [Button]
+        private void AddChildren()
+        {
+            this.properties.Clear();
+            foreach (BossMechanicBase property in this.GetComponentsInChildren<BossMechanicBase>(true)) this.properties.Add(property);
+        }
+
         private void Awake()
         {
-            foreach (BossMechanicProperty property in this.GetComponentsInChildren<BossMechanicProperty>(true)) this.properties.Add(property);
+            if (this.properties.Count <= 0) AddChildren();
         }
 
         private void Start()
         {
-            foreach (BossMechanicProperty property in this.properties) property.Initialize(this.sender, this.target, this.targets);
+            foreach (BossMechanicBase property in this.properties) property.Initialize(this.sender, this.target, this.targets);
             InvokeRepeating("Updating", 0.1f, 10f);
         }
 
         private void Updating()
         {
             int counter = 0;
-            foreach (BossMechanicProperty property in this.properties) if (!property.enabled || !property.gameObject.activeInHierarchy) counter++;
+            foreach (BossMechanicBase property in this.properties) if (!property.enabled || !property.gameObject.activeInHierarchy) counter++;
 
             if (counter >= this.properties.Count) Destroy(this.gameObject, 10f);
         }

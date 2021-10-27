@@ -3,16 +3,17 @@ using UnityEngine;
 
 namespace CrystalAlchemist
 {
-    public class BossMechanicParent : BossMechanicProperty
+    public class BossMechanicPositioner : BossMechanicBase
     {
         [SerializeField]
         [HideLabel]
         [BoxGroup("Main")]
+        [InfoBox("Zur Positionierung (inkl. Rotation) des GameObjects")]
         private SequenceProperty selfProperty;
 
         private void Start()
         {
-            this.selfProperty.AddSpawnPoints(this.transform);
+            //this.selfProperty.AddSpawnPoints(this.transform);
 
             GameObject spawnpoint = GetSpawnPosition(this.selfProperty)[0];
             this.transform.position = spawnpoint.transform.position;

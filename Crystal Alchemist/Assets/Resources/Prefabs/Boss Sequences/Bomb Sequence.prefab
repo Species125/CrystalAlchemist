@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 3
   childProperty:
@@ -92,7 +93,9 @@ MonoBehaviour:
     spawnObject: {fileID: 1592666365359642889, guid: b4087b705ae0fd145abd094067fc2b01,
       type: 3}
     amount: 1
-    AddTargetToSkill: 0
+    AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0
     repeat: 0
     repeatDelay: 1
@@ -263,6 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   selfProperty:
     spawnPositonType: 6
@@ -348,7 +352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &681043618798827263
 Transform:
   m_ObjectHideFlags: 0
@@ -380,6 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 0
   childProperty:
@@ -393,7 +398,9 @@ MonoBehaviour:
     spawnObject: {fileID: 1592666365359642889, guid: b4087b705ae0fd145abd094067fc2b01,
       type: 3}
     amount: 1
-    AddTargetToSkill: 0
+    AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0
     repeat: 0
     repeatDelay: 1
@@ -566,6 +573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   selfProperty:
     spawnPositonType: 6
@@ -587,7 +595,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1287da8ccc9c140ad90aff18605587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ordertype: 1
   delay: 1
+  children:
+  - {fileID: 681043618798827256}
+  - {fileID: 7957023707305862490}
+  - {fileID: 7957023706526594092}
 --- !u!1 &681043619292848274
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,6 +681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 0
   childProperty:
@@ -681,7 +695,9 @@ MonoBehaviour:
     spawnObject: {fileID: 1592666365359642889, guid: b4087b705ae0fd145abd094067fc2b01,
       type: 3}
     amount: 1
-    AddTargetToSkill: 0
+    AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0
     repeat: 0
     repeatDelay: 1
@@ -1025,6 +1041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5403799806944912059}
   - component: {fileID: 2617091657302366113}
+  - component: {fileID: 5357089108505668836}
   m_Layer: 0
   m_Name: Bomb Sequence
   m_TagString: Untagged
@@ -1061,10 +1078,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfdcb37e8bacd9f4b8cd9700a1a2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyAfter: 30
-  patterns: 
+  path: 
+  stringID: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
+  properties:
+  - {fileID: 3905316791170864639}
+  - {fileID: 4766488988662211114}
+  - {fileID: 681043618667052544}
+  - {fileID: 681043619506497884}
+  - {fileID: 681043618483796472}
+  - {fileID: 681043619236511198}
+  - {fileID: 681043618798827262}
+  - {fileID: 7957023707305862500}
+  - {fileID: 7957023706526594094}
+--- !u!114 &5357089108505668836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5403799806944912054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7412552655681740138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,7 +1161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7957023706526594095
 Transform:
   m_ObjectHideFlags: 0
@@ -1143,6 +1193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 0
   childProperty:
@@ -1156,7 +1207,9 @@ MonoBehaviour:
     spawnObject: {fileID: 1592666365359642889, guid: b4087b705ae0fd145abd094067fc2b01,
       type: 3}
     amount: 1
-    AddTargetToSkill: 0
+    AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0
     repeat: 0
     repeatDelay: 1
@@ -1176,7 +1229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7957023707305862501
 Transform:
   m_ObjectHideFlags: 0
@@ -1208,6 +1261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 0
   childProperty:
@@ -1221,7 +1275,9 @@ MonoBehaviour:
     spawnObject: {fileID: 1592666365359642889, guid: b4087b705ae0fd145abd094067fc2b01,
       type: 3}
     amount: 1
-    AddTargetToSkill: 0
+    AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0
     repeat: 0
     repeatDelay: 1
@@ -1280,6 +1336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   selfProperty:
     spawnPositonType: 6
@@ -1303,6 +1360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
   target: {fileID: 0}
+  targets: []
   counter: 0
   startDelay: 0
   childProperty:
@@ -1316,7 +1374,9 @@ MonoBehaviour:
     spawnObject: {fileID: 1592666365359642889, guid: b4087b705ae0fd145abd094067fc2b01,
       type: 3}
     amount: 1
-    AddTargetToSkill: 0
+    AddTarget: 0
+    overrideDuration: 0
+    maxDuration: 0
     spawnDelay: 0.5
     repeat: 0
     repeatDelay: 1

@@ -50,8 +50,8 @@ namespace CrystalAlchemist
 
         [BoxGroup("States")]
         public CharacterState currentState;
-        //[BoxGroup("States")]
-        //public bool cantBeHit; //delay
+        [BoxGroup("States")]
+        public bool cantBeHit; //delay
         [BoxGroup("States")]
         public bool cannotDie = false; //no death
         [BoxGroup("States")]
@@ -115,7 +115,7 @@ namespace CrystalAlchemist
             ResetSpeed(stats);
             this.timeDistortion = 1;
             
-            //this.cantBeHit = false;
+            this.cantBeHit = false;
             this.isOnIce = false;
 
             if (stats.lootTable != null) this.itemDrops = stats.lootTable.GetItemDrops();

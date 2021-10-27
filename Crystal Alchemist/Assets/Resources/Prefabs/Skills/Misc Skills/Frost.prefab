@@ -125,10 +125,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 
+  stringID: 
   spriteRenderer: {fileID: 5038684798769684982}
   myRigidbody: {fileID: 1642011449708259747}
   animator: {fileID: 7361706107030662930}
-  skillCollider: {fileID: 0}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -139,6 +139,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 1, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!114 &1221465375546470431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,15 +158,14 @@ MonoBehaviour:
   affectedResources:
   - resourceType: 1
     item: {fileID: 0}
-    keyItem: {fileID: 0}
     statusEffect: {fileID: 0}
     amount: -1
-  - resourceType: 5
+  - resourceType: 4
     item: {fileID: 0}
-    keyItem: {fileID: 0}
     statusEffect: {fileID: 11400000, guid: b35d1b0f88a20904c82f461ca4959950, type: 2}
     amount: 1
   modifiers: []
+  shareDamage: 0
   thrust: 2
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}

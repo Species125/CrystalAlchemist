@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 
+  stringID: 
   spriteRenderer: {fileID: 5257727404935883419}
   myRigidbody: {fileID: 8945697548278569866}
   animator: {fileID: 1969718782558145669}
@@ -305,12 +306,10 @@ MonoBehaviour:
   affectedResources:
   - resourceType: 1
     item: {fileID: 0}
-    keyItem: {fileID: 0}
     statusEffect: {fileID: 0}
     amount: -0.5
-  - resourceType: 5
+  - resourceType: 4
     item: {fileID: 0}
-    keyItem: {fileID: 0}
     statusEffect: {fileID: 11400000, guid: 646b7065db6bd07488bb7379d6e930a2, type: 2}
     amount: 1
   modifiers: []
@@ -334,7 +333,6 @@ MonoBehaviour:
   costs:
     resourceType: 2
     item: {fileID: 0}
-    keyItem: {fileID: 0}
     statusEffect: {fileID: 0}
     amount: 0.025
   intervallSender: 0

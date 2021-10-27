@@ -77,16 +77,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 
+  stringID: 
   costs:
     resourceType: 0
     item: {fileID: 0}
-    keyItem: {fileID: 0}
     statusEffect: {fileID: 0}
     amount: 1
   masterOnly: 0
   customActionButton: 1
   ID: Reden
-  showEffectOnEnable: 0
   isPlayerInRange: 0
   isPlayerLookingAtIt: 0
   player: {fileID: 0}
@@ -107,6 +106,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onMenuClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1797091195747348680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,9 +192,8 @@ MonoBehaviour:
   info: {fileID: 11400000, guid: 2bcb9f36b1ec28e4a88d642592a8aa7f, type: 2}
   dialogBoxType: 0
   price:
-    resourceType: 4
-    item: {fileID: 0}
-    keyItem: {fileID: 11400000, guid: 6d9d0b7b21a062f488da81e1c855e840, type: 2}
+    resourceType: 3
+    item: {fileID: 11400000, guid: eb9db0898190e7a43b42fd41d2c6b03c, type: 2}
     statusEffect: {fileID: 0}
     amount: 1
   actionOnConfirm:
@@ -467,19 +468,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 
+  stringID: 
   myRigidbody: {fileID: 3945848509854940437}
   animator: {fileID: 910524742380246583}
   characterCollider: {fileID: 3020177091971815233}
+  headPosition: {fileID: 9214498863456935276}
   respawnAnimation: {fileID: 0}
   groundPosition: {fileID: 995233311224769710}
   skillStartPosition: {fileID: 325864630953995024}
-  headPosition: {fileID: 9214498863456935276}
   activeSkillParent: {fileID: 3020177091833525065}
   activeStatusEffectParent: {fileID: 8464107762506563443}
   statusEffectVisuals: []
   stats: {fileID: 11400000, guid: 55d358f1ae5b28f45b4f5f4f5a55089c, type: 2}
   values: {fileID: 0}
-  IsSummoned: 0
   NPCStats: {fileID: 11400000, guid: 55d358f1ae5b28f45b4f5f4f5a55089c, type: 2}
   onDefeated:
     m_PersistentCalls:
@@ -499,7 +500,6 @@ MonoBehaviour:
   aggroStats: {fileID: 11400000, guid: 46e049ec2b630ec40aec487f31843b9f, type: 2}
   mainTargetID: 0
   aggro: []
-  needed: 1
   onTarget:
     m_PersistentCalls:
       m_Calls: []
@@ -555,7 +555,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 0}
   startPhase: {fileID: 0}
-  startImmediately: 0
   activePhase: {fileID: 0}
 --- !u!50 &3945848509854940437
 Rigidbody2D:

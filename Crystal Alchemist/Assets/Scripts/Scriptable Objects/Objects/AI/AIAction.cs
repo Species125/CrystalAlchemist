@@ -514,6 +514,11 @@ namespace CrystalAlchemist
             npc.GetComponent<AICombat>().EndPhase();
         }
 
+        public AIPhase GetPhase()
+        {
+            return this.nextPhase;
+        }
+
         #endregion
 
 

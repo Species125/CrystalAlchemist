@@ -31,6 +31,9 @@ namespace CrystalAlchemist
         [BoxGroup("Ziel Attribute")]
         public bool shareDamage = false;
 
+        [BoxGroup("Ziel Attribute")]
+        public bool ignoreCantHit = false;
+
         [Space(10)]
         [BoxGroup("Ziel Attribute")]
         [MinValue(0)]

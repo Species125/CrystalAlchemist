@@ -9,7 +9,7 @@ namespace CrystalAlchemist
         [BoxGroup("NPC")]
         [SerializeField]
         [Required]
-        private BasicCharacter npc;
+        private Character npc;
 
         [BoxGroup("NPC")]
         [SerializeField]
@@ -70,11 +70,6 @@ namespace CrystalAlchemist
         public void TurnFriendly()
         {
             this.npc.SetCharacterType(CharacterType.Friend);
-        }
-
-        public void ClearAggro() 
-        {
-            if (this.npc.GetComponent<AI>() != null) this.npc.GetComponent<AI>().ClearAggro();
         }
 
         public override bool PlayerIsLooking()

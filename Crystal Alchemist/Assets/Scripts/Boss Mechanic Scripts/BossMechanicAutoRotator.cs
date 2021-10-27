@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using DG.Tweening;
+using Sirenix.OdinInspector;
 
 namespace CrystalAlchemist
 {
-    public class BossMechanicAutoRotation : MonoBehaviour
+    public class BossMechanicAutoRotator : MonoBehaviour
     {
         [SerializeField]
+        [InfoBox("Zur automatisierten Rotation von diesem GameObject")]
         private float speed;
 
         void Update()

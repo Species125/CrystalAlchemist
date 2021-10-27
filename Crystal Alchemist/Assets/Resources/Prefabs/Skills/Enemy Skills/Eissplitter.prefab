@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 
+  stringID: 
   spriteRenderer: {fileID: 597466489169404831}
   myRigidbody: {fileID: 8003971335365348661}
   animator: {fileID: 1781594353715446578}
@@ -100,6 +101,9 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: {x: 0, y: 0}
   standAlone: 1
+  isRapidFire: 0
+  isAttached: 0
+  canAffectedBytimeDistortion: 0
 --- !u!114 &2890860741540156332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +120,6 @@ MonoBehaviour:
   costs:
     resourceType: 2
     item: {fileID: 0}
-    keyItem: {fileID: 0}
     statusEffect: {fileID: 0}
     amount: 0.5
   intervallSender: 0
@@ -139,15 +142,14 @@ MonoBehaviour:
   affectedResources:
   - resourceType: 1
     item: {fileID: 0}
-    keyItem: {fileID: 0}
     statusEffect: {fileID: 0}
     amount: -0.5
-  - resourceType: 5
+  - resourceType: 4
     item: {fileID: 0}
-    keyItem: {fileID: 0}
     statusEffect: {fileID: 11400000, guid: b35d1b0f88a20904c82f461ca4959950, type: 2}
     amount: 1
   modifiers: []
+  shareDamage: 0
   thrust: 0
   knockbackTime: 0.2
   affections: {fileID: 11400000, guid: a08c2d131b1dd8b43ad91af1dcbeeec4, type: 2}

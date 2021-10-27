@@ -178,8 +178,8 @@ namespace CrystalAlchemist
             if (this.values.life <= 0
                 && !this.values.cannotDie //Item
                 && !this.values.isInvincible //Event
-                //&& !this.values.cantBeHit
-                ) //after Hit
+                && !this.values.cantBeHit //after Hit
+                ) 
                 KillIt();
         }
 
@@ -451,7 +451,10 @@ namespace CrystalAlchemist
             SkillTargetModule targetModule = skill.GetComponent<SkillTargetModule>();
             Character sender = skill.sender;
 
-            if (targetModule == null || this.values.currentState == CharacterState.dead) return;            
+            if (targetModule == null 
+                || this.values.currentState == CharacterState.dead 
+                || (this.values.cantBeHit && !targetModule.ignoreCantHit)
+                ) return;            
 
             Vector2 position = skill.transform.position;
             int ID = NetworkUtil.GetID(sender);
@@ -596,11 +599,11 @@ namespace CrystalAlchemist
 
         private IEnumerator hitCo(float duration, bool showColor)
         {
-            //this.values.cantBeHit = true;
+            this.values.cantBeHit = true;
             if (this.stats.showHitcolor && showColor) this.ChangeColor(this.stats.hitColor);
             yield return new WaitForSeconds(duration);
             if (showColor) this.RemoveColor(this.stats.hitColor);
-            //this.values.cantBeHit = false;
+            this.values.cantBeHit = false;
         }
 
         private IEnumerator knockCo(float knockTime)
@@ -638,6 +641,15 @@ namespace CrystalAlchemist
 
         public void PlayAnimation(string name, bool value) => AnimatorUtil.SetAnimatorParameter(this.animator, name, value);
 
+        public void EnableSkillColliders() => EnableSkillColliders(true);
+
+        public void DisableSkillColliders() => EnableSkillColliders(false);
+
+        private void EnableSkillColliders(bool value)
+        {
+            foreach(Collider2D coll in this.activeSkillParent.GetComponentsInChildren<Collider2D>(false)) coll.enabled = value;            
+        }
+
         #endregion
 
         #region Get and Set
@@ -647,6 +659,8 @@ namespace CrystalAlchemist
             if (this.skillStartPosition != null) return this.skillStartPosition.transform.position;
             return this.transform.position;
         }
+
+
 
         public override Vector2 GetHeadPosition()
         {
@@ -663,6 +677,11 @@ namespace CrystalAlchemist
         {
             if (this.groundPosition != null) return this.groundPosition.transform.position;
             return this.transform.position;
+        }
+
+        public override CharacterType GetCharacterType()
+        {
+            return this.values.characterType;
         }
 
         public override void SetCharacterType(CharacterType type)
@@ -704,7 +723,7 @@ namespace CrystalAlchemist
 
         public virtual void EnableScripts(bool value)
         {
-            if (this.GetComponent<AIAggroSystem>() != null) this.GetComponent<AIAggroSystem>().enabled = value;
+            if (this.GetComponent<AIAggroTrigger>() != null) this.GetComponent<AIAggroTrigger>().enabled = value;
             if (this.GetComponent<AICombat>() != null) this.GetComponent<AICombat>().enabled = value;
             if (this.GetComponent<AIMovement>() != null) this.GetComponent<AIMovement>().enabled = value;
 
@@ -839,7 +858,6 @@ namespace CrystalAlchemist
                 stream.SendNext(this.values.direction);
                 stream.SendNext(this.myRigidbody.velocity);
                 stream.SendNext(this.isVisible);
-                //stream.SendNext(this.values.cantBeHit);
                 stream.SendNext(this.values.isInvincible);
                 stream.SendNext(this.values.cannotDie);
             }
@@ -848,7 +866,6 @@ namespace CrystalAlchemist
                 this.values.direction = (Vector2)stream.ReceiveNext();
                 this.myRigidbody.velocity = (Vector2)stream.ReceiveNext();
                 this.isVisible = (bool)stream.ReceiveNext();
-                //this.values.cantBeHit = (bool)stream.ReceiveNext();
                 this.values.isInvincible = (bool)stream.ReceiveNext();
                 this.values.cannotDie = (bool)stream.ReceiveNext();
             }

@@ -5,7 +5,7 @@ using Photon.Pun;
 
 namespace CrystalAlchemist
 {
-    public class BossMechanicSpawn : BossMechanicProperty
+    public class BossMechanicSpawner : BossMechanicBase
     {        
         [System.Serializable]
         public class ChildSequenceProperty : SequenceProperty

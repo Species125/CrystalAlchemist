@@ -48,14 +48,14 @@ namespace CrystalAlchemist
             }
         }
 
-        public bool isTriggered(AI npc, AIPhase phase)
+        public bool IsTriggered(AI npc, int loops)
         {
             if (this.type == AITriggerType.aggro) return checkAggro(npc);
             else if (this.type == AITriggerType.aggroLost) return checkAggroLost(npc);
             else if (this.type == AITriggerType.life) return checkLife(npc);
             else if (this.type == AITriggerType.range) return checkRange(npc);
             else if (this.type == AITriggerType.time) return checkTime();
-            else if (this.type == AITriggerType.loops) return checkLoops(phase.GetLoops());
+            else if (this.type == AITriggerType.loops) return checkLoops(loops);
             return false;
         }
 

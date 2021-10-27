@@ -39,23 +39,8 @@ namespace CrystalAlchemist
         [MinValue(0.1)]
         private float delay = 0.1f; //to prevent triggering bevor initial action
 
-        private bool skipManually = false;
-
-        public void SkipPhase()
-        {
-            foreach (AIAction action in this.actions)
-            {
-                if (action.GetActionType() == AIAction.AIActionType.startPhase)
-                {
-                    this.skipManually = true;
-                    return;
-                }
-            }
-        }
-
         public void Initialize()
         {
-            this.skipManually = false;
             this.eventActive = true;
             this.timeLeft = 0;
 
@@ -82,29 +67,26 @@ namespace CrystalAlchemist
             else { this.timeLeft = 0; this.eventActive = true; }
         }
 
-        public void SetEventActions(AI npc, List<AIAction> actions, AIPhase phase)
+        public bool IsEventTriggered(AI npc, int loops)
         {
-            if ((this.delay <= 0 && this.eventActive && this.isTriggered(npc, phase)) || skipManually)
+            if ((this.delay <= 0 && this.eventActive && this.IsTriggered(npc, loops)))
             {
                 this.eventActive = false;
                 if (this.repeatEvent) this.timeLeft = this.eventCooldown;
 
-                foreach (AIAction eventAction in this.actions)
-                {
-                    if (!actions.Contains(eventAction)) actions.Add(eventAction);
-                }
-
-                if (this.interruptCurrentAction) phase.ResetActions(npc);
+                return true;
             }
+
+            return false;
         }
 
-        private bool isTriggered(AI npc, AIPhase phase)
+        private bool IsTriggered(AI npc, int loops)
         {
             int triggerCount = 0;
 
             foreach (AITrigger trigger in this.triggers)
             {
-                if (trigger.isTriggered(npc, phase)) triggerCount++;
+                if (trigger.IsTriggered(npc,loops)) triggerCount++;
             }
 
             if ((this.requirementsNeeded == RequirementType.all && triggerCount == this.triggers.Count)
@@ -113,5 +95,9 @@ namespace CrystalAlchemist
             return false;
         }
 
+        public List<AIAction> GetActions()
+        {
+            return this.actions;
+        }
     }
 }

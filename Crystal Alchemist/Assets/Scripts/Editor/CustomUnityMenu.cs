@@ -38,18 +38,6 @@ namespace CrystalAlchemist
             box.Yes();
         }
 
-        [MenuItem("Alchemist Menu/Cheats/Skip Phase within 2m")]
-        public static void SkipPhase()
-        {
-            Player player = FindObjectOfType<Player>();
-            AI[] enemies = FindObjectsOfType<AI>();
-            foreach (AI enemy in enemies)
-            {
-                if (Vector2.Distance(enemy.GetGroundPosition(), player.GetGroundPosition()) < 2
-                    && enemy.GetComponent<AICombat>()) enemy.GetComponent<AICombat>().SkipPhase();
-            }
-        }
-
         [MenuItem("Alchemist Menu/Cheats/Kill Enemies within 2m")]
         public static void KillCloseEnemies()
         {

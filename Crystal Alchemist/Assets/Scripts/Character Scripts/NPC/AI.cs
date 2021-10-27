@@ -217,6 +217,8 @@ namespace CrystalAlchemist
             }
         }
 
+        public void ClearAggro() => this.aggroList.Clear();
+
         public override void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
             base.OnPhotonSerializeView(stream, info);
@@ -371,20 +373,6 @@ namespace CrystalAlchemist
             if (targetID > 0) this.ChangeAggroFactor(targetID, aggroDecrease);
         }
 
-        public void ShowClue(AggroClue clue)
-        {
-            if (this.activeClue != null && clue.name == this.activeClue.name) return;
-
-            HideClue();
-            this.activeClue = Instantiate(clue, this.GetHeadPosition(), Quaternion.identity, this.transform);
-            this.activeClue.name = clue.name;
-        }
-
-        public void HideClue()
-        {
-            if (this.activeClue != null) this.activeClue.Hide();
-        }
-
         private void AddToAggroList(int character, float factor = 0, float startValue = 0)
         {
             float start = (float)startValue / 100f;
@@ -413,8 +401,6 @@ namespace CrystalAlchemist
             if (this.aggroList.ContainsKey(character)) this.aggroList[character][1] = (float)factor/100f; //set factor of increase/decreasing aggro            
         }
 
-        public void ClearAggro() => this.aggroList.Clear();
-
         public bool IsValidTarget(int ID)
         {
             if (ID <= 0) return false;
@@ -438,6 +424,20 @@ namespace CrystalAlchemist
         {
             if (character != null && character.GetComponent<Player>() != null && !character.GetComponent<Player>().isLocalPlayer) return true;
             return false;
+        }
+
+        public void ShowClue(AggroClue clue)
+        {
+            if (this.activeClue != null && clue.name == this.activeClue.name) return;
+
+            HideClue();
+            this.activeClue = Instantiate(clue, this.GetHeadPosition(), Quaternion.identity, this.transform);
+            this.activeClue.name = clue.name;
+        }
+
+        public void HideClue()
+        {
+            if (this.activeClue != null) this.activeClue.Hide();
         }
 
         #endregion
