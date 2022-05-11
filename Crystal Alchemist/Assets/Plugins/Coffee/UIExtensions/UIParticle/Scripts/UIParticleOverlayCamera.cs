@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_2018_3_OR_NEWER && UNITY_EDITOR
-using PrefabStageUtility = UnityEditor.Experimental.SceneManagement.PrefabStageUtility;
+using PrefabStageUtility = UnityEditor.SceneManagement.PrefabStageUtility;
 #endif
 
 namespace Coffee.UIExtensions
@@ -25,7 +25,7 @@ namespace Coffee.UIExtensions
 			{
 #if UNITY_2018_3_OR_NEWER && UNITY_EDITOR
 				// If current scene is prefab mode, create OverlayCamera for editor.
-				var prefabStage = PrefabStageUtility.GetCurrentPrefabStage ();
+				var prefabStage = UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage ();
 				if (prefabStage != null && prefabStage.scene.isLoaded)
 				{
 					if (!s_InstanceForPrefabMode)

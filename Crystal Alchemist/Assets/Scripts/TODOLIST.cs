@@ -7,7 +7,11 @@ namespace CrystalAlchemist
         //TODO (0.2.7)
         /*        
         TODO:
-        - Player Color-Parts by Emissions
+        - Player Color-Parts by Emissions (alot work)
+        - Change Boss Room (add teleport)
+        - Rework teleport-system
+        - Add Score and rework victory
+        - Test Network-Stuff        
 
         CHANGES:
         1. Removed TriggerActive

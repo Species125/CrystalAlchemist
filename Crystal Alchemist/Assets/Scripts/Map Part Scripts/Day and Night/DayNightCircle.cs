@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 namespace CrystalAlchemist
 {
-    [RequireComponent(typeof(Light2D))]
+    [RequireComponent(typeof(UnityEngine.Rendering.Universal.Light2D))]
     public class DayNightCircle : MonoBehaviour
     {
-        private Light2D Lighting;
+        private UnityEngine.Rendering.Universal.Light2D Lighting;
         private bool isRunning = false;
         private TimeValue timeValue;
 
         private void Awake()
         {
-            this.Lighting = this.GetComponent<Light2D>();
+            this.Lighting = this.GetComponent<UnityEngine.Rendering.Universal.Light2D>();
             this.timeValue = MasterManager.timeValue;
         }
 

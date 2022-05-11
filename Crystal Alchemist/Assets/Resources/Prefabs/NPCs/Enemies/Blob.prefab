@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 929082023}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 77d9625469aaf1145a1f3c5cbdce1c8c, type: 2}
+  m_Controller: {fileID: 22100000, guid: 0519d6ab519458149a72e309e8b03cab, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -349,26 +349,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 
+  stringID: 
   myRigidbody: {fileID: 2246077131478480996}
   animator: {fileID: 929082027}
   characterCollider: {fileID: 1028641328}
+  headPosition: {fileID: 0}
   respawnAnimation: {fileID: 0}
   groundPosition: {fileID: 3361775751751460579}
   skillStartPosition: {fileID: 7201104449445602734}
-  headPosition: {fileID: 0}
   activeSkillParent: {fileID: 1158493752}
   activeStatusEffectParent: {fileID: 6674156776865872386}
   statusEffectVisuals: []
   stats: {fileID: 11400000, guid: 4296eda28d32ab54491ee3379dc99977, type: 2}
   values: {fileID: 0}
-  IsSummoned: 0
   NPCStats: {fileID: 11400000, guid: 4296eda28d32ab54491ee3379dc99977, type: 2}
   onDefeated:
     m_PersistentCalls:
       m_Calls: []
   aggroStats: {fileID: 11400000, guid: 1203e243ade06754eb7ea15f7b5138d0, type: 2}
   mainTargetID: 0
-  aggro: []
+  aggroStringList: []
   onTarget:
     m_PersistentCalls:
       m_Calls: []
@@ -389,7 +389,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 0}
   startPhase: {fileID: 11400000, guid: c11053e6988188347bc5e3d9a60d4904, type: 2}
+  startImmediately: 1
   activePhase: {fileID: 0}
+  currentAction:
+    type: 0
+    position: {x: 0, y: 0}
+    translationID: 
+    duration: 0
+    nextPhase: {fileID: 0}
+    animations: 
+    isTrigger: 0
+    ability: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
+    value: 0
+    signal: {fileID: 0}
+    wait: 0
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
+  currentDialog:
+    type: 0
+    position: {x: 0, y: 0}
+    translationID: 
+    duration: 0
+    nextPhase: {fileID: 0}
+    animations: 
+    isTrigger: 0
+    ability: {fileID: 0}
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
+    value: 0
+    signal: {fileID: 0}
+    wait: 0
+    mode: 0
+    fadeIn: 0
+    fadeOut: 0
+    music: {fileID: 0}
+  eventList: 
+  eventActions: []
+  index: 0
+  eventIndex: 0
+  loops: 0
 --- !u!61 &1028641328
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -463,6 +509,8 @@ MonoBehaviour:
   maxTeleportDistance: 4
   backToStart: 1
   returnDelay: 0
+  HasMaxDistance: 0
+  maxDistance: 1
   isPatrol: 0
   patrolType: 0
   patrolDelay: 3
