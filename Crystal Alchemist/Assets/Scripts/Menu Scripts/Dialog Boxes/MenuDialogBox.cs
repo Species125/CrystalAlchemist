@@ -96,12 +96,13 @@ namespace CrystalAlchemist
         [Button]
         public void Yes()
         {
-            this.CloseDialog();
             if (this.OnConfirm != null)
             {
                 GameEvents.current.DoReduce(this.price);
                 this.OnConfirm.Invoke();
             }
+
+            this.CloseDialog();
         }
 
         public void No() => this.CloseDialog();

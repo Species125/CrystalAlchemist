@@ -106,7 +106,7 @@ namespace CrystalAlchemist
         [Button]
         public void UpdateAmount(int amount)
         {
-            if (!canConsume) return;
+            if (!canConsume && amount < 0) return; //dont decrease amount if not consumeable
 
             this.amount += amount;
             if (this.amount > this.maxAmount) this.amount = this.maxAmount;

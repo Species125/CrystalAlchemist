@@ -22,10 +22,17 @@ namespace CrystalAlchemist
         [BoxGroup("Menu")]
         public InfoBox infoBox;
 
+        private float inputDelay = 0.3f;
+
+        [HideInInspector]
+        public bool inputPossible = false;
+
         public virtual void Start()
         {
             MenuEvents.current.OnCloseMenu += ExitMenu;
             GameEvents.current.DoMenuOpen();
+
+            StartInputDelay();
 
             if (MasterManager.globalValues.openedMenues.Count == 0)
             {
@@ -40,6 +47,17 @@ namespace CrystalAlchemist
             }
 
             MasterManager.globalValues.openedMenues.Add(this.gameObject);
+        }
+
+        public virtual void StartInputDelay()
+        {
+            this.inputPossible = false;
+            Invoke("StopInputDelay", this.inputDelay);
+        }
+
+        public virtual void StopInputDelay()
+        {
+            this.inputPossible = true;
         }
 
         public virtual void Update()
@@ -63,12 +81,14 @@ namespace CrystalAlchemist
 
         public virtual void Cancel()
         {
+            if (!this.inputPossible) return;
             if (this.infoBox != null && this.infoBox.gameObject.activeInHierarchy) this.infoBox.Hide();
             else ExitMenu();
         }
 
         public virtual void ExitMenu()
         {
+            if (!this.inputPossible) return;
             SceneManager.UnloadSceneAsync(this.gameObject.scene);
         }
     }

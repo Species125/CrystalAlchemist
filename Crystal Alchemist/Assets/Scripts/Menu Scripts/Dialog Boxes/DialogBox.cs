@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CrystalAlchemist
 {
@@ -25,6 +26,11 @@ namespace CrystalAlchemist
         [Required]
         private EventValue eventValue;
 
+        [BoxGroup("DialogBox")]
+        [SerializeField]
+        [Required]
+        private Button button;
+
         private List<string> texts = new List<string>();
         private int index = 0;
         #endregion
@@ -34,6 +40,18 @@ namespace CrystalAlchemist
             base.Start();
             texts = dialogText.GetValue().Split('\n').ToList();
             ShowNextDialog(0);
+        }
+
+        public override void StartInputDelay()
+        {
+            base.StartInputDelay();
+            this.button.enabled = this.inputPossible;
+        }
+
+        public override void StopInputDelay()
+        {
+            base.StopInputDelay();
+            this.button.enabled = this.inputPossible;
         }
 
         public void ShowNextDialog(int value)

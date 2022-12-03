@@ -110,7 +110,7 @@ namespace CrystalAlchemist
             foreach(ItemStats origin in this.items)
             {
                 ItemStats newStats = Instantiate(origin);
-                newStats.name = this.name;
+                newStats.name = origin.name;
                 newStats.Initialize(amount);
                 temp.Add(newStats);
             }

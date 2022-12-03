@@ -74,7 +74,7 @@ namespace CrystalAlchemist
 
                 if (this.amount != null)
                 {
-                    if (item.canConsume && item.GetAmount() > 1) this.amount.text = "x" + item.GetAmount();
+                    if (item.GetAmount() > 1) this.amount.text = "x" + item.GetAmount();
                     else this.amount.text = "";
                 }
 
