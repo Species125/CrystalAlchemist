@@ -1,47 +1,43 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace CrystalAlchemist
 {
     public class TitleScreenStart : MonoBehaviour
     {
         [SerializeField]
-        private GameObject mainMenu;
+        private UnityEvent OnAnyButtonPressEvent;
 
         [SerializeField]
-        private GameObject anyKey;
-
-        [SerializeField]
-        private float delay = 0.3f;
+        private float inputDelay = 0.3f;
 
         private bool inputPossible = false;
 
-        private void Awake()
+        private void Start()
         {
-            this.mainMenu.SetActive(false);
-            StartCoroutine(this.delayInput());
+            SaveSystem.LoadOptions();
+            StartInputDelay();
         }
 
-        private void Start() => SaveSystem.LoadOptions();        
+        private void StartInputDelay()
+        {
+            this.inputPossible = false;
+            Invoke("StopInputDelay", this.inputDelay);
+        }
+
+        private void StopInputDelay()
+        {
+            this.inputPossible = true;
+        }
 
         private void Update()
         {
-            if (Input.anyKeyDown && inputPossible) Invoke("showMenuCo", 0.1f);
-        }
-
-        private IEnumerator delayInput()
-        {
-            this.anyKey.SetActive(false);
-            this.inputPossible = false;
-            yield return new WaitForSeconds(this.delay);
-            this.inputPossible = true;
-            this.anyKey.SetActive(true);
-        }
-
-        private void showMenuCo()
-        {
-            this.gameObject.SetActive(false);
-            this.mainMenu.SetActive(true);
+            if (Input.anyKeyDown && this.inputPossible)
+            {
+                this.OnAnyButtonPressEvent?.Invoke();
+                this.inputPossible = false;
+            }
         }
     }
 }

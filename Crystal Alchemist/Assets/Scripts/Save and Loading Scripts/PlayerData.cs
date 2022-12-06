@@ -126,6 +126,7 @@ namespace CrystalAlchemist
     {
         public float musicVolume;
         public float soundVolume;
+        public float audioVolume;
 
         public string language;
 
@@ -139,6 +140,7 @@ namespace CrystalAlchemist
         {
             this.musicVolume = MasterManager.settings.backgroundMusicVolume;
             this.soundVolume = MasterManager.settings.soundEffectVolume;
+            this.audioVolume = MasterManager.settings.audioVolume;
 
             //this.layout = MasterManager.settings.layoutType.ToString().ToLower();
             this.language = MasterManager.settings.language.ToString();

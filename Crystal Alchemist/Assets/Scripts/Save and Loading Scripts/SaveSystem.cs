@@ -91,6 +91,7 @@ namespace CrystalAlchemist
 
                 MasterManager.settings.backgroundMusicVolume = data.musicVolume;
                 MasterManager.settings.soundEffectVolume = data.soundVolume;
+                MasterManager.settings.audioVolume = data.audioVolume;
 
                 if (Enum.TryParse(data.language, out Language language)) MasterManager.settings.language = language;
                 //if (Enum.TryParse(data.layout, out InputDeviceType layoutType)) MasterManager.settings.layoutType = layoutType;

@@ -44,10 +44,26 @@ namespace CrystalAlchemist
         private bool isInit = true;
         private Selectable selectable;
 
+        [SerializeField]
+        private float inputDelay = 0.3f;
+
         private void OnEnable()
         {
             if (isInit) Initialize();
             ReSelect();
+
+            StartInputDelay();
+        }
+
+        private void StartInputDelay()
+        {
+            this.selectable.enabled = false;
+            Invoke("StopInputDelay", this.inputDelay);
+        }
+
+        private void StopInputDelay()
+        {
+            this.selectable.enabled = true;
         }
 
         private void Initialize()

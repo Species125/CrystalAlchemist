@@ -7,7 +7,8 @@ namespace CrystalAlchemist
     public enum VolumeType
     {
         music,
-        effects
+        effects,
+        all
     }
 
     public class OptionsSwitch : MonoBehaviour

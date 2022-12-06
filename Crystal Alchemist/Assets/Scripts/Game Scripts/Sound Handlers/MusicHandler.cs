@@ -181,7 +181,7 @@ namespace CrystalAlchemist
 
         private void Start()
         {
-            this.volume = MasterManager.settings.backgroundMusicVolume;
+            this.volume = MasterManager.settings.GetMusicVolume();
             this.audioSource = this.gameObject.AddComponent<AudioSource>();
 
             Initialize();

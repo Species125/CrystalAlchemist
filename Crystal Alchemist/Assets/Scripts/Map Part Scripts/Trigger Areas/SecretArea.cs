@@ -26,7 +26,7 @@ namespace CrystalAlchemist
         {
             if (collision.isTrigger) return;
             if (!NetworkUtil.IsLocal(collision.GetComponent<Player>())) return;
-            AudioUtil.playSoundEffect(this.secretSoundEffect, MasterManager.settings.backgroundMusicVolume);
+            AudioUtil.playSoundEffect(this.secretSoundEffect, MasterManager.settings.GetMusicVolume());
             StartCoroutine(FadeOut());
         }
 

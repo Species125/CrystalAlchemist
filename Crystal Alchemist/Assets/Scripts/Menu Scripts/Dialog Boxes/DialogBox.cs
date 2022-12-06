@@ -42,18 +42,6 @@ namespace CrystalAlchemist
             ShowNextDialog(0);
         }
 
-        public override void StartInputDelay()
-        {
-            base.StartInputDelay();
-            this.button.enabled = this.inputPossible;
-        }
-
-        public override void StopInputDelay()
-        {
-            base.StopInputDelay();
-            this.button.enabled = this.inputPossible;
-        }
-
         public void ShowNextDialog(int value)
         {
             index += value;

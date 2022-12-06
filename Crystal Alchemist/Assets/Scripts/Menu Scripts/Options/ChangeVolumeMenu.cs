@@ -34,6 +34,7 @@ namespace CrystalAlchemist
             {
                 case VolumeType.effects: return MasterManager.settings.soundEffectVolume;
                 case VolumeType.music: return MasterManager.settings.backgroundMusicVolume;
+                case VolumeType.all: return MasterManager.settings.audioVolume;
             }
 
             return 0;
@@ -51,6 +52,10 @@ namespace CrystalAlchemist
             else if (this.volumeType == VolumeType.effects)
             {
                 MasterManager.settings.soundEffectVolume = (this.slider.value / 100f);
+            }
+            else if (this.volumeType == VolumeType.all)
+            {
+                MasterManager.settings.audioVolume = (this.slider.value / 100f);
             }
 
             setVolumeText(this.slider.value);

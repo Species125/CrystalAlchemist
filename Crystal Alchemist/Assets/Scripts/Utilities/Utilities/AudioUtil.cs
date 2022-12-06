@@ -21,7 +21,7 @@ namespace CrystalAlchemist
 
         public static void playSoundEffect(GameObject gameObject, AudioClip soundeffect)
         {
-            playSoundEffect(gameObject, soundeffect, MasterManager.settings.soundEffectVolume);
+            playSoundEffect(gameObject, soundeffect, MasterManager.settings.GetEffectVolume());
         }
 
         public static void playSoundEffect(GameObject gameObject, AudioClip soundeffect, float volume)
