@@ -1,0 +1,912 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.22f1 (887be4894c44) revision 8944612'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'de' Physical Memory: 32689 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker3
+-projectPath
+E:/Projekte/[Github] Repository/Crystal Alchemist/CrystalAlchemist/Crystal Alchemist
+-logFile
+Logs/AssetImportWorker3.log
+-srvPort
+49732
+Successfully changed project path to: E:/Projekte/[Github] Repository/Crystal Alchemist/CrystalAlchemist/Crystal Alchemist
+E:/Projekte/[Github] Repository/Crystal Alchemist/CrystalAlchemist/Crystal Alchemist
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [34644] Host "[IP] 192.168.178.62 [Port] 0 [Flags] 2 [Guid] 978233959 [EditorId] 978233959 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LB0NI17) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [34644] Host "[IP] 192.168.178.62 [Port] 0 [Flags] 2 [Guid] 978233959 [EditorId] 978233959 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LB0NI17) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 11 workers.
+Refreshing native plugins compatible for Editor in 26.50 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.22f1 (887be4894c44)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/Projekte/[Github] Repository/Crystal Alchemist/CrystalAlchemist/Crystal Alchemist/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3070 (ID=0x2488)
+    Vendor:   NVIDIA
+    VRAM:     8018 MB
+    Driver:   31.0.15.5123
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56724
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.020849 seconds.
+- Loaded All Assemblies, in  0.443 seconds
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 347 ms
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.721 seconds
+Domain Reload Profiling: 1159ms
+	BeginReloadAssembly (126ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (92ms)
+	LoadAllAssembliesAndSetupDomain (168ms)
+		LoadAssemblies (122ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (165ms)
+			TypeCache.Refresh (163ms)
+				TypeCache.ScanAssembly (148ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (722ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (658ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (481ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (123ms)
+			ProcessInitializeOnLoadMethodAttributes (49ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.891 seconds
+Refreshing native plugins compatible for Editor in 10.22 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.927 seconds
+Domain Reload Profiling: 3813ms
+	BeginReloadAssembly (160ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (22ms)
+	RebuildCommonClasses (33ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (54ms)
+	LoadAllAssembliesAndSetupDomain (628ms)
+		LoadAssemblies (394ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (327ms)
+			TypeCache.Refresh (260ms)
+				TypeCache.ScanAssembly (234ms)
+			ScanForSourceGeneratedMonoScriptInfo (44ms)
+			ResolveRequiredComponents (22ms)
+	FinalizeReload (2928ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2678ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (34ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (106ms)
+			ProcessInitializeOnLoadAttributes (2396ms)
+			ProcessInitializeOnLoadMethodAttributes (123ms)
+			AfterProcessingInitializeOnLoad (16ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 12.51 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6467 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 127 unused Assets / (1.1 MB). Loaded Objects now: 6962.
+Memory consumption went from 266.1 MB to 264.9 MB.
+Total: 34.852900 ms (FindLiveObjects: 0.467300 ms CreateObjectMapping: 0.382200 ms MarkObjects: 33.671700 ms  DeleteObjects: 0.330700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/TMP_SDFShaderGUI.cs: 082588c068c6e819b94cdf417f8b7551 -> 1460619486eb6e8da302e26af5538aaa
+  custom:scripting/monoscript/fileName/RCUnityWebRequest.cs: ef56f67a7f8f66453d9e05232622ada7 -> 5f671c22651c9ebf0a4535a6a742dfdd
+  custom:scripting/monoscript/fileName/Deprecated.cs: b9d2f8144598e6824885e8739759b01e -> c490571978d72951839b06a2825608d2
+  custom:scripting/monoscript/fileName/FixedList.gen.cs: b9f85e7078e3f4ea022877423329d870 -> 05fbbc7f550e957bc7aed7ca5a31bd41
+  custom:scripting/monoscript/fileName/CinemachineTrackedDollyEditor.cs: e53f4b0cacad39b5b85b36905ed73a26 -> b4d6784c58752cea58aafd9a76ca4459
+  custom:scripting/monoscript/fileName/CinemachineImpulseManager.cs: dbc3c9fc24967b80110e2126e8aaf40a -> c34be3577a810e26fd0110c580799b88
+  custom:scripting/monoscript/fileName/TMPro_FontAssetCreatorWindow.cs: 9d68c1aab1c646cdf3e70083dc01df96 -> 0d0900483ed9b57d4ccc2ff58d1220b3
+  custom:scripting/monoscript/fileName/TMP_EditorResourceManager.cs: 30391129c5b96f298e44c099ae0fab57 -> f56b80268a934198a76acc6f4cef503c
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/TMP_TextParsingUtilities.cs: 47331f425db7fa5c443a11c866530503 -> 8b3fe20641ae0dd97405135955c706a3
+  custom:scripting/monoscript/fileName/AxisState.cs: 1d87cc3570fa9a500821a1a915203880 -> 1a494a66d8b9a58f4a6873f89bf5b094
+  custom:scripting/monoscript/fileName/TMP_EditorCoroutine.cs: 01d80099920d11c11bfa87417e26164b -> 04cbf5ce6e541d98265aa7668ef82832
+  custom:scripting/monoscript/fileName/CinemachineClearShot.cs: 107b7ec90d4ff2b5e315168ba77df683 -> 1da15f5c7903497ce3ae982ee4ee4779
+  custom:scripting/monoscript/fileName/TMP_StyleSheetEditor.cs: b6503d890746d6150e0f267f43ce60e4 -> 38b210a450ac855df2d81ab0242c2feb
+  custom:scripting/monoscript/fileName/CinemachinePOVEditor.cs: 3d2bfb534d9d0a1691ac3dac93b827a9 -> 71db5a9242a182995b4ca15db516f628
+  custom:scripting/monoscript/fileName/TMP_MeshInfo.cs: 375ed9fada55d6bf39f9352ef1dd520b -> 89833651f7d905e51b340ec2afe531d1
+  custom:scripting/monoscript/fileName/TMP_SpriteCharacter.cs: fe232bb280dddc880a01918d3502c13a -> 81dc73ff0878d6528202f8be44877b26
+  custom:scripting/monoscript/fileName/SegmentationRulesTreeview.cs: 4e21ca8416ba5c901bce4edf619318df -> 0767e286e098f9d8bef70902d1af2c0f
+  custom:scripting/monoscript/fileName/RemoteConfigService.cs: d575e79e05dcbe7cdfc530f42157788d -> bfc411cc13b9a513afc6e83dc601d989
+  custom:scripting/monoscript/fileName/TMP_ShaderUtilities.cs: 75ec062faab558cb3190dcd3e4820547 -> 84a261643983e306d02445da38ed662f
+  custom:scripting/monoscript/fileName/CinemachineLensPresets.cs: 7334daad90131e21a74093a21a875201 -> 014747fb0ab87178c677520d0bf20bf7
+  custom:scripting/monoscript/fileName/TMP_SpriteGlyphPropertyDrawer.cs: 4a6f1515709a40d92e24c84ec92fc53a -> 1447c7afab82cf56bc359d5c7fba114e
+  custom:scripting/monoscript/fileName/TMP_SpriteAssetMenu.cs: a42d2dc20ed9558b36972dc6e6d71655 -> 05ea7b84320d1b77a6d1ae49c41ee9cc
+  custom:scripting/monoscript/fileName/UnsafeUtilityEx.cs: 633ec2e4629f58c9ca328fcd154061ec -> 51fdf80e1733ea661389b0969168e4eb
+  custom:scripting/monoscript/fileName/TMP_PreBuildProcessor.cs: d965cd4513e689cb01c0481012a89dee -> 790c12dcd4980aa978fd28fb6f89fb37
+  custom:scripting/monoscript/fileName/TMP_SerializedPropertyHolder.cs: 9860586610cb3d91ae7f4ce33ab22d0b -> 99e5dbc1fa1abe750acc8166e4243be8
+  custom:scripting/monoscript/fileName/CinemachineTagFieldPropertyDrawer.cs: f4c4b32b5f7a3a4e01e5b890e925af6c -> e78491a12decd558a49d01cc583bfcfb
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:scripting/monoscript/fileName/CinemachineVolumeSettings.cs: 80822fe0c14d5e03cdeb55c653c2ad70 -> 48d7865a989ec634d93ae8dcee459cea
+  custom:scripting/monoscript/fileName/DropdownOptionListDrawer.cs: 342ee3f9c806e60b189c02609042c492 -> 4362475bc384312c771d88865ee2f40d
+  custom:scripting/monoscript/fileName/CinemachineTargetGroupEditor.cs: 16ac421e65d14b991cb12c3a8f8b73ec -> f70ac85df8c1c9bd0b83a35534bafd1f
+  custom:scripting/monoscript/fileName/CinemachineRecomposer.cs: 12f0a6366582437f80c555a49725188b -> 07354cca81f7d0775b027b5906330569
+  custom:scripting/monoscript/fileName/TargetPositionCache.cs: 772f1e6c0fee54753934412463705f5b -> 49ce97e6930a536b43825141e0c2d3a4
+  custom:scripting/monoscript/fileName/TMP_FontAssetEditor.cs: ff94a59ea0ba0aa81aa8a7f307f2efd3 -> e359b61135381f6b1d7b8c7e97a930f3
+  custom:scripting/monoscript/fileName/UTF8ArrayUnsafeUtility.cs: f1993200a43e577e4281cd674f04c6d8 -> 98dd75294b6f494d8648143302130ee6
+  custom:scripting/monoscript/fileName/CinemachineExternalCamera.cs: 94c3c599e3191b058f39d9283e3aedab -> d76122377115c288d881064c3f07a3f1
+  custom:scripting/monoscript/fileName/TMP_ScrollbarEventHandler.cs: 55de10d862075cd935d8381c309f39e0 -> c015e39b5a3f1a14518ce039f30e10af
+  custom:scripting/monoscript/fileName/TMP_ObjectPool.cs: 8f6297df34271fdb1ce2d9607ec6261d -> 90647cc400823b41df847a6cbfc29026
+  custom:scripting/monoscript/fileName/EarlyInitHelpers.cs: 5479ee2d479a7722846aeb047cc32acf -> 83f2ef803587502aa43a764bfaff3766
+  custom:scripting/monoscript/fileName/Predictor.cs: 58d3af252229e3b6708eaf9e2a3e764c -> d51584936cb5b31b30ee7b444e03385b
+  custom:scripting/monoscript/fileName/FixedStringFormat.gen.cs: 38890b5823888ffb1d702d73fcfe2e56 -> bee80dd64417b695a3ab4edd137d6566
+  custom:scripting/monoscript/fileName/CinemachineScreenComposerGuides.cs: 653ecfc7d7a3eff875a01c54e735bd50 -> cdc7ea02ccc4c8d1561d98d16760d1ca
+  custom:scripting/monoscript/fileName/TMP_FontAssetCommon.cs: 4a5ab4d4426385ab38edd57c118cd485 -> 2b5f11ccf8aacaf9b5ea6564bf2b0d57
+  custom:scripting/monoscript/fileName/CinemachineVirtualCameraEditor.cs: 9e93b0f62258a3962a5bb3bf097cc23a -> 2e051d0c474634e907fe4123d6e2656e
+  custom:scripting/monoscript/fileName/Unicode.cs: 66944459fa841cd5f2e5e5b715987ea9 -> f97bf556b0d99c0ed9d5ebf00a173353
+  custom:scripting/monoscript/fileName/CinemachineSettings.cs: 87e6115c6137f58f83e1adc912dc1ee8 -> 197f6d5ad32e253546b5afa056a5bba4
+  custom:scripting/monoscript/fileName/RemoteConfigWebApiClient.cs: 37ec61c543bbd66c84b3cb7a0c93ed44 -> d0e611b495bb91a128460b7606840051
+  custom:scripting/monoscript/fileName/UnsafeAppendBuffer.cs: 5df87a068933b42c11333ea2c09a90a6 -> 5a9572fb3414d7d386993b9deda40896
+  custom:scripting/monoscript/fileName/MVRuleJsonModal.cs: efc2eff0d0fc2d051215736fc0d88cb8 -> 9f02828521ffea8d326aef2fb40c2287
+  custom:scripting/monoscript/fileName/TMP_SubMesh_Editor.cs: 6199a3bf0c204e3bdded9f5f05415a32 -> b381eb4c2ad4ef265088242d67c5b140
+  custom:scripting/monoscript/fileName/TMP_TextElement.cs: fb8354965187a75f506d9a9df85f19dd -> 5dfb95666bd41ecc32948097824aba23
+  custom:scripting/monoscript/fileName/TMP_Text.cs: c453c9b4dcb2bfad1083e3b49dfa3983 -> 5cba61e283281e8dbf7dadaabcd638dc
+  custom:scripting/monoscript/fileName/CinemachineTriggerAction.cs: 8b2d66e0e4182f9ea52217949999c07d -> cab9c5d02c28af05797c2c3743539bdb
+  custom:scripting/monoscript/fileName/InspectorUtility.cs: 06861abfdbc4f5a159f36554e7ae86cf -> e13a8546bf784ce9963c508abb88926b
+  custom:scripting/monoscript/fileName/UnsafeBitArray.cs: 8b1bdaea810722acaa2ff4f2725253fe -> abcfe76ff9b3c6727a0af119db7d6cb2
+  custom:scripting/monoscript/fileName/TMP_PostBuildProcessHandler.cs: 728d00fd9070cbfe6d8df45c08e57305 -> c69b388004562ecb0f789fc3759d9651
+  custom:scripting/monoscript/fileName/RuntimeConfig.cs: 59fffe163ba8c733df72956994dcec01 -> 95f3805efb44fa5002f15d876891196e
+  custom:scripting/monoscript/fileName/NativeHashSetExtensions.gen.cs: 63db070ab3fd6601a2653ee7ef6af335 -> 
+  custom:scripting/monoscript/fileName/TMP_DropdownEditor.cs: 6df138b51e278f9c93bd4976e96aa952 -> 2d907ee76ef876797c15186180266847
+  custom:scripting/monoscript/fileName/NativeHashMapExtensions.cs: a0b4921e21fd612511729421feb17818 -> 
+  custom:scripting/monoscript/fileName/EmbeddedAssetPropertyDrawer.cs: 53dd62a0475f96065cd20c2b0ce21f71 -> fd7ebc18093de04c88d0cfc86fb060f5
+  custom:scripting/monoscript/fileName/ConfinerOven.cs: 9d4918c23c35e8b7c9591736b477b2a4 -> ff23c03e90b61beb34474fc6e4ff668c
+  custom:scripting/monoscript/fileName/TMP_BaseEditorPanel.cs: bf7c6aff8663a36814779dfe47e82e00 -> f4b9967705e7bb57152fef4117417ba7
+  custom:scripting/monoscript/fileName/TMP_UpdateRegistery.cs: 62691e6bdb107984e7d826316a6498e1 -> 1f23864d29c3a03d22aa9b00a337cf78
+  custom:scripting/monoscript/fileName/VcamStageEditor.cs: 284d77aae59f69cf4f00bd07cd596996 -> 84b0eaf932b448975a99972628e556d8
+  custom:scripting/monoscript/fileName/OrbitalTransposerHeadingPropertyDrawer.cs: de7cca3c5705bbb8c95681951097d3f7 -> 22496b76ce84f35f630c90badc4babd8
+  custom:scripting/monoscript/fileName/xxHash3.AVX2.cs: fdda91c938d02bed6e1f482b8680a1e1 -> bbc99b1bfd2f994ebd53a189bfb34bc9
+  custom:scripting/monoscript/fileName/TMP_Asset.cs: dcedda1866ab6edcf1af2d4525512628 -> 7e95c8d89188057bea8fc9569c9aa309
+  custom:scripting/monoscript/fileName/CinemachineCollider.cs: 7303bd0253f7e2d304616e235a080719 -> 8fa92f525b1c31cd81812685d7f8c288
+  custom:scripting/monoscript/fileName/UnsafeStream.cs: c7cd97d658f9f034dc47ca5f1dcaf8b2 -> 256399a9cf220f56a541766f1fe0b55f
+  custom:scripting/monoscript/fileName/TMP_ColorGradientEditor.cs: 187fe88a4e95285275d1781f1da14d92 -> ed654c9d45026a5f71e6e9535130c15f
+  custom:scripting/monoscript/fileName/CinemachineInputProvider.cs: 0b6d0943ec03d98f2ba3652b88646e40 -> ecb845de690695f08b3b3bb647cc7006
+  custom:scripting/monoscript/fileName/CinemachineColliderEditor.cs: 3878ccdc59f6bef9e5ddb766a0d0f21e -> 859d1abbd669ee84cb713f6d4d0e1c5f
+  custom:scripting/monoscript/fileName/CinemachineExtension.cs: 077aff92c1339d59eaa55309ced87ee4 -> 6968db4afcdc301f6acb1ef4fbadb2f4
+  custom:scripting/monoscript/fileName/TMP_BitmapShaderGUI.cs: ef806c32b355e8831ed4eb3f5e3400ff -> 2ce3ac811452d1d6d82e565157cac3e2
+  custom:scripting/monoscript/fileName/TMP_ColorGradientAssetMenu.cs: 79ee3689ecabb3de162f43faa3b27adc -> 83563be632f8167fcdca7878d36901f9
+  custom:scripting/monoscript/fileName/HeapString.gen.cs: 2f8bea3137363b1eadd89d8db8473288 -> 
+  custom:scripting/monoscript/fileName/TMP_GlyphPropertyDrawer.cs: 75006bca208b32d4fc4710404c538acf -> 56b500a16a5c8f635a7bfdd702279864
+  custom:scripting/monoscript/fileName/CinemachineComponentBase.cs: 48dabc49e54368d367f24f803d713bcb -> 5293f153c13e9bd2fc262ec31ff69206
+  custom:scripting/monoscript/fileName/BaseEditor.cs: 8f6297df34271fdb1ce2d9607ec6261d -> 90647cc400823b41df847a6cbfc29026
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:scripting/monoscript/fileName/UnsafeMultiHashMap.cs: 0ecf0b5b4a9207402e80b603ad9a119c -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:scripting/monoscript/fileName/NativeHashMap.cs: c9f2dedc752c8b31243335a46ad2dc75 -> 39aa0c6e76ed394fb7a6e5c6d3a1d416
+  custom:scripting/monoscript/fileName/ConfigManager.cs: 2f8fcb71191219d9cffbbac8f2553604 -> 
+  custom:scripting/monoscript/fileName/CinemachineHardLookAt.cs: acedbe5744284b066423262d4b0eaa9a -> 792580aec23d39bcecd7ceea4c27a0ce
+  custom:scripting/monoscript/fileName/CinemachineInputAxisDriver.cs: 284d3ff5caf6d330efa74a4a3cd86919 -> 7e424e54660fed310c58dc98ea41042e
+  custom:scripting/monoscript/fileName/CinemachineStoryboardEditor.cs: 04f66051a429c568850dd7aa36ecfa66 -> 2e7ec8bfb72013eaaff4873a27da019c
+  custom:scripting/monoscript/fileName/TMPro_EventManager.cs: 9ebed0b1e26a8c995d644c176e696d93 -> 4c7492301243f935f7a463360f91d217
+  custom:scripting/monoscript/fileName/GlyphRectPropertyDrawer.cs: d355023434b9b8f82f7070cb40c7c036 -> bdec415148eac17379112822c8814df5
+  custom:scripting/monoscript/fileName/ConfigManagerImpl2x.cs: 9a0d3cb4b4a3e14044556014cf0e8c1f -> 
+  custom:scripting/monoscript/fileName/CinemachineVolumeSettingsEditor.cs: eb7ae9df877407a6bbde98cf7548ef70 -> 7c8fb727adcc2db0614f3f0f2f35cb54
+  custom:scripting/monoscript/fileName/RemoteConfigDataStore.cs: 71e143b292472f9d38b5f3403eda09d3 -> 250b197c51134cdfc540e24f8bde5198
+  custom:scripting/monoscript/fileName/JobsMenu.cs: 562c2d7ed33a8f73b1bfb0cca1b0e315 -> 
+  custom:scripting/monoscript/fileName/FixedStringFormatMethods.gen.cs: b9c5c6bc186a56f95ff8f60db0da9fea -> fcdca1abcdc2fd593bd0d11b27b9b2c5
+  custom:scripting/monoscript/fileName/TMP_TextElement_Legacy.cs: 33cc86d4b4c35f95c6446ea70ef56fc4 -> 6e11e173cb695b15e8cce3cd1e1cb2a7
+  custom:scripting/monoscript/fileName/RewindableAllocator.cs: 8b62a2efc1f503316ccf70a39fd844ed -> f5d3f33b65f42aa483d55593c952d1db
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:scripting/monoscript/fileName/TMPro_SortingLayerHelper.cs: e3aabd077ed12370ac46dda129ef572e -> 8b86ad735987eff6a1277352e9e8d9b6
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:scripting/monoscript/fileName/CinemachineMixingCamera.cs: 62eb1873269e4f68526ff69cf5505355 -> 739c5ceb76c01023f431794ec46a0177
+  custom:scripting/monoscript/fileName/CinemachinePath.cs: 2b644d5ac60a5f1b32e36e373552c0d5 -> b443d3c8837a65ddc3c78741cd58ec71
+  custom:scripting/monoscript/fileName/TMPro_TexturePostProcessor.cs: d21743efde4e74198703a65b965619ea -> 0750ad2b775120fa59f760172dc340ad
+  custom:scripting/monoscript/fileName/FixedString.gen.cs: fe10abd3f17ffcedc46ad3ee1d799153 -> d2f928251c83a855a881376014d83b13
+  custom:scripting/monoscript/fileName/TMP_PackageResourceImporter.cs: 5335f4ee7041812300af31a777e4f584 -> 949b6e7fa2132b400d5c4aaf9c34421a
+  custom:scripting/monoscript/fileName/CinemachineStoryboard.cs: 961256370f6b447e826cd2069e2b6ca0 -> 59a2099f76be9b47af1e12ed7d40f553
+  custom:scripting/monoscript/fileName/TMP_Style.cs: 22d5739edd705d10f980250dcfd7fde0 -> ecc9948baa78373f3076151d1a0642d9
+  custom:scripting/monoscript/fileName/ConfigManager2x.cs: 742e8e91195622e1e7a855fc385a6ff3 -> 
+  custom:scripting/monoscript/fileName/TMP_EditorPanelUI.cs: 6242af713a75147e6e5820bfce936424 -> 0c3fb43855adf1da22258c211d01a47d
+  custom:scripting/monoscript/fileName/CinemachineTrackedDolly.cs: b6dc88ef92254a16922fd40766f8d089 -> f6a9c21b27ad86d45f62f6b444ccbb49
+  custom:scripting/monoscript/fileName/CinemachineHardLookAtEditor.cs: 37391c2fbcb104daf2146caf08228448 -> 15b8f2af6a6d786898ce5dd6b0db26dc
+  custom:scripting/monoscript/fileName/NativeList.cs: a4b50f61153c9adfd2de2676a637a671 -> c3402f2e6b9e01dc298871eb0e4b6a91
+  custom:scripting/monoscript/fileName/TMP_Sprite.cs: e9945527ea1584af23f8f41ce4b844b4 -> 0ee3c386846aa132dd254421fac18cd1
+  custom:scripting/monoscript/fileName/CinemachineComposer.cs: cbeb5593d3361d875501f37af0999936 -> e399dfd36807c341da7cd182ce299d1e
+  custom:scripting/monoscript/fileName/UnsafeHashSetExtensions.gen.cs: 08ce05b79144f37e3fa725c81fe15267 -> 
+  custom:scripting/monoscript/fileName/CinemachineTrack.cs: c3c6310aa2417835e97dff8569415340 -> 4b50d47d507c57dc81b82253ec075194
+  custom:scripting/monoscript/fileName/TMP_PackageUtilities.cs: 029634ff6f667ebc9454d70fde4def50 -> 89e6e95503dd36070edf73e7aaab4557
+  custom:scripting/monoscript/fileName/TMP_GlyphPairAdjustmentRecordPropertyDrawer.cs: 6f07d27e8ea91e29d6bd5f39dd8deb23 -> 1a07941369755af9e0a102a45e9058c5
+  custom:scripting/monoscript/fileName/CinemachineOrbitalTransposer.cs: 389181bebe0269426d8397cdde28c04f -> 71c52878ba6d43827473a480056a99da
+  custom:scripting/monoscript/fileName/BurstCompatibleAttribute.cs: 5516bac227e59cc058e743022f755993 -> 
+  custom:scripting/monoscript/fileName/TMP_Dropdown.cs: 39f6048c754db30f2da2ea32254db16b -> ecea2f8babcb40d207d2e73158251f60
+  custom:scripting/monoscript/fileName/TMP_CharacterInfo.cs: d2593478681404ce2cbd40e4e2f8a6d3 -> c840ce0b0aa6c1faafb27b3b884b2328
+  custom:scripting/monoscript/fileName/CinemachineImpulseSource.cs: af10743632b6d5a228e45ad64cc4a7d9 -> ac073b8453e26c5dd422d5f1a90a7ff2
+  custom:scripting/monoscript/fileName/UnsafeAtomicCounter.cs: 7400a6c6976e960578ea1e0663a5a7bc -> 9e2f4dbe854338916842c8ff7fbe03de
+  custom:scripting/monoscript/fileName/FixedStringMethods.cs: b9c5c6bc186a56f95ff8f60db0da9fea -> fcdca1abcdc2fd593bd0d11b27b9b2c5
+  custom:scripting/monoscript/fileName/CinemachineImpulseEnvelopePropertyDrawer.cs: b857c36cc0b5020107db39dba97ec7cb -> 07e00c9c84964a5c7e4f3f19e4263ec1
+  custom:scripting/monoscript/fileName/IRCUnityWebRequest2x.cs: 89e237e5ec42861d9c3fa4160b2fbb11 -> 
+  custom:scripting/monoscript/fileName/MaterialReferenceManager.cs: eaedc912311d98c6b58e199f6250c848 -> c970e86594a0f568cbda548f2d4462c1
+  custom:scripting/monoscript/fileName/CinemachineSameAsFollowTargetEditor.cs: 5d2e40530b08855779d5bce02106e070 -> 6def40fc1e39b3242347b6630fb5127e
+  custom:scripting/monoscript/fileName/UnsafeNotBurstCompatible.cs: 45b7b795a55a7021f271055f3bab9cbb -> 9920b2dcf54d07855dc87b05b9a22299
+  custom:scripting/monoscript/fileName/CinemachineBlendListCameraEditor.cs: 43c61d765bc44381109ad0e8242a6eee -> dbc12d2a9f3e2999a067290c411b2aca
+  custom:scripting/monoscript/fileName/UnityVectorExtensions.cs: ec9e7ff509e0c7c9e11011fe43b8de76 -> 052777772edecdffe26d41a6a989641e
+  custom:scripting/monoscript/fileName/CinemachineImpulseChannels.cs: 438263d824bdd20deb5ceab506c10bfe -> a9a39cc5ecea1f083db0fce154eec19c
+  custom:scripting/monoscript/fileName/LensSettings.cs: dcd3ddd9272de74a1043891cc94b7887 -> 4335e899502c57ee4480b8c9aa915366
+  custom:scripting/monoscript/fileName/GlyphMetricsPropertyDrawer.cs: dd0833870bcea17556e6d67c750c6ffc -> 438b07e6eae795dab04c32f51ac4e752
+  custom:scripting/monoscript/fileName/FixedStringInternalMethods.cs: b9c5c6bc186a56f95ff8f60db0da9fea -> fcdca1abcdc2fd593bd0d11b27b9b2c5
+  custom:scripting/monoscript/fileName/CinemachineImpulseListener.cs: 8a66169c7493c1756da87d49dcf9a9fb -> 6aac146243d38e7a67346170caa40ea1
+  custom:scripting/monoscript/fileName/CorePackageInitializer.cs: 4152b9b907ea05c73764824b78ab425c -> 829d217bce271cb9c1fa63d564b476ec
+  custom:scripting/monoscript/fileName/TMP_DefaultControls.cs: 1798ee96b3c83cf7d4cea690bb04976a -> 2673e29173eb9307fa53ee17c15332ed
+  custom:scripting/monoscript/fileName/TMP_RichTextTagsCommon.cs: d28b21b13d6cea8fa92671f9a2a1f20d -> 5462d55f8a9ad882f9a7f2d708a6978b
+  custom:scripting/monoscript/fileName/CinemachineMenu.cs: 051699d070050cea0306b05aa4fe8b76 -> 7b932811d9fa1e44d0d8b2b9ed75adf3
+  custom:scripting/monoscript/fileName/RuntimeUtility.cs: 839908e1fc90ed4dc872e717fb17f6ee -> 8c92a9f673836e5d2084dbeb0f10159f
+  custom:scripting/monoscript/fileName/IJobParallelForFilter.cs: 7e0619e9f10811c89dd87d4ffb38bb12 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/CinemachineGroupComposer.cs: df3e852e8d242c797bcfb840bbe7e493 -> 173a689a80ef321c302f9c045419668f
+  custom:scripting/monoscript/fileName/NativeText.gen.cs: 7959db2d96f0c7fc8f8a2a669eb85d60 -> 3378437e9418f3373bee971ecd3b9445
+  custom:scripting/monoscript/fileName/ConcurrentMask.cs: c539262411251c63a21ef73803af4584 -> d56a0fef284c9e5059f89974aedb695c
+  custom:scripting/monoscript/fileName/CinemachineShotClipEditor.cs: 951d16c077cd5ee4ca69b856f87c6754 -> 123a48531bf1d1b4f3c8398556caec62
+  custom:scripting/monoscript/fileName/TMPro_MeshUtilities.cs: 183dd3a7e1b70c109767dd5059a390dd -> 2237d160e4d9e81a7d899dc235029cb3
+  custom:scripting/monoscript/fileName/NativeReference.cs: 093e06c3a4dec7ddff8658acaa3e1ec0 -> 707aa775b4e3cc858cb239cb84a29e93
+  custom:scripting/monoscript/fileName/TMP_SpriteAsset.cs: b46309090c7f7da519ff6ef3172bd077 -> 8d06882cb45c7664f8d7c3079ee8757f
+  custom:scripting/monoscript/fileName/CinemachineBlend.cs: 5b4249bd44cbb24dd3ddb0d88ac870fe -> f33659d50c4d86144d649aa7e8196529
+  custom:scripting/monoscript/fileName/NativeNotBurstCompatible.cs: 0a51ebcb2f40a253cc1ed4725493949f -> 8e8b404b4fa69e1b7cea25947e47b9bd
+  custom:scripting/monoscript/fileName/CLILeakDetectionSwitcher.cs: 59a798b3bec6e00e46494db6495850e8 -> 57bd385706945886454b568fb0644a83
+  custom:scripting/monoscript/fileName/clipper.cs: 69fd8c7f85029c69fcc3b0e271cdd9ab -> 2a50e35a835148907b3c1fa8e187ab2b
+  custom:scripting/monoscript/fileName/UnsafeRingQueue.cs: bcfc7f01444a1737307396b9706cf593 -> 0cdf409b5aa8d4c25876d72b5c6a3b60
+  custom:scripting/monoscript/fileName/GaussianFilter.cs: 01fbce80a0fb639fb3967ed656a334ef -> 0a3672ebe80edf7c5daca82445c15683
+  custom:scripting/monoscript/fileName/JwtDecoder.cs: ae8b4168a121fd961006aad52c76cdea -> 8624856333f2c9560ab29166dcda3f38
+  custom:scripting/monoscript/fileName/CinemachineCollisionImpulseSource.cs: dc42aca2bb6dfe0b0699057dceaaa6a0 -> 9aae5e368cb7786be199f98f2122f96d
+  custom:scripting/monoscript/fileName/CinemachineClearShotEditor.cs: 76724342cc1e31aaf9dfe17311f140bb -> ca8875b47e775cd361c78158d7923690
+  custom:scripting/monoscript/fileName/NoiseSettingsPropertyDrawer.cs: 22e457af30748f8b0b7d3f0a29cd17dc -> 8d3f69ba7eeec63914970bd3136b6ace
+  custom:scripting/monoscript/fileName/CinemachineShotEditor.cs: 559c7161ee59c16edaf2a3b8cf0a66eb -> 2ba28b209a4ad7f0a791994d2360a9af
+  custom:scripting/monoscript/fileName/Memory.cs: 3a1fc630a1762ba3d249699dcc2a7943 -> 24fa5e8e684139a9a6b2bb764c620a28
+  custom:scripting/monoscript/fileName/UnsafeList.cs: 638c6fc022ca3aa24cc63b6730a5c455 -> 2cbf932c5895a21a8a81c7efd4eee03c
+  custom:scripting/monoscript/fileName/TMP_EditorPanel.cs: 0bd13db7cdfa07805bfadd631c0ddba8 -> 0631f68be4ca0623bf3e313ec9becbc9
+  custom:scripting/monoscript/fileName/CinemachineHardLockToTargetEditor.cs: 5bc194392ca0db97aa23253092f2b7bc -> c65eaafd47115974a2a9379aae467b0e
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/TMP_BaseShaderGUI.cs: 2c2d4519754bb0c1dd0a107014b7ac8a -> 25118693f24c47c8a4b530b8bff26574
+  custom:scripting/monoscript/fileName/CinemachineMixingCameraEditor.cs: 4df207f0b1a806b70aff7402ef5d2a85 -> 1c122a21d710512fec62cdc7bd351681
+  custom:scripting/monoscript/fileName/CinemachinePostProcessing.cs: c84946f2733400c6840d0486af71b6bc -> bf9b100a1b61fd5383288bc96487c194
+  custom:scripting/monoscript/fileName/CinemachineVirtualCameraBaseEditor.cs: 86218bbf93e910e2c2609c741beaab3f -> 13ee4931cd85df4b22852d0547b5e690
+  custom:scripting/monoscript/fileName/xxHash3.cs: 4193607f6e1edd0570d2359862a27850 -> d876f695d67b3d527466020445c50eb8
+  custom:scripting/monoscript/fileName/Attributes.cs: d94dab8e1cad1d516625e289629ba937 -> 9d3861389974f0823e7e341aa6c23dae
+  custom:scripting/monoscript/fileName/MVRuleSettingsTreeview.cs: 4a40bf409a46059d6b3bf4d3297444d2 -> 2f8b538add4dd20f83b26a15c1c6aa84
+  custom:scripting/monoscript/fileName/Cinemachine3rdPersonFollow.cs: a36d3e925651181b1ef56172e85f63dc -> 4600bac2bdf6b37d80e86f9aa5a413c3
+  custom:scripting/monoscript/fileName/DebugView.cs: a53f96815da50de15010b1c479bc70cf -> 0cdf409b5aa8d4c25876d72b5c6a3b60
+  custom:scripting/monoscript/fileName/NativeHashSet.cs: 2b4455e6e3b12ad5b28b297ffca2f154 -> 5e2ab9cfe81e04de31d18dbafae66b8c
+  custom:scripting/monoscript/fileName/ListExtensions.cs: 53a13f9e80dd394abe55b725d1e20214 -> 0f96dfdcfd19dc46bb3b974629f04481
+  custom:scripting/monoscript/fileName/CinemachineGroupComposerEditor.cs: 1ae6cd112e7df37862f9f8be21cee34b -> 54a07f36704e77a685a5e7e8c8b2c216
+  custom:scripting/monoscript/fileName/TMP_FontFeatureTable.cs: 5ff9812058e8c02a5b04eaa88778f2a5 -> cbd25d300d7ed4d969d60cb9f98f2826
+  custom:scripting/monoscript/fileName/CinemachineConfinerEditor.cs: 5360318a0c4b454243b2548bb756ba0b -> cc6c898a3390647ab91613c8a96de4b4
+  custom:scripting/monoscript/fileName/TMP_SubMeshUI.cs: 7a6337f74438df5e26b302bbbbc41105 -> 748262c65738bc5e1c553ae7a37a0c73
+  custom:scripting/monoscript/fileName/CollectionsAllocationExamples.cs: 72ea6f1c8990c690aca4410bcc8d43b6 -> 
+  custom:scripting/monoscript/fileName/CinemachineBlendDefinitionPropertyDrawer.cs: 2db6c925b0f7bf9bbe2f2ef77e0ea693 -> 7ae344d19d646b738f3c65294becf216
+  custom:scripting/monoscript/fileName/TMPro_ContextMenus.cs: fbbbcbf9b4eb950e9aeda2d70529152c -> 06b3d4b27f337b8d846ca7117f3251e1
+  custom:scripting/monoscript/fileName/CinemachineSmoothPath.cs: fb9c32a249b828b9d41f070a8d6d1df5 -> c28db2688f35d70587b5f943431a010a
+  custom:scripting/monoscript/fileName/CinemachineStateDrivenCamera.cs: d00ad893ea32c312e80eb484068636b6 -> aea2468a7384be4ba6d1b043ccec135d
+  custom:scripting/monoscript/fileName/TMP_InputFieldEditor.cs: 8f2095c37e5fd5ed563d60163f0c2e52 -> a6f05406e9cdb59679382b884c14216a
+  custom:scripting/monoscript/fileName/CinemachineBlenderSettings.cs: 9fbbee68bfb511bb61538f343b773f73 -> 9adcb80668a56be4cd8e31c1d3dc60ae
+  custom:scripting/monoscript/fileName/SignalSourceAsset.cs: 3657b3dd5ce3950eb0fc793ecae3ccaf -> f7ffd463dece56bad278f5a8d3ed7fc6
+  custom:scripting/monoscript/fileName/CinemachineCore.cs: fa1c2e63e4bcc01fba23902f7307c6a9 -> fe6c3be993819098833de1628bfd76b2
+  custom:scripting/monoscript/fileName/CinemachineImpulseChannelPropertyDrawer.cs: 1b9e0a40c96974c01de3b55c2515c01e -> 4b6390a17916751618e2a45cb8d47a80
+  custom:scripting/monoscript/fileName/SerializedPropertyHelper.cs: 163368e9b2fecefbee30536a998ca73e -> b04ac165255e34bc2935ca9bf180e209
+  custom:scripting/monoscript/fileName/CinemachineFramingTransposer.cs: 74cbeb074d2cce337aac4500ab638eef -> 7943c9d436748359882d8f978cf86c91
+  custom:scripting/monoscript/fileName/CinemachineMixer.cs: 0afc346d7115f43910fd39eac731e74f -> 2e36eb9e732dd7c8a32e8f83daebd6f4
+  custom:scripting/monoscript/fileName/CinemachineConfiner.cs: 5d7d8204c08008a8d221cb00f6a3d387 -> 3813336c17662a5cb6b59ce5f1954254
+  custom:scripting/monoscript/fileName/UnsafeScratchAllocator.cs: 01f77d5cff43f9c3b7ff3f46c4f36dee -> 4face5614d3825fa48ae79289f69aa1b
+  custom:scripting/monoscript/fileName/TMPro_Private.cs: 8f6297df34271fdb1ce2d9607ec6261d -> 90647cc400823b41df847a6cbfc29026
+  custom:scripting/monoscript/fileName/CinemachineBrain.cs: 3c3ccd7b2919d48fe5b3e3373123f497 -> 365b4e0b6319f064062e97b8f8e32c8e
+  custom:scripting/monoscript/fileName/CinemachineImpulseDefinitionPropertyDrawer.cs: b65de63ec0c7e7b9dc4c23fb5964650e -> 1b2fc77b0a80a7e0e9045e0d44fb761c
+  custom:scripting/monoscript/fileName/BurstCompatibilityTests.cs: 7d7c24becd314d1054104dfc27a7e1e1 -> 
+  custom:scripting/monoscript/fileName/CinemachineColliderPrefs.cs: 41b5347be838bb3fbbf0ec9c6f6114ac -> 47106451d4685409820905badf49b71f
+  custom:scripting/monoscript/fileName/CinemachineFollowZoom.cs: d82e259d89d04b0b30df4cff38b7fd58 -> eb74e2e98d3dc4647324e113f34710ca
+  custom:scripting/monoscript/fileName/CinemachineDebug.cs: 93b6d33b9f9a92ecb7042d177bdfdd16 -> 3077ed3b64725184c652d4c07ac732fd
+  custom:scripting/monoscript/fileName/BitField.cs: b82f9795c26d634f972340c254bcbc2b -> 435cec31f980ea5ce1d1e89b13684a57
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/TMP_UpdateManager.cs: 2b12c9b6d4082e0390a306eceed60fc6 -> fa7e71df671c5b3088b39753e4bbc70d
+  custom:scripting/monoscript/fileName/NativeQueue.cs: 04ccdb70e3fe61b0adb670089775b1a1 -> 81dfa04144b51b77899677497858a357
+  custom:scripting/monoscript/fileName/TMP_EditorUtility.cs: f68b71b7543cddf9e4cdf261d5f519e5 -> b242106620cbbc38f0411146a086b885
+  custom:scripting/monoscript/fileName/CinemachineCameraOffset.cs: 59098f3757a25e43d2f1a930c11a082c -> a6887f67d3eb83cc6393b822d4e65121
+  custom:scripting/monoscript/fileName/ICinemachineCamera.cs: 44ded1ac73ee80c3960abe2c17864158 -> 2faad4f04eaf5d98c2870adbfb06184e
+  custom:scripting/monoscript/fileName/NativeArrayExtensions.cs: fe9f7490969f9aaf1b5c58af97269bef -> 480ae80e25a67512135651e8db7b75bc
+  custom:scripting/monoscript/fileName/TMP_ColorGradient.cs: 3baf9c6d3c50fc594e68e0c756eb8779 -> 8d91c7c4749088eca69648d37a965bf8
+  custom:scripting/monoscript/fileName/CinemachineShotPlayable.cs: 079b345acc80e836f95eb2d3de59fbfa -> e346ad1ecb4af45da55274cb9abd9ec0
+  custom:scripting/monoscript/fileName/TMP_SpriteCharacterPropertyDrawer.cs: 63186d320ccdf4dfa06fbce4e897d3f3 -> 14565b4e4f9266584dc3194fd967d252
+  custom:scripting/monoscript/fileName/CinemachineImpulseSourceEditor.cs: 6cf406395559911488da001d921f23e1 -> 0ef7804c69c18838aa65e6d5bae5b055
+  custom:scripting/monoscript/fileName/CinemachineExternalCameraEditor.cs: 52d18dfa41fbd1d826ae77d7ea17525b -> d74df442250b898c9b40669a19100e9d
+  custom:scripting/monoscript/fileName/CinemachineTransposer.cs: 5a3d2ba1aecc979170dc707a8aae9ab1 -> aa226dd144b3a977b86ea888b85df5fa
+  custom:scripting/monoscript/fileName/TMP_CharacterPropertyDrawer.cs: 0fc1d1caf2f580e74b2224e6797250e4 -> ddc6f8909fdac3de9238e9b86e411c3e
+  custom:scripting/monoscript/fileName/TMP_FontAsset_CreationMenu.cs: 18345b423cea91a35f20f73f48aee7e1 -> 1c5caeb31a0df734411a201aca87cb03
+  custom:scripting/monoscript/fileName/ReflectionHelpers.cs: b4b7af36886f71a46360101a52b4d04b -> 60a5d38af3e775d0a421a7ff630d61cc
+  custom:scripting/monoscript/fileName/TMP_FontAssetUtilities.cs: d84a52975d941e769af4ae15b3aaa211 -> 5b7a9bc9c5c56e3cb5ccc808a2bdd9e4
+  custom:scripting/monoscript/fileName/CinemachineVirtualCamera.cs: 2ed6db78ec50569a416c2e4511579baf -> f16f2dc5bc1261579875c19605c45301
+  custom:scripting/monoscript/fileName/CinemachineOrbitalTransposerEditor.cs: 26a69f59989035c1e701b9b551574738 -> 5ea2e4bec7ee6c24917bd86647f4bffa
+  custom:scripting/monoscript/fileName/CinemachineConfiner2DEditor.cs: 856c1fdb4ba02ee04cb3e75f4b0c6345 -> 3f4b3d9b17ff5cd560135aa24f822994
+  custom:scripting/monoscript/fileName/GroupWeightManipulator.cs: 45a9ba6a9d5d38453891d711a554cefd -> 588749cf3436a8199e762a8e09bc8de7
+  custom:scripting/monoscript/fileName/AxisStatePropertyDrawer.cs: 9bcc633ffd41201a6746f8ce075fe0b4 -> 2d807695a513641e771c78e6c342ff04
+  custom:scripting/monoscript/fileName/RemoteConfigEnvConf.cs: 2dba70f2ac9744c1fd35bb20c082821c -> 5f88fe7497009e8472af7911f9f3cf51
+  custom:scripting/monoscript/fileName/CinemachinePropertyAttribute.cs: 509980e813fae8937907e1b586077df2 -> e8158d9725ac3a9129a08e46a4ff7519
+  custom:scripting/monoscript/fileName/NativeSort.cs: 965ff403b3acd574b0cc2a405a3492e0 -> 764ab68303923f171c9d865bbecae455
+  custom:scripting/monoscript/fileName/RegisterGenericJobTypeAttribute.cs: 321333f104b241bc68fbefda2607a062 -> 1d60c181f5a8e659e1317e2ca71a691e
+  custom:scripting/monoscript/fileName/CinemachineNoiseSettingsEditor.cs: 8d65656f4d635bcc78b17b0295ca0fc7 -> 9056e69d9c759ba2504535054fff31c9
+  custom:scripting/monoscript/fileName/TMP_TextInfo.cs: d86eebf32f36b8febee06365f862b403 -> 9e4eb698c4c168829682cbe659418e8f
+  custom:scripting/monoscript/fileName/TextContainer.cs: 4e3c016869303ab3136387f7870e5adb -> 245c032a15fbc12850861c707e37b027
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:scripting/monoscript/fileName/CinemachineBlenderSettingsEditor.cs: 4a26fca9fe049f0bb477d6a2f8d1f2b6 -> c57aa7de12bc3e7367ca091f4902c67b
+  custom:scripting/monoscript/fileName/CinemachineImpulseDefinition.cs: 9ffc27f390d9a3e29b1458f9477b75fc -> 3d434086a2bdaf715abf85e79e9f14b4
+  custom:scripting/monoscript/fileName/Cinemachine3rdPersonFollowEditor.cs: 7aec132daded5003775d7a80d1f52772 -> f79aa162534f81c680877e6274b5d6ec
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/TMP_FontAsset.cs: 52c81438acb65fa444fe26964ef0345b -> 6c1db4680a96f294cf0af87a0b8099aa
+  custom:scripting/monoscript/fileName/RemoteConfigWindowController.cs: 79ccc15b72a6b8fa8835240d8fadae5a -> 796f63f8ea5c895220ae5b74338be1ff
+  custom:scripting/monoscript/fileName/TMP_SubMeshUI_Editor.cs: 765ce633a5bfada7c5afc51aed8631bb -> 119a633ce37cc27ac209988b5de61d96
+  custom:scripting/monoscript/fileName/FixedStringParseMethods.cs: b9c5c6bc186a56f95ff8f60db0da9fea -> fcdca1abcdc2fd593bd0d11b27b9b2c5
+  custom:scripting/monoscript/fileName/WaveformWindow.cs: 0128ed738d8efff6299a66efc1dbfd03 -> 01bbc4fc017d41a2bab7fb57c988e8da
+  custom:scripting/monoscript/fileName/CinemachinePipeline.cs: 2ef106f2a17e0152a8f9af931f9de2d3 -> 6ca7a5979a0a73ea1d450a8fc9b437ef
+  custom:scripting/monoscript/fileName/SettingsTreeview.cs: 4cdf231fe03259227115181151373cde -> b019a2985c63d2691a47d2aecbfe59db
+  custom:scripting/monoscript/fileName/TMP_SettingsEditor.cs: aa2b5eadaadb4b54b49cd650a2246119 -> 56bf06371df7e13c5b8cc88becb89a4d
+  custom:scripting/monoscript/fileName/CinemachineFramingTransposerEditor.cs: 50bd96c931073c77fe68ab62e6fe00d2 -> 1653e1c00b2ca68b1d40f01e5bfb8445
+  custom:scripting/monoscript/fileName/FastAction.cs: 94d6ead813247e604740a116c5fa92db -> dfbe75b66b645b53472915ad2590af11
+  custom:scripting/monoscript/fileName/TMPro_TextContainerEditor.cs: a97aca5bcf1b2486a0f60b2c7a935c42 -> b2fbc5db24221a870c4de162a712cbfe
+  custom:scripting/monoscript/fileName/CinemachineStateDrivenCameraEditor.cs: ac7855d4ccc5ba3ff5c66a6727b85d87 -> 77d9f0a97385f936d9b4ffaa686bce39
+  custom:scripting/monoscript/fileName/TMP_TextAlignmentDrawer.cs: ad15f73780bb9949f148eddcc3c3fbf7 -> 011b7908ef5eb5e9dea532c77e85c538
+  custom:scripting/monoscript/fileName/TMPro_CreateObjectMenu.cs: e9e63aff764c7e7fd08e66f87103df4d -> ddee59388caa7a56693342f3a805d427
+  custom:scripting/monoscript/fileName/CinemachinePathEditor.cs: c2d927b4967acde779b6ac5ccd8cd611 -> ce10985fbf0e018e2dea63fedae131ba
+  custom:scripting/monoscript/fileName/CinemachineCollisionImpulseSourceEditor.cs: 6ef49b2082f0559bee1f8f3634f11019 -> 29f9a522ec6b23375849ba08fd597c8d
+  custom:scripting/monoscript/fileName/Utilities.cs: 3c22900c7a735e4ccca77430f8068086 -> 86570ab68bbdce8c51b7af7def8aaa89
+  custom:scripting/monoscript/fileName/CinemachineTargetGroup.cs: c4e70fa7c0948a01b5353e9b486f9563 -> 10a09aa736b3a25da6dd9fc3c4dd9d36
+  custom:scripting/monoscript/fileName/AllocatorManager.cs: 1b255756f8afbe39ff0f04443f4ef5d6 -> fa2277be89f5c001f873c15c6093b99f
+  custom:scripting/monoscript/fileName/EmbeddedAssetHelpers.cs: 8f6297df34271fdb1ce2d9607ec6261d -> 90647cc400823b41df847a6cbfc29026
+  custom:scripting/monoscript/fileName/TMP_SpriteGlyph.cs: 52a9bbe662618c4a5697bdefcba63d59 -> cb4cdca5a4c6415e4f27ee5280164c41
+  custom:scripting/monoscript/fileName/FixedStringAppendMethods.cs: b9c5c6bc186a56f95ff8f60db0da9fea -> fcdca1abcdc2fd593bd0d11b27b9b2c5
+  custom:scripting/monoscript/fileName/CinemachineBlendListCamera.cs: c70259e5253b4b48cee7e0ccd7d6f66d -> 66104ac24fef171d9f5d5b93a8cb2f83
+  custom:scripting/monoscript/fileName/TMP_UIStyleManager.cs: f54fffa86b286da3a3329c601ca8d03e -> 66d96f3fa9ea14a5a6ed3f92d3bbe0f1
+  custom:scripting/monoscript/fileName/CinemachineBasicMultiChannelPerlin.cs: 2198c845c20fdaffd2db545d99c718fc -> bd5416e75860cd63657371207eb79058
+  custom:scripting/monoscript/fileName/TMPro_UGUI_Private.cs: 8f6297df34271fdb1ce2d9607ec6261d -> 90647cc400823b41df847a6cbfc29026
+  custom:scripting/monoscript/fileName/TMP_Settings.cs: 957f1889ca66b295dca8f725cc81558d -> 68d1204aae2aa6d0a54c151b7af443e7
+  custom:scripting/monoscript/fileName/UnsafeHashSet.cs: 2b4455e6e3b12ad5b28b297ffca2f154 -> 5e2ab9cfe81e04de31d18dbafae66b8c
+  custom:scripting/monoscript/fileName/NativeStream.cs: 06272c03bf2d87c3c499ea2670889e0a -> 4cf18747cbaec64bafc4dffb1a0c8454
+  custom:scripting/monoscript/fileName/TMP_ResourcesManager.cs: 0d972ba50c38c5b25fe15fb0c61ada2b -> 64252a073d41e9c6f4e95b5f68ac966c
+  custom:scripting/monoscript/fileName/CinemachineImpulseListenerEditor.cs: 231fc85f4e8b9adf56f6a0a94d10f19c -> d5d28e418f87c111bce1c1b98f1f70ba
+  custom:scripting/monoscript/fileName/CinemachineDollyCart.cs: 138a25c423c8f1e2006ccab6b319a3c8 -> bbe9d07f4a2f7ee5ab002e66cb05f922
+  custom:scripting/monoscript/fileName/CinemachinePixelPerfect.cs: 58398a367fe1d542e185d5813ccd7a25 -> b7f26206e386f5a110efe79462337683
+  custom:scripting/monoscript/fileName/RemoteConfigWindow.cs: fd8bc127d8c37b9c73bf9524a94ce4fc -> 082ac715e4cd5e579706b107f45dfee8
+  custom:scripting/monoscript/fileName/TMP_InputField.cs: 8fed3480abb5543168012b207b39349b -> f7712ab842984f124274656d749eca3d
+  custom:scripting/monoscript/fileName/TMP_StyleSheet.cs: b6deb5f646a1f5ad7b696d32618ba797 -> de73099b6bd4b9281c92feedf1315618
+  custom:scripting/monoscript/fileName/CinemachineSmoothPathEditor.cs: a02cf8ac7b674bd751641e5d2b5e51ed -> 7555bcba4eb760e012dd21c6730ae562
+  custom:scripting/monoscript/fileName/ScriptableObjectUtility.cs: 69c226f15c6a6e28e1b2f8cb7e22a247 -> c529d074f6f57a07e3f410d488963bbc
+  custom:scripting/monoscript/fileName/TMP_TextUtilities.cs: f68f97869f24792bf3a3694d69de955c -> aab2855e68416a0a1f2f8904059662aa
+  custom:scripting/monoscript/fileName/CinemachinePathBase.cs: f0738400106d411c4912e8242ffbaadd -> debb99764287c54cae06313e2d6a1fe1
+  custom:scripting/monoscript/fileName/IRCUnityWebRequest.cs: 725ccf373db57eea243b8fc5abc5a7b4 -> 8fe264397c1e2e029b6bf48f79db6fb4
+  custom:scripting/monoscript/fileName/RCUnityWebRequest2x.cs: 3e719130be1460d38825a49a36924371 -> 
+  custom:scripting/monoscript/fileName/TMP_ListPool.cs: 8f6297df34271fdb1ce2d9607ec6261d -> 90647cc400823b41df847a6cbfc29026
+  custom:scripting/monoscript/fileName/SplineHelpers.cs: f3f4424a3e5861d2b1e1d695a7fa927b -> 9e5bf4293b3828088291b7871e233a27
+  custom:scripting/monoscript/fileName/ITextPreProcessor.cs: 28ed6b2ca482997555fb0291bd20c40d -> a7aa94de5d5bfce2bdd74516315faaf2
+  custom:scripting/monoscript/fileName/SettingsJsonModal.cs: 51c4f30891542e225a29597ffcab42b8 -> 87eed6e9ce188df10620801c9f9619a8
+  custom:scripting/monoscript/fileName/CinemachineShot.cs: 305aff47a96c3952ac13200b157f7bb1 -> 3d4d9d05534db20e82d871d98ea52716
+  custom:scripting/monoscript/fileName/CinemachineBasicMultiChannelPerlinEditor.cs: 0916a2490636954c6c7229f145a5dc9d -> d6749cd6c482efa27bdd41f60394f1b9
+  custom:scripting/monoscript/fileName/TMPro_EditorShaderUtilities.cs: 1203fb3feabf58cb81d888055364f838 -> f4cbef9348a73d49f1efb8d10ff07bf0
+  custom:scripting/monoscript/fileName/CinemachineHardLockToTarget.cs: e8a0f306f36b35145d465cb9976ed69b -> d349308c5b4f600a345055c394206f52
+  custom:scripting/monoscript/fileName/CinemachineConfiner2D.cs: e0dcff4c313417927236253c2483d2a5 -> beb10be0db8ff9d3a94bd0a150963b9b
+  custom:scripting/monoscript/fileName/Cinemachine3rdPersonAim.cs: 01d570c8beffac6b3d452c1805093a73 -> 4bd230d915f070bb3cae23bef6f7ab70
+  custom:scripting/monoscript/fileName/IJobParallelForDefer.cs: 910e21e7ac5636522438bc3b573a2883 -> e07ef36294e1a6b9a754482355e9fda6
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:scripting/monoscript/fileName/TMPro_ExtensionMethods.cs: 3d34decc871f763d4c9c61f1fe0f3275 -> 479bffcc157b89693ffc4c2ef2374861
+  custom:scripting/monoscript/fileName/CinemachineFreeLook.cs: 828ff5140b014c10915713a54e8267a9 -> bebc32b18bc4beddc113bad68624e557
+  custom:scripting/monoscript/fileName/IJobParallelForBatch.cs: 3c96696db343198c22216768d884528f -> adecca892a99db28fc24adbe7bd8588e
+  custom:scripting/monoscript/fileName/ConfigManagerImpl.cs: 4a1d74c6df95b656e9d71c67c26a07b2 -> 2505ef83f71192fe25c42e72f79526d4
+  custom:scripting/monoscript/fileName/CinemachineVirtualCameraBase.cs: f2f3ef632e64055853fce1c5d2d8fca7 -> c7e60cccdcb14ee2a33da9fd46c1c54f
+  custom:scripting/monoscript/fileName/CinemachineFixedSignal.cs: 00813ccc47655613607bb18c68b77bc4 -> aedcdca7a861da6e456e0ae105b24c41
+  custom:scripting/monoscript/fileName/CinemachineTouchInputMapper.cs: 79b55286e054d01fcb4649c36a1a4f19 -> b9698729a07a7d31c864247e0582b566
+  custom:scripting/monoscript/fileName/TMP_Compatibility.cs: d5209fd9c6a9aef9cccdbfb4f06bd571 -> 3ef1f12d3c823dd740c7c596ab076c61
+  custom:scripting/monoscript/fileName/TMP_SpriteAssetImportFormats.cs: 3cc56654a2015a96112916e9636fbe6f -> 920e3140228fbd530b0080254da22d88
+  custom:scripting/monoscript/fileName/UnsafeHashMap.cs: 3c819f0279d2392c0b26834aa25eb5b7 -> 94f8e54b68df661c8d45e8cea71cf2f5
+  custom:scripting/monoscript/fileName/CinemachinePOV.cs: c52db969b6fa312bcd6a4d5ad0c9e516 -> e4df06d1994174afa286b103eb06ee7f
+  custom:scripting/monoscript/fileName/TMP_StyleAssetMenu.cs: d695e815510410a6715fa00ae5e73f57 -> 60e7743122a0686d1131101c521adac6
+  custom:scripting/monoscript/fileName/TMP_MaterialManager.cs: 1382feee688fee3eebaa5e9d7b47e98d -> 441d72ec3c04a8da6a351f60fff95465
+  custom:scripting/monoscript/fileName/RuntimeConfig2x.cs: 96cb43699b63b8af5a7f67fb200bd145 -> 
+  custom:scripting/monoscript/fileName/CinemachineFreeLookEditor.cs: c1013da55dde8ddb5e82b523b0333742 -> 9641291977c1891a004ac4c4c259e1c8
+  custom:scripting/monoscript/fileName/CinemachineTransposerEditor.cs: b37b2ce1cde5ee4ed306a8e67a5aed42 -> 85841a774ddea4fb7232a7a585f716b4
+  custom:scripting/monoscript/fileName/NoiseSettings.cs: 09b7d23fcd1364926f663b566cc36784 -> 443d576e0c72ab62870476103c9384ec
+  custom:scripting/monoscript/fileName/RemoteConfigUtilities.cs: 38c33bcaa8a7d41c0f66f035d77ec36a -> d9b2353ee0920473704cff9561525039
+  custom:scripting/monoscript/fileName/CinemachineSceneTools.cs: aee779b9abcbf7ca3396c1b39b838f48 -> d63880a6073ab3335301b115db235b5b
+  custom:scripting/monoscript/fileName/CinemachineTriggerActionEditor.cs: 81683b7d73194e0f8797b86d3fe17912 -> 2309a2ec6192ace4cae8bab5a535978e
+  custom:scripting/monoscript/fileName/VcamTargetPropertyDrawer.cs: 98f3a6cdef226c4de85c17d87b55be53 -> 9208050b1312b118a226fef2d63e8fa1
+  custom:scripting/monoscript/fileName/FixedStringUtils.cs: 615b4692935c15496ce08484481db0bb -> 114eb023c5774372990da700f8c2456f
+  custom:scripting/monoscript/fileName/TMP_ResourcesLoader.cs: f71e35ced40721d6906e578fb6e7f0e9 -> 6f1f07799f3cfe795f955033c27f98ed
+  custom:scripting/monoscript/fileName/CinemachineEditorAnalytics.cs: a5d8fdc75d5fede5d1a6e6635e5a7443 -> de76cc292d7ecedcf47af6616498c9f9
+  custom:scripting/monoscript/fileName/NativeBitArray.cs: 3c2944e878a1117db969fcced8ed2c57 -> 49f79507956a183761c1507d27f1d72b
+  custom:scripting/monoscript/fileName/CinemachineBrainEditor.cs: 84ed7d973a93d9b863601a64079a07ec -> 49621d8b7679c0b5d128fef53d55becd
+  custom:scripting/monoscript/fileName/NativeMultiHashMap.cs: 232e6e149bb81d9963c795b02084c8f4 -> 
+  custom:scripting/monoscript/fileName/xxHash3.StreamingState.cs: c37160ac47c119b599190b6c7a43dd9e -> 73af6f62e3ccfaecb2c43562b8c60a23
+  custom:scripting/monoscript/fileName/TMP_FontFeaturesCommon.cs: 89ff6ee76bb6f84827488d597e70ea5a -> 7d1db71d73353e7dd97f094c509882fa
+  custom:scripting/monoscript/fileName/TMP_LineInfo.cs: 22ff02e7762110d3cc1f4bc096ea014d -> bb529d63c9723788bd7143f27cd69eaf
+  custom:scripting/monoscript/fileName/CollectionsExamples.cs: 5c3c7e50116fce8e4387bbf68d9603e4 -> 
+  custom:scripting/monoscript/fileName/CameraState.cs: ceb8530302a185d139c83180bf6a7aa5 -> 3ec03858e4f5bd5578e14e2ade4f1591
+  custom:scripting/monoscript/fileName/CinemachineToolbarOverlay.cs: 2bcae21fca36b53e9518fddd883f5fa2 -> 09bda1968922559d07abc50ff10df86e
+  custom:scripting/monoscript/fileName/TMP_SpriteAssetImporter.cs: 06875a6ac5102e58811218e1c5dd33ca -> 675c97d72afe988872a20f51812f7cdf
+  custom:scripting/monoscript/fileName/CinemachineIndependentImpulseListener.cs: 3a0e52b7f2730deb79d2d3459e85b2fc -> 91ae8748b9c36955c333e57505ff90fb
+  custom:scripting/monoscript/fileName/TMP_SpriteAssetEditor.cs: 7dcaf47692799a91aa4e5cd439bc54d0 -> 8a42af05e85c0eed4128787976375b45
+  custom:scripting/monoscript/fileName/CinemachineSameAsFollowTarget.cs: 4fd1107b6ff55fa2917827cb67f8a933 -> bcfa2d394e1e5460b4ef3dc039214a16
+  custom:scripting/monoscript/fileName/UpdateTracker.cs: baa9ffb45c1a83a6ef9b73a911f20fec -> 3dac8a24a32a32e4bbfeb38ed26ef250
+  custom:scripting/monoscript/fileName/TMP_Character.cs: 2bff3626198e4d2228876f1e687078e0 -> 015720458ea991fbf07357eae19532db
+  custom:scripting/monoscript/fileName/CinemachineComposerEditor.cs: 709f6837c37eaa724cb70c0261ec02d8 -> dda533b9c6cb2b366292f584704bd904
+  custom:scripting/monoscript/fileName/TMP_SubMesh.cs: ff760a824537d48706351b95c8d4be21 -> 9fd75270af40187985e5c14cc85ebe42
+  custom:scripting/monoscript/fileName/UnsafeText.cs: 5615c516f201aea71ee957e425a17288 -> 252c4eef6eb1893b89e3a585d7b05a84
+  custom:scripting/monoscript/fileName/TMP_CoroutineTween.cs: d4d869f6662b40274a62453f83c8a425 -> 76849b8d6d4ce499ad8ffee762e4a4af
+  custom:scripting/monoscript/fileName/TMP_SpriteAnimator.cs: 126f1482d1430ed8648c2a6d8d693c6d -> bf3a797c3a059d3698e93e0031d7f11c
+  custom:scripting/monoscript/fileName/TMP_TextProcessingStack.cs: ef8795fce16f80562f220a2f8bcb6bd2 -> 6146dd1b7f9b90aa342ef9794e387c23
+  custom:scripting/monoscript/fileName/SaveDuringPlay.cs: bb4322d2fd99c5f6423bd9631aa73a81 -> de39f1962b337699845d3d8a2e8f5bde
+  custom:scripting/monoscript/fileName/TMP_InputValidator.cs: e99335724872b7fcd0e5352c682debe0 -> 5e0d679d98dae60baa87977011e0ed51
+  custom:scripting/monoscript/fileName/CollectionHelper.cs: 43c7963f3cd4f164a58eb56b8095def9 -> 1ca9b633c4b3ee37c8eb00c963039ea7
+  custom:scripting/monoscript/fileName/TMP_SelectionCaret.cs: ed141b1915a10b9c7ff9136666b54ee9 -> d2a06fefe973175bffa10d62f788c481
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.890 seconds
+Refreshing native plugins compatible for Editor in 10.91 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  4.977 seconds
+Domain Reload Profiling: 5858ms
+	BeginReloadAssembly (314ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (142ms)
+	RebuildCommonClasses (49ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (71ms)
+	LoadAllAssembliesAndSetupDomain (430ms)
+		LoadAssemblies (522ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (32ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (24ms)
+	FinalizeReload (4977ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (3979ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (55ms)
+			SetLoadedEditorAssemblies (6ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (164ms)
+			ProcessInitializeOnLoadAttributes (3615ms)
+			ProcessInitializeOnLoadMethodAttributes (119ms)
+			AfterProcessingInitializeOnLoad (20ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+Refreshing native plugins compatible for Editor in 10.84 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6280 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 79 unused Assets / (1.1 MB). Loaded Objects now: 6978.
+Memory consumption went from 233.8 MB to 232.6 MB.
+Total: 33.173900 ms (FindLiveObjects: 0.469400 ms CreateObjectMapping: 0.229700 ms MarkObjects: 32.191700 ms  DeleteObjects: 0.282000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/TMP_SDFShaderGUI.cs: 082588c068c6e819b94cdf417f8b7551 -> 1460619486eb6e8da302e26af5538aaa
+  custom:scripting/monoscript/fileName/RCUnityWebRequest.cs: ef56f67a7f8f66453d9e05232622ada7 -> 5f671c22651c9ebf0a4535a6a742dfdd
+  custom:scripting/monoscript/fileName/Deprecated.cs: b9d2f8144598e6824885e8739759b01e -> c490571978d72951839b06a2825608d2
+  custom:scripting/monoscript/fileName/FixedList.gen.cs: b9f85e7078e3f4ea022877423329d870 -> 05fbbc7f550e957bc7aed7ca5a31bd41
+  custom:scripting/monoscript/fileName/CinemachineTrackedDollyEditor.cs: e53f4b0cacad39b5b85b36905ed73a26 -> b4d6784c58752cea58aafd9a76ca4459
+  custom:scripting/monoscript/fileName/CinemachineImpulseManager.cs: dbc3c9fc24967b80110e2126e8aaf40a -> c34be3577a810e26fd0110c580799b88
+  custom:scripting/monoscript/fileName/TMPro_FontAssetCreatorWindow.cs: 9d68c1aab1c646cdf3e70083dc01df96 -> 0d0900483ed9b57d4ccc2ff58d1220b3
+  custom:scripting/monoscript/fileName/TMP_EditorResourceManager.cs: 30391129c5b96f298e44c099ae0fab57 -> f56b80268a934198a76acc6f4cef503c
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/TMP_TextParsingUtilities.cs: 47331f425db7fa5c443a11c866530503 -> 8b3fe20641ae0dd97405135955c706a3
+  custom:scripting/monoscript/fileName/AxisState.cs: 1d87cc3570fa9a500821a1a915203880 -> 1a494a66d8b9a58f4a6873f89bf5b094
+  custom:scripting/monoscript/fileName/TMP_EditorCoroutine.cs: 01d80099920d11c11bfa87417e26164b -> 04cbf5ce6e541d98265aa7668ef82832
+  custom:scripting/monoscript/fileName/CinemachineClearShot.cs: 107b7ec90d4ff2b5e315168ba77df683 -> 1da15f5c7903497ce3ae982ee4ee4779
+  custom:scripting/monoscript/fileName/TMP_StyleSheetEditor.cs: b6503d890746d6150e0f267f43ce60e4 -> 38b210a450ac855df2d81ab0242c2feb
+  custom:scripting/monoscript/fileName/CinemachinePOVEditor.cs: 3d2bfb534d9d0a1691ac3dac93b827a9 -> 71db5a9242a182995b4ca15db516f628
+  custom:scripting/monoscript/fileName/TMP_MeshInfo.cs: 375ed9fada55d6bf39f9352ef1dd520b -> 89833651f7d905e51b340ec2afe531d1
+  custom:scripting/monoscript/fileName/TMP_SpriteCharacter.cs: fe232bb280dddc880a01918d3502c13a -> 81dc73ff0878d6528202f8be44877b26
+  custom:scripting/monoscript/fileName/SegmentationRulesTreeview.cs: 4e21ca8416ba5c901bce4edf619318df -> 0767e286e098f9d8bef70902d1af2c0f
+  custom:scripting/monoscript/fileName/RemoteConfigService.cs: d575e79e05dcbe7cdfc530f42157788d -> bfc411cc13b9a513afc6e83dc601d989
+  custom:scripting/monoscript/fileName/TMP_ShaderUtilities.cs: 75ec062faab558cb3190dcd3e4820547 -> 84a261643983e306d02445da38ed662f
+  custom:scripting/monoscript/fileName/CinemachineLensPresets.cs: 7334daad90131e21a74093a21a875201 -> 014747fb0ab87178c677520d0bf20bf7
+  custom:scripting/monoscript/fileName/TMP_SpriteGlyphPropertyDrawer.cs: 4a6f1515709a40d92e24c84ec92fc53a -> 1447c7afab82cf56bc359d5c7fba114e
+  custom:scripting/monoscript/fileName/TMP_SpriteAssetMenu.cs: a42d2dc20ed9558b36972dc6e6d71655 -> 05ea7b84320d1b77a6d1ae49c41ee9cc
+  custom:scripting/monoscript/fileName/UnsafeUtilityEx.cs: 633ec2e4629f58c9ca328fcd154061ec -> 51fdf80e1733ea661389b0969168e4eb
+  custom:scripting/monoscript/fileName/TMP_PreBuildProcessor.cs: d965cd4513e689cb01c0481012a89dee -> 790c12dcd4980aa978fd28fb6f89fb37
+  custom:scripting/monoscript/fileName/TMP_SerializedPropertyHolder.cs: 9860586610cb3d91ae7f4ce33ab22d0b -> 99e5dbc1fa1abe750acc8166e4243be8
+  custom:scripting/monoscript/fileName/CinemachineTagFieldPropertyDrawer.cs: f4c4b32b5f7a3a4e01e5b890e925af6c -> e78491a12decd558a49d01cc583bfcfb
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:scripting/monoscript/fileName/CinemachineVolumeSettings.cs: 80822fe0c14d5e03cdeb55c653c2ad70 -> 48d7865a989ec634d93ae8dcee459cea
+  custom:scripting/monoscript/fileName/DropdownOptionListDrawer.cs: 342ee3f9c806e60b189c02609042c492 -> 4362475bc384312c771d88865ee2f40d
+  custom:scripting/monoscript/fileName/CinemachineTargetGroupEditor.cs: 16ac421e65d14b991cb12c3a8f8b73ec -> f70ac85df8c1c9bd0b83a35534bafd1f
+  custom:scripting/monoscript/fileName/CinemachineRecomposer.cs: 12f0a6366582437f80c555a49725188b -> 07354cca81f7d0775b027b5906330569
+  custom:scripting/monoscript/fileName/TargetPositionCache.cs: 772f1e6c0fee54753934412463705f5b -> 49ce97e6930a536b43825141e0c2d3a4
+  custom:scripting/monoscript/fileName/TMP_FontAssetEditor.cs: ff94a59ea0ba0aa81aa8a7f307f2efd3 -> e359b61135381f6b1d7b8c7e97a930f3
+  custom:scripting/monoscript/fileName/UTF8ArrayUnsafeUtility.cs: f1993200a43e577e4281cd674f04c6d8 -> 98dd75294b6f494d8648143302130ee6
+  custom:scripting/monoscript/fileName/CinemachineExternalCamera.cs: 94c3c599e3191b058f39d9283e3aedab -> d76122377115c288d881064c3f07a3f1
+  custom:scripting/monoscript/fileName/TMP_ScrollbarEventHandler.cs: 55de10d862075cd935d8381c309f39e0 -> c015e39b5a3f1a14518ce039f30e10af
+  custom:scripting/monoscript/fileName/TMP_ObjectPool.cs: 8f6297df34271fdb1ce2d9607ec6261d -> 90647cc400823b41df847a6cbfc29026
+  custom:scripting/monoscript/fileName/EarlyInitHelpers.cs: 5479ee2d479a7722846aeb047cc32acf -> 83f2ef803587502aa43a764bfaff3766
+  custom:scripting/monoscript/fileName/Predictor.cs: 58d3af252229e3b6708eaf9e2a3e764c -> d51584936cb5b31b30ee7b444e03385b
+  custom:scripting/monoscript/fileName/FixedStringFormat.gen.cs: 38890b5823888ffb1d702d73fcfe2e56 -> bee80dd64417b695a3ab4edd137d6566
+  custom:scripting/monoscript/fileName/CinemachineScreenComposerGuides.cs: 653ecfc7d7a3eff875a01c54e735bd50 -> cdc7ea02ccc4c8d1561d98d16760d1ca
+  custom:scripting/monoscript/fileName/TMP_FontAssetCommon.cs: 4a5ab4d4426385ab38edd57c118cd485 -> 2b5f11ccf8aacaf9b5ea6564bf2b0d57
+  custom:scripting/monoscript/fileName/CinemachineVirtualCameraEditor.cs: 9e93b0f62258a3962a5bb3bf097cc23a -> 2e051d0c474634e907fe4123d6e2656e
+  custom:scripting/monoscript/fileName/Unicode.cs: 66944459fa841cd5f2e5e5b715987ea9 -> f97bf556b0d99c0ed9d5ebf00a173353
+  custom:scripting/monoscript/fileName/CinemachineSettings.cs: 87e6115c6137f58f83e1adc912dc1ee8 -> 197f6d5ad32e253546b5afa056a5bba4
+  custom:scripting/monoscript/fileName/RemoteConfigWebApiClient.cs: 37ec61c543bbd66c84b3cb7a0c93ed44 -> d0e611b495bb91a128460b7606840051
+  custom:scripting/monoscript/fileName/UnsafeAppendBuffer.cs: 5df87a068933b42c11333ea2c09a90a6 -> 5a9572fb3414d7d386993b9deda40896
+  custom:scripting/monoscript/fileName/MVRuleJsonModal.cs: efc2eff0d0fc2d051215736fc0d88cb8 -> 9f02828521ffea8d326aef2fb40c2287
+  custom:scripting/monoscript/fileName/TMP_SubMesh_Editor.cs: 6199a3bf0c204e3bdded9f5f05415a32 -> b381eb4c2ad4ef265088242d67c5b140
+  custom:scripting/monoscript/fileName/TMP_TextElement.cs: fb8354965187a75f506d9a9df85f19dd -> 5dfb95666bd41ecc32948097824aba23
+  custom:scripting/monoscript/fileName/TMP_Text.cs: c453c9b4dcb2bfad1083e3b49dfa3983 -> 5cba61e283281e8dbf7dadaabcd638dc
+  custom:scripting/monoscript/fileName/CinemachineTriggerAction.cs: 8b2d66e0e4182f9ea52217949999c07d -> cab9c5d02c28af05797c2c3743539bdb
+  custom:scripting/monoscript/fileName/InspectorUtility.cs: 06861abfdbc4f5a159f36554e7ae86cf -> e13a8546bf784ce9963c508abb88926b
+  custom:scripting/monoscript/fileName/UnsafeBitArray.cs: 8b1bdaea810722acaa2ff4f2725253fe -> abcfe76ff9b3c6727a0af119db7d6cb2
+  custom:scripting/monoscript/fileName/TMP_PostBuildProcessHandler.cs: 728d00fd9070cbfe6d8df45c08e57305 -> c69b388004562ecb0f789fc3759d9651
+  custom:scripting/monoscript/fileName/RuntimeConfig.cs: 59fffe163ba8c733df72956994dcec01 -> 95f3805efb44fa5002f15d876891196e
+  custom:scripting/monoscript/fileName/NativeHashSetExtensions.gen.cs: 63db070ab3fd6601a2653ee7ef6af335 -> 
+  custom:scripting/monoscript/fileName/TMP_DropdownEditor.cs: 6df138b51e278f9c93bd4976e96aa952 -> 2d907ee76ef876797c15186180266847
+  custom:scripting/monoscript/fileName/NativeHashMapExtensions.cs: a0b4921e21fd612511729421feb17818 -> 
+  custom:scripting/monoscript/fileName/EmbeddedAssetPropertyDrawer.cs: 53dd62a0475f96065cd20c2b0ce21f71 -> fd7ebc18093de04c88d0cfc86fb060f5
+  custom:scripting/monoscript/fileName/ConfinerOven.cs: 9d4918c23c35e8b7c9591736b477b2a4 -> ff23c03e90b61beb34474fc6e4ff668c
+  custom:scripting/monoscript/fileName/TMP_BaseEditorPanel.cs: bf7c6aff8663a36814779dfe47e82e00 -> f4b9967705e7bb57152fef4117417ba7
+  custom:scripting/monoscript/fileName/TMP_UpdateRegistery.cs: 62691e6bdb107984e7d826316a6498e1 -> 1f23864d29c3a03d22aa9b00a337cf78
+  custom:scripting/monoscript/fileName/VcamStageEditor.cs: 284d77aae59f69cf4f00bd07cd596996 -> 84b0eaf932b448975a99972628e556d8
+  custom:scripting/monoscript/fileName/OrbitalTransposerHeadingPropertyDrawer.cs: de7cca3c5705bbb8c95681951097d3f7 -> 22496b76ce84f35f630c90badc4babd8
+  custom:scripting/monoscript/fileName/xxHash3.AVX2.cs: fdda91c938d02bed6e1f482b8680a1e1 -> bbc99b1bfd2f994ebd53a189bfb34bc9
+  custom:scripting/monoscript/fileName/TMP_Asset.cs: dcedda1866ab6edcf1af2d4525512628 -> 7e95c8d89188057bea8fc9569c9aa309
+  custom:scripting/monoscript/fileName/CinemachineCollider.cs: 7303bd0253f7e2d304616e235a080719 -> 8fa92f525b1c31cd81812685d7f8c288
+  custom:scripting/monoscript/fileName/UnsafeStream.cs: c7cd97d658f9f034dc47ca5f1dcaf8b2 -> 256399a9cf220f56a541766f1fe0b55f
+  custom:scripting/monoscript/fileName/TMP_ColorGradientEditor.cs: 187fe88a4e95285275d1781f1da14d92 -> ed654c9d45026a5f71e6e9535130c15f
+  custom:scripting/monoscript/fileName/CinemachineInputProvider.cs: 0b6d0943ec03d98f2ba3652b88646e40 -> ecb845de690695f08b3b3bb647cc7006
+  custom:scripting/monoscript/fileName/CinemachineColliderEditor.cs: 3878ccdc59f6bef9e5ddb766a0d0f21e -> 859d1abbd669ee84cb713f6d4d0e1c5f
+  custom:scripting/monoscript/fileName/CinemachineExtension.cs: 077aff92c1339d59eaa55309ced87ee4 -> 6968db4afcdc301f6acb1ef4fbadb2f4
+  custom:scripting/monoscript/fileName/TMP_BitmapShaderGUI.cs: ef806c32b355e8831ed4eb3f5e3400ff -> 2ce3ac811452d1d6d82e565157cac3e2
+  custom:scripting/monoscript/fileName/TMP_ColorGradientAssetMenu.cs: 79ee3689ecabb3de162f43faa3b27adc -> 83563be632f8167fcdca7878d36901f9
+  custom:scripting/monoscript/fileName/HeapString.gen.cs: 2f8bea3137363b1eadd89d8db8473288 -> 
+  custom:scripting/monoscript/fileName/TMP_GlyphPropertyDrawer.cs: 75006bca208b32d4fc4710404c538acf -> 56b500a16a5c8f635a7bfdd702279864
+  custom:scripting/monoscript/fileName/CinemachineComponentBase.cs: 48dabc49e54368d367f24f803d713bcb -> 5293f153c13e9bd2fc262ec31ff69206
+  custom:scripting/monoscript/fileName/BaseEditor.cs: 8f6297df34271fdb1ce2d9607ec6261d -> 90647cc400823b41df847a6cbfc29026
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:scripting/monoscript/fileName/UnsafeMultiHashMap.cs: 0ecf0b5b4a9207402e80b603ad9a119c -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:scripting/monoscript/fileName/NativeHashMap.cs: c9f2dedc752c8b31243335a46ad2dc75 -> 39aa0c6e76ed394fb7a6e5c6d3a1d416
+  custom:scripting/monoscript/fileName/ConfigManager.cs: 2f8fcb71191219d9cffbbac8f2553604 -> 
+  custom:scripting/monoscript/fileName/CinemachineHardLookAt.cs: acedbe5744284b066423262d4b0eaa9a -> 792580aec23d39bcecd7ceea4c27a0ce
+  custom:scripting/monoscript/fileName/CinemachineInputAxisDriver.cs: 284d3ff5caf6d330efa74a4a3cd86919 -> 7e424e54660fed310c58dc98ea41042e
+  custom:scripting/monoscript/fileName/CinemachineStoryboardEditor.cs: 04f66051a429c568850dd7aa36ecfa66 -> 2e7ec8bfb72013eaaff4873a27da019c
+  custom:scripting/monoscript/fileName/TMPro_EventManager.cs: 9ebed0b1e26a8c995d644c176e696d93 -> 4c7492301243f935f7a463360f91d217
+  custom:scripting/monoscript/fileName/GlyphRectPropertyDrawer.cs: d355023434b9b8f82f7070cb40c7c036 -> bdec415148eac17379112822c8814df5
+  custom:scripting/monoscript/fileName/ConfigManagerImpl2x.cs: 9a0d3cb4b4a3e14044556014cf0e8c1f -> 
+  custom:scripting/monoscript/fileName/CinemachineVolumeSettingsEditor.cs: eb7ae9df877407a6bbde98cf7548ef70 -> 7c8fb727adcc2db0614f3f0f2f35cb54
+  custom:scripting/monoscript/fileName/RemoteConfigDataStore.cs: 71e143b292472f9d38b5f3403eda09d3 -> 250b197c51134cdfc540e24f8bde5198
+  custom:scripting/monoscript/fileName/JobsMenu.cs: 562c2d7ed33a8f73b1bfb0cca1b0e315 -> 
+  custom:scripting/monoscript/fileName/FixedStringFormatMethods.gen.cs: b9c5c6bc186a56f95ff8f60db0da9fea -> fcdca1abcdc2fd593bd0d11b27b9b2c5
+  custom:scripting/monoscript/fileName/TMP_TextElement_Legacy.cs: 33cc86d4b4c35f95c6446ea70ef56fc4 -> 6e11e173cb695b15e8cce3cd1e1cb2a7
+  custom:scripting/monoscript/fileName/RewindableAllocator.cs: 8b62a2efc1f503316ccf70a39fd844ed -> f5d3f33b65f42aa483d55593c952d1db
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:scripting/monoscript/fileName/TMPro_SortingLayerHelper.cs: e3aabd077ed12370ac46dda129ef572e -> 8b86ad735987eff6a1277352e9e8d9b6
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:scripting/monoscript/fileName/CinemachineMixingCamera.cs: 62eb1873269e4f68526ff69cf5505355 -> 739c5ceb76c01023f431794ec46a0177
+  custom:scripting/monoscript/fileName/CinemachinePath.cs: 2b644d5ac60a5f1b32e36e373552c0d5 -> b443d3c8837a65ddc3c78741cd58ec71
+  custom:scripting/monoscript/fileName/TMPro_TexturePostProcessor.cs: d21743efde4e74198703a65b965619ea -> 0750ad2b775120fa59f760172dc340ad
+  custom:scripting/monoscript/fileName/FixedString.gen.cs: fe10abd3f17ffcedc46ad3ee1d799153 -> d2f928251c83a855a881376014d83b13
+  custom:scripting/monoscript/fileName/TMP_PackageResourceImporter.cs: 5335f4ee7041812300af31a777e4f584 -> 949b6e7fa2132b400d5c4aaf9c34421a
+  custom:scripting/monoscript/fileName/CinemachineStoryboard.cs: 961256370f6b447e826cd2069e2b6ca0 -> 59a2099f76be9b47af1e12ed7d40f553
+  custom:scripting/monoscript/fileName/TMP_Style.cs: 22d5739edd705d10f980250dcfd7fde0 -> ecc9948baa78373f3076151d1a0642d9
+  custom:scripting/monoscript/fileName/ConfigManager2x.cs: 742e8e91195622e1e7a855fc385a6ff3 -> 
+  custom:scripting/monoscript/fileName/TMP_EditorPanelUI.cs: 6242af713a75147e6e5820bfce936424 -> 0c3fb43855adf1da22258c211d01a47d
+  custom:scripting/monoscript/fileName/CinemachineTrackedDolly.cs: b6dc88ef92254a16922fd40766f8d089 -> f6a9c21b27ad86d45f62f6b444ccbb49
+  custom:scripting/monoscript/fileName/CinemachineHardLookAtEditor.cs: 37391c2fbcb104daf2146caf08228448 -> 15b8f2af6a6d786898ce5dd6b0db26dc
+  custom:scripting/monoscript/fileName/NativeList.cs: a4b50f61153c9adfd2de2676a637a671 -> c3402f2e6b9e01dc298871eb0e4b6a91
+  custom:scripting/monoscript/fileName/TMP_Sprite.cs: e9945527ea1584af23f8f41ce4b844b4 -> 0ee3c386846aa132dd254421fac18cd1
+  custom:scripting/monoscript/fileName/CinemachineComposer.cs: cbeb5593d3361d875501f37af0999936 -> e399dfd36807c341da7cd182ce299d1e
+  custom:scripting/monoscript/fileName/UnsafeHashSetExtensions.gen.cs: 08ce05b79144f37e3fa725c81fe15267 -> 
+  custom:scripting/monoscript/fileName/CinemachineTrack.cs: c3c6310aa2417835e97dff8569415340 -> 4b50d47d507c57dc81b82253ec075194
+  custom:scripting/monoscript/fileName/TMP_PackageUtilities.cs: 029634ff6f667ebc9454d70fde4def50 -> 89e6e95503dd36070edf73e7aaab4557
+  custom:scripting/monoscript/fileName/TMP_GlyphPairAdjustmentRecordPropertyDrawer.cs: 6f07d27e8ea91e29d6bd5f39dd8deb23 -> 1a07941369755af9e0a102a45e9058c5
+  custom:scripting/monoscript/fileName/CinemachineOrbitalTransposer.cs: 389181bebe0269426d8397cdde28c04f -> 71c52878ba6d43827473a480056a99da
+  custom:scripting/monoscript/fileName/BurstCompatibleAttribute.cs: 5516bac227e59cc058e743022f755993 -> 
+  custom:scripting/monoscript/fileName/TMP_Dropdown.cs: 39f6048c754db30f2da2ea32254db16b -> ecea2f8babcb40d207d2e73158251f60
+  custom:scripting/monoscript/fileName/TMP_CharacterInfo.cs: d2593478681404ce2cbd40e4e2f8a6d3 -> c840ce0b0aa6c1faafb27b3b884b2328
+  custom:scripting/monoscript/fileName/CinemachineImpulseSource.cs: af10743632b6d5a228e45ad64cc4a7d9 -> ac073b8453e26c5dd422d5f1a90a7ff2
+  custom:scripting/monoscript/fileName/UnsafeAtomicCounter.cs: 7400a6c6976e960578ea1e0663a5a7bc -> 9e2f4dbe854338916842c8ff7fbe03de
+  custom:scripting/monoscript/fileName/FixedStringMethods.cs: b9c5c6bc186a56f95ff8f60db0da9fea -> fcdca1abcdc2fd593bd0d11b27b9b2c5
+  custom:scripting/monoscript/fileName/CinemachineImpulseEnvelopePropertyDrawer.cs: b857c36cc0b5020107db39dba97ec7cb -> 07e00c9c84964a5c7e4f3f19e4263ec1
+  custom:scripting/monoscript/fileName/IRCUnityWebRequest2x.cs: 89e237e5ec42861d9c3fa4160b2fbb11 -> 
+  custom:scripting/monoscript/fileName/MaterialReferenceManager.cs: eaedc912311d98c6b58e199f6250c848 -> c970e86594a0f568cbda548f2d4462c1
+  custom:scripting/monoscript/fileName/CinemachineSameAsFollowTargetEditor.cs: 5d2e40530b08855779d5bce02106e070 -> 6def40fc1e39b3242347b6630fb5127e
+  custom:scripting/monoscript/fileName/UnsafeNotBurstCompatible.cs: 45b7b795a55a7021f271055f3bab9cbb -> 9920b2dcf54d07855dc87b05b9a22299
+  custom:scripting/monoscript/fileName/CinemachineBlendListCameraEditor.cs: 43c61d765bc44381109ad0e8242a6eee -> dbc12d2a9f3e2999a067290c411b2aca
+  custom:scripting/monoscript/fileName/UnityVectorExtensions.cs: ec9e7ff509e0c7c9e11011fe43b8de76 -> 052777772edecdffe26d41a6a989641e
+  custom:scripting/monoscript/fileName/CinemachineImpulseChannels.cs: 438263d824bdd20deb5ceab506c10bfe -> a9a39cc5ecea1f083db0fce154eec19c
+  custom:scripting/monoscript/fileName/LensSettings.cs: dcd3ddd9272de74a1043891cc94b7887 -> 4335e899502c57ee4480b8c9aa915366
+  custom:scripting/monoscript/fileName/GlyphMetricsPropertyDrawer.cs: dd0833870bcea17556e6d67c750c6ffc -> 438b07e6eae795dab04c32f51ac4e752
+  custom:scripting/monoscript/fileName/FixedStringInternalMethods.cs: b9c5c6bc186a56f95ff8f60db0da9fea -> fcdca1abcdc2fd593bd0d11b27b9b2c5
+  custom:scripting/monoscript/fileName/CinemachineImpulseListener.cs: 8a66169c7493c1756da87d49dcf9a9fb -> 6aac146243d38e7a67346170caa40ea1
+  custom:scripting/monoscript/fileName/CorePackageInitializer.cs: 4152b9b907ea05c73764824b78ab425c -> 829d217bce271cb9c1fa63d564b476ec
+  custom:scripting/monoscript/fileName/TMP_DefaultControls.cs: 1798ee96b3c83cf7d4cea690bb04976a -> 2673e29173eb9307fa53ee17c15332ed
+  custom:scripting/monoscript/fileName/TMP_RichTextTagsCommon.cs: d28b21b13d6cea8fa92671f9a2a1f20d -> 5462d55f8a9ad882f9a7f2d708a6978b
+  custom:scripting/monoscript/fileName/CinemachineMenu.cs: 051699d070050cea0306b05aa4fe8b76 -> 7b932811d9fa1e44d0d8b2b9ed75adf3
+  custom:scripting/monoscript/fileName/RuntimeUtility.cs: 839908e1fc90ed4dc872e717fb17f6ee -> 8c92a9f673836e5d2084dbeb0f10159f
+  custom:scripting/monoscript/fileName/IJobParallelForFilter.cs: 7e0619e9f10811c89dd87d4ffb38bb12 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/CinemachineGroupComposer.cs: df3e852e8d242c797bcfb840bbe7e493 -> 173a689a80ef321c302f9c045419668f
+  custom:scripting/monoscript/fileName/NativeText.gen.cs: 7959db2d96f0c7fc8f8a2a669eb85d60 -> 3378437e9418f3373bee971ecd3b9445
+  custom:scripting/monoscript/fileName/ConcurrentMask.cs: c539262411251c63a21ef73803af4584 -> d56a0fef284c9e5059f89974aedb695c
+  custom:scripting/monoscript/fileName/CinemachineShotClipEditor.cs: 951d16c077cd5ee4ca69b856f87c6754 -> 123a48531bf1d1b4f3c8398556caec62
+  custom:scripting/monoscript/fileName/TMPro_MeshUtilities.cs: 183dd3a7e1b70c109767dd5059a390dd -> 2237d160e4d9e81a7d899dc235029cb3
+  custom:scripting/monoscript/fileName/NativeReference.cs: 093e06c3a4dec7ddff8658acaa3e1ec0 -> 707aa775b4e3cc858cb239cb84a29e93
+  custom:scripting/monoscript/fileName/TMP_SpriteAsset.cs: b46309090c7f7da519ff6ef3172bd077 -> 8d06882cb45c7664f8d7c3079ee8757f
+  custom:scripting/monoscript/fileName/CinemachineBlend.cs: 5b4249bd44cbb24dd3ddb0d88ac870fe -> f33659d50c4d86144d649aa7e8196529
+  custom:scripting/monoscript/fileName/NativeNotBurstCompatible.cs: 0a51ebcb2f40a253cc1ed4725493949f -> 8e8b404b4fa69e1b7cea25947e47b9bd
+  custom:scripting/monoscript/fileName/CLILeakDetectionSwitcher.cs: 59a798b3bec6e00e46494db6495850e8 -> 57bd385706945886454b568fb0644a83
+  custom:scripting/monoscript/fileName/clipper.cs: 69fd8c7f85029c69fcc3b0e271cdd9ab -> 2a50e35a835148907b3c1fa8e187ab2b
+  custom:scripting/monoscript/fileName/UnsafeRingQueue.cs: bcfc7f01444a1737307396b9706cf593 -> 0cdf409b5aa8d4c25876d72b5c6a3b60
+  custom:scripting/monoscript/fileName/GaussianFilter.cs: 01fbce80a0fb639fb3967ed656a334ef -> 0a3672ebe80edf7c5daca82445c15683
+  custom:scripting/monoscript/fileName/JwtDecoder.cs: ae8b4168a121fd961006aad52c76cdea -> 8624856333f2c9560ab29166dcda3f38
+  custom:scripting/monoscript/fileName/CinemachineCollisionImpulseSource.cs: dc42aca2bb6dfe0b0699057dceaaa6a0 -> 9aae5e368cb7786be199f98f2122f96d
+  custom:scripting/monoscript/fileName/CinemachineClearShotEditor.cs: 76724342cc1e31aaf9dfe17311f140bb -> ca8875b47e775cd361c78158d7923690
+  custom:scripting/monoscript/fileName/NoiseSettingsPropertyDrawer.cs: 22e457af30748f8b0b7d3f0a29cd17dc -> 8d3f69ba7eeec63914970bd3136b6ace
+  custom:scripting/monoscript/fileName/CinemachineShotEditor.cs: 559c7161ee59c16edaf2a3b8cf0a66eb -> 2ba28b209a4ad7f0a791994d2360a9af
+  custom:scripting/monoscript/fileName/Memory.cs: 3a1fc630a1762ba3d249699dcc2a7943 -> 24fa5e8e684139a9a6b2bb764c620a28
+  custom:scripting/monoscript/fileName/UnsafeList.cs: 638c6fc022ca3aa24cc63b6730a5c455 -> 2cbf932c5895a21a8a81c7efd4eee03c
+  custom:scripting/monoscript/fileName/TMP_EditorPanel.cs: 0bd13db7cdfa07805bfadd631c0ddba8 -> 0631f68be4ca0623bf3e313ec9becbc9
+  custom:scripting/monoscript/fileName/CinemachineHardLockToTargetEditor.cs: 5bc194392ca0db97aa23253092f2b7bc -> c65eaafd47115974a2a9379aae467b0e
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/TMP_BaseShaderGUI.cs: 2c2d4519754bb0c1dd0a107014b7ac8a -> 25118693f24c47c8a4b530b8bff26574
+  custom:scripting/monoscript/fileName/CinemachineMixingCameraEditor.cs: 4df207f0b1a806b70aff7402ef5d2a85 -> 1c122a21d710512fec62cdc7bd351681
+  custom:scripting/monoscript/fileName/CinemachinePostProcessing.cs: c84946f2733400c6840d0486af71b6bc -> bf9b100a1b61fd5383288bc96487c194
+  custom:scripting/monoscript/fileName/CinemachineVirtualCameraBaseEditor.cs: 86218bbf93e910e2c2609c741beaab3f -> 13ee4931cd85df4b22852d0547b5e690
+  custom:scripting/monoscript/fileName/xxHash3.cs: 4193607f6e1edd0570d2359862a27850 -> d876f695d67b3d527466020445c50eb8
+  custom:scripting/monoscript/fileName/Attributes.cs: d94dab8e1cad1d516625e289629ba937 -> 9d3861389974f0823e7e341aa6c23dae
+  custom:scripting/monoscript/fileName/MVRuleSettingsTreeview.cs: 4a40bf409a46059d6b3bf4d3297444d2 -> 2f8b538add4dd20f83b26a15c1c6aa84
+  custom:scripting/monoscript/fileName/Cinemachine3rdPersonFollow.cs: a36d3e925651181b1ef56172e85f63dc -> 4600bac2bdf6b37d80e86f9aa5a413c3
+  custom:scripting/monoscript/fileName/DebugView.cs: a53f96815da50de15010b1c479bc70cf -> 0cdf409b5aa8d4c25876d72b5c6a3b60
+  custom:scripting/monoscript/fileName/NativeHashSet.cs: 2b4455e6e3b12ad5b28b297ffca2f154 -> 5e2ab9cfe81e04de31d18dbafae66b8c
+  custom:scripting/monoscript/fileName/ListExtensions.cs: 53a13f9e80dd394abe55b725d1e20214 -> 0f96dfdcfd19dc46bb3b974629f04481
+  custom:scripting/monoscript/fileName/CinemachineGroupComposerEditor.cs: 1ae6cd112e7df37862f9f8be21cee34b -> 54a07f36704e77a685a5e7e8c8b2c216
+  custom:scripting/monoscript/fileName/TMP_FontFeatureTable.cs: 5ff9812058e8c02a5b04eaa88778f2a5 -> cbd25d300d7ed4d969d60cb9f98f2826
+  custom:scripting/monoscript/fileName/CinemachineConfinerEditor.cs: 5360318a0c4b454243b2548bb756ba0b -> cc6c898a3390647ab91613c8a96de4b4
+  custom:scripting/monoscript/fileName/TMP_SubMeshUI.cs: 7a6337f74438df5e26b302bbbbc41105 -> 748262c65738bc5e1c553ae7a37a0c73
+  custom:scripting/monoscript/fileName/CollectionsAllocationExamples.cs: 72ea6f1c8990c690aca4410bcc8d43b6 -> 
+  custom:scripting/monoscript/fileName/CinemachineBlendDefinitionPropertyDrawer.cs: 2db6c925b0f7bf9bbe2f2ef77e0ea693 -> 7ae344d19d646b738f3c65294becf216
+  custom:scripting/monoscript/fileName/TMPro_ContextMenus.cs: fbbbcbf9b4eb950e9aeda2d70529152c -> 06b3d4b27f337b8d846ca7117f3251e1
+  custom:scripting/monoscript/fileName/CinemachineSmoothPath.cs: fb9c32a249b828b9d41f070a8d6d1df5 -> c28db2688f35d70587b5f943431a010a
+  custom:scripting/monoscript/fileName/CinemachineStateDrivenCamera.cs: d00ad893ea32c312e80eb484068636b6 -> aea2468a7384be4ba6d1b043ccec135d
+  custom:scripting/monoscript/fileName/TMP_InputFieldEditor.cs: 8f2095c37e5fd5ed563d60163f0c2e52 -> a6f05406e9cdb59679382b884c14216a
+  custom:scripting/monoscript/fileName/CinemachineBlenderSettings.cs: 9fbbee68bfb511bb61538f343b773f73 -> 9adcb80668a56be4cd8e31c1d3dc60ae
+  custom:scripting/monoscript/fileName/SignalSourceAsset.cs: 3657b3dd5ce3950eb0fc793ecae3ccaf -> f7ffd463dece56bad278f5a8d3ed7fc6
+  custom:scripting/monoscript/fileName/CinemachineCore.cs: fa1c2e63e4bcc01fba23902f7307c6a9 -> fe6c3be993819098833de1628bfd76b2
+  custom:scripting/monoscript/fileName/CinemachineImpulseChannelPropertyDrawer.cs: 1b9e0a40c96974c01de3b55c2515c01e -> 4b6390a17916751618e2a45cb8d47a80
+  custom:scripting/monoscript/fileName/SerializedPropertyHelper.cs: 163368e9b2fecefbee30536a998ca73e -> b04ac165255e34bc2935ca9bf180e209
+  custom:scripting/monoscript/fileName/CinemachineFramingTransposer.cs: 74cbeb074d2cce337aac4500ab638eef -> 7943c9d436748359882d8f978cf86c91
+  custom:scripting/monoscript/fileName/CinemachineMixer.cs: 0afc346d7115f43910fd39eac731e74f -> 2e36eb9e732dd7c8a32e8f83daebd6f4
+  custom:scripting/monoscript/fileName/CinemachineConfiner.cs: 5d7d8204c08008a8d221cb00f6a3d387 -> 3813336c17662a5cb6b59ce5f1954254
+  custom:scripting/monoscript/fileName/UnsafeScratchAllocator.cs: 01f77d5cff43f9c3b7ff3f46c4f36dee -> 4face5614d3825fa48ae79289f69aa1b
+  custom:scripting/monoscript/fileName/TMPro_Private.cs: 8f6297df34271fdb1ce2d9607ec6261d -> 90647cc400823b41df847a6cbfc29026
+  custom:scripting/monoscript/fileName/CinemachineBrain.cs: 3c3ccd7b2919d48fe5b3e3373123f497 -> 365b4e0b6319f064062e97b8f8e32c8e
+  custom:scripting/monoscript/fileName/CinemachineImpulseDefinitionPropertyDrawer.cs: b65de63ec0c7e7b9dc4c23fb5964650e -> 1b2fc77b0a80a7e0e9045e0d44fb761c
+  custom:scripting/monoscript/fileName/BurstCompatibilityTests.cs: 7d7c24becd314d1054104dfc27a7e1e1 -> 
+  custom:scripting/monoscript/fileName/CinemachineColliderPrefs.cs: 41b5347be838bb3fbbf0ec9c6f6114ac -> 47106451d4685409820905badf49b71f
+  custom:scripting/monoscript/fileName/CinemachineFollowZoom.cs: d82e259d89d04b0b30df4cff38b7fd58 -> eb74e2e98d3dc4647324e113f34710ca
+  custom:scripting/monoscript/fileName/CinemachineDebug.cs: 93b6d33b9f9a92ecb7042d177bdfdd16 -> 3077ed3b64725184c652d4c07ac732fd
+  custom:scripting/monoscript/fileName/BitField.cs: b82f9795c26d634f972340c254bcbc2b -> 435cec31f980ea5ce1d1e89b13684a57
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/TMP_UpdateManager.cs: 2b12c9b6d4082e0390a306eceed60fc6 -> fa7e71df671c5b3088b39753e4bbc70d
+  custom:scripting/monoscript/fileName/NativeQueue.cs: 04ccdb70e3fe61b0adb670089775b1a1 -> 81dfa04144b51b77899677497858a357
+  custom:scripting/monoscript/fileName/TMP_EditorUtility.cs: f68b71b7543cddf9e4cdf261d5f519e5 -> b242106620cbbc38f0411146a086b885
+  custom:scripting/monoscript/fileName/CinemachineCameraOffset.cs: 59098f3757a25e43d2f1a930c11a082c -> a6887f67d3eb83cc6393b822d4e65121
+  custom:scripting/monoscript/fileName/ICinemachineCamera.cs: 44ded1ac73ee80c3960abe2c17864158 -> 2faad4f04eaf5d98c2870adbfb06184e
+  custom:scripting/monoscript/fileName/NativeArrayExtensions.cs: fe9f7490969f9aaf1b5c58af97269bef -> 480ae80e25a67512135651e8db7b75bc
+  custom:scripting/monoscript/fileName/TMP_ColorGradient.cs: 3baf9c6d3c50fc594e68e0c756eb8779 -> 8d91c7c4749088eca69648d37a965bf8
+  custom:scripting/monoscript/fileName/CinemachineShotPlayable.cs: 079b345acc80e836f95eb2d3de59fbfa -> e346ad1ecb4af45da55274cb9abd9ec0
+  custom:scripting/monoscript/fileName/TMP_SpriteCharacterPropertyDrawer.cs: 63186d320ccdf4dfa06fbce4e897d3f3 -> 14565b4e4f9266584dc3194fd967d252
+  custom:scripting/monoscript/fileName/CinemachineImpulseSourceEditor.cs: 6cf406395559911488da001d921f23e1 -> 0ef7804c69c18838aa65e6d5bae5b055
+  custom:scripting/monoscript/fileName/CinemachineExternalCameraEditor.cs: 52d18dfa41fbd1d826ae77d7ea17525b -> d74df442250b898c9b40669a19100e9d
+  custom:scripting/monoscript/fileName/CinemachineTransposer.cs: 5a3d2ba1aecc979170dc707a8aae9ab1 -> aa226dd144b3a977b86ea888b85df5fa
+  custom:scripting/monoscript/fileName/TMP_CharacterPropertyDrawer.cs: 0fc1d1caf2f580e74b2224e6797250e4 -> ddc6f8909fdac3de9238e9b86e411c3e
+  custom:scripting/monoscript/fileName/TMP_FontAsset_CreationMenu.cs: 18345b423cea91a35f20f73f48aee7e1 -> 1c5caeb31a0df734411a201aca87cb03
+  custom:scripting/monoscript/fileName/ReflectionHelpers.cs: b4b7af36886f71a46360101a52b4d04b -> 60a5d38af3e775d0a421a7ff630d61cc
+  custom:scripting/monoscript/fileName/TMP_FontAssetUtilities.cs: d84a52975d941e769af4ae15b3aaa211 -> 5b7a9bc9c5c56e3cb5ccc808a2bdd9e4
+  custom:scripting/monoscript/fileName/CinemachineVirtualCamera.cs: 2ed6db78ec50569a416c2e4511579baf -> f16f2dc5bc1261579875c19605c45301
+  custom:scripting/monoscript/fileName/CinemachineOrbitalTransposerEditor.cs: 26a69f59989035c1e701b9b551574738 -> 5ea2e4bec7ee6c24917bd86647f4bffa
+  custom:scripting/monoscript/fileName/CinemachineConfiner2DEditor.cs: 856c1fdb4ba02ee04cb3e75f4b0c6345 -> 3f4b3d9b17ff5cd560135aa24f822994
+  custom:scripting/monoscript/fileName/GroupWeightManipulator.cs: 45a9ba6a9d5d38453891d711a554cefd -> 588749cf3436a8199e762a8e09bc8de7
+  custom:scripting/monoscript/fileName/AxisStatePropertyDrawer.cs: 9bcc633ffd41201a6746f8ce075fe0b4 -> 2d807695a513641e771c78e6c342ff04
+  custom:scripting/monoscript/fileName/RemoteConfigEnvConf.cs: 2dba70f2ac9744c1fd35bb20c082821c -> 5f88fe7497009e8472af7911f9f3cf51
+  custom:scripting/monoscript/fileName/CinemachinePropertyAttribute.cs: 509980e813fae8937907e1b586077df2 -> e8158d9725ac3a9129a08e46a4ff7519
+  custom:scripting/monoscript/fileName/NativeSort.cs: 965ff403b3acd574b0cc2a405a3492e0 -> 764ab68303923f171c9d865bbecae455
+  custom:scripting/monoscript/fileName/RegisterGenericJobTypeAttribute.cs: 321333f104b241bc68fbefda2607a062 -> 1d60c181f5a8e659e1317e2ca71a691e
+  custom:scripting/monoscript/fileName/CinemachineNoiseSettingsEditor.cs: 8d65656f4d635bcc78b17b0295ca0fc7 -> 9056e69d9c759ba2504535054fff31c9
+  custom:scripting/monoscript/fileName/TMP_TextInfo.cs: d86eebf32f36b8febee06365f862b403 -> 9e4eb698c4c168829682cbe659418e8f
+  custom:scripting/monoscript/fileName/TextContainer.cs: 4e3c016869303ab3136387f7870e5adb -> 245c032a15fbc12850861c707e37b027
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:scripting/monoscript/fileName/CinemachineBlenderSettingsEditor.cs: 4a26fca9fe049f0bb477d6a2f8d1f2b6 -> c57aa7de12bc3e7367ca091f4902c67b
+  custom:scripting/monoscript/fileName/CinemachineImpulseDefinition.cs: 9ffc27f390d9a3e29b1458f9477b75fc -> 3d434086a2bdaf715abf85e79e9f14b4
+  custom:scripting/monoscript/fileName/Cinemachine3rdPersonFollowEditor.cs: 7aec132daded5003775d7a80d1f52772 -> f79aa162534f81c680877e6274b5d6ec
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/TMP_FontAsset.cs: 52c81438acb65fa444fe26964ef0345b -> 6c1db4680a96f294cf0af87a0b8099aa
+  custom:scripting/monoscript/fileName/RemoteConfigWindowController.cs: 79ccc15b72a6b8fa8835240d8fadae5a -> 796f63f8ea5c895220ae5b74338be1ff
+  custom:scripting/monoscript/fileName/TMP_SubMeshUI_Editor.cs: 765ce633a5bfada7c5afc51aed8631bb -> 119a633ce37cc27ac209988b5de61d96
+  custom:scripting/monoscript/fileName/FixedStringParseMethods.cs: b9c5c6bc186a56f95ff8f60db0da9fea -> fcdca1abcdc2fd593bd0d11b27b9b2c5
+  custom:scripting/monoscript/fileName/WaveformWindow.cs: 0128ed738d8efff6299a66efc1dbfd03 -> 01bbc4fc017d41a2bab7fb57c988e8da
+  custom:scripting/monoscript/fileName/CinemachinePipeline.cs: 2ef106f2a17e0152a8f9af931f9de2d3 -> 6ca7a5979a0a73ea1d450a8fc9b437ef
+  custom:scripting/monoscript/fileName/SettingsTreeview.cs: 4cdf231fe03259227115181151373cde -> b019a2985c63d2691a47d2aecbfe59db
+  custom:scripting/monoscript/fileName/TMP_SettingsEditor.cs: aa2b5eadaadb4b54b49cd650a2246119 -> 56bf06371df7e13c5b8cc88becb89a4d
+  custom:scripting/monoscript/fileName/CinemachineFramingTransposerEditor.cs: 50bd96c931073c77fe68ab62e6fe00d2 -> 1653e1c00b2ca68b1d40f01e5bfb8445
+  custom:scripting/monoscript/fileName/FastAction.cs: 94d6ead813247e604740a116c5fa92db -> dfbe75b66b645b53472915ad2590af11
+  custom:scripting/monoscript/fileName/TMPro_TextContainerEditor.cs: a97aca5bcf1b2486a0f60b2c7a935c42 -> b2fbc5db24221a870c4de162a712cbfe
+  custom:scripting/monoscript/fileName/CinemachineStateDrivenCameraEditor.cs: ac7855d4ccc5ba3ff5c66a6727b85d87 -> 77d9f0a97385f936d9b4ffaa686bce39
+  custom:scripting/monoscript/fileName/TMP_TextAlignmentDrawer.cs: ad15f73780bb9949f148eddcc3c3fbf7 -> 011b7908ef5eb5e9dea532c77e85c538
+  custom:scripting/monoscript/fileName/TMPro_CreateObjectMenu.cs: e9e63aff764c7e7fd08e66f87103df4d -> ddee59388caa7a56693342f3a805d427
+  custom:scripting/monoscript/fileName/CinemachinePathEditor.cs: c2d927b4967acde779b6ac5ccd8cd611 -> ce10985fbf0e018e2dea63fedae131ba
+  custom:scripting/monoscript/fileName/CinemachineCollisionImpulseSourceEditor.cs: 6ef49b2082f0559bee1f8f3634f11019 -> 29f9a522ec6b23375849ba08fd597c8d
+  custom:scripting/monoscript/fileName/Utilities.cs: 3c22900c7a735e4ccca77430f8068086 -> 86570ab68bbdce8c51b7af7def8aaa89
+  custom:scripting/monoscript/fileName/CinemachineTargetGroup.cs: c4e70fa7c0948a01b5353e9b486f9563 -> 10a09aa736b3a25da6dd9fc3c4dd9d36
+  custom:scripting/monoscript/fileName/AllocatorManager.cs: 1b255756f8afbe39ff0f04443f4ef5d6 -> fa2277be89f5c001f873c15c6093b99f
+  custom:scripting/monoscript/fileName/EmbeddedAssetHelpers.cs: 8f6297df34271fdb1ce2d9607ec6261d -> 90647cc400823b41df847a6cbfc29026
+  custom:scripting/monoscript/fileName/TMP_SpriteGlyph.cs: 52a9bbe662618c4a5697bdefcba63d59 -> cb4cdca5a4c6415e4f27ee5280164c41
+  custom:scripting/monoscript/fileName/FixedStringAppendMethods.cs: b9c5c6bc186a56f95ff8f60db0da9fea -> fcdca1abcdc2fd593bd0d11b27b9b2c5
+  custom:scripting/monoscript/fileName/CinemachineBlendListCamera.cs: c70259e5253b4b48cee7e0ccd7d6f66d -> 66104ac24fef171d9f5d5b93a8cb2f83
+  custom:scripting/monoscript/fileName/TMP_UIStyleManager.cs: f54fffa86b286da3a3329c601ca8d03e -> 66d96f3fa9ea14a5a6ed3f92d3bbe0f1
+  custom:scripting/monoscript/fileName/CinemachineBasicMultiChannelPerlin.cs: 2198c845c20fdaffd2db545d99c718fc -> bd5416e75860cd63657371207eb79058
+  custom:scripting/monoscript/fileName/TMPro_UGUI_Private.cs: 8f6297df34271fdb1ce2d9607ec6261d -> 90647cc400823b41df847a6cbfc29026
+  custom:scripting/monoscript/fileName/TMP_Settings.cs: 957f1889ca66b295dca8f725cc81558d -> 68d1204aae2aa6d0a54c151b7af443e7
+  custom:scripting/monoscript/fileName/UnsafeHashSet.cs: 2b4455e6e3b12ad5b28b297ffca2f154 -> 5e2ab9cfe81e04de31d18dbafae66b8c
+  custom:scripting/monoscript/fileName/NativeStream.cs: 06272c03bf2d87c3c499ea2670889e0a -> 4cf18747cbaec64bafc4dffb1a0c8454
+  custom:scripting/monoscript/fileName/TMP_ResourcesManager.cs: 0d972ba50c38c5b25fe15fb0c61ada2b -> 64252a073d41e9c6f4e95b5f68ac966c
+  custom:scripting/monoscript/fileName/CinemachineImpulseListenerEditor.cs: 231fc85f4e8b9adf56f6a0a94d10f19c -> d5d28e418f87c111bce1c1b98f1f70ba
+  custom:scripting/monoscript/fileName/CinemachineDollyCart.cs: 138a25c423c8f1e2006ccab6b319a3c8 -> bbe9d07f4a2f7ee5ab002e66cb05f922
+  custom:scripting/monoscript/fileName/CinemachinePixelPerfect.cs: 58398a367fe1d542e185d5813ccd7a25 -> b7f26206e386f5a110efe79462337683
+  custom:scripting/monoscript/fileName/RemoteConfigWindow.cs: fd8bc127d8c37b9c73bf9524a94ce4fc -> 082ac715e4cd5e579706b107f45dfee8
+  custom:scripting/monoscript/fileName/TMP_InputField.cs: 8fed3480abb5543168012b207b39349b -> f7712ab842984f124274656d749eca3d
+  custom:scripting/monoscript/fileName/TMP_StyleSheet.cs: b6deb5f646a1f5ad7b696d32618ba797 -> de73099b6bd4b9281c92feedf1315618
+  custom:scripting/monoscript/fileName/CinemachineSmoothPathEditor.cs: a02cf8ac7b674bd751641e5d2b5e51ed -> 7555bcba4eb760e012dd21c6730ae562
+  custom:scripting/monoscript/fileName/ScriptableObjectUtility.cs: 69c226f15c6a6e28e1b2f8cb7e22a247 -> c529d074f6f57a07e3f410d488963bbc
+  custom:scripting/monoscript/fileName/TMP_TextUtilities.cs: f68f97869f24792bf3a3694d69de955c -> aab2855e68416a0a1f2f8904059662aa
+  custom:scripting/monoscript/fileName/CinemachinePathBase.cs: f0738400106d411c4912e8242ffbaadd -> debb99764287c54cae06313e2d6a1fe1
+  custom:scripting/monoscript/fileName/IRCUnityWebRequest.cs: 725ccf373db57eea243b8fc5abc5a7b4 -> 8fe264397c1e2e029b6bf48f79db6fb4
+  custom:scripting/monoscript/fileName/RCUnityWebRequest2x.cs: 3e719130be1460d38825a49a36924371 -> 
+  custom:scripting/monoscript/fileName/TMP_ListPool.cs: 8f6297df34271fdb1ce2d9607ec6261d -> 90647cc400823b41df847a6cbfc29026
+  custom:scripting/monoscript/fileName/SplineHelpers.cs: f3f4424a3e5861d2b1e1d695a7fa927b -> 9e5bf4293b3828088291b7871e233a27
+  custom:scripting/monoscript/fileName/ITextPreProcessor.cs: 28ed6b2ca482997555fb0291bd20c40d -> a7aa94de5d5bfce2bdd74516315faaf2
+  custom:scripting/monoscript/fileName/SettingsJsonModal.cs: 51c4f30891542e225a29597ffcab42b8 -> 87eed6e9ce188df10620801c9f9619a8
+  custom:scripting/monoscript/fileName/CinemachineShot.cs: 305aff47a96c3952ac13200b157f7bb1 -> 3d4d9d05534db20e82d871d98ea52716
+  custom:scripting/monoscript/fileName/CinemachineBasicMultiChannelPerlinEditor.cs: 0916a2490636954c6c7229f145a5dc9d -> d6749cd6c482efa27bdd41f60394f1b9
+  custom:scripting/monoscript/fileName/TMPro_EditorShaderUtilities.cs: 1203fb3feabf58cb81d888055364f838 -> f4cbef9348a73d49f1efb8d10ff07bf0
+  custom:scripting/monoscript/fileName/CinemachineHardLockToTarget.cs: e8a0f306f36b35145d465cb9976ed69b -> d349308c5b4f600a345055c394206f52
+  custom:scripting/monoscript/fileName/CinemachineConfiner2D.cs: e0dcff4c313417927236253c2483d2a5 -> beb10be0db8ff9d3a94bd0a150963b9b
+  custom:scripting/monoscript/fileName/Cinemachine3rdPersonAim.cs: 01d570c8beffac6b3d452c1805093a73 -> 4bd230d915f070bb3cae23bef6f7ab70
+  custom:scripting/monoscript/fileName/IJobParallelForDefer.cs: 910e21e7ac5636522438bc3b573a2883 -> e07ef36294e1a6b9a754482355e9fda6
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:scripting/monoscript/fileName/TMPro_ExtensionMethods.cs: 3d34decc871f763d4c9c61f1fe0f3275 -> 479bffcc157b89693ffc4c2ef2374861
+  custom:scripting/monoscript/fileName/CinemachineFreeLook.cs: 828ff5140b014c10915713a54e8267a9 -> bebc32b18bc4beddc113bad68624e557
+  custom:scripting/monoscript/fileName/IJobParallelForBatch.cs: 3c96696db343198c22216768d884528f -> adecca892a99db28fc24adbe7bd8588e
+  custom:scripting/monoscript/fileName/ConfigManagerImpl.cs: 4a1d74c6df95b656e9d71c67c26a07b2 -> 2505ef83f71192fe25c42e72f79526d4
+  custom:scripting/monoscript/fileName/CinemachineVirtualCameraBase.cs: f2f3ef632e64055853fce1c5d2d8fca7 -> c7e60cccdcb14ee2a33da9fd46c1c54f
+  custom:scripting/monoscript/fileName/CinemachineFixedSignal.cs: 00813ccc47655613607bb18c68b77bc4 -> aedcdca7a861da6e456e0ae105b24c41
+  custom:scripting/monoscript/fileName/CinemachineTouchInputMapper.cs: 79b55286e054d01fcb4649c36a1a4f19 -> b9698729a07a7d31c864247e0582b566
+  custom:scripting/monoscript/fileName/TMP_Compatibility.cs: d5209fd9c6a9aef9cccdbfb4f06bd571 -> 3ef1f12d3c823dd740c7c596ab076c61
+  custom:scripting/monoscript/fileName/TMP_SpriteAssetImportFormats.cs: 3cc56654a2015a96112916e9636fbe6f -> 920e3140228fbd530b0080254da22d88
+  custom:scripting/monoscript/fileName/UnsafeHashMap.cs: 3c819f0279d2392c0b26834aa25eb5b7 -> 94f8e54b68df661c8d45e8cea71cf2f5
+  custom:scripting/monoscript/fileName/CinemachinePOV.cs: c52db969b6fa312bcd6a4d5ad0c9e516 -> e4df06d1994174afa286b103eb06ee7f
+  custom:scripting/monoscript/fileName/TMP_StyleAssetMenu.cs: d695e815510410a6715fa00ae5e73f57 -> 60e7743122a0686d1131101c521adac6
+  custom:scripting/monoscript/fileName/TMP_MaterialManager.cs: 1382feee688fee3eebaa5e9d7b47e98d -> 441d72ec3c04a8da6a351f60fff95465
+  custom:scripting/monoscript/fileName/RuntimeConfig2x.cs: 96cb43699b63b8af5a7f67fb200bd145 -> 
+  custom:scripting/monoscript/fileName/CinemachineFreeLookEditor.cs: c1013da55dde8ddb5e82b523b0333742 -> 9641291977c1891a004ac4c4c259e1c8
+  custom:scripting/monoscript/fileName/CinemachineTransposerEditor.cs: b37b2ce1cde5ee4ed306a8e67a5aed42 -> 85841a774ddea4fb7232a7a585f716b4
+  custom:scripting/monoscript/fileName/NoiseSettings.cs: 09b7d23fcd1364926f663b566cc36784 -> 443d576e0c72ab62870476103c9384ec
+  custom:scripting/monoscript/fileName/RemoteConfigUtilities.cs: 38c33bcaa8a7d41c0f66f035d77ec36a -> d9b2353ee0920473704cff9561525039
+  custom:scripting/monoscript/fileName/CinemachineSceneTools.cs: aee779b9abcbf7ca3396c1b39b838f48 -> d63880a6073ab3335301b115db235b5b
+  custom:scripting/monoscript/fileName/CinemachineTriggerActionEditor.cs: 81683b7d73194e0f8797b86d3fe17912 -> 2309a2ec6192ace4cae8bab5a535978e
+  custom:scripting/monoscript/fileName/VcamTargetPropertyDrawer.cs: 98f3a6cdef226c4de85c17d87b55be53 -> 9208050b1312b118a226fef2d63e8fa1
+  custom:scripting/monoscript/fileName/FixedStringUtils.cs: 615b4692935c15496ce08484481db0bb -> 114eb023c5774372990da700f8c2456f
+  custom:scripting/monoscript/fileName/TMP_ResourcesLoader.cs: f71e35ced40721d6906e578fb6e7f0e9 -> 6f1f07799f3cfe795f955033c27f98ed
+  custom:scripting/monoscript/fileName/CinemachineEditorAnalytics.cs: a5d8fdc75d5fede5d1a6e6635e5a7443 -> de76cc292d7ecedcf47af6616498c9f9
+  custom:scripting/monoscript/fileName/NativeBitArray.cs: 3c2944e878a1117db969fcced8ed2c57 -> 49f79507956a183761c1507d27f1d72b
+  custom:scripting/monoscript/fileName/CinemachineBrainEditor.cs: 84ed7d973a93d9b863601a64079a07ec -> 49621d8b7679c0b5d128fef53d55becd
+  custom:scripting/monoscript/fileName/NativeMultiHashMap.cs: 232e6e149bb81d9963c795b02084c8f4 -> 
+  custom:scripting/monoscript/fileName/xxHash3.StreamingState.cs: c37160ac47c119b599190b6c7a43dd9e -> 73af6f62e3ccfaecb2c43562b8c60a23
+  custom:scripting/monoscript/fileName/TMP_FontFeaturesCommon.cs: 89ff6ee76bb6f84827488d597e70ea5a -> 7d1db71d73353e7dd97f094c509882fa
+  custom:scripting/monoscript/fileName/TMP_LineInfo.cs: 22ff02e7762110d3cc1f4bc096ea014d -> bb529d63c9723788bd7143f27cd69eaf
+  custom:scripting/monoscript/fileName/CollectionsExamples.cs: 5c3c7e50116fce8e4387bbf68d9603e4 -> 
+  custom:scripting/monoscript/fileName/CameraState.cs: ceb8530302a185d139c83180bf6a7aa5 -> 3ec03858e4f5bd5578e14e2ade4f1591
+  custom:scripting/monoscript/fileName/CinemachineToolbarOverlay.cs: 2bcae21fca36b53e9518fddd883f5fa2 -> 09bda1968922559d07abc50ff10df86e
+  custom:scripting/monoscript/fileName/TMP_SpriteAssetImporter.cs: 06875a6ac5102e58811218e1c5dd33ca -> 675c97d72afe988872a20f51812f7cdf
+  custom:scripting/monoscript/fileName/CinemachineIndependentImpulseListener.cs: 3a0e52b7f2730deb79d2d3459e85b2fc -> 91ae8748b9c36955c333e57505ff90fb
+  custom:scripting/monoscript/fileName/TMP_SpriteAssetEditor.cs: 7dcaf47692799a91aa4e5cd439bc54d0 -> 8a42af05e85c0eed4128787976375b45
+  custom:scripting/monoscript/fileName/CinemachineSameAsFollowTarget.cs: 4fd1107b6ff55fa2917827cb67f8a933 -> bcfa2d394e1e5460b4ef3dc039214a16
+  custom:scripting/monoscript/fileName/UpdateTracker.cs: baa9ffb45c1a83a6ef9b73a911f20fec -> 3dac8a24a32a32e4bbfeb38ed26ef250
+  custom:scripting/monoscript/fileName/TMP_Character.cs: 2bff3626198e4d2228876f1e687078e0 -> 015720458ea991fbf07357eae19532db
+  custom:scripting/monoscript/fileName/CinemachineComposerEditor.cs: 709f6837c37eaa724cb70c0261ec02d8 -> dda533b9c6cb2b366292f584704bd904
+  custom:scripting/monoscript/fileName/TMP_SubMesh.cs: ff760a824537d48706351b95c8d4be21 -> 9fd75270af40187985e5c14cc85ebe42
+  custom:scripting/monoscript/fileName/UnsafeText.cs: 5615c516f201aea71ee957e425a17288 -> 252c4eef6eb1893b89e3a585d7b05a84
+  custom:scripting/monoscript/fileName/TMP_CoroutineTween.cs: d4d869f6662b40274a62453f83c8a425 -> 76849b8d6d4ce499ad8ffee762e4a4af
+  custom:scripting/monoscript/fileName/TMP_SpriteAnimator.cs: 126f1482d1430ed8648c2a6d8d693c6d -> bf3a797c3a059d3698e93e0031d7f11c
+  custom:scripting/monoscript/fileName/TMP_TextProcessingStack.cs: ef8795fce16f80562f220a2f8bcb6bd2 -> 6146dd1b7f9b90aa342ef9794e387c23
+  custom:scripting/monoscript/fileName/SaveDuringPlay.cs: bb4322d2fd99c5f6423bd9631aa73a81 -> de39f1962b337699845d3d8a2e8f5bde
+  custom:scripting/monoscript/fileName/TMP_InputValidator.cs: e99335724872b7fcd0e5352c682debe0 -> 5e0d679d98dae60baa87977011e0ed51
+  custom:scripting/monoscript/fileName/CollectionHelper.cs: 43c7963f3cd4f164a58eb56b8095def9 -> 1ca9b633c4b3ee37c8eb00c963039ea7
+  custom:scripting/monoscript/fileName/TMP_SelectionCaret.cs: ed141b1915a10b9c7ff9136666b54ee9 -> d2a06fefe973175bffa10d62f788c481

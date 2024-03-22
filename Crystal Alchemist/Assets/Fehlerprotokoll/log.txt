@@ -40913,3 +40913,18 @@ CrystalAlchemist.DialogBox.Start () (at Assets/Scripts/Menu Scripts/Dialog Boxes
 Exception 04.12.2022 00:28:32: NullReferenceException: Object reference not set to an instance of an object
 CrystalAlchemist.DialogBox.StopInputDelay () (at Assets/Scripts/Menu Scripts/Dialog Boxes/DialogBox.cs:54)
 
+Exception 21.03.2024 23:02:31: NullReferenceException: Object reference not set to an instance of an object
+CrystalAlchemist.CameraTargetGroup.Start () (at Assets/Scripts/Game Scripts/Camera/CameraTargetGroup.cs:22)
+
+Exception 21.03.2024 23:20:29: MissingReferenceException: The variable abilities of PlayerSkillset doesn't exist anymore.
+You probably need to reassign the abilities variable of the 'PlayerSkillset' script in the inspector.
+UnityEngine.Object.get_name () (at <cb81df0c49c643b1a04d9fc6ccca2433>:0)
+CrystalAlchemist.PlayerSkillset.GetSkillSet () (at Assets/Scripts/Scriptable Objects/Objects/Player/PlayerSkillset.cs:87)
+CrystalAlchemist.PlayerData..ctor (CrystalAlchemist.PlayerSaveGame saveGame) (at Assets/Scripts/Save and Loading Scripts/PlayerData.cs:60)
+CrystalAlchemist.SaveSystem.Save (CrystalAlchemist.PlayerSaveGame saveGame, System.String slot) (at Assets/Scripts/Save and Loading Scripts/SaveSystem.cs:16)
+CrystalAlchemist.PlayerSaveGame.SaveGame () (at Assets/Scripts/Scriptable Objects/Objects/Player/PlayerSaveGame.cs:97)
+CrystalAlchemist.SaveGameManager.SaveDirectly () (at Assets/Scripts/Game Scripts/SaveGameManager.cs:39)
+CrystalAlchemist.SaveGameManager.SaveGame (System.Boolean value) (at Assets/Scripts/Game Scripts/SaveGameManager.cs:53)
+CrystalAlchemist.GameEvents.DoSaveGame (System.Boolean buffered) (at Assets/Scripts/Game Scripts/Event Systems/GameEvents.cs:75)
+CrystalAlchemist.SaveGameManager.Start () (at Assets/Scripts/Game Scripts/SaveGameManager.cs:28)
+
