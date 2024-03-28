@@ -1,0 +1,481 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.22f1 (887be4894c44) revision 8944612'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'de' Physical Memory: 32689 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+E:/Projekte/[Github] Repository/Crystal Alchemist/CrystalAlchemist/Crystal Alchemist
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+61142
+Successfully changed project path to: E:/Projekte/[Github] Repository/Crystal Alchemist/CrystalAlchemist/Crystal Alchemist
+E:/Projekte/[Github] Repository/Crystal Alchemist/CrystalAlchemist/Crystal Alchemist
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [2776] Host "[IP] 192.168.178.62 [Port] 0 [Flags] 2 [Guid] 2683613700 [EditorId] 2683613700 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LB0NI17) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [2776] Host "[IP] 192.168.178.62 [Port] 0 [Flags] 2 [Guid] 2683613700 [EditorId] 2683613700 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LB0NI17) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 11 workers.
+Refreshing native plugins compatible for Editor in 20.36 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.22f1 (887be4894c44)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/Projekte/[Github] Repository/Crystal Alchemist/CrystalAlchemist/Crystal Alchemist/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3070 (ID=0x2488)
+    Vendor:   NVIDIA
+    VRAM:     8018 MB
+    Driver:   31.0.15.5123
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56308
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.013497 seconds.
+- Loaded All Assemblies, in  0.294 seconds
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 226 ms
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.491 seconds
+Domain Reload Profiling: 780ms
+	BeginReloadAssembly (91ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (0ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (58ms)
+	LoadAllAssembliesAndSetupDomain (107ms)
+		LoadAssemblies (88ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (105ms)
+			TypeCache.Refresh (104ms)
+				TypeCache.ScanAssembly (94ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (491ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (449ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (326ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (1ms)
+			ProcessInitializeOnLoadAttributes (86ms)
+			ProcessInitializeOnLoadMethodAttributes (33ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.690 seconds
+Refreshing native plugins compatible for Editor in 8.29 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.857 seconds
+Domain Reload Profiling: 2543ms
+	BeginReloadAssembly (127ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (17ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (46ms)
+	LoadAllAssembliesAndSetupDomain (479ms)
+		LoadAssemblies (334ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (223ms)
+			TypeCache.Refresh (178ms)
+				TypeCache.ScanAssembly (160ms)
+			ScanForSourceGeneratedMonoScriptInfo (30ms)
+			ResolveRequiredComponents (15ms)
+	FinalizeReload (1858ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1687ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (23ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (84ms)
+			ProcessInitializeOnLoadAttributes (1292ms)
+			ProcessInitializeOnLoadMethodAttributes (273ms)
+			AfterProcessingInitializeOnLoad (12ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Refreshing native plugins compatible for Editor in 9.66 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6460 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 149 unused Assets / (3.3 MB). Loaded Objects now: 6944.
+Memory consumption went from 272.3 MB to 269.0 MB.
+Total: 16.717400 ms (FindLiveObjects: 0.665000 ms CreateObjectMapping: 0.184900 ms MarkObjects: 14.847500 ms  DeleteObjects: 1.019100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 28162.502849 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorOutline.shadersubgraph
+  artifactKey: Guid(ca4431ab59f69d94483fdee3d1e9ec0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorOutline.shadersubgraph using Guid(ca4431ab59f69d94483fdee3d1e9ec0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '300adbc1e29b43704a0e2ee048a61c5d') in 0.017559 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 212.651059 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/OutlineOffset.shadersubgraph
+  artifactKey: Guid(0b42413e234194643a67320c16b981ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/OutlineOffset.shadersubgraph using Guid(0b42413e234194643a67320c16b981ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59d1b40720ee0eb2d9943894cabee367') in 0.003018 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 719.722758 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorOutline.shadersubgraph
+  artifactKey: Guid(ca4431ab59f69d94483fdee3d1e9ec0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorOutline.shadersubgraph using Guid(ca4431ab59f69d94483fdee3d1e9ec0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '814ae387f4f747f0d107970e611f7bf7') in 0.001114 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 559.066720 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorOutline.shadersubgraph
+  artifactKey: Guid(ca4431ab59f69d94483fdee3d1e9ec0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorOutline.shadersubgraph using Guid(ca4431ab59f69d94483fdee3d1e9ec0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96a23c12f7492653e01d20440e3e765a') in 0.003508 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 40.257287 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorOutline.shadersubgraph
+  artifactKey: Guid(ca4431ab59f69d94483fdee3d1e9ec0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorOutline.shadersubgraph using Guid(ca4431ab59f69d94483fdee3d1e9ec0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'beaa1b93335b1d0d06395e5c8cd826d9') in 0.003221 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 3093.121218 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorOutline.shadersubgraph
+  artifactKey: Guid(ca4431ab59f69d94483fdee3d1e9ec0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorOutline.shadersubgraph using Guid(ca4431ab59f69d94483fdee3d1e9ec0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5cc3b171698d57abef16e645060a1a4') in 0.001118 seconds
+Number of updated asset objects reloaded before import = 1
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 2252.948098 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementAlpha.shadersubgraph
+  artifactKey: Guid(55224ff565a6608478eead8a72f84973) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementAlpha.shadersubgraph using Guid(55224ff565a6608478eead8a72f84973) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc25dfdd9d1aa024be62a21a2d4046aa') in 0.001004 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 338.380042 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementAlpha.shadersubgraph
+  artifactKey: Guid(55224ff565a6608478eead8a72f84973) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementAlpha.shadersubgraph using Guid(55224ff565a6608478eead8a72f84973) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ef2295246125d82886732b7d3997d76') in 0.003133 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 148.424527 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementAlpha.shadersubgraph
+  artifactKey: Guid(55224ff565a6608478eead8a72f84973) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementAlpha.shadersubgraph using Guid(55224ff565a6608478eead8a72f84973) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d94f31f22d8a4310708e4981e9d0897') in 0.003014 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 275.833728 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPart.shadersubgraph
+  artifactKey: Guid(6f2e4a85a00fb54439fe1c922abc9764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPart.shadersubgraph using Guid(6f2e4a85a00fb54439fe1c922abc9764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b13009b586d63cfa121d1aa3b0116b51') in 0.001161 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 313.055454 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPart.shadersubgraph
+  artifactKey: Guid(6f2e4a85a00fb54439fe1c922abc9764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPart.shadersubgraph using Guid(6f2e4a85a00fb54439fe1c922abc9764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6d4b059b451e586647fda819488fee2') in 0.003304 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 20.193583 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPart.shadersubgraph
+  artifactKey: Guid(6f2e4a85a00fb54439fe1c922abc9764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPart.shadersubgraph using Guid(6f2e4a85a00fb54439fe1c922abc9764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd7c46861b185a9e4f3610d700afaeaff') in 0.002693 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 436.954273 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPart.shadersubgraph
+  artifactKey: Guid(6f2e4a85a00fb54439fe1c922abc9764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPart.shadersubgraph using Guid(6f2e4a85a00fb54439fe1c922abc9764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '434b3eb8a963179550cbadc1d91c871f') in 0.003059 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 5.403879 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPart.shadersubgraph
+  artifactKey: Guid(6f2e4a85a00fb54439fe1c922abc9764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPart.shadersubgraph using Guid(6f2e4a85a00fb54439fe1c922abc9764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f780905452f656c695ffce52391af9f') in 0.002671 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 46.110813 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph
+  artifactKey: Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph using Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f903714cb2397b54e33b7f9d091ec792') in 0.000861 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 381.998932 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph
+  artifactKey: Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph using Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2de1aa65db56b67ec55823a7cb2f468') in 0.003063 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 36.633484 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph
+  artifactKey: Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph using Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eac2119d37cd1c79c46d9f0c10d025f4') in 0.002929 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 16.845485 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph
+  artifactKey: Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph using Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca1f949b5d55fa0a03f9bb8d5966044f') in 0.003101 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 670.377273 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph
+  artifactKey: Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph using Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2faf5749568e1bf7b0212cf40d4c101') in 0.001065 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 268.076121 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph
+  artifactKey: Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph using Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3f314aa97e4da8a6868ac087212b87b') in 0.002928 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 21.169014 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph
+  artifactKey: Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph using Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84d3ab646631053645717b18fc830282') in 0.003129 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 357.094108 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph
+  artifactKey: Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph using Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd7b6346d60ee2816449934a759b12e56') in 0.003245 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 750.646470 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph
+  artifactKey: Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph using Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd22d549e6c09f98ac8b897d94e5b392') in 0.002972 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 346.010037 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph
+  artifactKey: Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph using Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85c6d120ae5eade6bc7a4f781d52177f') in 0.004122 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 62.116439 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph
+  artifactKey: Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPartsCombined.shadersubgraph using Guid(d559c588411b07645a1d341a04ba4895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '764b3e0d9bc521b1a91ca82b6793ee40') in 0.003285 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 906.714040 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPart.shadersubgraph
+  artifactKey: Guid(6f2e4a85a00fb54439fe1c922abc9764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementPart.shadersubgraph using Guid(6f2e4a85a00fb54439fe1c922abc9764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ef43c66e2726bf22b68c15f2284bf06') in 0.000876 seconds
+Number of updated asset objects reloaded before import = 1
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.477315 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementAlpha.shadersubgraph
+  artifactKey: Guid(55224ff565a6608478eead8a72f84973) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementAlpha.shadersubgraph using Guid(55224ff565a6608478eead8a72f84973) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '071970013e70bee790bfbac45a50b80f') in 0.000897 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.922225 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacement.shadersubgraph
+  artifactKey: Guid(8e347e39dd5c9c1479c4896608d7ae94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacement.shadersubgraph using Guid(8e347e39dd5c9c1479c4896608d7ae94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e52b5099fb047d8af6a795cfd3470c1') in 0.001013 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 5.345055 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacement_Old.shadersubgraph
+  artifactKey: Guid(225b7c885ece5df4289a3922f57000d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacement_Old.shadersubgraph using Guid(225b7c885ece5df4289a3922f57000d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8028cbeca00b0cd07809c73985cb02fe') in 0.001161 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 27.842065 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacement_Old.shadersubgraph
+  artifactKey: Guid(225b7c885ece5df4289a3922f57000d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacement_Old.shadersubgraph using Guid(225b7c885ece5df4289a3922f57000d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6492963e94d8d5d3e6acb48e4a9a2314') in 0.003111 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 82.700512 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacement.shadersubgraph
+  artifactKey: Guid(8e347e39dd5c9c1479c4896608d7ae94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacement.shadersubgraph using Guid(8e347e39dd5c9c1479c4896608d7ae94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '335fdd17c3559f0a23ff48ba413d5a17') in 0.001014 seconds
+Number of updated asset objects reloaded before import = 1
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 9.453672 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorArrayReplacement.shadersubgraph
+  artifactKey: Guid(f3cdbcf894149594bb50863f8e70f246) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorArrayReplacement.shadersubgraph using Guid(f3cdbcf894149594bb50863f8e70f246) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8be7f37da03075fd6c814d22a8b4454a') in 0.000945 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 261.533031 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementAlpha.shadersubgraph
+  artifactKey: Guid(55224ff565a6608478eead8a72f84973) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorReplacementAlpha.shadersubgraph using Guid(55224ff565a6608478eead8a72f84973) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b0048b2774f3a655a390d0b839843a2') in 0.000950 seconds
+Number of updated asset objects reloaded before import = 1
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 2734.170331 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/Super Shader.shadergraph
+  artifactKey: Guid(6d8a9c94eeb3591409c5dcc5da77314c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/Super Shader.shadergraph using Guid(6d8a9c94eeb3591409c5dcc5da77314c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '446190296b73ff4944c1d0d12a202145') in 0.383008 seconds
+Number of updated asset objects reloaded before import = 1
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 476.950041 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorDisolve.shadersubgraph
+  artifactKey: Guid(c7e0fb41ad6926e45980b3324e150e39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorDisolve.shadersubgraph using Guid(c7e0fb41ad6926e45980b3324e150e39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a6b13963dae877351f8378ad7c27632') in 0.000968 seconds
+Number of updated asset objects reloaded before import = 1
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 2.032626 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorDissolve.shadersubgraph
+  artifactKey: Guid(c7e0fb41ad6926e45980b3324e150e39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorDissolve.shadersubgraph using Guid(c7e0fb41ad6926e45980b3324e150e39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b444baca5f1276ba3fd43c0192a42c61') in 0.000904 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 1016.109437 seconds.
+  path: Assets/Materials/Shaders/Final Shaders/Super Shader/ColorDissolve.shadersubgraph
+  artifactKey: Guid(c7e0fb41ad6926e45980b3324e150e39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Shaders/Final Shaders/Super Shader/ColorDissolve.shadersubgraph using Guid(c7e0fb41ad6926e45980b3324e150e39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '870cf5e69249fc52470f6e154587da41') in 0.003283 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
