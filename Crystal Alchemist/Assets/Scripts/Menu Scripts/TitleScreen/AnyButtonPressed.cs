@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 namespace CrystalAlchemist
 {
-    public class TitleScreenStart : MonoBehaviour
+    public class AnyButtonPressed : MonoBehaviour
     {
         [SerializeField]
         private UnityEvent OnAnyButtonPressEvent;
