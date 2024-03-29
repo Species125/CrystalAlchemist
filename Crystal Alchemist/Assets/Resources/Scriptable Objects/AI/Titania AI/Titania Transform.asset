@@ -12,32 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76a19f9cb4d358498823753290d243d, type: 3}
   m_Name: Titania Transform
   m_EditorClassIdentifier: 
+  path: Scriptable Objects/AI/Titania AI/Titania Transform
   actions:
-  - type: 11
-    position: {x: 0, y: 0}
-    translationID: 
-    duration: 0
-    nextPhase: {fileID: 0}
-    animations: 
-    isTrigger: 0
-    ability: {fileID: 0}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 0
-    delay: 0
-    value: 0
-    signal: {fileID: 0}
-    wait: 0
-    mode: 1
-    fadeIn: 1
-    fadeOut: 3
-    music: {fileID: 0}
   - type: 10
     position: {x: 0, y: 0}
     translationID: 
@@ -46,23 +22,13 @@ MonoBehaviour:
     animations: 
     isTrigger: 0
     ability: {fileID: 0}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 0
-    delay: 0
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
     value: 0
     signal: {fileID: 11400000, guid: 2c2e9067d3add024d9a77264141b5502, type: 2}
     wait: 0
-    mode: 0
-    fadeIn: 0
-    fadeOut: 0
-    music: {fileID: 0}
   - type: 1
     position: {x: 0, y: 0}
     translationID: Titania1
@@ -71,23 +37,13 @@ MonoBehaviour:
     animations: 
     isTrigger: 0
     ability: {fileID: 0}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 0
-    delay: 0
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
     value: 0
     signal: {fileID: 0}
     wait: 0
-    mode: 0
-    fadeIn: 0
-    fadeOut: 0
-    music: {fileID: 0}
   - type: 9
     position: {x: 0, y: 0}
     translationID: 
@@ -96,22 +52,12 @@ MonoBehaviour:
     animations: Transforming
     isTrigger: 1
     ability: {fileID: 0}
-    overrideCastTime: 0
-    castTime: 0
-    overrideShowCastBar: 0
-    showCastBar: 0
-    overrideCooldown: 0
-    cooldown: 0
-    repeat: 0
-    keepCast: 0
-    amount: 0
-    delay: 0
+    targetMode: 0
+    multiDelay: 0
+    multiCast: 0
+    overrides: []
     value: 0
     signal: {fileID: 0}
     wait: 0
-    mode: 0
-    fadeIn: 0
-    fadeOut: 0
-    music: {fileID: 0}
   loopActions: 0
   events: []

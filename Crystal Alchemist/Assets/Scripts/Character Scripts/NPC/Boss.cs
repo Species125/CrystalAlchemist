@@ -2,7 +2,7 @@
 
 namespace CrystalAlchemist
 {
-    public class Goddess : AI
+    public class Boss : AI
     {
          public override void KillCharacter(bool animate)
         {
@@ -22,12 +22,6 @@ namespace CrystalAlchemist
         public void SetAnimationTrigger(string value)
         {
             AnimatorUtil.SetAnimatorParameter(this.animator, value);
-        }
-
-        public void ShowMiniDialog(string translationID)
-        {
-            string text = FormatUtil.GetLocalisedText(translationID, LocalisationFileType.dialogs);
-            ShowMiniDialog(text, 6f);
-        }
+        }        
     }
 }

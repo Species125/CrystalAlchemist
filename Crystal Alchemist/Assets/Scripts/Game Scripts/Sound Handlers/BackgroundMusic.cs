@@ -6,9 +6,6 @@ namespace CrystalAlchemist
     public class BackgroundMusic : MonoBehaviour
     {
         [SerializeField]
-        private bool playOnAwake = true;
-
-        [SerializeField]
         private MusicTheme music;
 
         [SerializeField]
@@ -19,18 +16,26 @@ namespace CrystalAlchemist
 
         private void Start()
         {
-            if (this.playOnAwake) PlayMusic();
+            if(music) PlayMusic();
         }
 
         [Button]
-        public void PlayMusic()
+        public void PlayMusic() => PlayMusic(this.music, this.fadeIn, this.fadeOut);
+
+        [Button]
+        public void PlayMusic(MusicTheme theme) => PlayMusic(theme, this.fadeIn, this.fadeOut);
+
+        private void PlayMusic(MusicTheme music, float fadeIn, float fadeOut)
         {
-            StopMusic();
-            MusicEvents.current.PlayMusic(this.music, this.fadeIn);
+            StopMusic(fadeOut);
+            MusicEvents.current.PlayMusic(music, fadeIn);
         }
 
-        public void StopMusic() => MusicEvents.current.StopMusic(this.fadeOut);
+        [Button]
+        public void StopMusic() => StopMusic(this.fadeOut);
 
-        public void PlayMusic(AudioClip music) => StopMusic();   
+        [Button]
+        public void StopMusic(float fadeOut) => MusicEvents.current.StopMusic(fadeOut);
+
     }
 }

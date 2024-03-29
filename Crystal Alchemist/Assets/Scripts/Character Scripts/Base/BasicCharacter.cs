@@ -1,4 +1,6 @@
 using Sirenix.OdinInspector;
+using System;
+using System.Globalization;
 using UnityEngine;
 
 namespace CrystalAlchemist
@@ -41,10 +43,17 @@ namespace CrystalAlchemist
 
         }
 
-        public void ShowMiniDialog(string textID)
+        public void ShowMiniDialog(string value)
         {
+            string[] temp = value.Split(';');
+
+            string textID = temp[0];
             string text = FormatUtil.GetLocalisedText(textID, LocalisationFileType.dialogs);
-            ShowMiniDialog(text, dialogDuration);
+
+            float duration = this.dialogDuration;
+            if(temp.Length == 2) duration = float.Parse(temp[1], CultureInfo.InvariantCulture.NumberFormat);
+
+            ShowMiniDialog(text, duration);
         }
 
         public void ShowMiniDialog(string text, float duration)

@@ -1,6 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CrystalAlchemist
 {
@@ -56,14 +57,7 @@ namespace CrystalAlchemist
             cannotDie,
             animation,
             signal,
-            music,
             interruptAll
-        }
-
-        private enum MusicMode
-        {
-            play,
-            stop
         }
 
         private enum TargetMode
@@ -99,7 +93,6 @@ namespace CrystalAlchemist
         [HideIf("type", AIActionType.interruptAll)]
         [HideIf("type", AIActionType.signal)]
         [HideIf("type", AIActionType.invincible)]
-        [HideIf("type", AIActionType.music)]
         [BoxGroup("Properties")]
         [SerializeField]
         private float duration = 4f;
@@ -148,17 +141,6 @@ namespace CrystalAlchemist
         [SerializeField]
         private List<AbilityOverride> overrides = new List<AbilityOverride>();
 
-        [HideIf("type", AIActionType.ability)]
-        [HideIf("type", AIActionType.movement)]
-        [HideIf("type", AIActionType.startPhase)]
-        [HideIf("type", AIActionType.endPhase)]
-        [HideIf("type", AIActionType.kill)]
-        [HideIf("type", AIActionType.interruptAll)]
-        [HideIf("type", AIActionType.dialog)]
-        [HideIf("type", AIActionType.wait)]
-        [HideIf("type", AIActionType.signal)]
-        [HideIf("type", AIActionType.music)]
-        [HideIf("isTrigger")]
         [BoxGroup("Properties")]
         [SerializeField]
         private bool value;
@@ -175,28 +157,6 @@ namespace CrystalAlchemist
         [SerializeField]
         private float wait = 0f;
 
-        [ShowIf("type", AIActionType.music)]
-        [BoxGroup("Properties")]
-        [SerializeField]
-        private MusicMode mode = MusicMode.play;
-
-        [ShowIf("type", AIActionType.music)]
-        [HideIf("mode", MusicMode.stop)]
-        [BoxGroup("Properties")]
-        [SerializeField]
-        private float fadeIn;
-
-        [ShowIf("type", AIActionType.music)]
-        [HideIf("mode", MusicMode.play)]
-        [BoxGroup("Properties")]
-        [SerializeField]
-        private float fadeOut;
-
-        [ShowIf("type", AIActionType.music)]
-        [HideIf("mode", MusicMode.stop)]
-        [BoxGroup("Properties")]
-        [SerializeField]
-        private MusicTheme music;
 
         #endregion
 
@@ -241,7 +201,7 @@ namespace CrystalAlchemist
                 case AIActionType.startPhase: StartPhase(npc); break;
                 case AIActionType.endPhase: EndPhase(npc); break;
                 case AIActionType.signal: StartSignal(); break;
-                case AIActionType.music: StartMusic(); break;
+                //case AIActionType.music: StartMusic(); break;
                 case AIActionType.movement: StartMovement(npc); break;
                 case AIActionType.interruptAll: StartInterrupt(); break;
             }
@@ -533,7 +493,7 @@ namespace CrystalAlchemist
 
         #endregion
 
-
+        /*
         #region Music
 
         private void StartMusic()
@@ -543,7 +503,7 @@ namespace CrystalAlchemist
             Deactivate();
         }
 
-        #endregion
+        #endregion*/
 
         private void Deactivate() => this.isActive = false;
 
