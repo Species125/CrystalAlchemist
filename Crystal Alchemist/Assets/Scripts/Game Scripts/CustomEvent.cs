@@ -1,6 +1,4 @@
 using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,6 +9,7 @@ namespace CrystalAlchemist
         [SerializeField]
         private UnityEvent events;
 
+        [Button]
         public void CallEvents()
         {
             this.events.Invoke();

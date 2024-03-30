@@ -1,46 +1,54 @@
-﻿
-using Cinemachine;
-using Sirenix.OdinInspector;
+﻿using Cinemachine;
 using UnityEngine;
 
 namespace CrystalAlchemist
 {
-    [RequireComponent(typeof(CinemachineTargetGroup))]
-    public class CameraNetworkTargetGroup : MonoBehaviour
+    public class CameraNetworkTargetGroup : CinemachineTargetGroup
     {
-        private CinemachineTargetGroup[] groups;
+        private Player player;
 
-        [InfoBox("Replaces Placeholder with Player on Start")]
-        [SerializeField]
-        private GameObject placeHolder;
+        private void Start() => AddLocalPlayer();
 
-        private void Start()
+        /// <summary>
+        /// Add Local Player to Target Group, so the camera can follow the player
+        /// </summary>
+        private void AddLocalPlayer()
         {
-            this.groups = this.GetComponents<CinemachineTargetGroup>();
-            AddPlayer();
+            this.player = NetworkUtil.GetLocalPlayer();
+            if (this.player == null) return;
+
+            AddCamera(this.player.transform);
         }
 
-        private void AddPlayer()
+        /// <summary>
+        /// Add Target to TargetGroup if not exists. If exists, set its weight to 1
+        /// </summary>
+        public void AddCamera(Transform transform)
         {
-            Player player = NetworkUtil.GetLocalPlayer();
-            if (player == null) return;
+            bool found = false;
 
-            for (int i = 0; i < groups.Length; i++)
+            for (int i = 0; i < this.m_Targets.Length && !found; i++)
             {
-                CinemachineTargetGroup group = groups[i];
-                CinemachineTargetGroup.Target[] targets = group.m_Targets;
-
-                for (int j = 0; j < targets.Length; j++)
+                if (this.m_Targets[i].target == transform)
                 {
-                    CinemachineTargetGroup.Target target = targets[j];
-
-                    if (target.target == placeHolder.transform)
-                    {
-                        group.RemoveMember(placeHolder.transform);
-                        group.AddMember(player.gameObject.transform, 1f, 0f);
-                        break;
-                    }
+                    this.m_Targets[i].weight = 1f;
+                    found = true;
                 }
+            }
+
+            if (!found) this.AddMember(transform, 1f, 0f);            
+        }
+
+        /// <summary>
+        /// Reset Camera back to normal
+        /// </summary>
+        public void ResetCamera()
+        {         
+            if (this.player == null) return;
+
+            for (int i = 0; i < this.m_Targets.Length; i++)
+            {
+                if (this.m_Targets[i].target != this.player.transform) this.m_Targets[i].weight = 0f;
             }
         }
     }

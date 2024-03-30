@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace CrystalAlchemist
 {
-    public class ProgressExtension : MonoBehaviour
+    public class Progress : MonoBehaviour
     {
         [BoxGroup("Required")]
         [HideLabel]

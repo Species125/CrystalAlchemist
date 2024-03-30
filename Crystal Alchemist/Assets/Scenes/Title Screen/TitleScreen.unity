@@ -1344,7 +1344,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2128750584}
+  - {fileID: 2100000, guid: 732a57709ff8a954997a14c8f7ff850a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3407,61 +3407,6 @@ MonoBehaviour:
   useGlow: 1
   glowColor: {r: 3.8952882, g: 3.8952882, b: 3.8952882, a: 1}
   invert: 0
---- !u!21 &2128750584
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_TitleScreenLogo (Instance)
-  m_Shader: {fileID: -6465566751694194690, guid: fe074d7ccefdc49459fd1692909db51b,
-    type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_f7fa788012cf455e8c8eb0b3a84a02b0_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 0e06f96493a02b042ad3d03c20fc621a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _CircleRatio: 0.66
-    - _Progress: -0
-    - _Rotation: -90
-    - _UseCircle: 0
-    - _Width: 3
-    m_Colors:
-    - _CirclePosition: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _Color: {r: 16, g: 10.158108, b: 1.901886, a: 1}
-  m_BuildTextureStacks: []
 --- !u!212 &1019073789009814631
 SpriteRenderer:
   m_ObjectHideFlags: 0
